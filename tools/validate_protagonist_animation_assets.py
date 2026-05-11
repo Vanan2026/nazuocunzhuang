@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import re
 
 import cv2
 import numpy as np
@@ -23,21 +24,33 @@ SOURCES = {
 }
 
 ANIMATIONS = {
-    "player_walk_down": (8, 8.4),
-    "player_walk_up": (8, 8.4),
-    "player_walk_left": (8, 9.0),
-    "player_walk_right": (8, 9.0),
-    "player_idle_down": (4, 5.0),
-    "player_idle_up": (4, 5.0),
-    "player_idle_left": (4, 5.0),
-    "player_idle_right": (4, 5.0),
-    "player_interact_down": (6, 10.0),
-    "player_interact_up": (6, 10.0),
-    "player_interact_left": (6, 10.0),
-    "player_interact_right": (6, 10.0),
-    "player_sit_down_side": (6, 8.0),
-    "player_sit_idle_side": (6, 5.0),
-    "player_stand_up_side": (6, 8.0),
+    "player_walk_down": (8, 6.0),
+    "player_walk_down_left": (8, 6.0),
+    "player_walk_left": (8, 6.0),
+    "player_walk_up_left": (8, 6.0),
+    "player_walk_up": (8, 6.0),
+    "player_walk_up_right": (8, 6.0),
+    "player_walk_right": (8, 6.0),
+    "player_walk_down_right": (8, 6.0),
+    "player_idle_down": (4, 4.2),
+    "player_idle_down_left": (4, 4.2),
+    "player_idle_left": (4, 4.2),
+    "player_idle_up_left": (4, 4.2),
+    "player_idle_up": (4, 4.2),
+    "player_idle_up_right": (4, 4.2),
+    "player_idle_right": (4, 4.2),
+    "player_idle_down_right": (4, 4.2),
+    "player_interact_down": (6, 8.0),
+    "player_interact_down_left": (6, 8.0),
+    "player_interact_left": (6, 8.0),
+    "player_interact_up_left": (6, 8.0),
+    "player_interact_up": (6, 8.0),
+    "player_interact_up_right": (6, 8.0),
+    "player_interact_right": (6, 8.0),
+    "player_interact_down_right": (6, 8.0),
+    "player_sit_down_side": (6, 7.0),
+    "player_sit_idle_side": (6, 4.2),
+    "player_stand_up_side": (6, 7.0),
 }
 
 
@@ -107,6 +120,18 @@ def median(values: list[int]) -> float:
     return (ordered[mid - 1] + ordered[mid]) / 2.0
 
 
+def animation_frame_paths(animation: str) -> list[Path]:
+    pattern = re.compile(rf"^{re.escape(animation)}_(\d{{2}})\.png$")
+    matches: list[tuple[int, Path]] = []
+    for path in FRAME_DIR.glob("*.png"):
+        m = pattern.match(path.name)
+        if m is None:
+            continue
+        matches.append((int(m.group(1)), path))
+    matches.sort(key=lambda item: item[0])
+    return [path for _idx, path in matches]
+
+
 def main() -> None:
     for name, expected_count in SOURCES.items():
         path = SOURCE_DIR / name
@@ -125,7 +150,7 @@ def main() -> None:
     for animation, (frame_count, speed) in ANIMATIONS.items():
         require(f'name": &"{animation}"' in sprite_text, f"missing animation: {animation}")
         require(f'"speed": {speed:.1f}' in sprite_text, f"{animation} must use speed {speed:.1f}")
-        paths = sorted(FRAME_DIR.glob(f"{animation}_*.png"))
+        paths = animation_frame_paths(animation)
         require(len(paths) == frame_count, f"{animation} expected {frame_count} frames, got {len(paths)}")
         heights_by_animation[animation] = []
         for path in paths:
@@ -133,7 +158,7 @@ def main() -> None:
             require(bottom == FOOT_BASELINE_Y, f"{path.name} baseline must be {FOOT_BASELINE_Y}, got {bottom}")
             heights_by_animation[animation].append(visible_height(path))
 
-    for suffix in ("down", "up", "left", "right"):
+    for suffix in ("down", "up", "left", "right", "down_left", "up_left", "up_right", "down_right"):
         walk = median(heights_by_animation[f"player_walk_{suffix}"])
         for state in ("idle", "interact"):
             actual = median(heights_by_animation[f"player_{state}_{suffix}"])
@@ -141,6 +166,27 @@ def main() -> None:
                 abs(actual - walk) <= 3.0,
                 f"player_{state}_{suffix} height {actual:.1f} must match walk height {walk:.1f}",
             )
+
+    diagonal_targets = {
+        "down_left": ("down", "left"),
+        "up_left": ("up", "left"),
+        "up_right": ("up", "right"),
+        "down_right": ("down", "right"),
+    }
+    for diagonal, (a, b) in diagonal_targets.items():
+        diag_walk = median(heights_by_animation[f"player_walk_{diagonal}"])
+        min_cardinal = min(
+            median(heights_by_animation[f"player_walk_{a}"]),
+            median(heights_by_animation[f"player_walk_{b}"]),
+        )
+        max_cardinal = max(
+            median(heights_by_animation[f"player_walk_{a}"]),
+            median(heights_by_animation[f"player_walk_{b}"]),
+        )
+        require(
+            min_cardinal - 2.0 <= diag_walk <= max_cardinal + 2.0,
+            f"player_walk_{diagonal} median height {diag_walk:.1f} must stay near its cardinal pair",
+        )
 
     side_walk = (
         median(heights_by_animation["player_walk_left"])

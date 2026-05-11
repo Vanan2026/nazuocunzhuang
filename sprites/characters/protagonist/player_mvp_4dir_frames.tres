@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=91 format=3]
+[gd_resource type="SpriteFrames" load_steps=163 format=3]
 
 [ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_down_00.png" id="frame_1"]
 [ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_down_01.png" id="frame_2"]
@@ -8,14 +8,14 @@
 [ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_down_05.png" id="frame_6"]
 [ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_down_06.png" id="frame_7"]
 [ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_down_07.png" id="frame_8"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_00.png" id="frame_9"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_01.png" id="frame_10"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_02.png" id="frame_11"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_03.png" id="frame_12"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_04.png" id="frame_13"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_05.png" id="frame_14"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_06.png" id="frame_15"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_07.png" id="frame_16"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_down_left_00.png" id="frame_9"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_down_left_01.png" id="frame_10"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_down_left_02.png" id="frame_11"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_down_left_03.png" id="frame_12"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_down_left_04.png" id="frame_13"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_down_left_05.png" id="frame_14"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_down_left_06.png" id="frame_15"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_down_left_07.png" id="frame_16"]
 [ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_left_00.png" id="frame_17"]
 [ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_left_01.png" id="frame_18"]
 [ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_left_02.png" id="frame_19"]
@@ -24,72 +24,144 @@
 [ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_left_05.png" id="frame_22"]
 [ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_left_06.png" id="frame_23"]
 [ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_left_07.png" id="frame_24"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_right_00.png" id="frame_25"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_right_01.png" id="frame_26"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_right_02.png" id="frame_27"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_right_03.png" id="frame_28"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_right_04.png" id="frame_29"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_right_05.png" id="frame_30"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_right_06.png" id="frame_31"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_right_07.png" id="frame_32"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_down_00.png" id="frame_33"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_down_01.png" id="frame_34"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_down_02.png" id="frame_35"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_down_03.png" id="frame_36"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_up_00.png" id="frame_37"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_up_01.png" id="frame_38"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_up_02.png" id="frame_39"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_up_03.png" id="frame_40"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_left_00.png" id="frame_41"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_left_01.png" id="frame_42"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_left_02.png" id="frame_43"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_left_03.png" id="frame_44"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_right_00.png" id="frame_45"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_right_01.png" id="frame_46"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_right_02.png" id="frame_47"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_right_03.png" id="frame_48"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_down_00.png" id="frame_49"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_down_01.png" id="frame_50"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_down_02.png" id="frame_51"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_down_03.png" id="frame_52"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_down_04.png" id="frame_53"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_down_05.png" id="frame_54"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_up_00.png" id="frame_55"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_up_01.png" id="frame_56"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_up_02.png" id="frame_57"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_up_03.png" id="frame_58"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_up_04.png" id="frame_59"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_up_05.png" id="frame_60"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_left_00.png" id="frame_61"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_left_01.png" id="frame_62"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_left_02.png" id="frame_63"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_left_03.png" id="frame_64"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_left_04.png" id="frame_65"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_left_05.png" id="frame_66"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_right_00.png" id="frame_67"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_right_01.png" id="frame_68"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_right_02.png" id="frame_69"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_right_03.png" id="frame_70"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_right_04.png" id="frame_71"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_right_05.png" id="frame_72"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_sit_down_side_00.png" id="frame_73"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_sit_down_side_01.png" id="frame_74"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_sit_down_side_02.png" id="frame_75"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_sit_down_side_03.png" id="frame_76"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_sit_down_side_04.png" id="frame_77"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_sit_down_side_05.png" id="frame_78"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_sit_idle_side_00.png" id="frame_79"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_sit_idle_side_01.png" id="frame_80"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_sit_idle_side_02.png" id="frame_81"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_sit_idle_side_03.png" id="frame_82"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_sit_idle_side_04.png" id="frame_83"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_sit_idle_side_05.png" id="frame_84"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_stand_up_side_00.png" id="frame_85"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_stand_up_side_01.png" id="frame_86"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_stand_up_side_02.png" id="frame_87"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_stand_up_side_03.png" id="frame_88"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_stand_up_side_04.png" id="frame_89"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_stand_up_side_05.png" id="frame_90"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_left_00.png" id="frame_25"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_left_01.png" id="frame_26"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_left_02.png" id="frame_27"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_left_03.png" id="frame_28"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_left_04.png" id="frame_29"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_left_05.png" id="frame_30"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_left_06.png" id="frame_31"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_left_07.png" id="frame_32"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_00.png" id="frame_33"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_01.png" id="frame_34"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_02.png" id="frame_35"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_03.png" id="frame_36"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_04.png" id="frame_37"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_05.png" id="frame_38"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_06.png" id="frame_39"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_07.png" id="frame_40"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_right_00.png" id="frame_41"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_right_01.png" id="frame_42"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_right_02.png" id="frame_43"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_right_03.png" id="frame_44"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_right_04.png" id="frame_45"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_right_05.png" id="frame_46"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_right_06.png" id="frame_47"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_up_right_07.png" id="frame_48"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_right_00.png" id="frame_49"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_right_01.png" id="frame_50"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_right_02.png" id="frame_51"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_right_03.png" id="frame_52"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_right_04.png" id="frame_53"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_right_05.png" id="frame_54"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_right_06.png" id="frame_55"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_right_07.png" id="frame_56"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_down_right_00.png" id="frame_57"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_down_right_01.png" id="frame_58"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_down_right_02.png" id="frame_59"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_down_right_03.png" id="frame_60"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_down_right_04.png" id="frame_61"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_down_right_05.png" id="frame_62"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_down_right_06.png" id="frame_63"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_walk_down_right_07.png" id="frame_64"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_down_00.png" id="frame_65"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_down_01.png" id="frame_66"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_down_02.png" id="frame_67"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_down_03.png" id="frame_68"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_down_left_00.png" id="frame_69"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_down_left_01.png" id="frame_70"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_down_left_02.png" id="frame_71"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_down_left_03.png" id="frame_72"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_left_00.png" id="frame_73"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_left_01.png" id="frame_74"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_left_02.png" id="frame_75"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_left_03.png" id="frame_76"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_up_left_00.png" id="frame_77"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_up_left_01.png" id="frame_78"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_up_left_02.png" id="frame_79"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_up_left_03.png" id="frame_80"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_up_00.png" id="frame_81"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_up_01.png" id="frame_82"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_up_02.png" id="frame_83"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_up_03.png" id="frame_84"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_up_right_00.png" id="frame_85"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_up_right_01.png" id="frame_86"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_up_right_02.png" id="frame_87"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_up_right_03.png" id="frame_88"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_right_00.png" id="frame_89"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_right_01.png" id="frame_90"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_right_02.png" id="frame_91"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_right_03.png" id="frame_92"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_down_right_00.png" id="frame_93"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_down_right_01.png" id="frame_94"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_down_right_02.png" id="frame_95"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_idle_down_right_03.png" id="frame_96"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_down_00.png" id="frame_97"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_down_01.png" id="frame_98"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_down_02.png" id="frame_99"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_down_03.png" id="frame_100"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_down_04.png" id="frame_101"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_down_05.png" id="frame_102"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_down_left_00.png" id="frame_103"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_down_left_01.png" id="frame_104"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_down_left_02.png" id="frame_105"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_down_left_03.png" id="frame_106"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_down_left_04.png" id="frame_107"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_down_left_05.png" id="frame_108"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_left_00.png" id="frame_109"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_left_01.png" id="frame_110"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_left_02.png" id="frame_111"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_left_03.png" id="frame_112"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_left_04.png" id="frame_113"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_left_05.png" id="frame_114"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_up_left_00.png" id="frame_115"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_up_left_01.png" id="frame_116"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_up_left_02.png" id="frame_117"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_up_left_03.png" id="frame_118"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_up_left_04.png" id="frame_119"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_up_left_05.png" id="frame_120"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_up_00.png" id="frame_121"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_up_01.png" id="frame_122"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_up_02.png" id="frame_123"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_up_03.png" id="frame_124"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_up_04.png" id="frame_125"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_up_05.png" id="frame_126"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_up_right_00.png" id="frame_127"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_up_right_01.png" id="frame_128"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_up_right_02.png" id="frame_129"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_up_right_03.png" id="frame_130"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_up_right_04.png" id="frame_131"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_up_right_05.png" id="frame_132"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_right_00.png" id="frame_133"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_right_01.png" id="frame_134"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_right_02.png" id="frame_135"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_right_03.png" id="frame_136"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_right_04.png" id="frame_137"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_right_05.png" id="frame_138"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_down_right_00.png" id="frame_139"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_down_right_01.png" id="frame_140"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_down_right_02.png" id="frame_141"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_down_right_03.png" id="frame_142"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_down_right_04.png" id="frame_143"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_interact_down_right_05.png" id="frame_144"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_sit_down_side_00.png" id="frame_145"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_sit_down_side_01.png" id="frame_146"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_sit_down_side_02.png" id="frame_147"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_sit_down_side_03.png" id="frame_148"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_sit_down_side_04.png" id="frame_149"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_sit_down_side_05.png" id="frame_150"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_sit_idle_side_00.png" id="frame_151"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_sit_idle_side_01.png" id="frame_152"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_sit_idle_side_02.png" id="frame_153"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_sit_idle_side_03.png" id="frame_154"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_sit_idle_side_04.png" id="frame_155"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_sit_idle_side_05.png" id="frame_156"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_stand_up_side_00.png" id="frame_157"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_stand_up_side_01.png" id="frame_158"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_stand_up_side_02.png" id="frame_159"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_stand_up_side_03.png" id="frame_160"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_stand_up_side_04.png" id="frame_161"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/frames/player_stand_up_side_05.png" id="frame_162"]
 
 [resource]
 animations = [{
@@ -120,7 +192,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"player_walk_down",
-"speed": 8.4
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -148,8 +220,8 @@ animations = [{
 "texture": ExtResource("frame_16")
 }],
 "loop": true,
-"name": &"player_walk_up",
-"speed": 8.4
+"name": &"player_walk_down_left",
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -178,7 +250,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"player_walk_left",
-"speed": 9.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -206,8 +278,8 @@ animations = [{
 "texture": ExtResource("frame_32")
 }],
 "loop": true,
-"name": &"player_walk_right",
-"speed": 9.0
+"name": &"player_walk_up_left",
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -221,12 +293,7 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("frame_36")
-}],
-"loop": true,
-"name": &"player_idle_down",
-"speed": 5.0
 }, {
-"frames": [{
 "duration": 1.0,
 "texture": ExtResource("frame_37")
 }, {
@@ -240,8 +307,8 @@ animations = [{
 "texture": ExtResource("frame_40")
 }],
 "loop": true,
-"name": &"player_idle_up",
-"speed": 5.0
+"name": &"player_walk_up",
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -255,12 +322,7 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("frame_44")
-}],
-"loop": true,
-"name": &"player_idle_left",
-"speed": 5.0
 }, {
-"frames": [{
 "duration": 1.0,
 "texture": ExtResource("frame_45")
 }, {
@@ -274,8 +336,8 @@ animations = [{
 "texture": ExtResource("frame_48")
 }],
 "loop": true,
-"name": &"player_idle_right",
-"speed": 5.0
+"name": &"player_walk_up_right",
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -295,18 +357,18 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("frame_54")
-}],
-"loop": false,
-"name": &"player_interact_down",
-"speed": 10.0
 }, {
-"frames": [{
 "duration": 1.0,
 "texture": ExtResource("frame_55")
 }, {
 "duration": 1.0,
 "texture": ExtResource("frame_56")
+}],
+"loop": true,
+"name": &"player_walk_right",
+"speed": 6.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("frame_57")
 }, {
@@ -318,12 +380,7 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("frame_60")
-}],
-"loop": false,
-"name": &"player_interact_up",
-"speed": 10.0
 }, {
-"frames": [{
 "duration": 1.0,
 "texture": ExtResource("frame_61")
 }, {
@@ -335,24 +392,29 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("frame_64")
+}],
+"loop": true,
+"name": &"player_walk_down_right",
+"speed": 6.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("frame_65")
 }, {
 "duration": 1.0,
 "texture": ExtResource("frame_66")
-}],
-"loop": false,
-"name": &"player_interact_left",
-"speed": 10.0
 }, {
-"frames": [{
 "duration": 1.0,
 "texture": ExtResource("frame_67")
 }, {
 "duration": 1.0,
 "texture": ExtResource("frame_68")
+}],
+"loop": true,
+"name": &"player_idle_down",
+"speed": 4.2
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("frame_69")
 }, {
@@ -365,9 +427,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("frame_72")
 }],
-"loop": false,
-"name": &"player_interact_right",
-"speed": 10.0
+"loop": true,
+"name": &"player_idle_down_left",
+"speed": 4.2
 }, {
 "frames": [{
 "duration": 1.0,
@@ -381,24 +443,29 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("frame_76")
+}],
+"loop": true,
+"name": &"player_idle_left",
+"speed": 4.2
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("frame_77")
 }, {
 "duration": 1.0,
 "texture": ExtResource("frame_78")
-}],
-"loop": false,
-"name": &"player_sit_down_side",
-"speed": 8.0
 }, {
-"frames": [{
 "duration": 1.0,
 "texture": ExtResource("frame_79")
 }, {
 "duration": 1.0,
 "texture": ExtResource("frame_80")
+}],
+"loop": true,
+"name": &"player_idle_up_left",
+"speed": 4.2
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("frame_81")
 }, {
@@ -412,8 +479,8 @@ animations = [{
 "texture": ExtResource("frame_84")
 }],
 "loop": true,
-"name": &"player_sit_idle_side",
-"speed": 5.0
+"name": &"player_idle_up",
+"speed": 4.2
 }, {
 "frames": [{
 "duration": 1.0,
@@ -427,14 +494,295 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("frame_88")
+}],
+"loop": true,
+"name": &"player_idle_up_right",
+"speed": 4.2
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("frame_89")
 }, {
 "duration": 1.0,
 "texture": ExtResource("frame_90")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_91")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_92")
+}],
+"loop": true,
+"name": &"player_idle_right",
+"speed": 4.2
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("frame_93")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_94")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_95")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_96")
+}],
+"loop": true,
+"name": &"player_idle_down_right",
+"speed": 4.2
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("frame_97")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_98")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_99")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_100")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_101")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_102")
+}],
+"loop": false,
+"name": &"player_interact_down",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("frame_103")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_104")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_105")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_106")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_107")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_108")
+}],
+"loop": false,
+"name": &"player_interact_down_left",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("frame_109")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_110")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_111")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_112")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_113")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_114")
+}],
+"loop": false,
+"name": &"player_interact_left",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("frame_115")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_116")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_117")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_118")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_119")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_120")
+}],
+"loop": false,
+"name": &"player_interact_up_left",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("frame_121")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_122")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_123")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_124")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_125")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_126")
+}],
+"loop": false,
+"name": &"player_interact_up",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("frame_127")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_128")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_129")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_130")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_131")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_132")
+}],
+"loop": false,
+"name": &"player_interact_up_right",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("frame_133")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_134")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_135")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_136")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_137")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_138")
+}],
+"loop": false,
+"name": &"player_interact_right",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("frame_139")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_140")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_141")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_142")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_143")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_144")
+}],
+"loop": false,
+"name": &"player_interact_down_right",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("frame_145")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_146")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_147")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_148")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_149")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_150")
+}],
+"loop": false,
+"name": &"player_sit_down_side",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("frame_151")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_152")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_153")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_154")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_155")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_156")
+}],
+"loop": true,
+"name": &"player_sit_idle_side",
+"speed": 4.2
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("frame_157")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_158")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_159")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_160")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_161")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_162")
 }],
 "loop": false,
 "name": &"player_stand_up_side",
-"speed": 8.0
+"speed": 7.0
 }]

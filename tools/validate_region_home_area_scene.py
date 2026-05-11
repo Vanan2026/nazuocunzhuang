@@ -11,6 +11,7 @@ PROJECT = ROOT / "project.godot"
 SCENE_TRANSITION_STATE = ROOT / "scripts" / "core" / "scene_transition_state.gd"
 HOME_AREA_GRASS_YARD_ASSET = "res://sprites/environments/regions/home_area/ground/region_home_area_ground_grass_yard_v001.png"
 HOME_AREA_FRONT_YARD_PATH_ASSET = "res://sprites/environments/regions/home_area/path/region_home_area_path_front_yard_v001.png"
+HOME_AREA_FRONT_GRASS_LEFT_ASSET = "res://sprites/environments/regions/home_area/foreground/region_home_area_foreground_front_grass_left_v001.png"
 ACTIVE_DEFAULT_FILES = (
     ROOT / "scripts" / "main.gd",
     ROOT / "scripts" / "world" / "backyard_entrance.gd",
@@ -211,6 +212,7 @@ def main() -> None:
     require('metadata/layer_rule = "fixed_front_only_no_broad_rectangles"' in foreground, "ForegroundStatic must reject broad occlusion rectangles")
     node_block(scene_text, "FrontGrassLeft", "ForegroundStatic")
     node_block(scene_text, "FrontFlowersRight", "ForegroundStatic")
+    require_sprite_module(scene_text, "FrontGrassLeft", "ForegroundStatic", HOME_AREA_FRONT_GRASS_LEFT_ASSET)
 
     require(
         (ROOT / "docs" / "scene_directory_status.md").exists(),

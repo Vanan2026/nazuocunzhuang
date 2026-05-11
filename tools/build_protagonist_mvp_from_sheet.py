@@ -43,24 +43,46 @@ WALK_ANIMS = ["player_walk_down", "player_walk_up", "player_walk_left", "player_
 IDLE_ANIMS = ["player_idle_down", "player_idle_up", "player_idle_left", "player_idle_right"]
 INTERACT_ANIMS = ["player_interact_down", "player_interact_up", "player_interact_left", "player_interact_right"]
 SIT_ANIMS = ["player_sit_down_side", "player_sit_idle_side", "player_stand_up_side"]
-DIRECTION_SUFFIXES = ["down", "up", "left", "right"]
+CARDINAL_SUFFIXES = ["down", "up", "left", "right"]
+EIGHT_DIRECTION_SUFFIXES = [
+    "down",
+    "down_left",
+    "left",
+    "up_left",
+    "up",
+    "up_right",
+    "right",
+    "down_right",
+]
 
 ROWS = [
-    RowSpec("player_walk_down", True, 7.0, 8),
-    RowSpec("player_walk_up", True, 7.0, 8),
-    RowSpec("player_walk_left", True, 6.5, 8),
-    RowSpec("player_walk_right", True, 6.5, 8),
-    RowSpec("player_idle_down", True, 5.0, 4),
-    RowSpec("player_idle_up", True, 5.0, 4),
-    RowSpec("player_idle_left", True, 5.0, 4),
-    RowSpec("player_idle_right", True, 5.0, 4),
-    RowSpec("player_interact_down", False, 10.0, 6),
-    RowSpec("player_interact_up", False, 10.0, 6),
-    RowSpec("player_interact_left", False, 10.0, 6),
-    RowSpec("player_interact_right", False, 10.0, 6),
-    RowSpec("player_sit_down_side", False, 8.0, 6),
-    RowSpec("player_sit_idle_side", True, 5.0, 6),
-    RowSpec("player_stand_up_side", False, 8.0, 6),
+    RowSpec("player_walk_down", True, 6.0, 8),
+    RowSpec("player_walk_down_left", True, 6.0, 8),
+    RowSpec("player_walk_left", True, 6.0, 8),
+    RowSpec("player_walk_up_left", True, 6.0, 8),
+    RowSpec("player_walk_up", True, 6.0, 8),
+    RowSpec("player_walk_up_right", True, 6.0, 8),
+    RowSpec("player_walk_right", True, 6.0, 8),
+    RowSpec("player_walk_down_right", True, 6.0, 8),
+    RowSpec("player_idle_down", True, 4.2, 4),
+    RowSpec("player_idle_down_left", True, 4.2, 4),
+    RowSpec("player_idle_left", True, 4.2, 4),
+    RowSpec("player_idle_up_left", True, 4.2, 4),
+    RowSpec("player_idle_up", True, 4.2, 4),
+    RowSpec("player_idle_up_right", True, 4.2, 4),
+    RowSpec("player_idle_right", True, 4.2, 4),
+    RowSpec("player_idle_down_right", True, 4.2, 4),
+    RowSpec("player_interact_down", False, 8.0, 6),
+    RowSpec("player_interact_down_left", False, 8.0, 6),
+    RowSpec("player_interact_left", False, 8.0, 6),
+    RowSpec("player_interact_up_left", False, 8.0, 6),
+    RowSpec("player_interact_up", False, 8.0, 6),
+    RowSpec("player_interact_up_right", False, 8.0, 6),
+    RowSpec("player_interact_right", False, 8.0, 6),
+    RowSpec("player_interact_down_right", False, 8.0, 6),
+    RowSpec("player_sit_down_side", False, 7.0, 6),
+    RowSpec("player_sit_idle_side", True, 4.2, 6),
+    RowSpec("player_stand_up_side", False, 7.0, 6),
 ]
 
 
@@ -285,6 +307,37 @@ def align_row_baseline(frames: list[Image.Image], target_bottom: int = 270) -> l
     return aligned
 
 
+def blend_frame_pair(primary: Image.Image, secondary: Image.Image, primary_weight: float) -> Image.Image:
+    w = max(0.0, min(1.0, primary_weight))
+    a = np.array(primary.convert("RGBA")).astype(np.float32) / 255.0
+    b = np.array(secondary.convert("RGBA")).astype(np.float32) / 255.0
+
+    aw = a[:, :, 3] * w
+    bw = b[:, :, 3] * (1.0 - w)
+    out_alpha = np.clip(aw + bw, 0.0, 1.0)
+    denom = np.maximum(out_alpha, 1e-6)
+    out_rgb = (
+        (a[:, :, :3] * aw[:, :, None]) +
+        (b[:, :, :3] * bw[:, :, None])
+    ) / denom[:, :, None]
+
+    out = np.zeros_like(a)
+    out[:, :, :3] = np.clip(out_rgb, 0.0, 1.0)
+    out[:, :, 3] = out_alpha
+    return Image.fromarray((out * 255.0).astype(np.uint8), "RGBA")
+
+
+def synthesize_diagonal_row(
+    primary_row: list[Image.Image],
+    secondary_row: list[Image.Image],
+    target_height: float,
+    primary_weight: float,
+) -> list[Image.Image]:
+    mixed = [blend_frame_pair(a, b, primary_weight) for a, b in zip(primary_row, secondary_row)]
+    matched = match_row_height(mixed, target_height)
+    return align_row_baseline(matched)
+
+
 def collect_animation_frames() -> dict[str, list[Image.Image]]:
     if not WALK_SHEET.exists():
         fail(f"missing walk sheet: {WALK_SHEET}")
@@ -305,7 +358,7 @@ def collect_animation_frames() -> dict[str, list[Image.Image]]:
     frames: dict[str, list[Image.Image]] = {}
     direction_heights: dict[str, float] = {}
 
-    for suffix, anim, boxes in zip(DIRECTION_SUFFIXES, WALK_ANIMS, walk_rows):
+    for suffix, anim, boxes in zip(CARDINAL_SUFFIXES, WALK_ANIMS, walk_rows):
         row_frames: list[Image.Image] = []
         for box in boxes:
             crop, foot = crop_foreground(walk_image, box)
@@ -314,7 +367,7 @@ def collect_animation_frames() -> dict[str, list[Image.Image]]:
         frames[anim] = aligned
         direction_heights[suffix] = median_visible_height(aligned)
 
-    for suffix, anim, boxes in zip(DIRECTION_SUFFIXES, IDLE_ANIMS, idle_rows):
+    for suffix, anim, boxes in zip(CARDINAL_SUFFIXES, IDLE_ANIMS, idle_rows):
         row_frames = []
         for box in boxes:
             crop, foot = crop_foreground(idle_image, box)
@@ -322,13 +375,44 @@ def collect_animation_frames() -> dict[str, list[Image.Image]]:
         matched = match_row_height(row_frames, direction_heights[suffix])
         frames[anim] = align_row_baseline(matched)
 
-    for suffix, anim, boxes in zip(DIRECTION_SUFFIXES, INTERACT_ANIMS, interact_rows):
+    for suffix, anim, boxes in zip(CARDINAL_SUFFIXES, INTERACT_ANIMS, interact_rows):
         row_frames = []
         for box in boxes:
             crop, foot = crop_foreground(interact_image, box)
             row_frames.append(normalize_frame(crop, foot))
         matched = match_row_height(row_frames, direction_heights[suffix])
         frames[anim] = align_row_baseline(matched)
+
+    diagonal_specs = [
+        ("down_left", "left", "down"),
+        ("up_left", "left", "up"),
+        ("up_right", "right", "up"),
+        ("down_right", "right", "down"),
+    ]
+
+    for suffix, primary_suffix, secondary_suffix in diagonal_specs:
+        walk_target = (direction_heights[primary_suffix] + direction_heights[secondary_suffix]) / 2.0
+        idle_target = walk_target
+        interact_target = walk_target
+
+        frames[f"player_walk_{suffix}"] = synthesize_diagonal_row(
+            frames[f"player_walk_{primary_suffix}"],
+            frames[f"player_walk_{secondary_suffix}"],
+            walk_target,
+            0.64,
+        )
+        frames[f"player_idle_{suffix}"] = synthesize_diagonal_row(
+            frames[f"player_idle_{primary_suffix}"],
+            frames[f"player_idle_{secondary_suffix}"],
+            idle_target,
+            0.64,
+        )
+        frames[f"player_interact_{suffix}"] = synthesize_diagonal_row(
+            frames[f"player_interact_{primary_suffix}"],
+            frames[f"player_interact_{secondary_suffix}"],
+            interact_target,
+            0.64,
+        )
 
     if sit_image is not None:
         side_target = (direction_heights["left"] + direction_heights["right"]) / 2.0

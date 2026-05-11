@@ -1,0 +1,26 @@
+[
+  {
+    "file": "sprites/environments/regions/home_area/ground/region_home_area_ground_grass_yard_v001.png",
+    "origin_x": 1440,
+    "origin_y": 1320,
+    "width": 3580,
+    "height": 1800,
+    "anchor": "top_left_source_space"
+  },
+  {
+    "file": "sprites/environments/regions/home_area/path/region_home_area_path_front_yard_v001.png",
+    "origin_x": 2060,
+    "origin_y": 1600,
+    "width": 2200,
+    "height": 980,
+    "anchor": "top_left_source_space"
+  },
+  {
+    "file": "sprites/environments/regions/home_area/foreground/region_home_area_foreground_front_grass_left_v001.png",
+    "origin_x": 420,
+    "origin_y": 2460,
+    "width": 1500,
+    "height": 620,
+    "anchor": "top_left_source_space"
+  }
+]

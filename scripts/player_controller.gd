@@ -258,10 +258,12 @@ func _sync_visual_animation(force_restart: bool = false) -> void:
 
 func _resolve_animation_speed_scale(anim: StringName) -> float:
     var name := String(anim)
+    if name == "player_walk_down" or name == "player_walk_up":
+        return 0.82
     if name == "player_walk_left" or name == "player_walk_right":
-        return 1.0
+        return 0.92
     if name.begins_with("player_walk_"):
-        return 0.95
+        return 0.88
     return 1.0
 
 
@@ -280,12 +282,17 @@ func _apply_walk_visual_offset(anim: StringName) -> void:
         return
 
     var frame := player_sprite.frame % 8
-    var lift_values: Array[float] = [0.0, -1.2, -2.0, -1.2, 0.0, -1.2, -2.0, -1.2]
+    var lift_values: Array[float] = [0.0, -1.0, -2.2, -1.0, 0.0, -1.0, -2.2, -1.0]
     var lift: float = lift_values[frame] * _resolved_visual_scale
-    var sway: float = 0.0
+    var sway_pattern: Array[float] = [-0.8, -0.3, 0.8, 0.3, -0.8, -0.3, 0.8, 0.3]
+    var sway_scale := 0.28
     if name == "player_walk_down" or name == "player_walk_up":
-        var sway_values: Array[float] = [-0.6, 0.0, 0.6, 0.0, -0.6, 0.0, 0.6, 0.0]
-        sway = sway_values[frame] * _resolved_visual_scale
+        sway_scale = 0.72
+    elif name == "player_walk_left" or name == "player_walk_right":
+        sway_scale = 0.46
+    else:
+        sway_scale = 0.58
+    var sway: float = sway_pattern[frame] * sway_scale * _resolved_visual_scale
 
     player_sprite.position = base_sprite_position + Vector2(sway, lift)
     if shadow_sprite != null:
@@ -311,13 +318,30 @@ func _resolve_animation_name() -> StringName:
 
 
 func _resolve_facing_suffix() -> String:
-    if abs(facing_direction.x) > abs(facing_direction.y):
-        if facing_direction.x >= 0.0:
+    if facing_direction.length_squared() <= 0.0001:
+        return "down"
+
+    var angle := atan2(facing_direction.y, facing_direction.x)
+    if angle < 0.0:
+        angle += TAU
+    var sector := int(floor((angle + PI / 8.0) / (PI / 4.0))) % 8
+    match sector:
+        0:
             return "right"
-        return "left"
-    if facing_direction.y < 0.0:
-        return "up"
-    return "down"
+        1:
+            return "down_right"
+        2:
+            return "down"
+        3:
+            return "down_left"
+        4:
+            return "left"
+        5:
+            return "up_left"
+        6:
+            return "up"
+        _:
+            return "up_right"
 
 
 func _on_player_sprite_animation_finished() -> void:
