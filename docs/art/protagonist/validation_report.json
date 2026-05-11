@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "total_png": 162,
+  "expected_total": 162,
+  "canvas": [
+    192,
+    288
+  ],
+  "baseline_y": 270,
+  "anchor": [
+    96,
+    270
+  ],
+  "standing_height_min": 214,
+  "standing_height_max": 214,
+  "standing_height_diff": 0,
+  "standing_height_allowed_max_diff": 6,
+  "errors": []
+}
