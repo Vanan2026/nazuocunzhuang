@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://npc_base"]
+
+[sub_resource type="GDScript" id="GDScript_npc"]
+script/source = "extends CharacterBody2D
+
+@export var npc_id: String = \"\"
+@export var display_name: String = \"村民\"
+@export var current_dialogue: Array = []
+
+signal interacted
+
+func _ready() -> void:
+    add_to_group(\"npc\")
+    add_to_group(\"interactable\")
+
+func on_interact(interactor: Node) -> void:
+    emit_signal(\"interacted\")
+    print('[NPC] 与 ', display_name, ' 对话')
+    # 后续调用 UIManager 显示对话
+
+func get_interaction_hint() -> String:
+    return '与 ' + display_name + ' 交谈'
+"
+
+[node name="NPC" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="NPCSprite" type="ColorRect" parent="."]
+offset_left = -16.0
+offset_top = -24.0
+offset_right = 16.0
+offset_bottom = 16.0
+color = Color(0.8, 0.4, 0.4, 1)
+
+[node name="NameLabel" type="Label" parent="."]
+offset_left = -40.0
+offset_top = -50.0
+offset_right = 40.0
+offset_bottom = -30.0
+text = "村民"
+horizontal_alignment = 1
+vertical_alignment = 1

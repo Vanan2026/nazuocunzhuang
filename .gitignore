@@ -1,0 +1,25 @@
+# Godot
+.godot/
+*.import
+
+# AI/Tool cache
+.codex/
+.trae/
+.visual-companion/
+.mcp.json
+addons/godot_ai/
+
+# Tools (not part of game)
+tools/legacy_homeyard/
+
+# IDE
+.vscode/
+.idea/
+*.user
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+export/

@@ -1,0 +1,116 @@
+[gd_scene load_steps=6 format=3 uid="uid://cloud_village_main"]
+
+[ext_resource type="Script" path="res://scripts/player_controller.gd" id="1_player"]
+[ext_resource type="Script" path="res://scripts/sky_controller.gd" id="2_sky"]
+
+[sub_resource type="GDScript" id="GDScript_test"]
+script/source = "extends Node2D
+
+func _ready() -> void:
+    print('云村主场景加载完成')
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(1920, 1080)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
+size = Vector2(32, 32)
+
+[node name="CloudVillage" type="Node2D"]
+script = SubResource("GDScript_test")
+
+[node name="Background" type="CanvasLayer" parent="."]
+
+[node name="SkyRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6, 0.75, 0.95, 1)
+
+[node name="Ground" type="ColorRect" parent="."]
+offset_left = 0.0
+offset_top = 500.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.4, 0.6, 0.3, 1)
+
+[node name="WorldBounds" type="StaticBody2D" parent="."]
+position = Vector2(960, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBounds"]
+shape = SubResource("RectangleShape2D_1")
+
+[node name="Characters" type="Node2D" parent="."]
+
+[node name="Player" type="CharacterBody2D" parent="Characters"]
+position = Vector2(960, 600)
+script = ExtResource("1_player")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Characters/Player"]
+shape = SubResource("RectangleShape2D_player")
+
+[node name="PlayerSprite" type="ColorRect" parent="Characters/Player"]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+color = Color(0.2, 0.4, 0.8, 1)
+
+[node name="InteractionArea" type="Area2D" parent="Characters/Player"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Characters/Player/InteractionArea"]
+shape = SubResource("RectangleShape2D_player")
+
+[node name="Camera2D" type="Camera2D" parent="Characters/Player"]
+position = Vector2(0, 0)
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 1920
+limit_bottom = 1080
+limit_smoothed = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="SeasonLabel" type="Label" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = 20.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+text = "春"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DayLabel" type="Label" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = 60.0
+offset_right = 50.0
+offset_bottom = 90.0
+grow_horizontal = 2
+text = "第 1 天"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ControlHint" type="Label" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 1000.0
+offset_right = 150.0
+offset_bottom = 1040.0
+grow_horizontal = 2
+text = "WASD 移动 | E 交互 | 空格 推进时间"
+horizontal_alignment = 1
+vertical_alignment = 1

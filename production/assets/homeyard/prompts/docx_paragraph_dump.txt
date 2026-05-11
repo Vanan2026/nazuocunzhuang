@@ -1,0 +1,143 @@
+000: 《那座村庄》主角家屋前庭院
+001: 场景资产拆分表 + 可复制 Prompt 文档
+004: 参考母图：主角家屋前庭院 · 夏日午后三点
+006: 1. 场景目标
+007: 本文件用于把「主角家屋前庭院 · 夏日午后总览」从概念图推进到 Godot 可实装资产。制作重点不是把插画机械切开，而是将场景拆成可复用、可交互、可做轻量动效的游戏资产。
+008: 核心体验：轻松、慵懒、治愈、没有强目标压力。
+009: 核心光影：夏日下午三点，树叶透光形成斑驳光斑。
+010: 核心空间：古民家、缘侧、屋前庭院、石板路、柿子树、远处村庄和山。
+011: 实装方向：背景层、主体层、前景遮挡层、交互道具层、动态氛围层。
+012: 2. 资产拆分总览
+013: A. 远景背景层（Background）
+015: B. 建筑主体层（Main Structure）
+017: C. 庭院环境层（Garden / Ground）
+019: D. 可交互道具层（Props / Interactables）
+021: E. 前景遮挡层（Foreground Overlay）
+023: F. 动态氛围层（Animated Atmosphere）
+025: 3. Godot 图层顺序建议
+026: 01 bg_sky
+027: 02 bg_clouds
+028: 03 bg_mountains
+029: 04 bg_far_village
+030: 05 bg_far_trees
+031: 06 garden_ground
+032: 07 stone_path
+033: 08 stone_wall
+034: 09 shrubs / flowers / grass
+035: 10 persimmon_tree
+036: 11 house_main
+037: 12 veranda_floor
+038: 13 sliding_doors / interior
+039: 14 props（井、桶、风铃、电扇、西瓜）
+040: 15 player
+041: 16 foreground leaves / flowers
+042: 17 shadow overlay
+043: 18 particles / light effects
+044: 4. 第一批生产优先级
+045: 第一批：先做可实装核心资产
+047: 第二批：增强生活感
+049: 5. Prompt 使用规范
+050: 统一风格后缀（每个 prompt 可自动追加）
+053: 6. 可复制 Prompt 清单
+054: homeyard_bg_sky_01｜夏日晴空
+055: 输出建议：16:9 PNG，非透明或透明均可
+056: 备注：建议作为最底层背景，也可和远山合并。
+057: Positive prompt
+058: Negative prompt
+060: homeyard_bg_mountains_01｜远山
+061: 输出建议：透明 PNG
+062: 备注：远山细节不要太抢，偏灰绿、低对比。
+063: Positive prompt
+064: Negative prompt
+066: homeyard_bg_far_village_01｜远处村庄屋顶
+067: 输出建议：透明 PNG
+068: 备注：只要远处屋顶和树带，不要主角家。
+069: Positive prompt
+070: Negative prompt
+072: homeyard_mid_house_main_01｜古民家主体
+073: 输出建议：透明 PNG
+074: 备注：可先做完整房屋，后续再拆屋顶、拉门、缘侧。
+075: Positive prompt
+076: Negative prompt
+078: homeyard_mid_veranda_floor_01｜缘侧木地板
+079: 输出建议：透明 PNG
+080: 备注：保留木板纹理和树影。
+081: Positive prompt
+082: Negative prompt
+084: homeyard_mid_garden_ground_01｜庭院草地基础
+085: 输出建议：16:9 PNG 或透明 PNG
+086: 备注：可作为主地面底图；若需要可做透明边缘。
+087: Positive prompt
+088: Negative prompt
+090: homeyard_mid_stone_path_01｜石板小路
+091: 输出建议：透明 PNG
+092: 备注：用于从屋前通往村道 / 田园入口。
+093: Positive prompt
+094: Negative prompt
+096: homeyard_mid_stone_wall_01｜庭院石墙
+097: 输出建议：透明 PNG
+098: 备注：适合作为庭院边界。
+099: Positive prompt
+100: Negative prompt
+102: homeyard_mid_persimmon_tree_01｜柿子树
+103: 输出建议：透明 PNG
+104: 备注：建议后续拆成树干层、树冠层、果实层。
+105: Positive prompt
+106: Negative prompt
+108: homeyard_prop_well_01｜水井
+109: 输出建议：透明 PNG
+110: 备注：可作为交互点：打水、回忆、日常对白。
+111: Positive prompt
+112: Negative prompt
+114: homeyard_prop_bucket_01｜木桶
+115: 输出建议：透明 PNG
+116: 备注：可和水井组合，也可单独交互。
+117: Positive prompt
+118: Negative prompt
+120: homeyard_prop_windchime_01｜风铃
+121: 输出建议：透明 PNG
+122: 备注：建议做静态主体 + 纸条分件。
+123: Positive prompt
+124: Negative prompt
+126: homeyard_prop_oldfan_01｜老旧电扇
+127: 输出建议：透明 PNG
+128: 备注：主体与扇叶建议拆开。
+129: Positive prompt
+130: Negative prompt
+132: homeyard_prop_fan_blades_01｜电扇扇叶分件
+133: 输出建议：透明 PNG
+134: 备注：用于 Godot 中旋转或序列帧。
+135: Positive prompt
+136: Negative prompt
+138: homeyard_prop_watermelon_half_01｜半个西瓜
+139: 输出建议：透明 PNG
+140: 备注：可放在托盘上，也可单独作为道具。
+141: Positive prompt
+142: Negative prompt
+144: homeyard_prop_tray_01｜木托盘
+145: 输出建议：透明 PNG
+146: 备注：用于组合西瓜、茶杯等日常道具。
+147: Positive prompt
+148: Negative prompt
+150: homeyard_fg_leaves_top_01｜顶部前景树叶
+151: 输出建议：透明 PNG
+152: 备注：放在角色层之上，轻微摆动。
+153: Positive prompt
+154: Negative prompt
+156: homeyard_fg_shadow_overlay_01｜斑驳光影覆盖层
+157: 输出建议：透明 PNG / 半透明 PNG
+158: 备注：可在 Godot 中叠加并用 shader 慢速漂移。
+159: Positive prompt
+160: Negative prompt
+162: homeyard_fx_dust_particles_01｜浮尘光粒
+163: 输出建议：透明 PNG 序列或粒子参考图
+164: 备注：建议优先用 Godot 粒子实现，不必全部画成序列帧。
+165: Positive prompt
+166: Negative prompt
+169: 7. 导出规范
+170: 建议输出规格
+172: 8. 下一步建议
+173: 先生产第一批核心资产：房屋主体、庭院地面、石板路、石墙、柿子树、水井、木桶。
+174: 完成第一批后，在 Godot 中搭一个静态样板场景。
+175: 确认角色比例、行走区域、遮挡关系后，再继续补风铃、电扇、西瓜、前景叶子和光影动效层。
+176: 后续同一套拆分规范可复用到屋后田园、果园、村庄小路、邻居家等场景。

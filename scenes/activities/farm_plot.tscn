@@ -1,0 +1,79 @@
+[gd_scene load_steps=2 format=3 uid="uid://farm_plot_base"]
+
+[sub_resource type="GDScript" id="GDScript_plot"]
+script/source = "extends Area2D
+
+@export var plot_index: int = 0
+@export var plot_size: Vector2 = Vector2(48, 48)
+
+enum PlotState { EMPTY, PLANTED, GROWING, READY }
+var current_state: PlotState = PlotState.EMPTY
+var crop_type: String = \"\"
+
+signal plot_interacted(index: int, state: PlotState)
+signal plot_updated(index: int, state: PlotState)
+
+func _ready() -> void:
+	collision_layer = 4
+	collision_mask = 1
+	body_entered.connect(_on_body_entered)
+	add_to_group(\"interactable\")
+
+func _on_body_entered(body: Node) -> void:
+	if body.is_in_group(\"player\"):
+		emit_signal(\"plot_interacted\", plot_index, current_state)
+
+func set_plot_state(state: PlotState, crop: String = \"\") -> void:
+	current_state = state
+	crop_type = crop
+	emit_signal(\"plot_updated\", plot_index, current_state)
+	update_visual()
+
+func update_visual() -> void:
+	var sprite = $PlotSprite
+	if not sprite:
+		return
+	
+	match current_state:
+		PlotState.EMPTY:
+			sprite.modulate = Color(0.5, 0.3, 0.1, 1)
+		PlotState.PLANTED:
+			sprite.modulate = Color(0.6, 0.5, 0.2, 1)
+		PlotState.GROWING:
+			sprite.modulate = Color(0.4, 0.7, 0.3, 1)
+		PlotState.READY:
+			sprite.modulate = Color(0.3, 0.9, 0.2, 1)
+
+func on_interact(interactor: Node) -> void:
+	emit_signal(\"plot_interacted\", plot_index, current_state)
+"
+
+[node name="FarmPlot" type="Area2D"]
+collision_layer = 4
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="PlotSprite" type="ColorRect" parent="."]
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+color = Color(0.5, 0.3, 0.1, 1)
+
+[node name="CropSprite" type="ColorRect" parent="."]
+visible = false
+offset_left = -16.0
+offset_top = -32.0
+offset_right = 16.0
+offset_bottom = -8.0
+
+[node name="StateLabel" type="Label" parent="."]
+visible = false
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+offset_bottom = -25.0
+text = "空"
+horizontal_alignment = 1
+vertical_alignment = 1

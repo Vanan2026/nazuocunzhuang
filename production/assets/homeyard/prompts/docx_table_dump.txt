@@ -1,0 +1,151 @@
+--- TABLE 0 rows=1 cols=4 ---
+ROW 0: 项目 / 《那座村庄》 || 场景 / 主角家屋前庭院 || 画幅 / 16:9 横版 || 核心意象 / こもれび / 斑驳阳光
+--- TABLE 1 rows=6 cols=4 ---
+ROW 0: 资产名 || 内容 || 建议格式 || Godot 用途 / 备注
+ROW 1: homeyard_bg_sky_01 || 夏日晴空 || PNG || 可作为最底层背景。
+ROW 2: homeyard_bg_clouds_01 || 缓慢云层 || 透明 PNG || 可做轻微横向移动。
+ROW 3: homeyard_bg_mountains_01 || 远山 || PNG || 放在云层前，低速视差。
+ROW 4: homeyard_bg_far_village_01 || 远处村庄屋顶 || 透明 PNG || 弱化细节，避免抢主体。
+ROW 5: homeyard_bg_far_trees_01 || 远处树林带 || 透明 PNG || 衔接远山和庭院。
+--- TABLE 2 rows=7 cols=4 ---
+ROW 0: 资产名 || 内容 || 建议格式 || Godot 用途 / 备注
+ROW 1: homeyard_mid_house_main_01 || 古民家主体 || 透明 PNG || 主结构，可与屋顶合并或分层。
+ROW 2: homeyard_mid_house_roof_01 || 瓦屋顶 || 透明 PNG || 可单独调明暗和层级。
+ROW 3: homeyard_mid_veranda_floor_01 || 缘侧木地板 || 透明 PNG || 角色常活动区，建议保留阴影。
+ROW 4: homeyard_mid_sliding_doors_01 || 拉门 / 障子门 || 透明 PNG || 后续可做开门交互。
+ROW 5: homeyard_mid_wooden_pillars_01 || 木柱 || 透明 PNG || 可作为角色遮挡层。
+ROW 6: homeyard_mid_interior_darkbase_01 || 屋内暗部基础 || 透明 PNG || 让屋内空间有深度。
+--- TABLE 3 rows=7 cols=4 ---
+ROW 0: 资产名 || 内容 || 建议格式 || Godot 用途 / 备注
+ROW 1: homeyard_mid_garden_ground_01 || 庭院草地基础 || PNG || 地面主层。
+ROW 2: homeyard_mid_stone_path_01 || 石板小路 || 透明 PNG || 通往村庄 / 田园入口。
+ROW 3: homeyard_mid_stone_wall_01 || 石墙 || 透明 PNG || 庭院边界。
+ROW 4: homeyard_mid_persimmon_tree_01 || 柿子树 || 透明 PNG || 重要视觉锚点，可拆树冠和树干。
+ROW 5: homeyard_mid_shrub_cluster_01 || 灌木丛 01 || 透明 PNG || 可复用装饰。
+ROW 6: homeyard_mid_flower_bush_blue_01 || 蓝色花丛 || 透明 PNG || 边角点缀。
+--- TABLE 4 rows=8 cols=4 ---
+ROW 0: 资产名 || 内容 || 建议格式 || 是否建议交互
+ROW 1: homeyard_prop_well_01 || 水井 || 透明 PNG || 是
+ROW 2: homeyard_prop_bucket_01 || 木桶 || 透明 PNG || 是
+ROW 3: homeyard_prop_windchime_01 || 风铃 || 透明 PNG || 是
+ROW 4: homeyard_prop_oldfan_01 || 老旧电扇 || 透明 PNG || 是
+ROW 5: homeyard_prop_fan_blades_01 || 电扇扇叶 || 透明 PNG || 是，循环旋转
+ROW 6: homeyard_prop_watermelon_half_01 || 半个西瓜 || 透明 PNG || 可选
+ROW 7: homeyard_prop_tray_01 || 木托盘 || 透明 PNG || 可选
+--- TABLE 5 rows=6 cols=4 ---
+ROW 0: 资产名 || 内容 || 建议格式 || Godot 用途 / 备注
+ROW 1: homeyard_fg_leaves_top_01 || 顶部前景树叶 || 透明 PNG || 放在角色层上方，增强景深。
+ROW 2: homeyard_fg_grass_left_01 || 左前景草丛 || 透明 PNG || 可遮角色脚部。
+ROW 3: homeyard_fg_flower_right_01 || 右前景花丛 || 透明 PNG || 柔化画面边缘。
+ROW 4: homeyard_fg_shadow_overlay_01 || 斑驳阴影覆盖 || 半透明 PNG || 统一光影。
+ROW 5: homeyard_fg_branch_optional_01 || 近景树枝 || 透明 PNG || 可选。
+--- TABLE 6 rows=6 cols=4 ---
+ROW 0: 资产名 || 内容 || 建议格式 || 动画建议
+ROW 1: homeyard_fx_leaf_sway_01 || 树叶轻晃层 || 分层 PNG / Shader || 小幅、慢速摆动。
+ROW 2: homeyard_fx_windchime_anim_01 || 风铃摆动 || 分件 PNG || 往复轻摆。
+ROW 3: homeyard_fx_fan_blades_anim_01 || 电扇扇叶旋转 || 分件 PNG || 循环旋转。
+ROW 4: homeyard_fx_dapplelight_01 || 斑驳阳光变化层 || 半透明 PNG / Shader || 缓慢流动。
+ROW 5: homeyard_fx_dust_particles_01 || 浮尘 / 热空气感 || 粒子 / 透明 PNG 序列 || 极轻微，避免抢画面。
+--- TABLE 7 rows=7 cols=3 ---
+ROW 0: 优先级 || 资产名 || 原因
+ROW 1: 1 || homeyard_bg_sky_01 / bg_mountains_01 / bg_far_village_01 || 先搭出空间纵深。
+ROW 2: 2 || homeyard_mid_house_main_01 || 场景主体，决定风格统一。
+ROW 3: 3 || homeyard_mid_veranda_floor_01 || 角色常停留区域。
+ROW 4: 4 || homeyard_mid_garden_ground_01 / stone_path_01 / stone_wall_01 || 确定行走区域和庭院边界。
+ROW 5: 5 || homeyard_mid_persimmon_tree_01 || 核心视觉锚点，也可做季节资产。
+ROW 6: 6 || homeyard_prop_well_01 / bucket_01 || 适合做第一批交互点。
+--- TABLE 8 rows=5 cols=2 ---
+ROW 0: 资产名 || 原因
+ROW 1: homeyard_prop_windchime_01 || 强化夏日风感和声音想象。
+ROW 2: homeyard_prop_oldfan_01 || 强化慵懒室内外生活感。
+ROW 3: homeyard_prop_watermelon_half_01 / tray_01 || 提供日常道具细节。
+ROW 4: homeyard_fg_leaves_top_01 / fg_shadow_overlay_01 || 强化こもれび斑驳光。
+--- TABLE 9 rows=4 cols=2 ---
+ROW 0: 模块 || 内容
+ROW 1: Style suffix || Studio Ghibli background art style, hand-painted anime background, Japanese countryside, soft detailed painterly texture, warm low-saturation colors, gentle diffuse lighting, nostalgic summer afternoon, dappled sunlight through leaves, peaceful slow-life atmosphere, no text, no UI elements.
+ROW 2: Transparent asset suffix || isolated object, transparent background, clean silhouette, game asset, no cast shadow outside the object unless specified.
+ROW 3: General negative prompt || text, logo, watermark, UI, interface, blurry, low quality, over-saturated colors, harsh contrast, cyberpunk, modern city, photorealistic 3D, extra objects, messy silhouette, cropped important parts, people, character, animal unless specified.
+--- TABLE 10 rows=1 cols=1 ---
+ROW 0: A wide summer afternoon sky for a Japanese countryside slow-life game background, clear blue sky, soft white cumulus clouds, slightly overexposed nostalgic light, warm and peaceful mood, designed as the farthest background layer, no buildings, no characters. Studio Ghibli background art style, hand-painted anime background, Japanese countryside, soft detailed painterly texture, warm low-saturation colors, gentle diffuse lighting, nostalgic summer afternoon, dappled sunlight through leaves, peaceful slow-life atmosphere, no text, no UI elements.
+--- TABLE 11 rows=1 cols=1 ---
+ROW 0: text, logo, watermark, UI, interface, blurry, low quality, over-saturated colors, harsh contrast, cyberpunk, modern city, photorealistic 3D, extra objects, messy silhouette, cropped important parts, people, character, animal unless specified.
+--- TABLE 12 rows=1 cols=1 ---
+ROW 0: Distant green mountains for a peaceful Japanese rural village scene, soft atmospheric perspective, layered forest ridges, warm summer haze, gentle sunlight, designed as a parallax background layer, isolated with transparent background, clean lower edge for compositing. Studio Ghibli background art style, hand-painted anime background, Japanese countryside, soft detailed painterly texture, warm low-saturation colors, gentle diffuse lighting, nostalgic summer afternoon, dappled sunlight through leaves, peaceful slow-life atmosphere, no text, no UI elements.
+--- TABLE 13 rows=1 cols=1 ---
+ROW 0: text, logo, watermark, UI, interface, blurry, low quality, over-saturated colors, harsh contrast, cyberpunk, modern city, photorealistic 3D, extra objects, messy silhouette, cropped important parts, people, character, animal unless specified. opaque background, white background, black background, hard rectangular frame.
+--- TABLE 14 rows=1 cols=1 ---
+ROW 0: A distant small Japanese countryside village layer, a few tiled rooftops partly hidden among trees, very soft details, atmospheric perspective, warm summer afternoon light, designed as a far background parallax layer, isolated on transparent background. Studio Ghibli background art style, hand-painted anime background, Japanese countryside, soft detailed painterly texture, warm low-saturation colors, gentle diffuse lighting, nostalgic summer afternoon, dappled sunlight through leaves, peaceful slow-life atmosphere, no text, no UI elements.
+--- TABLE 15 rows=1 cols=1 ---
+ROW 0: text, logo, watermark, UI, interface, blurry, low quality, over-saturated colors, harsh contrast, cyberpunk, modern city, photorealistic 3D, extra objects, messy silhouette, cropped important parts, people, character, animal unless specified. opaque background, white background, black background, hard rectangular frame.
+--- TABLE 16 rows=1 cols=1 ---
+ROW 0: Traditional Japanese kominka farmhouse main building asset, old wooden structure, tiled roof, sliding doors, shaded veranda, aged but warm and well-kept, summer afternoon dappled sunlight on wood and paper doors, isolated object on transparent background, suitable for 2D game scene composition. Studio Ghibli background art style, hand-painted anime background, Japanese countryside, soft detailed painterly texture, warm low-saturation colors, gentle diffuse lighting, nostalgic summer afternoon, dappled sunlight through leaves, peaceful slow-life atmosphere, no text, no UI elements.
+--- TABLE 17 rows=1 cols=1 ---
+ROW 0: text, logo, watermark, UI, interface, blurry, low quality, over-saturated colors, harsh contrast, cyberpunk, modern city, photorealistic 3D, extra objects, messy silhouette, cropped important parts, people, character, animal unless specified. opaque background, white background, black background, hard rectangular frame.
+--- TABLE 18 rows=1 cols=1 ---
+ROW 0: Japanese engawa veranda wooden floor asset, long horizontal porch floor, aged warm brown wood planks, soft dappled sunlight and leaf shadows across the surface, clean perspective matching a 16:9 side-view game background, isolated on transparent background. Studio Ghibli background art style, hand-painted anime background, Japanese countryside, soft detailed painterly texture, warm low-saturation colors, gentle diffuse lighting, nostalgic summer afternoon, dappled sunlight through leaves, peaceful slow-life atmosphere, no text, no UI elements.
+--- TABLE 19 rows=1 cols=1 ---
+ROW 0: text, logo, watermark, UI, interface, blurry, low quality, over-saturated colors, harsh contrast, cyberpunk, modern city, photorealistic 3D, extra objects, messy silhouette, cropped important parts, people, character, animal unless specified. opaque background, white background, black background, hard rectangular frame.
+--- TABLE 20 rows=1 cols=1 ---
+ROW 0: Peaceful Japanese countryside front yard ground layer, soft grass, patches of dry earth, tiny wildflowers, scattered leaf shadows, warm summer afternoon light, designed as a broad 2D game environment ground layer, no buildings, no characters, no props. Studio Ghibli background art style, hand-painted anime background, Japanese countryside, soft detailed painterly texture, warm low-saturation colors, gentle diffuse lighting, nostalgic summer afternoon, dappled sunlight through leaves, peaceful slow-life atmosphere, no text, no UI elements.
+--- TABLE 21 rows=1 cols=1 ---
+ROW 0: text, logo, watermark, UI, interface, blurry, low quality, over-saturated colors, harsh contrast, cyberpunk, modern city, photorealistic 3D, extra objects, messy silhouette, cropped important parts, people, character, animal unless specified.
+--- TABLE 22 rows=1 cols=1 ---
+ROW 0: Irregular stepping stone path asset for a Japanese rural garden, moss between stones, soft grass edges, warm dappled sunlight, gentle worn texture, isolated on transparent background, top-down slightly perspective view for 2D game scene placement. Studio Ghibli background art style, hand-painted anime background, Japanese countryside, soft detailed painterly texture, warm low-saturation colors, gentle diffuse lighting, nostalgic summer afternoon, dappled sunlight through leaves, peaceful slow-life atmosphere, no text, no UI elements.
+--- TABLE 23 rows=1 cols=1 ---
+ROW 0: text, logo, watermark, UI, interface, blurry, low quality, over-saturated colors, harsh contrast, cyberpunk, modern city, photorealistic 3D, extra objects, messy silhouette, cropped important parts, people, character, animal unless specified. opaque background, white background, black background, hard rectangular frame.
+--- TABLE 24 rows=1 cols=1 ---
+ROW 0: Low old stone wall asset for a Japanese countryside garden, irregular gray stones with moss, soft plants growing around the base, warm summer light, clean horizontal silhouette, isolated on transparent background, game-ready environmental prop. Studio Ghibli background art style, hand-painted anime background, Japanese countryside, soft detailed painterly texture, warm low-saturation colors, gentle diffuse lighting, nostalgic summer afternoon, dappled sunlight through leaves, peaceful slow-life atmosphere, no text, no UI elements.
+--- TABLE 25 rows=1 cols=1 ---
+ROW 0: text, logo, watermark, UI, interface, blurry, low quality, over-saturated colors, harsh contrast, cyberpunk, modern city, photorealistic 3D, extra objects, messy silhouette, cropped important parts, people, character, animal unless specified. opaque background, white background, black background, hard rectangular frame.
+--- TABLE 26 rows=1 cols=1 ---
+ROW 0: Large persimmon tree asset for a peaceful Japanese countryside home yard, thick textured trunk, dense green summer leaves, a few orange persimmons hanging among branches, soft dappled sunlight, natural asymmetrical silhouette, isolated on transparent background, no ground base, game-ready 2D asset. Studio Ghibli background art style, hand-painted anime background, Japanese countryside, soft detailed painterly texture, warm low-saturation colors, gentle diffuse lighting, nostalgic summer afternoon, dappled sunlight through leaves, peaceful slow-life atmosphere, no text, no UI elements.
+--- TABLE 27 rows=1 cols=1 ---
+ROW 0: text, logo, watermark, UI, interface, blurry, low quality, over-saturated colors, harsh contrast, cyberpunk, modern city, photorealistic 3D, extra objects, messy silhouette, cropped important parts, people, character, animal unless specified. opaque background, white background, black background, hard rectangular frame.
+--- TABLE 28 rows=1 cols=1 ---
+ROW 0: Old stone water well asset for a Japanese countryside garden, square stone well with weathered wooden cover, mossy edges, small traces of age, warm soft summer light, isolated object on transparent background, clean silhouette, 2D game prop. Studio Ghibli background art style, hand-painted anime background, Japanese countryside, soft detailed painterly texture, warm low-saturation colors, gentle diffuse lighting, nostalgic summer afternoon, dappled sunlight through leaves, peaceful slow-life atmosphere, no text, no UI elements.
+--- TABLE 29 rows=1 cols=1 ---
+ROW 0: text, logo, watermark, UI, interface, blurry, low quality, over-saturated colors, harsh contrast, cyberpunk, modern city, photorealistic 3D, extra objects, messy silhouette, cropped important parts, people, character, animal unless specified. opaque background, white background, black background, hard rectangular frame.
+--- TABLE 30 rows=1 cols=1 ---
+ROW 0: Small old wooden bucket asset beside a countryside well, worn wood, metal handle, subtle water stains, warm summer dappled light, isolated object on transparent background, clean game prop silhouette. Studio Ghibli background art style, hand-painted anime background, Japanese countryside, soft detailed painterly texture, warm low-saturation colors, gentle diffuse lighting, nostalgic summer afternoon, dappled sunlight through leaves, peaceful slow-life atmosphere, no text, no UI elements.
+--- TABLE 31 rows=1 cols=1 ---
+ROW 0: text, logo, watermark, UI, interface, blurry, low quality, over-saturated colors, harsh contrast, cyberpunk, modern city, photorealistic 3D, extra objects, messy silhouette, cropped important parts, people, character, animal unless specified. opaque background, white background, black background, hard rectangular frame.
+--- TABLE 32 rows=1 cols=1 ---
+ROW 0: Japanese glass wind chime asset hanging under an old wooden eave, transparent round glass bell, small blue paper strip, delicate string, soft highlights, nostalgic summer feeling, isolated on transparent background, clean silhouette, no roof or background. Studio Ghibli background art style, hand-painted anime background, Japanese countryside, soft detailed painterly texture, warm low-saturation colors, gentle diffuse lighting, nostalgic summer afternoon, dappled sunlight through leaves, peaceful slow-life atmosphere, no text, no UI elements.
+--- TABLE 33 rows=1 cols=1 ---
+ROW 0: text, logo, watermark, UI, interface, blurry, low quality, over-saturated colors, harsh contrast, cyberpunk, modern city, photorealistic 3D, extra objects, messy silhouette, cropped important parts, people, character, animal unless specified. opaque background, white background, black background, hard rectangular frame.
+--- TABLE 34 rows=1 cols=1 ---
+ROW 0: Vintage Japanese electric fan asset, pale blue-green metal body, circular wire cage, aged paint with slight wear, nostalgic Showa-era feeling, viewed from a 3/4 front angle, isolated on transparent background, clean game prop silhouette. Studio Ghibli background art style, hand-painted anime background, Japanese countryside, soft detailed painterly texture, warm low-saturation colors, gentle diffuse lighting, nostalgic summer afternoon, dappled sunlight through leaves, peaceful slow-life atmosphere, no text, no UI elements.
+--- TABLE 35 rows=1 cols=1 ---
+ROW 0: text, logo, watermark, UI, interface, blurry, low quality, over-saturated colors, harsh contrast, cyberpunk, modern city, photorealistic 3D, extra objects, messy silhouette, cropped important parts, people, character, animal unless specified. opaque background, white background, black background, hard rectangular frame.
+--- TABLE 36 rows=1 cols=1 ---
+ROW 0: Fan blade part for a vintage electric fan, simple translucent spinning blades, centered circular hub, isolated on transparent background, clean circular silhouette, designed for 2D rotation animation, no fan body, no background. Studio Ghibli background art style, hand-painted anime background, Japanese countryside, soft detailed painterly texture, warm low-saturation colors, gentle diffuse lighting, nostalgic summer afternoon, dappled sunlight through leaves, peaceful slow-life atmosphere, no text, no UI elements.
+--- TABLE 37 rows=1 cols=1 ---
+ROW 0: text, logo, watermark, UI, interface, blurry, low quality, over-saturated colors, harsh contrast, cyberpunk, modern city, photorealistic 3D, extra objects, messy silhouette, cropped important parts, people, character, animal unless specified. opaque background, white background, black background, hard rectangular frame.
+--- TABLE 38 rows=1 cols=1 ---
+ROW 0: Half watermelon game prop, red juicy interior with black seeds, dark green rind, placed cut-side upward, refreshing summer feeling, soft painterly anime texture, isolated on transparent background, clean silhouette. Studio Ghibli background art style, hand-painted anime background, Japanese countryside, soft detailed painterly texture, warm low-saturation colors, gentle diffuse lighting, nostalgic summer afternoon, dappled sunlight through leaves, peaceful slow-life atmosphere, no text, no UI elements.
+--- TABLE 39 rows=1 cols=1 ---
+ROW 0: text, logo, watermark, UI, interface, blurry, low quality, over-saturated colors, harsh contrast, cyberpunk, modern city, photorealistic 3D, extra objects, messy silhouette, cropped important parts, people, character, animal unless specified. opaque background, white background, black background, hard rectangular frame.
+--- TABLE 40 rows=1 cols=1 ---
+ROW 0: Round wooden serving tray asset for a Japanese countryside veranda, warm aged wood, low rim, simple handmade look, soft dappled light, isolated on transparent background, clean top-down slightly perspective view. Studio Ghibli background art style, hand-painted anime background, Japanese countryside, soft detailed painterly texture, warm low-saturation colors, gentle diffuse lighting, nostalgic summer afternoon, dappled sunlight through leaves, peaceful slow-life atmosphere, no text, no UI elements.
+--- TABLE 41 rows=1 cols=1 ---
+ROW 0: text, logo, watermark, UI, interface, blurry, low quality, over-saturated colors, harsh contrast, cyberpunk, modern city, photorealistic 3D, extra objects, messy silhouette, cropped important parts, people, character, animal unless specified. opaque background, white background, black background, hard rectangular frame.
+--- TABLE 42 rows=1 cols=1 ---
+ROW 0: Foreground leafy branch overlay for a summer Japanese countryside scene, dense green leaves with warm sunlight passing through, irregular natural silhouette, designed to frame the top edge of a 16:9 game screen, isolated on transparent background, no trunk, no sky. Studio Ghibli background art style, hand-painted anime background, Japanese countryside, soft detailed painterly texture, warm low-saturation colors, gentle diffuse lighting, nostalgic summer afternoon, dappled sunlight through leaves, peaceful slow-life atmosphere, no text, no UI elements.
+--- TABLE 43 rows=1 cols=1 ---
+ROW 0: text, logo, watermark, UI, interface, blurry, low quality, over-saturated colors, harsh contrast, cyberpunk, modern city, photorealistic 3D, extra objects, messy silhouette, cropped important parts, people, character, animal unless specified. opaque background, white background, black background, hard rectangular frame.
+--- TABLE 44 rows=1 cols=1 ---
+ROW 0: Soft dappled sunlight and leaf shadow overlay for a Japanese veranda and garden scene, irregular warm light spots and gentle leaf-shaped shadows, transparent background, subtle low-contrast overlay, designed for 2D game atmosphere layer, no objects, no hard edges. Studio Ghibli background art style, hand-painted anime background, Japanese countryside, soft detailed painterly texture, warm low-saturation colors, gentle diffuse lighting, nostalgic summer afternoon, dappled sunlight through leaves, peaceful slow-life atmosphere, no text, no UI elements.
+--- TABLE 45 rows=1 cols=1 ---
+ROW 0: text, logo, watermark, UI, objects, furniture, characters, hard black shadows, harsh contrast, opaque background.
+--- TABLE 46 rows=1 cols=1 ---
+ROW 0: Tiny floating dust particles in warm summer sunlight, subtle golden motes, sparse and delicate, transparent background, soft bokeh-like specks, designed as a gentle atmosphere overlay for a healing slow-life 2D game scene, no objects, no characters. Studio Ghibli background art style, hand-painted anime background, Japanese countryside, soft detailed painterly texture, warm low-saturation colors, gentle diffuse lighting, nostalgic summer afternoon, dappled sunlight through leaves, peaceful slow-life atmosphere, no text, no UI elements.
+--- TABLE 47 rows=1 cols=1 ---
+ROW 0: text, logo, watermark, UI, large particles, fireworks, magical effects, overexposed screen, opaque background.
+--- TABLE 48 rows=7 cols=2 ---
+ROW 0: 类型 || 建议规格
+ROW 1: 场景母图 || 2560×1440 或 3840×2160，16:9 横版。
+ROW 2: 静态独立资产 || 透明 PNG，保留原始大尺寸，边缘干净。
+ROW 3: 前景遮挡层 || 透明 PNG，允许半透明柔边。
+ROW 4: 光影覆盖层 || 半透明 PNG；避免画死在所有主体上。
+ROW 5: 动效分件 || 透明 PNG 分件优先，其次序列帧。
+ROW 6: 阴影 || 可拆单独阴影层；不要全部烘死，便于调整。
