@@ -32,6 +32,9 @@ func on_interact(_interactor: Node) -> void:
 
     print("[YardInteractable:%s] %s" % [object_id, text])
 
+    if has_node("/root/UIManager"):
+        get_node("/root/UIManager").show_dialogue(display_name, text)
+
 
 func get_interaction_hint() -> String:
     return interaction_hint

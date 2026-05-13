@@ -1,0 +1,66 @@
+{
+  "source": "D:\\那个村庄\\assets\\3d\\raw\\hunyuan_scene_001\\hunyuan_scene_001_raw.ply",
+  "output_dir": "D:\\那个村庄\\assets\\3d\\modules\\hunyuan_scene_001\\official",
+  "pivot_world": [
+    1.3415640592575073,
+    -13.858333587646484,
+    0.21350717544555664
+  ],
+  "scene_bounds": {
+    "min": [
+      -2.6970064640045166,
+      -13.858333587646484,
+      -15.581318855285645
+    ],
+    "max": [
+      5.380134582519531,
+      9.208333969116211,
+      16.008333206176758
+    ]
+  },
+  "exports": [
+    {
+      "name": "ground",
+      "path": "D:\\那个村庄\\assets\\3d\\modules\\hunyuan_scene_001\\official\\hunyuan_scene_001_module_ground.glb",
+      "decimate_ratio": 0.22,
+      "triangles": 292,
+      "faces_selected": 1329
+    },
+    {
+      "name": "architecture",
+      "path": "D:\\那个村庄\\assets\\3d\\modules\\hunyuan_scene_001\\official\\hunyuan_scene_001_module_architecture.glb",
+      "decimate_ratio": 0.2,
+      "triangles": 74871,
+      "faces_selected": 374702
+    },
+    {
+      "name": "vegetation",
+      "path": "D:\\那个村庄\\assets\\3d\\modules\\hunyuan_scene_001\\official\\hunyuan_scene_001_module_vegetation.glb",
+      "decimate_ratio": 0.18,
+      "triangles": 63550,
+      "faces_selected": 353564
+    },
+    {
+      "name": "props",
+      "path": "D:\\那个村庄\\assets\\3d\\modules\\hunyuan_scene_001\\official\\hunyuan_scene_001_module_props.glb",
+      "decimate_ratio": 0.16,
+      "triangles": 17234,
+      "faces_selected": 107846
+    }
+  ],
+  "walkable_nav_glb": {
+    "path": "D:\\那个村庄\\assets\\3d\\modules\\hunyuan_scene_001\\official\\hunyuan_scene_001_walkable_nav.glb",
+    "triangles": 3090
+  },
+  "blocker_mesh_glb": {
+    "path": "D:\\那个村庄\\assets\\3d\\modules\\hunyuan_scene_001\\official\\hunyuan_scene_001_blockers.glb",
+    "triangles": 24
+  },
+  "authored_runtime_json": "D:\\那个村庄\\assets\\3d\\modules\\hunyuan_scene_001\\official\\hunyuan_scene_001_authored_runtime.json",
+  "authored_runtime_stats": {
+    "nav_vertices": 560,
+    "nav_polygons": 140,
+    "floor_boxes": 140,
+    "blocker_boxes": 2
+  }
+}

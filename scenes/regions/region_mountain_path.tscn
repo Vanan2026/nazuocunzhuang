@@ -1,0 +1,164 @@
+[gd_scene format=3 uid="uid://region_mountain_path"]
+
+[ext_resource type="Script" path="res://scripts/world/region.gd" id="1_region"]
+[ext_resource type="Script" path="res://scripts/player_controller.gd" id="2_player"]
+[ext_resource type="Script" path="res://scripts/world/walkable_zone.gd" id="3_walkable_zone"]
+[ext_resource type="Script" path="res://scripts/world/yard_interactable.gd" id="4_interactable"]
+[ext_resource type="Script" path="res://scripts/world/scene_exit.gd" id="5_scene_exit"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
+size = Vector2(40, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hotspot"]
+size = Vector2(150, 110)
+
+[node name="Region_MountainPath" type="Node2D"]
+script = ExtResource("1_region")
+region_id = "Region_MountainPath"
+region_display_name = "后山小道"
+region_size = Vector2(4000, 3000)
+world_offset = Vector2(0, 2000)
+adjacent_regions = ["Region_Village", "Region_MountainHut", "Region_Mountain"]
+is_always_loaded = false
+
+[node name="RegionBounds" type="Node2D" parent="."]
+
+[node name="BoundsOutline" type="Polygon2D" parent="RegionBounds"]
+z_index = -200
+polygon = PackedVector2Array(0, 0, 4000, 0, 4000, 3000, 0, 3000)
+color = Color(0.5, 0.55, 0.45, 0.3)
+
+[node name="TileMapLayer_Ground" type="TileMapLayer" parent="."]
+z_index = -120
+
+[node name="GroundBase" type="Polygon2D" parent="TileMapLayer_Ground"]
+polygon = PackedVector2Array(0, 0, 4000, 0, 4000, 3000, 0, 3000)
+color = Color(0.42, 0.58, 0.38, 1)
+
+[node name="MountainTerrain" type="Node2D" parent="TileMapLayer_Ground">
+
+[node name="RockArea" type="Polygon2D" parent="TileMapLayer_Ground/MountainTerrain"]
+polygon = PackedVector2Array(0, 2000, 4000, 1500, 4000, 3000, 0, 3000)
+color = Color(0.50, 0.48, 0.45, 1)
+
+[node name="TileMapLayer_Path" type="TileMapLayer" parent="."]
+z_index = -110
+
+[node name="MountainRoad" type="Polygon2D" parent="TileMapLayer_Path"]
+polygon = PackedVector2Array(1800, 0, 2200, 0, 2400, 3000, 1600, 3000)
+color = Color(0.55, 0.48, 0.35, 1)
+
+[node name="StoneSteps" type="Polygon2D" parent="TileMapLayer_Path"]
+polygon = PackedVector2Array(1700, 1000, 2300, 1000, 2350, 1100, 1650, 1100)
+color = Color(0.48, 0.45, 0.42, 1)
+
+[node name="TileMapLayer_Detail" type="TileMapLayer" parent="."]
+z_index = -100
+
+[node name="WalkableZone" type="Node2D" parent="."]
+script = ExtResource("3_walkable_zone")
+polygon = PackedVector2Array(1500, 0, 2500, 0, 2600, 3000, 1400, 3000)
+
+[node name="YSortWorld" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Trees" type="Node2D" parent="YSortWorld">
+metadata/purpose = "mountain_trees"
+
+[node name="TreeLeft" type="Node2D" parent="YSortWorld/Trees"]
+position = Vector2(500, 1000)
+
+[node name="Canopy" type="Polygon2D" parent="YSortWorld/Trees/TreeLeft"]
+z_index = 2
+polygon = PackedVector2Array(-150, -300, 150, -300, 200, -100, -200, -100)
+color = Color(0.20, 0.38, 0.22, 0.95)
+
+[node name="Trunk" type="Polygon2D" parent="YSortWorld/Trees/TreeLeft"]
+polygon = PackedVector2Array(-30, -150, 30, -150, 40, 0, -40, 0)
+color = Color(0.35, 0.22, 0.12, 1)
+
+[node name="TreeRight" type="Node2D" parent="YSortWorld/Trees"]
+position = Vector2(3500, 1500)
+
+[node name="Canopy" type="Polygon2D" parent="YSortWorld/Trees/TreeRight"]
+z_index = 2
+polygon = PackedVector2Array(-150, -300, 150, -300, 200, -100, -200, -100)
+color = Color(0.22, 0.40, 0.24, 0.95)
+
+[node name="Trunk" type="Polygon2D" parent="YSortWorld/Trees/TreeRight"]
+polygon = PackedVector2Array(-30, -150, 30, -150, 40, 0, -40, 0)
+color = Color(0.35, 0.22, 0.12, 1)
+
+[node name="Waterfall" type="Node2D" parent="YSortWorld"]
+position = Vector2(1000, 2500)
+metadata/purpose = "waterfall"
+
+[node name="WaterBase" type="Polygon2D" parent="YSortWorld/Waterfall"]
+polygon = PackedVector2Array(-60, -40, 60, -40, 80, 40, -80, 40)
+color = Color(0.35, 0.55, 0.65, 0.8)
+
+[node name="Interactables" type="Node2D" parent="YSortWorld"]
+
+[node name="ExitToVillage" type="Area2D" parent="YSortWorld/Interactables"]
+position = Vector2(2000, 3000)
+script = ExtResource("5_scene_exit")
+target_region_id = "Region_Village"
+target_spawn_id = "village_from_mountain_path"
+exit_id = "mountain_path_to_village"
+interaction_hint = "按 E 返回村庄"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Interactables/ExitToVillage"]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="HintLabel" type="Label" parent="YSortWorld/Interactables/ExitToVillage"]
+visible = false
+offset_left = -90.0
+offset_top = -100.0
+offset_right = 90.0
+offset_bottom = -68.0
+text = "按 E 返回村庄"
+horizontal_alignment = 1
+
+[node name="ExitToHut" type="Area2D" parent="YSortWorld/Interactables"]
+position = Vector2(2000, 0)
+script = ExtResource("5_scene_exit")
+target_region_id = "Region_MountainHut"
+target_spawn_id = "hut_from_path"
+exit_id = "mountain_path_to_hut"
+interaction_hint = "按 E 前往山腰小屋"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Interactables/ExitToHut"]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="HintLabel" type="Label" parent="YSortWorld/Interactables/ExitToHut"]
+visible = false
+offset_left = -90.0
+offset_top = -100.0
+offset_right = 90.0
+offset_bottom = -68.0
+text = "按 E 前往山腰小屋"
+horizontal_alignment = 1
+
+[node name="PlayerSpawn" type="Marker2D" parent="YSortWorld"]
+position = Vector2(2000, 3000)
+metadata/spawn_id = "path_default"
+
+[node name="ForegroundStatic" type="Node2D" parent="."]
+z_index = 80
+
+[node name="ForegroundRockLeft" type="Polygon2D" parent="ForegroundStatic"]
+polygon = PackedVector2Array(0, 0, 400, 0, 300, 800, 0, 1200)
+color = Color(0.40, 0.38, 0.35, 0.5)
+
+[node name="ForegroundRockRight" type="Polygon2D" parent="ForegroundStatic"]
+polygon = PackedVector2Array(3600, 0, 4000, 0, 4000, 1000, 3700, 1300)
+color = Color(0.40, 0.38, 0.35, 0.5)
+
+[node name="CameraRig" type="Camera2D" parent="."]
+position = Vector2(2000, 1500)
+current = false
+limit_left = 0
+limit_top = 0
+limit_right = 4000
+limit_bottom = 3000
+limit_smoothed = true

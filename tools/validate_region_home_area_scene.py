@@ -199,6 +199,23 @@ def main() -> None:
     for node_name in ("MailboxInteract", "WellInteract", "BenchRestInteract", "RoadSignInteract", "HouseDoorEntrance", "BackyardFarmEntrance"):
         interactable = node_block(scene_text, node_name, "YSortWorld/Interactables")
         require("object_id =" in interactable or "target_scene =" in interactable, f"{node_name} must expose object id or transition target")
+    bench_rest = node_block(scene_text, "BenchRestInteract", "YSortWorld/Interactables")
+    require(
+        "res://scripts/world/veranda_rest_area.gd" in scene_text
+        and "script = ExtResource(\"12_veranda_rest_area\")" in bench_rest,
+        "BenchRestInteract must use the migrated veranda rest flow script",
+    )
+    require(
+        "seat_anchor = Vector2(4110, 2428)" in bench_rest
+        and "rest_facing = Vector2(1, 0)" in bench_rest
+        and 'metadata/purpose = "veranda_rest_area"' in bench_rest,
+        "BenchRestInteract must expose the current home-area seat anchor and rest facing",
+    )
+    require(
+        'interaction_hint = "按 E 坐下休息"' in bench_rest
+        and 'text = "按 E 坐下休息"' in node_block(scene_text, "HintLabel", "YSortWorld/Interactables/BenchRestInteract"),
+        "BenchRestInteract must show the rest interaction hint",
+    )
     backyard = node_block(scene_text, "BackyardFarmEntrance", "YSortWorld/Interactables")
     require_scene_exit_spawn(
         backyard,

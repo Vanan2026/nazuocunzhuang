@@ -1,15 +1,16 @@
 [gd_scene format=3 uid="uid://region_home_area_graybox"]
 
-[ext_resource type="Script" path="res://scripts/player_controller.gd" id="1_player"]
-[ext_resource type="Script" path="res://scripts/world/camera_rig.gd" id="2_camera_rig"]
-[ext_resource type="Script" path="res://scripts/world/walkable_zone.gd" id="3_walkable_zone"]
-[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/protagonist_shadow_soft.png" id="4_player_shadow"]
-[ext_resource type="SpriteFrames" path="res://sprites/characters/protagonist/player_mvp_4dir_frames.tres" id="5_player_frames"]
-[ext_resource type="Script" path="res://scripts/world/yard_interactable.gd" id="6_yard_interactable"]
-[ext_resource type="Script" path="res://scripts/world/scene_exit.gd" id="7_scene_exit"]
-[ext_resource type="Texture2D" path="res://sprites/environments/regions/home_area/ground/region_home_area_ground_grass_yard_v001.png" id="8_grass_yard_png"]
-[ext_resource type="Texture2D" path="res://sprites/environments/regions/home_area/path/region_home_area_path_front_yard_v001.png" id="9_front_path_png"]
-[ext_resource type="Texture2D" path="res://sprites/environments/regions/home_area/foreground/region_home_area_foreground_front_grass_left_v001.png" id="10_front_grass_left_png"]
+[ext_resource type="Script" path="res://scripts/world/region.gd" id="1_region"]
+[ext_resource type="Script" path="res://scripts/player_controller.gd" id="2_player"]
+[ext_resource type="Script" path="res://scripts/world/camera_rig.gd" id="3_camera_rig"]
+[ext_resource type="Script" path="res://scripts/world/walkable_zone.gd" id="4_walkable_zone"]
+[ext_resource type="Texture2D" path="res://sprites/characters/protagonist/protagonist_shadow_soft.png" id="5_player_shadow"]
+[ext_resource type="SpriteFrames" path="res://sprites/characters/protagonist/player_mvp_4dir_frames.tres" id="6_player_frames"]
+[ext_resource type="Script" path="res://scripts/world/yard_interactable.gd" id="7_yard_interactable"]
+[ext_resource type="Script" path="res://scripts/world/scene_exit.gd" id="8_scene_exit"]
+[ext_resource type="Texture2D" path="res://sprites/environments/regions/home_area/ground/region_home_area_ground_grass_yard_v001.png" id="9_grass_yard_png"]
+[ext_resource type="Texture2D" path="res://sprites/environments/regions/home_area/path/region_home_area_path_front_yard_v001.png" id="10_front_path_png"]
+[ext_resource type="Texture2D" path="res://sprites/environments/regions/home_area/foreground/region_home_area_foreground_front_grass_left_v001.png" id="11_front_grass_left_png"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
 size = Vector2(40, 20)
@@ -33,9 +34,15 @@ size = Vector2(130, 96)
 size = Vector2(150, 110)
 
 [node name="Region_HomeArea" type="Node2D"]
+script = ExtResource("1_region")
+region_id = "Region_HomeArea"
+region_display_name = "庭院"
+region_size = Vector2(6144, 4096)
+world_offset = Vector2(4000, 6000)
+adjacent_regions = ["Region_Village", "Region_BackFarm"]
+is_always_loaded = true
 metadata/world_model = "explorable_2d_oblique_region_v0_1"
 metadata/region_id = "Region_HomeArea"
-metadata/region_size = Vector2i(6144, 4096)
 metadata/status = "active_main_world_graybox"
 
 [node name="RegionBounds" type="Node2D" parent="."]
@@ -68,7 +75,7 @@ metadata/paint_id = "grass_north"
 
 [node name="GrassBaseHomeYard" type="Sprite2D" parent="TileMapLayer_Ground/GroundModules"]
 position = Vector2(1440, 1320)
-texture = ExtResource("8_grass_yard_png")
+texture = ExtResource("9_grass_yard_png")
 centered = false
 metadata/module_type = "ground_patch"
 metadata/paint_id = "grass_home_yard"
@@ -119,7 +126,7 @@ metadata/paint_id = "north_village_road"
 
 [node name="HomeFrontYardPathModule" type="Sprite2D" parent="TileMapLayer_Path/PathModules"]
 position = Vector2(2060, 1600)
-texture = ExtResource("9_front_path_png")
+texture = ExtResource("10_front_path_png")
 centered = false
 metadata/module_type = "path_patch"
 metadata/paint_id = "home_front_yard_path"
@@ -163,7 +170,7 @@ polygon = PackedVector2Array(2440, 1760, 3980, 1780, 4290, 2110, 2660, 2160)
 color = Color(0.13, 0.11, 0.08, 0.25)
 
 [node name="WalkableZone" type="Node2D" parent="."]
-script = ExtResource("3_walkable_zone")
+script = ExtResource("4_walkable_zone")
 polygon = PackedVector2Array(520, 1030, 1180, 850, 2380, 960, 3560, 1180, 4500, 1200, 5440, 1560, 5260, 2030, 4440, 2210, 3860, 2600, 4320, 3480, 4010, 3820, 3080, 3180, 2450, 2780, 1520, 2860, 760, 2700, 520, 2140, 720, 1800)
 metadata/purpose = "home_area_walkable_mask"
 
@@ -352,7 +359,7 @@ metadata/purpose = "interaction_areas_with_unique_ids"
 
 [node name="MailboxInteract" type="Area2D" parent="YSortWorld/Interactables"]
 position = Vector2(2370, 2120)
-script = ExtResource("6_yard_interactable")
+script = ExtResource("7_yard_interactable")
 object_id = "homearea_mailbox_001"
 display_name = "旧邮箱"
 interaction_hint = "按 E 查看邮箱"
@@ -373,7 +380,7 @@ horizontal_alignment = 1
 
 [node name="WellInteract" type="Area2D" parent="YSortWorld/Interactables"]
 position = Vector2(3600, 2180)
-script = ExtResource("6_yard_interactable")
+script = ExtResource("7_yard_interactable")
 object_id = "homearea_well_001"
 display_name = "水井"
 interaction_hint = "按 E 打水"
@@ -394,7 +401,7 @@ horizontal_alignment = 1
 
 [node name="BenchRestInteract" type="Area2D" parent="YSortWorld/Interactables"]
 position = Vector2(4110, 2410)
-script = ExtResource("6_yard_interactable")
+script = ExtResource("7_yard_interactable")
 object_id = "homearea_bench_001"
 display_name = "长椅"
 interaction_hint = "按 E 坐下"
@@ -415,7 +422,7 @@ horizontal_alignment = 1
 
 [node name="RoadSignInteract" type="Area2D" parent="YSortWorld/Interactables"]
 position = Vector2(5180, 1390)
-script = ExtResource("6_yard_interactable")
+script = ExtResource("7_yard_interactable")
 object_id = "homearea_roadsign_001"
 display_name = "路牌"
 interaction_hint = "按 E 查看路牌"
@@ -436,7 +443,7 @@ horizontal_alignment = 1
 
 [node name="HouseDoorEntrance" type="Area2D" parent="YSortWorld/Interactables"]
 position = Vector2(3160, 1660)
-script = ExtResource("6_yard_interactable")
+script = ExtResource("7_yard_interactable")
 object_id = "homearea_house_door_001"
 display_name = "云屋门口"
 interaction_hint = "按 E 查看屋内"
@@ -456,10 +463,10 @@ text = "按 E 查看屋内"
 horizontal_alignment = 1
 
 [node name="BackyardFarmEntrance" type="Area2D" parent="YSortWorld/Interactables"]
-position = Vector2(4320, 3480)
-script = ExtResource("7_scene_exit")
-target_scene = "res://scenes/regions/region_home_back_farm.tscn"
-target_spawn_id = "back_farm_from_home_area"
+position = Vector2(4200, 3370)
+script = ExtResource("8_scene_exit")
+target_region_id = "Region_BackFarm"
+target_spawn_id = "back_farm_default"
 exit_id = "home_area_to_back_farm"
 interaction_hint = "按 E 前往后院农地"
 metadata/target_scene = "res://scenes/regions/region_home_back_farm.tscn"
@@ -486,7 +493,7 @@ metadata/purpose = "future cat_and_dog_actors"
 
 [node name="Player" type="CharacterBody2D" parent="YSortWorld"]
 position = Vector2(3072, 2280)
-script = ExtResource("1_player")
+script = ExtResource("2_player")
 walkable_zone_path = NodePath("../../WalkableZone")
 visual_base_scale = 1.0
 depth_scale_enabled = false
@@ -500,13 +507,13 @@ shape = SubResource("RectangleShape2D_player")
 [node name="ShadowSprite" type="Sprite2D" parent="YSortWorld/Player"]
 position = Vector2(0, -6)
 z_index = -2
-texture = ExtResource("4_player_shadow")
+texture = ExtResource("5_player_shadow")
 centered = true
 self_modulate = Color(1, 1, 1, 0.52)
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="YSortWorld/Player"]
 position = Vector2(-96, -280)
-sprite_frames = ExtResource("5_player_frames")
+sprite_frames = ExtResource("6_player_frames")
 animation = &"player_idle_down"
 centered = false
 
@@ -532,7 +539,7 @@ metadata/purpose = "small fixed foreground accents only"
 
 [node name="FrontGrassLeft" type="Sprite2D" parent="ForegroundStatic"]
 position = Vector2(420, 2460)
-texture = ExtResource("10_front_grass_left_png")
+texture = ExtResource("11_front_grass_left_png")
 centered = false
 metadata/module_type = "foreground_occluder"
 metadata/paint_id = "front_grass_left"
@@ -556,13 +563,13 @@ color = Color(0.20, 0.36, 0.18, 0.30)
 
 [node name="CameraRig" type="Camera2D" parent="."]
 position = Vector2(3072, 2280)
-current = true
+current = false
 limit_left = 0
 limit_top = 0
 limit_right = 6144
 limit_bottom = 4096
 limit_smoothed = true
-script = ExtResource("2_camera_rig")
+script = ExtResource("3_camera_rig")
 target_path = NodePath("../YSortWorld/Player")
 follow_speed = 6.0
 metadata/role = "smooth_player_follow_camera"

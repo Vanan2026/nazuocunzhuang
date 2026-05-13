@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "godot-game-studio": {
+      "command": "python",
+      "args": ["D:/那个村庄/mcp/direct_integration.py"],
+      "env": {
+        "PROJECT_PATH": "D:/那个村庄"
+      }
+    }
+  }
+}

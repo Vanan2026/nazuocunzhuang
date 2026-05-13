@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://region_forest_edge"]
+
+[ext_resource type="Script" path="res://scripts/world/region.gd" id="1_region"]
+[ext_resource type="Script" path="res://scripts/world/walkable_zone.gd" id="2_walkable_zone"]
+[ext_resource type="Script" path="res://scripts/world/yard_interactable.gd" id="3_interactable"]
+[ext_resource type="Script" path="res://scripts/world/scene_exit.gd" id="4_scene_exit"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hotspot"]
+size = Vector2(150, 110)
+
+[node name="Region_ForestEdge" type="Node2D"]
+script = ExtResource("1_region")
+region_id = "Region_ForestEdge"
+region_display_name = "听雨林"
+region_size = Vector2(3000, 2500)
+world_offset = Vector2(6000, 2000)
+adjacent_regions = ["Region_Village", "Region_Orchard"]
+is_always_loaded = false
+
+[node name="RegionBounds" type="Node2D" parent="."]
+
+[node name="BoundsOutline" type="Polygon2D" parent="RegionBounds"]
+z_index = -200
+polygon = PackedVector2Array(0, 0, 3000, 0, 3000, 2500, 0, 2500)
+color = Color(0.35, 0.50, 0.38, 0.3)
+
+[node name="TileMapLayer_Ground" type="TileMapLayer" parent="."]
+z_index = -120
+
+[node name="GroundBase" type="Polygon2D" parent="TileMapLayer_Ground"]
+polygon = PackedVector2Array(0, 0, 3000, 0, 3000, 2500, 0, 2500)
+color = Color(0.38, 0.55, 0.35, 1)
+
+[node name="ForestFloor" type="Polygon2D" parent="TileMapLayer_Ground"]
+polygon = PackedVector2Array(0, 1500, 3000, 1200, 3000, 2500, 0, 2500)
+color = Color(0.32, 0.48, 0.30, 1)
+
+[node name="TileMapLayer_Path" type="TileMapLayer" parent="."]
+z_index = -110
+
+[node name="ForestPath" type="Polygon2D" parent="TileMapLayer_Path"]
+polygon = PackedVector2Array(0, 1100, 3000, 1300, 3000, 1500, 0, 1200)
+color = Color(0.50, 0.42, 0.30, 1)
+
+[node name="TileMapLayer_Detail" type="TileMapLayer" parent="."]
+z_index = -100
+
+[node name="WalkableZone" type="Node2D" parent="."]
+script = ExtResource("2_walkable_zone")
+polygon = PackedVector2Array(0, 1000, 3000, 1200, 3000, 1600, 0, 1300)
+
+[node name="YSortWorld" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="BambooForest" type="Node2D" parent="YSortWorld">
+metadata/purpose = "bamboo_trees"
+
+[node name="Bamboo1" type="Node2D" parent="YSortWorld/BambooForest"]
+position = Vector2(500, 500)
+
+[node name="BambooStalk" type="Polygon2D" parent="YSortWorld/BambooForest/Bamboo1"]
+polygon = PackedVector2Array(-15, -400, 15, -400, 20, 0, -20, 0)
+color = Color(0.45, 0.62, 0.30, 1)
+
+[node name="Bamboo2" type="Node2D" parent="YSortWorld/BambooForest"]
+position = Vector2(800, 300)
+
+[node name="BambooStalk" type="Polygon2D" parent="YSortWorld/BambooForest/Bamboo2"]
+polygon = PackedVector2Array(-15, -350, 15, -350, 20, 0, -20, 0)
+color = Color(0.48, 0.65, 0.32, 1)
+
+[node name="Bamboo3" type="Node2D" parent="YSortWorld/BambooForest"]
+position = Vector2(1100, 600)
+
+[node name="BambooStalk" type="Polygon2D" parent="YSortWorld/BambooForest/Bamboo3"]
+polygon = PackedVector2Array(-15, -380, 15, -380, 20, 0, -20, 0)
+color = Color(0.42, 0.60, 0.28, 1)
+
+[node name="Stream" type="Node2D" parent="YSortWorld"]
+position = Vector2(1500, 2000)
+
+[node name="StreamBase" type="Polygon2D" parent="YSortWorld/Stream"]
+polygon = PackedVector2Array(-200, -40, 200, -40, 220, 40, -220, 40)
+color = Color(0.30, 0.55, 0.65, 0.7)
+
+[node name="MeditationSpot" type="Node2D" parent="YSortWorld"]
+position = Vector2(2000, 1800)
+metadata/purpose = "meditation_area"
+
+[node name="Stone" type="Polygon2D" parent="YSortWorld/MeditationSpot"]
+polygon = PackedVector2Array(-80, -50, 80, -50, 90, 50, -90, 50)
+color = Color(0.45, 0.42, 0.40, 1)
+
+[node name="Interactables" type="Node2D" parent="YSortWorld">
+
+[node name="ExitToVillage" type="Area2D" parent="YSortWorld/Interactables"]
+position = Vector2(0, 1200)
+script = ExtResource("4_scene_exit")
+target_region_id = "Region_Village"
+target_spawn_id = "village_from_forest"
+exit_id = "forest_to_village"
+interaction_hint = "按 E 返回村庄"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Interactables/ExitToVillage"]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="HintLabel" type="Label" parent="YSortWorld/Interactables/ExitToVillage"]
+visible = false
+offset_left = -90.0
+offset_top = -100.0
+offset_right = 90.0
+offset_bottom = -68.0
+text = "按 E 返回村庄"
+horizontal_alignment = 1
+
+[node name="ExitToOrchard" type="Area2D" parent="YSortWorld/Interactables"]
+position = Vector2(3000, 1200)
+script = ExtResource("4_scene_exit")
+target_region_id = "Region_Orchard"
+target_spawn_id = "orchard_from_forest"
+exit_id = "forest_to_orchard"
+interaction_hint = "按 E 前往果园"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Interactables/ExitToOrchard"]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="HintLabel" type="Label" parent="YSortWorld/Interactables/ExitToOrchard"]
+visible = false
+offset_left = -90.0
+offset_top = -100.0
+offset_right = 90.0
+offset_bottom = -68.0
+text = "按 E 前往果园"
+horizontal_alignment = 1
+
+[node name="MeditationPoint" type="Area2D" parent="YSortWorld/Interactables"]
+position = Vector2(2000, 1800)
+script = ExtResource("3_interactable")
+object_id = "forest_meditation_001"
+display_name = "冥想石"
+interaction_hint = "按 E 冥想"
+action_id = "meditate"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Interactables/MeditationPoint"]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="HintLabel" type="Label" parent="YSortWorld/Interactables/MeditationPoint"]
+visible = false
+offset_left = -90.0
+offset_top = -120.0
+offset_right = 90.0
+offset_bottom = -88.0
+text = "按 E 冥想"
+horizontal_alignment = 1
+
+[node name="PlayerSpawn" type="Marker2D" parent="YSortWorld"]
+position = Vector2(0, 1200)
+metadata/spawn_id = "forest_default"
+
+[node name="ForegroundStatic" type="Node2D" parent="."]
+z_index = 80
+
+[node name="ForegroundBambooLeft" type="Polygon2D" parent="ForegroundStatic"]
+polygon = PackedVector2Array(0, 0, 300, 0, 200, 800, 0, 1000)
+color = Color(0.28, 0.48, 0.25, 0.5)
+
+[node name="ForegroundBambooRight" type="Polygon2D" parent="ForegroundStatic"]
+polygon = PackedVector2Array(2700, 0, 3000, 0, 3000, 900, 2800, 1100)
+color = Color(0.30, 0.50, 0.28, 0.5)
+
+[node name="CameraRig" type="Camera2D" parent="."]
+position = Vector2(1500, 1250)
+current = false
+limit_left = 0
+limit_top = 0
+limit_right = 3000
+limit_bottom = 2500
+limit_smoothed = true
