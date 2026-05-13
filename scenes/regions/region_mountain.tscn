@@ -1,0 +1,182 @@
+[gd_scene format=3 uid="uid://region_mountain"]
+
+[ext_resource type="Script" path="res://scripts/world/region.gd" id="1_region"]
+[ext_resource type="Script" path="res://scripts/world/walkable_zone.gd" id="2_walkable_zone"]
+[ext_resource type="Script" path="res://scripts/world/yard_interactable.gd" id="3_interactable"]
+[ext_resource type="Script" path="res://scripts/world/scene_exit.gd" id="4_scene_exit"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hotspot"]
+size = Vector2(150, 110)
+
+[node name="Region_Mountain" type="Node2D"]
+script = ExtResource("1_region")
+region_id = "Region_Mountain"
+region_display_name = "后山区域"
+region_size = Vector2(4000, 3000)
+world_offset = Vector2(0, 0)
+adjacent_regions = ["Region_MountainPath", "Region_CliffView"]
+is_always_loaded = false
+
+[node name="RegionBounds" type="Node2D" parent="."]
+
+[node name="BoundsOutline" type="Polygon2D" parent="RegionBounds"]
+z_index = -200
+polygon = PackedVector2Array(0, 0, 4000, 0, 4000, 3000, 0, 3000)
+color = Color(0.55, 0.52, 0.48, 0.3)
+
+[node name="TileMapLayer_Ground" type="TileMapLayer" parent="."]
+z_index = -120
+
+[node name="GroundBase" type="Polygon2D" parent="TileMapLayer_Ground"]
+polygon = PackedVector2Array(0, 0, 4000, 0, 4000, 3000, 0, 3000)
+color = Color(0.50, 0.55, 0.45, 1)
+
+[node name="RockyTerrain" type="Polygon2D" parent="TileMapLayer_Ground"]
+polygon = PackedVector2Array(0, 1500, 4000, 1200, 4000, 3000, 0, 3000)
+color = Color(0.58, 0.55, 0.52, 1)
+
+[node name="TileMapLayer_Path" type="TileMapLayer" parent="."]
+z_index = -110
+
+[node name="MountainTrail" type="Polygon2D" parent="TileMapLayer_Path"]
+polygon = PackedVector2Array(1500, 0, 2500, 0, 2600, 3000, 1400, 3000)
+color = Color(0.52, 0.48, 0.42, 1)
+
+[node name="TileMapLayer_Detail" type="TileMapLayer" parent="."]
+z_index = -100
+
+[node name="WalkableZone" type="Node2D" parent="."]
+script = ExtResource("2_walkable_zone")
+polygon = PackedVector2Array(1300, 0, 2700, 0, 2800, 3000, 1200, 3000)
+
+[node name="YSortWorld" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="PineTrees" type="Node2D" parent="YSortWorld">
+metadata/purpose = "pine_trees"
+
+[node name="Pine1" type="Node2D" parent="YSortWorld/PineTrees"]
+position = Vector2(400, 800)
+
+[node name="Trunk" type="Polygon2D" parent="YSortWorld/PineTrees/Pine1"]
+polygon = PackedVector2Array(-25, -200, 25, -200, 30, 0, -30, 0)
+color = Color(0.35, 0.22, 0.14, 1)
+
+[node name="Canopy" type="Polygon2D" parent="YSortWorld/PineTrees/Pine1"]
+z_index = 2
+polygon = PackedVector2Array(-80, -200, 80, -200, 120, -80, -120, -80)
+color = Color(0.18, 0.38, 0.20, 0.95)
+
+[node name="Pine2" type="Node2D" parent="YSortWorld/PineTrees"]
+position = Vector2(3500, 1000)
+
+[node name="Trunk" type="Polygon2D" parent="YSortWorld/PineTrees/Pine2"]
+polygon = PackedVector2Array(-28, -220, 28, -220, 35, 0, -35, 0)
+color = Color(0.38, 0.24, 0.15, 1)
+
+[node name="Canopy" type="Polygon2D" parent="YSortWorld/PineTrees/Pine2"]
+z_index = 2
+polygon = PackedVector2Array(-90, -220, 90, -220, 140, -90, -140, -90)
+color = Color(0.20, 0.40, 0.22, 0.95)
+
+[node name="LoggingCamp" type="Node2D" parent="YSortWorld"]
+position = Vector2(800, 2000)
+metadata/purpose = "logging_area"
+
+[node name="LogPile" type="Polygon2D" parent="YSortWorld/LoggingCamp"]
+polygon = PackedVector2Array(-120, -60, 120, -60, 130, 60, -130, 60)
+color = Color(0.45, 0.30, 0.18, 1)
+
+[node name="StoneQuarry" type="Node2D" parent="YSortWorld"]
+position = Vector2(3200, 2200)
+metadata/purpose = "quarry_area"
+
+[node name="RockPile" type="Polygon2D" parent="YSortWorld/StoneQuarry"]
+polygon = PackedVector2Array(-150, -80, 150, -80, 180, 80, -180, 80)
+color = Color(0.52, 0.50, 0.48, 1)
+
+[node name="Interactables" type="Node2D" parent="YSortWorld"]
+
+[node name="ExitToPath" type="Area2D" parent="YSortWorld/Interactables"]
+position = Vector2(2000, 3000)
+script = ExtResource("4_scene_exit")
+target_region_id = "Region_MountainPath"
+target_spawn_id = "path_from_mountain"
+exit_id = "mountain_to_path"
+interaction_hint = "按 E 返回山路"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Interactables/ExitToPath"]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="HintLabel" type="Label" parent="YSortWorld/Interactables/ExitToPath"]
+visible = false
+offset_left = -90.0
+offset_top = -100.0
+offset_right = 90.0
+offset_bottom = -68.0
+text = "按 E 返回山路"
+horizontal_alignment = 1
+
+[node name="ExitToCliff" type="Area2D" parent="YSortWorld/Interactables"]
+position = Vector2(2000, 0)
+script = ExtResource("4_scene_exit")
+target_region_id = "Region_CliffView"
+target_spawn_id = "cliff_from_mountain"
+exit_id = "mountain_to_cliff"
+interaction_hint = "按 E 前往悬崖观景"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Interactables/ExitToCliff"]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="HintLabel" type="Label" parent="YSortWorld/Interactables/ExitToCliff"]
+visible = false
+offset_left = -90.0
+offset_top = -100.0
+offset_right = 90.0
+offset_bottom = -68.0
+text = "按 E 前往悬崖观景"
+horizontal_alignment = 1
+
+[node name="LoggingSpot" type="Area2D" parent="YSortWorld/Interactables"]
+position = Vector2(800, 2000)
+script = ExtResource("3_interactable")
+object_id = "mountain_logging_001"
+display_name = "伐木场"
+interaction_hint = "按 E 伐木"
+action_id = "logging"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Interactables/LoggingSpot"]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="HintLabel" type="Label" parent="YSortWorld/Interactables/LoggingSpot"]
+visible = false
+offset_left = -90.0
+offset_top = -100.0
+offset_right = 90.0
+offset_bottom = -68.0
+text = "按 E 伐木"
+horizontal_alignment = 1
+
+[node name="PlayerSpawn" type="Marker2D" parent="YSortWorld"]
+position = Vector2(2000, 3000)
+metadata/spawn_id = "mountain_default"
+
+[node name="ForegroundStatic" type="Node2D" parent="."]
+z_index = 80
+
+[node name="ForegroundRockLeft" type="Polygon2D" parent="ForegroundStatic"]
+polygon = PackedVector2Array(0, 0, 300, 0, 200, 600, 0, 900)
+color = Color(0.45, 0.42, 0.40, 0.5)
+
+[node name="ForegroundRockRight" type="Polygon2D" parent="ForegroundStatic"]
+polygon = PackedVector2Array(3700, 0, 4000, 0, 4000, 800, 3800, 1000)
+color = Color(0.45, 0.42, 0.40, 0.5)
+
+[node name="CameraRig" type="Camera2D" parent="."]
+position = Vector2(2000, 1500)
+current = false
+limit_left = 0
+limit_top = 0
+limit_right = 4000
+limit_bottom = 3000
+limit_smoothed = true

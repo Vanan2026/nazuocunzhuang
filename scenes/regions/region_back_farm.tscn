@@ -1,0 +1,228 @@
+[gd_scene format=3 uid="uid://region_back_farm"]
+
+[ext_resource type="Script" path="res://scripts/world/region.gd" id="1_region"]
+[ext_resource type="Script" path="res://scripts/player_controller.gd" id="2_player"]
+[ext_resource type="Script" path="res://scripts/world/walkable_zone.gd" id="3_walkable_zone"]
+[ext_resource type="Script" path="res://scripts/world/yard_interactable.gd" id="4_interactable"]
+[ext_resource type="Script" path="res://scripts/world/scene_exit.gd" id="5_scene_exit"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
+size = Vector2(40, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_interaction"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hotspot"]
+size = Vector2(150, 110)
+
+[node name="Region_BackFarm" type="Node2D"]
+script = ExtResource("1_region")
+region_id = "Region_BackFarm"
+region_display_name = "后院菜园"
+region_size = Vector2(2000, 2000)
+world_offset = Vector2(6000, 8000)
+adjacent_regions = ["Region_HomeArea"]
+is_always_loaded = false
+
+[node name="RegionBounds" type="Node2D" parent="."]
+
+[node name="BoundsOutline" type="Polygon2D" parent="RegionBounds"]
+z_index = -200
+polygon = PackedVector2Array(0, 0, 2000, 0, 2000, 2000, 0, 2000)
+color = Color(0.47, 0.62, 0.45, 0.3)
+
+[node name="TileMapLayer_Ground" type="TileMapLayer" parent="."]
+z_index = -120
+
+[node name="GroundBase" type="Polygon2D" parent="TileMapLayer_Ground"]
+polygon = PackedVector2Array(0, 0, 2000, 0, 2000, 2000, 0, 2000)
+color = Color(0.40, 0.58, 0.35, 1)
+
+[node name="FarmFields" type="Node2D" parent="TileMapLayer_Ground"]
+
+[node name="Field1" type="Polygon2D" parent="TileMapLayer_Ground/FarmFields"]
+polygon = PackedVector2Array(200, 300, 800, 300, 800, 700, 200, 700)
+color = Color(0.45, 0.32, 0.18, 1)
+
+[node name="Field2" type="Polygon2D" parent="TileMapLayer_Ground/FarmFields"]
+polygon = PackedVector2Array(900, 300, 1500, 300, 1500, 700, 900, 700)
+color = Color(0.45, 0.32, 0.18, 1)
+
+[node name="Field3" type="Polygon2D" parent="TileMapLayer_Ground/FarmFields"]
+polygon = PackedVector2Array(200, 800, 800, 800, 800, 1200, 200, 1200)
+color = Color(0.45, 0.32, 0.18, 1)
+
+[node name="Field4" type="Polygon2D" parent="TileMapLayer_Ground/FarmFields"]
+polygon = PackedVector2Array(900, 800, 1500, 800, 1500, 1200, 900, 1200)
+color = Color(0.45, 0.32, 0.18, 1)
+
+[node name="TileMapLayer_Path" type="TileMapLayer" parent="."]
+z_index = -110
+
+[node name="MainPath" type="Polygon2D" parent="TileMapLayer_Path"]
+polygon = PackedVector2Array(0, 900, 2000, 900, 2000, 1100, 0, 1100)
+color = Color(0.60, 0.50, 0.35, 1)
+
+[node name="TileMapLayer_Detail" type="TileMapLayer" parent="."]
+z_index = -100
+
+[node name="WalkableZone" type="Node2D" parent="."]
+script = ExtResource("3_walkable_zone")
+polygon = PackedVector2Array(0, 700, 2000, 700, 2000, 1300, 0, 1300)
+
+[node name="YSortWorld" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="FarmStructures" type="Node2D" parent="YSortWorld"]
+metadata/purpose = "farm_buildings"
+
+[node name="ToolShed" type="Node2D" parent="YSortWorld/FarmStructures"]
+position = Vector2(1600, 400)
+metadata/purpose = "tool_storage"
+
+[node name="ShedBase" type="Polygon2D" parent="YSortWorld/FarmStructures/ToolShed"]
+polygon = PackedVector2Array(-100, -80, 100, -80, 100, 60, -100, 60)
+color = Color(0.55, 0.45, 0.35, 1)
+
+[node name="ShedRoof" type="Polygon2D" parent="YSortWorld/FarmStructures/ToolShed"]
+z_index = 1
+polygon = PackedVector2Array(-120, -80, 120, -80, 100, -120, -100, -120)
+color = Color(0.30, 0.25, 0.20, 1)
+
+[node name="SmallPond" type="Node2D" parent="YSortWorld"]
+position = Vector2(1700, 1500)
+metadata/purpose = "water_source"
+
+[node name="PondBase" type="Polygon2D" parent="YSortWorld/SmallPond"]
+polygon = PackedVector2Array(-80, -50, 80, -50, 90, 50, -90, 50)
+color = Color(0.30, 0.50, 0.60, 0.8)
+
+[node name="Interactables" type="Node2D" parent="YSortWorld">
+
+[node name="FarmPlot0" type="Area2D" parent="YSortWorld/Interactables"]
+position = Vector2(500, 500)
+script = ExtResource("4_interactable")
+object_id = "backfarm_plot_001"
+display_name = "菜地"
+interaction_hint = "按 E 种植"
+action_id = "plant_crop"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Interactables/FarmPlot0"]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="HintLabel" type="Label" parent="YSortWorld/Interactables/FarmPlot0"]
+visible = false
+offset_left = -90.0
+offset_top = -100.0
+offset_right = 90.0
+offset_bottom = -68.0
+text = "按 E 种植"
+horizontal_alignment = 1
+
+[node name="FarmPlot1" type="Area2D" parent="YSortWorld/Interactables"]
+position = Vector2(1200, 500)
+script = ExtResource("4_interactable")
+object_id = "backfarm_plot_002"
+display_name = "菜地"
+interaction_hint = "按 E 种植"
+action_id = "plant_crop"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Interactables/FarmPlot1"]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="HintLabel" type="Label" parent="YSortWorld/Interactables/FarmPlot1"]
+visible = false
+offset_left = -90.0
+offset_top = -100.0
+offset_right = 90.0
+offset_bottom = -68.0
+text = "按 E 种植"
+horizontal_alignment = 1
+
+[node name="FarmPlot2" type="Area2D" parent="YSortWorld/Interactables"]
+position = Vector2(500, 1000)
+script = ExtResource("4_interactable")
+object_id = "backfarm_plot_003"
+display_name = "菜地"
+interaction_hint = "按 E 种植"
+action_id = "plant_crop"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Interactables/FarmPlot2"]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="HintLabel" type="Label" parent="YSortWorld/Interactables/FarmPlot2"]
+visible = false
+offset_left = -90.0
+offset_top = -100.0
+offset_right = 90.0
+offset_bottom = -68.0
+text = "按 E 种植"
+horizontal_alignment = 1
+
+[node name="FarmPlot3" type="Area2D" parent="YSortWorld/Interactables"]
+position = Vector2(1200, 1000)
+script = ExtResource("4_interactable")
+object_id = "backfarm_plot_004"
+display_name = "菜地"
+interaction_hint = "按 E 种植"
+action_id = "plant_crop"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Interactables/FarmPlot3"]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="HintLabel" type="Label" parent="YSortWorld/Interactables/FarmPlot3"]
+visible = false
+offset_left = -90.0
+offset_top = -100.0
+offset_right = 90.0
+offset_bottom = -68.0
+text = "按 E 种植"
+horizontal_alignment = 1
+
+[node name="ExitToHomeArea" type="Area2D" parent="YSortWorld/Interactables"]
+position = Vector2(1000, 0)
+script = ExtResource("5_scene_exit")
+target_region_id = "Region_HomeArea"
+target_spawn_id = "home_area_from_back_farm"
+exit_id = "back_farm_to_home_area"
+interaction_hint = "按 E 返回庭院"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Interactables/ExitToHomeArea"]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="HintLabel" type="Label" parent="YSortWorld/Interactables/ExitToHomeArea"]
+visible = false
+offset_left = -90.0
+offset_top = -100.0
+offset_right = 90.0
+offset_bottom = -68.0
+text = "按 E 返回庭院"
+horizontal_alignment = 1
+
+[node name="PlayerSpawn" type="Marker2D" parent="YSortWorld"]
+position = Vector2(1000, 0)
+metadata/spawn_id = "back_farm_default"
+
+[node name="PlayerSpawnSouth" type="Marker2D" parent="YSortWorld"]
+position = Vector2(1000, 2000)
+metadata/spawn_id = "back_farm_from_south"
+
+[node name="ForegroundStatic" type="Node2D" parent="."]
+z_index = 80
+
+[node name="ForegroundLeft" type="Polygon2D" parent="ForegroundStatic"]
+polygon = PackedVector2Array(0, 0, 300, 0, 200, 600, 0, 800)
+color = Color(0.3, 0.4, 0.2, 0.5)
+
+[node name="ForegroundRight" type="Polygon2D" parent="ForegroundStatic"]
+polygon = PackedVector2Array(1700, 0, 2000, 0, 2000, 700, 1800, 900)
+color = Color(0.3, 0.4, 0.2, 0.5)
+
+[node name="CameraRig" type="Camera2D" parent="."]
+position = Vector2(1000, 1000)
+current = false
+limit_left = 0
+limit_top = 0
+limit_right = 2000
+limit_bottom = 2000
+limit_smoothed = true

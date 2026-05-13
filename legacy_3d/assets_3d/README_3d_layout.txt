@@ -1,0 +1,9 @@
+﻿res://assets/3d/raw/
+res://assets/3d/processed/
+res://assets/3d/modules/
+res://assets/3d/materials/
+res://assets/3d/textures/
+res://scenes/3d/
+res://scenes/dev/
+res://scripts/tools/
+res://docs/pipeline/

@@ -21,6 +21,7 @@ WALK_SHEET = SOURCE_DIR / "protagonist_generated_walk_4dir_sheet.png"
 IDLE_SHEET = SOURCE_DIR / "protagonist_generated_idle_4dir_sheet.png"
 INTERACT_SHEET = SOURCE_DIR / "protagonist_generated_interact_4dir_sheet.png"
 SIT_SHEET = SOURCE_DIR / "protagonist_generated_sit_side_sheet.png"
+FINAL_SOURCE_DIR = ROOT / "production" / "assets" / "protagonist" / "final_source_strips"
 
 FRAME_SIZE = (192, 288)
 FOOT_ANCHOR = (96, 280)
@@ -307,6 +308,49 @@ def align_row_baseline(frames: list[Image.Image], target_bottom: int = 270) -> l
     return aligned
 
 
+def final_source_strip_path(animation: str) -> Path:
+    return FINAL_SOURCE_DIR / f"{animation}_source_strip.png"
+
+
+def all_final_source_strips_available() -> bool:
+    for spec in ROWS:
+        path = final_source_strip_path(spec.animation)
+        if not path.exists():
+            return False
+        image = Image.open(path)
+        expected_size = (384 * spec.expected, 576)
+        if image.size != expected_size:
+            return False
+    return True
+
+
+def load_final_source_strip(animation: str, frame_count: int) -> list[Image.Image]:
+    path = final_source_strip_path(animation)
+    image = Image.open(path).convert("RGBA")
+    if image.size != (384 * frame_count, 576):
+        fail(f"{path.name} must be {(384 * frame_count, 576)}, got {image.size}")
+
+    frames: list[Image.Image] = []
+    for idx in range(frame_count):
+        crop = image.crop((idx * 384, 0, (idx + 1) * 384, 576))
+        frame = crop.resize(FRAME_SIZE, Image.Resampling.LANCZOS)
+        frames.append(frame)
+    return align_row_baseline(frames)
+
+
+def load_all_final_source_strips() -> dict[str, list[Image.Image]]:
+    frames = {
+        spec.animation: load_final_source_strip(spec.animation, spec.expected)
+        for spec in ROWS
+    }
+    for suffix in EIGHT_DIRECTION_SUFFIXES:
+        target_height = median_visible_height(frames[f"player_walk_{suffix}"])
+        for state in ("idle", "interact"):
+            animation = f"player_{state}_{suffix}"
+            frames[animation] = align_row_baseline(match_row_height(frames[animation], target_height))
+    return frames
+
+
 def blend_frame_pair(primary: Image.Image, secondary: Image.Image, primary_weight: float) -> Image.Image:
     w = max(0.0, min(1.0, primary_weight))
     a = np.array(primary.convert("RGBA")).astype(np.float32) / 255.0
@@ -339,6 +383,9 @@ def synthesize_diagonal_row(
 
 
 def collect_animation_frames() -> dict[str, list[Image.Image]]:
+    if all_final_source_strips_available():
+        return load_all_final_source_strips()
+
     if not WALK_SHEET.exists():
         fail(f"missing walk sheet: {WALK_SHEET}")
     if not IDLE_SHEET.exists():
