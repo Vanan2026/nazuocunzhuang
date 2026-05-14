@@ -1,0 +1,479 @@
+{
+  "source_slot_size": [
+    384,
+    576
+  ],
+  "source_foot_anchor": [
+    192,
+    540
+  ],
+  "runtime_frame_size": [
+    192,
+    288
+  ],
+  "runtime_foot_anchor": [
+    96,
+    270
+  ],
+  "animations": [
+    {
+      "animation": "player_walk_down",
+      "direction": "down",
+      "frame_count": 8,
+      "loop": true,
+      "notes": "clear grounded walking cycle; side directions require visible alternating sandal/leg motion",
+      "source_strip": "player_walk_down_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_walk_down_template.png",
+      "runtime_frames": [
+        "player_walk_down_00.png",
+        "player_walk_down_01.png",
+        "player_walk_down_02.png",
+        "player_walk_down_03.png",
+        "player_walk_down_04.png",
+        "player_walk_down_05.png",
+        "player_walk_down_06.png",
+        "player_walk_down_07.png"
+      ]
+    },
+    {
+      "animation": "player_walk_down_left",
+      "direction": "down_left",
+      "frame_count": 8,
+      "loop": true,
+      "notes": "clear grounded walking cycle; side directions require visible alternating sandal/leg motion",
+      "source_strip": "player_walk_down_left_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_walk_down_left_template.png",
+      "runtime_frames": [
+        "player_walk_down_left_00.png",
+        "player_walk_down_left_01.png",
+        "player_walk_down_left_02.png",
+        "player_walk_down_left_03.png",
+        "player_walk_down_left_04.png",
+        "player_walk_down_left_05.png",
+        "player_walk_down_left_06.png",
+        "player_walk_down_left_07.png"
+      ]
+    },
+    {
+      "animation": "player_walk_left",
+      "direction": "left",
+      "frame_count": 8,
+      "loop": true,
+      "notes": "clear grounded walking cycle; side directions require visible alternating sandal/leg motion",
+      "source_strip": "player_walk_left_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_walk_left_template.png",
+      "runtime_frames": [
+        "player_walk_left_00.png",
+        "player_walk_left_01.png",
+        "player_walk_left_02.png",
+        "player_walk_left_03.png",
+        "player_walk_left_04.png",
+        "player_walk_left_05.png",
+        "player_walk_left_06.png",
+        "player_walk_left_07.png"
+      ]
+    },
+    {
+      "animation": "player_walk_up_left",
+      "direction": "up_left",
+      "frame_count": 8,
+      "loop": true,
+      "notes": "clear grounded walking cycle; side directions require visible alternating sandal/leg motion",
+      "source_strip": "player_walk_up_left_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_walk_up_left_template.png",
+      "runtime_frames": [
+        "player_walk_up_left_00.png",
+        "player_walk_up_left_01.png",
+        "player_walk_up_left_02.png",
+        "player_walk_up_left_03.png",
+        "player_walk_up_left_04.png",
+        "player_walk_up_left_05.png",
+        "player_walk_up_left_06.png",
+        "player_walk_up_left_07.png"
+      ]
+    },
+    {
+      "animation": "player_walk_up",
+      "direction": "up",
+      "frame_count": 8,
+      "loop": true,
+      "notes": "clear grounded walking cycle; side directions require visible alternating sandal/leg motion",
+      "source_strip": "player_walk_up_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_walk_up_template.png",
+      "runtime_frames": [
+        "player_walk_up_00.png",
+        "player_walk_up_01.png",
+        "player_walk_up_02.png",
+        "player_walk_up_03.png",
+        "player_walk_up_04.png",
+        "player_walk_up_05.png",
+        "player_walk_up_06.png",
+        "player_walk_up_07.png"
+      ]
+    },
+    {
+      "animation": "player_walk_up_right",
+      "direction": "up_right",
+      "frame_count": 8,
+      "loop": true,
+      "notes": "clear grounded walking cycle; side directions require visible alternating sandal/leg motion",
+      "source_strip": "player_walk_up_right_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_walk_up_right_template.png",
+      "runtime_frames": [
+        "player_walk_up_right_00.png",
+        "player_walk_up_right_01.png",
+        "player_walk_up_right_02.png",
+        "player_walk_up_right_03.png",
+        "player_walk_up_right_04.png",
+        "player_walk_up_right_05.png",
+        "player_walk_up_right_06.png",
+        "player_walk_up_right_07.png"
+      ]
+    },
+    {
+      "animation": "player_walk_right",
+      "direction": "right",
+      "frame_count": 8,
+      "loop": true,
+      "notes": "clear grounded walking cycle; side directions require visible alternating sandal/leg motion",
+      "source_strip": "player_walk_right_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_walk_right_template.png",
+      "runtime_frames": [
+        "player_walk_right_00.png",
+        "player_walk_right_01.png",
+        "player_walk_right_02.png",
+        "player_walk_right_03.png",
+        "player_walk_right_04.png",
+        "player_walk_right_05.png",
+        "player_walk_right_06.png",
+        "player_walk_right_07.png"
+      ]
+    },
+    {
+      "animation": "player_walk_down_right",
+      "direction": "down_right",
+      "frame_count": 8,
+      "loop": true,
+      "notes": "clear grounded walking cycle; side directions require visible alternating sandal/leg motion",
+      "source_strip": "player_walk_down_right_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_walk_down_right_template.png",
+      "runtime_frames": [
+        "player_walk_down_right_00.png",
+        "player_walk_down_right_01.png",
+        "player_walk_down_right_02.png",
+        "player_walk_down_right_03.png",
+        "player_walk_down_right_04.png",
+        "player_walk_down_right_05.png",
+        "player_walk_down_right_06.png",
+        "player_walk_down_right_07.png"
+      ]
+    },
+    {
+      "animation": "player_idle_down",
+      "direction": "down",
+      "frame_count": 4,
+      "loop": true,
+      "notes": "subtle breathing and cloth movement only",
+      "source_strip": "player_idle_down_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_idle_down_template.png",
+      "runtime_frames": [
+        "player_idle_down_00.png",
+        "player_idle_down_01.png",
+        "player_idle_down_02.png",
+        "player_idle_down_03.png"
+      ]
+    },
+    {
+      "animation": "player_idle_down_left",
+      "direction": "down_left",
+      "frame_count": 4,
+      "loop": true,
+      "notes": "subtle breathing and cloth movement only",
+      "source_strip": "player_idle_down_left_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_idle_down_left_template.png",
+      "runtime_frames": [
+        "player_idle_down_left_00.png",
+        "player_idle_down_left_01.png",
+        "player_idle_down_left_02.png",
+        "player_idle_down_left_03.png"
+      ]
+    },
+    {
+      "animation": "player_idle_left",
+      "direction": "left",
+      "frame_count": 4,
+      "loop": true,
+      "notes": "subtle breathing and cloth movement only",
+      "source_strip": "player_idle_left_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_idle_left_template.png",
+      "runtime_frames": [
+        "player_idle_left_00.png",
+        "player_idle_left_01.png",
+        "player_idle_left_02.png",
+        "player_idle_left_03.png"
+      ]
+    },
+    {
+      "animation": "player_idle_up_left",
+      "direction": "up_left",
+      "frame_count": 4,
+      "loop": true,
+      "notes": "subtle breathing and cloth movement only",
+      "source_strip": "player_idle_up_left_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_idle_up_left_template.png",
+      "runtime_frames": [
+        "player_idle_up_left_00.png",
+        "player_idle_up_left_01.png",
+        "player_idle_up_left_02.png",
+        "player_idle_up_left_03.png"
+      ]
+    },
+    {
+      "animation": "player_idle_up",
+      "direction": "up",
+      "frame_count": 4,
+      "loop": true,
+      "notes": "subtle breathing and cloth movement only",
+      "source_strip": "player_idle_up_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_idle_up_template.png",
+      "runtime_frames": [
+        "player_idle_up_00.png",
+        "player_idle_up_01.png",
+        "player_idle_up_02.png",
+        "player_idle_up_03.png"
+      ]
+    },
+    {
+      "animation": "player_idle_up_right",
+      "direction": "up_right",
+      "frame_count": 4,
+      "loop": true,
+      "notes": "subtle breathing and cloth movement only",
+      "source_strip": "player_idle_up_right_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_idle_up_right_template.png",
+      "runtime_frames": [
+        "player_idle_up_right_00.png",
+        "player_idle_up_right_01.png",
+        "player_idle_up_right_02.png",
+        "player_idle_up_right_03.png"
+      ]
+    },
+    {
+      "animation": "player_idle_right",
+      "direction": "right",
+      "frame_count": 4,
+      "loop": true,
+      "notes": "subtle breathing and cloth movement only",
+      "source_strip": "player_idle_right_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_idle_right_template.png",
+      "runtime_frames": [
+        "player_idle_right_00.png",
+        "player_idle_right_01.png",
+        "player_idle_right_02.png",
+        "player_idle_right_03.png"
+      ]
+    },
+    {
+      "animation": "player_idle_down_right",
+      "direction": "down_right",
+      "frame_count": 4,
+      "loop": true,
+      "notes": "subtle breathing and cloth movement only",
+      "source_strip": "player_idle_down_right_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_idle_down_right_template.png",
+      "runtime_frames": [
+        "player_idle_down_right_00.png",
+        "player_idle_down_right_01.png",
+        "player_idle_down_right_02.png",
+        "player_idle_down_right_03.png"
+      ]
+    },
+    {
+      "animation": "player_interact_down",
+      "direction": "down",
+      "frame_count": 6,
+      "loop": false,
+      "notes": "small reach/check/pick-up gesture; keep feet planted",
+      "source_strip": "player_interact_down_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_interact_down_template.png",
+      "runtime_frames": [
+        "player_interact_down_00.png",
+        "player_interact_down_01.png",
+        "player_interact_down_02.png",
+        "player_interact_down_03.png",
+        "player_interact_down_04.png",
+        "player_interact_down_05.png"
+      ]
+    },
+    {
+      "animation": "player_interact_down_left",
+      "direction": "down_left",
+      "frame_count": 6,
+      "loop": false,
+      "notes": "small reach/check/pick-up gesture; keep feet planted",
+      "source_strip": "player_interact_down_left_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_interact_down_left_template.png",
+      "runtime_frames": [
+        "player_interact_down_left_00.png",
+        "player_interact_down_left_01.png",
+        "player_interact_down_left_02.png",
+        "player_interact_down_left_03.png",
+        "player_interact_down_left_04.png",
+        "player_interact_down_left_05.png"
+      ]
+    },
+    {
+      "animation": "player_interact_left",
+      "direction": "left",
+      "frame_count": 6,
+      "loop": false,
+      "notes": "small reach/check/pick-up gesture; keep feet planted",
+      "source_strip": "player_interact_left_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_interact_left_template.png",
+      "runtime_frames": [
+        "player_interact_left_00.png",
+        "player_interact_left_01.png",
+        "player_interact_left_02.png",
+        "player_interact_left_03.png",
+        "player_interact_left_04.png",
+        "player_interact_left_05.png"
+      ]
+    },
+    {
+      "animation": "player_interact_up_left",
+      "direction": "up_left",
+      "frame_count": 6,
+      "loop": false,
+      "notes": "small reach/check/pick-up gesture; keep feet planted",
+      "source_strip": "player_interact_up_left_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_interact_up_left_template.png",
+      "runtime_frames": [
+        "player_interact_up_left_00.png",
+        "player_interact_up_left_01.png",
+        "player_interact_up_left_02.png",
+        "player_interact_up_left_03.png",
+        "player_interact_up_left_04.png",
+        "player_interact_up_left_05.png"
+      ]
+    },
+    {
+      "animation": "player_interact_up",
+      "direction": "up",
+      "frame_count": 6,
+      "loop": false,
+      "notes": "small reach/check/pick-up gesture; keep feet planted",
+      "source_strip": "player_interact_up_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_interact_up_template.png",
+      "runtime_frames": [
+        "player_interact_up_00.png",
+        "player_interact_up_01.png",
+        "player_interact_up_02.png",
+        "player_interact_up_03.png",
+        "player_interact_up_04.png",
+        "player_interact_up_05.png"
+      ]
+    },
+    {
+      "animation": "player_interact_up_right",
+      "direction": "up_right",
+      "frame_count": 6,
+      "loop": false,
+      "notes": "small reach/check/pick-up gesture; keep feet planted",
+      "source_strip": "player_interact_up_right_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_interact_up_right_template.png",
+      "runtime_frames": [
+        "player_interact_up_right_00.png",
+        "player_interact_up_right_01.png",
+        "player_interact_up_right_02.png",
+        "player_interact_up_right_03.png",
+        "player_interact_up_right_04.png",
+        "player_interact_up_right_05.png"
+      ]
+    },
+    {
+      "animation": "player_interact_right",
+      "direction": "right",
+      "frame_count": 6,
+      "loop": false,
+      "notes": "small reach/check/pick-up gesture; keep feet planted",
+      "source_strip": "player_interact_right_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_interact_right_template.png",
+      "runtime_frames": [
+        "player_interact_right_00.png",
+        "player_interact_right_01.png",
+        "player_interact_right_02.png",
+        "player_interact_right_03.png",
+        "player_interact_right_04.png",
+        "player_interact_right_05.png"
+      ]
+    },
+    {
+      "animation": "player_interact_down_right",
+      "direction": "down_right",
+      "frame_count": 6,
+      "loop": false,
+      "notes": "small reach/check/pick-up gesture; keep feet planted",
+      "source_strip": "player_interact_down_right_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_interact_down_right_template.png",
+      "runtime_frames": [
+        "player_interact_down_right_00.png",
+        "player_interact_down_right_01.png",
+        "player_interact_down_right_02.png",
+        "player_interact_down_right_03.png",
+        "player_interact_down_right_04.png",
+        "player_interact_down_right_05.png"
+      ]
+    },
+    {
+      "animation": "player_sit_down_side",
+      "direction": "side",
+      "frame_count": 6,
+      "loop": false,
+      "notes": "side-view sit-down transition; starts from standing height",
+      "source_strip": "player_sit_down_side_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_sit_down_side_template.png",
+      "runtime_frames": [
+        "player_sit_down_side_00.png",
+        "player_sit_down_side_01.png",
+        "player_sit_down_side_02.png",
+        "player_sit_down_side_03.png",
+        "player_sit_down_side_04.png",
+        "player_sit_down_side_05.png"
+      ]
+    },
+    {
+      "animation": "player_sit_idle_side",
+      "direction": "side",
+      "frame_count": 6,
+      "loop": true,
+      "notes": "side-view seated idle; calm breathing",
+      "source_strip": "player_sit_idle_side_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_sit_idle_side_template.png",
+      "runtime_frames": [
+        "player_sit_idle_side_00.png",
+        "player_sit_idle_side_01.png",
+        "player_sit_idle_side_02.png",
+        "player_sit_idle_side_03.png",
+        "player_sit_idle_side_04.png",
+        "player_sit_idle_side_05.png"
+      ]
+    },
+    {
+      "animation": "player_stand_up_side",
+      "direction": "side",
+      "frame_count": 6,
+      "loop": false,
+      "notes": "side-view stand-up transition; ends at standing height",
+      "source_strip": "player_stand_up_side_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_stand_up_side_template.png",
+      "runtime_frames": [
+        "player_stand_up_side_00.png",
+        "player_stand_up_side_01.png",
+        "player_stand_up_side_02.png",
+        "player_stand_up_side_03.png",
+        "player_stand_up_side_04.png",
+        "player_stand_up_side_05.png"
+      ]
+    }
+  ]
+}

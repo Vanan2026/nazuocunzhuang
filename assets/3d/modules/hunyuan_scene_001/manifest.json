@@ -1,0 +1,99 @@
+{
+  "scene_id": "hunyuan_scene_001",
+  "overall": {
+    "min_bound": [
+      -2.7178330421447754,
+      -13.875,
+      -15.59395694732666
+    ],
+    "max_bound": [
+      5.39040470123291,
+      9.225000381469727,
+      16.024999618530273
+    ],
+    "ground_y": -13.858333587646484,
+    "source_vertices": 449878,
+    "source_triangles": 837441,
+    "grid_rows": 2,
+    "grid_cols": 2,
+    "max_triangles_per_module": 120000,
+    "official_module_count": 4,
+    "official_triangles_total": 155947,
+    "authored_runtime_source": "res://assets/3d/modules/hunyuan_scene_001/official/hunyuan_scene_001_authored_runtime.json"
+  },
+  "modules": [
+    {
+      "name": "hunyuan_scene_001_module_architecture",
+      "path": "res://assets/3d/modules/hunyuan_scene_001/official/hunyuan_scene_001_module_architecture.glb",
+      "vertex_count": null,
+      "triangle_count": 74871,
+      "source_triangle_count": 74871,
+      "decimate_stride": 1,
+      "min_bound": [
+        -4.083705902099609,
+        -15.808280944824219,
+        -20.324424743652344
+      ],
+      "max_bound": [
+        4.012906551361084,
+        15.761493682861328,
+        -0.046309471130371094
+      ]
+    },
+    {
+      "name": "hunyuan_scene_001_module_ground",
+      "path": "res://assets/3d/modules/hunyuan_scene_001/official/hunyuan_scene_001_module_ground.glb",
+      "vertex_count": null,
+      "triangle_count": 292,
+      "source_triangle_count": 292,
+      "decimate_stride": 1,
+      "min_bound": [
+        -2.6170473098754883,
+        -0.8385071754455566,
+        -7.80568790435791
+      ],
+      "max_bound": [
+        2.533435821533203,
+        11.361492156982422,
+        -3.3190107345581055
+      ]
+    },
+    {
+      "name": "hunyuan_scene_001_module_props",
+      "path": "res://assets/3d/modules/hunyuan_scene_001/official/hunyuan_scene_001_module_props.glb",
+      "vertex_count": null,
+      "triangle_count": 17234,
+      "source_triangle_count": 17234,
+      "decimate_stride": 1,
+      "min_bound": [
+        -3.904595375061035,
+        -15.439006805419922,
+        -21.911611557006836
+      ],
+      "max_bound": [
+        3.5834360122680664,
+        15.782133102416992,
+        -0.056677818298339844
+      ]
+    },
+    {
+      "name": "hunyuan_scene_001_module_vegetation",
+      "path": "res://assets/3d/modules/hunyuan_scene_001/official/hunyuan_scene_001_module_vegetation.glb",
+      "vertex_count": null,
+      "triangle_count": 63550,
+      "source_triangle_count": 63550,
+      "decimate_stride": 1,
+      "min_bound": [
+        -4.039960861206055,
+        -15.538507461547852,
+        -23.083553314208984
+      ],
+      "max_bound": [
+        4.049624443054199,
+        15.261493682861328,
+        -9.199308395385742
+      ]
+    }
+  ],
+  "active_module_pack": "official"
+}

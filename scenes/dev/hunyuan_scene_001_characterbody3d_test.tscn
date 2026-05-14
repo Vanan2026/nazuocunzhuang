@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/dev/hunyuan_scene_001_preview.tscn" id="1_preview"]
+[ext_resource type="Script" path="res://scripts/tools/hunyuan_characterbody3d_walk_test.gd" id="2_walk_script"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1"]
+radius = 0.32
+height = 1.24
+
+[node name="HunyuanScene001CharacterBody3DTest" type="Node3D"]
+
+[node name="PreviewWorld" parent="." instance=ExtResource("1_preview")]
+
+[node name="TestWalker" type="CharacterBody3D" parent="."]
+position = Vector3(1.417672, -6.241576, 5.535514)
+floor_stop_on_slope = false
+floor_max_angle = 0.837758
+script = ExtResource("2_walk_script")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestWalker"]
+position = Vector3(0, 0.84, 0)
+shape = SubResource("CapsuleShape3D_1")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="TestWalker"]
+path_desired_distance = 0.2
+target_desired_distance = 0.35
+radius = 0.32
+height = 1.7
+
+[node name="SpringArm3D" type="SpringArm3D" parent="TestWalker"]
+position = Vector3(0, 1.2, 0)
+rotation_degrees = Vector3(-18, 0, 0)
+spring_length = 6.0
+
+[node name="Camera3D" type="Camera3D" parent="TestWalker/SpringArm3D"]
+current = true
+
+[node name="Waypoint_A" type="Marker3D" parent="."]
+position = Vector3(0.2, -6.541576, 4.4)
+
+[node name="Waypoint_B" type="Marker3D" parent="."]
+position = Vector3(2.6, -6.541576, 4.4)
+
+[node name="Waypoint_C" type="Marker3D" parent="."]
+position = Vector3(2.6, -6.541576, 6.8)
+
+[node name="Waypoint_D" type="Marker3D" parent="."]
+position = Vector3(0.2, -6.541576, 6.8)

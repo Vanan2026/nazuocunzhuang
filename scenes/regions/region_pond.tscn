@@ -1,0 +1,195 @@
+[gd_scene format=3 uid="uid://region_pond"]
+
+[ext_resource type="Script" path="res://scripts/world/region.gd" id="1_region"]
+[ext_resource type="Script" path="res://scripts/world/walkable_zone.gd" id="2_walkable_zone"]
+[ext_resource type="Script" path="res://scripts/world/yard_interactable.gd" id="3_interactable"]
+[ext_resource type="Script" path="res://scripts/world/scene_exit.gd" id="4_scene_exit"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hotspot"]
+size = Vector2(150, 110)
+
+[node name="Region_Pond" type="Node2D"]
+script = ExtResource("1_region")
+region_id = "Region_Pond"
+region_display_name = "池塘空地"
+region_size = Vector2(2000, 2000)
+world_offset = Vector2(10000, 5000)
+adjacent_regions = ["Region_Orchard"]
+is_always_loaded = false
+
+[node name="RegionBounds" type="Node2D" parent="."]
+
+[node name="BoundsOutline" type="Polygon2D" parent="RegionBounds"]
+z_index = -200
+polygon = PackedVector2Array(0, 0, 2000, 0, 2000, 2000, 0, 2000)
+color = Color(0.42, 0.58, 0.50, 0.3)
+
+[node name="TileMapLayer_Ground" type="TileMapLayer" parent="."]
+z_index = -120
+
+[node name="GroundBase" type="Polygon2D" parent="TileMapLayer_Ground"]
+polygon = PackedVector2Array(0, 0, 2000, 0, 2000, 2000, 0, 2000)
+color = Color(0.45, 0.60, 0.45, 1)
+
+[node name="TileMapLayer_Path" type="TileMapLayer" parent="."]
+z_index = -110
+
+[node name="PondPath" type="Polygon2D" parent="TileMapLayer_Path"]
+polygon = PackedVector2Array(0, 900, 2000, 900, 2000, 1100, 0, 1100)
+color = Color(0.58, 0.52, 0.40, 1)
+
+[node name="TileMapLayer_Detail" type="TileMapLayer" parent="."]
+z_index = -100
+
+[node name="WalkableZone" type="Node2D" parent="."]
+script = ExtResource("2_walkable_zone")
+polygon = PackedVector2Array(0, 700, 2000, 700, 2000, 1300, 0, 1300)
+
+[node name="YSortWorld" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Pond" type="Node2D" parent="YSortWorld"]
+position = Vector2(1000, 1400)
+metadata/purpose = "main_pond"
+
+[node name="PondBase" type="Polygon2D" parent="YSortWorld/Pond"]
+polygon = PackedVector2Array(-350, -180, 350, -180, 400, 180, -400, 180)
+color = Color(0.28, 0.52, 0.60, 0.85)
+
+[node name="LilyPads" type="Node2D" parent="YSortWorld/Pond"]
+
+[node name="LilyPad1" type="Polygon2D" parent="YSortWorld/Pond/LilyPads"]
+position = Vector2(-150, -50)
+polygon = PackedVector2Array(-30, -20, 30, -20, 35, 20, -35, 20)
+color = Color(0.25, 0.55, 0.30, 0.8)
+
+[node name="LilyPad2" type="Polygon2D" parent="YSortWorld/Pond/LilyPads"]
+position = Vector2(100, 80)
+polygon = PackedVector2Array(-25, -18, 25, -18, 30, 18, -30, 18)
+color = Color(0.28, 0.58, 0.32, 0.8)
+
+[node name="WillowTrees" type="Node2D" parent="YSortWorld">
+metadata/purpose = "willow_trees"
+
+[node name="Willow1" type="Node2D" parent="YSortWorld/WillowTrees"]
+position = Vector2(300, 400)
+
+[node name="Trunk" type="Polygon2D" parent="YSortWorld/WillowTrees/Willow1"]
+polygon = PackedVector2Array(-20, -180, 20, -180, 25, 0, -25, 0)
+color = Color(0.38, 0.24, 0.14, 1)
+
+[node name="DroopingLeaves" type="Polygon2D" parent="YSortWorld/WillowTrees/Willow1"]
+z_index = 2
+polygon = PackedVector2Array(-120, -180, 120, -180, 180, 50, -180, 50)
+color = Color(0.35, 0.55, 0.32, 0.9)
+
+[node name="Willow2" type="Node2D" parent="YSortWorld/WillowTrees"]
+position = Vector2(1700, 500)
+
+[node name="Trunk" type="Polygon2D" parent="YSortWorld/WillowTrees/Willow2"]
+polygon = PackedVector2Array(-20, -160, 20, -160, 25, 0, -25, 0)
+color = Color(0.40, 0.25, 0.15, 1)
+
+[node name="DroopingLeaves" type="Polygon2D" parent="YSortWorld/WillowTrees/Willow2"]
+z_index = 2
+polygon = PackedVector2Array(-100, -160, 100, -160, 160, 40, -160, 40)
+color = Color(0.38, 0.58, 0.35, 0.9)
+
+[node name="RestPavilion" type="Node2D" parent="YSortWorld"]
+position = Vector2(1600, 1500)
+metadata/purpose = "rest_area"
+
+[node name="PavilionBase" type="Polygon2D" parent="YSortWorld/RestPavilion"]
+polygon = PackedVector2Array(-100, -60, 100, -60, 100, 60, -100, 60)
+color = Color(0.52, 0.42, 0.32, 1)
+
+[node name="PavilionRoof" type="Polygon2D" parent="YSortWorld/RestPavilion"]
+z_index = 1
+polygon = PackedVector2Array(-130, -60, 130, -60, 100, -120, -100, -120)
+color = Color(0.35, 0.28, 0.22, 1)
+
+[node name="Interactables" type="Node2D" parent="YSortWorld">
+
+[node name="ExitToOrchard" type="Area2D" parent="YSortWorld/Interactables"]
+position = Vector2(0, 1000)
+script = ExtResource("4_scene_exit")
+target_region_id = "Region_Orchard"
+target_spawn_id = "orchard_from_pond"
+exit_id = "pond_to_orchard"
+interaction_hint = "按 E 返回果园"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Interactables/ExitToOrchard"]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="HintLabel" type="Label" parent="YSortWorld/Interactables/ExitToOrchard"]
+visible = false
+offset_left = -90.0
+offset_top = -100.0
+offset_right = 90.0
+offset_bottom = -68.0
+text = "按 E 返回果园"
+horizontal_alignment = 1
+
+[node name="FishingSpot" type="Area2D" parent="YSortWorld/Interactables"]
+position = Vector2(1000, 1400)
+script = ExtResource("3_interactable")
+object_id = "pond_fishing_001"
+display_name = "池塘"
+interaction_hint = "按 E 钓鱼"
+action_id = "fishing"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Interactables/FishingSpot"]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="HintLabel" type="Label" parent="YSortWorld/Interactables/FishingSpot"]
+visible = false
+offset_left = -90.0
+offset_top = -150.0
+offset_right = 90.0
+offset_bottom = -118.0
+text = "按 E 钓鱼"
+horizontal_alignment = 1
+
+[node name="RestSpot" type="Area2D" parent="YSortWorld/Interactables"]
+position = Vector2(1600, 1500)
+script = ExtResource("3_interactable")
+object_id = "pond_rest_001"
+display_name = "休息亭"
+interaction_hint = "按 E 休息"
+action_id = "rest_pavilion"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Interactables/RestSpot"]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="HintLabel" type="Label" parent="YSortWorld/Interactables/RestSpot"]
+visible = false
+offset_left = -90.0
+offset_top = -120.0
+offset_right = 90.0
+offset_bottom = -88.0
+text = "按 E 休息"
+horizontal_alignment = 1
+
+[node name="PlayerSpawn" type="Marker2D" parent="YSortWorld"]
+position = Vector2(0, 1000)
+metadata/spawn_id = "pond_default"
+
+[node name="ForegroundStatic" type="Node2D" parent="."]
+z_index = 80
+
+[node name="ForegroundGrassLeft" type="Polygon2D" parent="ForegroundStatic"]
+polygon = PackedVector2Array(0, 0, 200, 0, 150, 500, 0, 700)
+color = Color(0.38, 0.52, 0.35, 0.5)
+
+[node name="ForegroundGrassRight" type="Polygon2D" parent="ForegroundStatic"]
+polygon = PackedVector2Array(1800, 0, 2000, 0, 2000, 600, 1850, 800)
+color = Color(0.38, 0.52, 0.35, 0.5)
+
+[node name="CameraRig" type="Camera2D" parent="."]
+position = Vector2(1000, 1000)
+current = false
+limit_left = 0
+limit_top = 0
+limit_right = 2000
+limit_bottom = 2000
+limit_smoothed = true
