@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://ecwwsb30cfbr"]
 
-[ext_resource type="PackedScene" uid="uid://chxcdasxurpi2" path="res://assets/3d/modules/hunyuan_scene_001/official/hunyuan_scene_001_module_architecture.glb" id="1_module"]
-[ext_resource type="PackedScene" uid="uid://gudungt58ttb" path="res://assets/3d/modules/hunyuan_scene_001/official/hunyuan_scene_001_module_ground.glb" id="2_module"]
-[ext_resource type="PackedScene" uid="uid://d0y5d0w4wrvft" path="res://assets/3d/modules/hunyuan_scene_001/official/hunyuan_scene_001_module_props.glb" id="3_module"]
-[ext_resource type="PackedScene" uid="uid://4q4cs477u5xh" path="res://assets/3d/modules/hunyuan_scene_001/official/hunyuan_scene_001_module_vegetation.glb" id="4_module"]
+[ext_resource type="PackedScene" path="res://assets/3d/modules/hunyuan_scene_001/official/hunyuan_scene_001_module_architecture.glb" id="1_module"]
+[ext_resource type="PackedScene" path="res://assets/3d/modules/hunyuan_scene_001/official/hunyuan_scene_001_module_ground.glb" id="2_module"]
+[ext_resource type="PackedScene" path="res://assets/3d/modules/hunyuan_scene_001/official/hunyuan_scene_001_module_props.glb" id="3_module"]
+[ext_resource type="PackedScene" path="res://assets/3d/modules/hunyuan_scene_001/official/hunyuan_scene_001_module_vegetation.glb" id="4_module"]
 
 [sub_resource type="BoxShape3D" id="FloorBox_1"]
 size = Vector3(0.6, 0.5, 0.6)

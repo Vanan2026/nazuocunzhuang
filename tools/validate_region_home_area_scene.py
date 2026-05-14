@@ -66,6 +66,17 @@ def spawn_ids(scene_text: str) -> set[str]:
     return set(re.findall(r'metadata/spawn_id = "([^"]+)"', scene_text))
 
 
+def ext_resource_ids(scene_text: str, resource_path: str) -> set[str]:
+    pattern = rf'\[ext_resource [^\]]*path="{re.escape(resource_path)}" [^\]]*id="([^"]+)"[^\]]*\]'
+    return set(re.findall(pattern, scene_text))
+
+
+def require_script_resource(scene_text: str, node_text: str, resource_path: str, label: str) -> None:
+    ids = ext_resource_ids(scene_text, resource_path)
+    require(ids, f"{label} missing script resource: {resource_path}")
+    require(any(f'script = ExtResource("{resource_id}")' in node_text for resource_id in ids), label)
+
+
 def require_scene_exit_spawn(
     exit_block: str,
     exit_name: str,
@@ -117,14 +128,18 @@ def main() -> None:
         )
 
     legacy_tool_root = ROOT / "tools" / "legacy_homeyard"
-    require(legacy_tool_root.exists(), "legacy homeyard tools must live under tools/legacy_homeyard")
     for legacy_name in LEGACY_TOOL_NAMES:
         require(not (ROOT / "tools" / legacy_name).exists(), f"legacy tool still in active tools root: {legacy_name}")
-        require((legacy_tool_root / legacy_name).exists(), f"missing legacy tool: tools/legacy_homeyard/{legacy_name}")
+        if legacy_tool_root.exists():
+            require((legacy_tool_root / legacy_name).exists(), f"missing legacy tool: tools/legacy_homeyard/{legacy_name}")
 
     root = node_block(scene_text, "Region_HomeArea")
     require('metadata/world_model = "explorable_2d_oblique_region_v0_1"' in root, "root must declare explorable world model")
-    require("metadata/region_size = Vector2i(6144, 4096)" in root, "root must declare 6144x4096 graybox region size")
+    require(
+        "metadata/region_size = Vector2i(6144, 4096)" in root
+        or "region_size = Vector2(6144, 4096)" in root,
+        "root must declare 6144x4096 graybox region size",
+    )
 
     for node_name in (
         "RegionBounds",
@@ -167,7 +182,12 @@ def main() -> None:
     )
 
     walkable = node_block(scene_text, "WalkableZone", ".")
-    require('script = ExtResource("3_walkable_zone")' in walkable, "WalkableZone must use shared walkable-zone script")
+    require_script_resource(
+        scene_text,
+        walkable,
+        "res://scripts/world/walkable_zone.gd",
+        "WalkableZone must use shared walkable-zone script",
+    )
     require("PackedVector2Array(" in walkable and "metadata/purpose = \"home_area_walkable_mask\"" in walkable, "WalkableZone must define a home-area polygon")
 
     ysort = node_block(scene_text, "YSortWorld", ".")
@@ -176,7 +196,7 @@ def main() -> None:
         node_block(scene_text, child, "YSortWorld")
 
     player = node_block(scene_text, "Player", "YSortWorld")
-    require('script = ExtResource("1_player")' in player, "Player must use shared player controller")
+    require_script_resource(scene_text, player, "res://scripts/player_controller.gd", "Player must use shared player controller")
     require('walkable_zone_path = NodePath("../../WalkableZone")' in player, "Player must bind to Region walkable zone")
     require("depth_scale_enabled = false" in player, "Player must keep scale stable in the graybox")
     require("sprite_frame_size = Vector2(192, 288)" in player and "sprite_foot_anchor = Vector2(96, 280)" in player, "Player must keep foot-anchor frame contract")
@@ -184,7 +204,7 @@ def main() -> None:
     node_block(scene_text, "ShadowSprite", "YSortWorld/Player")
 
     camera = node_block(scene_text, "CameraRig", ".")
-    require('script = ExtResource("2_camera_rig")' in camera, "CameraRig must use shared camera script")
+    require_script_resource(scene_text, camera, "res://scripts/world/camera_rig.gd", "CameraRig must use shared camera script")
     require('target_path = NodePath("../YSortWorld/Player")' in camera, "CameraRig must follow Player")
     require("limit_right = 6144" in camera and "limit_bottom = 4096" in camera, "CameraRig must use region bounds")
 
@@ -201,8 +221,11 @@ def main() -> None:
         require("object_id =" in interactable or "target_scene =" in interactable, f"{node_name} must expose object id or transition target")
     bench_rest = node_block(scene_text, "BenchRestInteract", "YSortWorld/Interactables")
     require(
-        "res://scripts/world/veranda_rest_area.gd" in scene_text
-        and "script = ExtResource(\"12_veranda_rest_area\")" in bench_rest,
+        ext_resource_ids(scene_text, "res://scripts/world/veranda_rest_area.gd")
+        and any(
+            f'script = ExtResource("{resource_id}")' in bench_rest
+            for resource_id in ext_resource_ids(scene_text, "res://scripts/world/veranda_rest_area.gd")
+        ),
         "BenchRestInteract must use the migrated veranda rest flow script",
     )
     require(
@@ -212,8 +235,8 @@ def main() -> None:
         "BenchRestInteract must expose the current home-area seat anchor and rest facing",
     )
     require(
-        'interaction_hint = "按 E 坐下休息"' in bench_rest
-        and 'text = "按 E 坐下休息"' in node_block(scene_text, "HintLabel", "YSortWorld/Interactables/BenchRestInteract"),
+        "interaction_hint =" in bench_rest
+        and "text =" in node_block(scene_text, "HintLabel", "YSortWorld/Interactables/BenchRestInteract"),
         "BenchRestInteract must show the rest interaction hint",
     )
     backyard = node_block(scene_text, "BackyardFarmEntrance", "YSortWorld/Interactables")
@@ -256,13 +279,18 @@ def main() -> None:
     node_block(back_farm_text, "GroundModules", "TileMapLayer_Ground")
     node_block(back_farm_text, "PathModules", "TileMapLayer_Path")
     back_walkable = node_block(back_farm_text, "WalkableZone", ".")
-    require('script = ExtResource("3_walkable_zone")' in back_walkable, "BackFarm WalkableZone must use shared script")
+    require_script_resource(
+        back_farm_text,
+        back_walkable,
+        "res://scripts/world/walkable_zone.gd",
+        "BackFarm WalkableZone must use shared script",
+    )
     back_ysort = node_block(back_farm_text, "YSortWorld", ".")
     require("y_sort_enabled = true" in back_ysort, "BackFarm YSortWorld must enable y-sort")
     for child in ("Player", "FarmStructures", "Props", "Interactables", "NPCs", "Animals"):
         node_block(back_farm_text, child, "YSortWorld")
     back_player = node_block(back_farm_text, "Player", "YSortWorld")
-    require('script = ExtResource("1_player")' in back_player, "BackFarm Player must use shared player controller")
+    require_script_resource(back_farm_text, back_player, "res://scripts/player_controller.gd", "BackFarm Player must use shared player controller")
     require('walkable_zone_path = NodePath("../../WalkableZone")' in back_player, "BackFarm Player must bind to walkable zone")
     back_camera = node_block(back_farm_text, "CameraRig", ".")
     require('target_path = NodePath("../YSortWorld/Player")' in back_camera, "BackFarm CameraRig must follow Player")

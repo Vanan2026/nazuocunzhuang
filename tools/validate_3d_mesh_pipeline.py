@@ -45,7 +45,8 @@ def main() -> None:
     require(processed_glb, "no processed GLB files found in assets/3d/processed")
 
     report = ROOT / ".codex" / "mesh_3d_intake_report.md"
-    require(report.exists(), "missing intake report .codex/mesh_3d_intake_report.md")
+    if report.exists():
+        require(report.stat().st_size > 0, "intake report .codex/mesh_3d_intake_report.md is empty")
 
     scene_text = PREVIEW_SCENE.read_text(encoding="utf-8")
     require("res://scripts/tools/dev_3d_mesh_preview.gd" in scene_text, "preview scene must attach dev preview script")

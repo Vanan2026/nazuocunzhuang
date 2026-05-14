@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" path="res://sprites/environments/regions/home_area/ground/region_home_area_ground_grass_yard_v001.png" id="9_grass_yard_png"]
 [ext_resource type="Texture2D" path="res://sprites/environments/regions/home_area/path/region_home_area_path_front_yard_v001.png" id="10_front_path_png"]
 [ext_resource type="Texture2D" path="res://sprites/environments/regions/home_area/foreground/region_home_area_foreground_front_grass_left_v001.png" id="11_front_grass_left_png"]
+[ext_resource type="Script" path="res://scripts/world/veranda_rest_area.gd" id="12_veranda_rest_area"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
 size = Vector2(40, 20)
@@ -401,13 +402,16 @@ horizontal_alignment = 1
 
 [node name="BenchRestInteract" type="Area2D" parent="YSortWorld/Interactables"]
 position = Vector2(4110, 2410)
-script = ExtResource("7_yard_interactable")
+script = ExtResource("12_veranda_rest_area")
 object_id = "homearea_bench_001"
 display_name = "长椅"
-interaction_hint = "按 E 坐下"
+interaction_hint = "鎸?E 鍧愪笅浼戞伅"
 feedback_text = "这里能看到屋檐下的阴影慢慢移动。"
 action_id = "rest_bench"
 
+seat_anchor = Vector2(4110, 2428)
+rest_facing = Vector2(1, 0)
+metadata/purpose = "veranda_rest_area"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Interactables/BenchRestInteract"]
 shape = SubResource("RectangleShape2D_hotspot")
 
@@ -417,7 +421,7 @@ offset_left = -90.0
 offset_top = -120.0
 offset_right = 90.0
 offset_bottom = -88.0
-text = "按 E 坐下"
+text = "鎸?E 鍧愪笅浼戞伅"
 horizontal_alignment = 1
 
 [node name="RoadSignInteract" type="Area2D" parent="YSortWorld/Interactables"]
