@@ -66,6 +66,7 @@ func hide_dialogue() -> void:
         emit_signal("dialogue_closed")
 
 func _input(event: InputEvent) -> void:
-    if dialogue_box and dialogue_box.visible:
+    if dialogue_box and dialogue_box.visible and event is InputEvent:
         if event.is_action_pressed("interact") or event.is_action_pressed("ui_accept"):
             hide_dialogue()
+            get_tree().root.set_input_as_handled()

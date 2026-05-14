@@ -17,13 +17,16 @@ func _ready() -> void:
 func on_interact(interactor: Node) -> void:
     if is_interacting:
         return
-    
+
     is_interacting = true
     emit_signal("npc_interact_requested", npc_id)
-    
-    if has_node("/root/NPCManager"):
-        get_node("/root/NPCManager").interact(npc_id)
-    
+
+    var npc_mgr = get_node_or_null("/root/NpcManager")
+    if npc_mgr != null and npc_mgr.has_method("interact"):
+        npc_mgr.interact(npc_id)
+    else:
+        push_warning("[NPCBehavior] NPCManager 不可用或没有 interact 方法")
+
     await get_tree().create_timer(0.5).timeout
     is_interacting = false
     emit_signal("npc_interaction_complete", npc_id)

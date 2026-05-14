@@ -1,4 +1,4 @@
-extends Node3D
+﻿extends Node3D
 
 @export_dir var mesh_dir: String = "res://assets/3d/processed"
 @export var max_items: int = 24

@@ -1,4 +1,4 @@
-extends Area2D
+﻿extends Area2D
 
 signal interaction_available(target: Node)
 signal interaction_unavailable
@@ -23,7 +23,7 @@ func _on_body_exited(body: Node) -> void:
         emit_signal("interaction_unavailable")
 
 func on_interact(interactor: Node) -> void:
-    pass
+    emit_signal("interaction_available", self)
 
 func get_interaction_hint() -> String:
-    return "按 E 交互"
+    return "鎸?E 浜や簰"

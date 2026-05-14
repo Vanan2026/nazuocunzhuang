@@ -1,4 +1,4 @@
-extends Node2D
+﻿extends Node2D
 
 @export var cloud_drift_pixels: float = 18.0
 @export var cloud_drift_seconds: float = 18.0

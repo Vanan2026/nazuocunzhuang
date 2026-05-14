@@ -1,0 +1,90 @@
+{
+  "package_id": "concept_trailer_2d_slice_2026-05-14",
+  "title": "那座村庄 - 2D Slice Concept Trailer",
+  "target_duration_seconds": 18.0,
+  "aspect_ratio": "16:9",
+  "resolution": [1280, 720],
+  "source_files": [
+    "scenes/world/world.tscn",
+    "scenes/regions/region_home_area.tscn",
+    "scenes/regions/region_back_farm.tscn",
+    "scripts/world/veranda_rest_area.gd",
+    "scripts/activities/farm_system.gd",
+    "scripts/activities/farm_plot_interactable.gd",
+    "sprites/characters/protagonist/player_mvp_4dir_frames.tres"
+  ],
+  "shots": [
+    {
+      "id": "shot_01_home_wakeup",
+      "duration_seconds": 3.0,
+      "region_id": "Region_HomeArea",
+      "spawn_id": "home_area_default",
+      "player_local": [3072, 2280],
+      "camera_focus_local": [3072, 2280],
+      "facing": [0, 1],
+      "pose": "idle",
+      "capture_file": "01_home_wakeup.png",
+      "capture_intent": "Open on the playable HomeArea slice: the protagonist stands in the yard with the house, tree shade, props, and grounded 2D scale visible."
+    },
+    {
+      "id": "shot_02_cross_yard",
+      "duration_seconds": 3.0,
+      "region_id": "Region_HomeArea",
+      "spawn_id": "home_area_default",
+      "player_local": [3950, 2510],
+      "camera_focus_local": [3950, 2510],
+      "facing": [1, 0],
+      "pose": "walk",
+      "capture_file": "02_cross_yard.png",
+      "capture_intent": "Show the redesigned protagonist in motion across the yard, selling the new walk/idle animation set before any UI-heavy interaction."
+    },
+    {
+      "id": "shot_03_veranda_rest",
+      "duration_seconds": 3.0,
+      "region_id": "Region_HomeArea",
+      "spawn_id": "home_area_default",
+      "player_local": [4110, 2410],
+      "camera_focus_local": [4110, 2410],
+      "facing": [1, 0],
+      "pose": "veranda_rest",
+      "capture_file": "03_veranda_rest.png",
+      "capture_intent": "Trigger the veranda rest interaction and hold the sitting pose to communicate the quiet daily-life fantasy."
+    },
+    {
+      "id": "shot_04_back_farm_entry",
+      "duration_seconds": 3.0,
+      "region_id": "Region_BackFarm",
+      "spawn_id": "back_farm_default",
+      "player_local": [1000, 0],
+      "camera_focus_local": [1000, 640],
+      "facing": [0, 1],
+      "pose": "idle",
+      "capture_file": "04_back_farm_entry.png",
+      "capture_intent": "Cut to the verified HomeArea to BackFarm slice and show the farm layout as a connected playable place."
+    },
+    {
+      "id": "shot_05_plant_and_water",
+      "duration_seconds": 3.0,
+      "region_id": "Region_BackFarm",
+      "spawn_id": "back_farm_default",
+      "player_local": [500, 500],
+      "camera_focus_local": [620, 620],
+      "facing": [0, 1],
+      "pose": "farm_plant_water",
+      "capture_file": "05_plant_and_water.png",
+      "capture_intent": "Use FarmPlot0 interaction to show the planted/watered state from the verified BackFarm micro-loop."
+    },
+    {
+      "id": "shot_06_harvest_close",
+      "duration_seconds": 3.0,
+      "region_id": "Region_BackFarm",
+      "spawn_id": "back_farm_default",
+      "player_local": [500, 500],
+      "camera_focus_local": [620, 620],
+      "facing": [0, 1],
+      "pose": "farm_harvest_ready",
+      "capture_file": "06_harvest_close.png",
+      "capture_intent": "Fast-forward FarmPlot0 to ready state and harvest once, ending on the promise of a playable daily loop."
+    }
+  ]
+}

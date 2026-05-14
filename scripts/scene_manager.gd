@@ -1,4 +1,4 @@
-extends Node
+﻿extends Node
 
 var current_scene_path: String = ""
 var transition_duration: float = 0.5

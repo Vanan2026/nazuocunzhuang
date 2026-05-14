@@ -1,7 +1,10 @@
-extends SceneTree
+﻿extends SceneTree
 
+const HeadlessLifecycle := preload("res://tools/headless_lifecycle.gd")
 const TARGET_SCENE := "res://scenes/regions/region_home_area.tscn"
 const EXPECTED_BGM := "res://audio/bgm/Sunlight_on_the_Veranda.mp3"
+
+var _finishing := false
 
 
 func _initialize() -> void:
@@ -48,9 +51,22 @@ func _run() -> void:
 		return
 
 	print("OK: audio runtime validated (stream bound + current_bgm set)")
-	quit(0)
+	bgm_player = null
+	audio_manager = null
+	_finish_deferred(0)
 
 
 func _fail(message: String) -> void:
 	printerr("FAIL: %s" % message)
-	quit(1)
+	_finish_deferred(1)
+
+
+func _finish_deferred(exit_code: int) -> void:
+	if _finishing:
+		return
+	_finishing = true
+	call_deferred("_finish", exit_code)
+
+
+func _finish(exit_code: int) -> void:
+	await HeadlessLifecycle.cleanup_and_quit(self, exit_code)

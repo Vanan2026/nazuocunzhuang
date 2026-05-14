@@ -1,4 +1,4 @@
-extends Node
+﻿extends Node
 
 var bgm_player: AudioStreamPlayer
 var ambient_player: AudioStreamPlayer
@@ -7,10 +7,11 @@ var sfx_player: AudioStreamPlayer
 var current_bgm: String = ""
 var is_muted: bool = false
 var volume: float = 0.8
+var _active_tweens: Array[Tween] = []
 
 func _ready() -> void:
     setup_players()
-    print('[AudioManager] 音频系统已初始化')
+    print('[AudioManager] 闊抽绯荤粺宸插垵濮嬪寲')
 
 func setup_players() -> void:
     bgm_player = AudioStreamPlayer.new()
@@ -31,7 +32,7 @@ func play_bgm(path: String, fade_in: bool = true) -> void:
     
     var stream = load(path) as AudioStream
     if not stream:
-        print('[AudioManager] 无法加载BGM: ', path)
+        print('[AudioManager] 鏃犳硶鍔犺浇BGM: ', path)
         return
     
     if fade_in:
@@ -41,17 +42,19 @@ func play_bgm(path: String, fade_in: bool = true) -> void:
         bgm_player.play()
         
         var tween = create_tween()
+        _active_tweens.append(tween)
         tween.tween_property(bgm_player, "volume_db", target_vol, 2.0)
     else:
         bgm_player.stream = stream
         bgm_player.play()
     
     current_bgm = path
-    print('[AudioManager] 播放BGM: ', path)
+    print('[AudioManager] 鎾斁BGM: ', path)
 
 func stop_bgm(fade_out: bool = true) -> void:
     if fade_out and bgm_player.playing:
         var tween = create_tween()
+        _active_tweens.append(tween)
         tween.tween_property(bgm_player, "volume_db", -80, 1.5)
         tween.tween_callback(bgm_player.stop)
         tween.tween_callback(func(): current_bgm = "")
@@ -89,6 +92,25 @@ func toggle_mute() -> void:
         unmute()
     else:
         mute()
+
+func cleanup_for_headless() -> void:
+    _kill_audio_tweens()
+    _release_player(bgm_player)
+    _release_player(ambient_player)
+    _release_player(sfx_player)
+    current_bgm = ""
+
+func _kill_audio_tweens() -> void:
+    for tween in _active_tweens:
+        if tween != null and tween.is_valid():
+            tween.kill()
+    _active_tweens.clear()
+
+func _release_player(player: AudioStreamPlayer) -> void:
+    if player == null:
+        return
+    player.stop()
+    player.stream = null
 
 func _input(event: InputEvent) -> void:
     if event.is_action_pressed("volume_up"):

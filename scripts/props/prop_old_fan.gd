@@ -1,4 +1,4 @@
-extends Node2D
+﻿extends Node2D
 
 var is_running: bool = false
 var rotation_speed: float = 720.0

@@ -4,9 +4,9 @@ signal visitor_arrived(visitor_data: Dictionary)
 signal visitor_departed(visitor_id: String)
 
 const VISITOR_TYPES = {
-    "seasonal": ["返乡青年", "旅游者", "商人"],
-    "relationship": ["居民的朋友", "探亲家人"],
-    "random": ["流浪猫", "旅行画家", "迷路的旅人"]
+    "seasonal": ["故乡游子", "旅行者", "商人"],
+    "relationship": ["村民的亲戚", "朋友家人"],
+    "random": ["卖货郎", "旅行艺人", "过路的旅客"]
 }
 
 var active_visitors: Array = []
@@ -17,11 +17,11 @@ func _ready() -> void:
 
 func generate_daily_visitors() -> Array:
     var visitors = []
-    
+
     var season = "spring"
     if has_node("/root/TimeSystem"):
         season = get_node("/root/TimeSystem").current_season
-    
+
     var seasonal = VISITOR_TYPES["seasonal"].pick_random()
     visitors.append({
         "type": "seasonal",
@@ -30,7 +30,7 @@ func generate_daily_visitors() -> Array:
         "stay_days": randi() % 5 + 2,
         "season": season
     })
-    
+
     if randf() < 0.3:
         var random_type = VISITOR_TYPES["random"].pick_random()
         visitors.append({
@@ -39,7 +39,7 @@ func generate_daily_visitors() -> Array:
             "arrival_day": randi() % 3 + 1,
             "stay_days": 1
         })
-    
+
     return visitors
 
 func trigger_visitor(visitor_data: Dictionary) -> void:

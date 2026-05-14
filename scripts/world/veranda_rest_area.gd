@@ -1,6 +1,6 @@
-extends Area2D
+﻿extends Area2D
 
-@export var interaction_hint: String = "按 E 坐下休息"
+@export var interaction_hint: String = "鎸?E 鍧愪笅浼戞伅"
 @export var seat_anchor: Vector2 = Vector2(930, 548)
 @export var rest_facing: Vector2 = Vector2.RIGHT
 

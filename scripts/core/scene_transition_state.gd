@@ -1,4 +1,4 @@
-extends Node
+﻿extends Node
 
 var pending_target_scene: String = ""
 var pending_spawn_id: String = ""

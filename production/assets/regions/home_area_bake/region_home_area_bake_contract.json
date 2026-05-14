@@ -1,0 +1,165 @@
+{
+  "region_id": "Region_HomeArea",
+  "version": "0.1.0",
+  "purpose": "3D-assisted source contract for fixed-camera layered 2D environment baking.",
+  "runtime_boundary": "offline_3d_source_only",
+  "runtime_import_mode": "layered_2d_png",
+  "canvas_px": {
+    "width": 6144,
+    "height": 4096
+  },
+  "unit_mapping": {
+    "pixels_per_meter": 100,
+    "axis_map": {
+      "godot_2d_x": "godot_3d_x",
+      "godot_2d_y": "godot_3d_z",
+      "height": "godot_3d_y"
+    },
+    "origin": "region_top_left"
+  },
+  "bake_camera": {
+    "scene_path": "res://scenes/dev/region_home_area_bake_blockout_3d.tscn",
+    "node_path": "RegionHomeAreaBakeBlockout3D/BakeCamera",
+    "projection": "orthogonal_oblique",
+    "target_canvas_px": {
+      "width": 6144,
+      "height": 4096
+    }
+  },
+  "style_target": {
+    "lighting": "low-saturation summer rural daylight",
+    "surface": "hand-painted 2D after bake, no photorealistic material lock",
+    "characters_baked": false
+  },
+  "export_layers": [
+    {
+      "id": "ground_grass_yard",
+      "export_name": "region_home_area_ground_grass_yard_v001.png",
+      "type": "ground_patch",
+      "target_parent": "TileMapLayer_Ground/GroundModules",
+      "origin_px": {
+        "x": 1440,
+        "y": 1320
+      },
+      "anchor": "top_left_source_space",
+      "source_nodes_3d": ["GroundPlane"]
+    },
+    {
+      "id": "path_front_yard",
+      "export_name": "region_home_area_path_front_yard_v001.png",
+      "type": "path_patch",
+      "target_parent": "TileMapLayer_Path/PathModules",
+      "origin_px": {
+        "x": 2060,
+        "y": 1600
+      },
+      "anchor": "top_left_source_space",
+      "source_nodes_3d": ["HomeFrontYardPath"]
+    },
+    {
+      "id": "structure_cloud_house_back",
+      "export_name": "region_home_area_structure_cloud_house_back_v001.png",
+      "type": "ysort_structure",
+      "target_parent": "YSortWorld/Houses",
+      "origin_px": {
+        "x": 2310,
+        "y": 1040
+      },
+      "anchor": "foot_base_center",
+      "source_nodes_3d": ["CloudHouseBody"]
+    },
+    {
+      "id": "structure_cloud_house_roof_occluder",
+      "export_name": "region_home_area_structure_cloud_house_roof_occluder_v001.png",
+      "type": "occluder",
+      "target_parent": "YSortWorld/Houses",
+      "origin_px": {
+        "x": 2310,
+        "y": 1040
+      },
+      "anchor": "documented_top_left",
+      "source_nodes_3d": ["CloudHouseRoofOccluder"]
+    },
+    {
+      "id": "tree_left_trunk",
+      "export_name": "region_home_area_tree_left_trunk_v001.png",
+      "type": "ysort_prop_body",
+      "target_parent": "YSortWorld/Trees",
+      "origin_px": {
+        "x": 1290,
+        "y": 990
+      },
+      "anchor": "trunk_foot_center",
+      "source_nodes_3d": ["LeftShadeTreeTrunk"]
+    },
+    {
+      "id": "tree_left_canopy_occluder",
+      "export_name": "region_home_area_tree_left_canopy_occluder_v001.png",
+      "type": "occluder",
+      "target_parent": "YSortWorld/Trees",
+      "origin_px": {
+        "x": 840,
+        "y": 570
+      },
+      "anchor": "documented_top_left",
+      "source_nodes_3d": ["LeftShadeTreeCanopy"]
+    },
+    {
+      "id": "tree_right_trunk",
+      "export_name": "region_home_area_tree_right_trunk_v001.png",
+      "type": "ysort_prop_body",
+      "target_parent": "YSortWorld/Trees",
+      "origin_px": {
+        "x": 4560,
+        "y": 1450
+      },
+      "anchor": "trunk_foot_center",
+      "source_nodes_3d": ["RightPersimmonTreeTrunk"]
+    },
+    {
+      "id": "tree_right_canopy_occluder",
+      "export_name": "region_home_area_tree_right_canopy_occluder_v001.png",
+      "type": "occluder",
+      "target_parent": "YSortWorld/Trees",
+      "origin_px": {
+        "x": 4270,
+        "y": 1120
+      },
+      "anchor": "documented_top_left",
+      "source_nodes_3d": ["RightPersimmonTreeCanopy"]
+    },
+    {
+      "id": "foreground_front_grass_left",
+      "export_name": "region_home_area_foreground_front_grass_left_v001.png",
+      "type": "foreground_occluder",
+      "target_parent": "ForegroundStatic",
+      "origin_px": {
+        "x": 420,
+        "y": 2460
+      },
+      "anchor": "top_left_source_space",
+      "source_nodes_3d": ["ForegroundGrassLeftGuide"]
+    },
+    {
+      "id": "fx_dappled_light",
+      "export_name": "region_home_area_fx_dappled_light_v001.png",
+      "type": "light_overlay",
+      "target_parent": "LightAndWeather",
+      "origin_px": {
+        "x": 700,
+        "y": 840
+      },
+      "anchor": "top_left_source_space",
+      "source_nodes_3d": ["DappledLightGuide"]
+    }
+  ],
+  "acceptance": {
+    "no_runtime_3d_nodes_in_region_scene": true,
+    "no_characters_baked_into_environment": true,
+    "required_godot_checks": [
+      "load_scene.gd -- res://scenes/regions/region_home_area.tscn",
+      "validate_region_home_area_visual_walkthrough.gd -- --check-only",
+      "validate_scene_transition_spawn.gd -- --check-only"
+    ]
+  }
+}

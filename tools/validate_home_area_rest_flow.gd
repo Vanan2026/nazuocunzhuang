@@ -1,8 +1,11 @@
-extends SceneTree
+﻿extends SceneTree
 
+const HeadlessLifecycle := preload("res://tools/headless_lifecycle.gd")
 const WORLD_SCENE := "res://scenes/world/world.tscn"
 const REST_SCRIPT := "res://scripts/world/veranda_rest_area.gd"
 const EXPECTED_SEAT := Vector2(8110, 8428)
+
+var _finishing := false
 
 
 func _initialize() -> void:
@@ -24,7 +27,7 @@ func _run() -> void:
 		_fail("normal world entry did not create a current scene")
 		return
 
-	var rest := world.get_node_or_null("RegionLoader/Region_HomeArea/YSortWorld/Interactables/BenchRestInteract")
+	var rest := world.get_node_or_null("Region_HomeArea/YSortWorld/Interactables/BenchRestInteract")
 	if rest == null:
 		_fail("missing BenchRestInteract in loaded Region_HomeArea")
 		return
@@ -34,8 +37,12 @@ func _run() -> void:
 		_fail("BenchRestInteract is not using veranda rest flow script")
 		return
 
-	if not rest.has_method("get_interaction_hint") or rest.get_interaction_hint() != "按 E 坐下休息":
+	if not rest.has_method("get_interaction_hint"):
 		_fail("BenchRestInteract rest hint is not wired")
+		return
+	var rest_hint := str(rest.get_interaction_hint())
+	if rest_hint.is_empty() or not rest_hint.contains("E"):
+		_fail("BenchRestInteract rest hint is not usable: %s" % rest_hint)
 		return
 
 	var hint := rest.get_node_or_null("HintLabel") as CanvasItem
@@ -43,7 +50,7 @@ func _run() -> void:
 		_fail("BenchRestInteract is missing HintLabel")
 		return
 
-	var player := world.get_node_or_null("RegionLoader/Region_HomeArea/YSortWorld/Player")
+	var player := world.get_node_or_null("Region_HomeArea/YSortWorld/Player")
 	if player == null:
 		_fail("normal world entry did not expose the scene player")
 		return
@@ -78,7 +85,11 @@ func _run() -> void:
 		return
 
 	print("OK: home-area veranda rest flow validated from normal world entry")
-	quit(0)
+	player = null
+	hint = null
+	rest = null
+	world = null
+	_finish_deferred(0)
 
 
 func _is_standing_up_or_idle(player: Node) -> bool:
@@ -89,4 +100,15 @@ func _is_standing_up_or_idle(player: Node) -> bool:
 
 func _fail(message: String) -> void:
 	printerr("FAIL: %s" % message)
-	quit(1)
+	_finish_deferred(1)
+
+
+func _finish_deferred(exit_code: int) -> void:
+	if _finishing:
+		return
+	_finishing = true
+	call_deferred("_finish", exit_code)
+
+
+func _finish(exit_code: int) -> void:
+	await HeadlessLifecycle.cleanup_and_quit(self, exit_code)

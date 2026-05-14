@@ -1,0 +1,159 @@
+{
+  "region_id": "Region_HomeArea",
+  "candidate_id": "home_area_bake_v001",
+  "contract": "production/assets/regions/home_area_bake/region_home_area_bake_contract.json",
+  "layers": [
+    {
+      "id": "ground_grass_yard",
+      "file": "region_home_area_ground_grass_yard_v001.png",
+      "origin_px": {
+        "x": 1440,
+        "y": 1320
+      },
+      "size_px": {
+        "width": 3580,
+        "height": 1800
+      },
+      "target_parent": "TileMapLayer_Ground/GroundModules",
+      "anchor": "top_left_source_space",
+      "source": "procedural_candidate_from_home_area_bake_contract_v001"
+    },
+    {
+      "id": "path_front_yard",
+      "file": "region_home_area_path_front_yard_v001.png",
+      "origin_px": {
+        "x": 2060,
+        "y": 1600
+      },
+      "size_px": {
+        "width": 2200,
+        "height": 980
+      },
+      "target_parent": "TileMapLayer_Path/PathModules",
+      "anchor": "top_left_source_space",
+      "source": "procedural_candidate_from_home_area_bake_contract_v001"
+    },
+    {
+      "id": "structure_cloud_house_back",
+      "file": "region_home_area_structure_cloud_house_back_v001.png",
+      "origin_px": {
+        "x": 2310,
+        "y": 1040
+      },
+      "size_px": {
+        "width": 1700,
+        "height": 920
+      },
+      "target_parent": "YSortWorld/Houses",
+      "anchor": "foot_base_center",
+      "source": "procedural_candidate_from_home_area_bake_contract_v001"
+    },
+    {
+      "id": "structure_cloud_house_roof_occluder",
+      "file": "region_home_area_structure_cloud_house_roof_occluder_v001.png",
+      "origin_px": {
+        "x": 2310,
+        "y": 1040
+      },
+      "size_px": {
+        "width": 1700,
+        "height": 260
+      },
+      "target_parent": "YSortWorld/Houses",
+      "anchor": "documented_top_left",
+      "source": "procedural_candidate_from_home_area_bake_contract_v001"
+    },
+    {
+      "id": "tree_left_trunk",
+      "file": "region_home_area_tree_left_trunk_v001.png",
+      "origin_px": {
+        "x": 1290,
+        "y": 990
+      },
+      "size_px": {
+        "width": 300,
+        "height": 560
+      },
+      "target_parent": "YSortWorld/Trees",
+      "anchor": "trunk_foot_center",
+      "source": "procedural_candidate_from_home_area_bake_contract_v001"
+    },
+    {
+      "id": "tree_left_canopy_occluder",
+      "file": "region_home_area_tree_left_canopy_occluder_v001.png",
+      "origin_px": {
+        "x": 840,
+        "y": 570
+      },
+      "size_px": {
+        "width": 980,
+        "height": 760
+      },
+      "target_parent": "YSortWorld/Trees",
+      "anchor": "documented_top_left",
+      "source": "procedural_candidate_from_home_area_bake_contract_v001"
+    },
+    {
+      "id": "tree_right_trunk",
+      "file": "region_home_area_tree_right_trunk_v001.png",
+      "origin_px": {
+        "x": 4560,
+        "y": 1450
+      },
+      "size_px": {
+        "width": 300,
+        "height": 640
+      },
+      "target_parent": "YSortWorld/Trees",
+      "anchor": "trunk_foot_center",
+      "source": "procedural_candidate_from_home_area_bake_contract_v001"
+    },
+    {
+      "id": "tree_right_canopy_occluder",
+      "file": "region_home_area_tree_right_canopy_occluder_v001.png",
+      "origin_px": {
+        "x": 4270,
+        "y": 1120
+      },
+      "size_px": {
+        "width": 1080,
+        "height": 820
+      },
+      "target_parent": "YSortWorld/Trees",
+      "anchor": "documented_top_left",
+      "source": "procedural_candidate_from_home_area_bake_contract_v001"
+    },
+    {
+      "id": "foreground_front_grass_left",
+      "file": "region_home_area_foreground_front_grass_left_v001.png",
+      "origin_px": {
+        "x": 420,
+        "y": 2460
+      },
+      "size_px": {
+        "width": 1500,
+        "height": 620
+      },
+      "target_parent": "ForegroundStatic",
+      "anchor": "top_left_source_space",
+      "source": "procedural_candidate_from_home_area_bake_contract_v001"
+    },
+    {
+      "id": "fx_dappled_light",
+      "file": "region_home_area_fx_dappled_light_v001.png",
+      "origin_px": {
+        "x": 700,
+        "y": 840
+      },
+      "size_px": {
+        "width": 1780,
+        "height": 870
+      },
+      "target_parent": "LightAndWeather",
+      "anchor": "top_left_source_space",
+      "source": "procedural_candidate_from_home_area_bake_contract_v001"
+    }
+  ],
+  "preview": "region_home_area_bake_candidate_preview.png",
+  "runtime_replacement": false
+}

@@ -1,4 +1,4 @@
-extends Node2D
+﻿extends Node2D
 
 const HOME_AREA_BGM := "res://audio/bgm/Sunlight_on_the_Veranda.mp3"
 

@@ -1,32 +1,27 @@
 extends Node
 class_name RegionLoader
 
-signal region_loading_started(region_id: String)
-signal region_loading_completed(region_id: String)
-signal region_loading_failed(region_id: String, error: String)
-signal all_regions_unloaded()
+signal current_region_changed(from_region: String, to_region: String)
 
-const LOAD_BATCH_SIZE: int = 2
-
+var world: Node = null
+var _loading: bool = false
+var _load_queue: Array = []
 var regions: Dictionary = {}
 var loaded_regions: Dictionary = {}
-var active_regions: Array[String] = []
-var region_scenes: Dictionary = {}
-
 var current_region_id: String = ""
-var player_ref: Node2D = null
-
-var load_queue: Array[String] = []
-var is_processing_queue: bool = false
+var load_distance: float = 2048.0
 
 func _ready() -> void:
+	if world == null:
+		world = get_parent()
+	add_to_group("region_loader")
 	print("[RegionLoader] 初始化完成")
 
-func _process(delta: float) -> void:
-	if player_ref == null:
-		return
-	_update_region_states(player_ref.global_position)
-	_process_load_queue()
+func _process(_delta: float) -> void:
+	if world and world.has_node("Player"):
+		var player_ref = world.get_node("Player")
+		_update_region_states(player_ref.global_position)
+		_process_load_queue()
 
 func initialize(region_definitions: Array[Dictionary]) -> void:
 	for def in region_definitions:
@@ -37,7 +32,7 @@ func register_region_definition(def: Dictionary) -> void:
 	var id: String = def.get("region_id", "")
 	if id.is_empty():
 		return
-	
+
 	regions[id] = {
 		"scene_path": def.get("scene_path", ""),
 		"world_offset": def.get("world_offset", Vector2.ZERO),
@@ -45,192 +40,146 @@ func register_region_definition(def: Dictionary) -> void:
 		"adjacent_regions": def.get("adjacent_regions", []),
 		"is_always_loaded": def.get("is_always_loaded", false),
 		"display_name": def.get("display_name", id),
-		"preload_distance": def.get("preload_distance", 800.0),
-		"unload_distance": def.get("unload_distance", 1500.0)
+		"spawn_points": def.get("spawn_points", {})
 	}
 
-func register_region_scene(region_id: String, scene_path: String) -> void:
-	if regions.has(region_id):
-		regions[region_id]["scene_path"] = scene_path
-	else:
-		regions[region_id] = {
-			"scene_path": scene_path,
-			"world_offset": Vector2.ZERO,
-			"region_size": Vector2(4096, 4096),
-			"adjacent_regions": [],
-			"is_always_loaded": false,
-			"display_name": region_id
-		}
-	region_scenes[region_id] = scene_path
+func load_region(region_id: String) -> void:
+	if region_id.is_empty() or loaded_regions.has(region_id):
+		return
+	if world == null:
+		world = get_parent()
+	if world == null:
+		push_error("[RegionLoader] Missing world owner for region: " + region_id)
+		return
 
-func set_player(player: Node2D) -> void:
-	player_ref = player
-	if player != null:
-		print("[RegionLoader] 玩家已绑定")
-
-func load_region(region_id: String) -> bool:
-	if loaded_regions.has(region_id):
-		return true
-	
-	if not regions.has(region_id):
-		push_warning("[RegionLoader] 区域未注册: " + region_id)
-		return false
-	
-	var def = regions[region_id]
-	var scene_path = def.get("scene_path", "")
+	var region_def = regions.get(region_id, {})
+	var scene_path = region_def.get("scene_path", "")
 	if scene_path.is_empty():
-		push_warning("[RegionLoader] 区域没有场景路径: " + region_id)
-		return false
-	
-	emit_signal("region_loading_started", region_id)
-	print("[RegionLoader] 开始加载区域: ", region_id)
-	
-	var scene: PackedScene = load(scene_path)
-	if scene == null:
-		push_error("[RegionLoader] 无法加载场景文件: " + scene_path)
-		emit_signal("region_loading_failed", region_id, "无法加载场景文件")
-		return false
-	
-	_on_region_loaded(region_id, scene)
-	return true
+		return
 
-func _on_region_loaded(region_id: String, scene: PackedScene) -> void:
-	if scene == null:
-		emit_signal("region_loading_failed", region_id, "资源为空")
+	var world_offset = region_def.get("world_offset", Vector2.ZERO)
+
+	var packed_scene = load(scene_path)
+	if packed_scene == null:
 		return
-	
-	var instance: Node = scene.instantiate()
-	if instance == null:
-		emit_signal("region_loading_failed", region_id, "无法实例化场景")
-		return
-	
-	instance.name = region_id
-	loaded_regions[region_id] = instance
-	
-	var world_offset: Vector2 = Vector2.ZERO
-	var region_size: Vector2 = Vector2(4096, 4096)
-	var is_always_loaded: bool = false
-	var region_display_name: String = region_id
-	
-	if regions.has(region_id):
-		var def = regions[region_id]
-		world_offset = def.get("world_offset", Vector2.ZERO)
-		region_size = def.get("region_size", Vector2(4096, 4096))
-		is_always_loaded = def.get("is_always_loaded", false)
-		region_display_name = def.get("display_name", region_id)
-	
-	instance.position = world_offset
-	
+
+	var instance = packed_scene.instantiate()
 	instance.set("world_offset", world_offset)
-	instance.set("region_size", region_size)
+	instance.set("region_size", region_def.get("region_size", Vector2(4096, 4096)))
 	instance.set("region_id", region_id)
-	instance.set("region_display_name", region_display_name)
-	
-	add_child(instance)
-	
-	if is_always_loaded:
-		if instance.has_method("load_region"):
-			instance.load_region()
-		if instance.has_method("activate"):
-			instance.activate()
-		active_regions.append(region_id)
-	
-	emit_signal("region_loading_completed", region_id)
-	print("[RegionLoader] 区域加载完成: ", region_id)
+	instance.set("region_display_name", region_def.get("display_name", region_id))
 
-func unload_region(region_id: String) -> bool:
+	instance.position = world_offset
+	instance.name = region_id
+
+	if not world.has_node(region_id):
+		world.add_child(instance)
+		loaded_regions[region_id] = instance
+		_on_region_loaded(region_id, instance)
+
+func _on_region_loaded(region_id: String, instance: Node2D) -> void:
+	if not is_instance_valid(instance):
+		return
+	if instance.has_method("load_region"):
+		instance.load_region()
+	print("[RegionLoader] 区域已加载: ", region_id)
+
+func unload_region(region_id: String) -> void:
 	if not loaded_regions.has(region_id):
-		return false
-	
-	var instance = loaded_regions[region_id]
-	if instance.has_method("unload_region"):
-		instance.unload_region()
-	
-	active_regions.erase(region_id)
+		return
+
+	var region = loaded_regions[region_id]
+	var region_def = regions.get(region_id, {})
+	var is_always_loaded = region_def.get("is_always_loaded", false)
+
+	if is_always_loaded and region_id == current_region_id:
+		return
+
+	region.queue_free()
 	loaded_regions.erase(region_id)
-	instance.queue_free()
-	
 	print("[RegionLoader] 区域已卸载: ", region_id)
-	return true
-
-func get_region(region_id: String) -> Node:
-	return loaded_regions.get(region_id)
-
-func get_current_region_id() -> String:
-	return current_region_id
-
-func set_current_region(region_id: String) -> void:
-	if current_region_id != region_id:
-		print("[RegionLoader] 当前区域: ", region_id)
-	current_region_id = region_id
 
 func _update_region_states(player_pos: Vector2) -> void:
-	var to_load: Array[String] = []
-	var new_active: Array[String] = []
-	
+	var nearest_region_id = ""
+	var nearest_dist = INF
+
 	for region_id in regions.keys():
 		if not loaded_regions.has(region_id):
-			var def = regions[region_id]
-			var offset: Vector2 = def.get("world_offset", Vector2.ZERO)
-			var size: Vector2 = def.get("region_size", Vector2(4096, 4096))
-			var bounds := Rect2(offset, size)
-			var preload_dist: float = def.get("preload_distance", 800.0)
-			var expanded_bounds := bounds.grow(preload_dist)
-			
-			if expanded_bounds.has_point(player_pos):
-				to_load.append(region_id)
-	
-	for region_id in to_load:
-		if not load_queue.has(region_id):
-			load_queue.append(region_id)
-	
-	for region_id in regions.keys():
-		var region = loaded_regions.get(region_id)
-		if region != null and region.has_method("should_activate"):
-			if region.should_activate(player_pos):
-				new_active.append(region_id)
-	
-	for region_id in new_active:
-		if not active_regions.has(region_id):
-			var region = loaded_regions.get(region_id)
-			if region != null and region.has_method("activate"):
-				region.activate()
-				print("[RegionLoader] 激活区域: ", region_id)
-	
-	for region_id in active_regions:
-		if not new_active.has(region_id):
-			var region = loaded_regions.get(region_id)
-			if region != null and region.has_method("deactivate"):
-				region.deactivate()
-				print("[RegionLoader] 停用区域: ", region_id)
-	
-	active_regions = new_active
+			continue
+
+		var region_def = regions[region_id]
+		var offset = region_def.get("world_offset", Vector2.ZERO)
+		var size = region_def.get("region_size", Vector2(4096, 4096))
+		var rect = Rect2(offset, size)
+		var dist = player_pos.distance_to(rect.get_center())
+
+		if dist < nearest_dist:
+			nearest_dist = dist
+			nearest_region_id = region_id
+
+	if nearest_region_id != current_region_id and not nearest_region_id.is_empty():
+		var old_region = current_region_id
+		current_region_id = nearest_region_id
+		emit_signal("current_region_changed", old_region, current_region_id)
+		_update_region_visibility(current_region_id, old_region)
+
+func _update_region_visibility(new_region: String, old_region: String) -> void:
+	for region_id in loaded_regions.keys():
+		var region = loaded_regions[region_id]
+		var is_current = (region_id == new_region)
+		var is_adjacent = _is_adjacent_region(new_region, region_id)
+
+		if is_current or is_adjacent:
+			if region.has_method("set_visible"):
+				region.set_visible(true)
+			elif region.has_method("_set_visibility"):
+				region._set_visibility(true)
+		else:
+			if region.has_method("set_visible"):
+				region.set_visible(false)
+			elif region.has_method("_set_visibility"):
+				region._set_visibility(false)
+
+func _is_adjacent_region(region_a: String, region_b: String) -> bool:
+	var def_a = regions.get(region_a, {})
+	var adjacent = def_a.get("adjacent_regions", [])
+	return region_b in adjacent
 
 func _process_load_queue() -> void:
-	if is_processing_queue:
+	if _loading or _load_queue.is_empty():
 		return
-	if load_queue.is_empty():
-		return
-	
-	is_processing_queue = true
-	var count = 0
-	
-	while not load_queue.is_empty() and count < LOAD_BATCH_SIZE:
-		var region_id = load_queue.pop_front() as String
-		if region_id != null and not loaded_regions.has(region_id):
-			load_region(region_id)
-		count += 1
-	
-	is_processing_queue = false
 
-func get_loaded_region_ids() -> Array[String]:
-	return loaded_regions.keys()
+	_loading = true
+	var region_id = _load_queue.pop_front()
+	load_region(region_id)
+	_loading = false
 
-func get_active_region_ids() -> Array[String]:
-	return active_regions.duplicate()
+	if not _load_queue.is_empty():
+		_loading = false
+
+func get_region(region_id: String) -> Node:
+	return loaded_regions.get(region_id, null)
 
 func is_region_loaded(region_id: String) -> bool:
 	return loaded_regions.has(region_id)
 
-func is_region_active(region_id: String) -> bool:
-	return active_regions.has(region_id)
+func set_current_region(region_id: String) -> void:
+	current_region_id = region_id
+	_update_region_visibility(region_id, "")
+
+func get_current_region() -> String:
+	return current_region_id
+
+func get_current_region_id() -> String:
+	return current_region_id
+
+func get_spawn_position(region_id: String, spawn_id: String = "default") -> Vector2:
+	var def = regions.get(region_id, {})
+	var spawn_points = def.get("spawn_points", {})
+
+	if spawn_points.has(spawn_id):
+		return spawn_points[spawn_id]
+
+	var world_offset = def.get("world_offset", Vector2.ZERO)
+	var size = def.get("region_size", Vector2(4096, 4096))
+	return world_offset + size / 2

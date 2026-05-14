@@ -1,7 +1,7 @@
-extends Area2D
+﻿extends Area2D
 
 @export var target_scene: String = ""
-@export var interaction_hint: String = "按 E 前往后院农地"
+@export var interaction_hint: String = "鎸?E 鍓嶅線鍚庨櫌鍐滃湴"
 
 
 func _ready() -> void:

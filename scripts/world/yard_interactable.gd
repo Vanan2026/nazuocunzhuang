@@ -1,8 +1,8 @@
-extends Area2D
+﻿extends Area2D
 
 @export var object_id: String = ""
 @export var display_name: String = ""
-@export var interaction_hint: String = "按 E 调查"
+@export var interaction_hint: String = "鎸?E 璋冩煡"
 @export var feedback_text: String = ""
 @export var repeat_feedback_text: String = ""
 @export var action_id: String = "inspect"

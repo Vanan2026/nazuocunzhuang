@@ -1,4 +1,4 @@
-extends Node2D
+﻿extends Node2D
 
 @export var polygon: PackedVector2Array = PackedVector2Array()
 @export var debug_draw: bool = false

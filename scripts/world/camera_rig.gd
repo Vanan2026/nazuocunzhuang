@@ -1,4 +1,4 @@
-extends Camera2D
+﻿extends Camera2D
 
 @export var target_path: NodePath
 @export var follow_speed: float = 6.0

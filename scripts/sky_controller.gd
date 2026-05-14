@@ -1,11 +1,11 @@
-extends Node2D
+﻿extends Node2D
 
 @onready var sky_rect: ColorRect = $SkyRect
 @onready var cloud_layer: ColorRect = $CloudLayer
 @onready var tint_rect: ColorRect = $TintLayer
 
 var current_season: String = "spring"
-var time_of_day: float = 0.5  # 0=午夜, 0.5=正午, 1=午夜
+var time_of_day: float = 0.5  # 0=鍗堝, 0.5=姝ｅ崍, 1=鍗堝
 
 const SEASON_COLORS = {
     "spring": {
@@ -27,7 +27,7 @@ const SEASON_COLORS = {
 }
 
 func _ready() -> void:
-    # 连接时间系统信号
+    # 杩炴帴鏃堕棿绯荤粺淇″彿
     if has_node("/root/TimeSystem"):
         var ts = get_node("/root/TimeSystem")
         ts.season_advanced.connect(_on_season_changed)
@@ -49,10 +49,10 @@ func update_sky_colors() -> void:
 
 func set_time_of_day(time: float) -> void:
     time_of_day = clamp(time, 0.0, 1.0)
-    # 根据时间调整天空颜色
+    # 鏍规嵁鏃堕棿璋冩暣澶╃┖棰滆壊
     var sky_material = sky_rect.material as ShaderMaterial if sky_rect else null
     if sky_material:
-        # 简单的日出-正午-日落-夜晚颜色调整
+        # 绠€鍗曠殑鏃ュ嚭-姝ｅ崍-鏃ヨ惤-澶滄櫄棰滆壊璋冩暣
         var brightness = sin(time_of_day * PI)
         sky_material.set_shader_parameter("time_offset", time_of_day)
 

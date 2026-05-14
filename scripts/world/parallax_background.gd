@@ -1,4 +1,4 @@
-extends ParallaxBackground
+﻿extends ParallaxBackground
 
 @export_group("Layer Settings")
 @export var sky_scroll_factor: Vector2 = Vector2(0, 0)
@@ -18,7 +18,7 @@ var auto_scroll_speed: Vector2 = Vector2(5, 2)
 func _ready() -> void:
     _setup_sky_layer()
     _setup_default_layers()
-    print("[ParallaxBackground] 视差背景已初始化")
+    print("[ParallaxBackground] 瑙嗗樊鑳屾櫙宸插垵濮嬪寲")
 
 func _setup_sky_layer() -> void:
     var sky_layer = get_node_or_null("SkyLayer")

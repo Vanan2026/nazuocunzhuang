@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" path="res://sprites/environments/regions/home_area/ground/region_home_area_ground_grass_yard_v001.png" id="9_grass_yard_png"]
 [ext_resource type="Texture2D" path="res://sprites/environments/regions/home_area/path/region_home_area_path_front_yard_v001.png" id="10_front_path_png"]
 [ext_resource type="Texture2D" path="res://sprites/environments/regions/home_area/foreground/region_home_area_foreground_front_grass_left_v001.png" id="11_front_grass_left_png"]
+[ext_resource type="Script" path="res://scripts/world/region_home_area_runtime.gd" id="12_region_runtime"]
+[ext_resource type="Script" path="res://scripts/world/veranda_rest_area.gd" id="13_veranda_rest"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
 size = Vector2(40, 20)
@@ -44,6 +46,9 @@ is_always_loaded = true
 metadata/world_model = "explorable_2d_oblique_region_v0_1"
 metadata/region_id = "Region_HomeArea"
 metadata/status = "active_main_world_graybox"
+
+[node name="RegionRuntime" type="Node2D" parent="."]
+script = ExtResource("12_region_runtime")
 
 [node name="RegionBounds" type="Node2D" parent="."]
 metadata/size = Vector2i(6144, 4096)
@@ -401,8 +406,9 @@ horizontal_alignment = 1
 
 [node name="BenchRestInteract" type="Area2D" parent="YSortWorld/Interactables"]
 position = Vector2(4110, 2410)
-script = ExtResource("7_yard_interactable")
-object_id = "homearea_bench_001"
+script = ExtResource("13_veranda_rest")
+seat_anchor = Vector2(8110, 8428)
+rest_facing = Vector2(1, 0)
 display_name = "长椅"
 interaction_hint = "按 E 坐下"
 feedback_text = "这里能看到屋檐下的阴影慢慢移动。"

@@ -1,4 +1,4 @@
-extends "res://scripts/world/yard_interactable.gd"
+﻿extends "res://scripts/world/yard_interactable.gd"
 
 @export var windchime_node_path: NodePath = NodePath("../Windchime")
 @export var sway_angle: float = 0.22

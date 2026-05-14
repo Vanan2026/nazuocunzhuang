@@ -1,13 +1,13 @@
-extends Node
+﻿extends Node
 
-const ACTIVE_WORLD_SCENE := preload("res://scenes/regions/region_home_area.tscn")
+const ACTIVE_WORLD_SCENE := preload("res://scenes/world/world.tscn")
 
 
 func _ready() -> void:
-	print("=== 那座村庄启动 ===")
+	print("=== 閭ｅ骇鏉戝簞鍚姩 ===")
 
 	var instance := ACTIVE_WORLD_SCENE.instantiate()
 	add_child(instance)
 
-	print("主世界已加载：Region_HomeArea")
-	print("WASD 移动 | E 交互")
+	print("涓讳笘鐣屽凡鍔犺浇锛歐orld")
+	print("WASD 绉诲姩 | E 浜や簰")

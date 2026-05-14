@@ -1,4 +1,4 @@
-extends CanvasLayer
+﻿extends CanvasLayer
 
 signal crop_selected(crop_type: String)
 signal action_completed
@@ -32,7 +32,7 @@ func setup_ui() -> void:
 	
 	for i in range(9):
 		var btn = Button.new()
-		btn.text = "田 "
+		btn.text = "鐢?"
 		btn.custom_minimum_size = Vector2(100, 40)
 		btn.pressed.connect(func(): on_plot_button_pressed(i))
 		crop_container.add_child(btn)
@@ -59,10 +59,10 @@ func update_plot_info() -> void:
 	var crop = info.get("crop_type", "")
 	var progress = info.get("growth_progress", 0.0) * 100
 	
-	var text = "田地 %d\n状态: %s" % [current_plot_index, state_name]
+	var text = "鐢板湴 %d\n鐘舵€? %s" % [current_plot_index, state_name]
 	if crop:
-		text += "\n作物: %s" % crop
-		text += "\n生长: %.0f%%" % progress
+		text += "\n浣滅墿: %s" % crop
+		text += "\n鐢熼暱: %.0f%%" % progress
 	
 	if info_label:
 		info_label.text = text
@@ -84,7 +84,7 @@ func update_buttons() -> void:
 			var available = farm_system.get_available_crops()
 			for crop in available:
 				var btn = Button.new()
-				btn.text = "种 " + crop
+				btn.text = "绉?" + crop
 				btn.pressed.connect(func(): plant_crop(crop))
 				action_container.add_child(btn)
 				action_buttons.append(btn)
@@ -92,19 +92,19 @@ func update_buttons() -> void:
 		1, 2:
 			if not is_watered:
 				var btn = Button.new()
-				btn.text = "浇水"
+				btn.text = "娴囨按"
 				btn.pressed.connect(water_plot)
 				action_container.add_child(btn)
 				action_buttons.append(btn)
 			else:
 				var lbl = Label.new()
-				lbl.text = "已浇水，等待生长..."
+				lbl.text = "宸叉祰姘达紝绛夊緟鐢熼暱..."
 				action_container.add_child(lbl)
 				action_buttons.append(lbl)
 		
 		3:
 			var btn = Button.new()
-			btn.text = "收获"
+			btn.text = "鏀惰幏"
 			btn.pressed.connect(harvest_plot)
 			action_container.add_child(btn)
 			action_buttons.append(btn)

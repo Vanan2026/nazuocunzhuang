@@ -1,14 +1,16 @@
-extends SceneTree
+﻿extends SceneTree
 
+const HeadlessLifecycle := preload("res://tools/headless_lifecycle.gd")
 const DEFAULT_SCENE_PATH := "res://scenes/regions/region_home_area.tscn"
 
 var output_path := "user://region_home_area_snapshot.png"
+var _finishing := false
 
 
 func _initialize() -> void:
     if DisplayServer.get_name() == "headless":
         printerr("FAIL: render_scene_snapshot.gd requires a display server; use it without --headless.")
-        quit(2)
+        _finish_deferred(2)
         return
 
     var args := OS.get_cmdline_user_args()
@@ -27,10 +29,10 @@ func _initialize() -> void:
     root.size = Vector2i(width, height)
     root.content_scale_size = Vector2i(width, height)
 
-    var scene := ResourceLoader.load(scene_path) as PackedScene
+    var scene := HeadlessLifecycle.load_packed_scene(scene_path)
     if scene == null:
         printerr("FAIL: could not load scene: %s" % scene_path)
-        quit(1)
+        _finish_deferred(1)
         return
 
     var instance: Node = scene.instantiate()
@@ -42,8 +44,25 @@ func _initialize() -> void:
     var error := image.save_png(output_path)
     if error != OK:
         printerr("FAIL: could not save snapshot: %s error=%s" % [output_path, error])
-        quit(1)
+        image = null
+        instance = null
+        scene = null
+        _finish_deferred(1)
         return
 
     print("OK: rendered snapshot: %s" % output_path)
-    quit(0)
+    image = null
+    instance = null
+    scene = null
+    _finish_deferred(0)
+
+
+func _finish_deferred(exit_code: int) -> void:
+    if _finishing:
+        return
+    _finishing = true
+    call_deferred("_finish", exit_code)
+
+
+func _finish(exit_code: int) -> void:
+    await HeadlessLifecycle.cleanup_and_quit(self, exit_code)

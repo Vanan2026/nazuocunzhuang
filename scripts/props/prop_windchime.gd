@@ -1,4 +1,4 @@
-extends Node2D
+﻿extends Node2D
 
 var is_swaying: bool = false
 

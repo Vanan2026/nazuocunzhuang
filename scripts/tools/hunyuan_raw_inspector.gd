@@ -1,4 +1,4 @@
-extends Node3D
+﻿extends Node3D
 
 
 @export var camera_path: NodePath = NodePath("InspectorCamera")
