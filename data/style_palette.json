@@ -1,0 +1,32 @@
+{
+  "project": "那座村庄",
+  "palette_name": "warm_low_saturation_storybook_v1",
+  "core_colors": {
+    "paper_warm": "#F3E7D1",
+    "wood_warm": "#A9794B",
+    "wood_dark_outline": "#5A3B2A",
+    "grass_spring": "#8FAF6A",
+    "forest_deep": "#3F5F45",
+    "persimmon_orange": "#D9823B",
+    "sky_soft_blue": "#A9C9D8",
+    "sakura_soft_pink": "#E8B7B4",
+    "stone_warm_gray": "#9A9285",
+    "night_blue_gray": "#39475B",
+    "warm_light": "#F2C879",
+    "soil_dry": "#8B6A45",
+    "soil_wet": "#5E4939"
+  },
+  "outline": {
+    "main": "#5A3B2A",
+    "soft": "#7B6048",
+    "ui": "#6B4A32"
+  },
+  "style_rules": [
+    "warm low saturation",
+    "soft hand-painted texture",
+    "fixed top-down 3/4 perspective",
+    "clear silhouettes",
+    "no combat visual language",
+    "no direct imitation of named copyrighted works"
+  ]
+}

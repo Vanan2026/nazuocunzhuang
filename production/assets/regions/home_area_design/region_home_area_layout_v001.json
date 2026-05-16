@@ -1,0 +1,149 @@
+{
+  "region_id": "Region_HomeArea",
+  "version": "0.1.0",
+  "canvas_px": {
+    "width": 6144,
+    "height": 4096
+  },
+  "runtime": {
+    "mode": "Godot 2D/2.5D",
+    "player_frame_px": {
+      "width": 192,
+      "height": 288
+    },
+    "player_foot_anchor_px": {
+      "x": 96,
+      "y": 280
+    }
+  },
+  "composition": {
+    "camera_language": "oblique 2D exploration map",
+    "summary": "House at upper center, clear playable front yard in the middle, village road to the north, BackFarm path to the southeast, foreground grass and tree shadows around edges."
+  },
+  "zones": [
+    {
+      "id": "north_village_road",
+      "name": "North village road",
+      "rect_px": {"x": 420, "y": 520, "w": 5200, "h": 980},
+      "purpose": "Visual and walkable connection toward Region_Village",
+      "runtime_layer": "TileMapLayer_Path",
+      "must_remain_readable": true
+    },
+    {
+      "id": "house_veranda",
+      "name": "House and veranda",
+      "anchor_px": {"x": 3160, "y": 1660},
+      "rect_px": {"x": 2200, "y": 820, "w": 1900, "h": 1120},
+      "purpose": "Main home landmark, rest interaction, door inspection",
+      "runtime_layer": "YSortWorld/Houses",
+      "occlusion": "roof_eaves_can_cover_head_and_torso_not_feet"
+    },
+    {
+      "id": "front_yard_walkable",
+      "name": "Central front yard",
+      "rect_px": {"x": 1600, "y": 1550, "w": 2950, "h": 1300},
+      "purpose": "Primary player movement and default spawn readability",
+      "runtime_layer": "TileMapLayer_Ground",
+      "must_remain_readable": true
+    },
+    {
+      "id": "west_garden",
+      "name": "West garden and flowers",
+      "rect_px": {"x": 520, "y": 1520, "w": 1580, "h": 1340},
+      "purpose": "Life detail and low garden decoration",
+      "runtime_layer": "TileMapLayer_Detail",
+      "occlusion": "none_or_feet_only"
+    },
+    {
+      "id": "back_farm_path",
+      "name": "Southeast BackFarm path",
+      "rect_px": {"x": 3650, "y": 2500, "w": 900, "h": 1150},
+      "purpose": "Clear path to Region_BackFarm",
+      "runtime_layer": "TileMapLayer_Path",
+      "must_remain_readable": true
+    },
+    {
+      "id": "left_tree",
+      "name": "Left shade tree",
+      "anchor_px": {"x": 1420, "y": 1220},
+      "rect_px": {"x": 760, "y": 420, "w": 1250, "h": 1180},
+      "purpose": "Depth, shade, left boundary",
+      "runtime_layer": "YSortWorld/Trees",
+      "occlusion": "split_trunk_and_canopy"
+    },
+    {
+      "id": "right_tree",
+      "name": "Right fruit tree",
+      "anchor_px": {"x": 4630, "y": 1660},
+      "rect_px": {"x": 4100, "y": 900, "w": 1180, "h": 1180},
+      "purpose": "Right-side depth and seasonal color",
+      "runtime_layer": "YSortWorld/Trees",
+      "occlusion": "split_trunk_and_canopy"
+    },
+    {
+      "id": "foreground_edges",
+      "name": "Foreground grass and leaves",
+      "rect_px": {"x": 0, "y": 3080, "w": 6144, "h": 1016},
+      "purpose": "Depth framing without hiding gameplay",
+      "runtime_layer": "ForegroundStatic",
+      "occlusion": "edge_only"
+    },
+    {
+      "id": "light_weather",
+      "name": "Dappled light and ambient overlays",
+      "rect_px": {"x": 700, "y": 840, "w": 2200, "h": 1300},
+      "purpose": "Mood and sunlight reference",
+      "runtime_layer": "LightAndWeather",
+      "occlusion": "transparent_overlay_only"
+    }
+  ],
+  "interaction_points": [
+    {"id": "home_area_default_spawn", "position_px": {"x": 3072, "y": 2280}, "role": "player_spawn"},
+    {"id": "homearea_house_door_001", "position_px": {"x": 3160, "y": 1660}, "role": "inspect_house_door"},
+    {"id": "homearea_mailbox_001", "position_px": {"x": 2370, "y": 2140}, "role": "inspect_mailbox"},
+    {"id": "homearea_well_001", "position_px": {"x": 3600, "y": 2180}, "role": "draw_water"},
+    {"id": "homearea_bench_rest_001", "position_px": {"x": 4110, "y": 2410}, "role": "rest_bench"},
+    {"id": "homearea_roadsign_001", "position_px": {"x": 5180, "y": 1390}, "role": "read_sign"},
+    {"id": "home_area_to_back_farm", "position_px": {"x": 4200, "y": 3370}, "role": "region_exit_back_farm"}
+  ],
+  "asset_batches": [
+    {
+      "id": "batch_01_scene_foundation",
+      "purpose": "Base composition and first playable-scene read",
+      "assets": [
+        "region_home_area_base_full_v001.png",
+        "region_home_area_ground_yard_v001.png",
+        "region_home_area_path_village_road_v001.png",
+        "region_home_area_path_back_farm_v001.png",
+        "region_home_area_house_body_v001.png",
+        "region_home_area_house_roof_occluder_v001.png",
+        "region_home_area_veranda_floor_v001.png"
+      ]
+    },
+    {
+      "id": "batch_02_depth_and_occlusion",
+      "purpose": "Tree depth, foreground, and mood",
+      "assets": [
+        "region_home_area_tree_left_trunk_v001.png",
+        "region_home_area_tree_left_canopy_occluder_v001.png",
+        "region_home_area_tree_right_trunk_v001.png",
+        "region_home_area_tree_right_canopy_occluder_v001.png",
+        "region_home_area_foreground_grass_v001.png",
+        "region_home_area_shadow_dappled_v001.png",
+        "region_home_area_light_overlay_v001.png"
+      ]
+    },
+    {
+      "id": "batch_03_props_and_interactions",
+      "purpose": "Interactive prop polish",
+      "assets": [
+        "region_home_area_prop_mailbox_v001.png",
+        "region_home_area_prop_well_v001.png",
+        "region_home_area_prop_bench_v001.png",
+        "region_home_area_prop_road_sign_v001.png",
+        "region_home_area_prop_cat_bed_v001.png"
+      ]
+    }
+  ],
+  "next_step": "Build 3D blockout or generate a design plate from this layout before producing final layer art."
+}

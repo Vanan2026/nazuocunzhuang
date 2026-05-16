@@ -31,7 +31,7 @@ const CROP_DATA = {
     "土豆": {"days": 6, "sell_price": 22}
 }
 
-class FarmPlot:
+class FarmPlotState:
     var state: int = 0
     var crop_type: String = ""
     var growth_progress: float = 0.0
@@ -51,7 +51,7 @@ func _ready() -> void:
 func init_plots() -> void:
     plots.clear()
     for i in range(TOTAL_PLOTS):
-        plots.append(FarmPlot.new())
+        plots.append(FarmPlotState.new())
 
 func get_current_season() -> String:
     if has_node("/root/TimeSystem"):

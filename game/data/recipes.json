@@ -1,0 +1,53 @@
+[
+  {
+    "recipe_id": "riceball_simple",
+    "name": "普通饭团",
+    "ingredients": [{"item_id": "rice", "count": 1}],
+    "result": {"item_id": "food_riceball_simple", "count": 1},
+    "energy_restore": 20,
+    "tags": ["food", "homey", "simple"],
+    "unlock_condition": {"kitchen_level": 1}
+  },
+  {
+    "recipe_id": "persimmon_riceball",
+    "name": "柿子饭团",
+    "ingredients": [
+      {"item_id": "rice", "count": 1},
+      {"item_id": "persimmon", "count": 1}
+    ],
+    "result": {"item_id": "food_persimmon_riceball", "count": 1},
+    "energy_restore": 25,
+    "tags": ["food", "sweet", "autumn", "homey"],
+    "unlock_condition": {"kitchen_level": 1}
+  },
+  {
+    "recipe_id": "spring_vegetable_soup",
+    "name": "春蔬汤",
+    "ingredients": [
+      {"item_id": "crop_turnip", "count": 1},
+      {"item_id": "wildflower_spring", "count": 1}
+    ],
+    "result": {"item_id": "food_spring_soup", "count": 1},
+    "energy_restore": 30,
+    "tags": ["food", "soup", "spring", "warm"],
+    "unlock_condition": {"kitchen_level": 1}
+  },
+  {
+    "recipe_id": "grilled_small_carp",
+    "name": "烤小鲫鱼",
+    "ingredients": [{"item_id": "small_carp", "count": 1}],
+    "result": {"item_id": "food_grilled_small_carp", "count": 1},
+    "energy_restore": 28,
+    "tags": ["food", "fish", "simple"],
+    "unlock_condition": {"kitchen_level": 1}
+  },
+  {
+    "recipe_id": "warm_tea",
+    "name": "热茶",
+    "ingredients": [{"item_id": "tea_leaf", "count": 1}],
+    "result": {"item_id": "food_warm_tea", "count": 1},
+    "energy_restore": 15,
+    "tags": ["tea", "warm", "quiet"],
+    "unlock_condition": {"kitchen_level": 1}
+  }
+]

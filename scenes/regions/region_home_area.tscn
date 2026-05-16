@@ -13,6 +13,21 @@
 [ext_resource type="Texture2D" path="res://sprites/environments/regions/home_area/foreground/region_home_area_foreground_front_grass_left_v001.png" id="11_front_grass_left_png"]
 [ext_resource type="Script" path="res://scripts/world/region_home_area_runtime.gd" id="12_region_runtime"]
 [ext_resource type="Script" path="res://scripts/world/veranda_rest_area.gd" id="13_veranda_rest"]
+[ext_resource type="Script" path="res://scripts/world/scene_switch_area.gd" id="14_scene_switch_area"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_art/v003/region_home_area_ground_yard_v003.png" id="15_ground_yard_art_v003"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_art/v003/region_home_area_path_village_road_v003.png" id="16_village_road_art_v003"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_art/v003/region_home_area_path_back_farm_v003.png" id="17_back_farm_path_art_v003"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_art/v003/region_home_area_house_body_v003.png" id="18_house_body_art_v003"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_art/v003/region_home_area_house_roof_occluder_v003.png" id="19_house_roof_occluder_art_v003"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_art/v003/region_home_area_veranda_floor_v003.png" id="20_veranda_floor_art_v003"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_art/v003/region_home_area_tree_left_trunk_v003.png" id="21_tree_left_trunk_art_v003"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_art/v003/region_home_area_tree_left_canopy_occluder_v003.png" id="22_tree_left_canopy_art_v003"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_art/v003/region_home_area_tree_right_trunk_v003.png" id="23_tree_right_trunk_art_v003"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_art/v003/region_home_area_tree_right_canopy_occluder_v003.png" id="24_tree_right_canopy_art_v003"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_art/v003/region_home_area_foreground_grass_v003.png" id="25_foreground_grass_art_v003"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_art/v003/region_home_area_shadow_dappled_v003.png" id="26_shadow_dappled_art_v003"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_art/v003/region_home_area_light_overlay_v003.png" id="27_light_overlay_art_v003"]
+[ext_resource type="Script" path="res://game/entities/visual/RuntimeTextureSprite.gd" id="28_runtime_sprite"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
 size = Vector2(40, 20)
@@ -30,7 +45,13 @@ size = Vector2(92, 76)
 size = Vector2(78, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_well"]
-size = Vector2(130, 96)
+size = Vector2(150, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bench"]
+size = Vector2(176, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_road_sign"]
+size = Vector2(58, 46)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hotspot"]
 size = Vector2(150, 110)
@@ -45,7 +66,9 @@ adjacent_regions = ["Region_Village", "Region_BackFarm"]
 is_always_loaded = true
 metadata/world_model = "explorable_2d_oblique_region_v0_1"
 metadata/region_id = "Region_HomeArea"
-metadata/status = "active_main_world_graybox"
+metadata/status = "active_main_world_art_v003_layer_candidate"
+metadata/art_package = "home_area_art_v003"
+metadata/art_integration_group = "foundation_depth_v003"
 
 [node name="RegionRuntime" type="Node2D" parent="."]
 script = ExtResource("12_region_runtime")
@@ -55,6 +78,7 @@ metadata/size = Vector2i(6144, 4096)
 metadata/purpose = "camera_and_content_bounds"
 
 [node name="BoundsOutline" type="Polygon2D" parent="RegionBounds"]
+visible = false
 z_index = -200
 polygon = PackedVector2Array(0, 0, 6144, 0, 6144, 4096, 0, 4096)
 color = Color(0.47, 0.62, 0.45, 1)
@@ -66,6 +90,7 @@ metadata/module_contract = "modular_ground_patches_v0_1"
 metadata/graybox_note = "modular paint patches; replace each patch with TileSet cells or hand-painted source-space PNGs"
 
 [node name="GroundBase" type="Polygon2D" parent="TileMapLayer_Ground"]
+visible = false
 polygon = PackedVector2Array(0, 0, 6144, 0, 6144, 4096, 0, 4096)
 color = Color(0.47, 0.64, 0.43, 1)
 
@@ -73,12 +98,14 @@ color = Color(0.47, 0.64, 0.43, 1)
 metadata/purpose = "replaceable_ground_patches"
 
 [node name="GrassBaseNorth" type="Polygon2D" parent="TileMapLayer_Ground/GroundModules"]
+visible = false
 polygon = PackedVector2Array(0, 0, 6144, 0, 6144, 1450, 0, 1560)
 color = Color(0.44, 0.64, 0.42, 1)
 metadata/module_type = "ground_patch"
 metadata/paint_id = "grass_north"
 
 [node name="GrassBaseHomeYard" type="Sprite2D" parent="TileMapLayer_Ground/GroundModules"]
+visible = false
 position = Vector2(1440, 1320)
 texture = ExtResource("9_grass_yard_png")
 centered = false
@@ -87,16 +114,27 @@ metadata/paint_id = "grass_home_yard"
 metadata/asset_source = "first_art_pass_png_module"
 
 [node name="GrassBaseSouth" type="Polygon2D" parent="TileMapLayer_Ground/GroundModules"]
+visible = false
 polygon = PackedVector2Array(0, 2560, 6144, 2480, 6144, 4096, 0, 4096)
 color = Color(0.38, 0.58, 0.36, 1)
 metadata/module_type = "ground_patch"
 metadata/paint_id = "grass_south"
 
 [node name="GardenSoilWest" type="Polygon2D" parent="TileMapLayer_Ground/GroundModules"]
+visible = false
 polygon = PackedVector2Array(560, 1700, 1500, 1520, 2130, 1880, 1980, 2460, 1280, 2820, 520, 2600)
 color = Color(0.51, 0.39, 0.24, 1)
 metadata/module_type = "ground_patch"
 metadata/paint_id = "west_garden_soil"
+
+[node name="GroundYardArtV003" type="Sprite2D" parent="TileMapLayer_Ground/GroundModules"]
+position = Vector2(0, 0)
+z_index = 30
+texture = ExtResource("15_ground_yard_art_v003")
+centered = false
+metadata/module_type = "ground_patch"
+metadata/asset_package = "home_area_art_v003"
+metadata/paint_id = "ground_yard_art_v003"
 
 [node name="TileMapLayer_Path" type="TileMapLayer" parent="."]
 z_index = -110
@@ -105,18 +143,22 @@ metadata/module_contract = "modular_path_patches_v0_1"
 metadata/graybox_note = "modular path patches; replace each patch with road, stone, and step tiles"
 
 [node name="VillageRoadNorth" type="Polygon2D" parent="TileMapLayer_Path"]
+visible = false
 polygon = PackedVector2Array(520, 760, 1280, 560, 2440, 690, 3560, 930, 4910, 790, 5620, 1220, 5440, 1560, 4500, 1200, 3560, 1180, 2380, 960, 1180, 850, 620, 1030)
 color = Color(0.67, 0.55, 0.36, 1)
 
 [node name="HomeFrontYardPath" type="Polygon2D" parent="TileMapLayer_Path"]
+visible = false
 polygon = PackedVector2Array(2240, 1600, 3920, 1620, 4260, 2100, 3680, 2580, 2650, 2580, 2060, 2200)
 color = Color(0.58, 0.53, 0.43, 1)
 
 [node name="SouthStonePath" type="Polygon2D" parent="TileMapLayer_Path"]
+visible = false
 polygon = PackedVector2Array(2880, 2460, 3560, 2520, 4320, 3480, 4010, 3820, 3080, 3180, 2450, 2780)
 color = Color(0.55, 0.55, 0.50, 1)
 
 [node name="WestGardenPath" type="Polygon2D" parent="TileMapLayer_Path"]
+visible = false
 polygon = PackedVector2Array(720, 1800, 1540, 1560, 2300, 1780, 2240, 2310, 1520, 2860, 760, 2700, 520, 2140)
 color = Color(0.61, 0.50, 0.34, 1)
 
@@ -124,12 +166,14 @@ color = Color(0.61, 0.50, 0.34, 1)
 metadata/purpose = "replaceable_path_patches"
 
 [node name="VillageRoadNorthModule" type="Polygon2D" parent="TileMapLayer_Path/PathModules"]
+visible = false
 polygon = PackedVector2Array(520, 760, 1280, 560, 2440, 690, 3560, 930, 4910, 790, 5620, 1220, 5440, 1560, 4500, 1200, 3560, 1180, 2380, 960, 1180, 850, 620, 1030)
 color = Color(0.69, 0.57, 0.39, 1)
 metadata/module_type = "path_patch"
 metadata/paint_id = "north_village_road"
 
 [node name="HomeFrontYardPathModule" type="Sprite2D" parent="TileMapLayer_Path/PathModules"]
+visible = false
 position = Vector2(2060, 1600)
 texture = ExtResource("10_front_path_png")
 centered = false
@@ -138,27 +182,58 @@ metadata/paint_id = "home_front_yard_path"
 metadata/asset_source = "first_art_pass_png_module"
 
 [node name="SouthStonePathModule" type="Polygon2D" parent="TileMapLayer_Path/PathModules"]
+visible = false
 polygon = PackedVector2Array(2880, 2460, 3560, 2520, 4320, 3480, 4010, 3820, 3080, 3180, 2450, 2780)
 color = Color(0.57, 0.57, 0.52, 1)
 metadata/module_type = "path_patch"
 metadata/paint_id = "south_stone_path"
 
 [node name="WestGardenPathModule" type="Polygon2D" parent="TileMapLayer_Path/PathModules"]
+visible = false
 polygon = PackedVector2Array(720, 1800, 1540, 1560, 2300, 1780, 2240, 2310, 1520, 2860, 760, 2700, 520, 2140)
 color = Color(0.63, 0.52, 0.36, 1)
 metadata/module_type = "path_patch"
 metadata/paint_id = "west_garden_path"
+
+[node name="VillageRoadArtV003" type="Sprite2D" parent="TileMapLayer_Path/PathModules"]
+position = Vector2(208, 488)
+z_index = 40
+texture = ExtResource("16_village_road_art_v003")
+centered = false
+metadata/module_type = "path_patch"
+metadata/asset_package = "home_area_art_v003"
+metadata/paint_id = "path_village_road_art_v003"
+
+[node name="BackFarmPathArtV003" type="Sprite2D" parent="TileMapLayer_Path/PathModules"]
+position = Vector2(3477, 2338)
+z_index = 41
+texture = ExtResource("17_back_farm_path_art_v003")
+centered = false
+metadata/module_type = "path_patch"
+metadata/asset_package = "home_area_art_v003"
+metadata/paint_id = "path_back_farm_art_v003"
 
 [node name="TileMapLayer_Detail" type="TileMapLayer" parent="."]
 z_index = -100
 metadata/intended_layer = "detail"
 metadata/graybox_note = "replace with pebbles, fallen leaves, flowers, edge noise"
 
+[node name="VerandaFloorArtV003" type="Sprite2D" parent="TileMapLayer_Detail"]
+position = Vector2(2432, 1602)
+z_index = 60
+texture = ExtResource("20_veranda_floor_art_v003")
+centered = false
+metadata/module_type = "detail_patch"
+metadata/asset_package = "home_area_art_v003"
+metadata/paint_id = "veranda_floor_art_v003"
+
 [node name="PebbleBand" type="Polygon2D" parent="TileMapLayer_Detail"]
+visible = false
 polygon = PackedVector2Array(2360, 2680, 3600, 2700, 3760, 2860, 2440, 2860)
 color = Color(0.42, 0.45, 0.39, 0.38)
 
 [node name="FlowerPatchGuide" type="Polygon2D" parent="TileMapLayer_Detail"]
+visible = false
 polygon = PackedVector2Array(4550, 2380, 5210, 2200, 5440, 2570, 4920, 2820)
 color = Color(0.58, 0.45, 0.68, 0.55)
 
@@ -167,15 +242,18 @@ z_index = -90
 metadata/purpose = "non_blocking_ground_decoration"
 
 [node name="SoftTreeShadows" type="Polygon2D" parent="GroundDecorations"]
+visible = false
 polygon = PackedVector2Array(950, 1190, 1920, 1060, 2240, 1460, 1260, 1630)
 color = Color(0.12, 0.18, 0.10, 0.22)
 
 [node name="HouseShadow" type="Polygon2D" parent="GroundDecorations"]
+visible = false
 polygon = PackedVector2Array(2440, 1760, 3980, 1780, 4290, 2110, 2660, 2160)
 color = Color(0.13, 0.11, 0.08, 0.25)
 
 [node name="WalkableZone" type="Node2D" parent="."]
 script = ExtResource("4_walkable_zone")
+debug_draw = false
 polygon = PackedVector2Array(520, 1030, 1180, 850, 2380, 960, 3560, 1180, 4500, 1200, 5440, 1560, 5260, 2030, 4440, 2210, 3860, 2600, 4320, 3480, 4010, 3820, 3080, 3180, 2450, 2780, 1520, 2860, 760, 2700, 520, 2140, 720, 1800)
 metadata/purpose = "home_area_walkable_mask"
 
@@ -193,25 +271,38 @@ metadata/asset_type = "house_split_graybox"
 metadata/pivot = "front_door_ground"
 
 [node name="HouseMain" type="Polygon2D" parent="YSortWorld/Houses/CloudHouse"]
+visible = false
 z_index = -2
 polygon = PackedVector2Array(-720, -520, 730, -520, 730, 120, -720, 120)
 color = Color(0.72, 0.58, 0.42, 1)
 
 [node name="HouseRoof" type="Polygon2D" parent="YSortWorld/Houses/CloudHouse"]
+visible = false
 z_index = 1
 polygon = PackedVector2Array(-850, -620, 850, -620, 690, -500, -730, -500)
 color = Color(0.28, 0.31, 0.30, 1)
 
 [node name="HouseEaves" type="Polygon2D" parent="YSortWorld/Houses/CloudHouse"]
+visible = false
 z_index = 3
 polygon = PackedVector2Array(-760, -120, 760, -120, 690, -20, -690, -20)
 color = Color(0.36, 0.28, 0.20, 1)
 metadata/occlusion_role = "local_eaves_y_sort_component"
 
 [node name="DoorMarker" type="Polygon2D" parent="YSortWorld/Houses/CloudHouse"]
+visible = false
 z_index = 2
 polygon = PackedVector2Array(-90, -210, 90, -210, 90, 105, -90, 105)
 color = Color(0.28, 0.18, 0.11, 1)
+
+[node name="HouseBodyArtV003" type="Sprite2D" parent="YSortWorld/Houses/CloudHouse"]
+position = Vector2(-928, -598)
+z_index = 40
+texture = ExtResource("18_house_body_art_v003")
+centered = false
+metadata/module_type = "house_body"
+metadata/asset_package = "home_area_art_v003"
+metadata/paint_id = "house_body_art_v003"
 
 [node name="HouseBlocker" type="StaticBody2D" parent="YSortWorld/Houses/CloudHouse"]
 position = Vector2(0, -100)
@@ -228,13 +319,24 @@ metadata/asset_id = "home_tree_persimmon_001"
 metadata/asset_type = "tree_split_graybox"
 
 [node name="Canopy" type="Polygon2D" parent="YSortWorld/Trees/PersimmonTree"]
+visible = false
 z_index = 2
 polygon = PackedVector2Array(-260, -520, 260, -520, 360, -230, 170, -80, -190, -80, -380, -250)
 color = Color(0.24, 0.45, 0.23, 0.95)
 
 [node name="Trunk" type="Polygon2D" parent="YSortWorld/Trees/PersimmonTree"]
+visible = false
 polygon = PackedVector2Array(-42, -210, 42, -210, 54, 0, -54, 0)
 color = Color(0.37, 0.24, 0.13, 1)
+
+[node name="TreeRightTrunkArtV003" type="Sprite2D" parent="YSortWorld/Trees/PersimmonTree"]
+position = Vector2(-348, -558)
+z_index = 55
+texture = ExtResource("23_tree_right_trunk_art_v003")
+centered = false
+metadata/module_type = "tree_trunk"
+metadata/asset_package = "home_area_art_v003"
+metadata/paint_id = "tree_right_trunk_art_v003"
 
 [node name="TreeBlocker" type="StaticBody2D" parent="YSortWorld/Trees/PersimmonTree"]
 position = Vector2(0, -30)
@@ -248,13 +350,24 @@ metadata/asset_id = "home_tree_big_shade_001"
 metadata/asset_type = "tree_split_graybox"
 
 [node name="Canopy" type="Polygon2D" parent="YSortWorld/Trees/BigShadeTree"]
+visible = false
 z_index = 2
 polygon = PackedVector2Array(-430, -650, 420, -650, 560, -300, 320, -40, -320, -50, -580, -310)
 color = Color(0.20, 0.38, 0.22, 0.95)
 
 [node name="Trunk" type="Polygon2D" parent="YSortWorld/Trees/BigShadeTree"]
+visible = false
 polygon = PackedVector2Array(-55, -230, 55, -230, 70, 0, -70, 0)
 color = Color(0.34, 0.22, 0.12, 1)
+
+[node name="TreeLeftTrunkArtV003" type="Sprite2D" parent="YSortWorld/Trees/BigShadeTree"]
+position = Vector2(-348, -518)
+z_index = 55
+texture = ExtResource("21_tree_left_trunk_art_v003")
+centered = false
+metadata/module_type = "tree_trunk"
+metadata/asset_package = "home_area_art_v003"
+metadata/paint_id = "tree_left_trunk_art_v003"
 
 [node name="TreeBlocker" type="StaticBody2D" parent="YSortWorld/Trees/BigShadeTree"]
 position = Vector2(0, -30)
@@ -268,11 +381,13 @@ metadata/asset_id = "home_tree_small_left_001"
 metadata/asset_type = "tree_split_graybox"
 
 [node name="Canopy" type="Polygon2D" parent="YSortWorld/Trees/SmallLeftTree"]
+visible = false
 z_index = 2
 polygon = PackedVector2Array(-180, -360, 180, -360, 260, -150, 120, -40, -140, -40, -260, -170)
 color = Color(0.26, 0.48, 0.25, 0.95)
 
 [node name="Trunk" type="Polygon2D" parent="YSortWorld/Trees/SmallLeftTree"]
+visible = false
 polygon = PackedVector2Array(-34, -150, 34, -150, 46, 0, -46, 0)
 color = Color(0.37, 0.24, 0.13, 1)
 
@@ -291,12 +406,23 @@ metadata/asset_id = "home_prop_mailbox_001"
 metadata/asset_type = "prop_graybox"
 
 [node name="Body" type="Polygon2D" parent="YSortWorld/Props/Mailbox"]
+visible = false
 polygon = PackedVector2Array(-42, -96, 42, -96, 42, -24, -42, -24)
 color = Color(0.57, 0.18, 0.16, 1)
 
 [node name="Post" type="Polygon2D" parent="YSortWorld/Props/Mailbox"]
+visible = false
 polygon = PackedVector2Array(-10, -24, 10, -24, 10, 0, -10, 0)
 color = Color(0.28, 0.18, 0.10, 1)
+
+[node name="MailboxArt" type="Sprite2D" parent="YSortWorld/Props/Mailbox"]
+position = Vector2(0, -53)
+scale = Vector2(0.45, 0.45)
+script = ExtResource("28_runtime_sprite")
+texture_path = "res://assets/art/props/region_home_area_prop_mailbox_v001.png"
+metadata/module_type = "runtime_prop_art"
+metadata/asset_package = "art_landing_pass1"
+metadata/paint_id = "mailbox_art_v001"
 
 [node name="PropBlocker" type="StaticBody2D" parent="YSortWorld/Props/Mailbox"]
 position = Vector2(0, -18)
@@ -310,13 +436,24 @@ metadata/asset_id = "home_prop_well_001"
 metadata/asset_type = "prop_graybox"
 
 [node name="Curb" type="Polygon2D" parent="YSortWorld/Props/Well"]
+visible = false
 polygon = PackedVector2Array(-82, -88, 82, -88, 108, -22, 62, 18, -66, 18, -108, -24)
 color = Color(0.45, 0.45, 0.40, 1)
 
 [node name="Roof" type="Polygon2D" parent="YSortWorld/Props/Well"]
+visible = false
 z_index = 1
 polygon = PackedVector2Array(-120, -190, 120, -190, 90, -130, -90, -130)
 color = Color(0.27, 0.20, 0.14, 1)
+
+[node name="WellArt" type="Sprite2D" parent="YSortWorld/Props/Well"]
+position = Vector2(0, -98)
+scale = Vector2(0.55, 0.55)
+script = ExtResource("28_runtime_sprite")
+texture_path = "res://assets/art/props/region_home_area_prop_well_broken_v001.png"
+metadata/module_type = "runtime_prop_art"
+metadata/asset_package = "art_landing_pass1"
+metadata/paint_id = "well_broken_art_v001"
 
 [node name="PropBlocker" type="StaticBody2D" parent="YSortWorld/Props/Well"]
 position = Vector2(0, -30)
@@ -330,12 +467,29 @@ metadata/asset_id = "home_prop_bench_001"
 metadata/asset_type = "prop_graybox"
 
 [node name="Seat" type="Polygon2D" parent="YSortWorld/Props/Bench"]
+visible = false
 polygon = PackedVector2Array(-120, -58, 120, -58, 120, -22, -120, -22)
 color = Color(0.42, 0.25, 0.12, 1)
 
 [node name="Legs" type="Polygon2D" parent="YSortWorld/Props/Bench"]
+visible = false
 polygon = PackedVector2Array(-90, -22, -70, -22, -70, 0, -90, 0, 70, -22, 90, -22, 90, 0, 70, 0)
 color = Color(0.25, 0.16, 0.09, 1)
+
+[node name="BenchArt" type="Sprite2D" parent="YSortWorld/Props/Bench"]
+position = Vector2(0, -67)
+scale = Vector2(0.75, 0.75)
+script = ExtResource("28_runtime_sprite")
+texture_path = "res://assets/art/props/region_home_area_prop_bench_v001.png"
+metadata/module_type = "runtime_prop_art"
+metadata/asset_package = "art_landing_pass1"
+metadata/paint_id = "bench_art_v001"
+
+[node name="PropBlocker" type="StaticBody2D" parent="YSortWorld/Props/Bench"]
+position = Vector2(0, -20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Props/Bench/PropBlocker"]
+shape = SubResource("RectangleShape2D_bench")
 
 [node name="RoadSign" type="Node2D" parent="YSortWorld/Props"]
 position = Vector2(5180, 1420)
@@ -343,21 +497,50 @@ metadata/asset_id = "home_prop_roadsign_001"
 metadata/asset_type = "prop_graybox"
 
 [node name="Board" type="Polygon2D" parent="YSortWorld/Props/RoadSign"]
+visible = false
 polygon = PackedVector2Array(-76, -128, 76, -128, 76, -72, -76, -72)
 color = Color(0.48, 0.30, 0.15, 1)
 
 [node name="Post" type="Polygon2D" parent="YSortWorld/Props/RoadSign"]
+visible = false
 polygon = PackedVector2Array(-12, -72, 12, -72, 12, 0, -12, 0)
 color = Color(0.30, 0.19, 0.10, 1)
+
+[node name="RoadSignArt" type="Sprite2D" parent="YSortWorld/Props/RoadSign"]
+position = Vector2(0, -65)
+scale = Vector2(0.55, 0.55)
+script = ExtResource("28_runtime_sprite")
+texture_path = "res://assets/art/props/region_home_area_prop_road_sign_v001.png"
+metadata/module_type = "runtime_prop_art"
+metadata/asset_package = "art_landing_pass1"
+metadata/paint_id = "road_sign_art_v001"
+
+[node name="PropBlocker" type="StaticBody2D" parent="YSortWorld/Props/RoadSign"]
+position = Vector2(0, -18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Props/RoadSign/PropBlocker"]
+shape = SubResource("RectangleShape2D_road_sign")
 
 [node name="CatBed" type="Node2D" parent="YSortWorld/Props"]
 position = Vector2(4480, 2380)
 metadata/asset_id = "home_prop_catbed_001"
-metadata/asset_type = "prop_graybox"
+metadata/asset_type = "runtime_prop_art"
+metadata/asset_package = "home_area_art_v003"
 
 [node name="Cushion" type="Polygon2D" parent="YSortWorld/Props/CatBed"]
+visible = false
 polygon = PackedVector2Array(-92, -46, 92, -46, 118, -4, 80, 34, -80, 34, -118, -4)
 color = Color(0.70, 0.50, 0.38, 1)
+
+[node name="CatBedArt" type="Sprite2D" parent="YSortWorld/Props/CatBed"]
+position = Vector2(-100, -146)
+scale = Vector2(0.78, 0.78)
+centered = false
+script = ExtResource("28_runtime_sprite")
+texture_path = "res://assets/art/props/region_home_area_prop_cat_bed_v001.png"
+metadata/module_type = "runtime_prop_art"
+metadata/asset_package = "home_area_art_v003"
+metadata/paint_id = "cat_bed_art_v001"
 
 [node name="Interactables" type="Node2D" parent="YSortWorld"]
 metadata/purpose = "interaction_areas_with_unique_ids"
@@ -405,7 +588,7 @@ text = "按 E 打水"
 horizontal_alignment = 1
 
 [node name="BenchRestInteract" type="Area2D" parent="YSortWorld/Interactables"]
-position = Vector2(4110, 2410)
+position = Vector2(4110, 2430)
 script = ExtResource("13_veranda_rest")
 seat_anchor = Vector2(8110, 8428)
 rest_facing = Vector2(1, 0)
@@ -448,12 +631,12 @@ text = "按 E 查看路牌"
 horizontal_alignment = 1
 
 [node name="HouseDoorEntrance" type="Area2D" parent="YSortWorld/Interactables"]
-position = Vector2(3160, 1660)
+position = Vector2(3300, 1880)
 script = ExtResource("7_yard_interactable")
 object_id = "homearea_house_door_001"
 display_name = "云屋门口"
-interaction_hint = "按 E 查看屋内"
-feedback_text = "屋内场景还没有接入，先保留为主屋入口。"
+interaction_hint = "按 E 查看屋檐"
+feedback_text = "屋檐下很安静，门口的木阶还留着晒过太阳的温度。"
 action_id = "inspect_house_door"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Interactables/HouseDoorEntrance"]
@@ -465,7 +648,7 @@ offset_left = -100.0
 offset_top = -180.0
 offset_right = 100.0
 offset_bottom = -148.0
-text = "按 E 查看屋内"
+text = "按 E 查看屋檐"
 horizontal_alignment = 1
 
 [node name="BackyardFarmEntrance" type="Area2D" parent="YSortWorld/Interactables"]
@@ -489,6 +672,24 @@ offset_top = -150.0
 offset_right = 130.0
 offset_bottom = -118.0
 text = "按 E 前往后院农地"
+horizontal_alignment = 1
+
+[node name="PlayerYardEntrance" type="Area2D" parent="YSortWorld/Interactables"]
+position = Vector2(4300, 3240)
+script = ExtResource("14_scene_switch_area")
+interaction_hint = "按 E 前往后屋"
+target_scene = "res://game/scenes/world/PlayerYard.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Interactables/PlayerYardEntrance"]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="HintLabel" type="Label" parent="YSortWorld/Interactables/PlayerYardEntrance"]
+visible = false
+offset_left = -110.0
+offset_top = -140.0
+offset_right = 110.0
+offset_bottom = -108.0
+text = "按 E 前往后屋"
 horizontal_alignment = 1
 
 [node name="NPCs" type="Node2D" parent="YSortWorld"]
@@ -531,7 +732,7 @@ collision_mask = 7
 shape = SubResource("RectangleShape2D_interaction")
 
 [node name="PlayerSpawn" type="Marker2D" parent="YSortWorld"]
-position = Vector2(3072, 2280)
+position = Vector2(3300, 1900)
 metadata/spawn_id = "home_area_default"
 
 [node name="SpawnFromBackFarm" type="Marker2D" parent="YSortWorld"]
@@ -543,7 +744,38 @@ z_index = 80
 metadata/layer_rule = "fixed_front_only_no_broad_rectangles"
 metadata/purpose = "small fixed foreground accents only"
 
+[node name="Occluders" type="Node2D" parent="ForegroundStatic"]
+metadata/purpose = "source_space_roof_and_canopy_occluders"
+
+[node name="HouseRoofOccluderArtV003" type="Sprite2D" parent="ForegroundStatic/Occluders"]
+position = Vector2(1992, 727)
+z_index = 180
+texture = ExtResource("19_house_roof_occluder_art_v003")
+centered = false
+metadata/module_type = "roof_occluder"
+metadata/asset_package = "home_area_art_v003"
+metadata/paint_id = "house_roof_occluder_art_v003"
+
+[node name="TreeLeftCanopyOccluderArtV003" type="Sprite2D" parent="ForegroundStatic/Occluders"]
+position = Vector2(715, 432)
+z_index = 190
+texture = ExtResource("22_tree_left_canopy_art_v003")
+centered = false
+metadata/module_type = "tree_canopy_occluder"
+metadata/asset_package = "home_area_art_v003"
+metadata/paint_id = "tree_left_canopy_occluder_art_v003"
+
+[node name="TreeRightCanopyOccluderArtV003" type="Sprite2D" parent="ForegroundStatic/Occluders"]
+position = Vector2(4089, 816)
+z_index = 188
+texture = ExtResource("24_tree_right_canopy_art_v003")
+centered = false
+metadata/module_type = "tree_canopy_occluder"
+metadata/asset_package = "home_area_art_v003"
+metadata/paint_id = "tree_right_canopy_occluder_art_v003"
+
 [node name="FrontGrassLeft" type="Sprite2D" parent="ForegroundStatic"]
+visible = false
 position = Vector2(420, 2460)
 texture = ExtResource("11_front_grass_left_png")
 centered = false
@@ -551,7 +783,18 @@ metadata/module_type = "foreground_occluder"
 metadata/paint_id = "front_grass_left"
 metadata/asset_source = "first_art_pass_png_cutout"
 
+[node name="ForegroundGrassArtV003" type="Sprite2D" parent="ForegroundStatic"]
+position = Vector2(0, 1915)
+z_index = 200
+texture = ExtResource("25_foreground_grass_art_v003")
+centered = false
+self_modulate = Color(1, 1, 1, 0.92)
+metadata/module_type = "foreground_occluder"
+metadata/asset_package = "home_area_art_v003"
+metadata/paint_id = "foreground_grass_art_v003"
+
 [node name="FrontFlowersRight" type="Polygon2D" parent="ForegroundStatic"]
+visible = false
 polygon = PackedVector2Array(5210, 3300, 6144, 3080, 6144, 4096, 5560, 4096)
 color = Color(0.42, 0.32, 0.55, 0.70)
 
@@ -560,12 +803,34 @@ z_index = 95
 metadata/purpose = "ambient_light_weather_graybox"
 
 [node name="DappledLight" type="Polygon2D" parent="LightAndWeather"]
+visible = false
 polygon = PackedVector2Array(980, 840, 2480, 980, 2300, 1710, 700, 1530)
 color = Color(1, 0.92, 0.65, 0.14)
 
 [node name="WindLeavesGuide" type="Polygon2D" parent="LightAndWeather"]
+visible = false
 polygon = PackedVector2Array(0, 0, 1720, 0, 1500, 540, 0, 680)
 color = Color(0.20, 0.36, 0.18, 0.30)
+
+[node name="ShadowDappledArtV003" type="Sprite2D" parent="LightAndWeather"]
+position = Vector2(592, 739)
+z_index = 210
+texture = ExtResource("26_shadow_dappled_art_v003")
+centered = false
+self_modulate = Color(0.46, 0.42, 0.36, 0.42)
+metadata/module_type = "shadow_overlay"
+metadata/asset_package = "home_area_art_v003"
+metadata/paint_id = "shadow_dappled_art_v003"
+
+[node name="LightOverlayArtV003" type="Sprite2D" parent="LightAndWeather"]
+position = Vector2(410, 708)
+z_index = 220
+texture = ExtResource("27_light_overlay_art_v003")
+centered = false
+self_modulate = Color(1, 0.96, 0.78, 0.34)
+metadata/module_type = "light_overlay"
+metadata/asset_package = "home_area_art_v003"
+metadata/paint_id = "light_overlay_art_v003"
 
 [node name="CameraRig" type="Camera2D" parent="."]
 position = Vector2(3072, 2280)

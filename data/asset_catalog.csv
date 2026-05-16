@@ -1,0 +1,27 @@
+asset_id,category,subcategory,filename,size,variants,priority,notes
+chr_player_base,characters,player,chr_player_base_idle_down_128.png,128x128,idle/walk/water/pickup/interact four directions,P0,主角基础资产，脚底中心原点
+npc_aoi,characters,npc,npc_aoi_idle_down_128.png,128x128,portrait neutral/happy/thinking,P0,杂货店店主
+npc_gen,characters,npc,npc_gen_idle_down_128.png,128x128,portrait neutral/happy/thinking,P0,老木匠
+npc_mika,characters,npc,npc_mika_idle_down_128.png,128x128,portrait neutral/happy/thinking,P0,邮差
+npc_hana,characters,npc,npc_hana_idle_down_128.png,128x128,portrait neutral/happy/thinking,P1,花婆婆
+npc_sora,characters,npc,npc_sora_idle_down_128.png,128x128,portrait neutral/happy/thinking,P1,小学生
+animal_cat_01,characters,animal,animal_cat_idle_down_64.png,64x64,idle/walk/sleep,P1,陪伴动物
+tile_grass_spring,tiles,ground,tile_grass_spring_a_64.png,64x64,a/b/c seasonal,P0,草地
+tile_dirt_dry,tiles,ground,tile_dirt_dry_64.png,64x64,dry/wet,P0,泥地
+tile_field_tilled,tiles,farming,tile_field_tilled_dry_64.png,64x64,dry/wet,P0,农田地块
+tile_stone_path,tiles,path,tile_stone_path_a_64.png,64x64,a/b/c,P0,村道石板
+env_player_house,environments,building,env_house_player_exterior_spring_1024.png,1024x1024,spring/summer/autumn/winter,P0,主角家外景，可拆模块
+prop_mailbox,props,interactive,prop_mailbox_wood_default_128.png,128x128,default/open,P0,信箱
+prop_old_well,props,restoration,prop_well_old_broken_256.png,256x256,broken/repaired,P0,旧水井
+prop_wind_chime,props,ambient,prop_wind_chime_default_64.png,64x64,default,P0,风铃
+prop_persimmon_tree,props,tree,prop_persimmon_tree_autumn_fruit_512.png,512x512,spring/summer/autumn/winter,P0,标志性柿子树
+prop_wooden_bridge,props,restoration,prop_wooden_bridge_broken_512.png,512x512,broken/repaired,P1,老桥
+prop_shrine_bell,props,story,prop_shrine_bell_old_128.png,128x128,old/repaired,P1,神社铃
+crop_turnip,crops,spring,crop_turnip_stage_00_64.png,64x64,stage_00-03,P0,春萝卜
+crop_strawberry,crops,spring,crop_strawberry_stage_00_64.png,64x64,stage_00-03,P0,草莓
+crop_tomato,crops,summer,crop_tomato_stage_00_64.png,64x64,stage_00-03/regrow,P1,番茄
+crop_pumpkin,crops,autumn,crop_pumpkin_stage_00_64.png,64x64,stage_00-03,P1,南瓜
+ui_panel_paper,ui,panel,ui_panel_paper_9slice.png,512x512,default,P0,纸张面板
+ui_button_wood,ui,button,ui_button_default.png,256x96,default/hover/pressed,P0,木牌按钮
+ui_icon_weather_sunny,ui,weather,ui_icon_weather_sunny_64.png,64x64,sunny/cloudy/rainy/windy/snowy/foggy,P0,天气图标
+ui_icon_bag,ui,hud,ui_icon_bag_64.png,64x64,default,P0,背包图标

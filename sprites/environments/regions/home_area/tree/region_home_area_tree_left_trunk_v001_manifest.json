@@ -1,0 +1,15 @@
+{
+  "file": "sprites/environments/regions/home_area/tree/region_home_area_tree_left_trunk_v001.png",
+  "asset_id": "region_home_area_tree_left_trunk_v001",
+  "type": "y_sort_tree_body",
+  "intended_parent": "YSortWorld/Trees/BigShadeTree",
+  "recommended_z_index": 0,
+  "width": 494,
+  "height": 620,
+  "anchor": "trunk_foot_center",
+  "anchor_x": 247,
+  "anchor_y": 620,
+  "mode": "RGBA",
+  "transparent_background": true,
+  "placement_note": "Use as the left large shade tree trunk/body. Pair with region_home_area_tree_left_canopy_occluder_v001.png as separate canopy occluder."
+}

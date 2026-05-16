@@ -1,0 +1,930 @@
+{
+  "package_id": "final_art_phase2_batch_c_d",
+  "generated_at": "2026-05-15 15:04:46",
+  "runtime_replacement": false,
+  "source_mode": "built_in_imagegen_chroma_key_removed_locally",
+  "batches": {
+    "batch_c_interactable_props": [
+      {
+        "file": "production/assets/final_art/home_area/props/region_home_area_prop_mailbox_v001.png",
+        "status": "generated_phase2",
+        "source_sheet": "production/assets/final_art/generated_sources/phase2/props_source_sheet.png",
+        "source_prompt": "production/assets/final_art/prompts/batch_c_interactable_props_v001.md",
+        "size_px": {
+          "width": 256,
+          "height": 256
+        },
+        "anchor": "bottom_center",
+        "anchor_px": {
+          "x": 128,
+          "y": 255
+        },
+        "target_parent": "YSortWorld/Props",
+        "role": "inspect_mailbox",
+        "fit": {
+          "source_bbox": [
+            79,
+            198,
+            294,
+            544
+          ],
+          "trimmed_size": [
+            215,
+            346
+          ],
+          "scale": 0.6213872832369942,
+          "placed_at": [
+            61,
+            31
+          ],
+          "placed_size": [
+            133,
+            215
+          ]
+        },
+        "alpha_check": {
+          "width": 256,
+          "height": 256,
+          "mode": "RGBA",
+          "has_alpha": true,
+          "transparent_pixels": 49941,
+          "translucent_pixels": 1879,
+          "opaque_pixels": 13716,
+          "transparent_corners": true,
+          "alpha_bbox": [
+            61,
+            31,
+            194,
+            246
+          ]
+        }
+      },
+      {
+        "file": "production/assets/final_art/home_area/props/region_home_area_prop_well_broken_v001.png",
+        "status": "generated_phase2",
+        "source_sheet": "production/assets/final_art/generated_sources/phase2/props_source_sheet.png",
+        "source_prompt": "production/assets/final_art/prompts/batch_c_interactable_props_v001.md",
+        "size_px": {
+          "width": 384,
+          "height": 384
+        },
+        "anchor": "bottom_center",
+        "anchor_px": {
+          "x": 192,
+          "y": 383
+        },
+        "target_parent": "YSortWorld/Props",
+        "role": "old_well_broken",
+        "fit": {
+          "source_bbox": [
+            0,
+            157,
+            366,
+            574
+          ],
+          "trimmed_size": [
+            366,
+            417
+          ],
+          "scale": 0.8465227817745803,
+          "placed_at": [
+            37,
+            16
+          ],
+          "placed_size": [
+            309,
+            353
+          ]
+        },
+        "alpha_check": {
+          "width": 384,
+          "height": 384,
+          "mode": "RGBA",
+          "has_alpha": true,
+          "transparent_pixels": 68734,
+          "translucent_pixels": 7173,
+          "opaque_pixels": 71549,
+          "transparent_corners": true,
+          "alpha_bbox": [
+            37,
+            16,
+            346,
+            369
+          ]
+        }
+      },
+      {
+        "file": "production/assets/final_art/home_area/props/region_home_area_prop_well_repaired_v001.png",
+        "status": "generated_phase2",
+        "source_sheet": "production/assets/final_art/generated_sources/phase2/props_source_sheet.png",
+        "source_prompt": "production/assets/final_art/prompts/batch_c_interactable_props_v001.md",
+        "size_px": {
+          "width": 384,
+          "height": 384
+        },
+        "anchor": "bottom_center",
+        "anchor_px": {
+          "x": 192,
+          "y": 383
+        },
+        "target_parent": "YSortWorld/Props",
+        "role": "old_well_repaired",
+        "fit": {
+          "source_bbox": [
+            25,
+            150,
+            413,
+            572
+          ],
+          "trimmed_size": [
+            388,
+            422
+          ],
+          "scale": 0.8364928909952607,
+          "placed_at": [
+            30,
+            16
+          ],
+          "placed_size": [
+            324,
+            353
+          ]
+        },
+        "alpha_check": {
+          "width": 384,
+          "height": 384,
+          "mode": "RGBA",
+          "has_alpha": true,
+          "transparent_pixels": 62302,
+          "translucent_pixels": 6662,
+          "opaque_pixels": 78492,
+          "transparent_corners": true,
+          "alpha_bbox": [
+            30,
+            16,
+            354,
+            369
+          ]
+        }
+      },
+      {
+        "file": "production/assets/final_art/home_area/props/region_home_area_prop_bench_v001.png",
+        "status": "generated_phase2",
+        "source_sheet": "production/assets/final_art/generated_sources/phase2/props_source_sheet.png",
+        "source_prompt": "production/assets/final_art/prompts/batch_c_interactable_props_v001.md",
+        "size_px": {
+          "width": 256,
+          "height": 192
+        },
+        "anchor": "bottom_center",
+        "anchor_px": {
+          "x": 128,
+          "y": 191
+        },
+        "target_parent": "YSortWorld/Props",
+        "role": "rest_bench",
+        "fit": {
+          "source_bbox": [
+            52,
+            311,
+            434,
+            547
+          ],
+          "trimmed_size": [
+            382,
+            236
+          ],
+          "scale": 0.56282722513089,
+          "placed_at": [
+            21,
+            53
+          ],
+          "placed_size": [
+            214,
+            132
+          ]
+        },
+        "alpha_check": {
+          "width": 256,
+          "height": 192,
+          "mode": "RGBA",
+          "has_alpha": true,
+          "transparent_pixels": 32410,
+          "translucent_pixels": 2359,
+          "opaque_pixels": 14383,
+          "transparent_corners": true,
+          "alpha_bbox": [
+            21,
+            53,
+            235,
+            185
+          ]
+        }
+      },
+      {
+        "file": "production/assets/final_art/home_area/props/region_home_area_prop_road_sign_v001.png",
+        "status": "generated_phase2",
+        "source_sheet": "production/assets/final_art/generated_sources/phase2/props_source_sheet.png",
+        "source_prompt": "production/assets/final_art/prompts/batch_c_interactable_props_v001.md",
+        "size_px": {
+          "width": 256,
+          "height": 256
+        },
+        "anchor": "bottom_center",
+        "anchor_px": {
+          "x": 128,
+          "y": 255
+        },
+        "target_parent": "YSortWorld/Props",
+        "role": "read_sign",
+        "fit": {
+          "source_bbox": [
+            122,
+            170,
+            346,
+            563
+          ],
+          "trimmed_size": [
+            224,
+            393
+          ],
+          "scale": 0.5470737913486005,
+          "placed_at": [
+            67,
+            32
+          ],
+          "placed_size": [
+            122,
+            214
+          ]
+        },
+        "alpha_check": {
+          "width": 256,
+          "height": 256,
+          "mode": "RGBA",
+          "has_alpha": true,
+          "transparent_pixels": 53027,
+          "translucent_pixels": 2679,
+          "opaque_pixels": 9830,
+          "transparent_corners": true,
+          "alpha_bbox": [
+            67,
+            32,
+            189,
+            246
+          ]
+        }
+      }
+    ],
+    "batch_d_npc_p0": [
+      {
+        "file": "production/assets/final_art/characters/npc/npc_aoi_idle_down_128.png",
+        "status": "generated_phase2",
+        "source_sheet": "production/assets/final_art/generated_sources/phase2/aoi_source_sheet.png",
+        "source_prompt": "production/assets/final_art/prompts/batch_d_npc_p0_v001.md",
+        "size_px": {
+          "width": 128,
+          "height": 128
+        },
+        "anchor": "bottom_center",
+        "anchor_px": {
+          "x": 64,
+          "y": 127
+        },
+        "target_parent": "YSortWorld/NPCs",
+        "role": "aoi_idle_down",
+        "fit": {
+          "source_bbox": [
+            212,
+            83,
+            408,
+            609
+          ],
+          "trimmed_size": [
+            196,
+            526
+          ],
+          "scale": 0.20342205323193915,
+          "placed_at": [
+            44,
+            16
+          ],
+          "placed_size": [
+            39,
+            107
+          ]
+        },
+        "alpha_check": {
+          "width": 128,
+          "height": 128,
+          "mode": "RGBA",
+          "has_alpha": true,
+          "transparent_pixels": 13001,
+          "translucent_pixels": 923,
+          "opaque_pixels": 2460,
+          "transparent_corners": true,
+          "alpha_bbox": [
+            44,
+            16,
+            83,
+            123
+          ]
+        }
+      },
+      {
+        "file": "production/assets/final_art/characters/npc/npc_aoi_portrait_neutral_512.png",
+        "status": "generated_phase2",
+        "source_sheet": "production/assets/final_art/generated_sources/phase2/aoi_source_sheet.png",
+        "source_prompt": "production/assets/final_art/prompts/batch_d_npc_p0_v001.md",
+        "size_px": {
+          "width": 512,
+          "height": 512
+        },
+        "anchor": "center",
+        "anchor_px": {
+          "x": 256,
+          "y": 256
+        },
+        "target_parent": "DialogueBox/Portrait",
+        "role": "aoi_portrait_neutral",
+        "fit": {
+          "source_bbox": [
+            139,
+            122,
+            459,
+            590
+          ],
+          "trimmed_size": [
+            320,
+            468
+          ],
+          "scale": 1.0491452991452992,
+          "placed_at": [
+            88,
+            10
+          ],
+          "placed_size": [
+            335,
+            491
+          ]
+        },
+        "alpha_check": {
+          "width": 512,
+          "height": 512,
+          "mode": "RGBA",
+          "has_alpha": true,
+          "transparent_pixels": 143601,
+          "translucent_pixels": 5656,
+          "opaque_pixels": 112887,
+          "transparent_corners": true,
+          "alpha_bbox": [
+            88,
+            10,
+            423,
+            501
+          ]
+        }
+      },
+      {
+        "file": "production/assets/final_art/characters/npc/npc_aoi_portrait_happy_512.png",
+        "status": "generated_phase2",
+        "source_sheet": "production/assets/final_art/generated_sources/phase2/aoi_source_sheet.png",
+        "source_prompt": "production/assets/final_art/prompts/batch_d_npc_p0_v001.md",
+        "size_px": {
+          "width": 512,
+          "height": 512
+        },
+        "anchor": "center",
+        "anchor_px": {
+          "x": 256,
+          "y": 256
+        },
+        "target_parent": "DialogueBox/Portrait",
+        "role": "aoi_portrait_happy",
+        "fit": {
+          "source_bbox": [
+            62,
+            121,
+            386,
+            590
+          ],
+          "trimmed_size": [
+            324,
+            469
+          ],
+          "scale": 1.046908315565032,
+          "placed_at": [
+            86,
+            10
+          ],
+          "placed_size": [
+            339,
+            491
+          ]
+        },
+        "alpha_check": {
+          "width": 512,
+          "height": 512,
+          "mode": "RGBA",
+          "has_alpha": true,
+          "transparent_pixels": 142504,
+          "translucent_pixels": 5857,
+          "opaque_pixels": 113783,
+          "transparent_corners": true,
+          "alpha_bbox": [
+            86,
+            10,
+            425,
+            501
+          ]
+        }
+      },
+      {
+        "file": "production/assets/final_art/characters/npc/npc_aoi_portrait_thinking_512.png",
+        "status": "generated_phase2",
+        "source_sheet": "production/assets/final_art/generated_sources/phase2/aoi_source_sheet.png",
+        "source_prompt": "production/assets/final_art/prompts/batch_d_npc_p0_v001.md",
+        "size_px": {
+          "width": 512,
+          "height": 512
+        },
+        "anchor": "center",
+        "anchor_px": {
+          "x": 256,
+          "y": 256
+        },
+        "target_parent": "DialogueBox/Portrait",
+        "role": "aoi_portrait_thinking",
+        "fit": {
+          "source_bbox": [
+            12,
+            122,
+            342,
+            590
+          ],
+          "trimmed_size": [
+            330,
+            468
+          ],
+          "scale": 1.0491452991452992,
+          "placed_at": [
+            83,
+            10
+          ],
+          "placed_size": [
+            346,
+            491
+          ]
+        },
+        "alpha_check": {
+          "width": 512,
+          "height": 512,
+          "mode": "RGBA",
+          "has_alpha": true,
+          "transparent_pixels": 136430,
+          "translucent_pixels": 5876,
+          "opaque_pixels": 119838,
+          "transparent_corners": true,
+          "alpha_bbox": [
+            83,
+            10,
+            429,
+            501
+          ]
+        }
+      },
+      {
+        "file": "production/assets/final_art/characters/npc/npc_gen_idle_down_128.png",
+        "status": "generated_phase2",
+        "source_sheet": "production/assets/final_art/generated_sources/phase2/gen_source_sheet.png",
+        "source_prompt": "production/assets/final_art/prompts/batch_d_npc_p0_v001.md",
+        "size_px": {
+          "width": 128,
+          "height": 128
+        },
+        "anchor": "bottom_center",
+        "anchor_px": {
+          "x": 64,
+          "y": 127
+        },
+        "target_parent": "YSortWorld/NPCs",
+        "role": "gen_idle_down",
+        "fit": {
+          "source_bbox": [
+            151,
+            62,
+            408,
+            639
+          ],
+          "trimmed_size": [
+            257,
+            577
+          ],
+          "scale": 0.1854419410745234,
+          "placed_at": [
+            40,
+            16
+          ],
+          "placed_size": [
+            47,
+            107
+          ]
+        },
+        "alpha_check": {
+          "width": 128,
+          "height": 128,
+          "mode": "RGBA",
+          "has_alpha": true,
+          "transparent_pixels": 12532,
+          "translucent_pixels": 963,
+          "opaque_pixels": 2889,
+          "transparent_corners": true,
+          "alpha_bbox": [
+            40,
+            16,
+            87,
+            123
+          ]
+        }
+      },
+      {
+        "file": "production/assets/final_art/characters/npc/npc_gen_portrait_neutral_512.png",
+        "status": "generated_phase2",
+        "source_sheet": "production/assets/final_art/generated_sources/phase2/gen_source_sheet.png",
+        "source_prompt": "production/assets/final_art/prompts/batch_d_npc_p0_v001.md",
+        "size_px": {
+          "width": 512,
+          "height": 512
+        },
+        "anchor": "center",
+        "anchor_px": {
+          "x": 256,
+          "y": 256
+        },
+        "target_parent": "DialogueBox/Portrait",
+        "role": "gen_portrait_neutral",
+        "fit": {
+          "source_bbox": [
+            63,
+            120,
+            438,
+            605
+          ],
+          "trimmed_size": [
+            375,
+            485
+          ],
+          "scale": 1.0123711340206185,
+          "placed_at": [
+            66,
+            10
+          ],
+          "placed_size": [
+            379,
+            491
+          ]
+        },
+        "alpha_check": {
+          "width": 512,
+          "height": 512,
+          "mode": "RGBA",
+          "has_alpha": true,
+          "transparent_pixels": 130990,
+          "translucent_pixels": 4136,
+          "opaque_pixels": 127018,
+          "transparent_corners": true,
+          "alpha_bbox": [
+            66,
+            10,
+            445,
+            501
+          ]
+        }
+      },
+      {
+        "file": "production/assets/final_art/characters/npc/npc_gen_portrait_happy_512.png",
+        "status": "generated_phase2",
+        "source_sheet": "production/assets/final_art/generated_sources/phase2/gen_source_sheet.png",
+        "source_prompt": "production/assets/final_art/prompts/batch_d_npc_p0_v001.md",
+        "size_px": {
+          "width": 512,
+          "height": 512
+        },
+        "anchor": "center",
+        "anchor_px": {
+          "x": 256,
+          "y": 256
+        },
+        "target_parent": "DialogueBox/Portrait",
+        "role": "gen_portrait_happy",
+        "fit": {
+          "source_bbox": [
+            8,
+            130,
+            408,
+            605
+          ],
+          "trimmed_size": [
+            400,
+            475
+          ],
+          "scale": 1.0336842105263158,
+          "placed_at": [
+            49,
+            10
+          ],
+          "placed_size": [
+            413,
+            491
+          ]
+        },
+        "alpha_check": {
+          "width": 512,
+          "height": 512,
+          "mode": "RGBA",
+          "has_alpha": true,
+          "transparent_pixels": 124434,
+          "translucent_pixels": 4491,
+          "opaque_pixels": 133219,
+          "transparent_corners": true,
+          "alpha_bbox": [
+            49,
+            10,
+            462,
+            501
+          ]
+        }
+      },
+      {
+        "file": "production/assets/final_art/characters/npc/npc_gen_portrait_thinking_512.png",
+        "status": "generated_phase2",
+        "source_sheet": "production/assets/final_art/generated_sources/phase2/gen_source_sheet.png",
+        "source_prompt": "production/assets/final_art/prompts/batch_d_npc_p0_v001.md",
+        "size_px": {
+          "width": 512,
+          "height": 512
+        },
+        "anchor": "center",
+        "anchor_px": {
+          "x": 256,
+          "y": 256
+        },
+        "target_parent": "DialogueBox/Portrait",
+        "role": "gen_portrait_thinking",
+        "fit": {
+          "source_bbox": [
+            0,
+            142,
+            410,
+            605
+          ],
+          "trimmed_size": [
+            410,
+            463
+          ],
+          "scale": 1.060475161987041,
+          "placed_at": [
+            39,
+            11
+          ],
+          "placed_size": [
+            434,
+            490
+          ]
+        },
+        "alpha_check": {
+          "width": 512,
+          "height": 512,
+          "mode": "RGBA",
+          "has_alpha": true,
+          "transparent_pixels": 118339,
+          "translucent_pixels": 4563,
+          "opaque_pixels": 139242,
+          "transparent_corners": true,
+          "alpha_bbox": [
+            39,
+            11,
+            473,
+            501
+          ]
+        }
+      },
+      {
+        "file": "production/assets/final_art/characters/npc/npc_mika_idle_down_128.png",
+        "status": "generated_phase2",
+        "source_sheet": "production/assets/final_art/generated_sources/phase2/mika_source_sheet.png",
+        "source_prompt": "production/assets/final_art/prompts/batch_d_npc_p0_v001.md",
+        "size_px": {
+          "width": 128,
+          "height": 128
+        },
+        "anchor": "bottom_center",
+        "anchor_px": {
+          "x": 64,
+          "y": 127
+        },
+        "target_parent": "YSortWorld/NPCs",
+        "role": "mika_idle_down",
+        "fit": {
+          "source_bbox": [
+            223,
+            71,
+            515,
+            648
+          ],
+          "trimmed_size": [
+            292,
+            577
+          ],
+          "scale": 0.1854419410745234,
+          "placed_at": [
+            37,
+            16
+          ],
+          "placed_size": [
+            54,
+            107
+          ]
+        },
+        "alpha_check": {
+          "width": 128,
+          "height": 128,
+          "mode": "RGBA",
+          "has_alpha": true,
+          "transparent_pixels": 12181,
+          "translucent_pixels": 1044,
+          "opaque_pixels": 3159,
+          "transparent_corners": true,
+          "alpha_bbox": [
+            37,
+            16,
+            91,
+            123
+          ]
+        }
+      },
+      {
+        "file": "production/assets/final_art/characters/npc/npc_mika_portrait_neutral_512.png",
+        "status": "generated_phase2",
+        "source_sheet": "production/assets/final_art/generated_sources/phase2/mika_source_sheet.png",
+        "source_prompt": "production/assets/final_art/prompts/batch_d_npc_p0_v001.md",
+        "size_px": {
+          "width": 512,
+          "height": 512
+        },
+        "anchor": "center",
+        "anchor_px": {
+          "x": 256,
+          "y": 256
+        },
+        "target_parent": "DialogueBox/Portrait",
+        "role": "mika_portrait_neutral",
+        "fit": {
+          "source_bbox": [
+            207,
+            144,
+            519,
+            557
+          ],
+          "trimmed_size": [
+            312,
+            413
+          ],
+          "scale": 1.188861985472155,
+          "placed_at": [
+            71,
+            10
+          ],
+          "placed_size": [
+            370,
+            491
+          ]
+        },
+        "alpha_check": {
+          "width": 512,
+          "height": 512,
+          "mode": "RGBA",
+          "has_alpha": true,
+          "transparent_pixels": 126036,
+          "translucent_pixels": 5277,
+          "opaque_pixels": 130831,
+          "transparent_corners": true,
+          "alpha_bbox": [
+            71,
+            10,
+            441,
+            501
+          ]
+        }
+      },
+      {
+        "file": "production/assets/final_art/characters/npc/npc_mika_portrait_happy_512.png",
+        "status": "generated_phase2",
+        "source_sheet": "production/assets/final_art/generated_sources/phase2/mika_source_sheet.png",
+        "source_prompt": "production/assets/final_art/prompts/batch_d_npc_p0_v001.md",
+        "size_px": {
+          "width": 512,
+          "height": 512
+        },
+        "anchor": "center",
+        "anchor_px": {
+          "x": 256,
+          "y": 256
+        },
+        "target_parent": "DialogueBox/Portrait",
+        "role": "mika_portrait_happy",
+        "fit": {
+          "source_bbox": [
+            126,
+            149,
+            450,
+            557
+          ],
+          "trimmed_size": [
+            324,
+            408
+          ],
+          "scale": 1.2034313725490196,
+          "placed_at": [
+            61,
+            10
+          ],
+          "placed_size": [
+            389,
+            491
+          ]
+        },
+        "alpha_check": {
+          "width": 512,
+          "height": 512,
+          "mode": "RGBA",
+          "has_alpha": true,
+          "transparent_pixels": 121849,
+          "translucent_pixels": 5416,
+          "opaque_pixels": 134879,
+          "transparent_corners": true,
+          "alpha_bbox": [
+            61,
+            10,
+            450,
+            501
+          ]
+        }
+      },
+      {
+        "file": "production/assets/final_art/characters/npc/npc_mika_portrait_thinking_512.png",
+        "status": "generated_phase2",
+        "source_sheet": "production/assets/final_art/generated_sources/phase2/mika_source_sheet.png",
+        "source_prompt": "production/assets/final_art/prompts/batch_d_npc_p0_v001.md",
+        "size_px": {
+          "width": 512,
+          "height": 512
+        },
+        "anchor": "center",
+        "anchor_px": {
+          "x": 256,
+          "y": 256
+        },
+        "target_parent": "DialogueBox/Portrait",
+        "role": "mika_portrait_thinking",
+        "fit": {
+          "source_bbox": [
+            65,
+            144,
+            394,
+            557
+          ],
+          "trimmed_size": [
+            329,
+            413
+          ],
+          "scale": 1.188861985472155,
+          "placed_at": [
+            60,
+            10
+          ],
+          "placed_size": [
+            391,
+            491
+          ]
+        },
+        "alpha_check": {
+          "width": 512,
+          "height": 512,
+          "mode": "RGBA",
+          "has_alpha": true,
+          "transparent_pixels": 120971,
+          "translucent_pixels": 5053,
+          "opaque_pixels": 136120,
+          "transparent_corners": true,
+          "alpha_bbox": [
+            60,
+            10,
+            451,
+            501
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -8,6 +8,10 @@ var _finishing := false
 
 
 func _initialize() -> void:
+    debug_collisions_hint = false
+    debug_navigation_hint = false
+    debug_paths_hint = false
+
     if DisplayServer.get_name() == "headless":
         printerr("FAIL: render_scene_snapshot.gd requires a display server; use it without --headless.")
         _finish_deferred(2)
@@ -26,6 +30,7 @@ func _initialize() -> void:
         width = args[2].to_int()
         height = args[3].to_int()
 
+    DisplayServer.window_set_size(Vector2i(width, height))
     root.size = Vector2i(width, height)
     root.content_scale_size = Vector2i(width, height)
 
@@ -37,6 +42,13 @@ func _initialize() -> void:
 
     var instance: Node = scene.instantiate()
     root.add_child(instance)
+    _hide_snapshot_debug_shapes(root)
+
+    await process_frame
+    await process_frame
+    await process_frame
+    _hide_snapshot_debug_shapes(root)
+    await process_frame
 
     print("INFO: capturing viewport texture")
     var image := root.get_texture().get_image()
@@ -55,6 +67,13 @@ func _initialize() -> void:
     instance = null
     scene = null
     _finish_deferred(0)
+
+
+func _hide_snapshot_debug_shapes(node: Node) -> void:
+    if node is Area2D or node is CollisionShape2D or node is CollisionPolygon2D or node.name == "WalkableZone":
+        node.visible = false
+    for child in node.get_children():
+        _hide_snapshot_debug_shapes(child)
 
 
 func _finish_deferred(exit_code: int) -> void:

@@ -14,6 +14,8 @@ func _ready() -> void:
         var canvas = get_node_or_null("CanvasLayer_UI")
         if canvas != null:
             hint_label = canvas.get_node_or_null("InteractionPrompt")
+    if hint_label == null:
+        hint_label = _create_default_hint_label()
     if hint_label != null:
         hint_label.visible = false
     print("[InteractionHintUI] 初始化完成")
@@ -43,3 +45,37 @@ func _on_nearest_interactable_changed(hint: String) -> void:
         hide_hint()
     else:
         show_hint(hint)
+
+
+func _create_default_hint_label() -> Label:
+    var label := Label.new()
+    label.name = "InteractionPrompt"
+    label.anchor_left = 0.5
+    label.anchor_right = 0.5
+    label.anchor_top = 1.0
+    label.anchor_bottom = 1.0
+    label.offset_left = -160.0
+    label.offset_right = 160.0
+    label.offset_top = -108.0
+    label.offset_bottom = -72.0
+    label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+    label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+    label.text = "按 E 交互"
+    label.add_theme_font_size_override("font_size", 18)
+    label.add_theme_color_override("font_color", Color(0.96, 0.91, 0.78, 1.0))
+
+    var style := StyleBoxFlat.new()
+    style.bg_color = Color(0.12, 0.09, 0.06, 0.82)
+    style.border_color = Color(0.58, 0.46, 0.26, 0.95)
+    style.border_width_left = 2
+    style.border_width_top = 2
+    style.border_width_right = 2
+    style.border_width_bottom = 2
+    style.corner_radius_top_left = 6
+    style.corner_radius_top_right = 6
+    style.corner_radius_bottom_left = 6
+    style.corner_radius_bottom_right = 6
+    label.add_theme_stylebox_override("normal", style)
+
+    add_child(label)
+    return label

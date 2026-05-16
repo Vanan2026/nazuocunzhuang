@@ -1,0 +1,11 @@
+item_id,name,category,sell_price,stackable,tags,description,priority
+wood,木材,material,5,true,material;wood,修理家具和设施用的木材。,P0
+stone,石材,material,5,true,material;stone,从院子和山路边捡到的石块。,P0
+seed_turnip,春萝卜种子,seed,10,true,seed;spring,适合春天种下的小种子。,P0
+crop_turnip,春萝卜,crop,60,true,vegetable;simple_food;spring,带着泥土香气的白萝卜。,P0
+wildflower_spring,春野花,forage,30,true,flower;spring;gift,路边开着的小花。,P0
+small_carp,小鲫鱼,fish,45,true,fish;river;simple_food,村边溪流里常见的小鱼。,P1
+tea_leaf,茶叶,forage,40,true,tea;herb,晒干后可以泡茶。,P1
+persimmon,柿子,crop,90,true,fruit;autumn;sweet;persimmon,院子里柿子树结出的果子。,P0
+food_persimmon_riceball,柿子饭团,food,140,true,food;sweet;autumn;homey,有一点甜味的饭团。,P1
+old_bell_fragment,旧铃碎片,key,0,false,key;story;shrine,从旧物中找到的小铃碎片。,P1

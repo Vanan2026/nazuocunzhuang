@@ -21,9 +21,9 @@ Produce the final protagonist sprite set for the explorable 2D world. The asset 
 | `player_walk_{dir}` | 8 | 8 | yes |
 | `player_idle_{dir}` | 8 | 4 | yes |
 | `player_interact_{dir}` | 8 | 6 | no |
-| `player_sit_down_side` | side only | 6 | no |
-| `player_sit_idle_side` | side only | 6 | yes |
-| `player_stand_up_side` | side only | 6 | no |
+| `player_sit_down_{sit_dir}` | side/down/up | 6 | no |
+| `player_sit_idle_{sit_dir}` | side/down/up | 6 | yes |
+| `player_stand_up_{sit_dir}` | side/down/up | 6 | no |
 
 Direction tokens must be exactly:
 
@@ -36,6 +36,14 @@ up
 up_right
 right
 down_right
+```
+
+Sit direction tokens must be exactly:
+
+```text
+side
+down
+up
 ```
 
 Runtime filenames must be exactly:
@@ -86,6 +94,7 @@ Acceptance criteria:
 - Sandals/feet visibly alternate in at least four frames.
 - Skirt hem may sway, but it must not hide all leg motion.
 - The lower-body silhouette must change enough to pass `tools/validate_protagonist_final_asset_quality.py`.
+- Diagonal walk rows must not contain exact duplicate frames, and adjacent foot-region deltas must stay above the weak-motion threshold in `tools/validate_protagonist_animation_assets.py`.
 - Horizontal body bob should be subtle; do not solve walk motion by sliding the entire character.
 
 ## Production Prompt Base
@@ -113,6 +122,9 @@ Replace `[N]` with the required frame count and append the direction/action-spec
 - Diagonals: use real three-quarter poses, not blended cardinal frames.
 - `interact`: simple reach/check/pick-up gesture, same footprint as idle.
 - `sit_down_side` / `stand_up_side`: must start/end at the side-walk standing height.
+- `sit_down_down` / `stand_up_down`: must start/end at the down-walk standing height.
+- `sit_down_up` / `stand_up_up`: must start/end at the up-walk standing height.
+- `sit_idle_side`, `sit_idle_down`, and `sit_idle_up`: must stay naturally shorter than their matching standing/walk height.
 
 ## Validation
 
@@ -121,7 +133,7 @@ Run in this order after replacing frames:
 ```powershell
 python tools/validate_protagonist_animation_assets.py
 python tools/validate_protagonist_final_asset_quality.py
-python tools/build_protagonist_mvp_from_sheet.py
+python tools/diagnose_protagonist_walk_frames.py
 ```
 
 Then run Godot import and scene checks before accepting the batch.

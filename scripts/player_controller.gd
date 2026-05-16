@@ -66,22 +66,10 @@ func _physics_process(delta: float) -> void:
 		emit_signal("state_changed", current_state)
 		return
 
-	if Input.is_action_just_pressed("ui_left"):
-		print("[Player] 左键按下")
-	if Input.is_action_just_pressed("ui_right"):
-		print("[Player] 右键按下")
-	if Input.is_action_just_pressed("ui_up"):
-		print("[Player] 上键按下")
-	if Input.is_action_just_pressed("ui_down"):
-		print("[Player] 下键按下")
-
 	var input_direction := Vector2(
-		Input.get_axis("ui_left", "ui_right"),
-		Input.get_axis("ui_up", "ui_down")
+		_axis_strength("move_left", "ui_left", "move_right", "ui_right"),
+		_axis_strength("move_up", "ui_up", "move_down", "ui_down")
 	).normalized()
-
-	if input_direction != Vector2.ZERO:
-		print("[Player] 移动方向: ", input_direction)
 
 	velocity = input_direction * SPEED
 	facing_direction = input_direction if input_direction != Vector2.ZERO else facing_direction
@@ -93,6 +81,7 @@ func _physics_process(delta: float) -> void:
 		current_state = State.IDLE
 
 	move_and_slide()
+	_update_nearest_interaction_hint()
 	_sync_visual_scale()
 	_sync_visual_animation()
 	emit_signal("state_changed", current_state)
@@ -118,23 +107,15 @@ func try_interact() -> void:
 				return
 
 	var nearby_interactables := get_tree().get_nodes_in_group("interactable")
-	print("[Player] 场景中有 ", nearby_interactables.size(), " 个可交互物体")
-
-	var nearest_hint := ""
-	var nearest_dist := INTERACTION_RANGE * 2.0
 
 	for interactable in nearby_interactables:
 		if interactable is Area2D and interactable.has_method("get_interaction_hint"):
 			var dist := global_position.distance_to(interactable.global_position)
-			if dist < nearest_dist:
-				nearest_dist = dist
-				nearest_hint = interactable.get_interaction_hint()
 			if dist < INTERACTION_RANGE:
-				print("[Player] 触发交互: ", interactable.name, " (距离: ", dist, ")")
 				interact_with(interactable)
 				return
 
-	_update_hint_ui(nearest_hint)
+	_update_nearest_interaction_hint()
 	show_interaction_hint()
 
 
@@ -165,6 +146,35 @@ func _update_hint_ui(hint: String) -> void:
 			hint_ui.hide_hint()
 		else:
 			hint_ui.show_hint(hint)
+
+
+func _update_nearest_interaction_hint() -> void:
+	var nearest_hint := ""
+	var nearest_dist := INTERACTION_RANGE
+
+	for interactable in get_tree().get_nodes_in_group("interactable"):
+		if interactable == self:
+			continue
+		if not (interactable is Area2D):
+			continue
+		if not interactable.has_method("get_interaction_hint"):
+			continue
+		var dist := global_position.distance_to(interactable.global_position)
+		if dist <= nearest_dist:
+			nearest_dist = dist
+			nearest_hint = interactable.get_interaction_hint()
+
+	_update_hint_ui(nearest_hint)
+
+
+func _axis_strength(negative_action: StringName, negative_fallback: StringName, positive_action: StringName, positive_fallback: StringName) -> float:
+	var negative := Input.get_action_strength(negative_action)
+	if negative == 0.0:
+		negative = Input.get_action_strength(negative_fallback)
+	var positive := Input.get_action_strength(positive_action)
+	if positive == 0.0:
+		positive = Input.get_action_strength(positive_fallback)
+	return positive - negative
 
 
 func start_meditation() -> void:
@@ -251,13 +261,13 @@ func _sync_visual_animation(force_restart: bool = false) -> void:
 			else:
 				new_animation = &"player_interact_down"
 		State.SITTING_DOWN:
-			new_animation = &"player_sit_down_side"
+			new_animation = _rest_animation(&"player_sit_down")
 		State.SITTING:
-			new_animation = &"player_sit_idle_side"
+			new_animation = _rest_animation(&"player_sit_idle")
 		State.STANDING_UP:
-			new_animation = &"player_stand_up_side"
+			new_animation = _rest_animation(&"player_stand_up")
 		State.MEDITATING:
-			new_animation = &"player_sit_idle_side"
+			new_animation = _rest_animation(&"player_sit_idle")
 		_:
 			if facing_direction.x < -0.1:
 				if facing_direction.y < -0.1:
@@ -284,6 +294,15 @@ func _sync_visual_animation(force_restart: bool = false) -> void:
 			player_sprite.play(new_animation)
 		else:
 			print("[Player] 动画不存在: ", new_animation)
+
+
+func _rest_animation(prefix: StringName) -> StringName:
+	var direction_suffix := "side"
+	if abs(facing_direction.y) > abs(facing_direction.x) and facing_direction.y < -0.1:
+		direction_suffix = "up"
+	elif abs(facing_direction.y) > abs(facing_direction.x) and facing_direction.y > 0.1:
+		direction_suffix = "down"
+	return StringName("%s_%s" % [String(prefix), direction_suffix])
 
 
 func _on_player_sprite_animation_finished() -> void:

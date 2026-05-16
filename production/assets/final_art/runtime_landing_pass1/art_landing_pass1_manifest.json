@@ -1,0 +1,32 @@
+{
+  "package_id": "art_landing_pass1_runtime_props",
+  "generated_at": "2026-05-15 17:24:32",
+  "runtime_replacement": true,
+  "source_batch": "final_art_phase2_batch_c_interactable_props",
+  "assets": [
+    {
+      "role": "mailbox",
+      "source": "production/assets/final_art/home_area/props/region_home_area_prop_mailbox_v001.png",
+      "runtime_file": "assets/art/props/region_home_area_prop_mailbox_v001.png",
+      "evidence_file": "production/assets/final_art/runtime_landing_pass1/region_home_area_prop_mailbox_v001.png"
+    },
+    {
+      "role": "road_sign",
+      "source": "production/assets/final_art/home_area/props/region_home_area_prop_road_sign_v001.png",
+      "runtime_file": "assets/art/props/region_home_area_prop_road_sign_v001.png",
+      "evidence_file": "production/assets/final_art/runtime_landing_pass1/region_home_area_prop_road_sign_v001.png"
+    },
+    {
+      "role": "old_well_broken",
+      "source": "production/assets/final_art/home_area/props/region_home_area_prop_well_broken_v001.png",
+      "runtime_file": "assets/art/props/region_home_area_prop_well_broken_v001.png",
+      "evidence_file": "production/assets/final_art/runtime_landing_pass1/region_home_area_prop_well_broken_v001.png"
+    },
+    {
+      "role": "bench",
+      "source": "production/assets/final_art/home_area/props/region_home_area_prop_bench_v001.png",
+      "runtime_file": "assets/art/props/region_home_area_prop_bench_v001.png",
+      "evidence_file": "production/assets/final_art/runtime_landing_pass1/region_home_area_prop_bench_v001.png"
+    }
+  ]
+}

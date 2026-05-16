@@ -429,7 +429,7 @@
       "direction": "side",
       "frame_count": 6,
       "loop": false,
-      "notes": "side-view sit-down transition; starts from standing height",
+      "notes": "directional sit-down transition; starts from standing height",
       "source_strip": "player_sit_down_side_source_strip.png",
       "template": "production/assets/protagonist/templates/player_sit_down_side_template.png",
       "runtime_frames": [
@@ -442,11 +442,45 @@
       ]
     },
     {
+      "animation": "player_sit_down_down",
+      "direction": "down",
+      "frame_count": 6,
+      "loop": false,
+      "notes": "directional sit-down transition; starts from standing height",
+      "source_strip": "player_sit_down_down_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_sit_down_down_template.png",
+      "runtime_frames": [
+        "player_sit_down_down_00.png",
+        "player_sit_down_down_01.png",
+        "player_sit_down_down_02.png",
+        "player_sit_down_down_03.png",
+        "player_sit_down_down_04.png",
+        "player_sit_down_down_05.png"
+      ]
+    },
+    {
+      "animation": "player_sit_down_up",
+      "direction": "up",
+      "frame_count": 6,
+      "loop": false,
+      "notes": "directional sit-down transition; starts from standing height",
+      "source_strip": "player_sit_down_up_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_sit_down_up_template.png",
+      "runtime_frames": [
+        "player_sit_down_up_00.png",
+        "player_sit_down_up_01.png",
+        "player_sit_down_up_02.png",
+        "player_sit_down_up_03.png",
+        "player_sit_down_up_04.png",
+        "player_sit_down_up_05.png"
+      ]
+    },
+    {
       "animation": "player_sit_idle_side",
       "direction": "side",
       "frame_count": 6,
       "loop": true,
-      "notes": "side-view seated idle; calm breathing",
+      "notes": "directional seated idle; calm breathing",
       "source_strip": "player_sit_idle_side_source_strip.png",
       "template": "production/assets/protagonist/templates/player_sit_idle_side_template.png",
       "runtime_frames": [
@@ -459,11 +493,45 @@
       ]
     },
     {
+      "animation": "player_sit_idle_down",
+      "direction": "down",
+      "frame_count": 6,
+      "loop": true,
+      "notes": "directional seated idle; calm breathing",
+      "source_strip": "player_sit_idle_down_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_sit_idle_down_template.png",
+      "runtime_frames": [
+        "player_sit_idle_down_00.png",
+        "player_sit_idle_down_01.png",
+        "player_sit_idle_down_02.png",
+        "player_sit_idle_down_03.png",
+        "player_sit_idle_down_04.png",
+        "player_sit_idle_down_05.png"
+      ]
+    },
+    {
+      "animation": "player_sit_idle_up",
+      "direction": "up",
+      "frame_count": 6,
+      "loop": true,
+      "notes": "directional seated idle; calm breathing",
+      "source_strip": "player_sit_idle_up_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_sit_idle_up_template.png",
+      "runtime_frames": [
+        "player_sit_idle_up_00.png",
+        "player_sit_idle_up_01.png",
+        "player_sit_idle_up_02.png",
+        "player_sit_idle_up_03.png",
+        "player_sit_idle_up_04.png",
+        "player_sit_idle_up_05.png"
+      ]
+    },
+    {
       "animation": "player_stand_up_side",
       "direction": "side",
       "frame_count": 6,
       "loop": false,
-      "notes": "side-view stand-up transition; ends at standing height",
+      "notes": "directional stand-up transition; ends at standing height",
       "source_strip": "player_stand_up_side_source_strip.png",
       "template": "production/assets/protagonist/templates/player_stand_up_side_template.png",
       "runtime_frames": [
@@ -473,6 +541,40 @@
         "player_stand_up_side_03.png",
         "player_stand_up_side_04.png",
         "player_stand_up_side_05.png"
+      ]
+    },
+    {
+      "animation": "player_stand_up_down",
+      "direction": "down",
+      "frame_count": 6,
+      "loop": false,
+      "notes": "directional stand-up transition; ends at standing height",
+      "source_strip": "player_stand_up_down_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_stand_up_down_template.png",
+      "runtime_frames": [
+        "player_stand_up_down_00.png",
+        "player_stand_up_down_01.png",
+        "player_stand_up_down_02.png",
+        "player_stand_up_down_03.png",
+        "player_stand_up_down_04.png",
+        "player_stand_up_down_05.png"
+      ]
+    },
+    {
+      "animation": "player_stand_up_up",
+      "direction": "up",
+      "frame_count": 6,
+      "loop": false,
+      "notes": "directional stand-up transition; ends at standing height",
+      "source_strip": "player_stand_up_up_source_strip.png",
+      "template": "production/assets/protagonist/templates/player_stand_up_up_template.png",
+      "runtime_frames": [
+        "player_stand_up_up_00.png",
+        "player_stand_up_up_01.png",
+        "player_stand_up_up_02.png",
+        "player_stand_up_up_03.png",
+        "player_stand_up_up_04.png",
+        "player_stand_up_up_05.png"
       ]
     }
   ]

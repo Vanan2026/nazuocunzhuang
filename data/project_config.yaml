@@ -1,0 +1,48 @@
+project:
+  name: "那座村庄"
+  version: "v1.0"
+  date: "2026-05-14"
+  genre:
+    - cozy life simulation
+    - farming lite
+    - village restoration
+    - relationship simulation
+  engine: "Godot 4.x"
+  perspective: "fixed top-down 3/4 2D"
+  combat: false
+  art_direction: "warm low-saturation modular 2D storybook countryside style"
+  pillars:
+    - no combat slow life
+    - daily small goals
+    - village restoration
+    - NPC relationships
+    - seasonal change
+    - gentle mystery
+  forbidden_terms:
+    - combat
+    - weapon
+    - monster
+    - damage
+    - hp
+    - kill
+    - armor
+  mvp:
+    seasons: 1
+    days_per_season: 28
+    maps:
+      - PlayerHouseInterior
+      - PlayerYard
+      - VillagePath
+    npcs: 6
+    crops: 8
+    recipes: 10
+    restoration_targets: 3
+    core_flow:
+      - wake_up
+      - check_weather_mailbox
+      - farm
+      - forage
+      - talk_to_npc
+      - gift
+      - repair
+      - sleep

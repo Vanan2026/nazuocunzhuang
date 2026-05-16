@@ -7,6 +7,7 @@ import re
 from PIL import Image, ImageDraw, ImageFilter
 
 import build_protagonist_mvp_from_sheet as builder
+import build_protagonist_from_production_strips as production_importer
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -32,7 +33,17 @@ DIRECTIONS = [
 WALK_DIRECTIONS = DIRECTIONS
 IDLE_DIRECTIONS = DIRECTIONS
 INTERACT_DIRECTIONS = DIRECTIONS
-SIT_ANIMS = ["player_sit_down_side", "player_sit_idle_side", "player_stand_up_side"]
+SIT_ANIMS = [
+    "player_sit_down_side",
+    "player_sit_down_down",
+    "player_sit_down_up",
+    "player_sit_idle_side",
+    "player_sit_idle_down",
+    "player_sit_idle_up",
+    "player_stand_up_side",
+    "player_stand_up_down",
+    "player_stand_up_up",
+]
 
 LINE = (65, 50, 36, 185)
 BLOUSE = (245, 222, 198, 230)
@@ -252,6 +263,10 @@ def build_rows_from_current_frames() -> dict[str, list[Image.Image]]:
     rows["player_sit_down_side"] = [align_baseline(harden_alpha(frame)) for frame in rows["player_sit_down_side"]]
     rows["player_sit_idle_side"] = [align_baseline(harden_alpha(frame)) for frame in rows["player_sit_idle_side"]]
     rows["player_stand_up_side"] = [align_baseline(harden_alpha(frame)) for frame in rows["player_stand_up_side"]]
+    for suffix in ("down", "up"):
+        rows[f"player_sit_down_{suffix}"] = [align_baseline(harden_alpha(frame)) for frame in rows[f"player_sit_down_{suffix}"]]
+        rows[f"player_sit_idle_{suffix}"] = [align_baseline(harden_alpha(frame)) for frame in rows[f"player_sit_idle_{suffix}"]]
+        rows[f"player_stand_up_{suffix}"] = [align_baseline(harden_alpha(frame)) for frame in rows[f"player_stand_up_{suffix}"]]
     return rows
 
 
@@ -310,7 +325,7 @@ def main() -> None:
     rows = build_rows_from_current_frames()
     write_all_source_strips(rows)
     write_preview(rows)
-    builder.main()
+    production_importer.main()
     print(f"OK: wrote final source strips -> {FINAL_STRIP_DIR}")
     print(f"OK: wrote final batch preview -> {PREVIEW}")
 

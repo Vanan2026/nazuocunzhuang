@@ -49,9 +49,22 @@ ANIMATIONS = {
     "player_interact_right": (6, 8.0),
     "player_interact_down_right": (6, 8.0),
     "player_sit_down_side": (6, 7.0),
+    "player_sit_down_down": (6, 7.0),
+    "player_sit_down_up": (6, 7.0),
     "player_sit_idle_side": (6, 4.2),
+    "player_sit_idle_down": (6, 4.2),
+    "player_sit_idle_up": (6, 4.2),
     "player_stand_up_side": (6, 7.0),
+    "player_stand_up_down": (6, 7.0),
+    "player_stand_up_up": (6, 7.0),
 }
+
+DIAGONAL_WALK_ANIMATIONS = (
+    "player_walk_down_left",
+    "player_walk_up_left",
+    "player_walk_up_right",
+    "player_walk_down_right",
+)
 
 
 def fail(message: str) -> None:
@@ -111,6 +124,31 @@ def visible_height(path: Path) -> int:
     return y2 - y1 + 1
 
 
+def alpha_mask(path: Path) -> np.ndarray:
+    rgba = np.array(Image.open(path).convert("RGBA"))
+    require((rgba.shape[1], rgba.shape[0]) == FRAME_SIZE, f"{path.name} must be {FRAME_SIZE}")
+    return rgba[:, :, 3] > 10
+
+
+def validate_no_duplicate_frames(animation: str, paths: list[Path]) -> None:
+    hashes: dict[bytes, Path] = {}
+    for path in paths:
+        digest = Image.open(path).convert("RGBA").tobytes()
+        if digest in hashes:
+            fail(f"{animation} duplicate frames: {hashes[digest].name} and {path.name}")
+        hashes[digest] = path
+
+
+def validate_diagonal_walk_motion(animation: str, paths: list[Path]) -> None:
+    validate_no_duplicate_frames(animation, paths)
+    foot_diffs: list[int] = []
+    for idx in range(1, len(paths)):
+        previous = alpha_mask(paths[idx - 1])[236:271, :]
+        current = alpha_mask(paths[idx])[236:271, :]
+        foot_diffs.append(int(np.logical_xor(previous, current).sum()))
+    require(min(foot_diffs) >= 120, f"{animation} adjacent foot-region change too weak: min={min(foot_diffs)}")
+
+
 def median(values: list[int]) -> float:
     ordered = sorted(values)
     require(len(ordered) > 0, "median requires at least one value")
@@ -152,6 +190,8 @@ def main() -> None:
         require(f'"speed": {speed:.1f}' in sprite_text, f"{animation} must use speed {speed:.1f}")
         paths = animation_frame_paths(animation)
         require(len(paths) == frame_count, f"{animation} expected {frame_count} frames, got {len(paths)}")
+        if animation in DIAGONAL_WALK_ANIMATIONS:
+            validate_diagonal_walk_motion(animation, paths)
         heights_by_animation[animation] = []
         for path in paths:
             bottom = alpha_bottom_y(path)
@@ -200,11 +240,28 @@ def main() -> None:
         abs(heights_by_animation["player_stand_up_side"][-1] - side_walk) <= 5.0,
         "player_stand_up_side last frame must match side-walk standing height",
     )
+    for suffix in ("down", "up"):
+        directional_walk = median(heights_by_animation[f"player_walk_{suffix}"])
+        require(
+            abs(heights_by_animation[f"player_sit_down_{suffix}"][0] - directional_walk) <= 5.0,
+            f"player_sit_down_{suffix} first frame must match {suffix} walk standing height",
+        )
+        require(
+            abs(heights_by_animation[f"player_stand_up_{suffix}"][-1] - directional_walk) <= 5.0,
+            f"player_stand_up_{suffix} last frame must match {suffix} walk standing height",
+        )
     sit_idle = median(heights_by_animation["player_sit_idle_side"])
     require(
         side_walk * 0.55 <= sit_idle <= side_walk * 0.85,
         f"player_sit_idle_side seated height {sit_idle:.1f} must stay naturally shorter than standing height {side_walk:.1f}",
     )
+    for suffix in ("down", "up"):
+        directional_walk = median(heights_by_animation[f"player_walk_{suffix}"])
+        directional_sit_idle = median(heights_by_animation[f"player_sit_idle_{suffix}"])
+        require(
+            directional_walk * 0.55 <= directional_sit_idle <= directional_walk * 0.85,
+            f"player_sit_idle_{suffix} seated height {directional_sit_idle:.1f} must stay naturally shorter than standing height {directional_walk:.1f}",
+        )
 
     print("OK: protagonist animation assets validated")
 

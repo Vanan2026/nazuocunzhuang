@@ -56,8 +56,14 @@ ROWS = [
     RowSpec("player_interact_right", False, 8.0, 6),
     RowSpec("player_interact_down_right", False, 8.0, 6),
     RowSpec("player_sit_down_side", False, 7.0, 6),
+    RowSpec("player_sit_down_down", False, 7.0, 6),
+    RowSpec("player_sit_down_up", False, 7.0, 6),
     RowSpec("player_sit_idle_side", True, 4.2, 6),
+    RowSpec("player_sit_idle_down", True, 4.2, 6),
+    RowSpec("player_sit_idle_up", True, 4.2, 6),
     RowSpec("player_stand_up_side", False, 7.0, 6),
+    RowSpec("player_stand_up_down", False, 7.0, 6),
+    RowSpec("player_stand_up_up", False, 7.0, 6),
 ]
 
 

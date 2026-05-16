@@ -1,0 +1,180 @@
+{
+  "package_id": "final_art_contract_2026_05_15",
+  "project": "那座村庄",
+  "status": "contract_ready_assets_not_finalized",
+  "runtime_replacement": false,
+  "rules": {
+    "style": "warm low-saturation 2D/2.5D countryside storybook",
+    "perspective": "fixed top-down 3/4",
+    "no_combat_language": true,
+    "no_direct_copyright_style_imitation": true,
+    "do_not_overwrite_runtime_until_verified": true
+  },
+  "source_of_truth": {
+    "art_direction": "docs/04_ART_DIRECTION_BIBLE.md",
+    "asset_bible": "docs/05_ART_ASSET_BIBLE.md",
+    "prompt_library": "docs/06_AI_ASSET_PROMPT_LIBRARY.md",
+    "palette": "data/style_palette.json",
+    "asset_catalog": "data/asset_catalog.csv",
+    "home_area_layout": "production/assets/regions/home_area_design/region_home_area_layout_v001.json",
+    "audit_report": ".codex/reports/final_art_asset_audit_2026-05-15.md"
+  },
+  "home_area_strategy": {
+    "visual_reference": "production/assets/regions/home_area_art/v002/region_home_area_base_full_v002.png",
+    "layer_contract_reference": "production/assets/regions/home_area_art/v001/region_home_area_art_v001_manifest.json",
+    "decision": "Use v002 as the quality/composition reference and v001 as the temporary anchor/layer contract. Do not treat v001 layers as final quality without visual repair."
+  },
+  "batches": [
+    {
+      "id": "batch_a_home_area_foundation",
+      "status": "needs_repair_or_resplit_from_v002",
+      "target_dir": "production/assets/final_art/home_area/foundation",
+      "assets": [
+        {
+          "file": "region_home_area_base_full_v001.png",
+          "action": "repair_or_promote_v002",
+          "source_candidate": "production/assets/regions/home_area_art/v002/region_home_area_base_full_v002.png",
+          "gate": "full scene reference only; no baked player or NPC"
+        },
+        {
+          "file": "region_home_area_ground_yard_v001.png",
+          "action": "resplit_from_v002_or_repaint",
+          "source_candidate": "production/assets/regions/home_area_art/v001/region_home_area_ground_yard_v001.png",
+          "gate": "must preserve clear central walkable yard"
+        },
+        {
+          "file": "region_home_area_path_village_road_v001.png",
+          "action": "resplit_from_v002_or_repaint",
+          "source_candidate": "production/assets/regions/home_area_art/v001/region_home_area_path_village_road_v001.png",
+          "gate": "north village exit remains readable"
+        },
+        {
+          "file": "region_home_area_path_back_farm_v001.png",
+          "action": "resplit_from_v002_or_repaint",
+          "source_candidate": "production/assets/regions/home_area_art/v001/region_home_area_path_back_farm_v001.png",
+          "gate": "southeast BackFarm path remains readable"
+        },
+        {
+          "file": "region_home_area_house_body_v001.png",
+          "action": "resplit_from_v002_or_repaint",
+          "source_candidate": "production/assets/regions/home_area_art/v001/region_home_area_house_body_v001.png",
+          "gate": "house identity clear at gameplay zoom"
+        },
+        {
+          "file": "region_home_area_house_roof_occluder_v001.png",
+          "action": "resplit_from_v002_or_repaint",
+          "source_candidate": "production/assets/regions/home_area_art/v001/region_home_area_house_roof_occluder_v001.png",
+          "gate": "occludes head/torso but not feet"
+        },
+        {
+          "file": "region_home_area_veranda_floor_v001.png",
+          "action": "resplit_from_v002_or_repaint",
+          "source_candidate": "production/assets/regions/home_area_art/v001/region_home_area_veranda_floor_v001.png",
+          "gate": "rest point readable"
+        }
+      ]
+    },
+    {
+      "id": "batch_b_home_area_depth",
+      "status": "needs_repair_or_resplit_from_v002",
+      "target_dir": "production/assets/final_art/home_area/depth",
+      "assets": [
+        "region_home_area_tree_left_trunk_v001.png",
+        "region_home_area_tree_left_canopy_occluder_v001.png",
+        "region_home_area_tree_right_trunk_v001.png",
+        "region_home_area_tree_right_canopy_occluder_v001.png",
+        "region_home_area_foreground_grass_v001.png",
+        "region_home_area_shadow_dappled_v001.png",
+        "region_home_area_light_overlay_v001.png"
+      ]
+    },
+    {
+      "id": "batch_c_interactable_props",
+      "status": "generated_candidate_landed_runtime",
+      "target_dir": "production/assets/final_art/home_area/props",
+      "runtime_manifest": "production/assets/final_art/runtime_landing_pass1/art_landing_pass1_manifest.json",
+      "runtime_scene": "game/scenes/world/PlayerYard.tscn",
+      "assets": [
+        "region_home_area_prop_mailbox_v001.png",
+        "region_home_area_prop_well_broken_v001.png",
+        "region_home_area_prop_well_repaired_v001.png",
+        "region_home_area_prop_bench_v001.png",
+        "region_home_area_prop_road_sign_v001.png"
+      ]
+    },
+    {
+      "id": "batch_d_npc_p0",
+      "status": "generated_candidate_validated_user_approved",
+      "target_dir": "production/assets/final_art/characters/npc",
+      "visual_review": "User confirmed Aoi/Gen/Mika portraits meet expectation on 2026-05-15.",
+      "assets": [
+        "npc_aoi_idle_down_128.png",
+        "npc_aoi_portrait_neutral_512.png",
+        "npc_aoi_portrait_happy_512.png",
+        "npc_aoi_portrait_thinking_512.png",
+        "npc_gen_idle_down_128.png",
+        "npc_gen_portrait_neutral_512.png",
+        "npc_gen_portrait_happy_512.png",
+        "npc_gen_portrait_thinking_512.png",
+        "npc_mika_idle_down_128.png",
+        "npc_mika_portrait_neutral_512.png",
+        "npc_mika_portrait_happy_512.png",
+        "npc_mika_portrait_thinking_512.png"
+      ]
+    },
+    {
+      "id": "batch_e_ui_and_crops",
+      "status": "generated_candidate_validated",
+      "target_dir": "production/assets/final_art/batch_e_runtime_ui_weather_crops",
+      "runtime_manifest": "production/assets/final_art/final_art_phase2_batch_e_runtime_manifest.json",
+      "assets": [
+        "weather_sunny_64.png",
+        "weather_cloudy_64.png",
+        "weather_rainy_64.png",
+        "crop_turnip_stage_00_64.png",
+        "crop_turnip_stage_01_64.png",
+        "crop_turnip_stage_02_64.png",
+        "crop_turnip_stage_03_64.png",
+        "crop_strawberry_stage_00_64.png",
+        "crop_strawberry_stage_01_64.png",
+        "crop_strawberry_stage_02_64.png",
+        "crop_strawberry_stage_03_64.png",
+        "crop_potato_stage_00_64.png",
+        "crop_potato_stage_01_64.png",
+        "crop_potato_stage_02_64.png",
+        "crop_potato_stage_03_64.png",
+        "crop_cucumber_stage_00_64.png",
+        "crop_cucumber_stage_01_64.png",
+        "crop_cucumber_stage_02_64.png",
+        "crop_cucumber_stage_03_64.png",
+        "crop_tomato_stage_00_64.png",
+        "crop_tomato_stage_01_64.png",
+        "crop_tomato_stage_02_64.png",
+        "crop_tomato_stage_03_64.png",
+        "crop_watermelon_stage_00_64.png",
+        "crop_watermelon_stage_01_64.png",
+        "crop_watermelon_stage_02_64.png",
+        "crop_watermelon_stage_03_64.png",
+        "crop_pumpkin_stage_00_64.png",
+        "crop_pumpkin_stage_01_64.png",
+        "crop_pumpkin_stage_02_64.png",
+        "crop_pumpkin_stage_03_64.png",
+        "crop_daikon_stage_00_64.png",
+        "crop_daikon_stage_01_64.png",
+        "crop_daikon_stage_02_64.png",
+        "crop_daikon_stage_03_64.png",
+        "ui_panel_paper_256x128.png",
+        "ui_button_wood_128x48.png"
+      ]
+    }
+  ],
+  "acceptance_gates": [
+    "manifest_contains_path_size_source_anchor_runtime_layer_status",
+    "transparent_layers_have_clean_alpha",
+    "readable_at_100_50_and_gameplay_scale",
+    "no_characters_baked_into_environment_layers",
+    "walkable_space_matches_home_area_layout",
+    "godot_load_and_snapshot_required_before_runtime_replacement"
+  ],
+  "next_step": "Human-review generated Batch C props and Batch E runtime candidates, then continue HomeArea foundation/depth repair or v002-based layer split."
+}

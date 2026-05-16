@@ -1,4 +1,4 @@
-﻿extends Area2D
+extends Area2D
 
 @export var target_scene: String = ""
 @export var interaction_hint: String = "鎸?E 鍓嶅線鍚庨櫌鍐滃湴"
@@ -37,5 +37,8 @@ func _on_body_exited(body: Node) -> void:
 
 func _show_hint(show: bool) -> void:
 	var hint := get_node_or_null("HintLabel")
+	if hint is CanvasItem and has_node("/root/InteractionHintUI"):
+		hint.visible = false
+		return
 	if hint is CanvasItem:
 		hint.visible = show

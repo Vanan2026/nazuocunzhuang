@@ -1,0 +1,54 @@
+[
+  {
+    "npc_id": "aoi",
+    "name": "葵",
+    "role": "杂货店店主",
+    "birthday": {"season": "spring", "day": 12},
+    "home_scene": "res://game/scenes/world/NpcHomeAoi.tscn",
+    "default_scene": "res://game/scenes/world/VillageShop.tscn",
+    "portrait": "res://assets/art/portraits/npc_aoi_portrait_neutral_512.png",
+    "likes": ["tea", "flower", "sweet", "vegetable"],
+    "dislikes": ["raw_fish", "trash"],
+    "schedule_id": "shopkeeper_basic",
+    "heart_events": ["aoi_heart_2", "aoi_heart_4"]
+  },
+  {
+    "npc_id": "gen",
+    "name": "源",
+    "role": "老木匠",
+    "birthday": {"season": "autumn", "day": 5},
+    "home_scene": "res://game/scenes/world/NpcHomeGen.tscn",
+    "default_scene": "res://game/scenes/world/CarpenterYard.tscn",
+    "portrait": "res://assets/art/portraits/npc_gen_portrait_neutral_512.png",
+    "likes": ["woodcraft", "fish", "simple_food"],
+    "dislikes": ["luxury", "noise"],
+    "schedule_id": "carpenter_basic",
+    "heart_events": ["gen_heart_2", "gen_heart_4"]
+  },
+  {
+    "npc_id": "mika",
+    "name": "美香",
+    "role": "邮差",
+    "birthday": {"season": "summer", "day": 8},
+    "home_scene": "res://game/scenes/world/NpcHomeMika.tscn",
+    "default_scene": "res://game/scenes/world/VillagePath.tscn",
+    "portrait": "res://assets/art/portraits/npc_mika_portrait_neutral_512.png",
+    "likes": ["letter", "flower", "warm_food"],
+    "dislikes": ["spicy", "trash"],
+    "schedule_id": "post_runner_basic",
+    "heart_events": ["mika_heart_2", "mika_heart_4"]
+  },
+  {
+    "npc_id": "hana",
+    "name": "花婆婆",
+    "role": "老住民",
+    "birthday": {"season": "winter", "day": 3},
+    "home_scene": "res://game/scenes/world/NpcHomeHana.tscn",
+    "default_scene": "res://game/scenes/world/VillageBench.tscn",
+    "portrait": "res://assets/art/portraits/npc_hana_portrait_neutral_512.png",
+    "likes": ["tea", "persimmon", "old_item"],
+    "dislikes": ["cold_food"],
+    "schedule_id": "elder_basic",
+    "heart_events": ["hana_heart_2", "hana_heart_4"]
+  }
+]

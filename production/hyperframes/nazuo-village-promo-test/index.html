@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>那座村庄 - Promo Test</title>
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background: #17201b;
+      }
+
+      #nazuo-promo {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #17201b;
+        color: #efe5d0;
+        font-family: "Montserrat", Arial, sans-serif;
+      }
+
+      .bgm {
+        display: none;
+      }
+
+      .scene {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        background-color: #17201b;
+      }
+
+      .scene-content {
+        position: relative;
+        z-index: 4;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        padding: 108px 136px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .hero-art {
+        position: absolute;
+        inset: -40px;
+        background-image:
+          linear-gradient(90deg, rgba(23, 32, 27, 0.66) 0%, rgba(23, 32, 27, 0.28) 46%, rgba(23, 32, 27, 0.78) 100%),
+          url("assets/homeyard.png");
+        background-size: cover;
+        background-position: center;
+        filter: saturate(0.93) contrast(1.02);
+        transform-origin: center;
+      }
+
+      .paper-grain {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        opacity: 0.18;
+        background-image:
+          radial-gradient(circle at 20% 30%, rgba(239, 229, 208, 0.2) 0 1px, rgba(239, 229, 208, 0) 2px),
+          radial-gradient(circle at 70% 60%, rgba(214, 161, 76, 0.15) 0 1px, rgba(214, 161, 76, 0) 2px);
+        background-size: 36px 36px, 52px 52px;
+        pointer-events: none;
+      }
+
+      .warm-glow {
+        position: absolute;
+        width: 740px;
+        height: 740px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(214, 161, 76, 0.42), rgba(214, 161, 76, 0) 68%);
+        filter: blur(18px);
+        z-index: 1;
+      }
+
+      .glow-a {
+        left: -120px;
+        top: -160px;
+      }
+
+      .glow-b {
+        right: -180px;
+        bottom: -220px;
+        background: radial-gradient(circle, rgba(79, 111, 82, 0.34), rgba(79, 111, 82, 0) 66%);
+      }
+
+      .eyebrow {
+        display: inline-block;
+        width: fit-content;
+        padding: 12px 18px;
+        font-size: 28px;
+        line-height: 1.2;
+        font-weight: 600;
+        color: #f0c978;
+        letter-spacing: 0;
+        background: rgba(23, 32, 27, 0.72);
+        border: 1px solid rgba(214, 161, 76, 0.34);
+      }
+
+      .title {
+        margin: 26px 0 0;
+        max-width: 860px;
+        font-family: "League Gothic", Arial, sans-serif;
+        font-size: 136px;
+        line-height: 0.9;
+        font-weight: 900;
+        letter-spacing: 0;
+        color: #efe5d0;
+        text-shadow: 0 12px 44px rgba(0, 0, 0, 0.42);
+      }
+
+      .copy {
+        margin: 34px 0 0;
+        max-width: 760px;
+        font-size: 36px;
+        line-height: 1.34;
+        font-weight: 350;
+        color: rgba(239, 229, 208, 0.9);
+      }
+
+      .seal {
+        position: absolute;
+        right: 138px;
+        bottom: 108px;
+        width: 168px;
+        height: 168px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        border: 2px solid rgba(214, 161, 76, 0.78);
+        color: #d6a14c;
+        font-size: 24px;
+        font-weight: 700;
+        text-align: center;
+        line-height: 1.1;
+        background: rgba(23, 32, 27, 0.48);
+        box-shadow: 0 20px 80px rgba(0, 0, 0, 0.32);
+      }
+
+      .seal span {
+        display: block;
+      }
+
+      .feature-list {
+        margin-top: auto;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .feature {
+        min-height: 210px;
+        padding: 30px 30px 28px;
+        box-sizing: border-box;
+        border: 1px solid rgba(239, 229, 208, 0.22);
+        background: rgba(23, 32, 27, 0.56);
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+        backdrop-filter: blur(6px);
+      }
+
+      .feature strong {
+        display: block;
+        font-family: "League Gothic", Arial, sans-serif;
+        font-size: 44px;
+        line-height: 1;
+        color: #efe5d0;
+      }
+
+      .feature span {
+        display: block;
+        margin-top: 22px;
+        font-size: 25px;
+        line-height: 1.36;
+        color: rgba(239, 229, 208, 0.82);
+      }
+
+      .map-band {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        grid-template-columns: 0.92fr 1.08fr;
+        z-index: 3;
+      }
+
+      .ink-panel {
+        background: rgba(23, 32, 27, 0.88);
+      }
+
+      .sun-panel {
+        position: relative;
+        overflow: hidden;
+        background-image:
+          linear-gradient(180deg, rgba(239, 229, 208, 0.08), rgba(23, 32, 27, 0.24)),
+          url("assets/homeyard.png");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .sun-panel::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 48% 38%, rgba(214, 161, 76, 0.18), rgba(23, 32, 27, 0.54) 68%);
+      }
+
+      .stack-title {
+        max-width: 720px;
+        margin: 0;
+        font-family: "League Gothic", Arial, sans-serif;
+        font-size: 98px;
+        line-height: 0.96;
+        font-weight: 900;
+        color: #efe5d0;
+      }
+
+      .stack-copy {
+        max-width: 620px;
+        margin-top: 30px;
+        color: rgba(239, 229, 208, 0.82);
+        font-size: 32px;
+        line-height: 1.38;
+      }
+
+      .hud-row {
+        margin-top: auto;
+        display: flex;
+        gap: 18px;
+        align-items: center;
+      }
+
+      .hud-pill {
+        padding: 18px 24px;
+        border: 1px solid rgba(214, 161, 76, 0.4);
+        color: #efe5d0;
+        background: rgba(79, 111, 82, 0.28);
+        font-size: 24px;
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .cta-scene {
+        display: grid;
+        place-items: center;
+      }
+
+      .cta-lockup {
+        width: min(1180px, calc(100% - 220px));
+        text-align: center;
+      }
+
+      #s4-eyebrow {
+        color: #17201b;
+        background: #f0c978;
+        border-color: rgba(23, 32, 27, 0.16);
+      }
+
+      .cta-lockup .title {
+        margin: 0 auto;
+        max-width: none;
+        font-size: 122px;
+      }
+
+      .cta-copy {
+        margin: 34px auto 0;
+        max-width: 790px;
+        color: rgba(239, 229, 208, 0.86);
+        font-size: 34px;
+        line-height: 1.36;
+      }
+
+      .release-line {
+        display: inline-flex;
+        align-items: center;
+        gap: 18px;
+        margin-top: 44px;
+        padding: 20px 32px;
+        border: 1px solid rgba(214, 161, 76, 0.48);
+        background: rgba(23, 32, 27, 0.6);
+        color: #d6a14c;
+        font-size: 28px;
+        font-weight: 700;
+      }
+
+      .transition-wipe {
+        position: absolute;
+        inset: 0;
+        z-index: 20;
+        transform: translateX(-104%);
+        background:
+          linear-gradient(90deg, rgba(155, 79, 55, 0) 0%, #9b4f37 18%, #d6a14c 50%, #4f6f52 82%, rgba(79, 111, 82, 0) 100%);
+        filter: blur(1px);
+      }
+
+      .scene-2,
+      .scene-3,
+      .scene-4 {
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="nazuo-promo" data-composition-id="nazuo-promo" data-start="0" data-width="1920" data-height="1080" data-duration="15">
+      <audio id="bgm" class="bgm" data-start="0" data-duration="15" data-track-index="0" src="assets/bgm.mp3" data-volume="0.78"></audio>
+
+      <section id="scene-1" class="scene scene-1" data-layout-allow-overflow>
+        <div class="hero-art"></div>
+        <div class="warm-glow glow-a" data-layout-ignore></div>
+        <div class="warm-glow glow-b" data-layout-ignore></div>
+        <div class="paper-grain" data-layout-ignore></div>
+        <div class="scene-content">
+          <div id="s1-eyebrow" class="eyebrow">生活模拟 / 村庄叙事 / Godot 项目</div>
+          <h1 id="s1-title" class="title">那座村庄</h1>
+          <p id="s1-copy" class="copy">从一个庭院开始，种下关系、时间和每天醒来的理由。</p>
+          <div id="s1-seal" class="seal"><span>试玩</span><span>宣传片</span></div>
+        </div>
+      </section>
+
+      <section id="scene-2" class="scene scene-2" data-layout-allow-overflow>
+        <div class="hero-art"></div>
+        <div class="warm-glow glow-b" data-layout-ignore></div>
+        <div class="paper-grain" data-layout-ignore></div>
+        <div class="scene-content">
+          <div id="s2-eyebrow" class="eyebrow">可玩主流程优先</div>
+          <h2 id="s2-title" class="stack-title">在熟悉的院子里，把一天过成故事。</h2>
+          <p id="s2-copy" class="stack-copy">移动、互动、时间流转、NPC 反馈，先让核心循环真正跑起来。</p>
+          <div class="feature-list">
+            <div id="s2-f1" class="feature"><strong>探索</strong><span>从家门前的光影出发，发现村庄角落。</span></div>
+            <div id="s2-f2" class="feature"><strong>关系</strong><span>对话、事件和日程推动每个角色的变化。</span></div>
+            <div id="s2-f3" class="feature"><strong>成长</strong><span>以小步迭代补齐系统、内容和工具链。</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="scene-3" class="scene scene-3" data-layout-allow-overflow>
+        <div class="map-band">
+          <div class="ink-panel"></div>
+          <div class="sun-panel"></div>
+        </div>
+        <div class="warm-glow glow-a" data-layout-ignore></div>
+        <div class="paper-grain" data-layout-ignore></div>
+        <div class="scene-content">
+          <div id="s3-eyebrow" class="eyebrow">开发测试片段</div>
+          <h2 id="s3-title" class="stack-title">可运行、可测试、可迭代。</h2>
+          <p id="s3-copy" class="stack-copy">每一次交付都围绕主流程推进：输入、反馈、存档、配置和最小测试场景。</p>
+          <div class="hud-row">
+            <div id="s3-h1" class="hud-pill">CORE LOOP READY</div>
+            <div id="s3-h2" class="hud-pill">DATA DRIVEN</div>
+            <div id="s3-h3" class="hud-pill">PLAYTEST FIRST</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="scene-4" class="scene scene-4" data-layout-allow-overflow>
+        <div class="hero-art"></div>
+        <div class="warm-glow glow-a" data-layout-ignore></div>
+        <div class="warm-glow glow-b" data-layout-ignore></div>
+        <div class="paper-grain" data-layout-ignore></div>
+        <div class="scene-content cta-scene">
+          <div class="cta-lockup">
+            <div id="s4-eyebrow" class="eyebrow">测试宣传视频</div>
+            <h2 id="s4-title" class="title">回到那座村庄</h2>
+            <p id="s4-copy" class="cta-copy">一个正在生长的生活模拟游戏原型，下一步继续把主流程做扎实。</p>
+            <div id="s4-release" class="release-line">BUILD / TEST / ITERATE</div>
+          </div>
+        </div>
+      </section>
+
+      <div id="transition-wipe" class="transition-wipe" data-layout-ignore></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      tl.from("#scene-1 .hero-art", { scale: 1.06, opacity: 0.74, duration: 1.1, ease: "sine.out" }, 0.12)
+        .from("#s1-eyebrow", { y: 36, opacity: 0, duration: 0.42, ease: "power2.out" }, 0.28)
+        .from("#s1-title", { x: -54, opacity: 0, duration: 0.72, ease: "expo.out" }, 0.48)
+        .from("#s1-copy", { y: 48, opacity: 0, duration: 0.54, ease: "back.out(1.4)" }, 0.86)
+        .from("#s1-seal", { scale: 0.72, rotation: -8, opacity: 0, duration: 0.58, ease: "elastic.out(1,0.72)" }, 1.18)
+        .to(".glow-a", { scale: 1.06, opacity: 0.82, duration: 3.2, repeat: 4, yoyo: true, ease: "sine.inOut" }, 0.2)
+        .to(".glow-b", { scale: 0.94, opacity: 0.72, duration: 3.8, repeat: 3, yoyo: true, ease: "sine.inOut" }, 0.2);
+
+      tl.to("#transition-wipe", { x: "204%", duration: 0.46, ease: "power4.inOut" }, 3.35)
+        .set("#scene-2", { opacity: 1 }, 3.58)
+        .set("#scene-1", { opacity: 0 }, 3.86)
+        .set("#transition-wipe", { x: "-104%" }, 3.86);
+
+      tl.from("#scene-2 .hero-art", { scale: 1.1, filter: "saturate(0.7) contrast(0.96)", duration: 1.0, ease: "sine.out" }, 3.68)
+        .from("#s2-eyebrow", { x: -42, opacity: 0, duration: 0.42, ease: "power2.out" }, 3.82)
+        .from("#s2-title", { y: 56, opacity: 0, duration: 0.66, ease: "expo.out" }, 4.02)
+        .from("#s2-copy", { x: 38, opacity: 0, duration: 0.52, ease: "power3.out" }, 4.34)
+        .from("#s2-f1", { y: 82, opacity: 0, duration: 0.48, ease: "back.out(1.25)" }, 4.66)
+        .from("#s2-f2", { scale: 0.86, opacity: 0, duration: 0.52, ease: "circ.out" }, 4.82)
+        .from("#s2-f3", { y: -42, opacity: 0, duration: 0.5, ease: "power4.out" }, 4.98);
+
+      tl.to("#transition-wipe", { x: "204%", duration: 0.42, ease: "power4.inOut" }, 7.08)
+        .set("#scene-3", { opacity: 1 }, 7.29)
+        .set("#scene-2", { opacity: 0 }, 7.55)
+        .set("#transition-wipe", { x: "-104%" }, 7.55);
+
+      tl.from("#scene-3 .map-band", { scale: 1.04, opacity: 0.2, duration: 0.86, ease: "sine.out" }, 7.4)
+        .from("#s3-eyebrow", { y: -30, opacity: 0, duration: 0.38, ease: "power2.out" }, 7.62)
+        .from("#s3-title", { x: -70, opacity: 0, duration: 0.6, ease: "expo.out" }, 7.84)
+        .from("#s3-copy", { y: 44, opacity: 0, duration: 0.5, ease: "back.out(1.2)" }, 8.18)
+        .from("#s3-h1", { scale: 0.76, opacity: 0, duration: 0.4, ease: "circ.out" }, 8.52)
+        .from("#s3-h2", { y: 36, opacity: 0, duration: 0.4, ease: "power3.out" }, 8.68)
+        .from("#s3-h3", { x: 48, opacity: 0, duration: 0.42, ease: "power4.out" }, 8.84);
+
+      tl.to("#transition-wipe", { x: "204%", duration: 0.5, ease: "power3.inOut" }, 10.62)
+        .set("#scene-4", { opacity: 1 }, 10.88)
+        .set("#scene-3", { opacity: 0 }, 11.18)
+        .set("#transition-wipe", { x: "-104%" }, 11.18);
+
+      tl.from("#scene-4 .hero-art", { scale: 1.12, opacity: 0.58, duration: 1.2, ease: "sine.out" }, 11.0)
+        .from("#s4-eyebrow", { y: 42, opacity: 0, duration: 0.44, ease: "power2.out" }, 11.24)
+        .from("#s4-title", { scale: 0.88, opacity: 0, duration: 0.72, ease: "expo.out" }, 11.44)
+        .from("#s4-copy", { y: 44, opacity: 0, duration: 0.56, ease: "back.out(1.18)" }, 11.84)
+        .from("#s4-release", { y: 32, opacity: 0, duration: 0.5, ease: "circ.out" }, 12.22)
+        .to("#scene-4", { opacity: 0, duration: 0.72, ease: "sine.inOut" }, 14.18);
+
+      window.__timelines["nazuo-promo"] = tl;
+    </script>
+  </body>
+</html>

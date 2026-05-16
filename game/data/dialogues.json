@@ -1,0 +1,112 @@
+[
+  {
+    "dialogue_id": "aoi_weather_rain_01",
+    "npc_id": "aoi",
+    "type": "weather",
+    "priority": 20,
+    "conditions": {"season": "any", "weather": "rainy", "min_hearts": 0},
+    "lines": [
+      {"speaker": "aoi", "text": "下雨天来店里的人少一些，茶水倒是更香。路上慢点走。"}
+    ],
+    "sets_flags": []
+  },
+  {
+    "dialogue_id": "aoi_daily_spring_01",
+    "npc_id": "aoi",
+    "type": "daily",
+    "priority": 10,
+    "conditions": {"season": "spring", "weather": "any", "min_hearts": 0},
+    "lines": [
+      {"speaker": "aoi", "text": "春天的种子卖得最快。你要是第一次种，萝卜最稳。"}
+    ],
+    "sets_flags": []
+  },
+  {
+    "dialogue_id": "aoi_fallback_01",
+    "npc_id": "aoi",
+    "type": "fallback",
+    "priority": 0,
+    "conditions": {"season": "any", "weather": "any", "min_hearts": 0},
+    "lines": [
+      {"speaker": "aoi", "text": "缺什么就告诉我，店里能慢慢补齐。"}
+    ],
+    "sets_flags": []
+  },
+  {
+    "dialogue_id": "gen_relationship_01",
+    "npc_id": "gen",
+    "type": "relationship",
+    "priority": 20,
+    "conditions": {"season": "any", "weather": "any", "min_hearts": 2},
+    "lines": [
+      {"speaker": "gen", "text": "你这几天把院子照看得不错。木头也会记住手的温度。"}
+    ],
+    "sets_flags": []
+  },
+  {
+    "dialogue_id": "gen_daily_wood_01",
+    "npc_id": "gen",
+    "type": "daily",
+    "priority": 10,
+    "conditions": {"season": "any", "weather": "any", "min_hearts": 0},
+    "lines": [
+      {"speaker": "gen", "text": "木头要顺着纹路修。村子也是，急不得。"}
+    ],
+    "sets_flags": []
+  },
+  {
+    "dialogue_id": "gen_fallback_01",
+    "npc_id": "gen",
+    "type": "fallback",
+    "priority": 0,
+    "conditions": {"season": "any", "weather": "any", "min_hearts": 0},
+    "lines": [
+      {"speaker": "gen", "text": "工具用完收回原处，下次就少找一会儿。"}
+    ],
+    "sets_flags": []
+  },
+  {
+    "dialogue_id": "mika_mailbox_hint_01",
+    "npc_id": "mika",
+    "type": "daily",
+    "priority": 15,
+    "conditions": {"season": "any", "weather": "any", "flag_not_set": "read_first_mailbox"},
+    "lines": [
+      {"speaker": "mika", "text": "邮箱里有时候会放村里的小通知。路过时看看吧。"}
+    ],
+    "sets_flags": ["mika_hint_mailbox"]
+  },
+  {
+    "dialogue_id": "mika_seasonal_summer_01",
+    "npc_id": "mika",
+    "type": "seasonal",
+    "priority": 12,
+    "conditions": {"season": "summer", "weather": "any", "min_hearts": 0},
+    "lines": [
+      {"speaker": "mika", "text": "夏天送信要趁早，过了午后路边就全是热气。"}
+    ],
+    "sets_flags": []
+  },
+  {
+    "dialogue_id": "mika_fallback_01",
+    "npc_id": "mika",
+    "type": "fallback",
+    "priority": 0,
+    "conditions": {"season": "any", "weather": "any", "min_hearts": 0},
+    "lines": [
+      {"speaker": "mika", "text": "今天的路很好走，我多绕一圈也没关系。"}
+    ],
+    "sets_flags": []
+  },
+  {
+    "dialogue_id": "hana_rumor_bell_01",
+    "npc_id": "hana",
+    "type": "event",
+    "priority": 50,
+    "conditions": {"weather": "rainy", "time_block": "evening", "flag_not_set": "heard_bell_rumor_01"},
+    "lines": [
+      {"speaker": "hana", "text": "雨天别急着关窗。有时候，远处的铃声会顺着水声过来。"}
+    ],
+    "sets_flags": ["heard_bell_rumor_01"]
+  }
+]

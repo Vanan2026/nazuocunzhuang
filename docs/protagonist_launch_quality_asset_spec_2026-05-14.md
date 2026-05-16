@@ -10,10 +10,10 @@ The asset must preserve the current runtime contract:
 
 - Runtime frame size: `192x288`
 - Source slot size: `384x576`
-- Animation count: 27
-- Runtime frame count: 162
+- Animation count: 33
+- Runtime frame count: 198
 - Runtime resource: `sprites/characters/protagonist/player_mvp_4dir_frames.tres`
-- No changes to `scripts/player_controller.gd` animation names or state wiring
+- Player controller rest states select `side`, `down`, or `up` sit animations from facing direction
 
 ## Art Direction
 
@@ -50,7 +50,7 @@ Gate sequence:
    - `player_walk_left` 8 frames
    - `player_walk_right` 8 frames
 4. Review proof set for style consistency, limb quality, foot contact, and readable motion.
-5. Generate all 27 source strips only after the proof set passes.
+5. Generate all 33 source strips only after the proof set passes.
 6. Build runtime frames with `tools/build_protagonist_from_production_strips.py`.
 7. Run asset, motion, Godot import, scene load, transition, and visual walkthrough validation.
 
@@ -61,6 +61,8 @@ The set is not launch-quality unless all gates pass:
 - Visual gate: seed and proof strips are approved by inspection.
 - Consistency gate: no major drift in face, hair, outfit, scale, or palette between frames.
 - Motion gate: side walk has clear lower-body motion and stable foot contact.
+- Diagonal gate: diagonal walk rows have no exact duplicate frames and no weak adjacent foot-region deltas.
+- Sit coverage gate: side, front, and back sit-down / sit-idle / stand-up strips are present.
 - Alpha gate: transparent edges are clean enough for in-scene compositing.
 - Runtime gate: existing validators pass without changing gameplay/controller contracts.
 - Evidence gate: seed preview, motion preview, and runtime scene preview are saved under `.codex/`.

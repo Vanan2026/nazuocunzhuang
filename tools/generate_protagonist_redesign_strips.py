@@ -44,8 +44,14 @@ SPECS: list[AnimSpec] = (
     + [AnimSpec(f"player_interact_{direction}", 6, "interact", direction) for direction in DIRECTIONS]
     + [
         AnimSpec("player_sit_down_side", 6, "sit_down", "right"),
+        AnimSpec("player_sit_down_down", 6, "sit_down", "down"),
+        AnimSpec("player_sit_down_up", 6, "sit_down", "up"),
         AnimSpec("player_sit_idle_side", 6, "sit_idle", "right"),
+        AnimSpec("player_sit_idle_down", 6, "sit_idle", "down"),
+        AnimSpec("player_sit_idle_up", 6, "sit_idle", "up"),
         AnimSpec("player_stand_up_side", 6, "stand_up", "right"),
+        AnimSpec("player_stand_up_down", 6, "stand_up", "down"),
+        AnimSpec("player_stand_up_up", 6, "stand_up", "up"),
     ]
 )
 
@@ -162,10 +168,10 @@ def leg_pose(action: str, direction: str, idx: int) -> tuple[tuple[float, float,
         return (rear_dx * sign, rear_lift, 0), (front_dx * sign, front_lift, 0), hem_sway * sign
 
     phase = -1 if idx < 4 else 1
-    step = [0, 4, 8, 3, 0, 4, 8, 3][idx % 8]
-    near = (-phase * (7 + step * 0.55), min(2, step // 4), 0)
-    far = (phase * (7 + step * 0.4), max(0, step - 2), 0)
-    return far, near, phase * step * 0.4
+    step = [0, 6, 12, 5, 0, 6, 12, 5][idx % 8]
+    near = (-phase * (7 + step * 0.68), min(3, step // 4), 0)
+    far = (phase * (7 + step * 0.5), max(0, step - 3), 0)
+    return far, near, phase * step * 0.9
 
 
 def add_texture(image: Image.Image, seed: int) -> Image.Image:

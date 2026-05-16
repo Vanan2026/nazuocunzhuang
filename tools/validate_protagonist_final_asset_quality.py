@@ -40,9 +40,22 @@ FINAL_STRIPS = {
     "player_interact_right": 6,
     "player_interact_down_right": 6,
     "player_sit_down_side": 6,
+    "player_sit_down_down": 6,
+    "player_sit_down_up": 6,
     "player_sit_idle_side": 6,
+    "player_sit_idle_down": 6,
+    "player_sit_idle_up": 6,
     "player_stand_up_side": 6,
+    "player_stand_up_down": 6,
+    "player_stand_up_up": 6,
 }
+
+DIAGONAL_WALK_ANIMATIONS = (
+    "player_walk_down_left",
+    "player_walk_up_left",
+    "player_walk_up_right",
+    "player_walk_down_right",
+)
 
 
 def fail(message: str) -> None:
@@ -113,6 +126,23 @@ def lower_band_metrics(animation: str) -> dict[str, float]:
     }
 
 
+def validate_no_exact_duplicates(animation: str) -> None:
+    paths = animation_frame_paths(animation)
+    seen: dict[bytes, Path] = {}
+    for path in paths:
+        digest = Image.open(path).convert("RGBA").tobytes()
+        if digest in seen:
+            fail(f"{animation} duplicate frames: {seen[digest].name} and {path.name}")
+        seen[digest] = path
+
+
+def validate_diagonal_walk(animation: str) -> None:
+    validate_no_exact_duplicates(animation)
+    metrics = lower_band_metrics(animation)
+    require(metrics["mean_adjacent_diff"] >= 130.0, f"{animation} adjacent foot shapes are too similar: {metrics}")
+    require(metrics["max_adjacent_diff"] >= 220.0, f"{animation} lacks a strong passing/contact pose: {metrics}")
+
+
 def validate_side_walk(animation: str) -> None:
     metrics = lower_band_metrics(animation)
     require(
@@ -164,6 +194,8 @@ def main() -> None:
     validate_diagonal_rows_are_not_mixed()
     validate_side_walk("player_walk_left")
     validate_side_walk("player_walk_right")
+    for animation in DIAGONAL_WALK_ANIMATIONS:
+        validate_diagonal_walk(animation)
     print("OK: protagonist final asset quality validated")
 
 

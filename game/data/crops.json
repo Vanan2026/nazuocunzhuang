@@ -1,0 +1,138 @@
+[
+  {
+    "crop_id": "turnip_spring",
+    "seed_item_id": "seed_turnip",
+    "harvest_item_id": "crop_turnip",
+    "name": "春萝卜",
+    "allowed_seasons": ["spring"],
+    "grow_days": 4,
+    "regrow_days": 0,
+    "water_required": true,
+    "stages": 4,
+    "stage_sprites": [
+      "res://assets/art/crops/crop_turnip_stage_00_64.png",
+      "res://assets/art/crops/crop_turnip_stage_01_64.png",
+      "res://assets/art/crops/crop_turnip_stage_02_64.png",
+      "res://assets/art/crops/crop_turnip_stage_03_64.png"
+    ]
+  },
+  {
+    "crop_id": "strawberry_spring",
+    "seed_item_id": "seed_strawberry",
+    "harvest_item_id": "crop_strawberry",
+    "name": "草莓",
+    "allowed_seasons": ["spring"],
+    "grow_days": 8,
+    "regrow_days": 3,
+    "water_required": true,
+    "stages": 4,
+    "stage_sprites": [
+      "res://assets/art/crops/crop_strawberry_stage_00_64.png",
+      "res://assets/art/crops/crop_strawberry_stage_01_64.png",
+      "res://assets/art/crops/crop_strawberry_stage_02_64.png",
+      "res://assets/art/crops/crop_strawberry_stage_03_64.png"
+    ]
+  },
+  {
+    "crop_id": "potato_spring",
+    "seed_item_id": "seed_potato",
+    "harvest_item_id": "crop_potato",
+    "name": "土豆",
+    "allowed_seasons": ["spring"],
+    "grow_days": 6,
+    "regrow_days": 0,
+    "water_required": true,
+    "stages": 4,
+    "stage_sprites": [
+      "res://assets/art/crops/crop_potato_stage_00_64.png",
+      "res://assets/art/crops/crop_potato_stage_01_64.png",
+      "res://assets/art/crops/crop_potato_stage_02_64.png",
+      "res://assets/art/crops/crop_potato_stage_03_64.png"
+    ]
+  },
+  {
+    "crop_id": "cucumber_summer",
+    "seed_item_id": "seed_cucumber",
+    "harvest_item_id": "crop_cucumber",
+    "name": "黄瓜",
+    "allowed_seasons": ["summer"],
+    "grow_days": 7,
+    "regrow_days": 3,
+    "water_required": true,
+    "stages": 4,
+    "stage_sprites": [
+      "res://assets/art/crops/crop_cucumber_stage_00_64.png",
+      "res://assets/art/crops/crop_cucumber_stage_01_64.png",
+      "res://assets/art/crops/crop_cucumber_stage_02_64.png",
+      "res://assets/art/crops/crop_cucumber_stage_03_64.png"
+    ]
+  },
+  {
+    "crop_id": "tomato_summer",
+    "seed_item_id": "seed_tomato",
+    "harvest_item_id": "crop_tomato",
+    "name": "番茄",
+    "allowed_seasons": ["summer"],
+    "grow_days": 9,
+    "regrow_days": 3,
+    "water_required": true,
+    "stages": 4,
+    "stage_sprites": [
+      "res://assets/art/crops/crop_tomato_stage_00_64.png",
+      "res://assets/art/crops/crop_tomato_stage_01_64.png",
+      "res://assets/art/crops/crop_tomato_stage_02_64.png",
+      "res://assets/art/crops/crop_tomato_stage_03_64.png"
+    ]
+  },
+  {
+    "crop_id": "watermelon_summer",
+    "seed_item_id": "seed_watermelon",
+    "harvest_item_id": "crop_watermelon",
+    "name": "西瓜",
+    "allowed_seasons": ["summer"],
+    "grow_days": 12,
+    "regrow_days": 0,
+    "water_required": true,
+    "stages": 4,
+    "stage_sprites": [
+      "res://assets/art/crops/crop_watermelon_stage_00_64.png",
+      "res://assets/art/crops/crop_watermelon_stage_01_64.png",
+      "res://assets/art/crops/crop_watermelon_stage_02_64.png",
+      "res://assets/art/crops/crop_watermelon_stage_03_64.png"
+    ]
+  },
+  {
+    "crop_id": "pumpkin_autumn",
+    "seed_item_id": "seed_pumpkin",
+    "harvest_item_id": "crop_pumpkin",
+    "name": "南瓜",
+    "allowed_seasons": ["autumn"],
+    "grow_days": 10,
+    "regrow_days": 0,
+    "water_required": true,
+    "stages": 4,
+    "stage_sprites": [
+      "res://assets/art/crops/crop_pumpkin_stage_00_64.png",
+      "res://assets/art/crops/crop_pumpkin_stage_01_64.png",
+      "res://assets/art/crops/crop_pumpkin_stage_02_64.png",
+      "res://assets/art/crops/crop_pumpkin_stage_03_64.png"
+    ]
+  },
+  {
+    "crop_id": "daikon_winter",
+    "seed_item_id": "seed_daikon",
+    "harvest_item_id": "crop_daikon",
+    "name": "冬萝卜",
+    "allowed_seasons": ["winter"],
+    "grow_days": 6,
+    "regrow_days": 0,
+    "water_required": true,
+    "stages": 4,
+    "stage_sprites": [
+      "res://assets/art/crops/crop_daikon_stage_00_64.png",
+      "res://assets/art/crops/crop_daikon_stage_01_64.png",
+      "res://assets/art/crops/crop_daikon_stage_02_64.png",
+      "res://assets/art/crops/crop_daikon_stage_03_64.png"
+    ]
+  }
+]

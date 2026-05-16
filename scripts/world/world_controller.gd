@@ -11,6 +11,7 @@ const STARTING_REGION: String = "Region_HomeArea"
 @export_group("World Settings")
 @export var world_bounds: Rect2 = Rect2(Vector2.ZERO, WORLD_SIZE)
 @export var enable_boundaries: bool = true
+@export var camera_look_ahead_offset: Vector2 = Vector2(0, -280)
 
 @export_group("Initial Regions")
 @export var initial_regions: Array[String] = ["Region_HomeArea"]
@@ -58,7 +59,7 @@ func _register_all_regions() -> void:
 			"adjacent_regions": ["Region_Village", "Region_BackFarm"],
 			"is_always_loaded": true,
 			"spawn_points": {
-				"home_area_default": Vector2(7072, 8280),
+				"home_area_default": Vector2(7300, 7900),
 				"home_area_from_back_farm": Vector2(8200, 9370),
 				"home_area_from_village": Vector2(4000, 6000)
 			}
@@ -251,9 +252,9 @@ func _setup_camera() -> void:
 	camera.position_smoothing_speed = 10.0
 
 	if player != null:
-		camera.global_position = player.global_position
+		camera.global_position = player.global_position + camera_look_ahead_offset
 	else:
-		camera.global_position = _get_spawn_position(STARTING_REGION, default_spawn_id)
+		camera.global_position = _get_spawn_position(STARTING_REGION, default_spawn_id) + camera_look_ahead_offset
 
 	add_child(camera)
 	camera.make_current()
@@ -272,7 +273,7 @@ func _process(delta: float) -> void:
 		_check_region_transition()
 
 func _update_camera() -> void:
-	var target_pos := player.global_position
+	var target_pos := player.global_position + camera_look_ahead_offset
 	camera.global_position = camera.global_position.lerp(target_pos, 1.0 - exp(-6.0 * get_process_delta_time()))
 
 func _check_region_transition() -> void:

@@ -1,0 +1,9 @@
+npc_id,name,role,personality,visual_anchor,likes,dislikes,birthday,priority
+aoi,葵,杂货店店主,细心、温和、担心店铺和村庄衰落,围裙、账本、铅笔,tea;flower;sweet;vegetable,raw_fish;trash,spring_12,P0
+gen,源,老木匠,寡言、手艺好、不愿提旧桥往事,工装背带、卷尺、木屑,woodcraft;fish;simple_food,luxury;noise,autumn_05,P0
+mika,美香,邮差,开朗但藏着孤独，记得每封无人认领的信,布邮包、帽子、信封,letter;flower;warm_food,spicy;trash,summer_08,P0
+hana,花婆婆,老住民,绕弯说话，记得主角家族旧事,茶杯、旧围巾、柿子篮,tea;persimmon;old_item,cold_food,winter_03,P1
+sora,空,小学生,好奇，想找到不会迷路的山路,书包、昆虫网、帽子,bug;fruit;toy,bitter,spring_20,P1
+fuyu,冬野,医生,理性温柔，在留下和离开之间犹豫,暖白外套、草药包,herb;soup;book,greasy_food,winter_16,P1
+riku,陆,河边少年,想离开村庄，又舍不得河流,鱼竿、耳机、旧球鞋,fish;riceball;music,lecture,summer_21,P1
+natsume,夏目,神社看守,安静，知道神社不只是祭典地点,铃、绳结、深绿外衣,bell;incense;quiet_item,flashy_item,autumn_18,P1

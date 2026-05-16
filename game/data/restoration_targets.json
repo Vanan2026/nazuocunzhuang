@@ -1,0 +1,18 @@
+[
+  {
+    "restoration_id": "old_well",
+    "name": "旧水井",
+    "description": "院子里的老水井，井绳已经断了。",
+    "required_items": [
+      {"item_id": "wood", "count": 20},
+      {"item_id": "stone", "count": 10}
+    ],
+    "required_money": 500,
+    "required_flags": [],
+    "unlocks": ["yard_water_source", "rumor_old_well_bell"],
+    "visual_states": {
+      "broken": "res://assets/art/props/prop_well_old_broken_256.png",
+      "repaired": "res://assets/art/props/prop_well_old_repaired_256.png"
+    }
+  }
+]

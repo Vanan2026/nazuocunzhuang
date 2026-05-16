@@ -53,8 +53,14 @@ SPECS = [
     StripSpec("player_interact_right", 6, 520, 1.04),
     StripSpec("player_interact_down_right", 6, 492),
     StripSpec("player_sit_down_side", 6),
+    StripSpec("player_sit_down_down", 6),
+    StripSpec("player_sit_down_up", 6),
     StripSpec("player_sit_idle_side", 6, 360),
+    StripSpec("player_sit_idle_down", 6, 360),
+    StripSpec("player_sit_idle_up", 6, 360),
     StripSpec("player_stand_up_side", 6),
+    StripSpec("player_stand_up_down", 6),
+    StripSpec("player_stand_up_up", 6),
 ]
 
 

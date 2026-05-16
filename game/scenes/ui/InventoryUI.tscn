@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://game/scenes/ui/InventoryUI.gd" id="1_inventory_ui"]
+
+[node name="InventoryUI" type="CanvasLayer"]
+script = ExtResource("1_inventory_ui")
+
+[node name="Panel" type="PanelContainer" parent="."]
+offset_left = 16.0
+offset_top = 160.0
+offset_right = 360.0
+offset_bottom = 384.0
+
+[node name="Content" type="VBoxContainer" parent="Panel"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 336.0
+offset_bottom = 216.0
+
+[node name="Summary" type="HBoxContainer" parent="Panel/Content"]
+layout_mode = 2
+
+[node name="SeedCountLabel" type="Label" parent="Panel/Content/Summary"]
+layout_mode = 2
+text = "种子: 0"
+
+[node name="CropCountLabel" type="Label" parent="Panel/Content/Summary"]
+layout_mode = 2
+text = "作物: 0"
+
+[node name="ItemGrid" type="GridContainer" parent="Panel/Content"]
+layout_mode = 2
+columns = 2
+
+[node name="Details" type="VBoxContainer" parent="Panel/Content"]
+layout_mode = 2
+
+[node name="SelectedNameLabel" type="Label" parent="Panel/Content/Details"]
+layout_mode = 2
+text = "未选择物品"
+
+[node name="SelectedDescriptionLabel" type="Label" parent="Panel/Content/Details"]
+layout_mode = 2
+text = "选择种子后可在整理过的地块上播种。"
+autowrap_mode = 3

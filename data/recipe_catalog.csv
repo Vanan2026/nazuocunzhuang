@@ -1,0 +1,6 @@
+recipe_id,name,ingredients,result_item_id,energy_restore,tags,unlock_condition,priority
+riceball_simple,普通饭团,rice:1,food_riceball_simple,20,food;homey;simple,kitchen_level_1,P0
+persimmon_riceball,柿子饭团,rice:1;persimmon:1,food_persimmon_riceball,25,food;sweet;autumn;homey,kitchen_level_1,P1
+spring_vegetable_soup,春蔬汤,crop_turnip:1;wildflower_spring:1,food_spring_soup,30,food;soup;spring;warm,kitchen_level_1,P0
+grilled_small_carp,烤小鲫鱼,small_carp:1,food_grilled_small_carp,28,food;fish;simple,kitchen_level_1,P1
+warm_tea,热茶,tea_leaf:1,food_warm_tea,15,tea;warm;quiet,kitchen_level_1,P0

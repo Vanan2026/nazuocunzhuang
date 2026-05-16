@@ -11,6 +11,8 @@ func _ready() -> void:
 
 
 func _draw() -> void:
+    if not visible:
+        return
     if not debug_draw:
         return
     if polygon.size() < 3:

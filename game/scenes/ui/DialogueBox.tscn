@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://game/scenes/ui/DialogueBox.gd" id="1_dialogue_box"]
+
+[node name="DialogueBox" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_dialogue_box")
+
+[node name="Panel" type="PanelContainer" parent="."]
+offset_left = 48.0
+offset_top = 256.0
+offset_right = 592.0
+offset_bottom = 384.0
+
+[node name="Content" type="HBoxContainer" parent="Panel"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 534.0
+offset_bottom = 118.0
+
+[node name="Portrait" type="TextureRect" parent="Panel/Content"]
+layout_mode = 2
+custom_minimum_size = Vector2(96, 96)
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextColumn" type="VBoxContainer" parent="Panel/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpeakerLabel" type="Label" parent="Panel/Content/TextColumn"]
+layout_mode = 2
+text = "居民"
+
+[node name="LineLabel" type="Label" parent="Panel/Content/TextColumn"]
+layout_mode = 2
+text = "今天也慢慢来吧。"
+autowrap_mode = 3

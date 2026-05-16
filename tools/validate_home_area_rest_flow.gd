@@ -1,4 +1,4 @@
-﻿extends SceneTree
+extends SceneTree
 
 const HeadlessLifecycle := preload("res://tools/headless_lifecycle.gd")
 const WORLD_SCENE := "res://scenes/world/world.tscn"
@@ -57,6 +57,8 @@ func _run() -> void:
 	if not player.has_method("try_interact") or not player.has_method("is_resting"):
 		_fail("player does not expose rest interaction methods")
 		return
+	if not _validate_directional_rest_animations(player):
+		return
 
 	player.global_position = rest.global_position + Vector2(0, 8)
 	if player.has_method("_sync_visual_animation"):
@@ -65,8 +67,18 @@ func _run() -> void:
 
 	if rest.has_method("_on_body_entered"):
 		rest.call("_on_body_entered", player)
-	if not hint.visible:
-		_fail("BenchRestInteract hint does not become visible for the player")
+	var hint_ui := root.get_node_or_null("InteractionHintUI")
+	if hint_ui != null:
+		if player.has_method("_update_nearest_interaction_hint"):
+			player.call("_update_nearest_interaction_hint")
+		if hint.visible:
+			_fail("BenchRestInteract local HintLabel should stay hidden when the autoload prompt is active")
+			return
+		if str(hint_ui.get("current_hint")) != rest_hint:
+			_fail("autoload interaction hint did not show the rest hint: %s" % str(hint_ui.get("current_hint")))
+			return
+	elif not hint.visible:
+		_fail("BenchRestInteract fallback HintLabel does not become visible for the player")
 		return
 
 	player.try_interact()
@@ -96,6 +108,45 @@ func _is_standing_up_or_idle(player: Node) -> bool:
 	var state := int(player.get("current_state"))
 	var state_enum: Dictionary = player.get("State")
 	return state == int(state_enum["STANDING_UP"]) or state == int(state_enum["IDLE"])
+
+
+func _validate_directional_rest_animations(player: Node) -> bool:
+	var sprite := player.get_node_or_null("PlayerSprite") as AnimatedSprite2D
+	if sprite == null or sprite.sprite_frames == null:
+		_fail("player is missing AnimatedSprite2D SpriteFrames")
+		return false
+
+	var state_enum: Dictionary = player.get("State")
+	var cases := [
+		{"state": int(state_enum["SITTING_DOWN"]), "facing": Vector2.RIGHT, "animation": "player_sit_down_side"},
+		{"state": int(state_enum["SITTING_DOWN"]), "facing": Vector2.DOWN, "animation": "player_sit_down_down"},
+		{"state": int(state_enum["SITTING_DOWN"]), "facing": Vector2.UP, "animation": "player_sit_down_up"},
+		{"state": int(state_enum["SITTING"]), "facing": Vector2.RIGHT, "animation": "player_sit_idle_side"},
+		{"state": int(state_enum["SITTING"]), "facing": Vector2.DOWN, "animation": "player_sit_idle_down"},
+		{"state": int(state_enum["SITTING"]), "facing": Vector2.UP, "animation": "player_sit_idle_up"},
+		{"state": int(state_enum["STANDING_UP"]), "facing": Vector2.RIGHT, "animation": "player_stand_up_side"},
+		{"state": int(state_enum["STANDING_UP"]), "facing": Vector2.DOWN, "animation": "player_stand_up_down"},
+		{"state": int(state_enum["STANDING_UP"]), "facing": Vector2.UP, "animation": "player_stand_up_up"},
+	]
+
+	for test_case in cases:
+		var expected := str(test_case["animation"])
+		if not sprite.sprite_frames.has_animation(expected):
+			_fail("missing directional rest animation: %s" % expected)
+			return false
+		player.set("current_state", int(test_case["state"]))
+		player.set("facing_direction", test_case["facing"])
+		if player.has_method("_sync_visual_animation"):
+			player.call("_sync_visual_animation", true)
+		if str(sprite.animation) != expected:
+			_fail("rest facing %s selected %s instead of %s" % [test_case["facing"], sprite.animation, expected])
+			return false
+
+	player.set("current_state", int(state_enum["IDLE"]))
+	player.set("facing_direction", Vector2.RIGHT)
+	if player.has_method("_sync_visual_animation"):
+		player.call("_sync_visual_animation", true)
+	return true
 
 
 func _fail(message: String) -> void:

@@ -48,9 +48,9 @@ ANIMS = [
     ),
     AnimSpec("player_idle", DIRECTIONS, 4, True, "subtle breathing and cloth movement only"),
     AnimSpec("player_interact", DIRECTIONS, 6, False, "small reach/check/pick-up gesture; keep feet planted"),
-    AnimSpec("player_sit_down", ["side"], 6, False, "side-view sit-down transition; starts from standing height"),
-    AnimSpec("player_sit_idle", ["side"], 6, True, "side-view seated idle; calm breathing"),
-    AnimSpec("player_stand_up", ["side"], 6, False, "side-view stand-up transition; ends at standing height"),
+    AnimSpec("player_sit_down", ["side", "down", "up"], 6, False, "directional sit-down transition; starts from standing height"),
+    AnimSpec("player_sit_idle", ["side", "down", "up"], 6, True, "directional seated idle; calm breathing"),
+    AnimSpec("player_stand_up", ["side", "down", "up"], 6, False, "directional stand-up transition; ends at standing height"),
 ]
 
 
