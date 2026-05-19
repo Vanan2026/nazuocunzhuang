@@ -1,0 +1,263 @@
+{
+  "region_id": "Region_BackFarm",
+  "package_id": "back_farm_art_v001",
+  "status": "self_checked_final_runtime_candidate",
+  "runtime_replacement": true,
+  "canvas_px": {
+    "width": 2000,
+    "height": 2000
+  },
+  "source_policy": "Formal replaceable layered PNGs generated for current 2000x2000 BackFarm runtime layout; no opaque full-plate runtime shortcut is used.",
+  "runtime_preview": "region_back_farm_art_v001_runtime_preview.png",
+  "contact_sheet": "region_back_farm_art_v001_layer_contact_sheet.png",
+  "required_layers": [
+    {
+      "asset_id": "ground",
+      "file": "region_back_farm_ground_v001.png",
+      "origin_px": {
+        "x": 0,
+        "y": 0
+      },
+      "size_px": {
+        "width": 2000,
+        "height": 2000
+      },
+      "target_parent": "TileMapLayer_Ground/ArtLayers",
+      "z_index": -100,
+      "occlusion_rule": "ground_underlay",
+      "generated": true,
+      "status": "self_checked_final_runtime_candidate",
+      "source": "procedural_formal_layered_png_pass_from_region_back_farm_runtime_layout_2026_05_17",
+      "alpha_bbox": [
+        0,
+        0,
+        2000,
+        2000
+      ],
+      "transparent_ratio": 0.0,
+      "semi_ratio": 0.00819,
+      "opaque_ratio": 0.99181
+    },
+    {
+      "asset_id": "path",
+      "file": "region_back_farm_path_v001.png",
+      "origin_px": {
+        "x": 105,
+        "y": 0
+      },
+      "size_px": {
+        "width": 1801,
+        "height": 2000
+      },
+      "target_parent": "TileMapLayer_Path/ArtLayers",
+      "z_index": -90,
+      "occlusion_rule": "below_player",
+      "generated": true,
+      "status": "self_checked_final_runtime_candidate",
+      "source": "procedural_formal_layered_png_pass_from_region_back_farm_runtime_layout_2026_05_17",
+      "alpha_bbox": [
+        18,
+        0,
+        1783,
+        2000
+      ],
+      "transparent_ratio": 0.63593,
+      "semi_ratio": 0.36407,
+      "opaque_ratio": 0.0
+    },
+    {
+      "asset_id": "field_rows",
+      "file": "region_back_farm_field_rows_v001.png",
+      "origin_px": {
+        "x": 207,
+        "y": 402
+      },
+      "size_px": {
+        "width": 1342,
+        "height": 972
+      },
+      "target_parent": "TileMapLayer_Detail/ArtLayers",
+      "z_index": -70,
+      "occlusion_rule": "below_player",
+      "generated": true,
+      "status": "self_checked_final_runtime_candidate",
+      "source": "procedural_formal_layered_png_pass_from_region_back_farm_runtime_layout_2026_05_17",
+      "alpha_bbox": [
+        18,
+        18,
+        1324,
+        954
+      ],
+      "transparent_ratio": 0.22728,
+      "semi_ratio": 0.77272,
+      "opaque_ratio": 0.0
+    },
+    {
+      "asset_id": "shed",
+      "file": "region_back_farm_shed_v001.png",
+      "origin_px": {
+        "x": 1381,
+        "y": 256
+      },
+      "size_px": {
+        "width": 449,
+        "height": 393
+      },
+      "target_parent": "YSortWorld/FarmStructures/ToolShed",
+      "z_index": 45,
+      "occlusion_rule": "ysort_structure",
+      "generated": true,
+      "status": "self_checked_final_runtime_candidate",
+      "source": "procedural_formal_layered_png_pass_from_region_back_farm_runtime_layout_2026_05_17",
+      "alpha_bbox": [
+        18,
+        18,
+        431,
+        375
+      ],
+      "transparent_ratio": 0.33092,
+      "semi_ratio": 0.66908,
+      "opaque_ratio": 0.0
+    },
+    {
+      "asset_id": "pond",
+      "file": "region_back_farm_pond_v001.png",
+      "origin_px": {
+        "x": 1514,
+        "y": 1417
+      },
+      "size_px": {
+        "width": 348,
+        "height": 201
+      },
+      "target_parent": "YSortWorld/SmallPond",
+      "z_index": 20,
+      "occlusion_rule": "low_prop",
+      "generated": true,
+      "status": "self_checked_final_runtime_candidate",
+      "source": "procedural_formal_layered_png_pass_from_region_back_farm_runtime_layout_2026_05_17",
+      "alpha_bbox": [
+        18,
+        18,
+        330,
+        183
+      ],
+      "transparent_ratio": 0.41681,
+      "semi_ratio": 0.58319,
+      "opaque_ratio": 0.0
+    },
+    {
+      "asset_id": "fence",
+      "file": "region_back_farm_fence_v001.png",
+      "origin_px": {
+        "x": 91,
+        "y": 192
+      },
+      "size_px": {
+        "width": 1819,
+        "height": 243
+      },
+      "target_parent": "YSortWorld/FarmStructures",
+      "z_index": 35,
+      "occlusion_rule": "low_prop_blocker_visual",
+      "generated": true,
+      "status": "self_checked_final_runtime_candidate",
+      "source": "procedural_formal_layered_png_pass_from_region_back_farm_runtime_layout_2026_05_17",
+      "alpha_bbox": [
+        18,
+        18,
+        1801,
+        225
+      ],
+      "transparent_ratio": 0.85299,
+      "semi_ratio": 0.14701,
+      "opaque_ratio": 0.0
+    },
+    {
+      "asset_id": "foreground_grass",
+      "file": "region_back_farm_foreground_grass_v001.png",
+      "origin_px": {
+        "x": 0,
+        "y": 1451
+      },
+      "size_px": {
+        "width": 2000,
+        "height": 549
+      },
+      "target_parent": "ForegroundStatic",
+      "z_index": 180,
+      "occlusion_rule": "edge_only_occluder",
+      "generated": true,
+      "status": "self_checked_final_runtime_candidate",
+      "source": "procedural_formal_layered_png_pass_from_region_back_farm_runtime_layout_2026_05_17",
+      "alpha_bbox": [
+        0,
+        4,
+        2000,
+        549
+      ],
+      "transparent_ratio": 0.80738,
+      "semi_ratio": 0.19262,
+      "opaque_ratio": 0.0
+    },
+    {
+      "asset_id": "shadow",
+      "file": "region_back_farm_shadow_overlay_v001.png",
+      "origin_px": {
+        "x": 0,
+        "y": 0
+      },
+      "size_px": {
+        "width": 2000,
+        "height": 2000
+      },
+      "target_parent": "LightAndWeather",
+      "z_index": 0,
+      "occlusion_rule": "transparent_overlay_only",
+      "generated": true,
+      "status": "self_checked_final_runtime_candidate",
+      "source": "procedural_formal_layered_png_pass_from_region_back_farm_runtime_layout_2026_05_17",
+      "alpha_bbox": [
+        13,
+        294,
+        1909,
+        1694
+      ],
+      "transparent_ratio": 0.86558,
+      "semi_ratio": 0.13442,
+      "opaque_ratio": 0.0
+    },
+    {
+      "asset_id": "light",
+      "file": "region_back_farm_light_overlay_v001.png",
+      "origin_px": {
+        "x": 0,
+        "y": 0
+      },
+      "size_px": {
+        "width": 2000,
+        "height": 2000
+      },
+      "target_parent": "LightAndWeather",
+      "z_index": 1,
+      "occlusion_rule": "transparent_overlay_only",
+      "generated": true,
+      "status": "self_checked_final_runtime_candidate",
+      "source": "procedural_formal_layered_png_pass_from_region_back_farm_runtime_layout_2026_05_17",
+      "alpha_bbox": [
+        13,
+        85,
+        1946,
+        1678
+      ],
+      "transparent_ratio": 0.75304,
+      "semi_ratio": 0.24696,
+      "opaque_ratio": 0.0
+    }
+  ],
+  "visual_self_review": [
+    "BackFarm default spawn is moved inside the farm entry path, away from y=0 camera clamp.",
+    "Farm plots read as soft tilled soil beds with crop-row detail instead of flat rectangles.",
+    "Shed, pond, fence, foreground grass, light, and shadow remain separate replaceable layers."
+  ]
+}

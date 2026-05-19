@@ -55,7 +55,7 @@ func _run() -> void:
 
 	var shots := [
 		{"interact": "MailboxInteract", "offset": Vector2(0, 48)},
-		{"interact": "WellInteract", "offset": Vector2(0, 56)},
+		{"interact": "WellInteract", "offset": Vector2(0, 40)},
 		{"interact": "BenchRestInteract", "offset": Vector2(0, 60)},
 		{"interact": "RoadSignInteract", "offset": Vector2(0, 56)},
 	]

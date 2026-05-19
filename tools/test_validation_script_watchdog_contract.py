@@ -42,7 +42,7 @@ def test_visual_walkthrough_has_watchdog_and_check_only_layer() -> None:
     _assert_common_watchdog_contract(text, VISUAL_SCRIPT.name)
 
     check_only_line = _line_index(text, "_run_check_only")
-    first_capture_line = _line_index(text, '_capture("region_home_area_walk_01_default_spawn.png")')
+    first_capture_line = _line_index(text, '_capture_player_point("region_home_area_walk_01_default_spawn.png"')
     assert check_only_line < first_capture_line, "visual check-only must run before screenshot capture"
 
 

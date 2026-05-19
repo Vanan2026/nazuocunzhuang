@@ -1,0 +1,45 @@
+{
+  "canvas": {
+    "width": 1470,
+    "height": 1070,
+    "coordinate_origin": "top_left_canvas"
+  },
+  "status": "four_layer_package_regenerated_not_cut",
+  "coordinate_rule": "all structural layers use the same canvas and origin as source_full.png",
+  "source_required": "production/assets/regions/home_area_world2d/v001/02_source_generation/source_full.png",
+  "required_layers": [
+    {
+      "id": "source",
+      "path": "03_layer_export/four_layer_package/home_area_01_source.png",
+      "background": "opaque",
+      "rule": "accepted full source image"
+    },
+    {
+      "id": "base_ground_paths",
+      "path": "03_layer_export/four_layer_package/home_area_02_base_ground_paths.png",
+      "background": "opaque",
+      "rule": "grass and roads only"
+    },
+    {
+      "id": "foreground_occlusion",
+      "path": "03_layer_export/four_layer_package/home_area_03_foreground_occlusion.png",
+      "background": "transparent",
+      "rule": "blocks player visually; vegetation gaps remain transparent"
+    },
+    {
+      "id": "midground_behind_player",
+      "path": "03_layer_export/four_layer_package/home_area_04_midground_behind_player.png",
+      "background": "transparent",
+      "rule": "renders behind player when overlapping"
+    }
+  ],
+  "forbidden": [
+    "cropped structural foreground without explicit atlas/pivot reason",
+    "mask-derived layers from rejected flattened plates as final source-layer proof",
+    "single broad foreground plate covering player path",
+    "local sticker patch foreground workflow"
+  ],
+  "base_note": "base_full_reference.png is used for the first visual pass; true base_clean paint pass remains separate.",
+  "current_phase": "03_layer_export",
+  "active_layer_package": "production/assets/regions/home_area_world2d/v001/03_layer_export/four_layer_package/four_layer_manifest.json"
+}

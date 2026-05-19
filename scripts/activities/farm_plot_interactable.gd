@@ -27,7 +27,7 @@ func on_interact(_interactor: Node) -> void:
 		3:
 			_harvest_crop(info)
 		_:
-			_show_feedback("菜地", "这块地的状态无法识别。")
+			_show_feedback("菜地", "这块地的状态暂时无法识别。")
 
 	_sync_prompt()
 
@@ -39,10 +39,10 @@ func get_interaction_hint() -> String:
 	var info: Dictionary = _farm_system.call("get_plot_info", plot_index)
 	match int(info.get("state", 0)):
 		0:
-			return "按 E 种植"
+			return "按 E 播种"
 		1, 2:
 			if bool(info.get("is_watered", false)):
-				return "已浇水，等待明天"
+				return "今天已经浇过水"
 			return "按 E 浇水"
 		3:
 			return "按 E 收获"

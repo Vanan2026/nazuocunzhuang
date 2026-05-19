@@ -1,11 +1,11 @@
-﻿extends Area2D
+extends Area2D
 class_name InteractableProp
 
 signal interaction_available(target: Node)
 signal interaction_unavailable
 
-@export var prop_name: String = "閬撳叿"
-@export var interaction_hint: String = "鎸?E 浜や簰"
+@export var prop_name: String = "道具"
+@export var interaction_hint: String = "按 E 交互"
 
 var is_nearby: bool = false
 var current_interactor: Node = null

@@ -1,0 +1,368 @@
+{
+  "region_id": "Region_BackFarm",
+  "package_id": "back_farm_art_v002",
+  "status": "runtime_structural_placeholder_not_launch_quality_v002",
+  "runtime_replacement": false,
+  "human_visual_approval_required": true,
+  "canvas_px": {
+    "width": 2000,
+    "height": 2000
+  },
+  "selected_route": "single_full_source_then_split_layers",
+  "source_assets": [
+    {
+      "id": "full_composition",
+      "file": "source/region_back_farm_full_composition_v002.png",
+      "review_file": "source/region_back_farm_full_composition_v002_review.png",
+      "sha256": "4f2070085caa6f696c5b8151876a29ec1ed6c75031b73cab3cc74166af3e4699",
+      "size_px": {
+        "width": 2000,
+        "height": 2000
+      }
+    }
+  ],
+  "required_layers": [
+    {
+      "asset_id": "ground",
+      "file": "layers/region_back_farm_ground_v002.png",
+      "sha256": "225692072e70c5154e956ad97152d3171ee7154f1ec424cf28ae37b7ae5b8599",
+      "origin_px": {
+        "x": 0,
+        "y": 0
+      },
+      "size_px": {
+        "width": 2000,
+        "height": 2000
+      },
+      "target_parent": "TileMapLayer_Ground/ArtLayers",
+      "z_index": -100,
+      "occlusion_rule": "ground_underlay",
+      "derived_from_source": true,
+      "source_asset_id": "full_composition",
+      "source_sha256": "4f2070085caa6f696c5b8151876a29ec1ed6c75031b73cab3cc74166af3e4699",
+      "source_rect_px": {
+        "x": 0,
+        "y": 0,
+        "width": 2000,
+        "height": 2000
+      },
+      "mask_file": "source/masks/ground_mask.png",
+      "alpha_bbox": [
+        0,
+        0,
+        2000,
+        2000
+      ],
+      "transparent_ratio": 0.0,
+      "semi_ratio": 0.00819,
+      "opaque_ratio": 0.99181
+    },
+    {
+      "asset_id": "path",
+      "file": "layers/region_back_farm_path_v002.png",
+      "sha256": "c91694e2de85cbc774944b99672bea4455e0ccee1e19591ac475100d176b492b",
+      "origin_px": {
+        "x": 105,
+        "y": 0
+      },
+      "size_px": {
+        "width": 1801,
+        "height": 2000
+      },
+      "target_parent": "TileMapLayer_Path/ArtLayers",
+      "z_index": -90,
+      "occlusion_rule": "below_player",
+      "derived_from_source": true,
+      "source_asset_id": "full_composition",
+      "source_sha256": "4f2070085caa6f696c5b8151876a29ec1ed6c75031b73cab3cc74166af3e4699",
+      "source_rect_px": {
+        "x": 105,
+        "y": 0,
+        "width": 1801,
+        "height": 2000
+      },
+      "mask_file": "source/masks/path_mask.png",
+      "alpha_bbox": [
+        18,
+        0,
+        1783,
+        2000
+      ],
+      "transparent_ratio": 0.63593,
+      "semi_ratio": 0.36407,
+      "opaque_ratio": 0.0
+    },
+    {
+      "asset_id": "field_rows",
+      "file": "layers/region_back_farm_field_rows_v002.png",
+      "sha256": "a0c6bd768935efa98657f3d05da283b11dd96e2703c245a64eb75deca286a51d",
+      "origin_px": {
+        "x": 207,
+        "y": 402
+      },
+      "size_px": {
+        "width": 1342,
+        "height": 972
+      },
+      "target_parent": "TileMapLayer_Detail/ArtLayers",
+      "z_index": -70,
+      "occlusion_rule": "below_player",
+      "derived_from_source": true,
+      "source_asset_id": "full_composition",
+      "source_sha256": "4f2070085caa6f696c5b8151876a29ec1ed6c75031b73cab3cc74166af3e4699",
+      "source_rect_px": {
+        "x": 207,
+        "y": 402,
+        "width": 1342,
+        "height": 972
+      },
+      "mask_file": "source/masks/field_rows_mask.png",
+      "alpha_bbox": [
+        18,
+        18,
+        1324,
+        954
+      ],
+      "transparent_ratio": 0.22728,
+      "semi_ratio": 0.77272,
+      "opaque_ratio": 0.0
+    },
+    {
+      "asset_id": "fence",
+      "file": "layers/region_back_farm_fence_v002.png",
+      "sha256": "50c249140e5b3c23332d2c0aea818ec88376365ab004cba05675e3c65175580a",
+      "origin_px": {
+        "x": 91,
+        "y": 192
+      },
+      "size_px": {
+        "width": 1819,
+        "height": 243
+      },
+      "target_parent": "YSortWorld/FarmStructures",
+      "z_index": 35,
+      "occlusion_rule": "low_prop_blocker_visual",
+      "derived_from_source": true,
+      "source_asset_id": "full_composition",
+      "source_sha256": "4f2070085caa6f696c5b8151876a29ec1ed6c75031b73cab3cc74166af3e4699",
+      "source_rect_px": {
+        "x": 91,
+        "y": 192,
+        "width": 1819,
+        "height": 243
+      },
+      "mask_file": "source/masks/fence_mask.png",
+      "alpha_bbox": [
+        18,
+        18,
+        1801,
+        225
+      ],
+      "transparent_ratio": 0.85299,
+      "semi_ratio": 0.14701,
+      "opaque_ratio": 0.0
+    },
+    {
+      "asset_id": "pond",
+      "file": "layers/region_back_farm_pond_v002.png",
+      "sha256": "e00d7013306919bb0add28aec7eea8bdfb11d30be3db1ed3bc8a494ca06aa456",
+      "origin_px": {
+        "x": 1514,
+        "y": 1417
+      },
+      "size_px": {
+        "width": 348,
+        "height": 201
+      },
+      "target_parent": "YSortWorld/SmallPond",
+      "z_index": 20,
+      "occlusion_rule": "low_prop",
+      "derived_from_source": true,
+      "source_asset_id": "full_composition",
+      "source_sha256": "4f2070085caa6f696c5b8151876a29ec1ed6c75031b73cab3cc74166af3e4699",
+      "source_rect_px": {
+        "x": 1514,
+        "y": 1417,
+        "width": 348,
+        "height": 201
+      },
+      "mask_file": "source/masks/pond_mask.png",
+      "alpha_bbox": [
+        18,
+        18,
+        330,
+        183
+      ],
+      "transparent_ratio": 0.41681,
+      "semi_ratio": 0.58319,
+      "opaque_ratio": 0.0
+    },
+    {
+      "asset_id": "shed",
+      "file": "layers/region_back_farm_shed_v002.png",
+      "sha256": "ddc192e55b85f60557c67f26c2916e72457a39d50e0a62797bea2d388b89527c",
+      "origin_px": {
+        "x": 1381,
+        "y": 256
+      },
+      "size_px": {
+        "width": 449,
+        "height": 393
+      },
+      "target_parent": "YSortWorld/FarmStructures/ToolShed",
+      "z_index": 45,
+      "occlusion_rule": "ysort_structure",
+      "derived_from_source": true,
+      "source_asset_id": "full_composition",
+      "source_sha256": "4f2070085caa6f696c5b8151876a29ec1ed6c75031b73cab3cc74166af3e4699",
+      "source_rect_px": {
+        "x": 1381,
+        "y": 256,
+        "width": 449,
+        "height": 393
+      },
+      "mask_file": "source/masks/shed_mask.png",
+      "alpha_bbox": [
+        18,
+        18,
+        431,
+        375
+      ],
+      "transparent_ratio": 0.33092,
+      "semi_ratio": 0.66908,
+      "opaque_ratio": 0.0
+    },
+    {
+      "asset_id": "foreground_grass",
+      "file": "layers/region_back_farm_foreground_grass_v002.png",
+      "sha256": "e9a0f0e242c6d03085723a629736b1877dc653a198f9f7bac507d5730906b2fa",
+      "origin_px": {
+        "x": 0,
+        "y": 1451
+      },
+      "size_px": {
+        "width": 2000,
+        "height": 549
+      },
+      "target_parent": "ForegroundStatic",
+      "z_index": 180,
+      "occlusion_rule": "edge_only_occluder",
+      "derived_from_source": true,
+      "source_asset_id": "full_composition",
+      "source_sha256": "4f2070085caa6f696c5b8151876a29ec1ed6c75031b73cab3cc74166af3e4699",
+      "source_rect_px": {
+        "x": 0,
+        "y": 1451,
+        "width": 2000,
+        "height": 549
+      },
+      "mask_file": "source/masks/foreground_grass_mask.png",
+      "alpha_bbox": [
+        0,
+        4,
+        2000,
+        549
+      ],
+      "transparent_ratio": 0.80738,
+      "semi_ratio": 0.19262,
+      "opaque_ratio": 0.0
+    },
+    {
+      "asset_id": "shadow",
+      "file": "layers/region_back_farm_shadow_overlay_v002.png",
+      "sha256": "fd0500ce1ad01d30c5b852abaedeeb21b3b649f9c2ae0f89a663318446f92a3d",
+      "origin_px": {
+        "x": 0,
+        "y": 0
+      },
+      "size_px": {
+        "width": 2000,
+        "height": 2000
+      },
+      "target_parent": "LightAndWeather",
+      "z_index": 0,
+      "occlusion_rule": "transparent_overlay_only",
+      "derived_from_source": true,
+      "source_asset_id": "full_composition",
+      "source_sha256": "4f2070085caa6f696c5b8151876a29ec1ed6c75031b73cab3cc74166af3e4699",
+      "source_rect_px": {
+        "x": 0,
+        "y": 0,
+        "width": 2000,
+        "height": 2000
+      },
+      "mask_file": "source/masks/shadow_mask.png",
+      "alpha_bbox": [
+        13,
+        294,
+        1909,
+        1694
+      ],
+      "transparent_ratio": 0.86558,
+      "semi_ratio": 0.13442,
+      "opaque_ratio": 0.0
+    },
+    {
+      "asset_id": "light",
+      "file": "layers/region_back_farm_light_overlay_v002.png",
+      "sha256": "f686cf571b00f9ea0970e51140245ce7861edec5d5ed13609864d2f491919556",
+      "origin_px": {
+        "x": 0,
+        "y": 0
+      },
+      "size_px": {
+        "width": 2000,
+        "height": 2000
+      },
+      "target_parent": "LightAndWeather",
+      "z_index": 1,
+      "occlusion_rule": "transparent_overlay_only",
+      "derived_from_source": true,
+      "source_asset_id": "full_composition",
+      "source_sha256": "4f2070085caa6f696c5b8151876a29ec1ed6c75031b73cab3cc74166af3e4699",
+      "source_rect_px": {
+        "x": 0,
+        "y": 0,
+        "width": 2000,
+        "height": 2000
+      },
+      "mask_file": "source/masks/light_mask.png",
+      "alpha_bbox": [
+        13,
+        85,
+        1946,
+        1678
+      ],
+      "transparent_ratio": 0.75304,
+      "semi_ratio": 0.24696,
+      "opaque_ratio": 0.0
+    }
+  ],
+  "runtime_preview": "region_back_farm_art_v002_runtime_preview.png",
+  "contact_sheet": "region_back_farm_art_v002_layer_contact_sheet.png",
+  "source_policy": "Source-first BackFarm package: one shared 2000x2000 composition/layer stack, then cropped runtime layers with masks and source provenance.",
+  "promotion_note": "Promoted by user command '继续' after HomeArea v007; preserves existing BackFarm gameplay nodes and scene anchors.",
+  "runtime_scene_reference_allowed": true,
+  "active_runtime_placeholder": true,
+  "launch_quality_approved": false,
+  "launch_quality_blockers": [
+    "Current package is deterministic/source-first structural art, not final painted production art.",
+    "User rejected current visual quality as not launch-level on 2026-05-18.",
+    "Composition and asset polish require a real launch-quality source pass before final promotion.",
+    "Automated validation may verify structure, scene wiring, and layer contracts only; it cannot approve launch art."
+  ],
+  "quality_gate": {
+    "launch_status": "rejected_not_launch_quality",
+    "rejection_source": "User rejected current visual quality as not launch-level on 2026-05-18: ????????????????",
+    "allowed_use": "active Godot structural placeholder for scene opening, layer dragging, collision, spawn, and route validation",
+    "blocked_use": "launch-ready art, final runtime replacement, marketing screenshot, or user-facing release candidate",
+    "next_required_step": "Produce a real launch_quality/v001 source package and pass human visual review before any final promotion."
+  },
+  "godot_review": {
+    "approval_status": "rejected_for_launch_quality_by_user_2026_05_18",
+    "final_promotion_allowed": false,
+    "runtime_scene_reference_allowed": true,
+    "human_visual_approval_required": true,
+    "rejection_note": "User rejected current visual quality as not launch-level on 2026-05-18: ????????????????"
+  }
+}

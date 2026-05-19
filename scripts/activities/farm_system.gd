@@ -46,7 +46,7 @@ func _ready() -> void:
     add_to_group("farm_system")
     init_plots()
     _connect_time_system()
-    print("[Farm] 后院种地系统初始化完成，共 ", TOTAL_PLOTS, " 块田地")
+    print("[Farm] initialized plots: ", TOTAL_PLOTS)
 
 func init_plots() -> void:
     plots.clear()
@@ -67,12 +67,12 @@ func plant(plot_index: int, crop_type: String) -> bool:
 
     var plot = plots[plot_index]
     if plot.state != 0:
-        print("[Farm] 田地 ", plot_index, " 已有农作物，无法种植")
+        print("[Farm] plot already occupied: ", plot_index)
         return false
 
     var available = get_available_crops()
     if crop_type not in available:
-        print("[Farm] ", crop_type, " 不适合当前季节种植")
+        print("[Farm] crop not available this season: ", crop_type)
         return false
 
     plot.crop_type = crop_type
@@ -83,7 +83,7 @@ func plant(plot_index: int, crop_type: String) -> bool:
     plot.is_watered = false
 
     emit_signal("crop_planted", plot_index, crop_type)
-    print("[Farm] 在田地", plot_index, " 种植了", crop_type)
+    print("[Farm] planted crop on plot ", plot_index, ": ", crop_type)
     return true
 
 func water(plot_index: int) -> bool:
@@ -92,11 +92,11 @@ func water(plot_index: int) -> bool:
 
     var plot = plots[plot_index]
     if plot.state == 0:
-        print("[Farm] 田地 ", plot_index, " 是空的")
+        print("[Farm] plot is empty: ", plot_index)
         return false
 
     plot.is_watered = true
-    print("[Farm] 给田地", plot_index, " 浇水")
+    print("[Farm] watered plot: ", plot_index)
     return true
 
 func harvest(plot_index: int) -> bool:
@@ -105,7 +105,7 @@ func harvest(plot_index: int) -> bool:
 
     var plot = plots[plot_index]
     if plot.state != 3:
-        print("[Farm] 田地 ", plot_index, " 农作物尚未成熟")
+        print("[Farm] crop is not ready on plot: ", plot_index)
         return false
 
     var crop_type = plot.crop_type
@@ -121,7 +121,7 @@ func harvest(plot_index: int) -> bool:
     plot.is_watered = false
 
     emit_signal("crop_harvested", plot_index, crop_type, amount)
-    print("[Farm] 收获了", amount, " 个", crop_type)
+    print("[Farm] harvested crop: ", amount, " ", crop_type)
     return true
 
 func advance_day() -> void:
@@ -138,7 +138,7 @@ func advance_day() -> void:
 
             if plot.growth_progress >= 1.0:
                 plot.state = 3
-                print("[Farm] 田地 ", i, " 的", plot.crop_type, " 成熟了！")
+                print("[Farm] crop ready on plot ", i, ": ", plot.crop_type)
 
         plot.is_watered = false
 
@@ -170,3 +170,49 @@ func _connect_time_system() -> void:
     var time_system := get_node("/root/TimeSystem")
     if time_system.has_signal("day_advanced") and not time_system.day_advanced.is_connected(advance_day):
         time_system.day_advanced.connect(advance_day)
+
+func add_inventory_item(item_id: String, amount: int) -> void:
+    if item_id.is_empty() or amount <= 0:
+        return
+    inventory[item_id] = int(inventory.get(item_id, 0)) + amount
+    emit_signal("inventory_changed")
+
+func reset_state() -> void:
+    init_plots()
+    inventory.clear()
+    emit_signal("inventory_changed")
+
+func save_state() -> Dictionary:
+    var saved_plots: Array = []
+    for plot in plots:
+        saved_plots.append({
+            "state": plot.state,
+            "crop_type": plot.crop_type,
+            "growth_progress": plot.growth_progress,
+            "days_growing": plot.days_growing,
+            "max_days": plot.max_days,
+            "is_watered": plot.is_watered,
+        })
+    return {
+        "plots": saved_plots,
+        "inventory": inventory.duplicate(true),
+    }
+
+func load_state(state: Dictionary) -> void:
+    reset_state()
+    var saved_plots: Array = state.get("plots", []) as Array
+    for i in range(min(saved_plots.size(), plots.size())):
+        var saved_plot := saved_plots[i] as Dictionary
+        var plot = plots[i]
+        plot.state = int(saved_plot.get("state", 0))
+        plot.crop_type = str(saved_plot.get("crop_type", ""))
+        plot.growth_progress = float(saved_plot.get("growth_progress", 0.0))
+        plot.days_growing = int(saved_plot.get("days_growing", 0))
+        plot.max_days = int(saved_plot.get("max_days", 7))
+        plot.is_watered = bool(saved_plot.get("is_watered", false))
+
+    var saved_inventory: Dictionary = state.get("inventory", {}) as Dictionary
+    inventory.clear()
+    for key in saved_inventory.keys():
+        inventory[str(key)] = int(saved_inventory[key])
+    emit_signal("inventory_changed")

@@ -130,15 +130,21 @@ func _update_region_visibility(new_region: String, old_region: String) -> void:
 		var is_adjacent = _is_adjacent_region(new_region, region_id)
 
 		if is_current or is_adjacent:
-			if region.has_method("set_visible"):
-				region.set_visible(true)
-			elif region.has_method("_set_visibility"):
-				region._set_visibility(true)
+			if region.has_method("activate"):
+				region.activate()
+			else:
+				if region.has_method("set_visible"):
+					region.set_visible(true)
+				elif region.has_method("_set_visibility"):
+					region._set_visibility(true)
 		else:
-			if region.has_method("set_visible"):
-				region.set_visible(false)
-			elif region.has_method("_set_visibility"):
-				region._set_visibility(false)
+			if region.has_method("deactivate"):
+				region.deactivate()
+			else:
+				if region.has_method("set_visible"):
+					region.set_visible(false)
+				elif region.has_method("_set_visibility"):
+					region._set_visibility(false)
 
 func _is_adjacent_region(region_a: String, region_b: String) -> bool:
 	var def_a = regions.get(region_a, {})

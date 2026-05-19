@@ -1,0 +1,413 @@
+{
+  "region_id": "Region_HomeArea",
+  "package_id": "home_area_blockout_v001",
+  "status": "blockout_review_candidate",
+  "approval_status": "approved_for_v005_generation",
+  "runtime_boundary": "offline_blockout_review_only",
+  "runtime_import_mode_after_approval": "layered_2d_png",
+  "source_layout": "production/assets/regions/home_area_design/region_home_area_layout_v001.json",
+  "scene_path": "scenes/dev/region_home_area_blockout_3d_v002.tscn",
+  "review_image": "production/assets/regions/home_area_blockout/v001/region_home_area_blockout_review.png",
+  "codex_review_image": ".codex/home_area_blockout_v001_review.png",
+  "canvas_px": {
+    "width": 6144,
+    "height": 4096
+  },
+  "unit_mapping": {
+    "pixels_per_meter": 100,
+    "origin": "region_top_left",
+    "axis_map": {
+      "godot_2d_x": "godot_3d_x",
+      "godot_2d_y": "godot_3d_z",
+      "height": "godot_3d_y"
+    }
+  },
+  "review_camera": {
+    "node_path": "RegionHomeAreaBlockout3DV002/BlockoutReviewCamera",
+    "projection": "orthogonal_oblique",
+    "size": 58.0,
+    "target_canvas_px": {
+      "width": 6144,
+      "height": 4096
+    }
+  },
+  "zones": [
+    {
+      "id": "north_village_road",
+      "name": "North village road",
+      "rect_px": {
+        "x": 420,
+        "y": 520,
+        "w": 5200,
+        "h": 980
+      },
+      "purpose": "Visual and walkable connection toward Region_Village",
+      "runtime_layer": "TileMapLayer_Path",
+      "must_remain_readable": true
+    },
+    {
+      "id": "house_veranda",
+      "name": "House and veranda",
+      "anchor_px": {
+        "x": 3160,
+        "y": 1660
+      },
+      "rect_px": {
+        "x": 2200,
+        "y": 820,
+        "w": 1900,
+        "h": 1120
+      },
+      "purpose": "Main home landmark, rest interaction, door inspection",
+      "runtime_layer": "YSortWorld/Houses",
+      "occlusion": "roof_eaves_can_cover_head_and_torso_not_feet"
+    },
+    {
+      "id": "front_yard_walkable",
+      "name": "Central front yard",
+      "rect_px": {
+        "x": 1600,
+        "y": 1550,
+        "w": 2950,
+        "h": 1300
+      },
+      "purpose": "Primary player movement and default spawn readability",
+      "runtime_layer": "TileMapLayer_Ground",
+      "must_remain_readable": true
+    },
+    {
+      "id": "west_garden",
+      "name": "West garden and flowers",
+      "rect_px": {
+        "x": 520,
+        "y": 1520,
+        "w": 1580,
+        "h": 1340
+      },
+      "purpose": "Life detail and low garden decoration",
+      "runtime_layer": "TileMapLayer_Detail",
+      "occlusion": "none_or_feet_only"
+    },
+    {
+      "id": "back_farm_path",
+      "name": "Southeast BackFarm path",
+      "rect_px": {
+        "x": 3650,
+        "y": 2500,
+        "w": 900,
+        "h": 1150
+      },
+      "purpose": "Clear path to Region_BackFarm",
+      "runtime_layer": "TileMapLayer_Path",
+      "must_remain_readable": true
+    },
+    {
+      "id": "left_tree",
+      "name": "Left shade tree",
+      "anchor_px": {
+        "x": 1420,
+        "y": 1220
+      },
+      "rect_px": {
+        "x": 760,
+        "y": 420,
+        "w": 1250,
+        "h": 1180
+      },
+      "purpose": "Depth, shade, left boundary",
+      "runtime_layer": "YSortWorld/Trees",
+      "occlusion": "split_trunk_and_canopy"
+    },
+    {
+      "id": "right_tree",
+      "name": "Right fruit tree",
+      "anchor_px": {
+        "x": 4630,
+        "y": 1660
+      },
+      "rect_px": {
+        "x": 4100,
+        "y": 900,
+        "w": 1180,
+        "h": 1180
+      },
+      "purpose": "Right-side depth and seasonal color",
+      "runtime_layer": "YSortWorld/Trees",
+      "occlusion": "split_trunk_and_canopy"
+    },
+    {
+      "id": "foreground_edges",
+      "name": "Foreground grass and leaves",
+      "rect_px": {
+        "x": 0,
+        "y": 3080,
+        "w": 6144,
+        "h": 1016
+      },
+      "purpose": "Depth framing without hiding gameplay",
+      "runtime_layer": "ForegroundStatic",
+      "occlusion": "edge_only"
+    },
+    {
+      "id": "light_weather",
+      "name": "Dappled light and ambient overlays",
+      "rect_px": {
+        "x": 700,
+        "y": 840,
+        "w": 2200,
+        "h": 1300
+      },
+      "purpose": "Mood and sunlight reference",
+      "runtime_layer": "LightAndWeather",
+      "occlusion": "transparent_overlay_only"
+    }
+  ],
+  "interaction_points": [
+    {
+      "id": "home_area_default_spawn",
+      "position_px": {
+        "x": 3072,
+        "y": 2380
+      },
+      "role": "player_spawn"
+    },
+    {
+      "id": "homearea_house_door_001",
+      "position_px": {
+        "x": 3160,
+        "y": 1690
+      },
+      "role": "inspect_house_door"
+    },
+    {
+      "id": "homearea_mailbox_001",
+      "position_px": {
+        "x": 2640,
+        "y": 2300
+      },
+      "role": "inspect_mailbox"
+    },
+    {
+      "id": "homearea_well_001",
+      "position_px": {
+        "x": 3640,
+        "y": 2400
+      },
+      "role": "draw_water"
+    },
+    {
+      "id": "homearea_bench_rest_001",
+      "position_px": {
+        "x": 3720,
+        "y": 1960
+      },
+      "role": "rest_bench"
+    },
+    {
+      "id": "homearea_roadsign_001",
+      "position_px": {
+        "x": 5180,
+        "y": 1390
+      },
+      "role": "read_sign"
+    },
+    {
+      "id": "home_area_to_back_farm",
+      "position_px": {
+        "x": 4200,
+        "y": 3370
+      },
+      "role": "region_exit_back_farm"
+    }
+  ],
+  "required_2d_layer_contract": [
+    {
+      "asset_id": "ground_yard",
+      "file": "region_home_area_ground_yard_v005.png",
+      "target_parent": "TileMapLayer_Ground/GroundModules",
+      "role": "ground_base",
+      "status": "not_generated_until_blockout_approval"
+    },
+    {
+      "asset_id": "path_village_road",
+      "file": "region_home_area_path_village_road_v005.png",
+      "target_parent": "TileMapLayer_Path/PathModules",
+      "role": "path",
+      "status": "not_generated_until_blockout_approval"
+    },
+    {
+      "asset_id": "path_back_farm",
+      "file": "region_home_area_path_back_farm_v005.png",
+      "target_parent": "TileMapLayer_Path/PathModules",
+      "role": "path",
+      "status": "not_generated_until_blockout_approval"
+    },
+    {
+      "asset_id": "house_body",
+      "file": "region_home_area_house_body_v005.png",
+      "target_parent": "YSortWorld/Houses",
+      "role": "ysort_structure",
+      "status": "not_generated_until_blockout_approval"
+    },
+    {
+      "asset_id": "house_roof_occluder",
+      "file": "region_home_area_house_roof_occluder_v005.png",
+      "target_parent": "ForegroundStatic/Occluders",
+      "role": "occluder",
+      "status": "not_generated_until_blockout_approval"
+    },
+    {
+      "asset_id": "veranda_floor",
+      "file": "region_home_area_veranda_floor_v005.png",
+      "target_parent": "TileMapLayer_Detail",
+      "role": "detail",
+      "status": "not_generated_until_blockout_approval"
+    },
+    {
+      "asset_id": "tree_left_trunk",
+      "file": "region_home_area_tree_left_trunk_v005.png",
+      "target_parent": "YSortWorld/Trees",
+      "role": "ysort_structure",
+      "status": "not_generated_until_blockout_approval"
+    },
+    {
+      "asset_id": "tree_left_canopy_occluder",
+      "file": "region_home_area_tree_left_canopy_occluder_v005.png",
+      "target_parent": "ForegroundStatic/Occluders",
+      "role": "occluder",
+      "status": "not_generated_until_blockout_approval"
+    },
+    {
+      "asset_id": "tree_right_trunk",
+      "file": "region_home_area_tree_right_trunk_v005.png",
+      "target_parent": "YSortWorld/Trees",
+      "role": "ysort_structure",
+      "status": "not_generated_until_blockout_approval"
+    },
+    {
+      "asset_id": "tree_right_canopy_occluder",
+      "file": "region_home_area_tree_right_canopy_occluder_v005.png",
+      "target_parent": "ForegroundStatic/Occluders",
+      "role": "occluder",
+      "status": "not_generated_until_blockout_approval"
+    },
+    {
+      "asset_id": "foreground_grass",
+      "file": "region_home_area_foreground_grass_v005.png",
+      "target_parent": "ForegroundStatic",
+      "role": "edge_occluder",
+      "status": "not_generated_until_blockout_approval"
+    },
+    {
+      "asset_id": "shadow_dappled",
+      "file": "region_home_area_shadow_dappled_v005.png",
+      "target_parent": "LightAndWeather",
+      "role": "transparent_overlay",
+      "status": "not_generated_until_blockout_approval"
+    },
+    {
+      "asset_id": "light_overlay",
+      "file": "region_home_area_light_overlay_v005.png",
+      "target_parent": "LightAndWeather",
+      "role": "transparent_overlay",
+      "status": "not_generated_until_blockout_approval"
+    }
+  ],
+  "prop_scale_contract": [
+    {
+      "asset_id": "mailbox",
+      "interaction_id": "homearea_mailbox_001",
+      "guide_node": "PropScaleGuides/MailboxScaleGuide",
+      "rule": "top reaches protagonist waist/chest range, not ankle-height icon scale",
+      "position_px": {
+        "x": 2640,
+        "y": 2300
+      },
+      "approx_height_m": 1.35
+    },
+    {
+      "asset_id": "well",
+      "interaction_id": "homearea_well_001",
+      "guide_node": "PropScaleGuides/WellScaleGuide",
+      "rule": "substantial yard landmark, placed inside the front-yard composition with roof/posts readable",
+      "position_px": {
+        "x": 3640,
+        "y": 2400
+      },
+      "approx_base_radius_m": 1.55
+    },
+    {
+      "asset_id": "bench",
+      "interaction_id": "homearea_bench_rest_001",
+      "guide_node": "PropScaleGuides/BenchScaleGuide",
+      "rule": "wide/deep enough for seated rest, aligned to veranda/front-yard rest area",
+      "position_px": {
+        "x": 3720,
+        "y": 1960
+      },
+      "approx_width_m": 3.6
+    }
+  ],
+  "acceptance_gate": [
+    "Human review must approve the 3D blockout before v005 2D layer production starts.",
+    "No v002-v004 mother-plate fragments may be promoted into v005 final art.",
+    "House, roads, BackFarm path, tree canopies, foreground edges, and interaction anchors must match this manifest.",
+    "2D exports must be transparent layered PNGs with source-space origin/anchor records."
+  ],
+  "next_step_after_approval": "Generate or commission v005 2D layered art from this blockout and the project art bible.",
+  "next_step": "Human-review the revised 3D blockout scale pass before producing final v005 layer art.",
+  "blockout_revision": "v002_scale_composition_pass",
+  "revision_summary": [
+    "Recentered the well as a front-yard landmark instead of a small edge prop.",
+    "Moved the mailbox to the readable left-front approach and reduced it to waist/chest scale against the player guide.",
+    "Moved the bench into a veranda-adjacent rest area and added seat/back massing.",
+    "Added player scale guides at spawn and near the house door.",
+    "Split foreground occlusion into review modules instead of relying on a full-width cover plate."
+  ],
+  "review_image_revision": "production/assets/regions/home_area_blockout/v001/region_home_area_blockout_review_v002_scale_pass.png",
+  "codex_review_image_revision": ".codex/home_area_blockout_v002_scale_pass_review.png",
+  "player_scale_contract": {
+    "guide_nodes": [
+      "PlayerScaleGuides/DefaultSpawnPlayerScaleGuide",
+      "PlayerScaleGuides/DoorPlayerScaleGuide"
+    ],
+    "visible_body_height_m": 2.15,
+    "frame_contract_px": {
+      "width": 192,
+      "height": 288,
+      "foot_anchor_x": 96,
+      "foot_anchor_y": 280
+    },
+    "rule": "All prop tops and door/veranda clearances must read against this gameplay-scale protagonist guide."
+  },
+  "path_review_contract": [
+    {
+      "guide_node": "ZoneGuides/MainDoorPathGuide",
+      "rule": "clear readable route from spawn/front yard to veranda and door"
+    },
+    {
+      "guide_node": "ZoneGuides/YardLoopPathGuide",
+      "rule": "soft connection from main path toward well and BackFarm route"
+    }
+  ],
+  "foreground_occlusion_contract": [
+    {
+      "guide_node": "ZoneGuides/ForegroundLeftOccluderGuide",
+      "rule": "left-edge depth only; no center player wash"
+    },
+    {
+      "guide_node": "ZoneGuides/ForegroundRightOccluderGuide",
+      "rule": "right-edge depth only; no center player wash"
+    },
+    {
+      "guide_node": "ZoneGuides/ForegroundBottomTuftGuide",
+      "rule": "bottom framing below the main playable yard"
+    },
+    {
+      "guide_node": "ZoneGuides/ForegroundClearPlayerCorridorGuide",
+      "rule": "primary walking/readability corridor remains visually clear"
+    }
+  ],
+  "approved_at": "2026-05-16",
+  "approved_by": "human_user"
+}

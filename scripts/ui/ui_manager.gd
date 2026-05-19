@@ -1,4 +1,4 @@
-﻿extends CanvasLayer
+extends CanvasLayer
 
 signal dialogue_finished
 
@@ -83,7 +83,7 @@ func _setup_dialogue_ui() -> void:
 	continue_hint.offset_top = -30.0
 	continue_hint.offset_right = -10.0
 	continue_hint.offset_bottom = -5.0
-	continue_hint.text = "鎸?E 缁х画"
+	continue_hint.text = "按 E 继续"
 	continue_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	continue_hint.add_theme_color_override("font_color", Color(0.7, 0.65, 0.5))
 	continue_hint.add_theme_font_size_override("font_size", 14)
@@ -100,7 +100,7 @@ func show_dialogue(speaker: String, text: String) -> void:
 	dialogue_visible = true
 	dialogue_box.visible = true
 	continue_hint.visible = false
-	print("[UIManager] 鏄剧ず瀵硅瘽: ", speaker, " - ", text)
+	print("[UIManager] 显示对话: ", speaker, " - ", text)
 
 func hide_dialogue() -> void:
 	dialogue_visible = false

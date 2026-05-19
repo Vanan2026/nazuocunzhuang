@@ -1,0 +1,22 @@
+{
+  "shot": "image_saved",
+  "stop": {
+    "jsonrpc": "2.0",
+    "id": 5,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"readiness_after\":\"ready\",\"reason\":\"Play/stop is a runtime action\",\"stopped\":true,\"undoable\":false}"
+        }
+      ],
+      "structuredContent": {
+        "readiness_after": "ready",
+        "reason": "Play/stop is a runtime action",
+        "stopped": true,
+        "undoable": false
+      },
+      "isError": false
+    }
+  }
+}

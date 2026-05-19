@@ -1,0 +1,105 @@
+{
+  "package_id": "home_area_world2d_v001",
+  "region_id": "Region_HomeArea",
+  "status": "foreground_03_v4_no_bottom_leaf_wall_integrated_pending_godot_capture",
+  "created_at": "2026-05-19 15:45",
+  "production_started_at": "2026-05-19",
+  "replaces_rejected": [
+    "legacy_flattened_home_area_reviews",
+    "legacy_formal_split_layers",
+    "legacy_launch_layer_set",
+    "legacy_local_sticker_foreground_slices"
+  ],
+  "current_phase": "03_layer_export",
+  "workflow": [
+    "01_3d_blockout",
+    "02_source_generation",
+    "03_layer_export",
+    "04_godot_integration",
+    "05_review_and_qa"
+  ],
+  "canvas": {
+    "width": 1470,
+    "height": 1070,
+    "coordinate_origin": "top_left_canvas"
+  },
+  "source_policy": {
+    "must_use_locked_3d_blockout": true,
+    "must_keep_camera_and_structure": true,
+    "must_export_true_layers": true,
+    "forbidden_sources": [
+      "legacy flattened review plates",
+      "local sticker foreground patches",
+      "cropped structural foreground without pivot contract"
+    ]
+  },
+  "phase_status": {
+    "01_3d_blockout": "locked_contract_written",
+    "02_source_generation": "source_full_accepted",
+    "03_layer_export": "initial_layers_exported_for_review",
+    "04_godot_integration": "blocked_until_layers_approved",
+    "05_review_and_qa": "review_gate_ready"
+  },
+  "godot_scene": "scenes/regions/region_home_area.tscn",
+  "active_layer_package": "production/assets/regions/home_area_world2d/v001/03_layer_export/four_layer_package/four_layer_manifest.json",
+  "godot_integration": {
+    "status": "integrated_unverified",
+    "scene": "scenes/regions/region_home_area.tscn",
+    "coordinate_space": "1470x1070 source pixels",
+    "nodes": {
+      "base": "Region_HomeArea/ArtLayers/BaseGroundPaths",
+      "midground": "Region_HomeArea/ArtLayers/MidgroundBehindPlayer",
+      "foreground": "Region_HomeArea/ForegroundOcclusion",
+      "source_reference": "Region_HomeArea/ArtLayers/SourceReferenceHidden"
+    },
+    "validation": "not_run_by_instruction"
+  },
+  "foreground_03_fix": {
+    "reason": "previous magenta chroma key left red/purple outlines in Godot",
+    "method": "regenerated foreground occlusion on blue chroma key, then converted blue to alpha with despill",
+    "bluekey_source": "production/assets/regions/home_area_world2d/v001/03_layer_export/four_layer_package/home_area_03_foreground_occlusion_bluekey_source.png",
+    "output": "production/assets/regions/home_area_world2d/v001/03_layer_export/four_layer_package/home_area_03_foreground_occlusion.png",
+    "validation": "not_run"
+  },
+  "layer_04_fix": {
+    "reason": "previous midground layer had red/purple outlines",
+    "method": "regenerated on blue chroma key and converted to alpha with blue despill",
+    "bluekey_source": "production/assets/regions/home_area_world2d/v001/03_layer_export/four_layer_package/home_area_04_midground_behind_player_bluekey_source.png",
+    "output": "production/assets/regions/home_area_world2d/v001/03_layer_export/four_layer_package/home_area_04_midground_behind_player.png",
+    "validation": "not_run"
+  },
+  "foreground_greenery_fill": {
+    "reason": "previous 03b had blue fringes and missing right tree leaves",
+    "method": "post-processed generated whitekey source with color-based alpha and region-limited mask after Godot comparison",
+    "whitekey_source": "production/assets/regions/home_area_world2d/v001/03_layer_export/four_layer_package/home_area_03b_foreground_greenery_fill_whitekey_source.png",
+    "output": "production/assets/regions/home_area_world2d/v001/03_layer_export/four_layer_package/home_area_03b_foreground_greenery_fill_v2.png",
+    "godot_node": "Region_HomeArea/ForegroundGreeneryFill",
+    "validation": "not_run",
+    "note": "Reduced full-frame haze; kept only targeted left/bottom/right/right-tree foliage regions.",
+    "cache_note": "Versioned filename added so Godot reloads texture instead of using cached same-name PNG."
+  },
+  "right_tree_canopy_fill": {
+    "status": "removed_from_scene",
+    "reason": "Godot runtime screenshot showed black background from targeted patch; do not keep this layer.",
+    "next": "regenerate a full foreground layer or fix import/alpha before re-adding right tree canopy."
+  },
+  "foreground_03_v2": {
+    "method": "regenerated foreground with fake checkerboard background; removed bright low-saturation checkerboard to alpha",
+    "output": "production/assets/regions/home_area_world2d/v001/03_layer_export/four_layer_package/home_area_03_foreground_occlusion_v2_native_alpha.png",
+    "raw_candidate": "production/assets/regions/home_area_world2d/v001/03_layer_export/four_layer_package/home_area_03_foreground_occlusion_native_alpha_candidate.png",
+    "validation": "pending_godot_capture"
+  },
+  "foreground_03_v3": {
+    "reason": "user requested execution: regenerate full foreground instead of reporting; includes right-side tree canopy in main 03 layer",
+    "method": "generated full foreground layer, removed fake checkerboard to alpha",
+    "raw_source": "production/assets/regions/home_area_world2d/v001/03_layer_export/four_layer_package/home_area_03_foreground_occlusion_v3_checker_source.png",
+    "output": "production/assets/regions/home_area_world2d/v001/03_layer_export/four_layer_package/home_area_03_foreground_occlusion_v3.png",
+    "validation": "pending_godot_capture"
+  },
+  "foreground_03_v4": {
+    "reason": "bottom-half leaves had no gameplay/art-direction purpose and cluttered the playable yard",
+    "method": "masked v3 foreground to keep top canopy, left/right side framing, and right tree canopy while clearing bottom leaf wall",
+    "output": "production/assets/regions/home_area_world2d/v001/03_layer_export/four_layer_package/home_area_03_foreground_occlusion_v4_no_bottom_leaf_wall.png",
+    "validation": "pending_godot_capture"
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "jsonrpc": "2.0",
+  "id": 9,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"root\":\"\",\"nodes\":[{\"children_count\":10,\"name\":\"Region_HomeArea\",\"path\":\"/Region_HomeArea\",\"type\":\"Node2D\"},{\"children_count\":0,\"name\":\"RegionRuntime\",\"path\":\"/Region_HomeArea/RegionRuntime\",\"type\":\"Node2D\"},{\"children_count\":0,\"name\":\"RegionBounds\",\"path\":\"/Region_HomeArea/RegionBounds\",\"type\":\"Node2D\"},{\"children_count\":3,\"name\":\"ArtLayers\",\"path\":\"/Region_HomeArea/ArtLayers\",\"type\":\"Node2D\"},{\"children_count\":0,\"name\":\"SourceReferenceHidden\",\"path\":\"/Region_HomeArea/ArtLayers/SourceReferenceHidden\",\"type\":\"Sprite2D\"},{\"children_count\":0,\"name\":\"BaseGroundPaths\",\"path\":\"/Region_HomeArea/ArtLayers/BaseGroundPaths\",\"type\":\"Sprite2D\"},{\"children_count\":0,\"name\":\"MidgroundBehindPlayer\",\"path\":\"/Region_HomeArea/ArtLayers/MidgroundBehindPlayer\",\"type\":\"Sprite2D\"},{\"children_count\":0,\"name\":\"WalkableZone\",\"path\":\"/Region_HomeArea/WalkableZone\",\"type\":\"Node2D\"},{\"children_count\":3,\"name\":\"YSortWorld\",\"path\":\"/Region_HomeArea/YSortWorld\",\"type\":\"Node2D\"},{\"children_count\":4,\"name\":\"Player\",\"path\":\"/Region_HomeArea/YSortWorld/Player\",\"type\":\"CharacterBody2D\"},{\"children_count\":0,\"name\":\"PlayerSpawn\",\"path\":\"/Region_HomeArea/YSortWorld/PlayerSpawn\",\"type\":\"Marker2D\"},{\"children_count\":0,\"name\":\"SpawnFromBackFarm\",\"path\":\"/Region_HomeArea/YSortWorld/SpawnFromBackFarm\",\"type\":\"Marker2D\"},{\"children_count\":0,\"name\":\"ForegroundOcclusion\",\"path\":\"/Region_HomeArea/ForegroundOcclusion\",\"type\":\"Sprite2D\"},{\"children_count\":0,\"name\":\"ForegroundGreeneryFill\",\"path\":\"/Region_HomeArea/ForegroundGreeneryFill\",\"type\":\"Sprite2D\"},{\"children_count\":0,\"name\":\"CameraRig\",\"path\":\"/Region_HomeArea/CameraRig\",\"type\":\"Camera2D\"},{\"children_count\":1,\"name\":\"CanvasLayer_UI\",\"path\":\"/Region_HomeArea/CanvasLayer_UI\",\"type\":\"CanvasLayer\"},{\"children_count\":0,\"name\":\"InteractionPrompt\",\"path\":\"/Region_HomeArea/CanvasLayer_UI/InteractionPrompt\",\"type\":\"Label\"},{\"children_count\":0,\"name\":\"RightTreeCanopyFill\",\"path\":\"/Region_HomeArea/RightTreeCanopyFill\",\"type\":\"Sprite2D\"}],\"total_count\":18,\"offset\":0,\"limit\":90,\"has_more\":false}"
+      }
+    ],
+    "structuredContent": {
+      "root": "",
+      "nodes": [
+        {
+          "children_count": 10,
+          "name": "Region_HomeArea",
+          "path": "/Region_HomeArea",
+          "type": "Node2D"
+        },
+        {
+          "children_count": 0,
+          "name": "RegionRuntime",
+          "path": "/Region_HomeArea/RegionRuntime",
+          "type": "Node2D"
+        },
+        {
+          "children_count": 0,
+          "name": "RegionBounds",
+          "path": "/Region_HomeArea/RegionBounds",
+          "type": "Node2D"
+        },
+        {
+          "children_count": 3,
+          "name": "ArtLayers",
+          "path": "/Region_HomeArea/ArtLayers",
+          "type": "Node2D"
+        },
+        {
+          "children_count": 0,
+          "name": "SourceReferenceHidden",
+          "path": "/Region_HomeArea/ArtLayers/SourceReferenceHidden",
+          "type": "Sprite2D"
+        },
+        {
+          "children_count": 0,
+          "name": "BaseGroundPaths",
+          "path": "/Region_HomeArea/ArtLayers/BaseGroundPaths",
+          "type": "Sprite2D"
+        },
+        {
+          "children_count": 0,
+          "name": "MidgroundBehindPlayer",
+          "path": "/Region_HomeArea/ArtLayers/MidgroundBehindPlayer",
+          "type": "Sprite2D"
+        },
+        {
+          "children_count": 0,
+          "name": "WalkableZone",
+          "path": "/Region_HomeArea/WalkableZone",
+          "type": "Node2D"
+        },
+        {
+          "children_count": 3,
+          "name": "YSortWorld",
+          "path": "/Region_HomeArea/YSortWorld",
+          "type": "Node2D"
+        },
+        {
+          "children_count": 4,
+          "name": "Player",
+          "path": "/Region_HomeArea/YSortWorld/Player",
+          "type": "CharacterBody2D"
+        },
+        {
+          "children_count": 0,
+          "name": "PlayerSpawn",
+          "path": "/Region_HomeArea/YSortWorld/PlayerSpawn",
+          "type": "Marker2D"
+        },
+        {
+          "children_count": 0,
+          "name": "SpawnFromBackFarm",
+          "path": "/Region_HomeArea/YSortWorld/SpawnFromBackFarm",
+          "type": "Marker2D"
+        },
+        {
+          "children_count": 0,
+          "name": "ForegroundOcclusion",
+          "path": "/Region_HomeArea/ForegroundOcclusion",
+          "type": "Sprite2D"
+        },
+        {
+          "children_count": 0,
+          "name": "ForegroundGreeneryFill",
+          "path": "/Region_HomeArea/ForegroundGreeneryFill",
+          "type": "Sprite2D"
+        },
+        {
+          "children_count": 0,
+          "name": "CameraRig",
+          "path": "/Region_HomeArea/CameraRig",
+          "type": "Camera2D"
+        },
+        {
+          "children_count": 1,
+          "name": "CanvasLayer_UI",
+          "path": "/Region_HomeArea/CanvasLayer_UI",
+          "type": "CanvasLayer"
+        },
+        {
+          "children_count": 0,
+          "name": "InteractionPrompt",
+          "path": "/Region_HomeArea/CanvasLayer_UI/InteractionPrompt",
+          "type": "Label"
+        },
+        {
+          "children_count": 0,
+          "name": "RightTreeCanopyFill",
+          "path": "/Region_HomeArea/RightTreeCanopyFill",
+          "type": "Sprite2D"
+        }
+      ],
+      "total_count": 18,
+      "offset": 0,
+      "limit": 90,
+      "has_more": false
+    },
+    "isError": false
+  }
+}

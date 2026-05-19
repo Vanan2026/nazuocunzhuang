@@ -1,0 +1,25 @@
+{
+  "lock_id": "home_area_world2d_v001_camera_lock",
+  "status": "locked_contract",
+  "region_id": "Region_HomeArea",
+  "canvas": {
+    "width": 1470,
+    "height": 1070,
+    "origin": "top_left_region_local"
+  },
+  "projection": "fixed_top_down_three_quarter_2d_from_3d_blockout",
+  "composition": {
+    "house_anchor": "upper_center",
+    "central_walkable_yard": "center",
+    "village_exit": "north_or_upper_right_path",
+    "back_farm_exit": "southeast_path",
+    "left_foreground_tree": "left_edge_occluder",
+    "right_depth_tree": "right_upper_midground",
+    "near_foreground_grass": "bottom_edge_occluder_only"
+  },
+  "constraints": [
+    "do_not_change_camera_after_source_approval",
+    "do_not_move_major_structures_after_mask_lock",
+    "do_not_bake_player_npc_or_ui_into_source"
+  ]
+}

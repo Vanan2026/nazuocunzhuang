@@ -1,0 +1,871 @@
+[gd_scene format=3 uid="uid://dxca6dtwpt5iy"]
+
+[ext_resource type="Script" uid="uid://bg6a4v4173aqv" path="res://scripts/world/region.gd" id="1_region"]
+[ext_resource type="Script" uid="uid://07bdrxj2yswg" path="res://scripts/player_controller.gd" id="2_player"]
+[ext_resource type="Script" uid="uid://fqy5rp2eb5nq" path="res://scripts/world/camera_rig.gd" id="3_camera_rig"]
+[ext_resource type="Script" uid="uid://dgt3yi0wc24in" path="res://scripts/world/walkable_zone.gd" id="4_walkable_zone"]
+[ext_resource type="Texture2D" uid="uid://d0kibyfut45uy" path="res://sprites/characters/protagonist/protagonist_shadow_soft.png" id="5_player_shadow"]
+[ext_resource type="SpriteFrames" path="res://sprites/characters/protagonist/player_mvp_4dir_frames.tres" id="6_player_frames"]
+[ext_resource type="Script" uid="uid://rubmo1ja3hbe" path="res://scripts/world/region_home_area_runtime.gd" id="12_region_runtime"]
+[ext_resource type="Texture2D" uid="uid://c4xo4awut4sk4" path="res://production/assets/regions/home_area_formal/v001/layers/region_home_area_formal_full_plate_v001.png" id="29_full_plate_reference"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_fg_left_upper_tree_canopy_v001.png" id="30_fg_left_upper_tree_canopy"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_fg_left_big_tree_lower_canopy_v001.png" id="31_fg_left_big_tree_lower_canopy"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_fg_left_bench_bushes_v001.png" id="32_fg_left_bench_bushes"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_fg_house_roof_eave_v001.png" id="33_fg_house_roof_eave"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_fg_house_front_plants_v001.png" id="34_fg_house_front_plants"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_fg_right_upper_tree_canopy_v001.png" id="35_fg_right_upper_tree_canopy"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_fg_right_tree_lower_canopy_v001.png" id="36_fg_right_tree_lower_canopy"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_fg_well_flower_bush_v001.png" id="37_fg_well_flower_bush"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_fg_road_sign_grass_v001.png" id="38_fg_road_sign_grass"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_fg_bottom_left_near_bush_v001.png" id="39_fg_bottom_left_near_bush"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_fg_bottom_center_grass_v001.png" id="40_fg_bottom_center_grass"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_fg_bottom_right_near_bush_v001.png" id="41_fg_bottom_right_near_bush"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_fg_far_right_edge_tree_v001.png" id="42_fg_far_right_edge_tree"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_left_upper_leaf_mass_a_v002.png" id="60_left_upper_leaf_mass_a"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_left_upper_leaf_mass_b_v002.png" id="61_left_upper_leaf_mass_b"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_left_tree_lower_lobes_v002.png" id="62_left_tree_lower_lobes"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_left_bench_overgrowth_v002.png" id="63_left_bench_overgrowth"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_house_roof_main_occluder_v002.png" id="64_house_roof_main_occluder"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_house_eave_front_plants_v002.png" id="65_house_eave_front_plants"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_house_right_pots_and_bush_v002.png" id="66_house_right_pots_and_bush"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_right_upper_leaf_mass_a_v002.png" id="67_right_upper_leaf_mass_a"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_right_upper_leaf_mass_b_v002.png" id="68_right_upper_leaf_mass_b"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_right_tree_lower_lobes_v002.png" id="69_right_tree_lower_lobes"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_well_roof_and_flowers_v002.png" id="70_well_roof_and_flowers"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_road_sign_grass_cluster_v002.png" id="71_road_sign_grass_cluster"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_bottom_left_near_bush_a_v002.png" id="72_bottom_left_near_bush_a"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_bottom_left_near_bush_b_v002.png" id="73_bottom_left_near_bush_b"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_bottom_center_grass_v002.png" id="74_bottom_center_grass"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_bottom_right_near_bush_a_v002.png" id="75_bottom_right_near_bush_a"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_bottom_right_near_bush_b_v002.png" id="76_bottom_right_near_bush_b"]
+[ext_resource type="Texture2D" path="res://production/assets/regions/home_area_formal/v001/layers/manual_foreground_slices/region_home_area_manual_far_right_edge_tree_lobes_v002.png" id="77_far_right_edge_tree_lobes"]
+[ext_resource type="Script" path="res://scripts/world/yard_interactable.gd" id="90_yard_interactable"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
+size = Vector2(40, 20)
+
+[node name="Region_HomeArea" type="Node2D" unique_id=2094575029]
+script = ExtResource("1_region")
+region_id = "Region_HomeArea"
+region_display_name = "庭院"
+region_size = Vector2(6144, 4096)
+world_offset = Vector2(4000, 6000)
+adjacent_regions = Array[String](["Region_Village", "Region_BackFarm"])
+is_always_loaded = true
+metadata/world_model = "explorable_2d_oblique_region_v0_1"
+metadata/region_id = "Region_HomeArea"
+metadata/status = "manual_authoring_refined_blockers_interactions_foreground"
+metadata/art_package = "home_area_formal_v001"
+metadata/art_integration_group = "manual_authoring_full_pass_20260519"
+metadata/launch_quality_approved = false
+metadata/formal_asset_pass = "manual_reauthoring_pending"
+
+[node name="RegionRuntime" type="Node2D" parent="." unique_id=1323894983]
+script = ExtResource("12_region_runtime")
+
+[node name="RegionBounds" type="Node2D" parent="." unique_id=1566540290]
+metadata/size = Vector2i(6144, 4096)
+metadata/purpose = "camera_and_content_bounds"
+
+[node name="FullSceneReferencePlate" type="Sprite2D" parent="." unique_id=2006051901]
+z_index = -180
+position = Vector2(396, -54)
+texture = ExtResource("29_full_plate_reference")
+centered = false
+metadata/manual_authoring_tool = "reference_only"
+metadata/manual_role = "single_scene_plate_no_runtime_layering"
+metadata/art_package = "home_area_formal_v001"
+metadata/source_note = "single full-scene reference plate for manual Layer Tool authoring; not a split runtime layer"
+
+[node name="WalkableZone" type="Node2D" parent="." unique_id=1903439764]
+script = ExtResource("4_walkable_zone")
+polygon = PackedVector2Array(430, 1600, 1220, 1440, 1930, 1680, 2920, 1760, 3880, 1780, 4560, 2220, 4580, 3720, 3840, 3900, 3020, 3180, 1800, 2650, 760, 2220)
+metadata/purpose = "home_area_walkable_mask"
+
+[node name="YSortWorld" type="Node2D" parent="." unique_id=1756894492]
+y_sort_enabled = true
+metadata/purpose = "actors_props_houses_trees_interactables"
+
+[node name="Player" type="CharacterBody2D" parent="YSortWorld" unique_id=1583292823]
+position = Vector2(3072, 2380)
+script = ExtResource("2_player")
+walkable_zone_path = NodePath("../../WalkableZone")
+visual_base_scale = 1.35
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Player" unique_id=2011979490]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_player")
+
+[node name="ShadowSprite" type="Sprite2D" parent="YSortWorld/Player" unique_id=563680630]
+self_modulate = Color(1, 1, 1, 0.52)
+z_index = -2
+position = Vector2(0, -6)
+texture = ExtResource("5_player_shadow")
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="YSortWorld/Player" unique_id=1231254493]
+position = Vector2(-96, -280)
+sprite_frames = ExtResource("6_player_frames")
+animation = &"player_idle_down_left"
+centered = false
+
+[node name="PlayerSpawn" type="Marker2D" parent="YSortWorld" unique_id=1399975194]
+position = Vector2(3300, 2380)
+metadata/spawn_id = "home_area_default"
+
+[node name="SpawnFromBackFarm" type="Marker2D" parent="YSortWorld" unique_id=549619662]
+position = Vector2(4200, 3370)
+metadata/spawn_id = "home_area_from_back_farm"
+
+[node name="CameraRig" type="Camera2D" parent="." unique_id=2073008251]
+position = Vector2(3072, 2380)
+limit_left = 0
+limit_top = 0
+limit_right = 6144
+limit_bottom = 4096
+limit_smoothed = true
+script = ExtResource("3_camera_rig")
+target_path = NodePath("../YSortWorld/Player")
+metadata/role = "smooth_player_follow_camera"
+
+[node name="CanvasLayer_UI" type="CanvasLayer" parent="." unique_id=1384054852]
+metadata/purpose = "world_interaction_dialogue_fade_ui"
+
+[node name="InteractionPrompt" type="Label" parent="CanvasLayer_UI" unique_id=2040542978]
+visible = false
+offset_left = 520.0
+offset_top = 620.0
+offset_right = 760.0
+offset_bottom = 660.0
+horizontal_alignment = 1
+
+[node name="ManualAuthoring" type="Node2D" parent="." unique_id=1879527168]
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_folder = true
+
+[node name="Layers" type="Node2D" parent="ManualAuthoring" unique_id=1956473011]
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_folder = true
+
+[node name="Blockers" type="Node2D" parent="ManualAuthoring"]
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_folder = true
+
+[node name="HouseFootprintBlocker" type="StaticBody2D" parent="ManualAuthoring/Blockers"]
+position = Vector2(3296.36, 1429.09)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/HouseFootprintBlocker"]
+polygon = PackedVector2Array(-1016.36, -619.091, 1073.64, -619.091, 1083.64, 50.9091, 893.636, 110.909, 443.636, 110.909, 353.636, 175.909, -156.364, 175.909, -286.364, 140.909, -596.364, 140.909, -796.364, 230.909, -996.364, 100.909)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/HouseFootprintBlocker"]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.14)
+polygon = PackedVector2Array(-1016.36, -619.091, 1073.64, -619.091, 1083.64, 50.9091, 893.636, 110.909, 443.636, 110.909, 353.636, 175.909, -156.364, 175.909, -286.364, 140.909, -596.364, 140.909, -796.364, 230.909, -996.364, 100.909)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="LeftBigTreeTrunkRootBlocker" type="StaticBody2D" parent="ManualAuthoring/Blockers"]
+position = Vector2(1321.43, 1615.71)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/LeftBigTreeTrunkRootBlocker"]
+polygon = PackedVector2Array(-281.429, -395.714, 128.571, -485.714, 338.571, -175.714, 288.571, 234.286, 68.5714, 414.286, -201.429, 364.286, -341.429, 44.2857)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/LeftBigTreeTrunkRootBlocker"]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.14)
+polygon = PackedVector2Array(-281.429, -395.714, 128.571, -485.714, 338.571, -175.714, 288.571, 234.286, 68.5714, 414.286, -201.429, 364.286, -341.429, 44.2857)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="LeftBenchBlocker" type="StaticBody2D" parent="ManualAuthoring/Blockers"]
+position = Vector2(1366.67, 1874.17)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/LeftBenchBlocker"]
+polygon = PackedVector2Array(-326.667, -84.1667, 163.333, -274.167, 303.333, -64.1667, 253.333, 45.8333, -136.667, 215.833, -256.667, 160.833)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/LeftBenchBlocker"]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.14)
+polygon = PackedVector2Array(-326.667, -84.1667, 163.333, -274.167, 303.333, -64.1667, 253.333, 45.8333, -136.667, 215.833, -256.667, 160.833)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="LeftFencePostBlocker" type="StaticBody2D" parent="ManualAuthoring/Blockers"]
+position = Vector2(912.5, 1757.5)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/LeftFencePostBlocker"]
+polygon = PackedVector2Array(-412.5, 162.5, 337.5, -407.5, 387.5, -247.5, -312.5, 492.5)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/LeftFencePostBlocker"]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.14)
+polygon = PackedVector2Array(-412.5, 162.5, 337.5, -407.5, 387.5, -247.5, -312.5, 492.5)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="MailboxBlocker" type="StaticBody2D" parent="ManualAuthoring/Blockers"]
+position = Vector2(2052, 1665)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/MailboxBlocker"]
+polygon = PackedVector2Array(-42, -85, 63, -80, 88, 75, -32, 95, -77, -5)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/MailboxBlocker"]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.14)
+polygon = PackedVector2Array(-42, -85, 63, -80, 88, 75, -32, 95, -77, -5)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="HouseFrontPotBlockerLeft" type="StaticBody2D" parent="ManualAuthoring/Blockers"]
+position = Vector2(2246, 1524)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/HouseFrontPotBlockerLeft"]
+polygon = PackedVector2Array(-66, -94, 54, -94, 94, 46, 4, 116, -86, 26)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/HouseFrontPotBlockerLeft"]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.14)
+polygon = PackedVector2Array(-66, -94, 54, -94, 94, 46, 4, 116, -86, 26)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="HouseFrontPotBlockerRight" type="StaticBody2D" parent="ManualAuthoring/Blockers"]
+position = Vector2(4048, 1530)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/HouseFrontPotBlockerRight"]
+polygon = PackedVector2Array(-68, -100, 62, -100, 92, 50, 2, 120, -88, 30)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/HouseFrontPotBlockerRight"]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.14)
+polygon = PackedVector2Array(-68, -100, 62, -100, 92, 50, 2, 120, -88, 30)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="RightTreeTrunkRootBlocker" type="StaticBody2D" parent="ManualAuthoring/Blockers"]
+position = Vector2(4926.67, 1473.33)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/RightTreeTrunkRootBlocker"]
+polygon = PackedVector2Array(-166.667, -453.333, 133.333, -513.333, 223.333, 126.667, 153.333, 356.667, -106.667, 356.667, -236.667, 126.667)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/RightTreeTrunkRootBlocker"]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.14)
+polygon = PackedVector2Array(-166.667, -453.333, 133.333, -513.333, 223.333, 126.667, 153.333, 356.667, -106.667, 356.667, -236.667, 126.667)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="RightBackFenceBlocker" type="StaticBody2D" parent="ManualAuthoring/Blockers"]
+position = Vector2(5630, 1494)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/RightBackFenceBlocker"]
+polygon = PackedVector2Array(-140, -234, 100, -424, 110, 346, -60, 316, -10, -4)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/RightBackFenceBlocker"]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.14)
+polygon = PackedVector2Array(-140, -234, 100, -424, 110, 346, -60, 316, -10, -4)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="UpperRightFenceBlocker" type="StaticBody2D" parent="ManualAuthoring/Blockers"]
+position = Vector2(5737.5, 655)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/UpperRightFenceBlocker"]
+polygon = PackedVector2Array(-167.5, -135, 182.5, -95, 162.5, 165, -177.5, 65)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/UpperRightFenceBlocker"]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.14)
+polygon = PackedVector2Array(-167.5, -135, 182.5, -95, 162.5, 165, -177.5, 65)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="FarRightFenceBlocker" type="StaticBody2D" parent="ManualAuthoring/Blockers"]
+position = Vector2(6330, 645)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/FarRightFenceBlocker"]
+polygon = PackedVector2Array(-170, -125, 170, -115, 180, 95, -180, 145)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/FarRightFenceBlocker"]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.14)
+polygon = PackedVector2Array(-170, -125, 170, -115, 180, 95, -180, 145)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="WellBlocker" type="StaticBody2D" parent="ManualAuthoring/Blockers"]
+position = Vector2(5011.25, 2451.25)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/WellBlocker"]
+polygon = PackedVector2Array(-111.25, -271.25, 58.75, -271.25, 188.75, -151.25, 168.75, 178.75, 58.75, 248.75, -71.25, 238.75, -161.25, 158.75, -131.25, -131.25)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/WellBlocker"]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.14)
+polygon = PackedVector2Array(-111.25, -271.25, 58.75, -271.25, 188.75, -151.25, 168.75, 178.75, 58.75, 248.75, -71.25, 238.75, -161.25, 158.75, -131.25, -131.25)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="WellFlowerPotBlocker" type="StaticBody2D" parent="ManualAuthoring/Blockers"]
+position = Vector2(4749, 2572)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/WellFlowerPotBlocker"]
+polygon = PackedVector2Array(-29, -122, 111, -22, 51, 88, -44, 78, -89, -22)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/WellFlowerPotBlocker"]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.14)
+polygon = PackedVector2Array(-29, -122, 111, -22, 51, 88, -44, 78, -89, -22)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="RoadSignBlocker" type="StaticBody2D" parent="ManualAuthoring/Blockers"]
+position = Vector2(5460, 3162.5)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/RoadSignBlocker"]
+polygon = PackedVector2Array(-140, -122.5, 70, -192.5, 175, -22.5, 140, 237.5, -80, 202.5, -165, -102.5)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/RoadSignBlocker"]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.14)
+polygon = PackedVector2Array(-140, -122.5, 70, -192.5, 175, -22.5, 140, 237.5, -80, 202.5, -165, -102.5)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="CatRockBlocker" type="StaticBody2D" parent="ManualAuthoring/Blockers"]
+position = Vector2(5020, 3303.33)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/CatRockBlocker"]
+polygon = PackedVector2Array(-80, -93.3333, 100, -93.3333, 160, 26.6667, 50, 116.667, -90, 66.6667, -140, -23.3333)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/CatRockBlocker"]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.14)
+polygon = PackedVector2Array(-80, -93.3333, 100, -93.3333, 160, 26.6667, 50, 116.667, -90, 66.6667, -140, -23.3333)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="Interactions" type="Node2D" parent="ManualAuthoring"]
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_folder = true
+
+[node name="HouseDoorInteract" type="Area2D" parent="ManualAuthoring/Interactions" groups=["interactable"]]
+position = Vector2(3135, 1640)
+script = ExtResource("90_yard_interactable")
+object_id = "homearea_house_door"
+display_name = "屋门"
+interaction_hint = "按 E 查看屋门"
+feedback_text = "屋门"
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "interaction"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Interactions/HouseDoorInteract"]
+polygon = PackedVector2Array(-105, -120, 105, -120, 115, 120, -115, 120)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Interactions/HouseDoorInteract"]
+z_index = 1001
+color = Color(0.95, 0.85, 0.15, 0.14)
+polygon = PackedVector2Array(-105, -120, 105, -120, 115, 120, -115, 120)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "interaction_visual_guide"
+
+[node name="MailboxInteract" type="Area2D" parent="ManualAuthoring/Interactions" groups=["interactable"]]
+position = Vector2(2055, 1675)
+script = ExtResource("90_yard_interactable")
+object_id = "homearea_mailbox"
+display_name = "信箱"
+interaction_hint = "按 E 查看信箱"
+feedback_text = "信箱"
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "interaction"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Interactions/MailboxInteract"]
+polygon = PackedVector2Array(-105, -135, 105, -135, 125, 135, -125, 135)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Interactions/MailboxInteract"]
+z_index = 1001
+color = Color(0.95, 0.85, 0.15, 0.14)
+polygon = PackedVector2Array(-105, -135, 105, -135, 125, 135, -125, 135)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "interaction_visual_guide"
+
+[node name="WellInteract" type="Area2D" parent="ManualAuthoring/Interactions" groups=["interactable"]]
+position = Vector2(5027.5, 2435)
+script = ExtResource("90_yard_interactable")
+object_id = "homearea_well"
+display_name = "旧水井"
+interaction_hint = "按 E 查看水井"
+feedback_text = "旧水井"
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "interaction"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Interactions/WellInteract"]
+polygon = PackedVector2Array(-187.5, -285, 192.5, -285, 202.5, 285, -207.5, 285)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Interactions/WellInteract"]
+z_index = 1001
+color = Color(0.95, 0.85, 0.15, 0.14)
+polygon = PackedVector2Array(-187.5, -285, 192.5, -285, 202.5, 285, -207.5, 285)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "interaction_visual_guide"
+
+[node name="BenchInteract" type="Area2D" parent="ManualAuthoring/Interactions" groups=["interactable"]]
+position = Vector2(1360, 1850)
+script = ExtResource("90_yard_interactable")
+object_id = "homearea_bench"
+display_name = "长椅"
+interaction_hint = "按 E 查看长椅"
+feedback_text = "长椅"
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "interaction"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Interactions/BenchInteract"]
+polygon = PackedVector2Array(-340, -270, 350, -270, 350, 270, -360, 270)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Interactions/BenchInteract"]
+z_index = 1001
+color = Color(0.95, 0.85, 0.15, 0.14)
+polygon = PackedVector2Array(-340, -270, 350, -270, 350, 270, -360, 270)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "interaction_visual_guide"
+
+[node name="RoadSignInteract" type="Area2D" parent="ManualAuthoring/Interactions" groups=["interactable"]]
+position = Vector2(5462.5, 3205)
+script = ExtResource("90_yard_interactable")
+object_id = "homearea_road_sign"
+display_name = "路牌"
+interaction_hint = "按 E 查看路牌"
+feedback_text = "路牌"
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "interaction"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Interactions/RoadSignInteract"]
+polygon = PackedVector2Array(-212.5, -245, 217.5, -245, 217.5, 245, -222.5, 245)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Interactions/RoadSignInteract"]
+z_index = 1001
+color = Color(0.95, 0.85, 0.15, 0.14)
+polygon = PackedVector2Array(-212.5, -245, 217.5, -245, 217.5, 245, -222.5, 245)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "interaction_visual_guide"
+
+[node name="BackFarmEntranceInteract" type="Area2D" parent="ManualAuthoring/Interactions" groups=["interactable"]]
+position = Vector2(5530, 985)
+script = ExtResource("90_yard_interactable")
+object_id = "homearea_back_farm_entrance"
+display_name = "后院菜地"
+interaction_hint = "按 E 前往后院菜地"
+feedback_text = "后院菜地"
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "interaction"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Interactions/BackFarmEntranceInteract"]
+polygon = PackedVector2Array(-430, -335, 430, -335, 430, 335, -430, 335)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Interactions/BackFarmEntranceInteract"]
+z_index = 1001
+color = Color(0.95, 0.85, 0.15, 0.14)
+polygon = PackedVector2Array(-430, -335, 430, -335, 430, 335, -430, 335)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "interaction_visual_guide"
+
+[node name="Front" type="Node2D" parent="ManualAuthoring/Layers"]
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_folder = true
+metadata/note = "front polygons correspond to local foreground slice sprites"
+
+[node name="ForegroundSlices" type="Node2D" parent="ManualAuthoring"]
+z_index = 220
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/purpose = "local cropped foreground occluder sprites; no broad full-screen foreground plate"
+
+[node name="LeftUpperLeafMassAPolygon" type="Polygon2D" parent="ManualAuthoring/Layers/Front"]
+z_index = 232
+color = Color(1, 0.65, 0.18, 0.13)
+polygon = PackedVector2Array(520, -30, 1320, -35, 1700, 70, 1840, 320, 1700, 620, 1390, 740, 1070, 690, 780, 540, 580, 280)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "front"
+metadata/slice_name = "left_upper_leaf_mass_a"
+metadata/occluder_role = "left_tree_upper_canopy"
+
+[node name="LeftUpperLeafMassASlice" type="Sprite2D" parent="ManualAuthoring/ForegroundSlices"]
+z_index = 232
+position = Vector2(514, -41)
+texture = ExtResource("60_left_upper_leaf_mass_a")
+centered = false
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "foreground_slice"
+metadata/slice_name = "left_upper_leaf_mass_a"
+metadata/occluder_role = "left_tree_upper_canopy"
+metadata/source_plate = "home_area_formal_full_plate_v001"
+
+[node name="LeftUpperLeafMassBPolygon" type="Polygon2D" parent="ManualAuthoring/Layers/Front"]
+z_index = 233
+color = Color(1, 0.65, 0.18, 0.13)
+polygon = PackedVector2Array(1350, -35, 2350, -25, 2500, 120, 2390, 470, 2230, 690, 1940, 900, 1690, 900, 1550, 640, 1780, 350, 1680, 90)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "front"
+metadata/slice_name = "left_upper_leaf_mass_b"
+metadata/occluder_role = "left_tree_upper_canopy"
+
+[node name="LeftUpperLeafMassBSlice" type="Sprite2D" parent="ManualAuthoring/ForegroundSlices"]
+z_index = 233
+position = Vector2(1344, -41)
+texture = ExtResource("61_left_upper_leaf_mass_b")
+centered = false
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "foreground_slice"
+metadata/slice_name = "left_upper_leaf_mass_b"
+metadata/occluder_role = "left_tree_upper_canopy"
+metadata/source_plate = "home_area_formal_full_plate_v001"
+
+[node name="LeftTreeLowerLobesPolygon" type="Polygon2D" parent="ManualAuthoring/Layers/Front"]
+z_index = 236
+color = Color(1, 0.65, 0.18, 0.13)
+polygon = PackedVector2Array(700, 680, 1040, 650, 1350, 790, 1590, 1010, 1660, 1320, 1550, 1580, 1280, 1695, 1010, 1560, 900, 1320, 620, 1250, 520, 1040, 600, 820)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "front"
+metadata/slice_name = "left_tree_lower_lobes"
+metadata/occluder_role = "left_tree_lower_canopy"
+
+[node name="LeftTreeLowerLobesSlice" type="Sprite2D" parent="ManualAuthoring/ForegroundSlices"]
+z_index = 236
+position = Vector2(514, 644)
+texture = ExtResource("62_left_tree_lower_lobes")
+centered = false
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "foreground_slice"
+metadata/slice_name = "left_tree_lower_lobes"
+metadata/occluder_role = "left_tree_lower_canopy"
+metadata/source_plate = "home_area_formal_full_plate_v001"
+
+[node name="LeftBenchOvergrowthPolygon" type="Polygon2D" parent="ManualAuthoring/Layers/Front"]
+z_index = 246
+color = Color(1, 0.65, 0.18, 0.13)
+polygon = PackedVector2Array(530, 1780, 850, 1700, 1110, 1810, 1430, 1650, 1690, 1820, 1620, 2040, 1290, 2190, 910, 2200, 640, 2090, 490, 1930)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "front"
+metadata/slice_name = "left_bench_overgrowth"
+metadata/occluder_role = "bench_bush_and_fence_occluder"
+
+[node name="LeftBenchOvergrowthSlice" type="Sprite2D" parent="ManualAuthoring/ForegroundSlices"]
+z_index = 246
+position = Vector2(484, 1644)
+texture = ExtResource("63_left_bench_overgrowth")
+centered = false
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "foreground_slice"
+metadata/slice_name = "left_bench_overgrowth"
+metadata/occluder_role = "bench_bush_and_fence_occluder"
+metadata/source_plate = "home_area_formal_full_plate_v001"
+
+[node name="HouseRoofMainOccluderPolygon" type="Polygon2D" parent="ManualAuthoring/Layers/Front"]
+z_index = 240
+color = Color(1, 0.65, 0.18, 0.13)
+polygon = PackedVector2Array(2220, 190, 4310, 190, 4410, 820, 4380, 1430, 4190, 1500, 3770, 1510, 3650, 1570, 3150, 1575, 3020, 1540, 2700, 1535, 2510, 1620, 2300, 1500, 2260, 900)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "front"
+metadata/slice_name = "house_roof_main_occluder"
+metadata/occluder_role = "house_roof_occluder"
+
+[node name="HouseRoofMainOccluderSlice" type="Sprite2D" parent="ManualAuthoring/ForegroundSlices"]
+z_index = 240
+position = Vector2(2214, 184)
+texture = ExtResource("64_house_roof_main_occluder")
+centered = false
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "foreground_slice"
+metadata/slice_name = "house_roof_main_occluder"
+metadata/occluder_role = "house_roof_occluder"
+metadata/source_plate = "home_area_formal_full_plate_v001"
+
+[node name="HouseEaveFrontPlantsPolygon" type="Polygon2D" parent="ManualAuthoring/Layers/Front"]
+z_index = 248
+color = Color(1, 0.65, 0.18, 0.13)
+polygon = PackedVector2Array(2000, 1260, 2250, 1260, 2310, 1490, 2480, 1495, 2580, 1695, 2460, 1815, 2285, 1765, 2180, 1580, 2040, 1480, 1975, 1350)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "front"
+metadata/slice_name = "house_eave_front_plants"
+metadata/occluder_role = "house_front_local_occluder"
+
+[node name="HouseEaveFrontPlantsSlice" type="Sprite2D" parent="ManualAuthoring/ForegroundSlices"]
+z_index = 248
+position = Vector2(1969, 1254)
+texture = ExtResource("65_house_eave_front_plants")
+centered = false
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "foreground_slice"
+metadata/slice_name = "house_eave_front_plants"
+metadata/occluder_role = "house_front_local_occluder"
+metadata/source_plate = "home_area_formal_full_plate_v001"
+
+[node name="HouseRightPotsAndBushPolygon" type="Polygon2D" parent="ManualAuthoring/Layers/Front"]
+z_index = 249
+color = Color(1, 0.65, 0.18, 0.13)
+polygon = PackedVector2Array(3920, 1270, 4200, 1260, 4240, 1510, 4140, 1650, 3940, 1600, 3880, 1410)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "front"
+metadata/slice_name = "house_right_pots_and_bush"
+metadata/occluder_role = "house_front_local_occluder"
+
+[node name="HouseRightPotsAndBushSlice" type="Sprite2D" parent="ManualAuthoring/ForegroundSlices"]
+z_index = 249
+position = Vector2(3874, 1254)
+texture = ExtResource("66_house_right_pots_and_bush")
+centered = false
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "foreground_slice"
+metadata/slice_name = "house_right_pots_and_bush"
+metadata/occluder_role = "house_front_local_occluder"
+metadata/source_plate = "home_area_formal_full_plate_v001"
+
+[node name="RightUpperLeafMassAPolygon" type="Polygon2D" parent="ManualAuthoring/Layers/Front"]
+z_index = 234
+color = Color(1, 0.65, 0.18, 0.13)
+polygon = PackedVector2Array(4100, -30, 5060, -30, 5270, 190, 5190, 580, 4980, 870, 4720, 990, 4500, 900, 4380, 610, 4310, 240)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "front"
+metadata/slice_name = "right_upper_leaf_mass_a"
+metadata/occluder_role = "right_tree_upper_canopy"
+
+[node name="RightUpperLeafMassASlice" type="Sprite2D" parent="ManualAuthoring/ForegroundSlices"]
+z_index = 234
+position = Vector2(4094, -36)
+texture = ExtResource("67_right_upper_leaf_mass_a")
+centered = false
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "foreground_slice"
+metadata/slice_name = "right_upper_leaf_mass_a"
+metadata/occluder_role = "right_tree_upper_canopy"
+metadata/source_plate = "home_area_formal_full_plate_v001"
+
+[node name="RightUpperLeafMassBPolygon" type="Polygon2D" parent="ManualAuthoring/Layers/Front"]
+z_index = 235
+color = Color(1, 0.65, 0.18, 0.13)
+polygon = PackedVector2Array(5000, -30, 6120, -30, 6160, 420, 5940, 700, 5900, 950, 5730, 1110, 5520, 980, 5480, 1220, 5260, 1260, 5060, 1110, 5170, 780, 5280, 420)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "front"
+metadata/slice_name = "right_upper_leaf_mass_b"
+metadata/occluder_role = "right_tree_upper_canopy"
+
+[node name="RightUpperLeafMassBSlice" type="Sprite2D" parent="ManualAuthoring/ForegroundSlices"]
+z_index = 235
+position = Vector2(4994, -36)
+texture = ExtResource("68_right_upper_leaf_mass_b")
+centered = false
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "foreground_slice"
+metadata/slice_name = "right_upper_leaf_mass_b"
+metadata/occluder_role = "right_tree_upper_canopy"
+metadata/source_plate = "home_area_formal_full_plate_v001"
+
+[node name="RightTreeLowerLobesPolygon" type="Polygon2D" parent="ManualAuthoring/Layers/Front"]
+z_index = 237
+color = Color(1, 0.65, 0.18, 0.13)
+polygon = PackedVector2Array(5170, 1210, 5500, 1250, 5700, 1450, 5650, 1810, 5500, 1930, 5290, 1870, 5170, 1740, 5310, 1640, 5225, 1510, 5360, 1380)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "front"
+metadata/slice_name = "right_tree_lower_lobes"
+metadata/occluder_role = "right_tree_lower_canopy"
+
+[node name="RightTreeLowerLobesSlice" type="Sprite2D" parent="ManualAuthoring/ForegroundSlices"]
+z_index = 237
+position = Vector2(5164, 1204)
+texture = ExtResource("69_right_tree_lower_lobes")
+centered = false
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "foreground_slice"
+metadata/slice_name = "right_tree_lower_lobes"
+metadata/occluder_role = "right_tree_lower_canopy"
+metadata/source_plate = "home_area_formal_full_plate_v001"
+
+[node name="WellRoofAndFlowersPolygon" type="Polygon2D" parent="ManualAuthoring/Layers/Front"]
+z_index = 250
+color = Color(1, 0.65, 0.18, 0.13)
+polygon = PackedVector2Array(4850, 2150, 5070, 2180, 5200, 2300, 5150, 2630, 5040, 2700, 4890, 2650, 4820, 2520, 4885, 2360)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "front"
+metadata/slice_name = "well_roof_and_flowers"
+metadata/occluder_role = "well_local_occluder"
+
+[node name="WellRoofAndFlowersSlice" type="Sprite2D" parent="ManualAuthoring/ForegroundSlices"]
+z_index = 250
+position = Vector2(4814, 2144)
+texture = ExtResource("70_well_roof_and_flowers")
+centered = false
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "foreground_slice"
+metadata/slice_name = "well_roof_and_flowers"
+metadata/occluder_role = "well_local_occluder"
+metadata/source_plate = "home_area_formal_full_plate_v001"
+
+[node name="RoadSignGrassClusterPolygon" type="Polygon2D" parent="ManualAuthoring/Layers/Front"]
+z_index = 251
+color = Color(1, 0.65, 0.18, 0.13)
+polygon = PackedVector2Array(5280, 3020, 5530, 2965, 5660, 3140, 5625, 3425, 5380, 3370, 5260, 3060)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "front"
+metadata/slice_name = "road_sign_grass_cluster"
+metadata/occluder_role = "road_sign_local_occluder"
+
+[node name="RoadSignGrassClusterSlice" type="Sprite2D" parent="ManualAuthoring/ForegroundSlices"]
+z_index = 251
+position = Vector2(5254, 2959)
+texture = ExtResource("71_road_sign_grass_cluster")
+centered = false
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "foreground_slice"
+metadata/slice_name = "road_sign_grass_cluster"
+metadata/occluder_role = "road_sign_local_occluder"
+metadata/source_plate = "home_area_formal_full_plate_v001"
+
+[node name="BottomLeftNearBushAPolygon" type="Polygon2D" parent="ManualAuthoring/Layers/Front"]
+z_index = 258
+color = Color(1, 0.65, 0.18, 0.13)
+polygon = PackedVector2Array(350, 2960, 940, 2920, 1290, 3090, 1470, 3410, 1330, 3820, 930, 4100, 380, 4100, 310, 3600)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "front"
+metadata/slice_name = "bottom_left_near_bush_a"
+metadata/occluder_role = "near_foreground_bush"
+
+[node name="BottomLeftNearBushASlice" type="Sprite2D" parent="ManualAuthoring/ForegroundSlices"]
+z_index = 258
+position = Vector2(396, 2914)
+texture = ExtResource("72_bottom_left_near_bush_a")
+centered = false
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "foreground_slice"
+metadata/slice_name = "bottom_left_near_bush_a"
+metadata/occluder_role = "near_foreground_bush"
+metadata/source_plate = "home_area_formal_full_plate_v001"
+
+[node name="BottomLeftNearBushBPolygon" type="Polygon2D" parent="ManualAuthoring/Layers/Front"]
+z_index = 259
+color = Color(1, 0.65, 0.18, 0.13)
+polygon = PackedVector2Array(1120, 3140, 1710, 3290, 2050, 3650, 2070, 4100, 920, 4100, 1330, 3820, 1470, 3410)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "front"
+metadata/slice_name = "bottom_left_near_bush_b"
+metadata/occluder_role = "near_foreground_bush"
+
+[node name="BottomLeftNearBushBSlice" type="Sprite2D" parent="ManualAuthoring/ForegroundSlices"]
+z_index = 259
+position = Vector2(914, 3134)
+texture = ExtResource("73_bottom_left_near_bush_b")
+centered = false
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "foreground_slice"
+metadata/slice_name = "bottom_left_near_bush_b"
+metadata/occluder_role = "near_foreground_bush"
+metadata/source_plate = "home_area_formal_full_plate_v001"
+
+[node name="BottomCenterGrassPolygon" type="Polygon2D" parent="ManualAuthoring/Layers/Front"]
+z_index = 260
+color = Color(1, 0.65, 0.18, 0.13)
+polygon = PackedVector2Array(1880, 3440, 2860, 3340, 3720, 3520, 4240, 4100, 1740, 4100)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "front"
+metadata/slice_name = "bottom_center_grass"
+metadata/occluder_role = "near_foreground_grass"
+
+[node name="BottomCenterGrassSlice" type="Sprite2D" parent="ManualAuthoring/ForegroundSlices"]
+z_index = 260
+position = Vector2(1734, 3334)
+texture = ExtResource("74_bottom_center_grass")
+centered = false
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "foreground_slice"
+metadata/slice_name = "bottom_center_grass"
+metadata/occluder_role = "near_foreground_grass"
+metadata/source_plate = "home_area_formal_full_plate_v001"
+
+[node name="BottomRightNearBushAPolygon" type="Polygon2D" parent="ManualAuthoring/Layers/Front"]
+z_index = 261
+color = Color(1, 0.65, 0.18, 0.13)
+polygon = PackedVector2Array(4170, 3400, 4880, 3120, 5480, 3190, 5670, 3600, 5480, 4100, 4200, 4100)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "front"
+metadata/slice_name = "bottom_right_near_bush_a"
+metadata/occluder_role = "near_foreground_bush"
+
+[node name="BottomRightNearBushASlice" type="Sprite2D" parent="ManualAuthoring/ForegroundSlices"]
+z_index = 261
+position = Vector2(4164, 3114)
+texture = ExtResource("75_bottom_right_near_bush_a")
+centered = false
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "foreground_slice"
+metadata/slice_name = "bottom_right_near_bush_a"
+metadata/occluder_role = "near_foreground_bush"
+metadata/source_plate = "home_area_formal_full_plate_v001"
+
+[node name="BottomRightNearBushBPolygon" type="Polygon2D" parent="ManualAuthoring/Layers/Front"]
+z_index = 262
+color = Color(1, 0.65, 0.18, 0.13)
+polygon = PackedVector2Array(5450, 3180, 6110, 3260, 6200, 4100, 5480, 4100, 5670, 3600)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "front"
+metadata/slice_name = "bottom_right_near_bush_b"
+metadata/occluder_role = "near_foreground_bush"
+
+[node name="BottomRightNearBushBSlice" type="Sprite2D" parent="ManualAuthoring/ForegroundSlices"]
+z_index = 262
+position = Vector2(5444, 3174)
+texture = ExtResource("76_bottom_right_near_bush_b")
+centered = false
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "foreground_slice"
+metadata/slice_name = "bottom_right_near_bush_b"
+metadata/occluder_role = "near_foreground_bush"
+metadata/source_plate = "home_area_formal_full_plate_v001"
+
+[node name="FarRightEdgeTreeLobesPolygon" type="Polygon2D" parent="ManualAuthoring/Layers/Front"]
+z_index = 238
+color = Color(1, 0.65, 0.18, 0.13)
+polygon = PackedVector2Array(5870, 500, 6170, 490, 6500, 570, 6520, 1610, 6330, 1700, 6210, 1220, 6130, 860, 5900, 760)
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "front"
+metadata/slice_name = "far_right_edge_tree_lobes"
+metadata/occluder_role = "right_edge_tree_occluder"
+
+[node name="FarRightEdgeTreeLobesSlice" type="Sprite2D" parent="ManualAuthoring/ForegroundSlices"]
+z_index = 238
+position = Vector2(5864, 484)
+texture = ExtResource("77_far_right_edge_tree_lobes")
+centered = false
+metadata/manual_authoring_tool = "codex_refined_manual_authoring"
+metadata/manual_role = "foreground_slice"
+metadata/slice_name = "far_right_edge_tree_lobes"
+metadata/occluder_role = "right_edge_tree_occluder"
+metadata/source_plate = "home_area_formal_full_plate_v001"
+

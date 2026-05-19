@@ -1,10 +1,13 @@
 extends SceneTree
 
+const HeadlessLifecycle := preload("res://tools/headless_lifecycle.gd")
+
 const WORLD_SCENE_PATH := "res://scenes/world/world.tscn"
 const HOME_AREA_SCENE_PATH := "res://scenes/regions/region_home_area.tscn"
 const WORLD_CONTROLLER_PATH := "res://scripts/world/world_controller.gd"
 const PLAYER_CONTROLLER_PATH := "res://scripts/player_controller.gd"
 const INTERACTION_HINT_UI_PATH := "res://scripts/world/interaction_hint_ui.gd"
+const HOME_LAYER_DIR := "res://production/assets/regions/home_area_world2d/v001/03_layer_export/four_layer_package/"
 const PROTAGONIST_MAX_STANDING_HEIGHT := 218
 const PROTAGONIST_MIN_STANDING_HEIGHT := 185
 const PROTAGONIST_MIN_TOP_PADDING := 45
@@ -17,6 +20,7 @@ const PROTAGONIST_STYLE_FRAMES := [
 ]
 
 var _has_failed := false
+var _finishing := false
 
 
 func _initialize() -> void:
@@ -27,6 +31,8 @@ func _run() -> void:
 	var main_scene := String(ProjectSettings.get_setting("application/run/main_scene", ""))
 	_expect(main_scene == WORLD_SCENE_PATH, "project main_scene must stay on the playable world entry")
 	_expect(_file_contains(WORLD_CONTROLLER_PATH, "camera_look_ahead_offset: Vector2 = Vector2(0, -280)"), "world camera must keep an upward HomeArea composition offset")
+	_expect(_file_contains(WORLD_CONTROLLER_PATH, "camera_review_zoom: Vector2 = Vector2(0.68, 0.68)"), "world camera must use the pulled-back review zoom")
+	_expect(_file_contains(WORLD_CONTROLLER_PATH, "camera.zoom = camera_review_zoom"), "world camera must apply review zoom")
 	_expect(_file_contains(PLAYER_CONTROLLER_PATH, "\"move_left\", \"ui_left\", \"move_right\", \"ui_right\""), "player controller must read move_* actions with ui_* fallback")
 	_expect(_file_contains(PLAYER_CONTROLLER_PATH, "func _update_nearest_interaction_hint()"), "player controller must continuously refresh nearest interaction hint")
 	_expect(_file_contains(INTERACTION_HINT_UI_PATH, "func _create_default_hint_label()"), "InteractionHintUI must create a visible autoload prompt label")
@@ -43,74 +49,48 @@ func _run() -> void:
 	await process_frame
 	await physics_frame
 
-	_expect(String(scene.get_meta("art_package", "")) == "home_area_art_v003", "HomeArea should record active art package")
-	_expect(String(scene.get_meta("art_integration_group", "")) == "foundation_depth_v003", "HomeArea should record active art integration group")
-	_expect(_sprite_has_texture(scene, "TileMapLayer_Ground/GroundModules/GroundYardArtV003"), "HomeArea should use v003 ground art")
-	_expect(_sprite_has_texture(scene, "TileMapLayer_Path/PathModules/VillageRoadArtV003"), "HomeArea should use v003 village road art")
-	_expect(_sprite_has_texture(scene, "TileMapLayer_Path/PathModules/BackFarmPathArtV003"), "HomeArea should use v003 BackFarm path art")
-	_expect(_sprite_has_texture(scene, "TileMapLayer_Detail/VerandaFloorArtV003"), "HomeArea should use v003 veranda floor art")
-	_expect(_sprite_has_texture(scene, "YSortWorld/Houses/CloudHouse/HouseBodyArtV003"), "HomeArea should use v003 house body art")
-	_expect(_sprite_has_texture(scene, "YSortWorld/Trees/BigShadeTree/TreeLeftTrunkArtV003"), "HomeArea should use v003 left tree trunk art")
-	_expect(_sprite_has_texture(scene, "YSortWorld/Trees/PersimmonTree/TreeRightTrunkArtV003"), "HomeArea should use v003 right tree trunk art")
-	_expect(_sprite_has_texture(scene, "ForegroundStatic/Occluders/HouseRoofOccluderArtV003"), "HomeArea should use v003 house roof occluder art")
-	_expect(_sprite_has_texture(scene, "ForegroundStatic/Occluders/TreeLeftCanopyOccluderArtV003"), "HomeArea should use v003 left canopy occluder art")
-	_expect(_sprite_has_texture(scene, "ForegroundStatic/Occluders/TreeRightCanopyOccluderArtV003"), "HomeArea should use v003 right canopy occluder art")
-	_expect(_sprite_has_texture(scene, "ForegroundStatic/ForegroundGrassArtV003"), "HomeArea should use v003 foreground grass art")
-	_expect(_sprite_has_texture(scene, "LightAndWeather/ShadowDappledArtV003"), "HomeArea should use v003 dappled shadow art")
-	_expect(_sprite_has_texture(scene, "LightAndWeather/LightOverlayArtV003"), "HomeArea should use v003 light overlay art")
-	var prop_checks := {
-		"YSortWorld/Props/Mailbox/MailboxArt": "res://assets/art/props/region_home_area_prop_mailbox_v001.png",
-		"YSortWorld/Props/Well/WellArt": "res://assets/art/props/region_home_area_prop_well_broken_v001.png",
-		"YSortWorld/Props/Bench/BenchArt": "res://assets/art/props/region_home_area_prop_bench_v001.png",
-		"YSortWorld/Props/RoadSign/RoadSignArt": "res://assets/art/props/region_home_area_prop_road_sign_v001.png",
+	_expect(String(scene.get_meta("art_package", "")) == "home_area_world2d_v001", "HomeArea should record active World2D art package")
+	_expect(String(scene.get_meta("art_integration_group", "")) == "four_layer_regenerated_scene_art", "HomeArea should record active World2D integration group")
+	_expect(String(scene.get_meta("status", "")) == "home_area_world2d_four_layer_integrated", "HomeArea should stay on the World2D four-layer integration status")
+	_expect(scene.get_meta("launch_quality_approved", true) == false, "HomeArea World2D package must not claim launch-quality approval")
+	_expect(scene.get_meta("art_canvas", Vector2i.ZERO) == Vector2i(1470, 1070), "HomeArea should record the World2D art canvas")
+
+	var layer_contracts := {
+		"ArtLayers/SourceReferenceHidden": HOME_LAYER_DIR + "home_area_01_source.png",
+		"ArtLayers/BaseGroundPaths": HOME_LAYER_DIR + "home_area_02_base_ground_paths.png",
+		"ArtLayers/MidgroundBehindPlayer": HOME_LAYER_DIR + "home_area_04_midground_behind_player.png",
+		"ForegroundOcclusion": HOME_LAYER_DIR + "home_area_03_foreground_occlusion_v4_no_bottom_leaf_wall.png",
 	}
-	for sprite_path in prop_checks.keys():
-		_expect(_runtime_prop_sprite_loads(scene, String(sprite_path), String(prop_checks[sprite_path])), "HomeArea runtime prop art should load: %s" % sprite_path)
+	for node_path in layer_contracts.keys():
+		_expect(_sprite_matches_texture(scene, String(node_path), String(layer_contracts[node_path])), "HomeArea World2D layer texture mismatch: %s" % node_path)
 		if _has_failed:
 			return
-
-	var prop_blockers := {
-		"YSortWorld/Props/Mailbox/PropBlocker/CollisionShape2D": Vector2(70, 44),
-		"YSortWorld/Props/Well/PropBlocker/CollisionShape2D": Vector2(140, 88),
-		"YSortWorld/Props/Bench/PropBlocker/CollisionShape2D": Vector2(160, 40),
-		"YSortWorld/Props/RoadSign/PropBlocker/CollisionShape2D": Vector2(48, 40),
-	}
-	for blocker_path in prop_blockers.keys():
-		_expect(_rectangle_shape_at_least(scene, String(blocker_path), prop_blockers[blocker_path]), "HomeArea prop blocker should be sized for walking playtest: %s" % blocker_path)
-		if _has_failed:
-			return
-
-	var cat_bed := scene.get_node_or_null("YSortWorld/Props/CatBed") as CanvasItem
-	_expect(cat_bed != null and cat_bed.visible, "CatBed should be visible after runtime prop art is available")
-	_expect(_runtime_prop_sprite_loads(scene, "YSortWorld/Props/CatBed/CatBedArt", "res://assets/art/props/region_home_area_prop_cat_bed_v001.png"), "CatBed runtime prop art should load")
-	var cat_bed_graybox := scene.get_node_or_null("YSortWorld/Props/CatBed/Cushion") as CanvasItem
-	_expect(cat_bed_graybox != null and not cat_bed_graybox.visible, "CatBed graybox cushion must stay hidden")
+	var source_reference := scene.get_node_or_null("ArtLayers/SourceReferenceHidden") as CanvasItem
+	_expect(source_reference != null and not source_reference.visible, "HomeArea source reference must stay hidden")
 
 	var player_sprite := scene.get_node_or_null("YSortWorld/Player/PlayerSprite") as AnimatedSprite2D
 	_expect(player_sprite != null and player_sprite.sprite_frames != null, "HomeArea should use the runtime protagonist AnimatedSprite2D")
+	var home_player := scene.get_node_or_null("YSortWorld/Player") as Node2D
+	_expect(home_player != null and absf(float(home_player.get("visual_base_scale")) - 0.55) <= 0.01, "HomeArea protagonist runtime scale must match the World2D scene scale")
 	_expect(_protagonist_frames_use_gameplay_proportions(), "protagonist frames must use compact gameplay proportions, not tall illustration proportions")
-	var house_door := scene.get_node_or_null("YSortWorld/Interactables/HouseDoorEntrance") as Area2D
-	_expect(house_door != null and house_door.position.distance_to(Vector2(3300, 1900)) <= 48.0, "HomeArea default spawn must have a reachable launch interaction")
+
+	var default_spawn := _find_spawn_marker(scene, "home_area_default")
+	_expect(default_spawn != null and default_spawn.position.distance_to(Vector2(790, 622)) <= 2.0, "HomeArea default spawn should match the World2D canvas position")
+	var back_spawn := _find_spawn_marker(scene, "home_area_from_back_farm")
+	_expect(back_spawn != null and back_spawn.position.distance_to(Vector2(1005, 880)) <= 2.0, "HomeArea BackFarm return spawn should match the World2D canvas position")
+	var back_farm_exit := scene.get_node_or_null("YSortWorld/Interactables/BackyardFarmEntrance") as Area2D
+	_expect(back_farm_exit != null, "HomeArea should expose the BackFarm entrance interaction")
+	if back_farm_exit != null:
+		_expect(String(back_farm_exit.get("target_region_id")) == "Region_BackFarm", "BackFarm entrance target_region_id mismatch")
+		_expect(String(back_farm_exit.get("target_spawn_id")) == "back_farm_default", "BackFarm entrance target_spawn_id mismatch")
+		_expect(back_farm_exit.get_node_or_null("CollisionShape2D") != null, "BackFarm entrance should have a collision hotspot")
 
 	for path in [
-		"res://production/assets/regions/home_area_art/v003/region_home_area_ground_yard_v003.png",
-		"res://production/assets/regions/home_area_art/v003/region_home_area_path_village_road_v003.png",
-		"res://production/assets/regions/home_area_art/v003/region_home_area_path_back_farm_v003.png",
-		"res://production/assets/regions/home_area_art/v003/region_home_area_house_body_v003.png",
-		"res://production/assets/regions/home_area_art/v003/region_home_area_house_roof_occluder_v003.png",
-		"res://production/assets/regions/home_area_art/v003/region_home_area_veranda_floor_v003.png",
-		"res://production/assets/regions/home_area_art/v003/region_home_area_tree_left_trunk_v003.png",
-		"res://production/assets/regions/home_area_art/v003/region_home_area_tree_left_canopy_occluder_v003.png",
-		"res://production/assets/regions/home_area_art/v003/region_home_area_tree_right_trunk_v003.png",
-		"res://production/assets/regions/home_area_art/v003/region_home_area_tree_right_canopy_occluder_v003.png",
-		"res://production/assets/regions/home_area_art/v003/region_home_area_foreground_grass_v003.png",
-		"res://production/assets/regions/home_area_art/v003/region_home_area_shadow_dappled_v003.png",
-		"res://production/assets/regions/home_area_art/v003/region_home_area_light_overlay_v003.png",
-		"res://assets/art/props/region_home_area_prop_mailbox_v001.png",
-		"res://assets/art/props/region_home_area_prop_well_broken_v001.png",
-		"res://assets/art/props/region_home_area_prop_bench_v001.png",
-		"res://assets/art/props/region_home_area_prop_road_sign_v001.png",
-		"res://assets/art/props/region_home_area_prop_cat_bed_v001.png",
+		HOME_LAYER_DIR + "four_layer_manifest.json",
+		HOME_LAYER_DIR + "home_area_01_source.png",
+		HOME_LAYER_DIR + "home_area_02_base_ground_paths.png",
+		HOME_LAYER_DIR + "home_area_03_foreground_occlusion_v4_no_bottom_leaf_wall.png",
+		HOME_LAYER_DIR + "home_area_04_midground_behind_player.png",
 		"res://sprites/characters/protagonist/player_mvp_4dir_frames.tres",
 	]:
 		_expect(_asset_exists(path), "missing runtime asset: %s" % path)
@@ -118,36 +98,33 @@ func _run() -> void:
 	if _has_failed:
 		return
 
-	print("OK: final art experience uses playable world entry and HomeArea v003 foundation/depth layers")
-	quit(0)
+	print("OK: final art experience uses playable world entry and HomeArea World2D v001 four-layer package")
+	_finish_deferred(0)
 
 
-func _sprite_has_texture(root_node: Node, node_path: String) -> bool:
+func _find_spawn_marker(root_node: Node, spawn_id: String) -> Marker2D:
+	if root_node == null:
+		return null
+	if root_node is Marker2D and str(root_node.get_meta("spawn_id", "")) == spawn_id:
+		return root_node as Marker2D
+	for child in root_node.get_children():
+		var marker := _find_spawn_marker(child, spawn_id)
+		if marker != null:
+			return marker
+	return null
+
+
+func _sprite_matches_texture(root_node: Node, node_path: String, expected_path: String) -> bool:
 	var sprite := root_node.get_node_or_null(node_path) as Sprite2D
-	return sprite != null and sprite.texture != null
-
-
-func _runtime_prop_sprite_loads(root_node: Node, node_path: String, expected_path: String) -> bool:
-	var sprite := root_node.get_node_or_null(node_path) as Sprite2D
-	if sprite == null:
+	if sprite == null or sprite.texture == null:
 		return false
-	if sprite.has_method("refresh_texture"):
-		sprite.refresh_texture()
-	return sprite.texture != null and String(sprite.get("texture_path")) == expected_path and _asset_exists(expected_path)
+	if sprite.centered:
+		return false
+	return sprite.texture.resource_path == expected_path and _asset_exists(expected_path)
 
 
 func _asset_exists(path: String) -> bool:
 	return ResourceLoader.exists(path) or FileAccess.file_exists(path)
-
-
-func _rectangle_shape_at_least(root_node: Node, node_path: String, min_size: Vector2) -> bool:
-	var collision := root_node.get_node_or_null(node_path) as CollisionShape2D
-	if collision == null:
-		return false
-	var shape := collision.shape as RectangleShape2D
-	if shape == null:
-		return false
-	return shape.size.x >= min_size.x and shape.size.y >= min_size.y
 
 
 func _file_contains(path: String, needle: String) -> bool:
@@ -220,4 +197,15 @@ func _fail(message: String) -> void:
 	_has_failed = true
 	push_error(message)
 	print("FAIL: %s" % message)
-	quit(1)
+	_finish_deferred(1)
+
+
+func _finish_deferred(exit_code: int) -> void:
+	if _finishing:
+		return
+	_finishing = true
+	call_deferred("_finish", exit_code)
+
+
+func _finish(exit_code: int) -> void:
+	await HeadlessLifecycle.cleanup_and_quit(self, exit_code)

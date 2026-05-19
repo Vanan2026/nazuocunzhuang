@@ -26,3 +26,7 @@ Thumbs.db
 
 # Build
 export/
+# Python cache
+__pycache__/
+*.pyc
+

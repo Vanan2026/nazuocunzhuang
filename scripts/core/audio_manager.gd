@@ -1,4 +1,4 @@
-﻿extends Node
+extends Node
 
 var bgm_player: AudioStreamPlayer
 var ambient_player: AudioStreamPlayer
@@ -11,7 +11,7 @@ var _active_tweens: Array[Tween] = []
 
 func _ready() -> void:
     setup_players()
-    print('[AudioManager] 闊抽绯荤粺宸插垵濮嬪寲')
+    print('[AudioManager] 音频系统已初始化')
 
 func setup_players() -> void:
     bgm_player = AudioStreamPlayer.new()
@@ -32,7 +32,7 @@ func play_bgm(path: String, fade_in: bool = true) -> void:
     
     var stream = load(path) as AudioStream
     if not stream:
-        print('[AudioManager] 鏃犳硶鍔犺浇BGM: ', path)
+        print('[AudioManager] 无法加载BGM: ', path)
         return
     
     if fade_in:
@@ -49,7 +49,7 @@ func play_bgm(path: String, fade_in: bool = true) -> void:
         bgm_player.play()
     
     current_bgm = path
-    print('[AudioManager] 鎾斁BGM: ', path)
+    print('[AudioManager] 播放BGM: ', path)
 
 func stop_bgm(fade_out: bool = true) -> void:
     if fade_out and bgm_player.playing:

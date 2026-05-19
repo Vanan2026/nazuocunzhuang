@@ -99,21 +99,15 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func try_interact() -> void:
-	if interaction_area:
-		var targets := interaction_area.get_overlapping_bodies()
-		for target in targets:
-			if target.is_in_group("interactable") and target != self:
-				interact_with(target)
-				return
+	var target := _nearest_overlapping_interactable()
+	if target != null:
+		interact_with(target)
+		return
 
-	var nearby_interactables := get_tree().get_nodes_in_group("interactable")
-
-	for interactable in nearby_interactables:
-		if interactable is Area2D and interactable.has_method("get_interaction_hint"):
-			var dist := global_position.distance_to(interactable.global_position)
-			if dist < INTERACTION_RANGE:
-				interact_with(interactable)
-				return
+	target = _nearest_interactable_by_distance(INTERACTION_RANGE)
+	if target != null:
+		interact_with(target)
+		return
 
 	_update_nearest_interaction_hint()
 	show_interaction_hint()
@@ -149,9 +143,40 @@ func _update_hint_ui(hint: String) -> void:
 
 
 func _update_nearest_interaction_hint() -> void:
-	var nearest_hint := ""
-	var nearest_dist := INTERACTION_RANGE
+	var nearest := _nearest_overlapping_interactable()
+	if nearest == null:
+		nearest = _nearest_interactable_by_distance(INTERACTION_RANGE)
 
+	var nearest_hint := ""
+	if nearest != null and nearest.has_method("get_interaction_hint"):
+		nearest_hint = nearest.get_interaction_hint()
+
+	_update_hint_ui(nearest_hint)
+
+
+func _nearest_overlapping_interactable() -> Area2D:
+	if interaction_area == null:
+		return null
+
+	var nearest: Area2D = null
+	var nearest_dist := INF
+	for area in interaction_area.get_overlapping_areas():
+		if not (area is Area2D):
+			continue
+		if not area.is_in_group("interactable"):
+			continue
+		if not area.has_method("get_interaction_hint"):
+			continue
+		var dist := global_position.distance_to(area.global_position)
+		if dist < nearest_dist:
+			nearest_dist = dist
+			nearest = area
+	return nearest
+
+
+func _nearest_interactable_by_distance(max_distance: float) -> Area2D:
+	var nearest: Area2D = null
+	var nearest_dist := max_distance
 	for interactable in get_tree().get_nodes_in_group("interactable"):
 		if interactable == self:
 			continue
@@ -162,9 +187,8 @@ func _update_nearest_interaction_hint() -> void:
 		var dist := global_position.distance_to(interactable.global_position)
 		if dist <= nearest_dist:
 			nearest_dist = dist
-			nearest_hint = interactable.get_interaction_hint()
-
-	_update_hint_ui(nearest_hint)
+			nearest = interactable
+	return nearest
 
 
 func _axis_strength(negative_action: StringName, negative_fallback: StringName, positive_action: StringName, positive_fallback: StringName) -> float:
@@ -208,10 +232,14 @@ func _sync_visual_scale() -> void:
 	else:
 		_resolved_visual_scale = visual_base_scale
 
-	scale = Vector2(_resolved_visual_scale, _resolved_visual_scale)
+	scale = Vector2.ONE
+
+	if player_sprite != null:
+		player_sprite.scale = Vector2(_resolved_visual_scale, _resolved_visual_scale)
+		player_sprite.position = -sprite_foot_anchor * _resolved_visual_scale
 
 	if shadow_sprite != null:
-		shadow_sprite.scale = Vector2(1.0 / _resolved_visual_scale, 1.0)
+		shadow_sprite.scale = Vector2(_resolved_visual_scale, _resolved_visual_scale)
 
 
 func _sync_visual_animation(force_restart: bool = false) -> void:

@@ -3,7 +3,6 @@ from __future__ import annotations
 from pathlib import Path
 import re
 
-import cv2
 import numpy as np
 from PIL import Image
 
@@ -93,13 +92,28 @@ def foreground_mask(rgb: np.ndarray) -> np.ndarray:
 
 def count_components(path: Path) -> int:
     rgb = np.array(Image.open(path).convert("RGB"))
-    mask = foreground_mask(rgb)
-    count, _labels, stats, _centroids = cv2.connectedComponentsWithStats(mask, 8)
+    mask = foreground_mask(rgb) > 0
+    visited = np.zeros(mask.shape, dtype=bool)
+    height, width = mask.shape
     total = 0
-    for idx in range(1, count):
-        area = stats[idx][cv2.CC_STAT_AREA]
-        if area >= 700:
-            total += 1
+    for start_y in range(height):
+        for start_x in range(width):
+            if not mask[start_y, start_x] or visited[start_y, start_x]:
+                continue
+            stack = [(start_x, start_y)]
+            visited[start_y, start_x] = True
+            area = 0
+            while stack:
+                x, y = stack.pop()
+                area += 1
+                for ny in range(max(0, y - 1), min(height, y + 2)):
+                    for nx in range(max(0, x - 1), min(width, x + 2)):
+                        if visited[ny, nx] or not mask[ny, nx]:
+                            continue
+                        visited[ny, nx] = True
+                        stack.append((nx, ny))
+            if area >= 700:
+                total += 1
     return total
 
 

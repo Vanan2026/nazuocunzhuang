@@ -1,0 +1,1250 @@
+{
+  "package_id": "protagonist_runtime_v001",
+  "status": "self_checked_final_runtime_candidate",
+  "source_dir": "production/assets/protagonist/final_source_strips",
+  "runtime_frame_dir": "sprites/characters/protagonist/frames",
+  "runtime_sprite_frames": "sprites/characters/protagonist/player_mvp_4dir_frames.tres",
+  "generator": "tools/build_protagonist_from_production_strips.py",
+  "contract": {
+    "source_slot_px": {
+      "width": 384,
+      "height": 576
+    },
+    "runtime_frame_px": {
+      "width": 192,
+      "height": 288
+    },
+    "runtime_foot_baseline_y": 270,
+    "runtime_sprite_foot_anchor": {
+      "x": 96,
+      "y": 280
+    }
+  },
+  "animations": {
+    "player_walk_down": {
+      "frame_count": 8,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_walk_down_source_strip.png",
+      "source_strip_sha256": "f98c8e40dff7f2283ac55108dbabb746254dea172b4f95ce64d44b3cbc192fe2",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_walk_down_00.png",
+          "sha256": "62be19292dc06ac7b43d825bcf6135e322b49064c72aabb8ab8cd7a7869767aa"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_walk_down_01.png",
+          "sha256": "804d048cea33b9b7aa5224ee4b5a49b0b08a8ae2b0b32e0e5278607bfbbdd25d"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_walk_down_02.png",
+          "sha256": "21f40723f42e6816e39c5c161f9837dfdd283e15a355989927d2451fa5c9d1b8"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_walk_down_03.png",
+          "sha256": "d1606ea601c11b8bcc46ada450616613260886102ad9938fc9d66a7552892ec1"
+        },
+        {
+          "index": 4,
+          "path": "sprites/characters/protagonist/frames/player_walk_down_04.png",
+          "sha256": "bd725db17a95d05e2e8d635b43ca6ae5ffc6a9b8559bef31a076eb964cea6fa4"
+        },
+        {
+          "index": 5,
+          "path": "sprites/characters/protagonist/frames/player_walk_down_05.png",
+          "sha256": "25e7e7e644d2197bb6ae69628b5f38ce231aff99b1641b7d4e9281e1b13db3b9"
+        },
+        {
+          "index": 6,
+          "path": "sprites/characters/protagonist/frames/player_walk_down_06.png",
+          "sha256": "819e3f694a324e41879d699387e44841f65393e7e97e09e2b012d9e4ec833dfc"
+        },
+        {
+          "index": 7,
+          "path": "sprites/characters/protagonist/frames/player_walk_down_07.png",
+          "sha256": "8d90f4661950c03c2418f08ce68f661293e67416be225ccadb514845c12b07ab"
+        }
+      ]
+    },
+    "player_walk_down_left": {
+      "frame_count": 8,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_walk_down_left_source_strip.png",
+      "source_strip_sha256": "2d32d72cc3c924d6aceba1ef608449c5dac8f3d9ff6ab95d9bfd08134592e20e",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_walk_down_left_00.png",
+          "sha256": "61b4f6b92529fa0ba56e3d643661226f87d2891090ecede986a908e7d9a649c0"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_walk_down_left_01.png",
+          "sha256": "185584fcfc311c77e33405a80a439c9f98d5ab729d45e78836208d72214d0d86"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_walk_down_left_02.png",
+          "sha256": "b4fdf37b367610d7b24704d7e29ced3142c2fbd4b4b6ad219f464961fcf59d67"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_walk_down_left_03.png",
+          "sha256": "897aa9a4f627864af9ae4bd0492e95e1c532c9ef0dd10c9601a897c1c0eba14a"
+        },
+        {
+          "index": 4,
+          "path": "sprites/characters/protagonist/frames/player_walk_down_left_04.png",
+          "sha256": "be8ce4bd47274366946e1e33b63b8d990c36c715278312973461b3da8b00ba33"
+        },
+        {
+          "index": 5,
+          "path": "sprites/characters/protagonist/frames/player_walk_down_left_05.png",
+          "sha256": "1d64d415592a94058b61e2004ab49ebe7d045759806cfed57afe766dae69093f"
+        },
+        {
+          "index": 6,
+          "path": "sprites/characters/protagonist/frames/player_walk_down_left_06.png",
+          "sha256": "92baa078e2b12f344f1e8312458714e2ba6ddef47404d6a7a1c341d33bd1e4c6"
+        },
+        {
+          "index": 7,
+          "path": "sprites/characters/protagonist/frames/player_walk_down_left_07.png",
+          "sha256": "444156c2f74f1e917de156d4b36a9a29f204ebd28a0d2ca491b2d7904d28c9ae"
+        }
+      ]
+    },
+    "player_walk_left": {
+      "frame_count": 8,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_walk_left_source_strip.png",
+      "source_strip_sha256": "9889385c3c75cf027b709596ddfe6834a6f03d59a78047450fc691097876c637",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_walk_left_00.png",
+          "sha256": "b16589d593a1fb477bf4c54bc0e7d3f3ffdd3693254baebd052f3ad6af8a8397"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_walk_left_01.png",
+          "sha256": "a4ae72d5577dfa8ce141d0e2f54b3ecd577a05ba805e53ab9eb76e400994de38"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_walk_left_02.png",
+          "sha256": "1f7fad007346506a43ce2754faed9aa52b81ed165d94ce088194f3571241248c"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_walk_left_03.png",
+          "sha256": "134423d51b9b8c37ba031ae243462c5dc48fa95ab60fe94597e26278e7929c8c"
+        },
+        {
+          "index": 4,
+          "path": "sprites/characters/protagonist/frames/player_walk_left_04.png",
+          "sha256": "d904d8e6532735c0c4d3352d545d5edaecb9d609699c857f9e0fcbf1bdbb7142"
+        },
+        {
+          "index": 5,
+          "path": "sprites/characters/protagonist/frames/player_walk_left_05.png",
+          "sha256": "be73676e7cc5a268f7792fb7fe7033b683b78641dff8d3964ea7602e9cad0261"
+        },
+        {
+          "index": 6,
+          "path": "sprites/characters/protagonist/frames/player_walk_left_06.png",
+          "sha256": "7788e9ac31ca1ce9d976033e8cb13cb3f9c15d024a0459f0a4dad376ee6cd158"
+        },
+        {
+          "index": 7,
+          "path": "sprites/characters/protagonist/frames/player_walk_left_07.png",
+          "sha256": "cb102e51e649042f70a8bc1bc33b5045c154f083970f490f58778a6f73e996cd"
+        }
+      ]
+    },
+    "player_walk_up_left": {
+      "frame_count": 8,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_walk_up_left_source_strip.png",
+      "source_strip_sha256": "10ef3c6a12bcf7e0a00d038ab6f62e56de055efc4c5d4f296c4a70f0233ab2b0",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_walk_up_left_00.png",
+          "sha256": "6e2fbcfbf0fa782f8f73bac63fdbf4faf1fbc66b78cb8cf933f8599348752d55"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_walk_up_left_01.png",
+          "sha256": "97f2827f4e6958f42647d81437e96c3612958701777ad13b68cf127273733d78"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_walk_up_left_02.png",
+          "sha256": "ca2c9c1571c344eca2674d7ae22c3009f0698fa4f1d437da2fb77ff4d1ea00cf"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_walk_up_left_03.png",
+          "sha256": "6588a3a423f7479805fa1dc050cf976d45a793d2e6dc0d5c6c40400620b09267"
+        },
+        {
+          "index": 4,
+          "path": "sprites/characters/protagonist/frames/player_walk_up_left_04.png",
+          "sha256": "2ff31ce8ffed2758cfaba6158460fbc7b2098f39003f20a05c25713ddae131f7"
+        },
+        {
+          "index": 5,
+          "path": "sprites/characters/protagonist/frames/player_walk_up_left_05.png",
+          "sha256": "3d4436b56b3851b24ce60beeb54bd5f771f2826e93a733fe3a135595f305ca4d"
+        },
+        {
+          "index": 6,
+          "path": "sprites/characters/protagonist/frames/player_walk_up_left_06.png",
+          "sha256": "ccfd64d6bbf89e9e1803e5354a4e78b47907e25e8a1b48bf0cfa3c997f589b5a"
+        },
+        {
+          "index": 7,
+          "path": "sprites/characters/protagonist/frames/player_walk_up_left_07.png",
+          "sha256": "ba4a146db4beb736a4b063ac50e96c4de1d8dbc6ec978d60cc6c761d5c71180b"
+        }
+      ]
+    },
+    "player_walk_up": {
+      "frame_count": 8,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_walk_up_source_strip.png",
+      "source_strip_sha256": "2b092f084dac66916b17ee15b703b397019335b5ea2da74cde8e15493a3b1c51",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_walk_up_00.png",
+          "sha256": "2f4f298d40741df26360b9c619718b5ef2984265202607d5a64f0654d8e65eee"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_walk_up_01.png",
+          "sha256": "163eba49074d6a61d0a842ea3d2848a193c5ef1ab5baefb0b57fde63fc9c58b4"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_walk_up_02.png",
+          "sha256": "f2e0d6f05dba8dc3f1e9f3beb683b660611e0b85a5903e4d79e7f96dbafa8180"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_walk_up_03.png",
+          "sha256": "1bea381508ee335cf701a812c0fe81923c604ff5a630b814bf9c2dce1e7d3f99"
+        },
+        {
+          "index": 4,
+          "path": "sprites/characters/protagonist/frames/player_walk_up_04.png",
+          "sha256": "c4a65e3869551a0a3fb3c2f30945272d2bf3b623eba1aaddf590db85306104bc"
+        },
+        {
+          "index": 5,
+          "path": "sprites/characters/protagonist/frames/player_walk_up_05.png",
+          "sha256": "aa442e24dfc47d63505865f555869450a7ed7f2de90b8db7338e79b6468cf8e1"
+        },
+        {
+          "index": 6,
+          "path": "sprites/characters/protagonist/frames/player_walk_up_06.png",
+          "sha256": "01cf439f8cb47ee28dad5e356a7c7791cd4ab7c001c4015d089cdfa623d81f42"
+        },
+        {
+          "index": 7,
+          "path": "sprites/characters/protagonist/frames/player_walk_up_07.png",
+          "sha256": "aa970601980d57e79142630719b2b38b7cf6bc11b80f97c54d49a6c8df48baf8"
+        }
+      ]
+    },
+    "player_walk_up_right": {
+      "frame_count": 8,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_walk_up_right_source_strip.png",
+      "source_strip_sha256": "3c5750f768f9a1621c3b7e7885556525cc4d7c5eee169ee2dba97258807c5676",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_walk_up_right_00.png",
+          "sha256": "7a5c3efe7258510e27f3bd7887a0b96509b4a2ff1f463771cc23558f6b740725"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_walk_up_right_01.png",
+          "sha256": "308a5924e215ef615446782559bc392a8d66e95301c1b9f3b2a0f463f8328f2f"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_walk_up_right_02.png",
+          "sha256": "88b3b4e2983165999407cfebc3ce5f0d68ee427b671d881a9e5a76e302d3926a"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_walk_up_right_03.png",
+          "sha256": "4eef3fadde0157d9f7afca56dc99be4b85936986cb0c33986cdd28a261db79fc"
+        },
+        {
+          "index": 4,
+          "path": "sprites/characters/protagonist/frames/player_walk_up_right_04.png",
+          "sha256": "961a85ae00e906e65e8d8b43140eb8cc57af5687d00ef33ad9abdcf80dddcd10"
+        },
+        {
+          "index": 5,
+          "path": "sprites/characters/protagonist/frames/player_walk_up_right_05.png",
+          "sha256": "c0c813da8ae69c02ba53283dcd423d9e078469bfb6b4194be70c3d405a84e4b3"
+        },
+        {
+          "index": 6,
+          "path": "sprites/characters/protagonist/frames/player_walk_up_right_06.png",
+          "sha256": "6dab87c33ef28654a912bcda8e6871f3b4ed8f5c021b0f7d965cf3929612117c"
+        },
+        {
+          "index": 7,
+          "path": "sprites/characters/protagonist/frames/player_walk_up_right_07.png",
+          "sha256": "8fb9e78cc4df270f858240294cb25a7590c532f53cf11fa8b18d42738446c896"
+        }
+      ]
+    },
+    "player_walk_right": {
+      "frame_count": 8,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_walk_right_source_strip.png",
+      "source_strip_sha256": "dbccf5207ee4558a157c32e52b0881ae6cad5933f021628399174fed6ccd7246",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_walk_right_00.png",
+          "sha256": "74c9a794527cdd148fb0cd645dfe0a8d37416fa46e150b4ae2059e77392efbf2"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_walk_right_01.png",
+          "sha256": "9c4d4cea905e12423c791b3fb2b79358d38e68b37bac4ee1b6c7d371d9a552cb"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_walk_right_02.png",
+          "sha256": "d303c847994ec5f0f1d641c8ccf843f0b92a1231638d6e021ac4a7e56a1551d2"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_walk_right_03.png",
+          "sha256": "bcc5c50e015a6e773d5a86a9f45dd4fb3a7bcae6e4b570f85e1c5f6a1d361809"
+        },
+        {
+          "index": 4,
+          "path": "sprites/characters/protagonist/frames/player_walk_right_04.png",
+          "sha256": "e6e0b94722aaf55d2def4bfc512ced93d80654c4dc48c8e688287a804cbf8bcc"
+        },
+        {
+          "index": 5,
+          "path": "sprites/characters/protagonist/frames/player_walk_right_05.png",
+          "sha256": "3427ca9d83ac1f7791c073743076b14d15bbd16050e05a8bae082bce8ff36ea2"
+        },
+        {
+          "index": 6,
+          "path": "sprites/characters/protagonist/frames/player_walk_right_06.png",
+          "sha256": "b8d83b78b00427105e57872c4afbc78cc59b49a5146c533015e55faff704e260"
+        },
+        {
+          "index": 7,
+          "path": "sprites/characters/protagonist/frames/player_walk_right_07.png",
+          "sha256": "5834c24cd6ef1fe23d822928ba49a79adc8b565c7481775fe0970e5203a1a615"
+        }
+      ]
+    },
+    "player_walk_down_right": {
+      "frame_count": 8,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_walk_down_right_source_strip.png",
+      "source_strip_sha256": "1a88476040bd40d945af8bbb2e1701a4eebec1184825dc0978ca25399da2405c",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_walk_down_right_00.png",
+          "sha256": "26fdfcb1eb321b21193b287ea4c7e51c28fd692aaea3a7be10bdbc2bd6640f41"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_walk_down_right_01.png",
+          "sha256": "ba514aed17d1b6fa92c228badf27d40d468c490a8b206b21530b23504d0234cb"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_walk_down_right_02.png",
+          "sha256": "96dc019cc45994b464ee922a99ec35bc8b63d1be98189b299f4d632295e096f9"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_walk_down_right_03.png",
+          "sha256": "a10dcb445b77aa9ab24f6de7e5f2305ed6c5ac3766923413aa403a9cc5b6a79f"
+        },
+        {
+          "index": 4,
+          "path": "sprites/characters/protagonist/frames/player_walk_down_right_04.png",
+          "sha256": "61d9f28c181c10bd68eb207b5e3ef500c4385e7da7fc5bbe8019c700324c9ab4"
+        },
+        {
+          "index": 5,
+          "path": "sprites/characters/protagonist/frames/player_walk_down_right_05.png",
+          "sha256": "d56883ac831bfa1ee65381651dd73ed69e59d5cc27c7146bb42bc5e38b31bd19"
+        },
+        {
+          "index": 6,
+          "path": "sprites/characters/protagonist/frames/player_walk_down_right_06.png",
+          "sha256": "c822d9a0b7c5000afe94b8a9d674ee6491844bb226ad8a5769670c7842e09253"
+        },
+        {
+          "index": 7,
+          "path": "sprites/characters/protagonist/frames/player_walk_down_right_07.png",
+          "sha256": "a870bdfc5ee8314e043faede9d5ffdc79611463b8b17e28d46c8579d6d3ee2c1"
+        }
+      ]
+    },
+    "player_idle_down": {
+      "frame_count": 4,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_idle_down_source_strip.png",
+      "source_strip_sha256": "d9834246f1af74cf35d8212b61b8b72691963f10c607b80b11bfbc624a4d9dbd",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_idle_down_00.png",
+          "sha256": "204113d155ef1c0737b3e3f11a5d38d00dab7ac5a681690235ed28fd6ba05bf4"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_idle_down_01.png",
+          "sha256": "a43c2ff228b1d8d3f7c63ac007c345f4be48d1bc0bf063ad1a6efbb085a62b5f"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_idle_down_02.png",
+          "sha256": "2b26f7f24f9f39ef0f780883119023a71c7809d8178b6ea6c2e29235b19848f2"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_idle_down_03.png",
+          "sha256": "485208c44e4c8cdc10f04a5f286ef37232cdb3ed1d8e2522c2ec3bc02e631310"
+        }
+      ]
+    },
+    "player_idle_down_left": {
+      "frame_count": 4,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_idle_down_left_source_strip.png",
+      "source_strip_sha256": "9942232ad9ef11e14071d1f80e92613d9b8b268cc1774fe40b33594d8e2b1bbc",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_idle_down_left_00.png",
+          "sha256": "323a544e364ba84d36ff7d3f6807dfa22fd18d1e29f24aa15e88b9f85611e36c"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_idle_down_left_01.png",
+          "sha256": "a5efad00a8a6d788ebbf6bd2f139c542eabc9a6614eefe4b908e2bdcd0bf3672"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_idle_down_left_02.png",
+          "sha256": "ca75d0cc506d7545644702a7ee7ace3f5feb6504f4fc9b944955fe2ed064da88"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_idle_down_left_03.png",
+          "sha256": "95f222046bafc9fac5ebd9cbb7e196b8a639b103b91b8b1109f1eb77e59c285a"
+        }
+      ]
+    },
+    "player_idle_left": {
+      "frame_count": 4,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_idle_left_source_strip.png",
+      "source_strip_sha256": "ea138482261dd3d9cf0f092d756120e3e8e68415f64450d6f9cd5d754b9e2f84",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_idle_left_00.png",
+          "sha256": "5fa4bd9817c82577270f960af5343d331061fa1c61b8f6e00c9c0fb5585e68f1"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_idle_left_01.png",
+          "sha256": "9b59d4d73e5880d32e97c0313d3724e5a31997e6f278be409236866bc3cad148"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_idle_left_02.png",
+          "sha256": "4ef2dc2aac8626b639bd111661453496648ea16a4ad2e76b2e16cb9447386b6b"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_idle_left_03.png",
+          "sha256": "368fc2b0595dfde0b38645d43be33c310335945f9c4f98515ff0f31c5f4e68dd"
+        }
+      ]
+    },
+    "player_idle_up_left": {
+      "frame_count": 4,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_idle_up_left_source_strip.png",
+      "source_strip_sha256": "a7d8bf6e058981c08741dabce5b91841efb569686aff392ff655864027b9ff8f",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_idle_up_left_00.png",
+          "sha256": "b69394c3aa9ef367455008601cc83af8cfc4c5376cc6df5c37ecd0757fc1b263"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_idle_up_left_01.png",
+          "sha256": "e502adfdc72587701243b8f2ea20cfa1659101f5517541accbaff4071c1cc19f"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_idle_up_left_02.png",
+          "sha256": "8fd0b1a0b9c88a041342579e306f22d055bbd464f1bd278079673ff5606595ef"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_idle_up_left_03.png",
+          "sha256": "d4e65524bb5d2ba71c8cfb8db0714a2ad0be749128357ff68d561d834457d3ee"
+        }
+      ]
+    },
+    "player_idle_up": {
+      "frame_count": 4,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_idle_up_source_strip.png",
+      "source_strip_sha256": "b53ed862f6bc416c855dc433287a44d867b6969b1f9fc78595ee58ee8246a859",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_idle_up_00.png",
+          "sha256": "183099e63c2bb5e06633c5c204a98fbaf57c954c96db80e1bd45b37d597758e4"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_idle_up_01.png",
+          "sha256": "021c7f0130c0d2912f57497e5e9777f2322fecba08ee1ec0cfaee6af64097829"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_idle_up_02.png",
+          "sha256": "5cb05ac2fd17253392b9babd351a1ac1eaf1aa674430521221d8723fc952c666"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_idle_up_03.png",
+          "sha256": "77d7850ef848bbf30a0e2573538d6cd0f9ed05a52faaf96df83be4048fd676c9"
+        }
+      ]
+    },
+    "player_idle_up_right": {
+      "frame_count": 4,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_idle_up_right_source_strip.png",
+      "source_strip_sha256": "282176e15b64a31d85683a64c989f6a5763539f613e80271914d62b3c9f6b2dc",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_idle_up_right_00.png",
+          "sha256": "7414df7ed1cf32c5dc92b5519d586f8735b4b0a1f67723562a9c49e83f8c9c6d"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_idle_up_right_01.png",
+          "sha256": "8ad0712e4c4756822614c91b14e92d1bec69009ee57dddd4fe6a70fdfae02ca8"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_idle_up_right_02.png",
+          "sha256": "2c03d0e5f4f768cbad465b588180670b55fd3a49a6c51d3ff08d00d2ccb11cbb"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_idle_up_right_03.png",
+          "sha256": "ae37882da57781ff2ecb28ff202f044323e7b00a0da974ace0472a88de7890e2"
+        }
+      ]
+    },
+    "player_idle_right": {
+      "frame_count": 4,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_idle_right_source_strip.png",
+      "source_strip_sha256": "0b540c06b4babc372b494d785d5f0b3bbb2f2815f2a33b535922223420c0d1dc",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_idle_right_00.png",
+          "sha256": "b35a7d390d41b2ea68ed32cbef2c29d4f05fb3cf95362048a0280cfb6659cc15"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_idle_right_01.png",
+          "sha256": "45dbb40d289a41064e5c8e2e07a53f215d8a8127375d34b210a41c3da3098499"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_idle_right_02.png",
+          "sha256": "75ea8095d1d66dd7f347c8c4ed1b8b9e92a869f09abc866e684168c187dbd0ba"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_idle_right_03.png",
+          "sha256": "8d99e2253ae21f138d56cde9c0a00dd4920dcc65043b89c1db0c436d4bf771e6"
+        }
+      ]
+    },
+    "player_idle_down_right": {
+      "frame_count": 4,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_idle_down_right_source_strip.png",
+      "source_strip_sha256": "ee6268711db7da40ef1b50bfcbbfaed7d2a0eb01efb54c83c9058fc2fd978e38",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_idle_down_right_00.png",
+          "sha256": "780fdc40bfc43da7ef461d2702a62852a747aed05fafd0e709278b4cb123c27a"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_idle_down_right_01.png",
+          "sha256": "14e8578f704020b4aae726bbbdfcf4df74035c0d65c468fd4a5c3e0b1bc7ebec"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_idle_down_right_02.png",
+          "sha256": "beb9bf675b8a009ed3be91b2cc6af1796874192980fd33ffa33930537c4a89ad"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_idle_down_right_03.png",
+          "sha256": "c6501a3a5068ed054a5a5d866f8d15bfee1e5d7c2728b27a87865857399e1641"
+        }
+      ]
+    },
+    "player_interact_down": {
+      "frame_count": 6,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_interact_down_source_strip.png",
+      "source_strip_sha256": "1f4fc0ea4ca60f0184108c30857f8a8773133780de34c27c75b177982364c283",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_interact_down_00.png",
+          "sha256": "f4231a8005bcce50f881d6c27f587b14776bb80c900fbd8c4e66555ae1bd9802"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_interact_down_01.png",
+          "sha256": "0cf8875e009f9f120a9ebe40148cefbf3f92c4e66e4730fe2f5cc46cd498d65e"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_interact_down_02.png",
+          "sha256": "ad7ad4e6650417f6fa818629afb7a6fc7dac3e1ce4b4645513696d336515af0a"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_interact_down_03.png",
+          "sha256": "89d21bb2787c4efd4220144144148e401a5ed576203a0358dec37d1352b2fdc9"
+        },
+        {
+          "index": 4,
+          "path": "sprites/characters/protagonist/frames/player_interact_down_04.png",
+          "sha256": "bf359a4859d746746cb2848c4fee5f774b7c377c7ea759bde8c300aad0c1e93e"
+        },
+        {
+          "index": 5,
+          "path": "sprites/characters/protagonist/frames/player_interact_down_05.png",
+          "sha256": "a2598bb8ec4bbb4a032817a2a650429d7a11540acc81c7020b55b91132cda82f"
+        }
+      ]
+    },
+    "player_interact_down_left": {
+      "frame_count": 6,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_interact_down_left_source_strip.png",
+      "source_strip_sha256": "034f1844aed0782d391bbfbec6bde54dce96e3e639acc39052f633a0b48323fe",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_interact_down_left_00.png",
+          "sha256": "b3086ba94ca4b189b9b4073ca31e535ab54d45a9d6ba65edb653e2770f72ceef"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_interact_down_left_01.png",
+          "sha256": "838405e6ecccb2d883d315b6fe19c21a78765c0d5b60a37802fe354deb118563"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_interact_down_left_02.png",
+          "sha256": "8df5a0004e74559f91cc8d95f74382a233d4c73e741e688b7927444ca67afd6e"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_interact_down_left_03.png",
+          "sha256": "6db416b724c88039935c14d362b48a7745327353ef7700bf2b59e37cb9a6683e"
+        },
+        {
+          "index": 4,
+          "path": "sprites/characters/protagonist/frames/player_interact_down_left_04.png",
+          "sha256": "e96da571aa0205c6df4f457bcd3a5e0c43d89538ae0f39a1b91cbaeb6a9b5de8"
+        },
+        {
+          "index": 5,
+          "path": "sprites/characters/protagonist/frames/player_interact_down_left_05.png",
+          "sha256": "996a811a52893585202bc2aabc207b2b0dfb3222d41799cce6db19b911fd6b42"
+        }
+      ]
+    },
+    "player_interact_left": {
+      "frame_count": 6,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_interact_left_source_strip.png",
+      "source_strip_sha256": "c3b92855cbcb35a5c5eda35c789baf120bb8b82fa7fd4a37ed3f4c952085292b",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_interact_left_00.png",
+          "sha256": "215d6e4b62fbdd18239940c8424f816f7a490e0ab9afe941ef54e24017c15bc4"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_interact_left_01.png",
+          "sha256": "ed2282e85cf7ea005b8982732c5f7db2c2bbe4ca8a2ce409e24fd326ab8fd07e"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_interact_left_02.png",
+          "sha256": "d3cb2317f30f2eeb1546e1e4ae8cc443707a9ed566ce87680ec066e1b412dfbf"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_interact_left_03.png",
+          "sha256": "508f222185d47a7b9641b4aa24ad87ca475c75a8d42df0dcc743ff5c71bab580"
+        },
+        {
+          "index": 4,
+          "path": "sprites/characters/protagonist/frames/player_interact_left_04.png",
+          "sha256": "18b0f926a36d595fe6ef2d4cacb4978d6ca81a73d0829c9067e5fe0d5d47b418"
+        },
+        {
+          "index": 5,
+          "path": "sprites/characters/protagonist/frames/player_interact_left_05.png",
+          "sha256": "3d3829c42783531f7b5a70e7a29473ca4deca135022c0c400775b246425a7979"
+        }
+      ]
+    },
+    "player_interact_up_left": {
+      "frame_count": 6,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_interact_up_left_source_strip.png",
+      "source_strip_sha256": "f9021b1aaebe9157934d9137a992310da04ba0f0df5d5ce2a751b84c8ffd4ab4",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_interact_up_left_00.png",
+          "sha256": "250c366922d8705342c5c00453c346e3e52627c4e3858506c49a96c8cd7ac222"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_interact_up_left_01.png",
+          "sha256": "ed6d8b551e80349ea18652b48691357ae39967c385fde49bd8767e6e3ed1c4ab"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_interact_up_left_02.png",
+          "sha256": "dfcfd708fb39056cba3b60ba55542c33179f440d58d6259a9c9397f76b5f784c"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_interact_up_left_03.png",
+          "sha256": "abe3c728cc0f88692f4a3522d1675a26556e3aea7ba117856d6bb0f8ea10a0e2"
+        },
+        {
+          "index": 4,
+          "path": "sprites/characters/protagonist/frames/player_interact_up_left_04.png",
+          "sha256": "b71a4ac3d1cd49f03ef0f13483228cc7c371be70d81a437fe719e70a0f074510"
+        },
+        {
+          "index": 5,
+          "path": "sprites/characters/protagonist/frames/player_interact_up_left_05.png",
+          "sha256": "5b75b78175c89470c3bee2c9bf0f0d0029af233d9b3ba265772d341d3de0a75e"
+        }
+      ]
+    },
+    "player_interact_up": {
+      "frame_count": 6,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_interact_up_source_strip.png",
+      "source_strip_sha256": "9030921a6edfdcecc872f7b592bb149a70bd063a35d7c25651379798c4fe5f9d",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_interact_up_00.png",
+          "sha256": "53194c35ade5d879fc0895e142066033cd6e2aaec2642de379c44030efdc5e1b"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_interact_up_01.png",
+          "sha256": "b82f4686922e7de06194e91cf72b05797d8cea48fc49fdd3970615b246f4c3a7"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_interact_up_02.png",
+          "sha256": "351b3b52a432324643a58dcd503758139867a66003196e786dec604fbd728dda"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_interact_up_03.png",
+          "sha256": "7aac3d19d3fb4cf549ec7c744200058ff9b8f82aca784fc81c4b29273443ae77"
+        },
+        {
+          "index": 4,
+          "path": "sprites/characters/protagonist/frames/player_interact_up_04.png",
+          "sha256": "87c4e6bb729baf2a23e8b1c01a0c8ac8a9703ff314cd038f61fc2238316c9f1e"
+        },
+        {
+          "index": 5,
+          "path": "sprites/characters/protagonist/frames/player_interact_up_05.png",
+          "sha256": "9ba4dc1e1aa86c18abcd0c48c4991b107681bdcf53356f8d460f841ad0dcf70e"
+        }
+      ]
+    },
+    "player_interact_up_right": {
+      "frame_count": 6,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_interact_up_right_source_strip.png",
+      "source_strip_sha256": "8f412cc69c1432d46c4fca6e01f5f85f63c367cf734abf33ffa8916b1d58e4a7",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_interact_up_right_00.png",
+          "sha256": "893d2bf12881b464bb271f033f5dd053ee4c94a04db00bdb7193cc1b9add1f22"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_interact_up_right_01.png",
+          "sha256": "6abfaab0a87c30a819b8a71eff3aa946910403677595dfb0f7c7638a1d11b6fa"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_interact_up_right_02.png",
+          "sha256": "4b31029ce8efbdf5825da1e9cde1d3ecf49bc149d44179bddc1ea38e7d0f3221"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_interact_up_right_03.png",
+          "sha256": "cc3eefdb60e59f9617b3180b01dba93c709e639fe7c261d91456e778f63bd572"
+        },
+        {
+          "index": 4,
+          "path": "sprites/characters/protagonist/frames/player_interact_up_right_04.png",
+          "sha256": "d996a0aabe00b716570922e65adf8c2de1250f081b2475638ea4f03da5d2c098"
+        },
+        {
+          "index": 5,
+          "path": "sprites/characters/protagonist/frames/player_interact_up_right_05.png",
+          "sha256": "9e62324113bc289e7d490fbf9e0de847fb10312795a10b1aae122cc17c186754"
+        }
+      ]
+    },
+    "player_interact_right": {
+      "frame_count": 6,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_interact_right_source_strip.png",
+      "source_strip_sha256": "0c82590cbea0e884dcc8549b6139e7182f809ddaf7000ed56391d2f9a5cc9d83",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_interact_right_00.png",
+          "sha256": "2d558dfc05e274b699b104da5654dadacec98516fd058f3dbf2f076cbfc39940"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_interact_right_01.png",
+          "sha256": "6281f8f197ef9b42f0d7034b09bc5fc03f818947c61ccbe4d2ac7318b9b58ba5"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_interact_right_02.png",
+          "sha256": "c5ac03ca755aadff1a1045ecc6816a23fe3343052c22779f03f25d27c441930f"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_interact_right_03.png",
+          "sha256": "ba7f938eac376ca153f98b1c4596889fc58cc4f9b4a427999f87758dd68c2120"
+        },
+        {
+          "index": 4,
+          "path": "sprites/characters/protagonist/frames/player_interact_right_04.png",
+          "sha256": "4cc032d0aa789ed9bfa3e7affad3dfa49e1a2e05b0fa92d58aedf4657acdb2c4"
+        },
+        {
+          "index": 5,
+          "path": "sprites/characters/protagonist/frames/player_interact_right_05.png",
+          "sha256": "e61f5e8ec1f8636245985ef8cf9bfe051eac111e1eeb7dc2f3fab8b4b2b64654"
+        }
+      ]
+    },
+    "player_interact_down_right": {
+      "frame_count": 6,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_interact_down_right_source_strip.png",
+      "source_strip_sha256": "6b9fe2fab989dfec5db6e911ca3edf74bd532c2670bafcc4127e75b98c7cb008",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_interact_down_right_00.png",
+          "sha256": "90d5a0eba277b85212136b16e6cb6b5bae7749816dba442a2873193bd59c591c"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_interact_down_right_01.png",
+          "sha256": "ddf660347c20f0a3d2a1ded853d82a423cfb8db594a89e113f26c98b2e112b17"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_interact_down_right_02.png",
+          "sha256": "b9a79176554f9fa405efdc2754a93c51c1a54a643dc35808ca918c8f69ee9094"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_interact_down_right_03.png",
+          "sha256": "585ba76e818da97833aa2e7491b5011eb698bee32cdc623ef3f2cac733b6a42e"
+        },
+        {
+          "index": 4,
+          "path": "sprites/characters/protagonist/frames/player_interact_down_right_04.png",
+          "sha256": "5c9209399297a35d2bd42a768c61d4fc58cd6ee7e984b80e9047aee02f55a670"
+        },
+        {
+          "index": 5,
+          "path": "sprites/characters/protagonist/frames/player_interact_down_right_05.png",
+          "sha256": "4faae828652221aa8a77b04c0a0d1a881063d4eb554082fefac23c3b8b414c0c"
+        }
+      ]
+    },
+    "player_sit_down_side": {
+      "frame_count": 6,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_sit_down_side_source_strip.png",
+      "source_strip_sha256": "83eb339b13c11776e2d2524328ff6f15ddd87d5513ebae37121fec028fd1d23f",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_sit_down_side_00.png",
+          "sha256": "040c948a204b9dc52310f365382d09c37014496a2a2d3d5c45216c76f45a7d9f"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_sit_down_side_01.png",
+          "sha256": "cc97458ae9fe9178a7ef6080fd28a3f30ec58f1487ec4f9dc16943cd30554b7f"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_sit_down_side_02.png",
+          "sha256": "23f582465a4622be914b0145b0b0bb9c071ac9a096e0d026162888d6e446cc47"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_sit_down_side_03.png",
+          "sha256": "5432802eb5bf73cd4d20d802ae5fcaa8707fe2d4ade8234121fad03fed6f9a33"
+        },
+        {
+          "index": 4,
+          "path": "sprites/characters/protagonist/frames/player_sit_down_side_04.png",
+          "sha256": "27b18a52012be5ba08ef86f51242f07338ac11a44e091f65cad961516d94eb19"
+        },
+        {
+          "index": 5,
+          "path": "sprites/characters/protagonist/frames/player_sit_down_side_05.png",
+          "sha256": "37456c58823d502c2b4d5efe6a24e141ea95093faf100e49eb6e852f7fa26561"
+        }
+      ]
+    },
+    "player_sit_down_down": {
+      "frame_count": 6,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_sit_down_down_source_strip.png",
+      "source_strip_sha256": "7e81cae135f7a1c9088855ad53bd270f783b0f17eb20ce19931fdf636e0610a2",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_sit_down_down_00.png",
+          "sha256": "ab6e6b34f33c3aa5a84f16ce70a169dc9eba682adac9b77f32478061f3852747"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_sit_down_down_01.png",
+          "sha256": "7e29473e14e185ed02a3281431b41fc5ecd0364266bbc876f3950eaeb9f2b1d3"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_sit_down_down_02.png",
+          "sha256": "674fe8f89482dc53638d251d94b350223921f330d3a502d7ac566e52f7940d4c"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_sit_down_down_03.png",
+          "sha256": "e860892ed3105f3823e463d30bb984e56dd69aac0150b0436ff97479b48fb5b2"
+        },
+        {
+          "index": 4,
+          "path": "sprites/characters/protagonist/frames/player_sit_down_down_04.png",
+          "sha256": "819b15f790b229ddbb671e9a27686e270b2cc52ba55b9776277165cdf120c09f"
+        },
+        {
+          "index": 5,
+          "path": "sprites/characters/protagonist/frames/player_sit_down_down_05.png",
+          "sha256": "69e606e496d4a39d292e19333f7b2ba7cf2c0867b5c61a002136bf91dc7764b7"
+        }
+      ]
+    },
+    "player_sit_down_up": {
+      "frame_count": 6,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_sit_down_up_source_strip.png",
+      "source_strip_sha256": "1d231671fb2708be2a4708ddbfada4d049a6523bc14e93bba01761847ceaaf96",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_sit_down_up_00.png",
+          "sha256": "c3cf97dfffbd3f7878741d54fcc69aa7e5980a8fa09e56207666e476cf732dc0"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_sit_down_up_01.png",
+          "sha256": "93cf08b62c9cea7b0719a6bffcaa194520397928e42e01d705de97a453990027"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_sit_down_up_02.png",
+          "sha256": "dff3f2c41fc9834c2f90b0d835a254484322cd436a1de8f6dab32d5833a23a7e"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_sit_down_up_03.png",
+          "sha256": "b15e03f706a4b9a2ec5e851ed4c23925720434aa8eb3244dd97e4e16fe4e2f31"
+        },
+        {
+          "index": 4,
+          "path": "sprites/characters/protagonist/frames/player_sit_down_up_04.png",
+          "sha256": "ef70f862dd4738edbba7c5eee6736341f2350f1405f3f4160296672ed770c8ff"
+        },
+        {
+          "index": 5,
+          "path": "sprites/characters/protagonist/frames/player_sit_down_up_05.png",
+          "sha256": "571634e88791be8eefcd79a78946fb151a9983268271c4696d0299190e6b3294"
+        }
+      ]
+    },
+    "player_sit_idle_side": {
+      "frame_count": 6,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_sit_idle_side_source_strip.png",
+      "source_strip_sha256": "63a992e71490a06acf0971ac535c95b3d3953fbd26d4d202ccc8c9fdb7ae1bb9",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_sit_idle_side_00.png",
+          "sha256": "098ab2feec291dff0d10cfc6dad3dab6657142c242206f6a1e759492aae2423a"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_sit_idle_side_01.png",
+          "sha256": "0d2530bb45bf757a98a3f647927b843f23aaa4bad5a386789fc0f27495dbe3a9"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_sit_idle_side_02.png",
+          "sha256": "49d06c4ded8210370ae9d949f0c40a10b295aef361bdbfd698210f7200b78021"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_sit_idle_side_03.png",
+          "sha256": "e1ee37881403ee4783be9080d03245f38822a616e7b0a94b4b308d6c7c8cb8aa"
+        },
+        {
+          "index": 4,
+          "path": "sprites/characters/protagonist/frames/player_sit_idle_side_04.png",
+          "sha256": "b987ca264a7736abc0c44735fe6aac27701228883b6ec247cc105643f49eff38"
+        },
+        {
+          "index": 5,
+          "path": "sprites/characters/protagonist/frames/player_sit_idle_side_05.png",
+          "sha256": "4695f99db1dbc02fc9c9ab6ca594dfac43f56966b235928fb487f52c0f36e7e4"
+        }
+      ]
+    },
+    "player_sit_idle_down": {
+      "frame_count": 6,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_sit_idle_down_source_strip.png",
+      "source_strip_sha256": "ee01f2bfcc9c2f7b5563f378938cdaf49a6ed78bd99bce1f96788182b5bc055e",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_sit_idle_down_00.png",
+          "sha256": "c8b49689528c1676a239ea54d7031eb8fb2c87ff3d459590119cfaa1010c28f0"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_sit_idle_down_01.png",
+          "sha256": "01aa678f3c3c7887d3f19caa8199def8e8a509d732f20cd4b00bce79d0a97631"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_sit_idle_down_02.png",
+          "sha256": "cb972d51d6368ba38f1e485de42b3e25e7cd1e50ba4d7ef1b801ddb7d03fa740"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_sit_idle_down_03.png",
+          "sha256": "ab2151ecb0743ac9203d7c34f764667b5f4d2652c575ef712e035f861918e3c0"
+        },
+        {
+          "index": 4,
+          "path": "sprites/characters/protagonist/frames/player_sit_idle_down_04.png",
+          "sha256": "2a52b6d07d902a5cab9541dd4c75756fdaa2cf035bfcb938adccabb7a739b2d6"
+        },
+        {
+          "index": 5,
+          "path": "sprites/characters/protagonist/frames/player_sit_idle_down_05.png",
+          "sha256": "02a0ce1aa4e7b46a38076ddfd4cec618f822de040368b9ffc871be5a2f5e83ca"
+        }
+      ]
+    },
+    "player_sit_idle_up": {
+      "frame_count": 6,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_sit_idle_up_source_strip.png",
+      "source_strip_sha256": "dc697e9e7b79b9f98bb0b483d8dbe7eac9bb7e5b693ba7f5d95d5e412a1097da",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_sit_idle_up_00.png",
+          "sha256": "402874b853f5c7b9f27e1b17f1423c345231f7e6570940c76923b46d75a01e11"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_sit_idle_up_01.png",
+          "sha256": "a8afb0a3650f99abebe7853baa503b73dc4e1d91659b69ad2f30c24448c70586"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_sit_idle_up_02.png",
+          "sha256": "035b93485c6d278c7bbb8cb41082c2eab07b380d4cbe93af2fcc1ce91a64e7a5"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_sit_idle_up_03.png",
+          "sha256": "4229d4673c8be4816759c492f9211788595da326a6c664ad40071ba494cc5abd"
+        },
+        {
+          "index": 4,
+          "path": "sprites/characters/protagonist/frames/player_sit_idle_up_04.png",
+          "sha256": "6523120028252b422a61718184030a119a11ca7448d7d310b3f6cb193360994d"
+        },
+        {
+          "index": 5,
+          "path": "sprites/characters/protagonist/frames/player_sit_idle_up_05.png",
+          "sha256": "cff978e719bcda3893b0e4527897dd64125bbe2184e961589ae12468cc3ad1bc"
+        }
+      ]
+    },
+    "player_stand_up_side": {
+      "frame_count": 6,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_stand_up_side_source_strip.png",
+      "source_strip_sha256": "d1319dd6131e334729974cf398d684b803bb07ce86a2d69166b40b9cb6f5c72d",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_stand_up_side_00.png",
+          "sha256": "e62ff7815fc2ea3a48930db7890b390ce97eb3f59c5a6ee18a7791a0f6add030"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_stand_up_side_01.png",
+          "sha256": "261118f2361fc3fa260af805b4b29b338bf18e02d268fa5a5d91a645c9542466"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_stand_up_side_02.png",
+          "sha256": "106a73d18f71fc9d1d9d8d093de7279594c5ee3be4cdd5614ec5d0cfe91abc39"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_stand_up_side_03.png",
+          "sha256": "925ed387518bae0f8b2cab3b9e4a278f5e89766c57325d9f13395a63e6426e5b"
+        },
+        {
+          "index": 4,
+          "path": "sprites/characters/protagonist/frames/player_stand_up_side_04.png",
+          "sha256": "7637e4a5927eb36d9f0fa2579122049a2a88a22850ec02b4d17f3b49f9502b26"
+        },
+        {
+          "index": 5,
+          "path": "sprites/characters/protagonist/frames/player_stand_up_side_05.png",
+          "sha256": "52e1127d0a6f4d5a9b64f3a0b0537cbdd8ebfa505e8b83aef9f3716c4ce9dc47"
+        }
+      ]
+    },
+    "player_stand_up_down": {
+      "frame_count": 6,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_stand_up_down_source_strip.png",
+      "source_strip_sha256": "ad1daa4c1c5ecd2bd22e66675ae06d6125d4e5f29f37e9f03ceabf8e080b6aba",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_stand_up_down_00.png",
+          "sha256": "5cdbd5f44efdfc636aa63d8435a0435160bb604d1a15e9aee60d8f3f40e7e44a"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_stand_up_down_01.png",
+          "sha256": "815ef088e599ddd9f3cc33966db30bf600d5641e98f807ed8c1273e314c1dfc4"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_stand_up_down_02.png",
+          "sha256": "6f888f8f557181d559e52778b8d03409d022532981b7d7149016632328665d5c"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_stand_up_down_03.png",
+          "sha256": "2cd1caa297d1fe39c2b6872c75b0096e20cad31cd211ba4d75341ad274edb760"
+        },
+        {
+          "index": 4,
+          "path": "sprites/characters/protagonist/frames/player_stand_up_down_04.png",
+          "sha256": "89d3136f5dcb07744d6532adb59d5f51d10c334a93742b5e92ef3dae478f2f1e"
+        },
+        {
+          "index": 5,
+          "path": "sprites/characters/protagonist/frames/player_stand_up_down_05.png",
+          "sha256": "af27fd0eab0edcd9ce4c8060e29182d0d28ff674bc20916b97b3bfd305188e93"
+        }
+      ]
+    },
+    "player_stand_up_up": {
+      "frame_count": 6,
+      "source_strip": "production/assets/protagonist/final_source_strips/player_stand_up_up_source_strip.png",
+      "source_strip_sha256": "33a57fe034c496c21b3744fd199c6da14c1e3ada5584eb00d926fd3ccaa96bbf",
+      "frames": [
+        {
+          "index": 0,
+          "path": "sprites/characters/protagonist/frames/player_stand_up_up_00.png",
+          "sha256": "4daf0c6fbc80786175ce5f1b31598627a2337685eb38c4a79e4dcddd74ad78c4"
+        },
+        {
+          "index": 1,
+          "path": "sprites/characters/protagonist/frames/player_stand_up_up_01.png",
+          "sha256": "517fe32fe34c084b67a8ce3bfa7940cc2fdc5554527eaee742b31e266ae9ff19"
+        },
+        {
+          "index": 2,
+          "path": "sprites/characters/protagonist/frames/player_stand_up_up_02.png",
+          "sha256": "a37751be21ecdae92609a17e68fccc52697b97247cb01d093fa9af72f2548f54"
+        },
+        {
+          "index": 3,
+          "path": "sprites/characters/protagonist/frames/player_stand_up_up_03.png",
+          "sha256": "02bedcfa68f6b1a09ab304e2b086303a07b425932ccfb913ae7a1f15effe0d34"
+        },
+        {
+          "index": 4,
+          "path": "sprites/characters/protagonist/frames/player_stand_up_up_04.png",
+          "sha256": "0aaf9cbed3e9b7444c4995c6ab97c9a0e82fc100510891f5c6665e3dc308bdb6"
+        },
+        {
+          "index": 5,
+          "path": "sprites/characters/protagonist/frames/player_stand_up_up_05.png",
+          "sha256": "53f3a99860e0ee59b35548301eacbb3fe39d70d04fbf998b319e32eacd245743"
+        }
+      ]
+    }
+  },
+  "visual_review_gate": [
+    "Automated checks prove source-to-runtime consistency, baseline, alpha, and animation coverage.",
+    "Human visual review is still the final judge for acting polish, face readability, and cloth motion taste."
+  ]
+}

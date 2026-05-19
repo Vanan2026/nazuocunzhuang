@@ -54,12 +54,6 @@ func _run() -> void:
 		_fail("Region_BackFarm missing FarmSystem")
 		return
 
-	var crops: Array = farm_system.call("get_available_crops")
-	if crops.is_empty():
-		_fail("FarmSystem returned no available crops")
-		return
-	var crop_type := str(crops[0])
-
 	_mark_progress("seed runtime state")
 	var time_system := root.get_node_or_null("TimeSystem")
 	if time_system == null:
@@ -67,6 +61,12 @@ func _run() -> void:
 		return
 	time_system.set("current_day", 12)
 	time_system.set("current_season", "summer")
+
+	var crops: Array = farm_system.call("get_available_crops")
+	if crops.is_empty():
+		_fail("FarmSystem returned no available crops")
+		return
+	var crop_type := str(crops[0])
 
 	if not farm_system.call("plant", 0, crop_type):
 		_fail("could not plant crop for save validation")
@@ -213,3 +213,4 @@ func _finish_deferred(exit_code: int) -> void:
 
 func _finish(exit_code: int) -> void:
 	await HeadlessLifecycle.cleanup_and_quit(self, exit_code)
+

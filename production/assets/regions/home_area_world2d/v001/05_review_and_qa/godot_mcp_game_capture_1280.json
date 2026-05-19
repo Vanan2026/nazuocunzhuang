@@ -1,0 +1,43 @@
+{
+  "state": {
+    "jsonrpc": "2.0",
+    "id": 2,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"current_scene\":\"res://scenes/regions/region_home_area.tscn\",\"game_capture_ready\":false,\"godot_version\":\"4.6.1-stable (official)\",\"is_playing\":false,\"project_name\":\"那个村庄\",\"readiness\":\"ready\"}"
+        }
+      ],
+      "structuredContent": {
+        "current_scene": "res://scenes/regions/region_home_area.tscn",
+        "game_capture_ready": false,
+        "godot_version": "4.6.1-stable (official)",
+        "is_playing": false,
+        "project_name": "那个村庄",
+        "readiness": "ready"
+      },
+      "isError": false
+    }
+  },
+  "shot": "image_saved",
+  "stop": {
+    "jsonrpc": "2.0",
+    "id": 6,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"readiness_after\":\"ready\",\"reason\":\"Play/stop is a runtime action\",\"stopped\":true,\"undoable\":false}"
+        }
+      ],
+      "structuredContent": {
+        "readiness_after": "ready",
+        "reason": "Play/stop is a runtime action",
+        "stopped": true,
+        "undoable": false
+      },
+      "isError": false
+    }
+  }
+}

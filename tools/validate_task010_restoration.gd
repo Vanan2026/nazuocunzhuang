@@ -1,11 +1,17 @@
 extends SceneTree
 
+const HeadlessLifecycle := preload("res://tools/headless_lifecycle.gd")
 const PLAYER_YARD_PATH := "res://game/scenes/world/PlayerYard.tscn"
+const WATCHDOG_TIMEOUT_SECONDS := 20.0
 
 var _has_failed := false
+var _finished := false
+var _watchdog_timer: Timer = null
 
 
 func _initialize() -> void:
+	print("PROGRESS: task010 restoration initialize")
+	call_deferred("_start_watchdog")
 	call_deferred("_run")
 
 
@@ -36,7 +42,6 @@ func _run() -> void:
 	data_registry.validate_all_data()
 	await process_frame
 
-	# 1) Insufficient resources should fail.
 	inventory.add_item("wood", 1)
 	inventory.add_item("stone", 1)
 	game_state.set_player_money(100)
@@ -45,20 +50,19 @@ func _run() -> void:
 	_expect(not game_state.is_restored("old_well"), "Old well should stay broken without enough requirements")
 	_expect(not bool(game_state.get_flag("restored_old_well")), "restored_old_well should remain false before requirements met")
 
-	# 2) Meet requirements to complete restoration once.
 	inventory.add_item("wood", 19)
 	inventory.add_item("stone", 9)
 	game_state.set_player_money(500)
-	var emitted := false
+	var emitted := {"value": false}
 	var event_bus := yard.get_node("EventBus") as Node
 	if event_bus.has_signal("restoration_completed"):
 		event_bus.restoration_completed.connect(func(restoration_id: String) -> void:
 			if restoration_id == "old_well":
-				emitted = true
+				emitted["value"] = true
 		)
 	old_well.on_interact(player)
 	await process_frame
-	_expect(emitted, "EventBus should emit restoration_completed for old_well")
+	_expect(bool(emitted["value"]), "EventBus should emit restoration_completed for old_well")
 	_expect(game_state.is_restored("old_well"), "Old well should become restored when requirements are met")
 	_expect(bool(game_state.get_flag("yard_water_source")), "Restoration should unlock yard_water_source flag")
 	_expect(bool(game_state.get_flag("rumor_old_well_bell")), "Restoration should unlock rumor flag")
@@ -67,7 +71,6 @@ func _run() -> void:
 	_expect(payload.get("restoration_states", {}).has("old_well"), "Save payload should include old_well")
 	_expect(bool(payload.get("restoration_states", {}).get("old_well", false)), "Save payload should mark old_well restored")
 
-	# 3) Repeated interaction should not consume again.
 	var before := _snapshot_resources(inventory)
 	old_well.on_interact(player)
 	await process_frame
@@ -75,15 +78,13 @@ func _run() -> void:
 	_expect(before.get("wood", 0) == after.get("wood", 0), "Repaired well should not consume wood again")
 	_expect(before.get("stone", 0) == after.get("stone", 0), "Repaired well should not consume stone again")
 
-	# 4) Repaired visual path should be applied.
 	var repaired_path := ""
 	if old_well_sprite != null:
-		if old_well_sprite.has_variable("texture_path"):
-			repaired_path = str(old_well_sprite.get("texture_path"))
+		repaired_path = str(old_well_sprite.get("texture_path"))
 	_expect(not repaired_path.is_empty(), "Old well sprite should have a visual state set")
 
 	print("OK: Task 010 restoration runtime validation passed")
-	quit(0)
+	_finish_deferred(0)
 
 
 func _validate_initial_scene(yard: Node) -> void:
@@ -112,4 +113,33 @@ func _fail(message: String) -> void:
 	_has_failed = true
 	push_error(message)
 	print("FAIL: %s" % message)
-	quit(1)
+	_finish_deferred(1)
+
+
+func _start_watchdog() -> void:
+	if _finished:
+		return
+	_watchdog_timer = Timer.new()
+	_watchdog_timer.one_shot = true
+	_watchdog_timer.wait_time = WATCHDOG_TIMEOUT_SECONDS
+	root.add_child(_watchdog_timer)
+	_watchdog_timer.timeout.connect(func() -> void:
+		if not _finished:
+			_fail("Task 010 restoration validation timed out")
+	)
+	_watchdog_timer.start()
+
+
+func _finish_deferred(exit_code: int) -> void:
+	if _finished:
+		return
+	_finished = true
+	if _watchdog_timer != null:
+		_watchdog_timer.stop()
+		_watchdog_timer.queue_free()
+		_watchdog_timer = null
+	call_deferred("_finish", exit_code)
+
+
+func _finish(exit_code: int) -> void:
+	await HeadlessLifecycle.cleanup_and_quit(self, exit_code)

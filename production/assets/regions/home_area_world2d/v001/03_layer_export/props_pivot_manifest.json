@@ -1,0 +1,80 @@
+{
+  "canvas": {
+    "width": 1470,
+    "height": 1070
+  },
+  "coordinate_origin": "top_left_source_full",
+  "status": "initial_authoring_targets_from_accepted_source",
+  "props": [
+    {
+      "id": "mailbox",
+      "pivot": [
+        510,
+        430
+      ],
+      "bbox": [
+        475,
+        370,
+        535,
+        455
+      ],
+      "interaction": "mailbox_later"
+    },
+    {
+      "id": "well",
+      "pivot": [
+        1045,
+        690
+      ],
+      "bbox": [
+        1000,
+        560,
+        1115,
+        730
+      ],
+      "interaction": "repair_or_inspect_later"
+    },
+    {
+      "id": "bench",
+      "pivot": [
+        275,
+        555
+      ],
+      "bbox": [
+        190,
+        445,
+        370,
+        575
+      ],
+      "interaction": "sit_or_inspect_later"
+    },
+    {
+      "id": "road_sign",
+      "pivot": [
+        1190,
+        880
+      ],
+      "bbox": [
+        1130,
+        760,
+        1250,
+        910
+      ],
+      "interaction": "travel_hint_later"
+    },
+    {
+      "id": "front_door",
+      "pivot": [
+        720,
+        370
+      ],
+      "bbox": [
+        685,
+        275,
+        755,
+        390
+      ],
+      "interaction": "enter_home_later"
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+{
+  "sessions": {
+    "jsonrpc": "2.0",
+    "id": 2,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"sessions\":[{\"session_id\":\"project@2bc9\",\"name\":\"那个村庄\",\"godot_version\":\"4.6.1-stable (official)\",\"project_path\":\"D:/那个村庄/\",\"plugin_version\":\"2.5.4\",\"server_version\":\"2.5.4\",\"protocol_version\":1,\"current_scene\":\"res://scenes/regions/region_home_area.tscn\",\"play_state\":\"stopped\",\"readiness\":\"ready\",\"editor_pid\":20608,\"server_launch_mode\":\"uvx\",\"connected_at\":\"2026-05-19T05:31:53.323200+00:00\",\"last_seen\":\"2026-05-19T11:23:05.404181+00:00\",\"is_active\":true}],\"count\":1}"
+        }
+      ],
+      "structuredContent": {
+        "sessions": [
+          {
+            "session_id": "project@2bc9",
+            "name": "那个村庄",
+            "godot_version": "4.6.1-stable (official)",
+            "project_path": "D:/那个村庄/",
+            "plugin_version": "2.5.4",
+            "server_version": "2.5.4",
+            "protocol_version": 1,
+            "current_scene": "res://scenes/regions/region_home_area.tscn",
+            "play_state": "stopped",
+            "readiness": "ready",
+            "editor_pid": 20608,
+            "server_launch_mode": "uvx",
+            "connected_at": "2026-05-19T05:31:53.323200+00:00",
+            "last_seen": "2026-05-19T11:23:05.404181+00:00",
+            "is_active": true
+          }
+        ],
+        "count": 1
+      },
+      "isError": false
+    }
+  },
+  "state_before": {
+    "jsonrpc": "2.0",
+    "id": 3,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"current_scene\":\"res://scenes/regions/region_home_area.tscn\",\"game_capture_ready\":false,\"godot_version\":\"4.6.1-stable (official)\",\"is_playing\":false,\"project_name\":\"那个村庄\",\"readiness\":\"ready\"}"
+        }
+      ],
+      "structuredContent": {
+        "current_scene": "res://scenes/regions/region_home_area.tscn",
+        "game_capture_ready": false,
+        "godot_version": "4.6.1-stable (official)",
+        "is_playing": false,
+        "project_name": "那个村庄",
+        "readiness": "ready"
+      },
+      "isError": false
+    }
+  },
+  "open_result": {
+    "jsonrpc": "2.0",
+    "id": 4,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"path\":\"res://scenes/regions/region_home_area.tscn\",\"reason\":\"Scene navigation cannot be undone via editor undo\",\"undoable\":false}"
+        }
+      ],
+      "structuredContent": {
+        "path": "res://scenes/regions/region_home_area.tscn",
+        "reason": "Scene navigation cannot be undone via editor undo",
+        "undoable": false
+      },
+      "isError": false
+    }
+  },
+  "state_after": {
+    "jsonrpc": "2.0",
+    "id": 5,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"current_scene\":\"res://scenes/regions/region_home_area.tscn\",\"game_capture_ready\":false,\"godot_version\":\"4.6.1-stable (official)\",\"is_playing\":false,\"project_name\":\"那个村庄\",\"readiness\":\"ready\"}"
+        }
+      ],
+      "structuredContent": {
+        "current_scene": "res://scenes/regions/region_home_area.tscn",
+        "game_capture_ready": false,
+        "godot_version": "4.6.1-stable (official)",
+        "is_playing": false,
+        "project_name": "那个村庄",
+        "readiness": "ready"
+      },
+      "isError": false
+    }
+  },
+  "hierarchy": {
+    "jsonrpc": "2.0",
+    "id": 6,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"root\":\"\",\"nodes\":[{\"children_count\":9,\"name\":\"Region_HomeArea\",\"path\":\"/Region_HomeArea\",\"type\":\"Node2D\"},{\"children_count\":0,\"name\":\"RegionRuntime\",\"path\":\"/Region_HomeArea/RegionRuntime\",\"type\":\"Node2D\"},{\"children_count\":0,\"name\":\"RegionBounds\",\"path\":\"/Region_HomeArea/RegionBounds\",\"type\":\"Node2D\"},{\"children_count\":3,\"name\":\"ArtLayers\",\"path\":\"/Region_HomeArea/ArtLayers\",\"type\":\"Node2D\"},{\"children_count\":0,\"name\":\"SourceReferenceHidden\",\"path\":\"/Region_HomeArea/ArtLayers/SourceReferenceHidden\",\"type\":\"Sprite2D\"},{\"children_count\":0,\"name\":\"BaseGroundPaths\",\"path\":\"/Region_HomeArea/ArtLayers/BaseGroundPaths\",\"type\":\"Sprite2D\"},{\"children_count\":0,\"name\":\"MidgroundBehindPlayer\",\"path\":\"/Region_HomeArea/ArtLayers/MidgroundBehindPlayer\",\"type\":\"Sprite2D\"},{\"children_count\":0,\"name\":\"WalkableZone\",\"path\":\"/Region_HomeArea/WalkableZone\",\"type\":\"Node2D\"},{\"children_count\":3,\"name\":\"YSortWorld\",\"path\":\"/Region_HomeArea/YSortWorld\",\"type\":\"Node2D\"},{\"children_count\":4,\"name\":\"Player\",\"path\":\"/Region_HomeArea/YSortWorld/Player\",\"type\":\"CharacterBody2D\"},{\"children_count\":0,\"name\":\"CollisionShape2D\",\"path\":\"/Region_HomeArea/YSortWorld/Player/CollisionShape2D\",\"type\":\"CollisionShape2D\"},{\"children_count\":0,\"name\":\"ShadowSprite\",\"path\":\"/Region_HomeArea/YSortWorld/Player/ShadowSprite\",\"type\":\"Sprite2D\"},{\"children_count\":0,\"name\":\"PlayerSprite\",\"path\":\"/Region_HomeArea/YSortWorld/Player/PlayerSprite\",\"type\":\"AnimatedSprite2D\"},{\"children_count\":1,\"name\":\"InteractionArea\",\"path\":\"/Region_HomeArea/YSortWorld/Player/InteractionArea\",\"type\":\"Area2D\"},{\"children_count\":0,\"name\":\"PlayerSpawn\",\"path\":\"/Region_HomeArea/YSortWorld/PlayerSpawn\",\"type\":\"Marker2D\"},{\"children_count\":0,\"name\":\"SpawnFromBackFarm\",\"path\":\"/Region_HomeArea/YSortWorld/SpawnFromBackFarm\",\"type\":\"Marker2D\"},{\"children_count\":0,\"name\":\"ForegroundOcclusion\",\"path\":\"/Region_HomeArea/ForegroundOcclusion\",\"type\":\"Sprite2D\"},{\"children_count\":0,\"name\":\"ForegroundGreeneryFill\",\"path\":\"/Region_HomeArea/ForegroundGreeneryFill\",\"type\":\"Sprite2D\"},{\"children_count\":0,\"name\":\"CameraRig\",\"path\":\"/Region_HomeArea/CameraRig\",\"type\":\"Camera2D\"},{\"children_count\":1,\"name\":\"CanvasLayer_UI\",\"path\":\"/Region_HomeArea/CanvasLayer_UI\",\"type\":\"CanvasLayer\"},{\"children_count\":0,\"name\":\"InteractionPrompt\",\"path\":\"/Region_HomeArea/CanvasLayer_UI/InteractionPrompt\",\"type\":\"Label\"}],\"total_count\":21,\"offset\":0,\"limit\":120,\"has_more\":false}"
+        }
+      ],
+      "structuredContent": {
+        "root": "",
+        "nodes": [
+          {
+            "children_count": 9,
+            "name": "Region_HomeArea",
+            "path": "/Region_HomeArea",
+            "type": "Node2D"
+          },
+          {
+            "children_count": 0,
+            "name": "RegionRuntime",
+            "path": "/Region_HomeArea/RegionRuntime",
+            "type": "Node2D"
+          },
+          {
+            "children_count": 0,
+            "name": "RegionBounds",
+            "path": "/Region_HomeArea/RegionBounds",
+            "type": "Node2D"
+          },
+          {
+            "children_count": 3,
+            "name": "ArtLayers",
+            "path": "/Region_HomeArea/ArtLayers",
+            "type": "Node2D"
+          },
+          {
+            "children_count": 0,
+            "name": "SourceReferenceHidden",
+            "path": "/Region_HomeArea/ArtLayers/SourceReferenceHidden",
+            "type": "Sprite2D"
+          },
+          {
+            "children_count": 0,
+            "name": "BaseGroundPaths",
+            "path": "/Region_HomeArea/ArtLayers/BaseGroundPaths",
+            "type": "Sprite2D"
+          },
+          {
+            "children_count": 0,
+            "name": "MidgroundBehindPlayer",
+            "path": "/Region_HomeArea/ArtLayers/MidgroundBehindPlayer",
+            "type": "Sprite2D"
+          },
+          {
+            "children_count": 0,
+            "name": "WalkableZone",
+            "path": "/Region_HomeArea/WalkableZone",
+            "type": "Node2D"
+          },
+          {
+            "children_count": 3,
+            "name": "YSortWorld",
+            "path": "/Region_HomeArea/YSortWorld",
+            "type": "Node2D"
+          },
+          {
+            "children_count": 4,
+            "name": "Player",
+            "path": "/Region_HomeArea/YSortWorld/Player",
+            "type": "CharacterBody2D"
+          },
+          {
+            "children_count": 0,
+            "name": "CollisionShape2D",
+            "path": "/Region_HomeArea/YSortWorld/Player/CollisionShape2D",
+            "type": "CollisionShape2D"
+          },
+          {
+            "children_count": 0,
+            "name": "ShadowSprite",
+            "path": "/Region_HomeArea/YSortWorld/Player/ShadowSprite",
+            "type": "Sprite2D"
+          },
+          {
+            "children_count": 0,
+            "name": "PlayerSprite",
+            "path": "/Region_HomeArea/YSortWorld/Player/PlayerSprite",
+            "type": "AnimatedSprite2D"
+          },
+          {
+            "children_count": 1,
+            "name": "InteractionArea",
+            "path": "/Region_HomeArea/YSortWorld/Player/InteractionArea",
+            "type": "Area2D"
+          },
+          {
+            "children_count": 0,
+            "name": "PlayerSpawn",
+            "path": "/Region_HomeArea/YSortWorld/PlayerSpawn",
+            "type": "Marker2D"
+          },
+          {
+            "children_count": 0,
+            "name": "SpawnFromBackFarm",
+            "path": "/Region_HomeArea/YSortWorld/SpawnFromBackFarm",
+            "type": "Marker2D"
+          },
+          {
+            "children_count": 0,
+            "name": "ForegroundOcclusion",
+            "path": "/Region_HomeArea/ForegroundOcclusion",
+            "type": "Sprite2D"
+          },
+          {
+            "children_count": 0,
+            "name": "ForegroundGreeneryFill",
+            "path": "/Region_HomeArea/ForegroundGreeneryFill",
+            "type": "Sprite2D"
+          },
+          {
+            "children_count": 0,
+            "name": "CameraRig",
+            "path": "/Region_HomeArea/CameraRig",
+            "type": "Camera2D"
+          },
+          {
+            "children_count": 1,
+            "name": "CanvasLayer_UI",
+            "path": "/Region_HomeArea/CanvasLayer_UI",
+            "type": "CanvasLayer"
+          },
+          {
+            "children_count": 0,
+            "name": "InteractionPrompt",
+            "path": "/Region_HomeArea/CanvasLayer_UI/InteractionPrompt",
+            "type": "Label"
+          }
+        ],
+        "total_count": 21,
+        "offset": 0,
+        "limit": 120,
+        "has_more": false
+      },
+      "isError": false
+    }
+  }
+}

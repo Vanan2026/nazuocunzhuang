@@ -1,4 +1,4 @@
-﻿extends Node2D
+extends Node2D
 class_name Region
 
 signal region_loaded(region_id: String)
@@ -82,7 +82,7 @@ func load_region() -> void:
     is_loaded = true
     _on_load()
     emit_signal("region_loaded", region_id)
-    print("[Region] 宸插姞杞? ", region_id)
+    print("[Region] 已加载 ", region_id)
 
 func unload_region() -> void:
     if not is_loaded:
@@ -91,7 +91,7 @@ func unload_region() -> void:
     _on_unload()
     is_loaded = false
     is_active = false
-    print("[Region] 宸插嵏杞? ", region_id)
+    print("[Region] 已卸载 ", region_id)
 
 func activate() -> void:
     if not is_loaded:

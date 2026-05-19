@@ -1,0 +1,414 @@
+[gd_scene load_steps=36 format=3 uid="uid://region_home_area_blockout_3d_v002"]
+
+[sub_resource type="StandardMaterial3D" id="mat_ground"]
+albedo_color = Color(0.43, 0.60, 0.36, 1)
+
+[sub_resource type="StandardMaterial3D" id="mat_path"]
+albedo_color = Color(0.62, 0.52, 0.36, 1)
+
+[sub_resource type="StandardMaterial3D" id="mat_house"]
+albedo_color = Color(0.62, 0.43, 0.25, 1)
+
+[sub_resource type="StandardMaterial3D" id="mat_roof"]
+albedo_color = Color(0.22, 0.25, 0.25, 1)
+
+[sub_resource type="StandardMaterial3D" id="mat_tree"]
+albedo_color = Color(0.34, 0.20, 0.10, 1)
+
+[sub_resource type="StandardMaterial3D" id="mat_canopy"]
+albedo_color = Color(0.20, 0.42, 0.22, 0.78)
+transparency = 1
+
+[sub_resource type="StandardMaterial3D" id="mat_foreground"]
+albedo_color = Color(0.20, 0.46, 0.22, 0.45)
+transparency = 1
+
+[sub_resource type="StandardMaterial3D" id="mat_light"]
+albedo_color = Color(1, 0.86, 0.45, 0.28)
+transparency = 1
+
+[sub_resource type="StandardMaterial3D" id="mat_interaction"]
+albedo_color = Color(0.36, 0.58, 0.90, 0.75)
+transparency = 1
+
+[sub_resource type="BoxMesh" id="mesh_region"]
+size = Vector3(61.44, 0.08, 40.96)
+
+[sub_resource type="BoxMesh" id="mesh_zone"]
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="mesh_house"]
+size = Vector3(18.6, 6.4, 8.2)
+
+[sub_resource type="BoxMesh" id="mesh_roof"]
+size = Vector3(21.0, 1.2, 10.0)
+
+[sub_resource type="BoxMesh" id="mesh_veranda"]
+size = Vector3(16.0, 0.35, 2.8)
+
+[sub_resource type="CylinderMesh" id="mesh_tree_trunk"]
+top_radius = 0.35
+bottom_radius = 0.55
+height = 4.8
+
+[sub_resource type="SphereMesh" id="mesh_canopy"]
+radius = 3.6
+height = 4.8
+
+[sub_resource type="BoxMesh" id="mesh_marker"]
+size = Vector3(0.7, 0.7, 0.7)
+
+[sub_resource type="BoxMesh" id="mesh_mailbox"]
+size = Vector3(0.90, 1.35, 0.45)
+
+[sub_resource type="CylinderMesh" id="mesh_well"]
+top_radius = 1.35
+bottom_radius = 1.55
+height = 2.05
+
+[sub_resource type="BoxMesh" id="mesh_bench"]
+size = Vector3(3.60, 0.55, 1.05)
+
+[sub_resource type="StandardMaterial3D" id="mat_player"]
+albedo_color = Color(0.86, 0.32, 0.24, 0.82)
+transparency = 1
+
+[sub_resource type="StandardMaterial3D" id="mat_door"]
+albedo_color = Color(0.16, 0.10, 0.07, 0.92)
+transparency = 1
+
+[sub_resource type="BoxMesh" id="mesh_player"]
+size = Vector3(0.90, 2.15, 0.60)
+
+[sub_resource type="BoxMesh" id="mesh_door"]
+size = Vector3(1.55, 2.55, 0.22)
+
+[sub_resource type="BoxMesh" id="mesh_well_roof"]
+size = Vector3(4.40, 0.38, 2.60)
+
+[sub_resource type="BoxMesh" id="mesh_well_post"]
+size = Vector3(0.22, 2.20, 0.22)
+
+[sub_resource type="BoxMesh" id="mesh_bench_back"]
+size = Vector3(3.60, 1.00, 0.25)
+
+[node name="RegionHomeAreaBlockout3DV002" type="Node3D"]
+metadata/region_id = "Region_HomeArea"
+metadata/package_id = "home_area_blockout_v001"
+metadata/layout_contract = "res://production/assets/regions/home_area_design/region_home_area_layout_v001.json"
+metadata/blockout_manifest = "res://production/assets/regions/home_area_blockout/v001/region_home_area_blockout_manifest.json"
+metadata/runtime_boundary = "offline_blockout_review_only"
+metadata/unit_mapping = "100px_to_1m_xz_region_top_left"
+metadata/approval_status = "needs_human_review"
+
+[node name="BlockoutReviewCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 30.72, 46, 55)
+projection = 1
+size = 58.0
+current = true
+metadata/purpose = "fixed 3D blockout review camera before 2D art production"
+metadata/target_canvas_px = Vector2i(6144, 4096)
+
+[node name="SunLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.819152, -0.40558, 0.40558, 0, 0.707107, 0.707107, -0.573576, -0.579228, 0.579228, 0, 0, 0)
+light_energy = 1.45
+metadata/purpose = "summer afternoon light reference, not final runtime lighting"
+
+[node name="RegionPlane" type="MeshInstance3D" parent="."]
+position = Vector3(30.72, 0, 20.48)
+mesh = SubResource("mesh_region")
+surface_material_override/0 = SubResource("mat_ground")
+metadata/zone_id = "region_canvas"
+
+[node name="ZoneGuides" type="Node3D" parent="."]
+metadata/purpose = "reviewable spatial zones from region_home_area_layout_v001.json"
+
+[node name="NorthVillageRoad" type="MeshInstance3D" parent="ZoneGuides"]
+position = Vector3(30.20, 0.12, 10.10)
+scale = Vector3(52.00, 1, 9.80)
+mesh = SubResource("mesh_zone")
+surface_material_override/0 = SubResource("mat_path")
+metadata/zone_id = "north_village_road"
+metadata/blockout_role = "Visual and walkable connection toward Region_Village"
+[node name="CentralFrontYard" type="MeshInstance3D" parent="ZoneGuides"]
+position = Vector3(30.75, 0.12, 22.00)
+scale = Vector3(29.50, 1, 13.00)
+mesh = SubResource("mesh_zone")
+surface_material_override/0 = SubResource("mat_ground")
+metadata/zone_id = "front_yard_walkable"
+metadata/blockout_role = "Primary player movement and default spawn readability"
+metadata/must_remain_readable = true
+[node name="WestGarden" type="MeshInstance3D" parent="ZoneGuides"]
+position = Vector3(13.10, 0.12, 21.90)
+scale = Vector3(15.80, 1, 13.40)
+mesh = SubResource("mesh_zone")
+surface_material_override/0 = SubResource("mat_ground")
+metadata/zone_id = "west_garden"
+metadata/blockout_role = "Life detail and low garden decoration"
+[node name="BackFarmPath" type="MeshInstance3D" parent="ZoneGuides"]
+position = Vector3(41.00, 0.12, 30.75)
+scale = Vector3(9.00, 1, 11.50)
+mesh = SubResource("mesh_zone")
+surface_material_override/0 = SubResource("mat_path")
+metadata/zone_id = "back_farm_path"
+metadata/blockout_role = "Clear path to Region_BackFarm"
+metadata/must_remain_readable = true
+[node name="MainDoorPathGuide" type="MeshInstance3D" parent="ZoneGuides"]
+position = Vector3(31.60, 0.14, 21.15)
+scale = Vector3(3.40, 1, 6.70)
+mesh = SubResource("mesh_zone")
+surface_material_override/0 = SubResource("mat_path")
+metadata/zone_id = "main_door_path"
+metadata/blockout_role = "Readable walking route from default spawn/front yard to veranda and house door"
+metadata/must_remain_readable = true
+
+[node name="YardLoopPathGuide" type="MeshInstance3D" parent="ZoneGuides"]
+position = Vector3(36.40, 0.13, 25.35)
+scale = Vector3(6.20, 1, 6.60)
+mesh = SubResource("mesh_zone")
+surface_material_override/0 = SubResource("mat_path")
+metadata/zone_id = "yard_loop_path"
+metadata/blockout_role = "Soft yard path that connects the house approach, well, and BackFarm path without crowding props"
+metadata/must_remain_readable = true
+
+[node name="HouseDoorScaleGuide" type="MeshInstance3D" parent="ZoneGuides"]
+position = Vector3(31.60, 1.28, 16.95)
+mesh = SubResource("mesh_door")
+surface_material_override/0 = SubResource("mat_door")
+metadata/interaction_id = "homearea_house_door_001"
+metadata/scale_contract = "door reads taller than player guide and aligns to veranda landing"
+
+[node name="HouseBlock" type="MeshInstance3D" parent="ZoneGuides"]
+position = Vector3(31.60, 3.2, 13.85)
+mesh = SubResource("mesh_house")
+surface_material_override/0 = SubResource("mat_house")
+metadata/zone_id = "house_veranda"
+metadata/source_runtime_anchor_px = Vector2i(3160, 1660)
+metadata/export_layer_id = "house_body"
+
+[node name="HouseRoofOccluderBlock" type="MeshInstance3D" parent="ZoneGuides"]
+position = Vector3(31.60, 6.9, 13.05)
+mesh = SubResource("mesh_roof")
+surface_material_override/0 = SubResource("mat_roof")
+metadata/asset_role = "house_roof_occluder"
+metadata/export_layer_id = "house_roof_occluder"
+metadata/occlusion_rule = "may cover head and torso near door, never feet"
+
+[node name="VerandaFloorBlock" type="MeshInstance3D" parent="ZoneGuides"]
+position = Vector3(31.60, 0.28, 17.95)
+mesh = SubResource("mesh_veranda")
+surface_material_override/0 = SubResource("mat_path")
+metadata/export_layer_id = "veranda_floor"
+metadata/zone_id = "house_veranda"
+
+[node name="LeftShadeTreeTrunk" type="MeshInstance3D" parent="ZoneGuides"]
+position = Vector3(14.20, 2.4, 12.20)
+mesh = SubResource("mesh_tree_trunk")
+surface_material_override/0 = SubResource("mat_tree")
+metadata/zone_id = "left_tree"
+metadata/source_runtime_anchor_px = Vector2i(1420, 1220)
+metadata/export_layer_id = "tree_left_trunk"
+
+[node name="LeftShadeTreeCanopy" type="MeshInstance3D" parent="ZoneGuides"]
+position = Vector3(14.20, 6.0, 9.20)
+scale = Vector3(1.55, 1, 1.25)
+mesh = SubResource("mesh_canopy")
+surface_material_override/0 = SubResource("mat_canopy")
+metadata/asset_role = "tree_left_canopy_occluder"
+metadata/export_layer_id = "tree_left_canopy_occluder"
+metadata/occlusion_rule = "split canopy only; leaf holes required in 2D pass"
+
+[node name="RightPersimmonTreeTrunk" type="MeshInstance3D" parent="ZoneGuides"]
+position = Vector3(46.30, 2.4, 16.60)
+mesh = SubResource("mesh_tree_trunk")
+surface_material_override/0 = SubResource("mat_tree")
+metadata/zone_id = "right_tree"
+metadata/source_runtime_anchor_px = Vector2i(4630, 1660)
+metadata/export_layer_id = "tree_right_trunk"
+
+[node name="RightPersimmonTreeCanopy" type="MeshInstance3D" parent="ZoneGuides"]
+position = Vector3(46.30, 6.0, 13.60)
+scale = Vector3(1.35, 0.95, 1.2)
+mesh = SubResource("mesh_canopy")
+surface_material_override/0 = SubResource("mat_canopy")
+metadata/asset_role = "tree_right_canopy_occluder"
+metadata/export_layer_id = "tree_right_canopy_occluder"
+metadata/occlusion_rule = "split canopy only; leaf holes required in 2D pass"
+
+[node name="ForegroundReviewBoundaryGuide" type="MeshInstance3D" parent="ZoneGuides"]
+position = Vector3(30.72, 0.30, 35.88)
+scale = Vector3(61.44, 1, 10.16)
+mesh = SubResource("mesh_zone")
+surface_material_override/0 = SubResource("mat_foreground")
+metadata/zone_id = "foreground_edges"
+metadata/blockout_role = "Review boundary only; actual occluders are split into smaller edge modules"
+metadata/export_layer_id = "foreground_grass_boundary"
+metadata/occlusion_rule = "edge-only, no full-width player-covering plate"
+[node name="ForegroundLeftOccluderGuide" type="MeshInstance3D" parent="ZoneGuides"]
+position = Vector3(8.20, 0.42, 35.60)
+scale = Vector3(16.40, 1, 7.20)
+mesh = SubResource("mesh_zone")
+surface_material_override/0 = SubResource("mat_foreground")
+metadata/zone_id = "foreground_edges"
+metadata/export_layer_id = "foreground_grass_left_edge"
+metadata/occlusion_rule = "left edge only, broken alpha tufts, never a full-width player cover"
+
+[node name="ForegroundRightOccluderGuide" type="MeshInstance3D" parent="ZoneGuides"]
+position = Vector3(54.30, 0.42, 35.35)
+scale = Vector3(14.20, 1, 7.10)
+mesh = SubResource("mesh_zone")
+surface_material_override/0 = SubResource("mat_foreground")
+metadata/zone_id = "foreground_edges"
+metadata/export_layer_id = "foreground_grass_right_edge"
+metadata/occlusion_rule = "right edge only, broken alpha tufts, never a full-width player cover"
+
+[node name="ForegroundBottomTuftGuide" type="MeshInstance3D" parent="ZoneGuides"]
+position = Vector3(30.72, 0.44, 39.00)
+scale = Vector3(33.00, 1, 2.10)
+mesh = SubResource("mesh_zone")
+surface_material_override/0 = SubResource("mat_foreground")
+metadata/zone_id = "foreground_edges"
+metadata/export_layer_id = "foreground_grass_bottom_tufts"
+metadata/occlusion_rule = "bottom frame only, below primary walking corridor"
+
+[node name="ForegroundClearPlayerCorridorGuide" type="MeshInstance3D" parent="ZoneGuides"]
+position = Vector3(31.20, 0.46, 34.10)
+scale = Vector3(21.00, 1, 5.50)
+mesh = SubResource("mesh_zone")
+surface_material_override/0 = SubResource("mat_ground")
+metadata/zone_id = "foreground_clear_corridor"
+metadata/blockout_role = "No foreground occluder over primary player readability corridor"
+metadata/must_remain_readable = true
+
+[node name="LightOverlayGuide" type="MeshInstance3D" parent="ZoneGuides"]
+position = Vector3(18.00, 0.35, 14.90)
+scale = Vector3(22.00, 1, 13.00)
+mesh = SubResource("mesh_zone")
+surface_material_override/0 = SubResource("mat_light")
+metadata/zone_id = "light_weather"
+metadata/blockout_role = "Mood and sunlight reference"
+metadata/export_layer_id = "light_overlay"
+[node name="InteractionMarkers" type="Node3D" parent="."]
+metadata/purpose = "gameplay anchors from region_home_area_layout_v001.json"
+
+[node name="DefaultSpawn" type="MeshInstance3D" parent="InteractionMarkers"]
+position = Vector3(30.72, 0.9, 23.80)
+mesh = SubResource("mesh_marker")
+surface_material_override/0 = SubResource("mat_interaction")
+metadata/interaction_id = "home_area_default_spawn"
+metadata/interaction_role = "player_spawn"
+
+[node name="HouseDoor" type="MeshInstance3D" parent="InteractionMarkers"]
+position = Vector3(31.60, 0.9, 16.90)
+mesh = SubResource("mesh_marker")
+surface_material_override/0 = SubResource("mat_interaction")
+metadata/interaction_id = "homearea_house_door_001"
+metadata/interaction_role = "inspect_house_door"
+
+[node name="Mailbox" type="MeshInstance3D" parent="InteractionMarkers"]
+position = Vector3(26.40, 0.9, 23.00)
+mesh = SubResource("mesh_marker")
+surface_material_override/0 = SubResource("mat_interaction")
+metadata/interaction_id = "homearea_mailbox_001"
+metadata/interaction_role = "inspect_mailbox"
+
+[node name="Well" type="MeshInstance3D" parent="InteractionMarkers"]
+position = Vector3(36.40, 0.9, 24.00)
+mesh = SubResource("mesh_marker")
+surface_material_override/0 = SubResource("mat_interaction")
+metadata/interaction_id = "homearea_well_001"
+metadata/interaction_role = "draw_water"
+
+[node name="BenchRest" type="MeshInstance3D" parent="InteractionMarkers"]
+position = Vector3(37.20, 0.9, 19.60)
+mesh = SubResource("mesh_marker")
+surface_material_override/0 = SubResource("mat_interaction")
+metadata/interaction_id = "homearea_bench_rest_001"
+metadata/interaction_role = "rest_bench"
+
+[node name="RoadSign" type="MeshInstance3D" parent="InteractionMarkers"]
+position = Vector3(51.80, 0.9, 13.90)
+mesh = SubResource("mesh_marker")
+surface_material_override/0 = SubResource("mat_interaction")
+metadata/interaction_id = "homearea_roadsign_001"
+metadata/interaction_role = "read_sign"
+
+[node name="BackFarmExit" type="MeshInstance3D" parent="InteractionMarkers"]
+position = Vector3(42.00, 0.9, 33.70)
+mesh = SubResource("mesh_marker")
+surface_material_override/0 = SubResource("mat_interaction")
+metadata/interaction_id = "home_area_to_back_farm"
+metadata/interaction_role = "region_exit_back_farm"
+
+[node name="PropScaleGuides" type="Node3D" parent="."]
+metadata/purpose = "reviewable prop massing and scale before 2D v005 art production"
+
+[node name="MailboxScaleGuide" type="MeshInstance3D" parent="PropScaleGuides"]
+position = Vector3(26.40, 0.675, 23.00)
+mesh = SubResource("mesh_mailbox")
+surface_material_override/0 = SubResource("mat_interaction")
+metadata/interaction_id = "homearea_mailbox_001"
+metadata/scale_contract = "mailbox top reaches protagonist waist/chest range, not ankle-height icon scale"
+
+[node name="WellScaleGuide" type="MeshInstance3D" parent="PropScaleGuides"]
+position = Vector3(36.40, 1.025, 24.00)
+mesh = SubResource("mesh_well")
+surface_material_override/0 = SubResource("mat_interaction")
+metadata/interaction_id = "homearea_well_001"
+metadata/scale_contract = "well is a substantial yard landmark with readable base, roof, and posts"
+
+[node name="BenchScaleGuide" type="MeshInstance3D" parent="PropScaleGuides"]
+position = Vector3(37.20, 0.275, 19.60)
+mesh = SubResource("mesh_bench")
+surface_material_override/0 = SubResource("mat_interaction")
+metadata/interaction_id = "homearea_bench_rest_001"
+metadata/scale_contract = "bench seats one or two characters and aligns to veranda/front-yard rest area"
+
+[node name="BenchBackScaleGuide" type="MeshInstance3D" parent="PropScaleGuides"]
+position = Vector3(37.20, 0.85, 19.25)
+mesh = SubResource("mesh_bench_back")
+surface_material_override/0 = SubResource("mat_interaction")
+metadata/interaction_id = "homearea_bench_rest_001"
+metadata/scale_contract = "bench has a readable backrest and sitting depth"
+
+[node name="WellRoofScaleGuide" type="MeshInstance3D" parent="PropScaleGuides"]
+position = Vector3(36.40, 2.78, 24.00)
+mesh = SubResource("mesh_well_roof")
+surface_material_override/0 = SubResource("mat_interaction")
+metadata/interaction_id = "homearea_well_001"
+metadata/scale_contract = "well roof makes the well a main yard landmark"
+
+[node name="WellLeftPostScaleGuide" type="MeshInstance3D" parent="PropScaleGuides"]
+position = Vector3(34.95, 1.45, 24.00)
+mesh = SubResource("mesh_well_post")
+surface_material_override/0 = SubResource("mat_interaction")
+metadata/interaction_id = "homearea_well_001"
+metadata/scale_contract = "well support post scale reads against player"
+
+[node name="WellRightPostScaleGuide" type="MeshInstance3D" parent="PropScaleGuides"]
+position = Vector3(37.85, 1.45, 24.00)
+mesh = SubResource("mesh_well_post")
+surface_material_override/0 = SubResource("mat_interaction")
+metadata/interaction_id = "homearea_well_001"
+metadata/scale_contract = "well support post scale reads against player"
+
+[node name="PlayerScaleGuides" type="Node3D" parent="."]
+metadata/purpose = "gameplay protagonist scale references for prop and door review"
+metadata/player_frame_px = Vector2i(192, 288)
+metadata/player_foot_anchor_px = Vector2i(96, 280)
+metadata/visible_body_height_m = 2.15
+
+[node name="DefaultSpawnPlayerScaleGuide" type="MeshInstance3D" parent="PlayerScaleGuides"]
+position = Vector3(30.72, 1.075, 23.80)
+mesh = SubResource("mesh_player")
+surface_material_override/0 = SubResource("mat_player")
+metadata/interaction_id = "home_area_default_spawn"
+metadata/scale_contract = "primary protagonist gameplay scale at default spawn"
+
+[node name="DoorPlayerScaleGuide" type="MeshInstance3D" parent="PlayerScaleGuides"]
+position = Vector3(29.95, 1.075, 17.65)
+mesh = SubResource("mesh_player")
+surface_material_override/0 = SubResource("mat_player")
+metadata/interaction_id = "homearea_house_door_001"
+metadata/scale_contract = "door/veranda comparison protagonist scale"
+

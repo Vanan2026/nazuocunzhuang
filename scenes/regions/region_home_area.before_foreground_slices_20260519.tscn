@@ -1,0 +1,389 @@
+[gd_scene format=3 uid="uid://cytoknqmavxmi"]
+
+[ext_resource type="Script" uid="uid://bg6a4v4173aqv" path="res://scripts/world/region.gd" id="1_region"]
+[ext_resource type="Script" uid="uid://07bdrxj2yswg" path="res://scripts/player_controller.gd" id="2_player"]
+[ext_resource type="Script" uid="uid://fqy5rp2eb5nq" path="res://scripts/world/camera_rig.gd" id="3_camera_rig"]
+[ext_resource type="Script" uid="uid://dgt3yi0wc24in" path="res://scripts/world/walkable_zone.gd" id="4_walkable_zone"]
+[ext_resource type="Texture2D" uid="uid://d0kibyfut45uy" path="res://sprites/characters/protagonist/protagonist_shadow_soft.png" id="5_player_shadow"]
+[ext_resource type="SpriteFrames" path="res://sprites/characters/protagonist/player_mvp_4dir_frames.tres" id="6_player_frames"]
+[ext_resource type="Script" uid="uid://rubmo1ja3hbe" path="res://scripts/world/region_home_area_runtime.gd" id="12_region_runtime"]
+[ext_resource type="Texture2D" uid="uid://c4xo4awut4sk4" path="res://production/assets/regions/home_area_formal/v001/layers/region_home_area_formal_full_plate_v001.png" id="29_full_plate_reference"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
+size = Vector2(40, 20)
+
+[node name="Region_HomeArea" type="Node2D" unique_id=2094575029]
+script = ExtResource("1_region")
+region_id = "Region_HomeArea"
+region_display_name = "庭院"
+region_size = Vector2(6144, 4096)
+world_offset = Vector2(4000, 6000)
+adjacent_regions = Array[String](["Region_Village", "Region_BackFarm"])
+is_always_loaded = true
+metadata/world_model = "explorable_2d_oblique_region_v0_1"
+metadata/region_id = "Region_HomeArea"
+metadata/status = "manual_layer_tool_clean_full_plate_reference"
+metadata/art_package = "home_area_formal_v001"
+metadata/art_integration_group = "clean_full_plate_reference_manual_authoring_20260519"
+metadata/launch_quality_approved = false
+metadata/formal_asset_pass = "manual_reauthoring_pending"
+
+[node name="RegionRuntime" type="Node2D" parent="." unique_id=1323894983]
+script = ExtResource("12_region_runtime")
+
+[node name="RegionBounds" type="Node2D" parent="." unique_id=1566540290]
+metadata/size = Vector2i(6144, 4096)
+metadata/purpose = "camera_and_content_bounds"
+
+[node name="FullSceneReferencePlate" type="Sprite2D" parent="." unique_id=2006051901]
+z_index = -180
+position = Vector2(396, -54)
+texture = ExtResource("29_full_plate_reference")
+centered = false
+metadata/manual_authoring_tool = "reference_only"
+metadata/manual_role = "single_scene_plate_no_runtime_layering"
+metadata/art_package = "home_area_formal_v001"
+metadata/source_note = "single full-scene reference plate for manual Layer Tool authoring; not a split runtime layer"
+
+[node name="WalkableZone" type="Node2D" parent="." unique_id=1903439764]
+script = ExtResource("4_walkable_zone")
+polygon = PackedVector2Array(430, 1600, 1220, 1440, 1930, 1680, 2920, 1760, 3880, 1780, 4560, 2220, 4580, 3720, 3840, 3900, 3020, 3180, 1800, 2650, 760, 2220)
+metadata/purpose = "home_area_walkable_mask"
+
+[node name="YSortWorld" type="Node2D" parent="." unique_id=1756894492]
+y_sort_enabled = true
+metadata/purpose = "actors_props_houses_trees_interactables"
+
+[node name="Player" type="CharacterBody2D" parent="YSortWorld" unique_id=1583292823]
+position = Vector2(3072, 2380)
+script = ExtResource("2_player")
+walkable_zone_path = NodePath("../../WalkableZone")
+visual_base_scale = 1.35
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Player" unique_id=2011979490]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_player")
+
+[node name="ShadowSprite" type="Sprite2D" parent="YSortWorld/Player" unique_id=563680630]
+self_modulate = Color(1, 1, 1, 0.52)
+z_index = -2
+position = Vector2(0, -6)
+texture = ExtResource("5_player_shadow")
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="YSortWorld/Player" unique_id=1231254493]
+position = Vector2(-96, -280)
+sprite_frames = ExtResource("6_player_frames")
+animation = &"player_idle_down_left"
+centered = false
+
+[node name="PlayerSpawn" type="Marker2D" parent="YSortWorld" unique_id=1399975194]
+position = Vector2(3300, 2380)
+metadata/spawn_id = "home_area_default"
+
+[node name="SpawnFromBackFarm" type="Marker2D" parent="YSortWorld" unique_id=549619662]
+position = Vector2(4200, 3370)
+metadata/spawn_id = "home_area_from_back_farm"
+
+[node name="CameraRig" type="Camera2D" parent="." unique_id=2073008251]
+position = Vector2(3072, 2380)
+limit_left = 0
+limit_top = 0
+limit_right = 6144
+limit_bottom = 4096
+limit_smoothed = true
+script = ExtResource("3_camera_rig")
+target_path = NodePath("../YSortWorld/Player")
+metadata/role = "smooth_player_follow_camera"
+
+[node name="CanvasLayer_UI" type="CanvasLayer" parent="." unique_id=1384054852]
+metadata/purpose = "world_interaction_dialogue_fade_ui"
+
+[node name="InteractionPrompt" type="Label" parent="CanvasLayer_UI" unique_id=2040542978]
+visible = false
+offset_left = 520.0
+offset_top = 620.0
+offset_right = 760.0
+offset_bottom = 660.0
+horizontal_alignment = 1
+
+[node name="ManualAuthoring" type="Node2D" parent="." unique_id=1879527168]
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_folder = true
+
+[node name="Blockers" type="Node2D" parent="ManualAuthoring" unique_id=1831687571]
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_folder = true
+
+[node name="ManualBlocker" type="StaticBody2D" parent="ManualAuthoring/Blockers" unique_id=1716045026]
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/ManualBlocker" unique_id=278120613]
+polygon = PackedVector2Array(4918.1113, 2170.833, 4855.431, 2269.3303, 4891.2485, 2332.0105, 4877.817, 2448.4165, 4850.954, 2614.071, 4949.451, 2690.1829, 5074.8115, 2667.7969, 5146.4463, 2631.9797, 5209.1265, 2305.1475, 4927.0654, 2179.7874)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/ManualBlocker" unique_id=338174954]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.18)
+polygon = PackedVector2Array(4918.1113, 2170.833, 4855.431, 2269.3303, 4891.2485, 2332.0105, 4877.817, 2448.4165, 4850.954, 2614.071, 4949.451, 2690.1829, 5074.8115, 2667.7969, 5146.4463, 2631.9797, 5209.1265, 2305.1475, 4927.0654, 2179.7874)
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="ManualBlocker_02" type="StaticBody2D" parent="ManualAuthoring/Blockers" unique_id=613169065]
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_02" unique_id=1751119350]
+polygon = PackedVector2Array(4752.4565, 2452.8936, 4676.345, 2546.9138, 4725.5938, 2649.8884, 4806.1826, 2654.3655, 4868.863, 2555.8682, 4752.4565, 2457.3708)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_02" unique_id=866137307]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.18)
+polygon = PackedVector2Array(4752.4565, 2452.8936, 4676.345, 2546.9138, 4725.5938, 2649.8884, 4806.1826, 2654.3655, 4868.863, 2555.8682, 4752.4565, 2457.3708)
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="ManualBlocker_03" type="StaticBody2D" parent="ManualAuthoring/Blockers" unique_id=1688895038]
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_03" unique_id=2015942997]
+polygon = PackedVector2Array(4998.7, 2694.66, 5025.563, 2797.6345, 5097.1973, 2824.4973, 5200.172, 2734.9543, 5177.786, 2636.457, 5007.6543, 2676.7512)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_03" unique_id=1824314674]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.18)
+polygon = PackedVector2Array(4998.7, 2694.66, 5025.563, 2797.6345, 5097.1973, 2824.4973, 5200.172, 2734.9543, 5177.786, 2636.457, 5007.6543, 2676.7512)
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="ManualBlocker_04" type="StaticBody2D" parent="ManualAuthoring/Blockers" unique_id=1090683859]
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_04" unique_id=953137341]
+polygon = PackedVector2Array(5303.1465, 3043.878, 5527.004, 2972.2434, 5634.4556, 3137.8982, 5616.5474, 3424.4358, 5370.3037, 3375.1873, 5285.238, 3039.4006)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_04" unique_id=1322339691]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.18)
+polygon = PackedVector2Array(5303.1465, 3043.878, 5527.004, 2972.2434, 5634.4556, 3137.8982, 5616.5474, 3424.4358, 5370.3037, 3375.1873, 5285.238, 3039.4006)
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="ManualBlocker_05" type="StaticBody2D" parent="ManualAuthoring/Blockers" unique_id=1758915510]
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_05" unique_id=1002357069]
+polygon = PackedVector2Array(1058.805, 1812.6608, 1542.3376, 1588.8031, 1649.7894, 1808.1836, 1627.4036, 1911.1581, 1228.9369, 2094.7214, 1130.4396, 2036.5184, 1063.2822, 1817.1378)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_05" unique_id=471417469]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.18)
+polygon = PackedVector2Array(1058.805, 1812.6608, 1542.3376, 1588.8031, 1649.7894, 1808.1836, 1627.4036, 1911.1581, 1228.9369, 2094.7214, 1130.4396, 2036.5184, 1063.2822, 1817.1378)
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="ManualBlocker_06" type="StaticBody2D" parent="ManualAuthoring/Blockers" unique_id=38519979]
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_06" unique_id=189898223]
+polygon = PackedVector2Array(2330.3167, 1485.8285, 2464.6313, 1485.8285, 2473.5857, 1638.0518, 2424.337, 1638.0518, 2433.2913, 1781.3207, 2388.5195, 1781.3207, 2357.1794, 1647.0061, 2298.9766, 1629.0974, 2321.3623, 1490.3057)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_06" unique_id=663286954]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.18)
+polygon = PackedVector2Array(2330.3167, 1485.8285, 2464.6313, 1485.8285, 2473.5857, 1638.0518, 2424.337, 1638.0518, 2433.2913, 1781.3207, 2388.5195, 1781.3207, 2357.1794, 1647.0061, 2298.9766, 1629.0974, 2321.3623, 1490.3057)
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="ManualBlocker_07" type="StaticBody2D" parent="ManualAuthoring/Blockers" unique_id=1118526421]
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_07" unique_id=1452186153]
+polygon = PackedVector2Array(2455.677, 218.79419, 4259.9697, 209.83987, 4380.8525, 899.3215, 4371.8984, 1436.5798, 4201.7666, 1436.5798, 4201.7666, 1561.9402, 3758.5286, 1561.9402, 3767.483, 1633.5746, 3628.6912, 1624.6202, 3615.2598, 1544.0315, 3136.2043, 1566.4172, 3127.25, 1633.5746, 3010.844, 1638.0518, 2979.504, 1548.5087, 2715.3518, 1530.6001, 2697.4434, 1629.0974, 2518.3572, 1655.9603, 2500.4485, 1508.2142, 2281.0679, 1517.1686, 2276.5908, 885.89, 2464.6313, 200.88557)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_07" unique_id=821632041]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.18)
+polygon = PackedVector2Array(2455.677, 218.79419, 4259.9697, 209.83987, 4380.8525, 899.3215, 4371.8984, 1436.5798, 4201.7666, 1436.5798, 4201.7666, 1561.9402, 3758.5286, 1561.9402, 3767.483, 1633.5746, 3628.6912, 1624.6202, 3615.2598, 1544.0315, 3136.2043, 1566.4172, 3127.25, 1633.5746, 3010.844, 1638.0518, 2979.504, 1548.5087, 2715.3518, 1530.6001, 2697.4434, 1629.0974, 2518.3572, 1655.9603, 2500.4485, 1508.2142, 2281.0679, 1517.1686, 2276.5908, 885.89, 2464.6313, 200.88557)
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="ManualBlocker_08" type="StaticBody2D" parent="ManualAuthoring/Blockers" unique_id=1935039626]
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_08" unique_id=963859364]
+polygon = PackedVector2Array(1094.6223, 966.4788, 1278.1857, 1490.3057, 1667.698, 1472.3971, 1542.3376, 912.753, 1658.7437, 518.7634, 1014.03357, 594.87506, 1099.0995, 997.81885)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_08" unique_id=580222309]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.18)
+polygon = PackedVector2Array(1094.6223, 966.4788, 1278.1857, 1490.3057, 1667.698, 1472.3971, 1542.3376, 912.753, 1658.7437, 518.7634, 1014.03357, 594.87506, 1099.0995, 997.81885)
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="ManualBlocker_09" type="StaticBody2D" parent="ManualAuthoring/Blockers" unique_id=961868968]
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_09" unique_id=870094190]
+polygon = PackedVector2Array(1255.7998, 1512.6914, 593.18115, 2251.4216, 539.4553, 1920.1124, 1233.4141, 1355.9911, 1264.7542, 1517.1686)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_09" unique_id=173628057]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.18)
+polygon = PackedVector2Array(1255.7998, 1512.6914, 593.18115, 2251.4216, 539.4553, 1920.1124, 1233.4141, 1355.9911, 1264.7542, 1517.1686)
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="ManualBlocker_10" type="StaticBody2D" parent="ManualAuthoring/Blockers" unique_id=497839296]
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_10" unique_id=936738684]
+polygon = PackedVector2Array(1014.03357, 2094.7214, 1175.211, 2045.4727, 1228.9369, 2193.2188, 1054.328, 2246.9446, 1005.0792, 2103.6758)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_10" unique_id=199048182]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.18)
+polygon = PackedVector2Array(1014.03357, 2094.7214, 1175.211, 2045.4727, 1228.9369, 2193.2188, 1054.328, 2246.9446, 1005.0792, 2103.6758)
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="ManualBlocker_11" type="StaticBody2D" parent="ManualAuthoring/Blockers" unique_id=496188100]
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_11" unique_id=1861822874]
+polygon = PackedVector2Array(4797.228, 1114.2249, 4694.2534, 1593.2802, 5092.72, 1620.1431, 5047.9487, 966.4788, 4824.091, 970.95593, 4801.705, 1136.6106)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_11" unique_id=496710770]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.18)
+polygon = PackedVector2Array(4797.228, 1114.2249, 4694.2534, 1593.2802, 5092.72, 1620.1431, 5047.9487, 966.4788, 4824.091, 970.95593, 4801.705, 1136.6106)
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="ManualBlocker_12" type="StaticBody2D" parent="ManualAuthoring/Blockers" unique_id=1666211466]
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_12" unique_id=822938298]
+polygon = PackedVector2Array(5495.664, 1279.8795, 5522.527, 1069.4532, 5723.999, 1314.6907, 5679.2275, 1838.5176, 5576.253, 1811.6545, 5616.5474, 1498.2539, 5491.187, 1287.8276)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_12" unique_id=340075805]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.18)
+polygon = PackedVector2Array(5495.664, 1279.8795, 5522.527, 1069.4532, 5723.999, 1314.6907, 5679.2275, 1838.5176, 5576.253, 1811.6545, 5616.5474, 1498.2539, 5491.187, 1287.8276)
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="ManualBlocker_13" type="StaticBody2D" parent="ManualAuthoring/Blockers" unique_id=731975658]
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_13" unique_id=1850119145]
+polygon = PackedVector2Array(5901.819, 808.77234, 5933.1587, 553.5746, 5601.8496, 490.8944, 5557.078, 710.2749, 5901.819, 817.7267)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_13" unique_id=1437874490]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.18)
+polygon = PackedVector2Array(5901.819, 808.77234, 5933.1587, 553.5746, 5601.8496, 490.8944, 5557.078, 710.2749, 5901.819, 817.7267)
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="ManualBlocker_14" type="StaticBody2D" parent="ManualAuthoring/Blockers" unique_id=1758171140]
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_14" unique_id=1632717410]
+polygon = PackedVector2Array(6179.4023, 517.7573, 6488.3257, 522.2345, 6510.7114, 728.1836, 6157.0166, 790.86365, 6170.4478, 495.37158)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_14" unique_id=289940811]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.18)
+polygon = PackedVector2Array(6179.4023, 517.7573, 6488.3257, 522.2345, 6510.7114, 728.1836, 6157.0166, 790.86365, 6170.4478, 495.37158)
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="ManualBlocker_15" type="StaticBody2D" parent="ManualAuthoring/Blockers" unique_id=1655109351]
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_15" unique_id=172966379]
+polygon = PackedVector2Array(6304.7627, 875.92957, 6318.194, 1207.239, 6448.0313, 1614.6599, 6506.2344, 1305.7363, 6322.6714, 875.92957)
+
+[node name="VisualGuide" type="Polygon2D" parent="ManualAuthoring/Blockers/ManualBlocker_15" unique_id=155827840]
+z_index = 1000
+color = Color(1, 0.22, 0.18, 0.18)
+polygon = PackedVector2Array(6304.7627, 875.92957, 6318.194, 1207.239, 6448.0313, 1614.6599, 6506.2344, 1305.7363, 6322.6714, 875.92957)
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "blocker_visual_guide"
+
+[node name="Layers" type="Node2D" parent="ManualAuthoring" unique_id=1956473011]
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_folder = true
+
+[node name="Front" type="Node2D" parent="ManualAuthoring/Layers" unique_id=2147431618]
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_folder = true
+
+[node name="FrontPolygon" type="Polygon2D" parent="ManualAuthoring/Layers/Front" unique_id=989395816]
+z_index = 220
+color = Color(1, 0.65, 0.18, 0.22)
+polygon = PackedVector2Array(1660.5126, 1005.7671, 2300.7456, 746.09216, 2511.1719, 7.3619385, 532.27, -28.455322, 550.17865, 1834.0405, 1673.9441, 996.81274, 1991.822, 862.49817, 2076.888, 1323.645, 2224.634, 1287.8276, 2126.1367, 1444.5281, 2229.111, 1641.523, 2282.837, 1565.4111, 2314.177, 1493.7769, 2479.8318, 1484.8225, 2533.5576, 1654.9543, 2569.3748, 1740.0203, 2654.4407, 1829.5632, 2779.801, 1834.0405, 2869.3442, 1757.9287, 2887.2527, 1686.2944, 2873.8213, 1632.5686, 2815.6184, 1605.7056, 2752.9382, 1569.8884, 2717.1208, 1614.6599, 2555.9434, 1659.4314)
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "front"
+
+[node name="FrontPolygon_02" type="Polygon2D" parent="ManualAuthoring/Layers/Front" unique_id=1544108892]
+z_index = 220
+color = Color(1, 0.65, 0.18, 0.22)
+polygon = PackedVector2Array(4418.439, 1059.4929, 4476.642, 1193.8076, 4552.754, 1193.8076, 4655.7285, 1229.6248, 4763.18, 1193.8076, 4803.474, 1005.7671, 5040.7637, 969.9498, 5072.1035, 1211.7161, 5161.6465, 1256.4875, 5372.0728, 1260.9648, 5443.7075, 1287.8276, 5533.2505, 1059.4929, 5733.519, 1305.7363, 5773.8135, 1475.8682, 5840.9707, 1556.457, 5881.265, 1431.0967, 5912.605, 1337.0764, 5926.0366, 1220.6704, 5845.4478, 1131.1274, 5849.925, 992.3356, 5746.9507, 938.60974, 5715.6104, 835.63525, 5594.727, 728.1836, 5567.8643, 522.2345, 5724.565, 365.53418, 6140.94, -10.546753, 4148.6064, -23.97821, 4103.835, 204.35657, 4314.261, 204.35657, 4403.804, 1028.1528)
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "front"
+
+[node name="FrontPolygon_03" type="Polygon2D" parent="ManualAuthoring/Layers/Front" unique_id=410649202]
+z_index = 220
+color = Color(1, 0.65, 0.18, 0.22)
+polygon = PackedVector2Array(3091.9985, -41.88678, 3091.9985, 78.99634, 2948.7295, 43.179077, 2993.501, 141.67651, 2930.8208, 159.58508, 2823.3691, 65.56482, 2800.9834, 128.245, 2841.2778, 159.58508, 2783.075, 190.92517, 2563.6943, 65.56482, 2586.08, 146.15369, 2711.4404, 204.35657, 2469.674, 213.31091, 2357.7454, 490.8944, 2223.4307, 522.2345, 2304.0195, 584.9147, 2339.8367, 732.66077, 2174.1821, 687.88916, 2259.248, 808.77234, 2129.4106, 714.7521, 2174.1821, 813.2495, 2053.2988, 750.56934, 2080.1619, 849.06665, 2004.0503, 831.1581, 2044.3446, 884.8839, 1977.1873, 925.17834, 1901.0757, 911.7468, 1945.8472, 1019.1985, 1793.624, 960.9955, 1746.53, 965.47266, 1648.0327, 866.97534, 1616.6926, 938.60974, 1589.8296, 983.38135, 1683.8499, 1471.3911, 1267.4746, 1511.6853, 703.3533, 2151.9182, 676.49036, -32.932495, 3049.3816, -50.841125)
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "front"
+
+[node name="FrontPolygon_04" type="Polygon2D" parent="ManualAuthoring/Layers/Front" unique_id=1943191346]
+z_index = 220
+color = Color(1, 0.65, 0.18, 0.22)
+polygon = PackedVector2Array(2265.88, 799.818, 2037.5449, 929.6555, 2019.6365, 1095.31, 2086.7937, 1260.9648, 2261.4026, 1229.6248, 2279.3113, 799.818)
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "front"
+
+[node name="FrontPolygon_05" type="Polygon2D" parent="ManualAuthoring/Layers/Front" unique_id=1457930256]
+z_index = 220
+color = Color(1, 0.65, 0.18, 0.22)
+polygon = PackedVector2Array(2198.7224, 1296.782, 2100.225, 1462.4368, 2270.357, 1623.6143, 2386.763, 1784.7917, 2440.4888, 1789.2688, 2436.0117, 1663.9087, 2489.7375, 1646, 2467.3516, 1502.7312, 2333.037, 1480.3452, 2288.2656, 1292.3049, 2230.0625, 1287.8276)
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "front"
+
+[node name="FrontPolygon_06" type="Polygon2D" parent="ManualAuthoring/Layers/Front" unique_id=1359794551]
+z_index = 220
+color = Color(1, 0.65, 0.18, 0.22)
+polygon = PackedVector2Array(1066.0027, 1811.6545, 1540.5809, 1601.2285, 1661.4641, 1807.1775, 1643.5554, 1937.0149, 1258.5203, 2093.7153, 1124.2057, 2017.6038, 1083.9114, 1816.1318)
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "front"
+
+[node name="FrontPolygon_07" type="Polygon2D" parent="ManualAuthoring/Layers/Front" unique_id=1279955725]
+z_index = 220
+color = Color(1, 0.65, 0.18, 0.22)
+polygon = PackedVector2Array(1012.27686, 2093.7153, 1155.5458, 2066.8523, 1213.7488, 2187.7356, 1074.957, 2223.5527, 1016.754, 2093.7153)
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "front"
+
+[node name="FrontPolygon_08" type="Polygon2D" parent="ManualAuthoring/Layers/Front" unique_id=2110959272]
+z_index = 220
+color = Color(1, 0.65, 0.18, 0.22)
+polygon = PackedVector2Array(5386.4556, 1359.4622, 5552.1104, 1426.6194, 5583.45, 1480.3452, 5574.496, 1744.4973, 5471.5215, 1878.812, 5323.7754, 1883.2891, 5319.2983, 1834.0405, 5220.801, 1842.9946, 5287.958, 1731.0659, 5207.3696, 1731.0659, 5332.7295, 1668.3857, 5256.618, 1641.523, 5319.2983, 1529.594, 5373.024, 1368.4165)
+metadata/manual_authoring_tool = "village_layer_tool"
+metadata/manual_role = "front"

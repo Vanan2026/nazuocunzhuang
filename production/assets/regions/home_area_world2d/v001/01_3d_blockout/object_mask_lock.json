@@ -1,0 +1,68 @@
+{
+  "lock_id": "home_area_world2d_v001_object_mask_lock",
+  "status": "locked_contract",
+  "mask_coordinate_space": "source_full_canvas_1470x1070_top_left_origin",
+  "structural_objects": [
+    {
+      "id": "house_body",
+      "role": "midground_static_structure",
+      "layer_target": "base_clean_or_ysort_structure",
+      "interaction": "door_hotspot_later"
+    },
+    {
+      "id": "house_roof_eaves",
+      "role": "foreground_occluder",
+      "layer_target": "foreground_house_roof_eaves",
+      "interaction": "none"
+    },
+    {
+      "id": "left_tree_canopy",
+      "role": "foreground_occluder",
+      "layer_target": "foreground_tree_left",
+      "interaction": "none"
+    },
+    {
+      "id": "left_tree_trunk",
+      "role": "blocker_structure",
+      "layer_target": "ysort_structures",
+      "interaction": "none"
+    },
+    {
+      "id": "right_tree_canopy",
+      "role": "depth_occluder",
+      "layer_target": "foreground_tree_right",
+      "interaction": "none"
+    },
+    {
+      "id": "well",
+      "role": "interactable_prop",
+      "layer_target": "pivoted_prop_or_ysort_structure",
+      "interaction": "repair_or_inspect_later"
+    },
+    {
+      "id": "mailbox",
+      "role": "interactable_prop",
+      "layer_target": "pivoted_prop",
+      "interaction": "mailbox_later"
+    },
+    {
+      "id": "bench",
+      "role": "ambient_or_rest_prop",
+      "layer_target": "pivoted_prop",
+      "interaction": "sit_or_inspect_later"
+    },
+    {
+      "id": "road_sign",
+      "role": "exit_hint_prop",
+      "layer_target": "pivoted_prop",
+      "interaction": "travel_hint_later"
+    },
+    {
+      "id": "near_grass_bottom",
+      "role": "foreground_occluder",
+      "layer_target": "foreground_near_grass",
+      "interaction": "none"
+    }
+  ],
+  "authoring_rule": "mask ids define stable structure boundaries only; gameplay polygons are authored after approved visual layers"
+}

@@ -1,8 +1,11 @@
 extends SceneTree
 
+const HeadlessLifecycle := preload("res://tools/headless_lifecycle.gd")
+
 const PLAYER_YARD_PATH := "res://game/scenes/world/PlayerYard.tscn"
 
 var _has_failed := false
+var _finishing := false
 
 
 func _initialize() -> void:
@@ -67,7 +70,7 @@ func _run() -> void:
 			return
 
 	print("OK: Godot validated Art Landing Pass 1 runtime props in PlayerYard")
-	quit(0)
+	_finish_deferred(0)
 
 
 func _polygon_global_rect(poly: Polygon2D) -> Rect2:
@@ -96,4 +99,14 @@ func _fail(message: String) -> void:
 	_has_failed = true
 	push_error(message)
 	print("FAIL: %s" % message)
-	quit(1)
+	_finish_deferred(1)
+
+func _finish_deferred(exit_code: int) -> void:
+	if _finishing:
+		return
+	_finishing = true
+	call_deferred("_finish", exit_code)
+
+
+func _finish(exit_code: int) -> void:
+	await HeadlessLifecycle.cleanup_and_quit(self, exit_code)

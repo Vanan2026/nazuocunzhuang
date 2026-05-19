@@ -1,0 +1,212 @@
+{
+  "package_id": "project_art_production_landing_2026_05_19",
+  "project": "The Village",
+  "created_at": "2026-05-19",
+  "status": "active_production_landing_not_launch_approval",
+  "runtime_entry": "res://scenes/world/world.tscn",
+  "rules": {
+    "visual_direction": "warm low-saturation fixed 3/4 top-down 2D countryside storybook",
+    "source_first_region_workflow": [
+      "locked_layout_or_blockout",
+      "single_source_composition",
+      "coordinate_stable_layer_export",
+      "godot_scene_integration",
+      "scripted_validation",
+      "human_visual_review_before_launch_approval"
+    ],
+    "forbidden_final_sources": [
+      "production/assets/regions/home_area_art/",
+      "production/assets/regions/home_area_launch/",
+      "production/assets/regions/home_area_launch_quality/",
+      "production/assets/regions/home_area_formal/",
+      "local sticker patches",
+      "flattened review plates promoted as true layers"
+    ],
+    "promotion_rule": "A scene may be wired as a structural placeholder, but launch_quality_approved must remain false until human visual review passes."
+  },
+  "current_runtime_regions": [
+    {
+      "region_id": "Region_HomeArea",
+      "scene": "scenes/regions/region_home_area.tscn",
+      "priority": "P0",
+      "phase": "source_first_layer_package_integrated_pending_capture",
+      "active_package": "production/assets/regions/home_area_world2d/v001/workflow_manifest.json",
+      "active_layer_package": "production/assets/regions/home_area_world2d/v001/03_layer_export/four_layer_package/four_layer_manifest.json",
+      "runtime_scene_reference_allowed": true,
+      "launch_quality_approved": false,
+      "human_visual_approval_required": true,
+      "next_art_step": "Run Godot capture against the integrated four-layer package, then either approve for polish pass or regenerate a true aligned layer source."
+    },
+    {
+      "region_id": "Region_BackFarm",
+      "scene": "scenes/regions/region_back_farm.tscn",
+      "priority": "P0",
+      "phase": "active_structural_placeholder_not_launch_quality",
+      "active_package": "production/assets/regions/back_farm_art/v002/region_back_farm_art_v002_manifest.json",
+      "runtime_scene_reference_allowed": true,
+      "launch_quality_approved": false,
+      "human_visual_approval_required": true,
+      "next_art_step": "Keep the source-first layer contract, but produce a real launch-quality source pass before final promotion."
+    },
+    {
+      "region_id": "Region_Village",
+      "scene": "scenes/regions/region_village.tscn",
+      "priority": "P1",
+      "phase": "graybox_scene_needs_source_package",
+      "required_package_dir": "production/assets/regions/village_world2d/v001",
+      "launch_quality_approved": false,
+      "next_art_step": "Create layout lock, source prompt pack, and coordinate-stable base/foreground layers after HomeArea capture is stable."
+    },
+    {
+      "region_id": "Region_MountainPath",
+      "scene": "scenes/regions/region_mountain_path.tscn",
+      "priority": "P2",
+      "phase": "graybox_scene_needs_source_package",
+      "required_package_dir": "production/assets/regions/mountain_path_world2d/v001",
+      "launch_quality_approved": false,
+      "next_art_step": "Produce path, cliff edge, shrine hints, and soft depth layers from one source composition."
+    },
+    {
+      "region_id": "Region_ForestEdge",
+      "scene": "scenes/regions/region_forest_edge.tscn",
+      "priority": "P2",
+      "phase": "graybox_scene_needs_source_package",
+      "required_package_dir": "production/assets/regions/forest_edge_world2d/v001",
+      "launch_quality_approved": false,
+      "next_art_step": "Produce forest border, forage pockets, and foreground canopy from one source composition."
+    },
+    {
+      "region_id": "Region_Orchard",
+      "scene": "scenes/regions/region_orchard.tscn",
+      "priority": "P2",
+      "phase": "graybox_scene_needs_source_package",
+      "required_package_dir": "production/assets/regions/orchard_world2d/v001",
+      "launch_quality_approved": false,
+      "next_art_step": "Produce orchard tree rows, seasonal variants, and harvest props after core route scenes pass."
+    },
+    {
+      "region_id": "Region_Pond",
+      "scene": "scenes/regions/region_pond.tscn",
+      "priority": "P2",
+      "phase": "graybox_scene_needs_source_package",
+      "required_package_dir": "production/assets/regions/pond_world2d/v001",
+      "launch_quality_approved": false,
+      "next_art_step": "Produce pond bank, reflection, reeds, and soft water animation masks."
+    },
+    {
+      "region_id": "Region_Mountain",
+      "scene": "scenes/regions/region_mountain.tscn",
+      "priority": "P3",
+      "phase": "graybox_scene_needs_source_package",
+      "required_package_dir": "production/assets/regions/mountain_world2d/v001",
+      "launch_quality_approved": false,
+      "next_art_step": "Produce broad mountain area only after village route and forest edge are stable."
+    },
+    {
+      "region_id": "Region_MountainHut",
+      "scene": "scenes/regions/region_mountain_hut.tscn",
+      "priority": "P3",
+      "phase": "graybox_scene_needs_source_package",
+      "required_package_dir": "production/assets/regions/mountain_hut_world2d/v001",
+      "launch_quality_approved": false,
+      "next_art_step": "Produce small hut scene with interior/exterior continuity after mountain route is stable."
+    },
+    {
+      "region_id": "Region_CliffView",
+      "scene": "scenes/regions/region_cliff_view.tscn",
+      "priority": "P3",
+      "phase": "graybox_scene_needs_source_package",
+      "required_package_dir": "production/assets/regions/cliff_view_world2d/v001",
+      "launch_quality_approved": false,
+      "next_art_step": "Produce scenic overlook as a discovery/recovery location, not a high-pressure challenge scene."
+    }
+  ],
+  "character_assets": {
+    "protagonist": {
+      "priority": "P0",
+      "status": "runtime_candidate_self_checked",
+      "manifest": "production/assets/protagonist/protagonist_runtime_manifest_v001.json",
+      "runtime_sprite_frames": "sprites/characters/protagonist/player_mvp_4dir_frames.tres",
+      "human_visual_approval_required": true
+    },
+    "mvp_npcs": {
+      "priority": "P0",
+      "status": "partial_runtime_candidates",
+      "covered_npc_ids": ["aoi", "gen", "mika"],
+      "missing_npc_ids": ["hana"],
+      "required_next_assets": [
+        "npc_hana_idle_down_128.png",
+        "npc_hana_portrait_neutral_512.png",
+        "happy/thinking portraits for all P0 NPCs",
+        "up/left/right idle directions before schedule-heavy scenes"
+      ]
+    }
+  },
+  "runtime_asset_groups": [
+    {
+      "id": "crop_stage_sprites",
+      "priority": "P0",
+      "status": "runtime_files_present_for_current_crop_data",
+      "source_data": "game/data/crops.json",
+      "runtime_dir": "assets/art/crops"
+    },
+    {
+      "id": "weather_icons",
+      "priority": "P0",
+      "status": "runtime_files_present_for_current_hud",
+      "runtime_dir": "assets/art/icons"
+    },
+    {
+      "id": "ui_base_pieces",
+      "priority": "P0",
+      "status": "minimal_runtime_files_present",
+      "runtime_dir": "assets/art/ui"
+    },
+    {
+      "id": "item_icons",
+      "priority": "P0",
+      "status": "known_gap_partial_crop_icons_only",
+      "source_data": "game/data/items.json",
+      "runtime_dir": "assets/art/items",
+      "next_art_step": "Generate/copy seed, material, forage, fish, food, and key item icons so every data icon path resolves."
+    },
+    {
+      "id": "home_area_props",
+      "priority": "P0",
+      "status": "bench_v002_and_existing_props_available_but_need_source-package_reconciliation",
+      "runtime_dir": "assets/art/props",
+      "next_art_step": "Use props only when pivot metadata and source package alignment are clear; avoid independent sticker-style scene patches."
+    }
+  ],
+  "known_runtime_gaps": [
+    {
+      "id": "item_icon_backlog",
+      "status": "known_gap",
+      "validation_policy": "Validator reports count but does not fail while this manifest declares the backlog."
+    },
+    {
+      "id": "hana_npc_art_backlog",
+      "status": "known_gap",
+      "validation_policy": "Validator requires the gap to stay explicit until assets exist."
+    },
+    {
+      "id": "remaining_region_world2d_packages",
+      "status": "known_gap",
+      "validation_policy": "Validator requires every registered region to have a row and required package dir even before assets are produced."
+    }
+  ],
+  "validation_entrypoints": [
+    "tools/validate_project_art_production_landing.py",
+    "tools/validate_home_area_world2d_v001.py",
+    "tools/validate_region_back_farm_art_v002.py",
+    "tools/validate_protagonist_runtime_manifest.py",
+    "tools/validate_protagonist_animation_assets.py"
+  ],
+  "next_execution_order": [
+    "Run project art production landing validator on master.",
+    "Run HomeArea World2D contract validator and Godot capture validator.",
+    "Run BackFarm structural placeholder validator.",
+    "Fill item icon backlog from game/data/items.json before expanding new gameplay item data.",
+    "Create Village World2D v001 package only after HomeArea capture is stable."
+  ]
+}

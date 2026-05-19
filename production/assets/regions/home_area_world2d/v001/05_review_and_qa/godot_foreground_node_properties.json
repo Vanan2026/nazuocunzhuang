@@ -1,0 +1,274 @@
+{
+  "props": {
+    "jsonrpc": "2.0",
+    "id": 2,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"count\":38,\"node_type\":\"Sprite2D\",\"path\":\"/Region_HomeArea/ForegroundOcclusion\",\"properties\":[{\"name\":\"process_mode\",\"type\":\"int\",\"value\":0},{\"name\":\"process_priority\",\"type\":\"int\",\"value\":0},{\"name\":\"process_physics_priority\",\"type\":\"int\",\"value\":0},{\"name\":\"process_thread_group\",\"type\":\"int\",\"value\":0},{\"name\":\"physics_interpolation_mode\",\"type\":\"int\",\"value\":0},{\"name\":\"auto_translate_mode\",\"type\":\"int\",\"value\":0},{\"name\":\"editor_description\",\"type\":\"String\",\"value\":\"\"},{\"name\":\"visible\",\"type\":\"bool\",\"value\":true},{\"name\":\"modulate\",\"type\":\"Color\",\"value\":{\"a\":1.0,\"b\":1.0,\"g\":1.0,\"r\":1.0}},{\"name\":\"self_modulate\",\"type\":\"Color\",\"value\":{\"a\":1.0,\"b\":1.0,\"g\":1.0,\"r\":1.0}},{\"name\":\"show_behind_parent\",\"type\":\"bool\",\"value\":false},{\"name\":\"top_level\",\"type\":\"bool\",\"value\":false},{\"name\":\"clip_children\",\"type\":\"int\",\"value\":0},{\"name\":\"light_mask\",\"type\":\"int\",\"value\":1},{\"name\":\"visibility_layer\",\"type\":\"int\",\"value\":1},{\"name\":\"z_index\",\"type\":\"int\",\"value\":100},{\"name\":\"z_as_relative\",\"type\":\"bool\",\"value\":true},{\"name\":\"y_sort_enabled\",\"type\":\"bool\",\"value\":false},{\"name\":\"texture_filter\",\"type\":\"int\",\"value\":0},{\"name\":\"texture_repeat\",\"type\":\"int\",\"value\":0},{\"name\":\"use_parent_material\",\"type\":\"bool\",\"value\":false},{\"name\":\"position\",\"type\":\"Vector2\",\"value\":{\"x\":0.0,\"y\":0.0}},{\"name\":\"rotation\",\"type\":\"float\",\"value\":0.0},{\"name\":\"scale\",\"type\":\"Vector2\",\"value\":{\"x\":1.0,\"y\":1.0}},{\"name\":\"skew\",\"type\":\"float\",\"value\":0.0},{\"name\":\"texture\",\"type\":\"Object\",\"value\":\"res://production/assets/regions/home_area_world2d/v001/03_layer_export/four_layer_package/home_area_03_foreground_occlusion.png\"},{\"name\":\"centered\",\"type\":\"bool\",\"value\":false},{\"name\":\"offset\",\"type\":\"Vector2\",\"value\":{\"x\":0.0,\"y\":0.0}},{\"name\":\"flip_h\",\"type\":\"bool\",\"value\":false},{\"name\":\"flip_v\",\"type\":\"bool\",\"value\":false},{\"name\":\"hframes\",\"type\":\"int\",\"value\":1},{\"name\":\"vframes\",\"type\":\"int\",\"value\":1},{\"name\":\"frame\",\"type\":\"int\",\"value\":0},{\"name\":\"frame_coords\",\"type\":\"Vector2i\",\"value\":{\"x\":0,\"y\":0}},{\"name\":\"region_enabled\",\"type\":\"bool\",\"value\":false},{\"name\":\"region_rect\",\"type\":\"Rect2\",\"value\":{\"position\":{\"x\":0.0,\"y\":0.0},\"size\":{\"x\":0.0,\"y\":0.0}}},{\"name\":\"region_filter_clip_enabled\",\"type\":\"bool\",\"value\":false},{\"name\":\"metadata/layer_role\",\"type\":\"String\",\"value\":\"transparent_foreground_occludes_player\"}]}"
+        }
+      ],
+      "structuredContent": {
+        "count": 38,
+        "node_type": "Sprite2D",
+        "path": "/Region_HomeArea/ForegroundOcclusion",
+        "properties": [
+          {
+            "name": "process_mode",
+            "type": "int",
+            "value": 0
+          },
+          {
+            "name": "process_priority",
+            "type": "int",
+            "value": 0
+          },
+          {
+            "name": "process_physics_priority",
+            "type": "int",
+            "value": 0
+          },
+          {
+            "name": "process_thread_group",
+            "type": "int",
+            "value": 0
+          },
+          {
+            "name": "physics_interpolation_mode",
+            "type": "int",
+            "value": 0
+          },
+          {
+            "name": "auto_translate_mode",
+            "type": "int",
+            "value": 0
+          },
+          {
+            "name": "editor_description",
+            "type": "String",
+            "value": ""
+          },
+          {
+            "name": "visible",
+            "type": "bool",
+            "value": true
+          },
+          {
+            "name": "modulate",
+            "type": "Color",
+            "value": {
+              "a": 1.0,
+              "b": 1.0,
+              "g": 1.0,
+              "r": 1.0
+            }
+          },
+          {
+            "name": "self_modulate",
+            "type": "Color",
+            "value": {
+              "a": 1.0,
+              "b": 1.0,
+              "g": 1.0,
+              "r": 1.0
+            }
+          },
+          {
+            "name": "show_behind_parent",
+            "type": "bool",
+            "value": false
+          },
+          {
+            "name": "top_level",
+            "type": "bool",
+            "value": false
+          },
+          {
+            "name": "clip_children",
+            "type": "int",
+            "value": 0
+          },
+          {
+            "name": "light_mask",
+            "type": "int",
+            "value": 1
+          },
+          {
+            "name": "visibility_layer",
+            "type": "int",
+            "value": 1
+          },
+          {
+            "name": "z_index",
+            "type": "int",
+            "value": 100
+          },
+          {
+            "name": "z_as_relative",
+            "type": "bool",
+            "value": true
+          },
+          {
+            "name": "y_sort_enabled",
+            "type": "bool",
+            "value": false
+          },
+          {
+            "name": "texture_filter",
+            "type": "int",
+            "value": 0
+          },
+          {
+            "name": "texture_repeat",
+            "type": "int",
+            "value": 0
+          },
+          {
+            "name": "use_parent_material",
+            "type": "bool",
+            "value": false
+          },
+          {
+            "name": "position",
+            "type": "Vector2",
+            "value": {
+              "x": 0.0,
+              "y": 0.0
+            }
+          },
+          {
+            "name": "rotation",
+            "type": "float",
+            "value": 0.0
+          },
+          {
+            "name": "scale",
+            "type": "Vector2",
+            "value": {
+              "x": 1.0,
+              "y": 1.0
+            }
+          },
+          {
+            "name": "skew",
+            "type": "float",
+            "value": 0.0
+          },
+          {
+            "name": "texture",
+            "type": "Object",
+            "value": "res://production/assets/regions/home_area_world2d/v001/03_layer_export/four_layer_package/home_area_03_foreground_occlusion.png"
+          },
+          {
+            "name": "centered",
+            "type": "bool",
+            "value": false
+          },
+          {
+            "name": "offset",
+            "type": "Vector2",
+            "value": {
+              "x": 0.0,
+              "y": 0.0
+            }
+          },
+          {
+            "name": "flip_h",
+            "type": "bool",
+            "value": false
+          },
+          {
+            "name": "flip_v",
+            "type": "bool",
+            "value": false
+          },
+          {
+            "name": "hframes",
+            "type": "int",
+            "value": 1
+          },
+          {
+            "name": "vframes",
+            "type": "int",
+            "value": 1
+          },
+          {
+            "name": "frame",
+            "type": "int",
+            "value": 0
+          },
+          {
+            "name": "frame_coords",
+            "type": "Vector2i",
+            "value": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "name": "region_enabled",
+            "type": "bool",
+            "value": false
+          },
+          {
+            "name": "region_rect",
+            "type": "Rect2",
+            "value": {
+              "position": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "size": {
+                "x": 0.0,
+                "y": 0.0
+              }
+            }
+          },
+          {
+            "name": "region_filter_clip_enabled",
+            "type": "bool",
+            "value": false
+          },
+          {
+            "name": "metadata/layer_role",
+            "type": "String",
+            "value": "transparent_foreground_occludes_player"
+          }
+        ]
+      },
+      "isError": false
+    }
+  },
+  "find": {
+    "jsonrpc": "2.0",
+    "id": 3,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"nodes\":[{\"name\":\"ForegroundOcclusion\",\"path\":\"/Region_HomeArea/ForegroundOcclusion\",\"type\":\"Sprite2D\"},{\"name\":\"ForegroundGreeneryFill\",\"path\":\"/Region_HomeArea/ForegroundGreeneryFill\",\"type\":\"Sprite2D\"}],\"total_count\":2,\"offset\":0,\"limit\":20,\"has_more\":false}"
+        }
+      ],
+      "structuredContent": {
+        "nodes": [
+          {
+            "name": "ForegroundOcclusion",
+            "path": "/Region_HomeArea/ForegroundOcclusion",
+            "type": "Sprite2D"
+          },
+          {
+            "name": "ForegroundGreeneryFill",
+            "path": "/Region_HomeArea/ForegroundGreeneryFill",
+            "type": "Sprite2D"
+          }
+        ],
+        "total_count": 2,
+        "offset": 0,
+        "limit": 20,
+        "has_more": false
+      },
+      "isError": false
+    }
+  }
+}

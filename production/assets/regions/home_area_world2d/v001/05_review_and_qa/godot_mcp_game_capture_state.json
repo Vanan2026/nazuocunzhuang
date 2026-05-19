@@ -1,0 +1,67 @@
+{
+  "run": {
+    "jsonrpc": "2.0",
+    "id": 3,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"autosave\":false,\"mode\":\"current\",\"reason\":\"Play/stop is a runtime action\",\"scene\":\"\",\"undoable\":false}"
+        }
+      ],
+      "structuredContent": {
+        "autosave": false,
+        "mode": "current",
+        "reason": "Play/stop is a runtime action",
+        "scene": "",
+        "undoable": false
+      },
+      "isError": false
+    }
+  },
+  "state": {
+    "jsonrpc": "2.0",
+    "id": 4,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"current_scene\":\"res://scenes/regions/region_home_area.tscn\",\"game_capture_ready\":true,\"godot_version\":\"4.6.1-stable (official)\",\"is_playing\":true,\"project_name\":\"那个村庄\",\"readiness\":\"playing\"}"
+        }
+      ],
+      "structuredContent": {
+        "current_scene": "res://scenes/regions/region_home_area.tscn",
+        "game_capture_ready": true,
+        "godot_version": "4.6.1-stable (official)",
+        "is_playing": true,
+        "project_name": "那个村庄",
+        "readiness": "playing"
+      },
+      "isError": false
+    }
+  },
+  "screenshot": {
+    "jsonrpc": "2.0",
+    "id": 5,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "INTERNAL_ERROR: Outbound WebSocket buffer is full; dropped response before queueing more data. Retry with a smaller payload (for screenshots, lower max_resolution or set include_image=false). [buffered_bytes=0, limit_bytes=4194304, message_bytes=4759703]"
+        }
+      ],
+      "structuredContent": {
+        "error": {
+          "code": "INTERNAL_ERROR",
+          "message": "Outbound WebSocket buffer is full; dropped response before queueing more data. Retry with a smaller payload (for screenshots, lower max_resolution or set include_image=false).",
+          "data": {
+            "buffered_bytes": 0,
+            "limit_bytes": 4194304,
+            "message_bytes": 4759703
+          }
+        }
+      },
+      "isError": true
+    }
+  }
+}

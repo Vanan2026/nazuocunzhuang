@@ -1,4 +1,4 @@
-﻿extends Node2D
+extends Node2D
 class_name WorldController
 
 signal world_initialized
@@ -12,6 +12,8 @@ const STARTING_REGION: String = "Region_HomeArea"
 @export var world_bounds: Rect2 = Rect2(Vector2.ZERO, WORLD_SIZE)
 @export var enable_boundaries: bool = true
 @export var camera_look_ahead_offset: Vector2 = Vector2(0, -280)
+@export var back_farm_camera_offset: Vector2 = Vector2(0, 160)
+@export var camera_review_zoom: Vector2 = Vector2(0.68, 0.68)
 
 @export_group("Initial Regions")
 @export var initial_regions: Array[String] = ["Region_HomeArea"]
@@ -25,11 +27,12 @@ var region_loader: RegionLoader
 var player: CharacterBody2D = null
 var camera: Camera2D = null
 var current_region_id: String = ""
+var current_spawn_id: String = ""
 var spawn_positions: Dictionary = {}
 
 func _ready() -> void:
 	_initialize_world()
-	print("[WorldController] 世界已初始化，大小 ", WORLD_SIZE)
+	print("[WorldController] world initialized: ", WORLD_SIZE)
 
 func _initialize_world() -> void:
 	region_loader = RegionLoader.new()
@@ -55,18 +58,18 @@ func _register_all_regions() -> void:
 			"display_name": "庭院",
 			"scene_path": "res://scenes/regions/region_home_area.tscn",
 			"world_offset": Vector2(4000, 6000),
-			"region_size": Vector2(6144, 4096),
+			"region_size": Vector2(1470, 1070),
 			"adjacent_regions": ["Region_Village", "Region_BackFarm"],
 			"is_always_loaded": true,
 			"spawn_points": {
-				"home_area_default": Vector2(7300, 7900),
-				"home_area_from_back_farm": Vector2(8200, 9370),
-				"home_area_from_village": Vector2(4000, 6000)
+				"home_area_default": Vector2(4790, 6622),
+				"home_area_from_back_farm": Vector2(5005, 6880),
+				"home_area_from_village": Vector2(4400, 6420)
 			}
 		},
 		{
 			"region_id": "Region_Village",
-			"display_name": "云村中心区",
+			"display_name": "村庄中心",
 			"scene_path": "res://scenes/regions/region_village.tscn",
 			"world_offset": Vector2(0, 4000),
 			"region_size": Vector2(6000, 4000),
@@ -81,13 +84,13 @@ func _register_all_regions() -> void:
 			"region_id": "Region_BackFarm",
 			"display_name": "后院菜园",
 			"scene_path": "res://scenes/regions/region_back_farm.tscn",
-			"world_offset": Vector2(6000, 8000),
+			"world_offset": Vector2(10000, 8000),
 			"region_size": Vector2(2000, 2000),
 			"adjacent_regions": ["Region_HomeArea"],
 			"is_always_loaded": false,
 			"spawn_points": {
-				"back_farm_default": Vector2(7000, 8000),
-				"back_farm_from_home": Vector2(7000, 8000)
+				"back_farm_default": Vector2(11000, 8430),
+				"back_farm_from_home": Vector2(11000, 8430)
 			}
 		},
 		{
@@ -104,7 +107,7 @@ func _register_all_regions() -> void:
 		},
 		{
 			"region_id": "Region_MountainHut",
-			"display_name": "后山1户",
+			"display_name": "山腰小屋",
 			"scene_path": "res://scenes/regions/region_mountain_hut.tscn",
 			"world_offset": Vector2(4000, 0),
 			"region_size": Vector2(1500, 1500),
@@ -181,7 +184,7 @@ func _register_all_regions() -> void:
 		if def.has("spawn_points"):
 			spawn_positions[def["region_id"]] = def["spawn_points"]
 
-	print("[WorldController] 已注册 ", region_definitions.size(), " 个区域")
+	print("[WorldController] registered regions: ", region_definitions.size())
 
 func _load_initial_regions() -> void:
 	for region_id in initial_regions:
@@ -192,7 +195,7 @@ func _load_initial_regions() -> void:
 				region.activate()
 				current_region_id = region_id
 
-	print("[WorldController] 已加载初始区域 ", initial_regions)
+	print("[WorldController] loaded initial regions: ", initial_regions)
 
 func _load_all_regions() -> void:
 	for region_id in region_loader.regions.keys():
@@ -201,7 +204,7 @@ func _load_all_regions() -> void:
 func _setup_player() -> void:
 	var region = region_loader.get_region(STARTING_REGION)
 	if region == null:
-		push_error("[WorldController] 初始区域未加载")
+		push_error("[WorldController] starting region is not loaded")
 		return
 
 	var spawn_pos = _get_spawn_position(STARTING_REGION, default_spawn_id)
@@ -212,7 +215,7 @@ func _setup_player() -> void:
 		existing_player.collision_layer = 1
 		existing_player.collision_mask = 1
 		player = existing_player
-		print("[WorldController] 使用场景中的玩家，位置: ", spawn_pos)
+		print("[WorldController] using scene player at: ", spawn_pos)
 	else:
 		player = CharacterBody2D.new()
 		player.name = "Player"
@@ -225,7 +228,9 @@ func _setup_player() -> void:
 		collision.shape = shape
 		collision.position = Vector2(0, -10)
 		player.add_child(collision)
-		print("[WorldController] 创建新玩家，位置: ", spawn_pos)
+		print("[WorldController] created fallback player at: ", spawn_pos)
+
+	current_spawn_id = default_spawn_id
 
 	emit_signal("player_spawned", default_spawn_id)
 
@@ -250,11 +255,12 @@ func _setup_camera() -> void:
 	camera.limit_smoothed = true
 	camera.position_smoothing_enabled = true
 	camera.position_smoothing_speed = 10.0
+	camera.zoom = camera_review_zoom
 
 	if player != null:
-		camera.global_position = player.global_position + camera_look_ahead_offset
+		camera.global_position = player.global_position + get_camera_target_offset()
 	else:
-		camera.global_position = _get_spawn_position(STARTING_REGION, default_spawn_id) + camera_look_ahead_offset
+		camera.global_position = _get_spawn_position(STARTING_REGION, default_spawn_id) + get_camera_target_offset()
 
 	add_child(camera)
 	camera.make_current()
@@ -265,7 +271,7 @@ func _setup_camera() -> void:
 		if region_camera != null and region_camera is Camera2D:
 			region_camera.enabled = false
 
-	print("[WorldController] 相机已设置，边界: ", world_bounds)
+	print("[WorldController] camera configured, bounds: ", world_bounds)
 
 func _process(delta: float) -> void:
 	if player != null and camera != null:
@@ -273,8 +279,16 @@ func _process(delta: float) -> void:
 		_check_region_transition()
 
 func _update_camera() -> void:
-	var target_pos := player.global_position + camera_look_ahead_offset
+	var target_pos := player.global_position + get_camera_target_offset()
 	camera.global_position = camera.global_position.lerp(target_pos, 1.0 - exp(-6.0 * get_process_delta_time()))
+
+func get_camera_target_offset() -> Vector2:
+	return get_camera_target_offset_for_region(current_region_id)
+
+func get_camera_target_offset_for_region(region_id: String) -> Vector2:
+	if region_id == "Region_BackFarm":
+		return back_farm_camera_offset
+	return camera_look_ahead_offset
 
 func _check_region_transition() -> void:
 	if player == null:
@@ -288,7 +302,7 @@ func _check_region_transition() -> void:
 		current_region_id = new_region_id
 		region_loader.set_current_region(new_region_id)
 		emit_signal("region_changed", old_region, new_region_id)
-		print("[WorldController] 区域切换: ", old_region, " -> ", new_region_id)
+		print("[WorldController] region changed: ", old_region, " -> ", new_region_id)
 
 func _get_region_at_position(pos: Vector2) -> String:
 	var best_region_id := ""
@@ -337,13 +351,14 @@ func spawn_player_at(region_id: String, spawn_id: String = "") -> void:
 		player.global_position = pos
 
 	if camera != null:
-		camera.global_position = pos
+		camera.global_position = pos + get_camera_target_offset_for_region(region_id)
 
 	current_region_id = region_id
+	current_spawn_id = spawn_id
 	region_loader.set_current_region(region_id)
 
 	emit_signal("player_spawned", spawn_id)
-	print("[WorldController] 传送到 ", region_id, " / ", spawn_id, " (", pos, ")")
+	print("[WorldController] spawned at ", region_id, " / ", spawn_id, " (", pos, ")")
 
 func get_player() -> CharacterBody2D:
 	return player
@@ -361,3 +376,5 @@ func is_position_valid(pos: Vector2) -> bool:
 	if not enable_boundaries:
 		return true
 	return world_bounds.has_point(pos)
+
+

@@ -1,0 +1,43 @@
+﻿{
+    "package_id":  "home_area_world2d_v001_layer_export",
+    "status":  "template_waiting_source",
+    "source_full":  "production/assets/regions/home_area_world2d/v001/02_source_generation/source_full.png",
+    "outputs":  [
+                    {
+                        "id":  "base_clean",
+                        "path":  "production/assets/regions/home_area_world2d/v001/03_layer_export/base_clean.png",
+                        "canvas":  "6144x4096",
+                        "alpha":  "opaque"
+                    },
+                    {
+                        "id":  "foreground_tree_left",
+                        "path":  "production/assets/regions/home_area_world2d/v001/03_layer_export/foreground_tree_left.png",
+                        "canvas":  "6144x4096",
+                        "alpha":  "transparent"
+                    },
+                    {
+                        "id":  "foreground_tree_right",
+                        "path":  "production/assets/regions/home_area_world2d/v001/03_layer_export/foreground_tree_right.png",
+                        "canvas":  "6144x4096",
+                        "alpha":  "transparent"
+                    },
+                    {
+                        "id":  "foreground_house_roof_eaves",
+                        "path":  "production/assets/regions/home_area_world2d/v001/03_layer_export/foreground_house_roof_eaves.png",
+                        "canvas":  "6144x4096",
+                        "alpha":  "transparent"
+                    },
+                    {
+                        "id":  "foreground_near_grass",
+                        "path":  "production/assets/regions/home_area_world2d/v001/03_layer_export/foreground_near_grass.png",
+                        "canvas":  "6144x4096",
+                        "alpha":  "transparent"
+                    },
+                    {
+                        "id":  "props_pivot_manifest",
+                        "path":  "production/assets/regions/home_area_world2d/v001/03_layer_export/props_pivot_manifest.json",
+                        "canvas":  "data",
+                        "alpha":  "data"
+                    }
+                ]
+}
