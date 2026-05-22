@@ -74,8 +74,11 @@ func get_save_data() -> Dictionary:
 func apply_save_data(data: Dictionary) -> void:
 	if data.is_empty():
 		return
+	var previous_flags := flags.duplicate(true)
+	var should_emit_loaded_flags := false
 	if data.has("flags"):
 		flags = _duplicate_dictionary(data.get("flags", flags))
+		should_emit_loaded_flags = true
 	if data.has("unlocked_areas"):
 		unlocked_areas = _duplicate_dictionary(data.get("unlocked_areas", unlocked_areas))
 	if data.has("restoration_states"):
@@ -86,6 +89,8 @@ func apply_save_data(data: Dictionary) -> void:
 		set_player_money(int(data.get("player_money", player_money)))
 	if data.has("player_energy"):
 		set_player_energy(int(data.get("player_energy", player_energy)))
+	if should_emit_loaded_flags:
+		_emit_loaded_flag_changes(previous_flags)
 
 
 func _duplicate_dictionary(raw_value: Variant) -> Dictionary:
@@ -93,3 +98,11 @@ func _duplicate_dictionary(raw_value: Variant) -> Dictionary:
 		var raw_dictionary: Dictionary = raw_value
 		return raw_dictionary.duplicate(true)
 	return {}
+
+
+func _emit_loaded_flag_changes(previous_flags: Dictionary) -> void:
+	for flag_id in previous_flags.keys():
+		if not flags.has(flag_id):
+			flag_changed.emit(String(flag_id), false)
+	for flag_id in flags.keys():
+		flag_changed.emit(String(flag_id), flags[flag_id])

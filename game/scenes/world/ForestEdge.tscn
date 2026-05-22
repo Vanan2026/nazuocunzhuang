@@ -93,6 +93,7 @@ interaction_hint = "按 E 收起落枝"
 interaction_text = "风吹落的枝条很干，适合带回去修东西。"
 item_id = "wood"
 count = 18
+pickup_id = "forest_edge_fallen_branch_bundle_day1"
 
 [node name="FallenBranchBundleShape" type="CollisionShape2D" parent="FallenBranchBundle"]
 shape = SubResource("RectangleShape2D_interactable")
@@ -110,6 +111,7 @@ interaction_hint = "按 E 收起平石"
 interaction_text = "几块被水冲平的石头，可以拿来垫路牌。"
 item_id = "stone"
 count = 8
+pickup_id = "forest_edge_flat_stone_cache_day1"
 
 [node name="FlatStoneCacheShape" type="CollisionShape2D" parent="FlatStoneCache"]
 shape = SubResource("RectangleShape2D_interactable")

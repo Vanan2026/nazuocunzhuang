@@ -85,6 +85,24 @@ polygon = PackedVector2Array(-320, -160, 560, -160, 560, 400, -320, 400)
 
 [node name="YardStructure" type="Node2D" parent="."]
 
+[node name="RoutePathNetwork" type="Node2D" parent="YardStructure"]
+
+[node name="MailboxNoticeRepairPath" type="Polygon2D" parent="YardStructure/RoutePathNetwork"]
+color = Color(0.6, 0.52, 0.34, 1)
+polygon = PackedVector2Array(46, 86, 78, 72, 132, 70, 196, 88, 260, 124, 250, 148, 184, 112, 126, 94, 76, 94)
+
+[node name="RepairForestPath" type="Polygon2D" parent="YardStructure/RoutePathNetwork"]
+color = Color(0.58, 0.5, 0.33, 1)
+polygon = PackedVector2Array(246, 128, 298, 112, 346, 122, 344, 146, 296, 138, 254, 154)
+
+[node name="FarmBranchPath" type="Polygon2D" parent="YardStructure/RoutePathNetwork"]
+color = Color(0.53, 0.46, 0.32, 1)
+polygon = PackedVector2Array(84, 106, 116, 116, 110, 178, 92, 232, 68, 226, 86, 172)
+
+[node name="ResourceBranchPath" type="Polygon2D" parent="YardStructure/RoutePathNetwork"]
+color = Color(0.5, 0.44, 0.33, 1)
+polygon = PackedVector2Array(58, 156, 18, 172, -24, 190, -34, 170, 8, 150, 48, 138)
+
 [node name="HomeApproachZone" type="Polygon2D" parent="YardStructure"]
 color = Color(0.64, 0.58, 0.46, 1)
 polygon = PackedVector2Array(8, 36, 96, 24, 124, 104, 52, 130, 12, 96)
@@ -231,6 +249,7 @@ interaction_hint = "按 E 收起木柴"
 interaction_text = "整齐码好的木柴，可以用来修东西。"
 item_id = "wood"
 count = 32
+pickup_id = "player_yard_wood_pile_day1"
 
 [node name="WoodPileShape" type="CollisionShape2D" parent="WoodPile"]
 shape = SubResource("RectangleShape2D_interactable")
@@ -248,6 +267,7 @@ interaction_hint = "按 E 收起石块"
 interaction_text = "几块平整的石头，适合加固井沿。"
 item_id = "stone"
 count = 12
+pickup_id = "player_yard_stone_pile_day1"
 
 [node name="StonePileShape" type="CollisionShape2D" parent="StonePile"]
 shape = SubResource("RectangleShape2D_interactable")

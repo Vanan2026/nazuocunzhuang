@@ -57,6 +57,13 @@ func _validate_default_ui_state(yard: Node) -> void:
 		return
 	_expect(not bool(inventory_ui.get("visible")), "InventoryUI should start hidden in normal play")
 	_expect(not bool(dialogue_box.get("visible")), "DialogueBox should start hidden")
+	var dialogue_panel := dialogue_box.get_node_or_null("Panel") as Control
+	_expect(dialogue_panel != null, "DialogueBox should include a compact panel")
+	if _has_failed:
+		return
+	_expect(dialogue_panel.offset_top >= 580.0, "DialogueBox should sit at the bottom edge")
+	_expect(dialogue_panel.offset_right <= 640.0, "DialogueBox should leave lower-middle playfield clear")
+	_expect(dialogue_panel.offset_bottom - dialogue_panel.offset_top <= 132.0, "DialogueBox should stay compact")
 	_expect(not bool(legacy_gate.visible), "BackToOldWorld should be hidden from normal yard play")
 	_expect(not bool(legacy_gate.monitoring), "BackToOldWorld should not monitor interactions in normal yard play")
 	_expect(not bool(bed.visible), "Bed should not render in the yard now that Main starts in PlayerHouse")
@@ -77,6 +84,19 @@ func _validate_layout_relationships(yard: Node) -> void:
 	_expect(structure != null, "PlayerYard should include YardStructure blockout zones")
 	if _has_failed:
 		return
+	var route_network := structure.get_node_or_null("RoutePathNetwork")
+	_expect(route_network != null, "YardStructure should include a first-week route path network")
+	if _has_failed:
+		return
+	for path_name in [
+		"MailboxNoticeRepairPath",
+		"RepairForestPath",
+		"FarmBranchPath",
+		"ResourceBranchPath",
+	]:
+		_expect(route_network.get_node_or_null(path_name) != null, "RoutePathNetwork missing path: %s" % path_name)
+		if _has_failed:
+			return
 	for zone_name in [
 		"HomeApproachZone",
 		"SocialNoticeZone",
