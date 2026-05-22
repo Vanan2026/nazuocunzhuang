@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3]
+[gd_scene load_steps=16 format=3]
 
 [ext_resource type="Script" path="res://game/scenes/Main.gd" id="1_main"]
 [ext_resource type="PackedScene" path="res://game/scenes/home/PlayerHouse.tscn" id="2_player_house"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://game/autoload/SaveManager.gd" id="12_save_manager"]
 [ext_resource type="Script" path="res://game/autoload/QuestManager.gd" id="13_quest_manager"]
 [ext_resource type="PackedScene" path="res://game/scenes/ui/FirstWeekQuestHUD.tscn" id="14_first_week_hud"]
+[ext_resource type="PackedScene" path="res://game/scenes/ui/QuestJournalUI.tscn" id="15_quest_journal"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_main")
@@ -52,6 +53,8 @@ script = ExtResource("12_save_manager")
 script = ExtResource("13_quest_manager")
 
 [node name="FirstWeekQuestHUD" parent="." instance=ExtResource("14_first_week_hud")]
+
+[node name="QuestJournalUI" parent="." instance=ExtResource("15_quest_journal")]
 
 [node name="CurrentScene" type="Node" parent="."]
 

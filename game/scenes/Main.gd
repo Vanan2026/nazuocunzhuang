@@ -19,6 +19,7 @@ const SCENE_REGISTRY: Dictionary = {
 const INITIAL_SCENE_ID: String = "player_house"
 const INITIAL_SPAWN_ID: String = "inside_default"
 const FIRST_WEEK_QUEST_HUD_SCENE_NAME: String = "FirstWeekQuestHUD"
+const QUEST_JOURNAL_UI_SCENE_NAME: String = "QuestJournalUI"
 
 @onready var scene_router: Node = $SceneRouter
 @onready var data_registry: Node = $DataRegistry
@@ -32,6 +33,7 @@ const FIRST_WEEK_QUEST_HUD_SCENE_NAME: String = "FirstWeekQuestHUD"
 @onready var save_manager: Node = $SaveManager
 @onready var quest_manager: Node = $QuestManager
 @onready var first_week_quest_hud: Node = $FirstWeekQuestHUD
+@onready var quest_journal_ui: Node = $QuestJournalUI
 @onready var current_scene_container: Node = $CurrentScene
 
 var current_gameplay_scene: Node = null
@@ -207,6 +209,8 @@ func _bind_persistent_managers() -> void:
 			rumor_manager.bind_weather_manager(weather_manager)
 	if first_week_quest_hud != null and first_week_quest_hud.has_method("bind_quest_manager"):
 		first_week_quest_hud.bind_quest_manager(quest_manager)
+	if quest_journal_ui != null and quest_journal_ui.has_method("bind_quest_manager"):
+		quest_journal_ui.bind_quest_manager(quest_manager)
 
 
 func _bind_scene_managers(scene_root: Node) -> void:
@@ -270,6 +274,8 @@ func _update_first_week_quest_progress() -> void:
 		quest_manager.update_first_week_progress(game_state, scene_router)
 	if first_week_quest_hud != null and first_week_quest_hud.has_method("refresh"):
 		first_week_quest_hud.refresh()
+	if quest_journal_ui != null and quest_journal_ui.has_method("refresh"):
+		quest_journal_ui.refresh()
 
 
 func _resolve_spawn_id(scene_id: String, spawn_id: String) -> String:
