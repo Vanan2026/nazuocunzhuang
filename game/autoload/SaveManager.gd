@@ -75,7 +75,10 @@ func build_runtime_save_data(runtime_root: Node = null) -> Dictionary:
 func apply_save_data(data: Dictionary, runtime_root: Node = null) -> void:
 	last_save_data = data.duplicate(true)
 	if runtime_root != null:
-		apply_runtime_save_data(runtime_root, data)
+		if runtime_root.has_method("apply_main_flow_save_data"):
+			runtime_root.apply_main_flow_save_data(data)
+		else:
+			apply_runtime_save_data(runtime_root, data)
 	save_data_applied.emit()
 
 
@@ -133,7 +136,11 @@ func apply_runtime_save_data(runtime_root: Node, data: Dictionary) -> void:
 
 
 func save_game(runtime_root: Node = null, path: String = DEFAULT_SAVE_PATH) -> bool:
-	var data := build_runtime_save_data(runtime_root)
+	var data: Dictionary = {}
+	if runtime_root != null and runtime_root.has_method("build_main_flow_save_data"):
+		data = runtime_root.build_main_flow_save_data()
+	else:
+		data = build_runtime_save_data(runtime_root)
 	var file := FileAccess.open(path, FileAccess.WRITE)
 	if file == null:
 		push_error("Could not open save file for writing: %s" % path)

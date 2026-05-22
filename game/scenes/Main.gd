@@ -59,12 +59,13 @@ func get_current_gameplay_scene() -> Node:
 	return current_gameplay_scene
 
 
-func change_scene(scene_id: String, spawn_id: String = "default") -> void:
+func change_scene(scene_id: String, spawn_id: String = "default", sync_before_change: bool = true) -> void:
 	if not SCENE_REGISTRY.has(scene_id):
 		push_warning("Unknown main-flow scene id: %s" % scene_id)
 		return
 
-	sync_current_scene_state()
+	if sync_before_change:
+		sync_current_scene_state()
 	_remove_current_scene()
 
 	var scene_info: Dictionary = SCENE_REGISTRY[scene_id]
@@ -133,8 +134,10 @@ func apply_main_flow_save_data(data: Dictionary) -> void:
 	var next_scene_id := String(scene_data.get("current_scene_id", current_gameplay_scene_id))
 	var next_spawn_id := String(scene_data.get("current_spawn_id", current_spawn_id))
 	if not next_scene_id.is_empty() and next_scene_id != current_gameplay_scene_id:
-		change_scene(next_scene_id, next_spawn_id)
+		change_scene(next_scene_id, next_spawn_id, false)
 	else:
+		current_spawn_id = _resolve_spawn_id(next_scene_id, next_spawn_id)
+		scene_router.set_current_scene(current_gameplay_scene_id, current_spawn_id)
 		_apply_shared_state_to_current_scene(false)
 
 
