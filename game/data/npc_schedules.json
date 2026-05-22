@@ -2,7 +2,7 @@
   {
     "schedule_id": "shopkeeper_basic",
     "entries": [
-      {"time_block": "morning", "scene_id": "player_yard", "position": [32, 96], "activity": "整理院门旁的杂货箱"},
+      {"time_block": "morning", "scene_id": "village_shop", "position": [48, 80], "activity": "整理店里新到的种子"},
       {"time_block": "late_morning", "scene_id": "player_yard", "position": [64, 116], "activity": "查看公告板"},
       {"time_block": "afternoon", "scene_id": "player_yard", "position": [116, 140], "activity": "在田边记下需要补货的种子"},
       {"time_block": "evening", "scene_id": "player_yard", "position": [52, 70], "activity": "准备回店里的小路"}
@@ -11,19 +11,19 @@
   {
     "schedule_id": "carpenter_basic",
     "entries": [
-      {"time_block": "morning", "scene_id": "player_yard", "position": [88, 104], "activity": "检查旧井边的木料"},
+      {"time_block": "morning", "scene_id": "carpenter_yard", "position": [80, 96], "activity": "整理木工棚里的旧木料"},
       {"time_block": "late_morning", "scene_id": "player_yard", "position": [146, 188], "activity": "量长椅的木板"},
-      {"time_block": "afternoon", "scene_id": "player_yard", "position": [188, 170], "activity": "修整路牌底座"},
+      {"time_block": "afternoon", "scene_id": "carpenter_yard", "position": [120, 128], "activity": "打磨路牌备用木楔"},
       {"time_block": "evening", "scene_id": "player_yard", "position": [98, 68], "activity": "收拾工具箱"}
     ]
   },
   {
     "schedule_id": "post_runner_basic",
     "entries": [
-      {"time_block": "morning", "scene_id": "player_yard", "position": [220, 72], "activity": "送来当天的村务纸条"},
+      {"time_block": "morning", "scene_id": "post_route", "position": [48, 64], "activity": "沿着邮路送信"},
       {"time_block": "late_morning", "scene_id": "player_yard", "position": [188, 96], "activity": "在公告板前停留"},
-      {"time_block": "afternoon", "scene_id": "player_yard", "position": [232, 118], "activity": "看向森林边缘的小路"},
-      {"time_block": "evening", "scene_id": "player_yard", "position": [168, 72], "activity": "整理还没送完的信"}
+      {"time_block": "afternoon", "scene_id": "forest_edge", "position": [136, 88], "activity": "在森林边缘确认路牌方向"},
+      {"time_block": "evening", "scene_id": "post_route", "position": [112, 72], "activity": "整理还没送完的信"}
     ]
   },
   {

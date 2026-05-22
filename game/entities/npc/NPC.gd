@@ -9,6 +9,7 @@ extends "res://game/entities/interactable/Interactable.gd"
 @export var dialogue_manager_path: NodePath
 @export var relationship_manager_path: NodePath
 @export var dialogue_box_path: NodePath
+@export var rumor_manager_path: NodePath
 @export var time_manager_path: NodePath
 @export var weather_manager_path: NodePath
 @export var birthday_gift_multiplier: int = 2
@@ -53,6 +54,10 @@ func on_interact(interactor: Node) -> void:
 	if _try_gift_interaction(inventory_manager, relationship_manager, dialogue_manager):
 		return
 
+	if _try_rumor_interaction():
+		_apply_first_talk_relationship(relationship_manager)
+		return
+
 	if dialogue_manager == null or not dialogue_manager.has_method("get_dialogue"):
 		return
 
@@ -66,6 +71,25 @@ func on_interact(interactor: Node) -> void:
 			"npc_name": display_name,
 			"portrait": portrait_texture_path,
 		})
+
+
+func _try_rumor_interaction() -> bool:
+	var rumor_manager := _get_rumor_manager()
+	if rumor_manager == null or not rumor_manager.has_method("build_rumor_dialogue"):
+		return false
+	var dialogue: Dictionary = rumor_manager.build_rumor_dialogue("npc")
+	var rumor_ids: Array = dialogue.get("context", {}).get("rumor_ids", [])
+	if rumor_ids.is_empty():
+		return false
+	var dialogue_box := _get_dialogue_box()
+	if dialogue_box != null and dialogue_box.has_method("show_dialogue"):
+		dialogue_box.show_dialogue(dialogue, {
+			"npc_name": display_name,
+			"portrait": portrait_texture_path,
+		})
+	if rumor_manager.has_method("mark_dialogue_rumors_seen"):
+		rumor_manager.mark_dialogue_rumors_seen(dialogue)
+	return true
 
 
 func get_interaction_hint() -> String:
@@ -299,6 +323,10 @@ func _get_relationship_manager() -> Node:
 
 func _get_dialogue_box() -> Node:
 	return _get_linked_node(dialogue_box_path, "DialogueBox")
+
+
+func _get_rumor_manager() -> Node:
+	return _get_linked_node(rumor_manager_path, "RumorManager")
 
 
 func _get_time_manager() -> Node:

@@ -48,6 +48,14 @@
     "sets_flags": []
   },
   {
+    "rumor_id": "rumor_npc_forest_edge",
+    "source": "npc",
+    "priority": 80,
+    "conditions": {"season": "any", "weather": "any", "flag_set": "visited_forest_edge", "flag_not_set": "heard_npc_forest_edge"},
+    "text": "美香说：我刚才在森林边缘看见树根小龛旁边有新脚印，应该是有人来清过小路。",
+    "sets_flags": ["heard_npc_forest_edge"]
+  },
+  {
     "rumor_id": "rumor_old_well_bell",
     "source": "mailbox",
     "priority": 90,

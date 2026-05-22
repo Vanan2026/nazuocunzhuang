@@ -8,6 +8,14 @@
 [ext_resource type="Script" path="res://game/entities/interactable/SceneTravel.gd" id="6_scene_travel"]
 [ext_resource type="Script" path="res://game/entities/interactable/ResourcePickup.gd" id="7_resource_pickup"]
 [ext_resource type="Script" path="res://game/entities/interactable/FlagInteractable.gd" id="8_flag_interactable"]
+[ext_resource type="Script" path="res://game/autoload/TimeManager.gd" id="9_time_manager"]
+[ext_resource type="Script" path="res://game/autoload/WeatherManager.gd" id="10_weather_manager"]
+[ext_resource type="Script" path="res://game/autoload/RelationshipManager.gd" id="11_relationship_manager"]
+[ext_resource type="Script" path="res://game/autoload/DialogueManager.gd" id="12_dialogue_manager"]
+[ext_resource type="Script" path="res://game/autoload/RumorManager.gd" id="13_rumor_manager"]
+[ext_resource type="Script" path="res://game/systems/npc/NpcScheduleDirector.gd" id="14_schedule_director"]
+[ext_resource type="Script" path="res://game/systems/scene/SpawnPoint.gd" id="15_spawn_point"]
+[ext_resource type="PackedScene" path="res://game/entities/npc/NPC.tscn" id="16_npc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_interactable"]
 size = Vector2(44, 28)
@@ -21,8 +29,23 @@ enabled = true
 [node name="DataRegistry" type="Node" parent="."]
 script = ExtResource("2_data_registry")
 
+[node name="TimeManager" type="Node" parent="."]
+script = ExtResource("9_time_manager")
+
+[node name="WeatherManager" type="Node" parent="."]
+script = ExtResource("10_weather_manager")
+
 [node name="InventoryManager" type="Node" parent="."]
 script = ExtResource("3_inventory_manager")
+
+[node name="RelationshipManager" type="Node" parent="."]
+script = ExtResource("11_relationship_manager")
+
+[node name="DialogueManager" type="Node" parent="."]
+script = ExtResource("12_dialogue_manager")
+
+[node name="RumorManager" type="Node" parent="."]
+script = ExtResource("13_rumor_manager")
 
 [node name="GameState" type="Node" parent="."]
 script = ExtResource("4_game_state")
@@ -45,6 +68,8 @@ display_name = "回院子的小路"
 interaction_hint = "按 E 回到院子"
 interaction_text = "沿着来时的小路回去。"
 target_scene = "res://game/scenes/world/PlayerYard.tscn"
+target_scene_id = "player_yard"
+target_spawn_id = "from_forest_edge"
 arrival_flag_id = "returned_from_forest_edge"
 
 [node name="BackToYardShape" type="CollisionShape2D" parent="BackToYard"]
@@ -106,3 +131,19 @@ polygon = PackedVector2Array(-14, -14, 14, -14, 14, 14, -14, 14)
 
 [node name="Player" parent="." instance=ExtResource("1_player")]
 position = Vector2(4, 132)
+
+[node name="SpawnFromYard" type="Marker2D" parent="."]
+position = Vector2(4, 132)
+script = ExtResource("15_spawn_point")
+spawn_id = "from_yard"
+
+[node name="NPCs" type="Node2D" parent="."]
+
+[node name="Mika" parent="NPCs" instance=ExtResource("16_npc")]
+position = Vector2(136, 88)
+npc_id = "mika"
+sprite_texture_path = "res://assets/art/characters/npc/npc_mika_idle_down_128.png"
+
+[node name="ScheduleDirector" type="Node" parent="."]
+script = ExtResource("14_schedule_director")
+scene_id = "forest_edge"

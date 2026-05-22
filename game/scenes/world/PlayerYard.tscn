@@ -20,12 +20,13 @@
 [ext_resource type="Script" uid="uid://bfyhl1048s4x6" path="res://game/autoload/EventBus.gd" id="18_event_bus"]
 [ext_resource type="Script" uid="uid://g5c05buevw07" path="res://game/autoload/SaveManager.gd" id="19_save_manager"]
 [ext_resource type="Script" uid="uid://dsaw5gga3t2je" path="res://game/systems/restoration/RestorationTarget.gd" id="20_restoration_target"]
-[ext_resource type="Script" uid="uid://c1bwdms4r23fb" path="res://game/entities/interactable/SceneTravel.gd" id="21_scene_switch_area"]
+[ext_resource type="Script" path="res://game/entities/interactable/SceneTravel.gd" id="21_scene_switch_area"]
 [ext_resource type="Script" path="res://game/autoload/RumorManager.gd" id="22_bgxpi"]
 [ext_resource type="Script" path="res://game/entities/interactable/ResourcePickup.gd" id="23_resource_pickup"]
 [ext_resource type="Script" path="res://game/entities/interactable/FlagInteractable.gd" id="24_flag_interactable"]
 [ext_resource type="Script" path="res://game/entities/interactable/RumorBoard.gd" id="25_rumor_board"]
 [ext_resource type="Script" path="res://game/systems/npc/NpcScheduleDirector.gd" id="26_schedule_director"]
+[ext_resource type="Script" path="res://game/systems/scene/SpawnPoint.gd" id="27_spawn_point"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_interactable"]
 size = Vector2(32, 28)
@@ -176,6 +177,8 @@ display_name = "森林边缘小路"
 interaction_hint = "按 E 前往森林边缘"
 interaction_text = "路牌后面有一条短短的小路，能走到森林边缘。"
 target_scene = "res://game/scenes/world/ForestEdge.tscn"
+target_scene_id = "forest_edge"
+target_spawn_id = "from_yard"
 arrival_flag_id = "entered_forest_edge_path"
 
 [node name="ForestTrailGateShape" type="CollisionShape2D" parent="ForestTrailGate"]
@@ -339,6 +342,16 @@ sprite_texture_path = "res://assets/art/characters/npc/npc_mika_idle_down_128.pn
 
 [node name="Player" parent="." unique_id=893517574 instance=ExtResource("1_player")]
 position = Vector2(96, 88)
+
+[node name="SpawnFromHouse" type="Marker2D" parent="."]
+position = Vector2(96, 88)
+script = ExtResource("27_spawn_point")
+spawn_id = "from_house"
+
+[node name="SpawnFromForestEdge" type="Marker2D" parent="."]
+position = Vector2(232, 120)
+script = ExtResource("27_spawn_point")
+spawn_id = "from_forest_edge"
 
 [node name="BackToOldWorld" type="Area2D" parent="." unique_id=1817665055 groups=["interactable"]]
 position = Vector2(80, 160)

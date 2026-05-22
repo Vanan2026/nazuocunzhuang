@@ -24,6 +24,7 @@ func apply_schedule(block_override: String = "") -> void:
 		block = _get_current_block()
 	current_assignments.clear()
 	for npc_node in npc_root.get_children():
+		npc_node.visible = false
 		var npc_id := _get_npc_id(npc_node)
 		if npc_id.is_empty():
 			continue
@@ -58,9 +59,10 @@ func _find_assignment(schedule: Dictionary, block: String) -> Dictionary:
 
 func _apply_assignment(npc_node: Node, assignment: Dictionary) -> void:
 	var entry_scene := String(assignment.get("scene_id", ""))
-	npc_node.visible = entry_scene == scene_id
-	if not npc_node.visible:
+	npc_node.visible = false
+	if entry_scene != scene_id:
 		return
+	npc_node.visible = true
 	var position_data: Variant = assignment.get("position", [])
 	if npc_node is Node2D and position_data is Array and position_data.size() == 2:
 		(npc_node as Node2D).position = Vector2(float(position_data[0]), float(position_data[1]))

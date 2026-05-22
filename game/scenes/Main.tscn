@@ -1,8 +1,55 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=14 format=3]
 
-[ext_resource type="PackedScene" path="res://game/scenes/home/PlayerHouse.tscn" id="1_player_house"]
+[ext_resource type="Script" path="res://game/scenes/Main.gd" id="1_main"]
+[ext_resource type="PackedScene" path="res://game/scenes/home/PlayerHouse.tscn" id="2_player_house"]
+[ext_resource type="Script" path="res://game/autoload/SceneRouter.gd" id="3_scene_router"]
+[ext_resource type="Script" path="res://game/autoload/DataRegistry.gd" id="4_data_registry"]
+[ext_resource type="Script" path="res://game/autoload/TimeManager.gd" id="5_time_manager"]
+[ext_resource type="Script" path="res://game/autoload/WeatherManager.gd" id="6_weather_manager"]
+[ext_resource type="Script" path="res://game/autoload/InventoryManager.gd" id="7_inventory_manager"]
+[ext_resource type="Script" path="res://game/autoload/RelationshipManager.gd" id="8_relationship_manager"]
+[ext_resource type="Script" path="res://game/autoload/DialogueManager.gd" id="9_dialogue_manager"]
+[ext_resource type="Script" path="res://game/autoload/RumorManager.gd" id="10_rumor_manager"]
+[ext_resource type="Script" path="res://game/autoload/GameState.gd" id="11_game_state"]
+[ext_resource type="Script" path="res://game/autoload/SaveManager.gd" id="12_save_manager"]
+[ext_resource type="Script" path="res://game/autoload/QuestManager.gd" id="13_quest_manager"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_main")
 
-[node name="PlayerHouse" parent="." instance=ExtResource("1_player_house")]
+[node name="SceneRouter" type="Node" parent="."]
+script = ExtResource("3_scene_router")
 
+[node name="DataRegistry" type="Node" parent="."]
+script = ExtResource("4_data_registry")
+
+[node name="TimeManager" type="Node" parent="."]
+script = ExtResource("5_time_manager")
+
+[node name="WeatherManager" type="Node" parent="."]
+script = ExtResource("6_weather_manager")
+
+[node name="InventoryManager" type="Node" parent="."]
+script = ExtResource("7_inventory_manager")
+
+[node name="RelationshipManager" type="Node" parent="."]
+script = ExtResource("8_relationship_manager")
+
+[node name="DialogueManager" type="Node" parent="."]
+script = ExtResource("9_dialogue_manager")
+
+[node name="RumorManager" type="Node" parent="."]
+script = ExtResource("10_rumor_manager")
+
+[node name="GameState" type="Node" parent="."]
+script = ExtResource("11_game_state")
+
+[node name="SaveManager" type="Node" parent="."]
+script = ExtResource("12_save_manager")
+
+[node name="QuestManager" type="Node" parent="."]
+script = ExtResource("13_quest_manager")
+
+[node name="CurrentScene" type="Node" parent="."]
+
+[node name="PlayerHouse" parent="." instance=ExtResource("2_player_house")]

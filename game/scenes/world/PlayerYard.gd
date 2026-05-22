@@ -145,6 +145,8 @@ func _on_bed_sleep_completed(_date_info: Dictionary, _weather_info: Dictionary) 
 
 
 func _on_mailbox_interacted(_interactor: Node, _interactable_id: String) -> void:
+	if game_state != null and game_state.has_method("set_flag"):
+		game_state.set_flag("read_mailbox_day1", true)
 	show_mailbox_rumors()
 
 

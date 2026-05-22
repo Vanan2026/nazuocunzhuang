@@ -22,6 +22,8 @@ func build_save_data() -> Dictionary:
 		"inventory": {},
 		"relationships": {},
 		"flags": {},
+		"scene": {},
+		"quests": {},
 		"farm_plots": {},
 		"restoration_states": {},
 	}
@@ -48,6 +50,14 @@ func build_runtime_save_data(runtime_root: Node = null) -> Dictionary:
 	var relationship_manager := _get_runtime_node(root_node, "RelationshipManager")
 	if relationship_manager != null and relationship_manager.has_method("get_save_data"):
 		data["relationships"] = relationship_manager.get_save_data()
+
+	var scene_router := _get_runtime_node(root_node, "SceneRouter")
+	if scene_router != null and scene_router.has_method("get_save_data"):
+		data["scene"] = scene_router.get_save_data()
+
+	var quest_manager := _get_runtime_node(root_node, "QuestManager")
+	if quest_manager != null and quest_manager.has_method("get_save_data"):
+		data["quests"] = quest_manager.get_save_data()
 
 	var game_state := _get_runtime_node(root_node, "GameState")
 	if game_state != null and game_state.has_method("get_save_data"):
@@ -88,6 +98,14 @@ func apply_runtime_save_data(runtime_root: Node, data: Dictionary) -> void:
 	var relationship_manager := _get_runtime_node(runtime_root, "RelationshipManager")
 	if relationship_manager != null and relationship_manager.has_method("apply_save_data") and data.has("relationships"):
 		relationship_manager.apply_save_data(_dictionary_from(data.get("relationships", {})))
+
+	var scene_router := _get_runtime_node(runtime_root, "SceneRouter")
+	if scene_router != null and scene_router.has_method("apply_save_data") and data.has("scene"):
+		scene_router.apply_save_data(_dictionary_from(data.get("scene", {})))
+
+	var quest_manager := _get_runtime_node(runtime_root, "QuestManager")
+	if quest_manager != null and quest_manager.has_method("apply_save_data") and data.has("quests"):
+		quest_manager.apply_save_data(_dictionary_from(data.get("quests", {})))
 
 	var game_state := _get_runtime_node(runtime_root, "GameState")
 	if game_state != null and game_state.has_method("apply_save_data"):

@@ -4,6 +4,7 @@ extends "res://game/entities/interactable/Interactable.gd"
 @export var rumor_source: String = "bulletin"
 @export var rumor_manager_path: NodePath
 @export var dialogue_box_path: NodePath
+@export var game_state_path: NodePath
 @export var speaker_name: String = "公告板"
 
 
@@ -15,6 +16,9 @@ func on_interact(interactor: Node) -> void:
 func show_rumors() -> Dictionary:
 	var rumor_manager := _get_rumor_manager()
 	var dialogue_box := _get_dialogue_box()
+	var game_state := _get_game_state()
+	if game_state != null and game_state.has_method("set_flag") and rumor_source == "bulletin":
+		game_state.set_flag("read_bulletin_day1", true)
 	if rumor_manager == null or not rumor_manager.has_method("build_rumor_dialogue"):
 		return {}
 	var dialogue: Dictionary = rumor_manager.build_rumor_dialogue(rumor_source)
@@ -34,6 +38,10 @@ func _get_rumor_manager() -> Node:
 
 func _get_dialogue_box() -> Node:
 	return _get_linked_node(dialogue_box_path, "DialogueBox")
+
+
+func _get_game_state() -> Node:
+	return _get_linked_node(game_state_path, "GameState")
 
 
 func _get_linked_node(path: NodePath, fallback_name: String) -> Node:
