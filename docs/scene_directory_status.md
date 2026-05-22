@@ -51,8 +51,6 @@ New explorable-world work goes under:
 
 Do not create another main playable home-area scene under `scenes/world/`.
 
-Legacy cloud/homeyard generation and validation scripts live under:
+Legacy cloud/homeyard generation and validation scripts were hard-cleaned on 2026-05-20.
 
-- `tools/legacy_homeyard/`
-
-Do not use those scripts as the active build/load gate for the playable world.
+Do not restore those scripts as active build/load gates for the playable world. Use git history only if a specific diagnostic file is needed.

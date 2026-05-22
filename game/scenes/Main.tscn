@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3]
 
-[ext_resource type="PackedScene" path="res://game/scenes/world/WorldRoot.tscn" id="1_world_root"]
+[ext_resource type="PackedScene" path="res://game/scenes/home/PlayerHouse.tscn" id="1_player_house"]
 
 [node name="Main" type="Node"]
 
-[node name="WorldRoot" parent="." instance=ExtResource("1_world_root")]
+[node name="PlayerHouse" parent="." instance=ExtResource("1_player_house")]
 

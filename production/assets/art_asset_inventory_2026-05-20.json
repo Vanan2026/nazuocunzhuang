@@ -1,0 +1,886 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-05-20",
+  "generated_by": "tools/audit_art_asset_inventory.py",
+  "project": "The Village",
+  "scan_roots": [
+    "assets",
+    "production/assets",
+    "game/data",
+    "scenes",
+    "tools"
+  ],
+  "summary": {
+    "scanned_file_count": 3318,
+    "image_file_count": 1466,
+    "runtime_art_image_count": 551,
+    "manifest_file_count": 30,
+    "res_reference_count": 3148,
+    "unresolved_res_reference_count": 65
+  },
+  "image_groups": {
+    "production_asset/base_asset_pack": 498,
+    "production_asset/characters": 45,
+    "production_asset/external_gpt_handoff": 57,
+    "production_asset/final_art": 72,
+    "production_asset/homeyard": 1,
+    "production_asset/items": 30,
+    "production_asset/protagonist": 135,
+    "production_region/back_farm_art": 33,
+    "production_region/home_area_bake": 11,
+    "production_region/home_area_blockout": 2,
+    "production_region/home_area_world2d": 31,
+    "runtime_art/characters": 32,
+    "runtime_art/crops": 32,
+    "runtime_art/greenfield_p0": 433,
+    "runtime_art/icons": 3,
+    "runtime_art/items": 29,
+    "runtime_art/portraits": 12,
+    "runtime_art/props": 8,
+    "runtime_art/ui": 2
+  },
+  "png_dimension_samples": {
+    "assets/art/characters/npc/npc_aoi_idle_down_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_aoi_idle_left_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_aoi_idle_right_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_aoi_idle_up_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_aoi_walk_down_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_aoi_walk_left_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_aoi_walk_right_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_aoi_walk_up_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_gen_idle_down_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_gen_idle_left_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_gen_idle_right_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_gen_idle_up_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_gen_walk_down_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_gen_walk_left_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_gen_walk_right_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_gen_walk_up_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_hana_idle_down_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_hana_idle_left_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_hana_idle_right_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_hana_idle_up_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_hana_walk_down_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_hana_walk_left_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_hana_walk_right_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_hana_walk_up_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_mika_idle_down_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_mika_idle_left_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_mika_idle_right_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_mika_idle_up_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_mika_walk_down_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_mika_walk_left_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_mika_walk_right_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/characters/npc/npc_mika_walk_up_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/crops/crop_cucumber_stage_00_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_cucumber_stage_01_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_cucumber_stage_02_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_cucumber_stage_03_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_daikon_stage_00_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_daikon_stage_01_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_daikon_stage_02_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_daikon_stage_03_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_potato_stage_00_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_potato_stage_01_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_potato_stage_02_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_potato_stage_03_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_pumpkin_stage_00_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_pumpkin_stage_01_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_pumpkin_stage_02_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_pumpkin_stage_03_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_strawberry_stage_00_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_strawberry_stage_01_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_strawberry_stage_02_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_strawberry_stage_03_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_tomato_stage_00_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_tomato_stage_01_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_tomato_stage_02_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_tomato_stage_03_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_turnip_stage_00_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_turnip_stage_01_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_turnip_stage_02_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_turnip_stage_03_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_watermelon_stage_00_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_watermelon_stage_01_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_watermelon_stage_02_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/crops/crop_watermelon_stage_03_64.png": {
+      "width": 64,
+      "height": 64
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_aoi_idle_down_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_aoi_idle_down_left_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_aoi_idle_down_right_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_aoi_idle_left_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_aoi_idle_right_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_aoi_idle_up_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_aoi_idle_up_left_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_aoi_idle_up_right_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_aoi_walk_down_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_aoi_walk_down_left_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_aoi_walk_down_right_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_aoi_walk_left_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_aoi_walk_right_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_aoi_walk_up_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_aoi_walk_up_left_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_aoi_walk_up_right_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_gen_idle_down_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_gen_idle_down_left_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_gen_idle_down_right_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_gen_idle_left_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_gen_idle_right_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_gen_idle_up_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_gen_idle_up_left_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_gen_idle_up_right_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_gen_walk_down_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_gen_walk_down_left_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_gen_walk_down_right_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_gen_walk_left_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_gen_walk_right_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_gen_walk_up_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_gen_walk_up_left_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_gen_walk_up_right_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_hana_idle_down_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_hana_idle_down_left_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_hana_idle_down_right_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_hana_idle_left_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_hana_idle_right_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_hana_idle_up_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_hana_idle_up_left_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_hana_idle_up_right_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_hana_walk_down_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_hana_walk_down_left_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_hana_walk_down_right_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_hana_walk_left_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_hana_walk_right_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_hana_walk_up_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_hana_walk_up_left_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_hana_walk_up_right_4x128.png": {
+      "width": 512,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_mika_idle_down_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_mika_idle_down_left_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_mika_idle_down_right_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_mika_idle_left_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_mika_idle_right_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_mika_idle_up_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_mika_idle_up_left_128.png": {
+      "width": 128,
+      "height": 128
+    },
+    "assets/art/greenfield_p0/characters/npc/npc_mika_idle_up_right_128.png": {
+      "width": 128,
+      "height": 128
+    }
+  },
+  "manifest_files": [
+    "production/assets/base_asset_pack/v001/01_mother_images/regions/back_farm/back_farm_manifest.json",
+    "production/assets/base_asset_pack/v001/01_mother_images/regions/cliff_view/cliff_view_manifest.json",
+    "production/assets/base_asset_pack/v001/01_mother_images/regions/forest_edge/forest_edge_manifest.json",
+    "production/assets/base_asset_pack/v001/01_mother_images/regions/home_area/home_area_manifest.json",
+    "production/assets/base_asset_pack/v001/01_mother_images/regions/mountain/mountain_manifest.json",
+    "production/assets/base_asset_pack/v001/01_mother_images/regions/mountain_hut/mountain_hut_manifest.json",
+    "production/assets/base_asset_pack/v001/01_mother_images/regions/mountain_path/mountain_path_manifest.json",
+    "production/assets/base_asset_pack/v001/01_mother_images/regions/orchard/orchard_manifest.json",
+    "production/assets/base_asset_pack/v001/01_mother_images/regions/pond/pond_manifest.json",
+    "production/assets/base_asset_pack/v001/01_mother_images/regions/village/village_manifest.json",
+    "production/assets/base_asset_pack/v001/workflow_manifest.json",
+    "production/assets/characters/p0_npc_complete_runtime/v001/p0_npc_complete_runtime_manifest.json",
+    "production/assets/external_gpt_handoff/greenfield_p0/v001/asset_request_manifest.json",
+    "production/assets/final_art/final_art_manifest_contract_2026-05-15.json",
+    "production/assets/final_art/final_art_phase2_batch_c_d_manifest.json",
+    "production/assets/final_art/final_art_phase2_batch_e_runtime_manifest.json",
+    "production/assets/final_art/runtime_landing_pass1/art_landing_pass1_manifest.json",
+    "production/assets/items/p0_item_icons/v001/p0_item_icons_manifest.json",
+    "production/assets/project_art_production_manifest_2026-05-19.json",
+    "production/assets/protagonist/protagonist_final_asset_manifest.json",
+    "production/assets/protagonist/protagonist_runtime_manifest_v001.json",
+    "production/assets/regions/back_farm_art/v001/region_back_farm_art_v001_manifest.json",
+    "production/assets/regions/back_farm_art/v002/region_back_farm_art_v002_manifest.json",
+    "production/assets/regions/home_area_bake/candidates/v001/region_home_area_bake_candidate_manifest.json",
+    "production/assets/regions/home_area_blockout/v001/region_home_area_blockout_manifest.json",
+    "production/assets/regions/home_area_world2d/v001/03_layer_export/export_manifest_template.json",
+    "production/assets/regions/home_area_world2d/v001/03_layer_export/four_layer_package/four_layer_manifest.json",
+    "production/assets/regions/home_area_world2d/v001/03_layer_export/layer_export_manifest.json",
+    "production/assets/regions/home_area_world2d/v001/03_layer_export/props_pivot_manifest.json",
+    "production/assets/regions/home_area_world2d/v001/workflow_manifest.json"
+  ],
+  "production_packages": [
+    {
+      "dir": "production/assets/regions/back_farm_art/v001",
+      "file_count": 23,
+      "image_count": 11,
+      "manifest_count": 1,
+      "manifests": [
+        "production/assets/regions/back_farm_art/v001/region_back_farm_art_v001_manifest.json"
+      ],
+      "needs_manifest_review": false
+    },
+    {
+      "dir": "production/assets/regions/back_farm_art/v002",
+      "file_count": 45,
+      "image_count": 22,
+      "manifest_count": 1,
+      "manifests": [
+        "production/assets/regions/back_farm_art/v002/region_back_farm_art_v002_manifest.json"
+      ],
+      "needs_manifest_review": false
+    },
+    {
+      "dir": "production/assets/regions/home_area_bake/candidates/v001",
+      "file_count": 23,
+      "image_count": 11,
+      "manifest_count": 1,
+      "manifests": [
+        "production/assets/regions/home_area_bake/candidates/v001/region_home_area_bake_candidate_manifest.json"
+      ],
+      "needs_manifest_review": false
+    },
+    {
+      "dir": "production/assets/regions/home_area_blockout/v001",
+      "file_count": 6,
+      "image_count": 2,
+      "manifest_count": 1,
+      "manifests": [
+        "production/assets/regions/home_area_blockout/v001/region_home_area_blockout_manifest.json"
+      ],
+      "needs_manifest_review": false
+    },
+    {
+      "dir": "production/assets/regions/home_area_world2d/v001",
+      "file_count": 93,
+      "image_count": 31,
+      "manifest_count": 5,
+      "manifests": [
+        "production/assets/regions/home_area_world2d/v001/03_layer_export/export_manifest_template.json",
+        "production/assets/regions/home_area_world2d/v001/03_layer_export/four_layer_package/four_layer_manifest.json",
+        "production/assets/regions/home_area_world2d/v001/03_layer_export/layer_export_manifest.json",
+        "production/assets/regions/home_area_world2d/v001/03_layer_export/props_pivot_manifest.json",
+        "production/assets/regions/home_area_world2d/v001/workflow_manifest.json"
+      ],
+      "needs_manifest_review": false
+    }
+  ],
+  "references": {
+    "files_with_res_refs": 1619,
+    "unresolved_res_refs": [
+      "res://%s",
+      "res://([^",
+      "res://.codex/trailer/concept_trailer_2d_slice_2026-05-14",
+      "res://[^\\",
+      "res://assets/3d/",
+      "res://assets/3d/modules/hunyuan_scene_001/official/hunyuan_scene_001_authored_runtime.json",
+      "res://assets/3d/modules/hunyuan_scene_001/official/{file.name}",
+      "res://assets/3d/modules/hunyuan_scene_001/{mod_name}.glb",
+      "res://assets/3d/processed",
+      "res://assets/art/characters/npc/npc_",
+      "res://assets/art/greenfield_p0/regions/{region[",
+      "res://assets/art/portraits/npc_",
+      "res://game/scenes/world/CarpenterYard.tscn",
+      "res://game/scenes/world/NpcHomeAoi.tscn",
+      "res://game/scenes/world/NpcHomeGen.tscn",
+      "res://game/scenes/world/NpcHomeHana.tscn",
+      "res://game/scenes/world/NpcHomeMika.tscn",
+      "res://game/scenes/world/VillageBench.tscn",
+      "res://game/scenes/world/VillagePath.tscn",
+      "res://game/scenes/world/VillageShop.tscn",
+      "res://production/assets/regions/back_farm_art/v001/{file_name}",
+      "res://production/assets/regions/home_area_formal/",
+      "res://production/assets/regions/home_area_formal/v001/layers/foreground_cutouts/",
+      "res://production/assets/regions/home_area_launch",
+      "res://scenes/dev/region_home_area_blockout_3d_v002.tscn`",
+      "res://scripts/tools/dev_3d_mesh_preview.gd",
+      "res://sprites/environments/homeyard/bg/homeyard_bg_clouds_01.png`",
+      "res://sprites/environments/homeyard/bg/homeyard_bg_far_trees_01.png`",
+      "res://sprites/environments/homeyard/bg/homeyard_bg_far_village_01.png`",
+      "res://sprites/environments/homeyard/bg/homeyard_bg_mountains_01.png`",
+      "res://sprites/environments/homeyard/bg/homeyard_bg_sky_01.png`",
+      "res://sprites/environments/homeyard/fg/homeyard_fg_branch_optional_01.png`",
+      "res://sprites/environments/homeyard/fg/homeyard_fg_flower_right_01.png`",
+      "res://sprites/environments/homeyard/fg/homeyard_fg_grass_left_01.png`",
+      "res://sprites/environments/homeyard/fg/homeyard_fg_leaves_top_01.png`",
+      "res://sprites/environments/homeyard/fg/homeyard_fg_shadow_overlay_01.png`",
+      "res://sprites/environments/homeyard/fx/homeyard_fx_dapplelight_01.png`",
+      "res://sprites/environments/homeyard/fx/homeyard_fx_dust_particles_01.png`",
+      "res://sprites/environments/homeyard/fx/homeyard_fx_fan_blades_anim_01.png`",
+      "res://sprites/environments/homeyard/fx/homeyard_fx_leaf_sway_01.png`",
+      "res://sprites/environments/homeyard/fx/homeyard_fx_windchime_anim_01.png`",
+      "res://sprites/environments/homeyard/mid/homeyard_mid_flower_bush_blue_01.png`",
+      "res://sprites/environments/homeyard/mid/homeyard_mid_garden_ground_01.png`",
+      "res://sprites/environments/homeyard/mid/homeyard_mid_house_main_01.png`",
+      "res://sprites/environments/homeyard/mid/homeyard_mid_house_roof_01.png`",
+      "res://sprites/environments/homeyard/mid/homeyard_mid_interior_darkbase_01.png`",
+      "res://sprites/environments/homeyard/mid/homeyard_mid_persimmon_tree_01.png`",
+      "res://sprites/environments/homeyard/mid/homeyard_mid_persimmon_tree_canopy_01.png`",
+      "res://sprites/environments/homeyard/mid/homeyard_mid_persimmon_tree_trunk_01.png`",
+      "res://sprites/environments/homeyard/mid/homeyard_mid_shrub_cluster_01.png`",
+      "res://sprites/environments/homeyard/mid/homeyard_mid_sliding_doors_01.png`",
+      "res://sprites/environments/homeyard/mid/homeyard_mid_stone_path_01.png`",
+      "res://sprites/environments/homeyard/mid/homeyard_mid_stone_wall_01.png`",
+      "res://sprites/environments/homeyard/mid/homeyard_mid_veranda_floor_01.png`",
+      "res://sprites/environments/homeyard/mid/homeyard_mid_wooden_pillars_01.png`",
+      "res://sprites/environments/homeyard/props/homeyard_prop_bucket_01.png`",
+      "res://sprites/environments/homeyard/props/homeyard_prop_fan_blades_01.png`",
+      "res://sprites/environments/homeyard/props/homeyard_prop_oldfan_01.png`",
+      "res://sprites/environments/homeyard/props/homeyard_prop_tray_01.png`",
+      "res://sprites/environments/homeyard/props/homeyard_prop_watermelon_half_01.png`",
+      "res://sprites/environments/homeyard/props/homeyard_prop_well_01.png`",
+      "res://sprites/environments/homeyard/props/homeyard_prop_windchime_01.png`",
+      "res://{AUTHORED_RUNTIME_JSON.relative_to(ROOT",
+      "res://{frame.relative_to(ROOT",
+      "res://{rel}"
+    ],
+    "unresolved_res_refs_by_category": {
+      "missing_or_external_reference": {
+        "count": 38,
+        "refs": [
+          "res://scenes/dev/region_home_area_blockout_3d_v002.tscn`",
+          "res://scripts/tools/dev_3d_mesh_preview.gd",
+          "res://sprites/environments/homeyard/bg/homeyard_bg_clouds_01.png`",
+          "res://sprites/environments/homeyard/bg/homeyard_bg_far_trees_01.png`",
+          "res://sprites/environments/homeyard/bg/homeyard_bg_far_village_01.png`",
+          "res://sprites/environments/homeyard/bg/homeyard_bg_mountains_01.png`",
+          "res://sprites/environments/homeyard/bg/homeyard_bg_sky_01.png`",
+          "res://sprites/environments/homeyard/fg/homeyard_fg_branch_optional_01.png`",
+          "res://sprites/environments/homeyard/fg/homeyard_fg_flower_right_01.png`",
+          "res://sprites/environments/homeyard/fg/homeyard_fg_grass_left_01.png`",
+          "res://sprites/environments/homeyard/fg/homeyard_fg_leaves_top_01.png`",
+          "res://sprites/environments/homeyard/fg/homeyard_fg_shadow_overlay_01.png`",
+          "res://sprites/environments/homeyard/fx/homeyard_fx_dapplelight_01.png`",
+          "res://sprites/environments/homeyard/fx/homeyard_fx_dust_particles_01.png`",
+          "res://sprites/environments/homeyard/fx/homeyard_fx_fan_blades_anim_01.png`",
+          "res://sprites/environments/homeyard/fx/homeyard_fx_leaf_sway_01.png`",
+          "res://sprites/environments/homeyard/fx/homeyard_fx_windchime_anim_01.png`",
+          "res://sprites/environments/homeyard/mid/homeyard_mid_flower_bush_blue_01.png`",
+          "res://sprites/environments/homeyard/mid/homeyard_mid_garden_ground_01.png`",
+          "res://sprites/environments/homeyard/mid/homeyard_mid_house_main_01.png`",
+          "res://sprites/environments/homeyard/mid/homeyard_mid_house_roof_01.png`",
+          "res://sprites/environments/homeyard/mid/homeyard_mid_interior_darkbase_01.png`",
+          "res://sprites/environments/homeyard/mid/homeyard_mid_persimmon_tree_01.png`",
+          "res://sprites/environments/homeyard/mid/homeyard_mid_persimmon_tree_canopy_01.png`",
+          "res://sprites/environments/homeyard/mid/homeyard_mid_persimmon_tree_trunk_01.png`",
+          "res://sprites/environments/homeyard/mid/homeyard_mid_shrub_cluster_01.png`",
+          "res://sprites/environments/homeyard/mid/homeyard_mid_sliding_doors_01.png`",
+          "res://sprites/environments/homeyard/mid/homeyard_mid_stone_path_01.png`",
+          "res://sprites/environments/homeyard/mid/homeyard_mid_stone_wall_01.png`",
+          "res://sprites/environments/homeyard/mid/homeyard_mid_veranda_floor_01.png`",
+          "res://sprites/environments/homeyard/mid/homeyard_mid_wooden_pillars_01.png`",
+          "res://sprites/environments/homeyard/props/homeyard_prop_bucket_01.png`",
+          "res://sprites/environments/homeyard/props/homeyard_prop_fan_blades_01.png`",
+          "res://sprites/environments/homeyard/props/homeyard_prop_oldfan_01.png`",
+          "res://sprites/environments/homeyard/props/homeyard_prop_tray_01.png`",
+          "res://sprites/environments/homeyard/props/homeyard_prop_watermelon_half_01.png`",
+          "res://sprites/environments/homeyard/props/homeyard_prop_well_01.png`",
+          "res://sprites/environments/homeyard/props/homeyard_prop_windchime_01.png`"
+        ]
+      },
+      "non_current_pipeline_reference": {
+        "count": 1,
+        "refs": [
+          "res://assets/3d/modules/hunyuan_scene_001/official/hunyuan_scene_001_authored_runtime.json"
+        ]
+      },
+      "planned_forward_scene_backlog": {
+        "count": 8,
+        "refs": [
+          "res://game/scenes/world/CarpenterYard.tscn",
+          "res://game/scenes/world/NpcHomeAoi.tscn",
+          "res://game/scenes/world/NpcHomeGen.tscn",
+          "res://game/scenes/world/NpcHomeHana.tscn",
+          "res://game/scenes/world/NpcHomeMika.tscn",
+          "res://game/scenes/world/VillageBench.tscn",
+          "res://game/scenes/world/VillagePath.tscn",
+          "res://game/scenes/world/VillageShop.tscn"
+        ]
+      },
+      "template_or_regex_literal": {
+        "count": 18,
+        "refs": [
+          "res://%s",
+          "res://([^",
+          "res://.codex/trailer/concept_trailer_2d_slice_2026-05-14",
+          "res://[^\\",
+          "res://assets/3d/",
+          "res://assets/3d/modules/hunyuan_scene_001/official/{file.name}",
+          "res://assets/3d/modules/hunyuan_scene_001/{mod_name}.glb",
+          "res://assets/3d/processed",
+          "res://assets/art/characters/npc/npc_",
+          "res://assets/art/greenfield_p0/regions/{region[",
+          "res://assets/art/portraits/npc_",
+          "res://production/assets/regions/back_farm_art/v001/{file_name}",
+          "res://production/assets/regions/home_area_formal/",
+          "res://production/assets/regions/home_area_formal/v001/layers/foreground_cutouts/",
+          "res://production/assets/regions/home_area_launch",
+          "res://{AUTHORED_RUNTIME_JSON.relative_to(ROOT",
+          "res://{frame.relative_to(ROOT",
+          "res://{rel}"
+        ]
+      }
+    },
+    "unreferenced_runtime_art_images": {
+      "count": 0,
+      "note": "Unreferenced does not mean invalid; it means not currently found in scanned text/data references.",
+      "paths": []
+    }
+  },
+  "data_backlogs": {
+    "item_icons": {
+      "missing_count": 0,
+      "missing_by_category": {},
+      "expected_p0_categories": [
+        "seed",
+        "material",
+        "forage",
+        "fish",
+        "food",
+        "key"
+      ],
+      "expected_p0_categories_still_missing": [],
+      "missing": []
+    },
+    "crop_stage_sprites": {
+      "missing_count": 0,
+      "missing": []
+    },
+    "npc_complete_runtime_art": {
+      "required_npc_ids": [
+        "aoi",
+        "gen",
+        "mika",
+        "hana"
+      ],
+      "required_idle_directions": [
+        "down",
+        "up",
+        "left",
+        "right"
+      ],
+      "required_walk_directions": [
+        "down",
+        "up",
+        "left",
+        "right"
+      ],
+      "required_portrait_expressions": [
+        "neutral",
+        "happy",
+        "thinking"
+      ],
+      "required_count": 44,
+      "missing_count": 0,
+      "missing_by_npc": {},
+      "missing_by_kind": {},
+      "missing": []
+    }
+  },
+  "dirty_data": {
+    "importable_backup_scenes": {
+      "count": 0,
+      "risk": "Godot can still import these scene backups and report duplicate UID or stale references.",
+      "recommendation": "Hard cleanup target is zero importable HomeArea backup scenes; rely on git history for rollback.",
+      "paths": []
+    },
+    "existing_forbidden_source_dirs": {
+      "count": 0,
+      "paths": []
+    },
+    "active_scene_forbidden_refs": {
+      "count": 0,
+      "refs": []
+    },
+    "legacy_tool_dirs": {
+      "count": 0,
+      "paths": []
+    },
+    "stale_home_area_tool_candidates": {
+      "count": 0,
+      "note": "Hard cleanup target is zero for the explicit obsolete HomeArea tool allowlist.",
+      "paths": []
+    }
+  },
+  "prioritized_backlog": [
+    {
+      "priority": "P0",
+      "id": "item_icon_backlog",
+      "reason": "game/data/items.json still references icons that do not exist in assets/art/items.",
+      "count": 0,
+      "next_step": "Create the missing 64px runtime icons through a batch icon package and rerun this audit."
+    },
+    {
+      "priority": "P0",
+      "id": "p0_npc_complete_runtime_art",
+      "reason": "P0 NPCs require complete runtime packages, not minimum idle/portrait placeholders.",
+      "count": 0,
+      "next_step": "Produce all missing 4-direction idle sprites, 4-direction walk sheets, and neutral/happy/thinking portraits for Aoi, Gen, Mika, and Hana."
+    },
+    {
+      "priority": "P0",
+      "id": "home_area_capture_review",
+      "reason": "HomeArea world2d/v001 is integrated but still needs Godot capture and human review before polish or regeneration.",
+      "count": 1,
+      "next_step": "Run the HomeArea capture review from the actual world.tscn route."
+    },
+    {
+      "priority": "P1",
+      "id": "hard_cleanup_obsolete_home_area_routes",
+      "reason": "Obsolete importable backup scenes and old HomeArea route tools must stay absent after strong cleanup.",
+      "count": 0,
+      "next_step": "Keep this count at 0; use git history for rollback instead of reintroducing importable backups."
+    },
+    {
+      "priority": "P1",
+      "id": "production_package_manifest_review",
+      "reason": "Versioned production package roots should have at least one manifest in their package tree.",
+      "count": 0,
+      "next_step": "Add a manifest or explicitly remove the package root if this count becomes non-zero."
+    }
+  ]
+}

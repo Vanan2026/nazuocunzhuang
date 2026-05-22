@@ -1,0 +1,119 @@
+[gd_scene load_steps=15 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/characters/player/chr_player_base_idle_down_128.png" id="tex_1"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/tiles/spring/tile_grass_a_spring_64.png" id="tex_2"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/ui/ui_panel_frame_512x320.png" id="tex_3"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/props/prop_house_player_256.png" id="tex_4"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/regions/home_area/layers/home_area_base_ground.png" id="tex_5"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/regions/village/layers/village_base_ground.png" id="tex_6"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/regions/back_farm/layers/back_farm_base_ground.png" id="tex_7"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/regions/forest_edge/layers/forest_edge_base_ground.png" id="tex_8"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/regions/orchard/layers/orchard_base_ground.png" id="tex_9"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/regions/pond/layers/pond_base_ground.png" id="tex_10"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/regions/mountain_path/layers/mountain_path_base_ground.png" id="tex_11"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/regions/mountain_hut/layers/mountain_hut_base_ground.png" id="tex_12"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/regions/mountain/layers/mountain_base_ground.png" id="tex_13"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/regions/cliff_view/layers/cliff_view_base_ground.png" id="tex_14"]
+
+[node name="GreenfieldP0AssetGallery" type="Node2D"]
+metadata/package_id = "greenfield_p0_base_asset_pack_v001"
+metadata/status = "usable"
+metadata/launch_quality_approved = false
+
+[node name="CharacterSamples" type="Node2D" parent="."]
+
+[node name="PlayerIdleDown" type="Sprite2D" parent="CharacterSamples"]
+position = Vector2(120, 120)
+texture = ExtResource("tex_1")
+
+[node name="SeasonTileSamples" type="Node2D" parent="."]
+
+[node name="SpringGrassTile" type="Sprite2D" parent="SeasonTileSamples"]
+position = Vector2(280, 120)
+texture = ExtResource("tex_2")
+
+[node name="UISamples" type="Node2D" parent="."]
+
+[node name="PanelFrame" type="Sprite2D" parent="UISamples"]
+position = Vector2(520, 140)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("tex_3")
+
+[node name="PropSamples" type="Node2D" parent="."]
+
+[node name="HouseProp" type="Sprite2D" parent="PropSamples"]
+position = Vector2(760, 150)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("tex_4")
+
+[node name="RegionSamples" type="Node2D" parent="."]
+
+[node name="home_area" type="Node2D" parent="RegionSamples"]
+position = Vector2(170, 360)
+
+[node name="BaseGround" type="Sprite2D" parent="RegionSamples/home_area"]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("tex_5")
+
+[node name="village" type="Node2D" parent="RegionSamples"]
+position = Vector2(420, 360)
+
+[node name="BaseGround" type="Sprite2D" parent="RegionSamples/village"]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("tex_6")
+
+[node name="back_farm" type="Node2D" parent="RegionSamples"]
+position = Vector2(670, 360)
+
+[node name="BaseGround" type="Sprite2D" parent="RegionSamples/back_farm"]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("tex_7")
+
+[node name="forest_edge" type="Node2D" parent="RegionSamples"]
+position = Vector2(920, 360)
+
+[node name="BaseGround" type="Sprite2D" parent="RegionSamples/forest_edge"]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("tex_8")
+
+[node name="orchard" type="Node2D" parent="RegionSamples"]
+position = Vector2(1170, 360)
+
+[node name="BaseGround" type="Sprite2D" parent="RegionSamples/orchard"]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("tex_9")
+
+[node name="pond" type="Node2D" parent="RegionSamples"]
+position = Vector2(170, 570)
+
+[node name="BaseGround" type="Sprite2D" parent="RegionSamples/pond"]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("tex_10")
+
+[node name="mountain_path" type="Node2D" parent="RegionSamples"]
+position = Vector2(420, 570)
+
+[node name="BaseGround" type="Sprite2D" parent="RegionSamples/mountain_path"]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("tex_11")
+
+[node name="mountain_hut" type="Node2D" parent="RegionSamples"]
+position = Vector2(670, 570)
+
+[node name="BaseGround" type="Sprite2D" parent="RegionSamples/mountain_hut"]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("tex_12")
+
+[node name="mountain" type="Node2D" parent="RegionSamples"]
+position = Vector2(920, 570)
+
+[node name="BaseGround" type="Sprite2D" parent="RegionSamples/mountain"]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("tex_13")
+
+[node name="cliff_view" type="Node2D" parent="RegionSamples"]
+position = Vector2(1170, 570)
+
+[node name="BaseGround" type="Sprite2D" parent="RegionSamples/cliff_view"]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("tex_14")

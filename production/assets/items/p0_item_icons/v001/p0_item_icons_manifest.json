@@ -1,0 +1,714 @@
+{
+  "package_id": "p0_item_icons_v001",
+  "asset_type": "item_icon_batch",
+  "status": "usable",
+  "created_at": "2026-05-20 12:33:44",
+  "source_data": "game/data/items.json",
+  "runtime_replacement": true,
+  "launch_quality_approved": false,
+  "human_visual_approval_required": true,
+  "runtime_dir": "assets/art/items",
+  "runtime_exports": [
+    {
+      "item_id": "wood",
+      "name": "木材",
+      "category": "material",
+      "runtime_file": "assets/art/items/wood_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/wood_64.png",
+      "source": "generated_from_item_data",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2525,
+        "opaque_pixels": 584,
+        "alpha_bbox": [
+          7,
+          27,
+          60,
+          64
+        ]
+      }
+    },
+    {
+      "item_id": "stone",
+      "name": "石材",
+      "category": "material",
+      "runtime_file": "assets/art/items/stone_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/stone_64.png",
+      "source": "generated_from_item_data",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2451,
+        "opaque_pixels": 914,
+        "alpha_bbox": [
+          7,
+          21,
+          60,
+          64
+        ]
+      }
+    },
+    {
+      "item_id": "rice",
+      "name": "米饭",
+      "category": "food",
+      "runtime_file": "assets/art/items/rice_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/rice_64.png",
+      "source": "generated_from_item_data",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2604,
+        "opaque_pixels": 714,
+        "alpha_bbox": [
+          7,
+          25,
+          60,
+          64
+        ]
+      }
+    },
+    {
+      "item_id": "seed_turnip",
+      "name": "春萝卜种子",
+      "category": "seed",
+      "runtime_file": "assets/art/items/seed_turnip_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/seed_turnip_64.png",
+      "source": "generated_from_item_data",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2310,
+        "opaque_pixels": 1107,
+        "alpha_bbox": [
+          7,
+          18,
+          60,
+          64
+        ]
+      }
+    },
+    {
+      "item_id": "crop_turnip",
+      "name": "春萝卜",
+      "category": "crop",
+      "runtime_file": "assets/art/items/crop_turnip_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/crop_turnip_64.png",
+      "source": "existing_runtime_reused",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2539,
+        "opaque_pixels": 1297,
+        "alpha_bbox": [
+          12,
+          5,
+          53,
+          53
+        ]
+      }
+    },
+    {
+      "item_id": "seed_strawberry",
+      "name": "草莓种子",
+      "category": "seed",
+      "runtime_file": "assets/art/items/seed_strawberry_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/seed_strawberry_64.png",
+      "source": "generated_from_item_data",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2310,
+        "opaque_pixels": 1107,
+        "alpha_bbox": [
+          7,
+          18,
+          60,
+          64
+        ]
+      }
+    },
+    {
+      "item_id": "crop_strawberry",
+      "name": "草莓",
+      "category": "crop",
+      "runtime_file": "assets/art/items/crop_strawberry_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/crop_strawberry_64.png",
+      "source": "existing_runtime_reused",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2539,
+        "opaque_pixels": 1297,
+        "alpha_bbox": [
+          12,
+          5,
+          53,
+          53
+        ]
+      }
+    },
+    {
+      "item_id": "seed_potato",
+      "name": "土豆种子",
+      "category": "seed",
+      "runtime_file": "assets/art/items/seed_potato_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/seed_potato_64.png",
+      "source": "generated_from_item_data",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2310,
+        "opaque_pixels": 1107,
+        "alpha_bbox": [
+          7,
+          18,
+          60,
+          64
+        ]
+      }
+    },
+    {
+      "item_id": "crop_potato",
+      "name": "土豆",
+      "category": "crop",
+      "runtime_file": "assets/art/items/crop_potato_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/crop_potato_64.png",
+      "source": "existing_runtime_reused",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2539,
+        "opaque_pixels": 1297,
+        "alpha_bbox": [
+          12,
+          5,
+          53,
+          53
+        ]
+      }
+    },
+    {
+      "item_id": "seed_cucumber",
+      "name": "黄瓜种子",
+      "category": "seed",
+      "runtime_file": "assets/art/items/seed_cucumber_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/seed_cucumber_64.png",
+      "source": "generated_from_item_data",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2310,
+        "opaque_pixels": 1107,
+        "alpha_bbox": [
+          7,
+          18,
+          60,
+          64
+        ]
+      }
+    },
+    {
+      "item_id": "crop_cucumber",
+      "name": "黄瓜",
+      "category": "crop",
+      "runtime_file": "assets/art/items/crop_cucumber_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/crop_cucumber_64.png",
+      "source": "existing_runtime_reused",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2539,
+        "opaque_pixels": 1297,
+        "alpha_bbox": [
+          12,
+          5,
+          53,
+          53
+        ]
+      }
+    },
+    {
+      "item_id": "seed_tomato",
+      "name": "番茄种子",
+      "category": "seed",
+      "runtime_file": "assets/art/items/seed_tomato_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/seed_tomato_64.png",
+      "source": "generated_from_item_data",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2310,
+        "opaque_pixels": 1107,
+        "alpha_bbox": [
+          7,
+          18,
+          60,
+          64
+        ]
+      }
+    },
+    {
+      "item_id": "crop_tomato",
+      "name": "番茄",
+      "category": "crop",
+      "runtime_file": "assets/art/items/crop_tomato_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/crop_tomato_64.png",
+      "source": "existing_runtime_reused",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2539,
+        "opaque_pixels": 1297,
+        "alpha_bbox": [
+          12,
+          5,
+          53,
+          53
+        ]
+      }
+    },
+    {
+      "item_id": "seed_watermelon",
+      "name": "西瓜种子",
+      "category": "seed",
+      "runtime_file": "assets/art/items/seed_watermelon_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/seed_watermelon_64.png",
+      "source": "generated_from_item_data",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2310,
+        "opaque_pixels": 1107,
+        "alpha_bbox": [
+          7,
+          18,
+          60,
+          64
+        ]
+      }
+    },
+    {
+      "item_id": "crop_watermelon",
+      "name": "西瓜",
+      "category": "crop",
+      "runtime_file": "assets/art/items/crop_watermelon_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/crop_watermelon_64.png",
+      "source": "existing_runtime_reused",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2539,
+        "opaque_pixels": 1297,
+        "alpha_bbox": [
+          12,
+          5,
+          53,
+          53
+        ]
+      }
+    },
+    {
+      "item_id": "seed_pumpkin",
+      "name": "南瓜种子",
+      "category": "seed",
+      "runtime_file": "assets/art/items/seed_pumpkin_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/seed_pumpkin_64.png",
+      "source": "generated_from_item_data",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2310,
+        "opaque_pixels": 1107,
+        "alpha_bbox": [
+          7,
+          18,
+          60,
+          64
+        ]
+      }
+    },
+    {
+      "item_id": "crop_pumpkin",
+      "name": "南瓜",
+      "category": "crop",
+      "runtime_file": "assets/art/items/crop_pumpkin_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/crop_pumpkin_64.png",
+      "source": "existing_runtime_reused",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2539,
+        "opaque_pixels": 1297,
+        "alpha_bbox": [
+          12,
+          5,
+          53,
+          53
+        ]
+      }
+    },
+    {
+      "item_id": "seed_daikon",
+      "name": "冬萝卜种子",
+      "category": "seed",
+      "runtime_file": "assets/art/items/seed_daikon_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/seed_daikon_64.png",
+      "source": "generated_from_item_data",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2310,
+        "opaque_pixels": 1107,
+        "alpha_bbox": [
+          7,
+          18,
+          60,
+          64
+        ]
+      }
+    },
+    {
+      "item_id": "crop_daikon",
+      "name": "冬萝卜",
+      "category": "crop",
+      "runtime_file": "assets/art/items/crop_daikon_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/crop_daikon_64.png",
+      "source": "existing_runtime_reused",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2539,
+        "opaque_pixels": 1297,
+        "alpha_bbox": [
+          12,
+          5,
+          53,
+          53
+        ]
+      }
+    },
+    {
+      "item_id": "wildflower_spring",
+      "name": "春野花",
+      "category": "forage",
+      "runtime_file": "assets/art/items/wildflower_spring_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/wildflower_spring_64.png",
+      "source": "generated_from_item_data",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2479,
+        "opaque_pixels": 570,
+        "alpha_bbox": [
+          7,
+          16,
+          60,
+          64
+        ]
+      }
+    },
+    {
+      "item_id": "small_carp",
+      "name": "小鲫鱼",
+      "category": "fish",
+      "runtime_file": "assets/art/items/small_carp_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/small_carp_64.png",
+      "source": "generated_from_item_data",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2498,
+        "opaque_pixels": 659,
+        "alpha_bbox": [
+          7,
+          27,
+          60,
+          64
+        ]
+      }
+    },
+    {
+      "item_id": "tea_leaf",
+      "name": "茶叶",
+      "category": "forage",
+      "runtime_file": "assets/art/items/tea_leaf_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/tea_leaf_64.png",
+      "source": "generated_from_item_data",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2694,
+        "opaque_pixels": 450,
+        "alpha_bbox": [
+          7,
+          26,
+          60,
+          64
+        ]
+      }
+    },
+    {
+      "item_id": "persimmon",
+      "name": "柿子",
+      "category": "crop",
+      "runtime_file": "assets/art/items/persimmon_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/persimmon_64.png",
+      "source": "generated_from_item_data",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2498,
+        "opaque_pixels": 842,
+        "alpha_bbox": [
+          7,
+          17,
+          60,
+          64
+        ]
+      }
+    },
+    {
+      "item_id": "food_riceball_simple",
+      "name": "普通饭团",
+      "category": "food",
+      "runtime_file": "assets/art/items/food_riceball_simple_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/food_riceball_simple_64.png",
+      "source": "generated_from_item_data",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2704,
+        "opaque_pixels": 551,
+        "alpha_bbox": [
+          7,
+          18,
+          60,
+          64
+        ]
+      }
+    },
+    {
+      "item_id": "food_persimmon_riceball",
+      "name": "柿子饭团",
+      "category": "food",
+      "runtime_file": "assets/art/items/food_persimmon_riceball_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/food_persimmon_riceball_64.png",
+      "source": "generated_from_item_data",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2591,
+        "opaque_pixels": 664,
+        "alpha_bbox": [
+          7,
+          18,
+          60,
+          64
+        ]
+      }
+    },
+    {
+      "item_id": "food_spring_soup",
+      "name": "春蔬汤",
+      "category": "food",
+      "runtime_file": "assets/art/items/food_spring_soup_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/food_spring_soup_64.png",
+      "source": "generated_from_item_data",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2534,
+        "opaque_pixels": 849,
+        "alpha_bbox": [
+          7,
+          24,
+          60,
+          64
+        ]
+      }
+    },
+    {
+      "item_id": "food_grilled_small_carp",
+      "name": "烤小鲫鱼",
+      "category": "food",
+      "runtime_file": "assets/art/items/food_grilled_small_carp_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/food_grilled_small_carp_64.png",
+      "source": "generated_from_item_data",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2471,
+        "opaque_pixels": 708,
+        "alpha_bbox": [
+          7,
+          20,
+          60,
+          64
+        ]
+      }
+    },
+    {
+      "item_id": "food_warm_tea",
+      "name": "热茶",
+      "category": "food",
+      "runtime_file": "assets/art/items/food_warm_tea_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/food_warm_tea_64.png",
+      "source": "generated_from_item_data",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2584,
+        "opaque_pixels": 745,
+        "alpha_bbox": [
+          7,
+          24,
+          60,
+          64
+        ]
+      }
+    },
+    {
+      "item_id": "old_bell_fragment",
+      "name": "旧铃碎片",
+      "category": "key",
+      "runtime_file": "assets/art/items/old_bell_fragment_64.png",
+      "package_file": "production/assets/items/p0_item_icons/v001/runtime_exports/old_bell_fragment_64.png",
+      "source": "generated_from_item_data",
+      "size_px": [
+        64,
+        64
+      ],
+      "alpha_check": {
+        "width": 64,
+        "height": 64,
+        "transparent_pixels": 2617,
+        "opaque_pixels": 662,
+        "alpha_bbox": [
+          7,
+          18,
+          60,
+          64
+        ]
+      }
+    }
+  ],
+  "validation": [
+    "tools/validate_complete_p0_asset_package.py",
+    "tools/audit_art_asset_inventory.py",
+    "tools/validate_art_asset_pipeline.py"
+  ]
+}

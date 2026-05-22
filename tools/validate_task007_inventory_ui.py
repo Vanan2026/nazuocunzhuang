@@ -40,11 +40,16 @@ EXPECTED_FILES = {
         "func plant_selected_seed(",
         "get_selected_item_id",
     ],
+    "game/scenes/world/PlayerYard.gd": [
+        "@onready var inventory_manager: Node = $InventoryManager",
+        "@onready var data_registry: Node = $DataRegistry",
+        "inventory_ui.bind_managers(inventory_manager, data_registry)",
+    ],
     "game/scenes/world/PlayerYard.tscn": [
+        '[node name="InventoryManager" type="Node"',
+        '[node name="DataRegistry" type="Node"',
         "res://game/scenes/ui/InventoryUI.tscn",
         '[node name="InventoryUI"',
-        "inventory_manager_path",
-        "data_registry_path",
     ],
 }
 

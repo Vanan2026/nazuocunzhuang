@@ -9,6 +9,7 @@ const DATA_FILES: Dictionary = {
 	"crops": {"path": "res://game/data/crops.json", "id_key": "crop_id"},
 	"npcs": {"path": "res://game/data/npcs.json", "id_key": "npc_id"},
 	"dialogues": {"path": "res://game/data/dialogues.json", "id_key": "dialogue_id"},
+	"rumors": {"path": "res://game/data/rumors.json", "id_key": "rumor_id"},
 	"recipes": {"path": "res://game/data/recipes.json", "id_key": "recipe_id"},
 	"restoration_targets": {"path": "res://game/data/restoration_targets.json", "id_key": "restoration_id"},
 }
@@ -28,6 +29,7 @@ var items: Dictionary = {}
 var crops: Dictionary = {}
 var npcs: Dictionary = {}
 var dialogues: Dictionary = {}
+var rumors: Dictionary = {}
 var recipes: Dictionary = {}
 var restoration_targets: Dictionary = {}
 var validation_errors: Array[String] = []
@@ -60,15 +62,17 @@ func validate_all_data() -> bool:
 	_validate_crops()
 	_validate_npcs()
 	_validate_dialogues()
+	_validate_rumors()
 	_validate_recipes()
 	_validate_restoration_targets()
 
 	if validation_errors.is_empty():
-		print("DataRegistry validation OK: %d items, %d crops, %d npcs, %d dialogues, %d recipes, %d restorations" % [
+		print("DataRegistry validation OK: %d items, %d crops, %d npcs, %d dialogues, %d rumors, %d recipes, %d restorations" % [
 			items.size(),
 			crops.size(),
 			npcs.size(),
 			dialogues.size(),
+			rumors.size(),
 			recipes.size(),
 			restoration_targets.size(),
 		])
@@ -101,6 +105,10 @@ func get_dialogue(dialogue_id: String) -> Dictionary:
 	return dialogues.get(dialogue_id, {})
 
 
+func get_rumor(rumor_id: String) -> Dictionary:
+	return rumors.get(rumor_id, {})
+
+
 func get_restoration(restoration_id: String) -> Dictionary:
 	return restoration_targets.get(restoration_id, {})
 
@@ -114,6 +122,7 @@ func _clear_data() -> void:
 	crops.clear()
 	npcs.clear()
 	dialogues.clear()
+	rumors.clear()
 	recipes.clear()
 	restoration_targets.clear()
 	validation_errors.clear()
@@ -166,6 +175,8 @@ func _set_collection(collection_name: String, indexed: Dictionary) -> void:
 			npcs = indexed
 		"dialogues":
 			dialogues = indexed
+		"rumors":
+			rumors = indexed
 		"recipes":
 			recipes = indexed
 		"restoration_targets":
@@ -218,6 +229,22 @@ func _validate_dialogues() -> void:
 			_add_error("dialogue %s references missing npc %s" % [dialogue_id, dialogue.get("npc_id", "")])
 		if dialogue.get("lines", []).is_empty():
 			_add_error("dialogue %s has no lines" % dialogue_id)
+
+
+func _validate_rumors() -> void:
+	for rumor_id in rumors.keys():
+		var rumor: Dictionary = rumors[rumor_id]
+		_require_fields(rumor, ["rumor_id", "source", "priority", "conditions", "text", "sets_flags"], "rumor %s" % rumor_id)
+		_reject_forbidden_fields(rumor, "rumor %s" % rumor_id)
+		var source := String(rumor.get("source", ""))
+		if source not in ["mailbox", "bulletin", "npc"]:
+			_add_error("rumor %s has invalid source %s" % [rumor_id, source])
+		if String(rumor.get("text", "")).strip_edges().is_empty():
+			_add_error("rumor %s has empty text" % rumor_id)
+		if not (rumor.get("conditions", {}) is Dictionary):
+			_add_error("rumor %s conditions must be a dictionary" % rumor_id)
+		if not (rumor.get("sets_flags", []) is Array):
+			_add_error("rumor %s sets_flags must be an array" % rumor_id)
 
 
 func _validate_recipes() -> void:

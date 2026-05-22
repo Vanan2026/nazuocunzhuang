@@ -41,11 +41,11 @@ def main() -> None:
     scene_text = require_file(GAME_SCENE)
     if 'script = ExtResource("20_restoration_target")' not in scene_text:
         fail("PlayerYard.tscn should use RestorationTarget for OldWell node")
-    if '[node name="GameState" type="Node" parent="."]' not in scene_text:
+    if '[node name="GameState" type="Node" parent="."' not in scene_text:
         fail("PlayerYard.tscn should include local GameState node for scaffold runtime")
-    if '[node name="EventBus" type="Node" parent="."]' not in scene_text:
+    if '[node name="EventBus" type="Node" parent="."' not in scene_text:
         fail("PlayerYard.tscn should include local EventBus node for restoration signal wiring")
-    if '[node name="SaveManager" type="Node" parent="."]' not in scene_text:
+    if '[node name="SaveManager" type="Node" parent="."' not in scene_text:
         fail("PlayerYard.tscn should include local SaveManager node for restoration payload support")
 
     require_snippet(GAMESTATE, "func is_restored(restoration_id: String)")

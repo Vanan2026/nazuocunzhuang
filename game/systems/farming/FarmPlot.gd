@@ -187,6 +187,39 @@ func get_state_name() -> String:
 			return "unknown"
 
 
+func get_save_data() -> Dictionary:
+	return {
+		"plot_index": plot_index,
+		"state": get_state_name(),
+		"crop_id": crop_id,
+		"seed_item_id": seed_item_id,
+		"harvest_item_id": harvest_item_id,
+		"growth_days": growth_days,
+		"is_watered": is_watered,
+	}
+
+
+func apply_save_data(data: Dictionary) -> void:
+	if data.is_empty():
+		_reset_to_empty()
+		_emit_changed()
+		return
+	plot_index = int(data.get("plot_index", plot_index))
+	state = _state_from_name(String(data.get("state", get_state_name())))
+	crop_id = String(data.get("crop_id", ""))
+	seed_item_id = String(data.get("seed_item_id", ""))
+	harvest_item_id = String(data.get("harvest_item_id", ""))
+	growth_days = max(int(data.get("growth_days", 0)), 0)
+	is_watered = bool(data.get("is_watered", state == PlotState.WATERED))
+	if state == PlotState.EMPTY:
+		crop_id = ""
+		seed_item_id = ""
+		harvest_item_id = ""
+		growth_days = 0
+		is_watered = false
+	_emit_changed()
+
+
 func get_stage_sprite_path() -> String:
 	if crop_id.is_empty():
 		return ""
@@ -205,6 +238,20 @@ func _reset_to_empty() -> void:
 	harvest_item_id = ""
 	growth_days = 0
 	is_watered = false
+
+
+func _state_from_name(state_name: String) -> PlotState:
+	match state_name:
+		"tilled":
+			return PlotState.TILLED
+		"planted":
+			return PlotState.PLANTED
+		"watered":
+			return PlotState.WATERED
+		"ready":
+			return PlotState.READY
+		_:
+			return PlotState.EMPTY
 
 
 func _emit_changed() -> void:

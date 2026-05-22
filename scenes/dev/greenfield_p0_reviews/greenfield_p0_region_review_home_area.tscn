@@ -1,0 +1,127 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/regions/home_area/layers/home_area_base_ground.png" id="tex_base_ground"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/regions/home_area/layers/home_area_terrain_details.png" id="tex_terrain_details"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/regions/home_area/layers/home_area_behind_player_structures.png" id="tex_behind_player_structures"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/regions/home_area/layers/home_area_ysort_props_structures.png" id="tex_ysort_props_structures"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/regions/home_area/layers/home_area_shadow_overlay.png" id="tex_shadow_overlay"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/regions/home_area/layers/home_area_foreground_occlusion.png" id="tex_foreground_occlusion"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/regions/home_area/layers/home_area_light_weather_overlay_spring.png" id="tex_light_spring"]
+
+[node name="GreenfieldP0RegionReview_home_area" type="Node2D"]
+metadata/package_id = "greenfield_p0_base_asset_pack_v001"
+metadata/region_id = "home_area"
+metadata/status = "usable"
+metadata/launch_quality_approved = false
+metadata/human_visual_approval_required = true
+
+[node name="ReviewCamera" type="Camera2D" parent="."]
+position = Vector2(735.0, 535.0)
+zoom = Vector2(0.612, 0.612)
+enabled = true
+
+[node name="RuntimeLayerStack" type="Node2D" parent="."]
+
+[node name="BaseGround" type="Sprite2D" parent="RuntimeLayerStack"]
+position = Vector2(735.0, 535.0)
+texture = ExtResource("tex_base_ground")
+
+[node name="TerrainDetails" type="Sprite2D" parent="RuntimeLayerStack"]
+position = Vector2(735.0, 535.0)
+texture = ExtResource("tex_terrain_details")
+
+[node name="BehindPlayerStructures" type="Sprite2D" parent="RuntimeLayerStack"]
+position = Vector2(735.0, 535.0)
+texture = ExtResource("tex_behind_player_structures")
+
+[node name="YSortPropsStructures" type="Sprite2D" parent="RuntimeLayerStack"]
+position = Vector2(735.0, 535.0)
+texture = ExtResource("tex_ysort_props_structures")
+
+[node name="ShadowOverlay" type="Sprite2D" parent="RuntimeLayerStack"]
+position = Vector2(735.0, 535.0)
+texture = ExtResource("tex_shadow_overlay")
+
+[node name="ForegroundOcclusion" type="Sprite2D" parent="RuntimeLayerStack"]
+position = Vector2(735.0, 535.0)
+texture = ExtResource("tex_foreground_occlusion")
+
+[node name="LightWeatherOverlaySpring" type="Sprite2D" parent="RuntimeLayerStack"]
+position = Vector2(735.0, 535.0)
+modulate = Color(1, 1, 1, 0.65)
+texture = ExtResource("tex_light_spring")
+
+[node name="ReviewAnchors" type="Node2D" parent="."]
+
+[node name="Anchor_Center" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(632, 770)
+
+[node name="Anchor_North" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(852, 85)
+
+[node name="Anchor_South" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(632, 984)
+
+[node name="Anchor_West" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(117, 770)
+
+[node name="Anchor_East" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(1352, 791)
+
+[node name="Anchor_Nw" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(264, 267)
+
+[node name="Anchor_Ne" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(1205, 235)
+
+[node name="Anchor_Sw" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(323, 834)
+
+[node name="Anchor_Se" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(1117, 802)
+
+[node name="Anchor_Porch" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(588, 535)
+
+[node name="Anchor_NorthSideA" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(779, 502)
+
+[node name="Anchor_NorthSideB" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(882, 267)
+
+[node name="Anchor_YardBend" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(588, 684)
+
+[node name="Anchor_FrontLaneE" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(940, 770)
+
+[node name="Anchor_EastBend" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(1146, 791)
+
+[node name="Anchor_Mailbox" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(338, 684)
+
+[node name="Anchor_MailboxStand" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(411, 770)
+
+[node name="Anchor_Well" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(1058, 631)
+
+[node name="Anchor_WellStand" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(940, 706)
+
+[node name="Anchor_Bench" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(323, 856)
+
+[node name="Anchor_BenchStand" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(455, 770)
+
+[node name="Anchor_House" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(588, 374)
+
+[node name="Anchor_RoadSign" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(1234, 770)
+
+[node name="ReviewNotes" type="Node" parent="."]
+metadata/review_gate = "visual_review_required"
+metadata/source_rule = "do_not_patch_independent_scene_sprites"

@@ -1,0 +1,528 @@
+{
+  "region_id": "village",
+  "display_name": "Village",
+  "canvas_size": [
+    1800,
+    1200
+  ],
+  "status": "usable",
+  "launch_quality_approved": false,
+  "human_visual_approval_required": true,
+  "layout_mother": "production/assets/base_asset_pack/v001/01_mother_images/regions/village/village_layout_mother.png",
+  "painted_source": "production/assets/base_asset_pack/v001/01_mother_images/regions/village/village_painted_source.png",
+  "features": [
+    "notice_board",
+    "shop",
+    "shrine",
+    "square",
+    "trees"
+  ],
+  "layers": {
+    "base_ground": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/village/layers/village_base_ground.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/village/layers/village_base_ground.png",
+      "size": [
+        1800,
+        1200
+      ],
+      "mode": "RGBA"
+    },
+    "terrain_details": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/village/layers/village_terrain_details.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/village/layers/village_terrain_details.png",
+      "size": [
+        1800,
+        1200
+      ],
+      "mode": "RGBA"
+    },
+    "behind_player_structures": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/village/layers/village_behind_player_structures.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/village/layers/village_behind_player_structures.png",
+      "size": [
+        1800,
+        1200
+      ],
+      "mode": "RGBA"
+    },
+    "ysort_props_structures": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/village/layers/village_ysort_props_structures.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/village/layers/village_ysort_props_structures.png",
+      "size": [
+        1800,
+        1200
+      ],
+      "mode": "RGBA"
+    },
+    "foreground_occlusion": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/village/layers/village_foreground_occlusion.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/village/layers/village_foreground_occlusion.png",
+      "size": [
+        1800,
+        1200
+      ],
+      "mode": "RGBA"
+    },
+    "shadow_overlay": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/village/layers/village_shadow_overlay.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/village/layers/village_shadow_overlay.png",
+      "size": [
+        1800,
+        1200
+      ],
+      "mode": "RGBA"
+    },
+    "light_weather_overlays": [
+      {
+        "season": "spring",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/village/layers/village_light_weather_overlay_spring.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/village/layers/village_light_weather_overlay_spring.png",
+        "size": [
+          1800,
+          1200
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "summer",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/village/layers/village_light_weather_overlay_summer.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/village/layers/village_light_weather_overlay_summer.png",
+        "size": [
+          1800,
+          1200
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "autumn",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/village/layers/village_light_weather_overlay_autumn.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/village/layers/village_light_weather_overlay_autumn.png",
+        "size": [
+          1800,
+          1200
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "winter",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/village/layers/village_light_weather_overlay_winter.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/village/layers/village_light_weather_overlay_winter.png",
+        "size": [
+          1800,
+          1200
+        ],
+        "mode": "RGBA"
+      }
+    ]
+  },
+  "anchors": [
+    {
+      "id": "center",
+      "position": [
+        972,
+        696
+      ]
+    },
+    {
+      "id": "north",
+      "position": [
+        792,
+        96
+      ]
+    },
+    {
+      "id": "south",
+      "position": [
+        1134,
+        1104
+      ]
+    },
+    {
+      "id": "west",
+      "position": [
+        144,
+        720
+      ]
+    },
+    {
+      "id": "east",
+      "position": [
+        1656,
+        600
+      ]
+    },
+    {
+      "id": "nw",
+      "position": [
+        396,
+        312
+      ]
+    },
+    {
+      "id": "ne",
+      "position": [
+        1386,
+        276
+      ]
+    },
+    {
+      "id": "sw",
+      "position": [
+        468,
+        936
+      ]
+    },
+    {
+      "id": "se",
+      "position": [
+        1314,
+        864
+      ]
+    },
+    {
+      "id": "square_a",
+      "position": [
+        774,
+        600
+      ]
+    },
+    {
+      "id": "square_b",
+      "position": [
+        1080,
+        588
+      ]
+    },
+    {
+      "id": "square_c",
+      "position": [
+        1152,
+        744
+      ]
+    },
+    {
+      "id": "square_d",
+      "position": [
+        864,
+        816
+      ]
+    },
+    {
+      "id": "house_a",
+      "position": [
+        486,
+        420
+      ]
+    },
+    {
+      "id": "house_a_door",
+      "position": [
+        594,
+        528
+      ]
+    },
+    {
+      "id": "house_b",
+      "position": [
+        1332,
+        444
+      ]
+    },
+    {
+      "id": "house_b_door",
+      "position": [
+        1224,
+        552
+      ]
+    },
+    {
+      "id": "shrine",
+      "position": [
+        936,
+        384
+      ]
+    },
+    {
+      "id": "shrine_stand",
+      "position": [
+        936,
+        516
+      ]
+    },
+    {
+      "id": "bench",
+      "position": [
+        684,
+        924
+      ]
+    },
+    {
+      "id": "road_sign",
+      "position": [
+        1008,
+        720
+      ]
+    }
+  ],
+  "layout_profile": {
+    "road_signature": "village_plaza_lane_doorstep_spurs",
+    "road_motif": "settled_village_lane",
+    "composition_focal_point": [
+      0.55,
+      0.48
+    ],
+    "road_paths": [
+      {
+        "id": "village_main_lane",
+        "role": "village_through_lane",
+        "style": "settled",
+        "points": [
+          "west",
+          "square_d",
+          "square_c",
+          "east"
+        ],
+        "pixel_points": [
+          [
+            144,
+            720
+          ],
+          [
+            864,
+            816
+          ],
+          [
+            1152,
+            744
+          ],
+          [
+            1656,
+            600
+          ]
+        ],
+        "width_px": 50,
+        "width_factor": 0.028
+      },
+      {
+        "id": "north_lane",
+        "role": "village_through_lane",
+        "style": "settled",
+        "points": [
+          "north",
+          "square_a",
+          "square_b"
+        ],
+        "pixel_points": [
+          [
+            792,
+            96
+          ],
+          [
+            774,
+            600
+          ],
+          [
+            1080,
+            588
+          ]
+        ],
+        "width_px": 41,
+        "width_factor": 0.023
+      },
+      {
+        "id": "south_lane",
+        "role": "village_through_lane",
+        "style": "settled",
+        "points": [
+          "south",
+          "square_c"
+        ],
+        "pixel_points": [
+          [
+            1134,
+            1104
+          ],
+          [
+            1152,
+            744
+          ]
+        ],
+        "width_px": 41,
+        "width_factor": 0.023
+      },
+      {
+        "id": "plaza_edge",
+        "role": "plaza_edge",
+        "style": "settled",
+        "points": [
+          "square_a",
+          "square_b",
+          "square_c",
+          "square_d",
+          "square_a"
+        ],
+        "pixel_points": [
+          [
+            774,
+            600
+          ],
+          [
+            1080,
+            588
+          ],
+          [
+            1152,
+            744
+          ],
+          [
+            864,
+            816
+          ],
+          [
+            774,
+            600
+          ]
+        ],
+        "width_px": 30,
+        "width_factor": 0.017
+      },
+      {
+        "id": "left_doorstep",
+        "role": "doorstep",
+        "style": "settled",
+        "points": [
+          "square_a",
+          "house_a_door"
+        ],
+        "pixel_points": [
+          [
+            774,
+            600
+          ],
+          [
+            594,
+            528
+          ]
+        ],
+        "width_px": 25,
+        "width_factor": 0.014
+      },
+      {
+        "id": "right_doorstep",
+        "role": "doorstep",
+        "style": "settled",
+        "points": [
+          "square_b",
+          "house_b_door"
+        ],
+        "pixel_points": [
+          [
+            1080,
+            588
+          ],
+          [
+            1224,
+            552
+          ]
+        ],
+        "width_px": 25,
+        "width_factor": 0.014
+      },
+      {
+        "id": "shrine_step",
+        "role": "landmark_access",
+        "style": "settled",
+        "points": [
+          "square_a",
+          "shrine_stand"
+        ],
+        "pixel_points": [
+          [
+            774,
+            600
+          ],
+          [
+            936,
+            516
+          ]
+        ],
+        "width_px": 21,
+        "width_factor": 0.012
+      }
+    ],
+    "object_zones": [
+      {
+        "id": "house_a",
+        "role": "village_structure",
+        "relation": "left house sits off the square road",
+        "rect": [
+          333,
+          186,
+          630,
+          438
+        ]
+      },
+      {
+        "id": "house_b",
+        "role": "village_structure",
+        "relation": "right house sits above the east spur with a small doorstep",
+        "rect": [
+          1206,
+          228,
+          1467,
+          474
+        ]
+      },
+      {
+        "id": "shrine",
+        "role": "small_landmark",
+        "relation": "landmark above the plaza with a narrow approach",
+        "rect": [
+          873,
+          318,
+          999,
+          426
+        ]
+      },
+      {
+        "id": "bench",
+        "role": "rest_prop",
+        "relation": "rest prop below the plaza lane, not in road center",
+        "rect": [
+          567,
+          870,
+          810,
+          996
+        ]
+      }
+    ],
+    "seam_connectors": {
+      "north": [
+        792,
+        96
+      ],
+      "south": [
+        1134,
+        1104
+      ],
+      "east": [
+        1656,
+        600
+      ],
+      "west": [
+        144,
+        720
+      ]
+    }
+  },
+  "season_variant_mapping": {
+    "spring": "village_light_weather_overlay_spring.png",
+    "summer": "village_light_weather_overlay_summer.png",
+    "autumn": "village_light_weather_overlay_autumn.png",
+    "winter": "village_light_weather_overlay_winter.png"
+  },
+  "review_artifacts": {
+    "runtime_composite_preview": "production/assets/base_asset_pack/v001/03_contact_sheets/regions/village_runtime_composite_preview.png",
+    "runtime_layer_contact_sheet": "production/assets/base_asset_pack/v001/03_contact_sheets/regions/village_runtime_layer_contact_sheet.png"
+  }
+}

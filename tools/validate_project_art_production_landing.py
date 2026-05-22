@@ -40,6 +40,7 @@ REQUIRED_VALIDATORS = [
     "tools/validate_home_area_world2d_v001.py",
     "tools/validate_region_back_farm_art_v002.py",
     "tools/validate_protagonist_runtime_manifest.py",
+    "tools/validate_complete_p0_asset_package.py",
 ]
 
 
@@ -141,20 +142,29 @@ def validate_runtime_asset_groups(manifest: dict[str, Any]) -> None:
         icon = str(record.get("icon", ""))
         if icon and not res_path_exists(icon):
             missing_item_icons.append(icon)
-    require(missing_item_icons, "expected explicit item icon backlog, but all item icons currently resolve")
-    require(by_id["item_icons"].get("status") == "known_gap_partial_crop_icons_only", "item icon gap must remain explicit")
+    item_status = by_id["item_icons"].get("status")
+    if missing_item_icons:
+        require(item_status == "known_gap_partial_crop_icons_only", "item icon gap must remain explicit while icons are missing")
+    else:
+        require(item_status == "runtime_files_present_for_current_item_data", "item icon group must record resolved runtime files when all icons exist")
+        require((ROOT / "production/assets/items/p0_item_icons/v001/p0_item_icons_manifest.json").exists(), "resolved item icon package manifest missing")
 
     npcs = read_json(NPCS, "npc data")
     npc_ids = {str(as_dict(npc, "npc record").get("npc_id")) for npc in npcs}
     character_assets = as_dict(manifest.get("character_assets"), "character_assets")
     mvp_npcs = as_dict(character_assets.get("mvp_npcs"), "mvp_npcs")
-    covered = set(mvp_npcs.get("covered_npc_ids", []))
-    missing = set(mvp_npcs.get("missing_npc_ids", []))
-    require({"aoi", "gen", "mika"} <= covered, "Aoi/Gen/Mika coverage must be explicit")
-    require("hana" in missing and "hana" in npc_ids, "Hana art backlog must be explicit")
-    for npc_id in covered:
-        require((ROOT / f"assets/art/characters/npc/npc_{npc_id}_idle_down_128.png").exists(), f"missing NPC idle sprite: {npc_id}")
-        require((ROOT / f"assets/art/portraits/npc_{npc_id}_portrait_neutral_512.png").exists(), f"missing NPC portrait: {npc_id}")
+    required_ids = set(mvp_npcs.get("required_npc_ids", []))
+    npc_status = mvp_npcs.get("status")
+    require(npc_status in {"complete_runtime_package_backlog", "complete_runtime_package_usable"}, "P0 NPCs must use complete runtime package backlog or usable status")
+    if npc_status == "complete_runtime_package_usable":
+        require((ROOT / "production/assets/characters/p0_npc_complete_runtime/v001/p0_npc_complete_runtime_manifest.json").exists(), "resolved P0 NPC package manifest missing")
+        require(set(mvp_npcs.get("covered_npc_ids", [])) == {"aoi", "gen", "mika", "hana"}, "complete P0 NPC covered ids mismatch")
+        require(not mvp_npcs.get("missing_npc_ids", []), "complete P0 NPC package should not list missing NPC ids")
+    require({"aoi", "gen", "mika", "hana"} <= required_ids, "complete P0 NPC backlog must cover Aoi/Gen/Mika/Hana")
+    require(required_ids <= npc_ids, f"manifest references unknown NPC ids: {sorted(required_ids - npc_ids)}")
+    package = as_dict(mvp_npcs.get("required_runtime_package"), "required_runtime_package")
+    require(set(package.get("sprites", [])) == {"idle_down", "idle_up", "idle_left", "idle_right", "walk_down", "walk_up", "walk_left", "walk_right"}, "P0 NPC sprite package must include 4-direction idle and walk")
+    require(set(package.get("portraits", [])) == {"neutral", "happy", "thinking"}, "P0 NPC portrait package must include neutral/happy/thinking")
 
 
 def validate_manifest_structure(manifest: dict[str, Any]) -> None:
@@ -169,7 +179,7 @@ def validate_manifest_structure(manifest: dict[str, Any]) -> None:
     require((ROOT / str(protagonist.get("manifest"))).exists(), "protagonist runtime manifest missing")
     require((ROOT / str(protagonist.get("runtime_sprite_frames"))).exists(), "protagonist runtime SpriteFrames missing")
     known_gaps = {str(as_dict(gap, "known gap").get("id")) for gap in manifest.get("known_runtime_gaps", [])}
-    for required_gap in ["item_icon_backlog", "hana_npc_art_backlog", "remaining_region_world2d_packages"]:
+    for required_gap in ["item_icon_backlog", "p0_npc_complete_art_backlog", "remaining_region_world2d_packages"]:
         require(required_gap in known_gaps, f"missing known runtime gap: {required_gap}")
 
 
@@ -181,7 +191,7 @@ def main() -> None:
     validate_active_region_packages(by_id)
     validate_active_scenes_do_not_use_rejected_paths()
     validate_runtime_asset_groups(manifest)
-    print("OK: project art production landing manifest validates registered regions, active art packages, and explicit runtime gaps")
+    print("OK: project art production landing manifest validates registered regions, active art packages, and runtime art package state")
 
 
 if __name__ == "__main__":

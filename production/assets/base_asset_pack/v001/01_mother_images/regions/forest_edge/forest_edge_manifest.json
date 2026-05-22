@@ -1,0 +1,339 @@
+{
+  "region_id": "forest_edge",
+  "display_name": "ForestEdge",
+  "canvas_size": [
+    1700,
+    1150
+  ],
+  "status": "usable",
+  "launch_quality_approved": false,
+  "human_visual_approval_required": true,
+  "layout_mother": "production/assets/base_asset_pack/v001/01_mother_images/regions/forest_edge/forest_edge_layout_mother.png",
+  "painted_source": "production/assets/base_asset_pack/v001/01_mother_images/regions/forest_edge/forest_edge_painted_source.png",
+  "features": [
+    "deep_trees",
+    "forage",
+    "moss_path",
+    "small_shrine"
+  ],
+  "layers": {
+    "base_ground": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/forest_edge/layers/forest_edge_base_ground.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/forest_edge/layers/forest_edge_base_ground.png",
+      "size": [
+        1700,
+        1150
+      ],
+      "mode": "RGBA"
+    },
+    "terrain_details": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/forest_edge/layers/forest_edge_terrain_details.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/forest_edge/layers/forest_edge_terrain_details.png",
+      "size": [
+        1700,
+        1150
+      ],
+      "mode": "RGBA"
+    },
+    "behind_player_structures": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/forest_edge/layers/forest_edge_behind_player_structures.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/forest_edge/layers/forest_edge_behind_player_structures.png",
+      "size": [
+        1700,
+        1150
+      ],
+      "mode": "RGBA"
+    },
+    "ysort_props_structures": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/forest_edge/layers/forest_edge_ysort_props_structures.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/forest_edge/layers/forest_edge_ysort_props_structures.png",
+      "size": [
+        1700,
+        1150
+      ],
+      "mode": "RGBA"
+    },
+    "foreground_occlusion": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/forest_edge/layers/forest_edge_foreground_occlusion.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/forest_edge/layers/forest_edge_foreground_occlusion.png",
+      "size": [
+        1700,
+        1150
+      ],
+      "mode": "RGBA"
+    },
+    "shadow_overlay": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/forest_edge/layers/forest_edge_shadow_overlay.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/forest_edge/layers/forest_edge_shadow_overlay.png",
+      "size": [
+        1700,
+        1150
+      ],
+      "mode": "RGBA"
+    },
+    "light_weather_overlays": [
+      {
+        "season": "spring",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/forest_edge/layers/forest_edge_light_weather_overlay_spring.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/forest_edge/layers/forest_edge_light_weather_overlay_spring.png",
+        "size": [
+          1700,
+          1150
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "summer",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/forest_edge/layers/forest_edge_light_weather_overlay_summer.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/forest_edge/layers/forest_edge_light_weather_overlay_summer.png",
+        "size": [
+          1700,
+          1150
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "autumn",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/forest_edge/layers/forest_edge_light_weather_overlay_autumn.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/forest_edge/layers/forest_edge_light_weather_overlay_autumn.png",
+        "size": [
+          1700,
+          1150
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "winter",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/forest_edge/layers/forest_edge_light_weather_overlay_winter.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/forest_edge/layers/forest_edge_light_weather_overlay_winter.png",
+        "size": [
+          1700,
+          1150
+        ],
+        "mode": "RGBA"
+      }
+    ]
+  },
+  "anchors": [
+    {
+      "id": "center",
+      "position": [
+        952,
+        621
+      ]
+    },
+    {
+      "id": "north",
+      "position": [
+        1071,
+        92
+      ]
+    },
+    {
+      "id": "south",
+      "position": [
+        646,
+        1058
+      ]
+    },
+    {
+      "id": "west",
+      "position": [
+        136,
+        713
+      ]
+    },
+    {
+      "id": "east",
+      "position": [
+        1564,
+        575
+      ]
+    },
+    {
+      "id": "nw",
+      "position": [
+        408,
+        276
+      ]
+    },
+    {
+      "id": "ne",
+      "position": [
+        1326,
+        230
+      ]
+    },
+    {
+      "id": "sw",
+      "position": [
+        340,
+        897
+      ]
+    },
+    {
+      "id": "se",
+      "position": [
+        1394,
+        851
+      ]
+    },
+    {
+      "id": "moss_a",
+      "position": [
+        408,
+        736
+      ]
+    },
+    {
+      "id": "moss_b",
+      "position": [
+        714,
+        632
+      ]
+    },
+    {
+      "id": "moss_c",
+      "position": [
+        985,
+        494
+      ]
+    },
+    {
+      "id": "moss_d",
+      "position": [
+        1190,
+        356
+      ]
+    },
+    {
+      "id": "shrine",
+      "position": [
+        968,
+        483
+      ]
+    }
+  ],
+  "layout_profile": {
+    "road_signature": "forest_broken_moss_trail_west_north",
+    "road_motif": "broken_moss_path",
+    "composition_focal_point": [
+      0.58,
+      0.45
+    ],
+    "road_paths": [
+      {
+        "id": "broken_moss_west_north",
+        "role": "forest_trail",
+        "style": "broken",
+        "points": [
+          "west",
+          "moss_a",
+          "moss_b",
+          "moss_c",
+          "moss_d",
+          "north"
+        ],
+        "pixel_points": [
+          [
+            136,
+            713
+          ],
+          [
+            408,
+            736
+          ],
+          [
+            714,
+            632
+          ],
+          [
+            985,
+            494
+          ],
+          [
+            1190,
+            356
+          ],
+          [
+            1071,
+            92
+          ]
+        ],
+        "width_px": 51,
+        "width_factor": 0.03
+      },
+      {
+        "id": "faint_east_deer_path",
+        "role": "forage_spur",
+        "style": "broken",
+        "points": [
+          "moss_c",
+          "east"
+        ],
+        "pixel_points": [
+          [
+            985,
+            494
+          ],
+          [
+            1564,
+            575
+          ]
+        ],
+        "width_px": 34,
+        "width_factor": 0.02
+      },
+      {
+        "id": "orchard_footpath",
+        "role": "forest_orchard_link",
+        "style": "broken",
+        "points": [
+          "moss_b",
+          "south"
+        ],
+        "pixel_points": [
+          [
+            714,
+            632
+          ],
+          [
+            646,
+            1058
+          ]
+        ],
+        "width_px": 30,
+        "width_factor": 0.018
+      }
+    ],
+    "object_zones": [],
+    "seam_connectors": {
+      "north": [
+        1071,
+        92
+      ],
+      "south": [
+        646,
+        1058
+      ],
+      "east": [
+        1564,
+        575
+      ],
+      "west": [
+        136,
+        713
+      ]
+    }
+  },
+  "season_variant_mapping": {
+    "spring": "forest_edge_light_weather_overlay_spring.png",
+    "summer": "forest_edge_light_weather_overlay_summer.png",
+    "autumn": "forest_edge_light_weather_overlay_autumn.png",
+    "winter": "forest_edge_light_weather_overlay_winter.png"
+  },
+  "review_artifacts": {
+    "runtime_composite_preview": "production/assets/base_asset_pack/v001/03_contact_sheets/regions/forest_edge_runtime_composite_preview.png",
+    "runtime_layer_contact_sheet": "production/assets/base_asset_pack/v001/03_contact_sheets/regions/forest_edge_runtime_layer_contact_sheet.png"
+  }
+}

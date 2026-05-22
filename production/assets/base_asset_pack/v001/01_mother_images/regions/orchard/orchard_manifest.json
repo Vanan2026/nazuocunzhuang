@@ -1,0 +1,311 @@
+{
+  "region_id": "orchard",
+  "display_name": "Orchard",
+  "canvas_size": [
+    1700,
+    1150
+  ],
+  "status": "usable",
+  "launch_quality_approved": false,
+  "human_visual_approval_required": true,
+  "layout_mother": "production/assets/base_asset_pack/v001/01_mother_images/regions/orchard/orchard_layout_mother.png",
+  "painted_source": "production/assets/base_asset_pack/v001/01_mother_images/regions/orchard/orchard_painted_source.png",
+  "features": [
+    "fruit_trees",
+    "basket",
+    "path",
+    "fence"
+  ],
+  "layers": {
+    "base_ground": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/orchard/layers/orchard_base_ground.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/orchard/layers/orchard_base_ground.png",
+      "size": [
+        1700,
+        1150
+      ],
+      "mode": "RGBA"
+    },
+    "terrain_details": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/orchard/layers/orchard_terrain_details.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/orchard/layers/orchard_terrain_details.png",
+      "size": [
+        1700,
+        1150
+      ],
+      "mode": "RGBA"
+    },
+    "behind_player_structures": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/orchard/layers/orchard_behind_player_structures.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/orchard/layers/orchard_behind_player_structures.png",
+      "size": [
+        1700,
+        1150
+      ],
+      "mode": "RGBA"
+    },
+    "ysort_props_structures": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/orchard/layers/orchard_ysort_props_structures.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/orchard/layers/orchard_ysort_props_structures.png",
+      "size": [
+        1700,
+        1150
+      ],
+      "mode": "RGBA"
+    },
+    "foreground_occlusion": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/orchard/layers/orchard_foreground_occlusion.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/orchard/layers/orchard_foreground_occlusion.png",
+      "size": [
+        1700,
+        1150
+      ],
+      "mode": "RGBA"
+    },
+    "shadow_overlay": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/orchard/layers/orchard_shadow_overlay.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/orchard/layers/orchard_shadow_overlay.png",
+      "size": [
+        1700,
+        1150
+      ],
+      "mode": "RGBA"
+    },
+    "light_weather_overlays": [
+      {
+        "season": "spring",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/orchard/layers/orchard_light_weather_overlay_spring.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/orchard/layers/orchard_light_weather_overlay_spring.png",
+        "size": [
+          1700,
+          1150
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "summer",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/orchard/layers/orchard_light_weather_overlay_summer.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/orchard/layers/orchard_light_weather_overlay_summer.png",
+        "size": [
+          1700,
+          1150
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "autumn",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/orchard/layers/orchard_light_weather_overlay_autumn.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/orchard/layers/orchard_light_weather_overlay_autumn.png",
+        "size": [
+          1700,
+          1150
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "winter",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/orchard/layers/orchard_light_weather_overlay_winter.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/orchard/layers/orchard_light_weather_overlay_winter.png",
+        "size": [
+          1700,
+          1150
+        ],
+        "mode": "RGBA"
+      }
+    ]
+  },
+  "anchors": [
+    {
+      "id": "center",
+      "position": [
+        765,
+        644
+      ]
+    },
+    {
+      "id": "north",
+      "position": [
+        748,
+        92
+      ]
+    },
+    {
+      "id": "south",
+      "position": [
+        918,
+        1058
+      ]
+    },
+    {
+      "id": "west",
+      "position": [
+        136,
+        552
+      ]
+    },
+    {
+      "id": "east",
+      "position": [
+        1564,
+        736
+      ]
+    },
+    {
+      "id": "nw",
+      "position": [
+        340,
+        276
+      ]
+    },
+    {
+      "id": "ne",
+      "position": [
+        1241,
+        253
+      ]
+    },
+    {
+      "id": "sw",
+      "position": [
+        510,
+        897
+      ]
+    },
+    {
+      "id": "se",
+      "position": [
+        1394,
+        862
+      ]
+    },
+    {
+      "id": "basket",
+      "position": [
+        1190,
+        885
+      ]
+    },
+    {
+      "id": "row_break_a",
+      "position": [
+        578,
+        437
+      ]
+    },
+    {
+      "id": "row_break_b",
+      "position": [
+        850,
+        632
+      ]
+    },
+    {
+      "id": "row_break_c",
+      "position": [
+        1156,
+        805
+      ]
+    }
+  ],
+  "layout_profile": {
+    "road_signature": "orchard_diagonal_service_rows",
+    "road_motif": "orchard_service_path",
+    "composition_focal_point": [
+      0.44,
+      0.52
+    ],
+    "road_paths": [
+      {
+        "id": "diagonal_service_path",
+        "role": "orchard_service_path",
+        "style": "soft",
+        "points": [
+          "north",
+          "row_break_a",
+          "row_break_b",
+          "row_break_c",
+          "south"
+        ],
+        "pixel_points": [
+          [
+            748,
+            92
+          ],
+          [
+            578,
+            437
+          ],
+          [
+            850,
+            632
+          ],
+          [
+            1156,
+            805
+          ],
+          [
+            918,
+            1058
+          ]
+        ],
+        "width_px": 54,
+        "width_factor": 0.032
+      },
+      {
+        "id": "east_cart_gap",
+        "role": "orchard_cart_gap",
+        "style": "soft",
+        "points": [
+          "west",
+          "row_break_b",
+          "east"
+        ],
+        "pixel_points": [
+          [
+            136,
+            552
+          ],
+          [
+            850,
+            632
+          ],
+          [
+            1564,
+            736
+          ]
+        ],
+        "width_px": 37,
+        "width_factor": 0.022
+      }
+    ],
+    "object_zones": [],
+    "seam_connectors": {
+      "north": [
+        748,
+        92
+      ],
+      "south": [
+        918,
+        1058
+      ],
+      "east": [
+        1564,
+        736
+      ],
+      "west": [
+        136,
+        552
+      ]
+    }
+  },
+  "season_variant_mapping": {
+    "spring": "orchard_light_weather_overlay_spring.png",
+    "summer": "orchard_light_weather_overlay_summer.png",
+    "autumn": "orchard_light_weather_overlay_autumn.png",
+    "winter": "orchard_light_weather_overlay_winter.png"
+  },
+  "review_artifacts": {
+    "runtime_composite_preview": "production/assets/base_asset_pack/v001/03_contact_sheets/regions/orchard_runtime_composite_preview.png",
+    "runtime_layer_contact_sheet": "production/assets/base_asset_pack/v001/03_contact_sheets/regions/orchard_runtime_layer_contact_sheet.png"
+  }
+}

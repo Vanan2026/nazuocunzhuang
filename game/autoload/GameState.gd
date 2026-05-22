@@ -45,6 +45,9 @@ func get_restoration_states() -> Dictionary:
 
 func set_restoration_states(next_states: Dictionary) -> void:
 	restoration_states = next_states.duplicate(true)
+	for restoration_id in restoration_states.keys():
+		if bool(restoration_states[restoration_id]):
+			set_flag("restored_%s" % String(restoration_id), true)
 
 
 func set_player_money(value: int) -> void:
@@ -55,3 +58,38 @@ func set_player_money(value: int) -> void:
 func set_player_energy(value: int) -> void:
 	player_energy = clamp(value, 0, 100)
 	energy_changed.emit(player_energy)
+
+
+func get_save_data() -> Dictionary:
+	return {
+		"flags": flags.duplicate(true),
+		"unlocked_areas": unlocked_areas.duplicate(true),
+		"restoration_states": restoration_states.duplicate(true),
+		"discovered_items": discovered_items.duplicate(true),
+		"player_money": player_money,
+		"player_energy": player_energy,
+	}
+
+
+func apply_save_data(data: Dictionary) -> void:
+	if data.is_empty():
+		return
+	if data.has("flags"):
+		flags = _duplicate_dictionary(data.get("flags", flags))
+	if data.has("unlocked_areas"):
+		unlocked_areas = _duplicate_dictionary(data.get("unlocked_areas", unlocked_areas))
+	if data.has("restoration_states"):
+		set_restoration_states(_duplicate_dictionary(data.get("restoration_states", restoration_states)))
+	if data.has("discovered_items"):
+		discovered_items = _duplicate_dictionary(data.get("discovered_items", discovered_items))
+	if data.has("player_money"):
+		set_player_money(int(data.get("player_money", player_money)))
+	if data.has("player_energy"):
+		set_player_energy(int(data.get("player_energy", player_energy)))
+
+
+func _duplicate_dictionary(raw_value: Variant) -> Dictionary:
+	if raw_value is Dictionary:
+		var raw_dictionary: Dictionary = raw_value
+		return raw_dictionary.duplicate(true)
+	return {}

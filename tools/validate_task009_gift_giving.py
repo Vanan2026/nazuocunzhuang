@@ -15,6 +15,7 @@ EXPECTED_FILES: dict[str, list[str]] = {
         "func _try_gift_interaction(",
         "func _evaluate_gift(",
         "func _build_gift_dialogue(",
+        "func _get_linked_node(path: NodePath, fallback_name: String) -> Node:",
         "birthday_gift_multiplier",
     ],
     "game/autoload/InventoryManager.gd": [
@@ -41,9 +42,9 @@ EXPECTED_FILES: dict[str, list[str]] = {
         '[node name="InventoryManager" type="Node"',
         '[node name="RelationshipManager" type="Node"',
         '[node name="DialogueBox"',
-        '[node name="Aoi" parent="NPCs" node_paths=PackedStringArray("data_registry_path", "inventory_manager_path", "dialogue_manager_path"',
-        '[node name="Gen" parent="NPCs" node_paths=PackedStringArray("data_registry_path", "inventory_manager_path", "dialogue_manager_path"',
-        '[node name="Mika" parent="NPCs" node_paths=PackedStringArray("data_registry_path", "inventory_manager_path", "dialogue_manager_path"',
+        '[node name="Aoi" parent="NPCs"',
+        '[node name="Gen" parent="NPCs"',
+        '[node name="Mika" parent="NPCs"',
         ],
 }
 

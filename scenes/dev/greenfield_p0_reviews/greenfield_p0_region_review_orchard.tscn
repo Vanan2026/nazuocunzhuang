@@ -1,0 +1,97 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/regions/orchard/layers/orchard_base_ground.png" id="tex_base_ground"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/regions/orchard/layers/orchard_terrain_details.png" id="tex_terrain_details"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/regions/orchard/layers/orchard_behind_player_structures.png" id="tex_behind_player_structures"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/regions/orchard/layers/orchard_ysort_props_structures.png" id="tex_ysort_props_structures"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/regions/orchard/layers/orchard_shadow_overlay.png" id="tex_shadow_overlay"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/regions/orchard/layers/orchard_foreground_occlusion.png" id="tex_foreground_occlusion"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/regions/orchard/layers/orchard_light_weather_overlay_spring.png" id="tex_light_spring"]
+
+[node name="GreenfieldP0RegionReview_orchard" type="Node2D"]
+metadata/package_id = "greenfield_p0_base_asset_pack_v001"
+metadata/region_id = "orchard"
+metadata/status = "usable"
+metadata/launch_quality_approved = false
+metadata/human_visual_approval_required = true
+
+[node name="ReviewCamera" type="Camera2D" parent="."]
+position = Vector2(850.0, 575.0)
+zoom = Vector2(0.529, 0.529)
+enabled = true
+
+[node name="RuntimeLayerStack" type="Node2D" parent="."]
+
+[node name="BaseGround" type="Sprite2D" parent="RuntimeLayerStack"]
+position = Vector2(850.0, 575.0)
+texture = ExtResource("tex_base_ground")
+
+[node name="TerrainDetails" type="Sprite2D" parent="RuntimeLayerStack"]
+position = Vector2(850.0, 575.0)
+texture = ExtResource("tex_terrain_details")
+
+[node name="BehindPlayerStructures" type="Sprite2D" parent="RuntimeLayerStack"]
+position = Vector2(850.0, 575.0)
+texture = ExtResource("tex_behind_player_structures")
+
+[node name="YSortPropsStructures" type="Sprite2D" parent="RuntimeLayerStack"]
+position = Vector2(850.0, 575.0)
+texture = ExtResource("tex_ysort_props_structures")
+
+[node name="ShadowOverlay" type="Sprite2D" parent="RuntimeLayerStack"]
+position = Vector2(850.0, 575.0)
+texture = ExtResource("tex_shadow_overlay")
+
+[node name="ForegroundOcclusion" type="Sprite2D" parent="RuntimeLayerStack"]
+position = Vector2(850.0, 575.0)
+texture = ExtResource("tex_foreground_occlusion")
+
+[node name="LightWeatherOverlaySpring" type="Sprite2D" parent="RuntimeLayerStack"]
+position = Vector2(850.0, 575.0)
+modulate = Color(1, 1, 1, 0.65)
+texture = ExtResource("tex_light_spring")
+
+[node name="ReviewAnchors" type="Node2D" parent="."]
+
+[node name="Anchor_Center" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(765, 644)
+
+[node name="Anchor_North" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(748, 92)
+
+[node name="Anchor_South" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(918, 1058)
+
+[node name="Anchor_West" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(136, 552)
+
+[node name="Anchor_East" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(1564, 736)
+
+[node name="Anchor_Nw" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(340, 276)
+
+[node name="Anchor_Ne" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(1241, 253)
+
+[node name="Anchor_Sw" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(510, 897)
+
+[node name="Anchor_Se" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(1394, 862)
+
+[node name="Anchor_Basket" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(1190, 885)
+
+[node name="Anchor_RowBreakA" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(578, 437)
+
+[node name="Anchor_RowBreakB" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(850, 632)
+
+[node name="Anchor_RowBreakC" type="Marker2D" parent="ReviewAnchors"]
+position = Vector2(1156, 805)
+
+[node name="ReviewNotes" type="Node" parent="."]
+metadata/review_gate = "visual_review_required"
+metadata/source_rule = "do_not_patch_independent_scene_sprites"

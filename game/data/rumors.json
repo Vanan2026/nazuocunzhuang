@@ -1,0 +1,50 @@
+[
+  {
+    "rumor_id": "rumor_mailbox_weather_spring",
+    "source": "mailbox",
+    "priority": 10,
+    "conditions": {"season": "spring", "weather": "any"},
+    "text": "村务纸条：春天的早雨会把田边小路洗得很软，出门时慢慢走。",
+    "sets_flags": []
+  },
+  {
+    "rumor_id": "rumor_mailbox_shop_seed",
+    "source": "mailbox",
+    "priority": 8,
+    "conditions": {"season": "any", "weather": "any"},
+    "text": "小通知：杂货店补了一批基础种子，萝卜最适合新手练手。",
+    "sets_flags": []
+  },
+  {
+    "rumor_id": "rumor_mailbox_rainy_path",
+    "source": "mailbox",
+    "priority": 12,
+    "conditions": {"season": "any", "weather": "rainy"},
+    "text": "村口留言：雨天路滑，桥边木栏会有青苔，记得绕着走。",
+    "sets_flags": []
+  },
+  {
+    "rumor_id": "rumor_bulletin_bench_rest",
+    "source": "bulletin",
+    "priority": 6,
+    "conditions": {"season": "any", "weather": "any"},
+    "text": "公告牌：长椅已经擦干净了，路过的人可以坐一会儿。",
+    "sets_flags": []
+  },
+  {
+    "rumor_id": "rumor_npc_old_paths",
+    "source": "npc",
+    "priority": 7,
+    "conditions": {"season": "any", "weather": "any"},
+    "text": "村里人说，旧路不一定通向远方，有时候只是通向被忘记的院角。",
+    "sets_flags": []
+  },
+  {
+    "rumor_id": "rumor_old_well_bell",
+    "source": "mailbox",
+    "priority": 90,
+    "conditions": {"season": "any", "weather": "any", "flag_set": "rumor_old_well_bell", "flag_not_set": "heard_bell_rumor_01"},
+    "text": "夹在邮箱里的纸条写着：旧水井修好后，夜里偶尔会听见很轻的铃声，像从井底的水面传来。",
+    "sets_flags": ["heard_bell_rumor_01"]
+  }
+]

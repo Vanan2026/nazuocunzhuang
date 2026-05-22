@@ -59,6 +59,29 @@ func get_inventory_snapshot() -> Dictionary:
 	return items.duplicate(true)
 
 
+func get_save_data() -> Dictionary:
+	return {
+		"items": items.duplicate(true),
+		"tools": tools.duplicate(true),
+		"key_items": key_items.duplicate(true),
+		"selected_item_id": selected_item_id,
+	}
+
+
+func apply_save_data(data: Dictionary) -> void:
+	if data.is_empty():
+		return
+	items = _sanitize_count_dictionary(data.get("items", items))
+	tools = _sanitize_count_dictionary(data.get("tools", tools))
+	key_items = _sanitize_count_dictionary(data.get("key_items", key_items))
+	var next_selected_item := String(data.get("selected_item_id", ""))
+	if not next_selected_item.is_empty() and not items.has(next_selected_item):
+		next_selected_item = ""
+	selected_item_id = next_selected_item
+	selected_item_changed.emit(selected_item_id)
+	inventory_changed.emit()
+
+
 func get_items_by_category(category: String) -> Dictionary:
 	var result: Dictionary = {}
 	for item_id in items.keys():
@@ -79,3 +102,17 @@ func _matches_category(item_id: String, category: String) -> bool:
 			return item_id == "wood" or item_id == "stone"
 		_:
 			return false
+
+
+func _sanitize_count_dictionary(raw_value: Variant) -> Dictionary:
+	var result: Dictionary = {}
+	if not (raw_value is Dictionary):
+		return result
+	var raw_dictionary: Dictionary = raw_value
+	for key in raw_dictionary.keys():
+		var item_id := String(key)
+		var count := int(raw_dictionary[key])
+		if item_id.is_empty() or count <= 0:
+			continue
+		result[item_id] = count
+	return result

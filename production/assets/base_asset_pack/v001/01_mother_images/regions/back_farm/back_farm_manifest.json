@@ -1,0 +1,460 @@
+{
+  "region_id": "back_farm",
+  "display_name": "BackFarm",
+  "canvas_size": [
+    1600,
+    1200
+  ],
+  "status": "usable",
+  "launch_quality_approved": false,
+  "human_visual_approval_required": true,
+  "layout_mother": "production/assets/base_asset_pack/v001/01_mother_images/regions/back_farm/back_farm_layout_mother.png",
+  "painted_source": "production/assets/base_asset_pack/v001/01_mother_images/regions/back_farm/back_farm_painted_source.png",
+  "features": [
+    "farm_plots",
+    "shed",
+    "fence",
+    "water_barrel"
+  ],
+  "layers": {
+    "base_ground": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/back_farm/layers/back_farm_base_ground.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/back_farm/layers/back_farm_base_ground.png",
+      "size": [
+        1600,
+        1200
+      ],
+      "mode": "RGBA"
+    },
+    "terrain_details": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/back_farm/layers/back_farm_terrain_details.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/back_farm/layers/back_farm_terrain_details.png",
+      "size": [
+        1600,
+        1200
+      ],
+      "mode": "RGBA"
+    },
+    "behind_player_structures": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/back_farm/layers/back_farm_behind_player_structures.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/back_farm/layers/back_farm_behind_player_structures.png",
+      "size": [
+        1600,
+        1200
+      ],
+      "mode": "RGBA"
+    },
+    "ysort_props_structures": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/back_farm/layers/back_farm_ysort_props_structures.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/back_farm/layers/back_farm_ysort_props_structures.png",
+      "size": [
+        1600,
+        1200
+      ],
+      "mode": "RGBA"
+    },
+    "foreground_occlusion": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/back_farm/layers/back_farm_foreground_occlusion.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/back_farm/layers/back_farm_foreground_occlusion.png",
+      "size": [
+        1600,
+        1200
+      ],
+      "mode": "RGBA"
+    },
+    "shadow_overlay": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/back_farm/layers/back_farm_shadow_overlay.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/back_farm/layers/back_farm_shadow_overlay.png",
+      "size": [
+        1600,
+        1200
+      ],
+      "mode": "RGBA"
+    },
+    "light_weather_overlays": [
+      {
+        "season": "spring",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/back_farm/layers/back_farm_light_weather_overlay_spring.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/back_farm/layers/back_farm_light_weather_overlay_spring.png",
+        "size": [
+          1600,
+          1200
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "summer",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/back_farm/layers/back_farm_light_weather_overlay_summer.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/back_farm/layers/back_farm_light_weather_overlay_summer.png",
+        "size": [
+          1600,
+          1200
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "autumn",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/back_farm/layers/back_farm_light_weather_overlay_autumn.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/back_farm/layers/back_farm_light_weather_overlay_autumn.png",
+        "size": [
+          1600,
+          1200
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "winter",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/back_farm/layers/back_farm_light_weather_overlay_winter.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/back_farm/layers/back_farm_light_weather_overlay_winter.png",
+        "size": [
+          1600,
+          1200
+        ],
+        "mode": "RGBA"
+      }
+    ]
+  },
+  "anchors": [
+    {
+      "id": "center",
+      "position": [
+        800,
+        744
+      ]
+    },
+    {
+      "id": "north",
+      "position": [
+        800,
+        96
+      ]
+    },
+    {
+      "id": "south",
+      "position": [
+        800,
+        1128
+      ]
+    },
+    {
+      "id": "west",
+      "position": [
+        128,
+        864
+      ]
+    },
+    {
+      "id": "east",
+      "position": [
+        1472,
+        876
+      ]
+    },
+    {
+      "id": "nw",
+      "position": [
+        352,
+        276
+      ]
+    },
+    {
+      "id": "ne",
+      "position": [
+        1184,
+        288
+      ]
+    },
+    {
+      "id": "sw",
+      "position": [
+        288,
+        960
+      ]
+    },
+    {
+      "id": "se",
+      "position": [
+        1344,
+        948
+      ]
+    },
+    {
+      "id": "shed",
+      "position": [
+        1280,
+        408
+      ]
+    },
+    {
+      "id": "shed_stand",
+      "position": [
+        1280,
+        468
+      ]
+    },
+    {
+      "id": "shed_bend",
+      "position": [
+        1184,
+        696
+      ]
+    },
+    {
+      "id": "field_gate",
+      "position": [
+        800,
+        936
+      ]
+    },
+    {
+      "id": "farm_junction",
+      "position": [
+        800,
+        768
+      ]
+    },
+    {
+      "id": "lane_a",
+      "position": [
+        448,
+        840
+      ]
+    },
+    {
+      "id": "lane_b",
+      "position": [
+        976,
+        720
+      ]
+    },
+    {
+      "id": "lane_c",
+      "position": [
+        1280,
+        864
+      ]
+    },
+    {
+      "id": "west_field_gap",
+      "position": [
+        624,
+        804
+      ]
+    },
+    {
+      "id": "east_field_gap",
+      "position": [
+        1024,
+        683
+      ]
+    }
+  ],
+  "layout_profile": {
+    "road_signature": "farm_service_lane_fields_shed_gate",
+    "road_motif": "field_lane",
+    "composition_focal_point": [
+      0.48,
+      0.58
+    ],
+    "road_paths": [
+      {
+        "id": "lower_access_lane",
+        "role": "farm_access_lane",
+        "style": "field",
+        "points": [
+          "west",
+          "lane_a",
+          "field_gate",
+          "lane_c",
+          "east"
+        ],
+        "pixel_points": [
+          [
+            128,
+            864
+          ],
+          [
+            448,
+            840
+          ],
+          [
+            800,
+            936
+          ],
+          [
+            1280,
+            864
+          ],
+          [
+            1472,
+            876
+          ]
+        ],
+        "width_px": 41,
+        "width_factor": 0.026
+      },
+      {
+        "id": "farm_service_lane",
+        "role": "farm_service_lane",
+        "style": "field",
+        "points": [
+          "south",
+          "field_gate",
+          "farm_junction",
+          "shed_bend",
+          "shed_stand"
+        ],
+        "pixel_points": [
+          [
+            800,
+            1128
+          ],
+          [
+            800,
+            936
+          ],
+          [
+            800,
+            768
+          ],
+          [
+            1184,
+            696
+          ],
+          [
+            1280,
+            468
+          ]
+        ],
+        "width_px": 36,
+        "width_factor": 0.023
+      },
+      {
+        "id": "north_field_entry",
+        "role": "farm_access_lane",
+        "style": "field",
+        "points": [
+          "north",
+          "farm_junction"
+        ],
+        "pixel_points": [
+          [
+            800,
+            96
+          ],
+          [
+            800,
+            768
+          ]
+        ],
+        "width_px": 28,
+        "width_factor": 0.018
+      },
+      {
+        "id": "west_field_service",
+        "role": "field_service_path",
+        "style": "field",
+        "points": [
+          "farm_junction",
+          "west_field_gap"
+        ],
+        "pixel_points": [
+          [
+            800,
+            768
+          ],
+          [
+            624,
+            804
+          ]
+        ],
+        "width_px": 22,
+        "width_factor": 0.014
+      },
+      {
+        "id": "east_field_service",
+        "role": "field_service_path",
+        "style": "field",
+        "points": [
+          "farm_junction",
+          "east_field_gap"
+        ],
+        "pixel_points": [
+          [
+            800,
+            768
+          ],
+          [
+            1024,
+            683
+          ]
+        ],
+        "width_px": 22,
+        "width_factor": 0.014
+      }
+    ],
+    "object_zones": [
+      {
+        "id": "shed",
+        "role": "farm_structure",
+        "relation": "shed stands above the service lane, with a clear approach point",
+        "rect": [
+          1176,
+          222,
+          1384,
+          432
+        ]
+      },
+      {
+        "id": "field_block_west",
+        "role": "farm_plots",
+        "relation": "field block left of the central lane",
+        "rect": [
+          256,
+          366,
+          712,
+          756
+        ]
+      },
+      {
+        "id": "field_block_east",
+        "role": "farm_plots",
+        "relation": "smaller field block right of the central lane",
+        "rect": [
+          872,
+          366,
+          1120,
+          630
+        ]
+      }
+    ],
+    "seam_connectors": {
+      "north": [
+        800,
+        96
+      ],
+      "south": [
+        800,
+        1128
+      ],
+      "east": [
+        1472,
+        876
+      ],
+      "west": [
+        128,
+        864
+      ]
+    }
+  },
+  "season_variant_mapping": {
+    "spring": "back_farm_light_weather_overlay_spring.png",
+    "summer": "back_farm_light_weather_overlay_summer.png",
+    "autumn": "back_farm_light_weather_overlay_autumn.png",
+    "winter": "back_farm_light_weather_overlay_winter.png"
+  },
+  "review_artifacts": {
+    "runtime_composite_preview": "production/assets/base_asset_pack/v001/03_contact_sheets/regions/back_farm_runtime_composite_preview.png",
+    "runtime_layer_contact_sheet": "production/assets/base_asset_pack/v001/03_contact_sheets/regions/back_farm_runtime_layer_contact_sheet.png"
+  }
+}

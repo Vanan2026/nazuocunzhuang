@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="PackedScene" path="res://game/entities/player/Player.tscn" id="1_player"]
+[ext_resource type="Script" path="res://scripts/world/scene_switch_area.gd" id="2_scene_switch_area"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_door"]
+size = Vector2(48, 28)
+
+[node name="PlayerHouse" type="Node2D"]
+
+[node name="Floor" type="Polygon2D" parent="."]
+color = Color(0.74, 0.64, 0.5, 1)
+polygon = PackedVector2Array(-96, -64, 160, -64, 160, 128, -96, 128)
+
+[node name="Rug" type="Polygon2D" parent="."]
+position = Vector2(16, 56)
+color = Color(0.55, 0.37, 0.32, 1)
+polygon = PackedVector2Array(-36, -16, 36, -16, 36, 16, -36, 16)
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(16, 48)
+
+[node name="DoorToYard" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(72, -40)
+script = ExtResource("2_scene_switch_area")
+target_scene = "res://game/scenes/world/PlayerYard.tscn"
+interaction_hint = "按 E 出门到院子"
+
+[node name="DoorShape" type="CollisionShape2D" parent="DoorToYard"]
+shape = SubResource("RectangleShape2D_door")
+
+[node name="DoorMarker" type="Polygon2D" parent="DoorToYard"]
+color = Color(0.42, 0.26, 0.17, 1)
+polygon = PackedVector2Array(-20, -14, 20, -14, 20, 14, -20, 14)
