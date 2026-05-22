@@ -39,6 +39,8 @@ script = ExtResource("11_player_yard")
 
 [node name="WorldCamera" type="Camera2D" parent="." unique_id=1694958396]
 position = Vector2(88, 96)
+enabled = true
+zoom = Vector2(3, 3)
 
 [node name="TimeManager" type="Node" parent="." unique_id=765325581]
 script = ExtResource("3_time_manager")
@@ -73,9 +75,13 @@ script = ExtResource("13_relationship_manager")
 
 [node name="DialogueBox" parent="." unique_id=330547878 instance=ExtResource("14_dialogue_box")]
 
+[node name="WorldBackdrop" type="Polygon2D" parent="."]
+color = Color(0.48, 0.6, 0.42, 1)
+polygon = PackedVector2Array(-256, -128, 448, -128, 448, 320, -256, 320)
+
 [node name="Ground" type="Polygon2D" parent="." unique_id=725274824]
 color = Color(0.55, 0.66, 0.46, 1)
-polygon = PackedVector2Array(-96, -64, 256, -64, 256, 224, -96, 224)
+polygon = PackedVector2Array(-192, -96, 384, -96, 384, 272, -192, 272)
 
 [node name="Mailbox" type="Area2D" parent="." unique_id=1173090410 groups=["interactable"]]
 position = Vector2(64, 32)

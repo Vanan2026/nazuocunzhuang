@@ -56,10 +56,16 @@ func _run() -> void:
 		return
 
 	_expect(hud is CanvasLayer, "FirstWeekQuestHUD should render as CanvasLayer")
-	_expect(bool(hud.get("visible")), "FirstWeekQuestHUD should be visible")
+	_expect(not bool(hud.get("visible")), "FirstWeekQuestHUD should start hidden for normal play")
 	_expect(hud.has_method("get_visible_objective_texts"), "FirstWeekQuestHUD should expose visible objective text")
 	_expect(hud.has_method("is_objective_complete"), "FirstWeekQuestHUD should expose objective completion checks")
 	_expect(hud.has_method("refresh"), "FirstWeekQuestHUD should expose refresh")
+	if _has_failed:
+		return
+
+	hud.show()
+	await process_frame
+	_expect(bool(hud.get("visible")), "FirstWeekQuestHUD should still be available as a debug overlay")
 	if _has_failed:
 		return
 

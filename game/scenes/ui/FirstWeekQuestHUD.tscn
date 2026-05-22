@@ -4,6 +4,7 @@
 
 [node name="FirstWeekQuestHUD" type="CanvasLayer"]
 layer = 6
+visible = false
 script = ExtResource("1_hud")
 quest_manager_path = NodePath("../QuestManager")
 
