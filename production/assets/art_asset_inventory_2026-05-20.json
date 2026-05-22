@@ -11,17 +11,17 @@
     "tools"
   ],
   "summary": {
-    "scanned_file_count": 3318,
-    "image_file_count": 1466,
+    "scanned_file_count": 1823,
+    "image_file_count": 1450,
     "runtime_art_image_count": 551,
     "manifest_file_count": 30,
-    "res_reference_count": 3148,
+    "res_reference_count": 739,
     "unresolved_res_reference_count": 65
   },
   "image_groups": {
     "production_asset/base_asset_pack": 498,
     "production_asset/characters": 45,
-    "production_asset/external_gpt_handoff": 57,
+    "production_asset/external_gpt_handoff": 41,
     "production_asset/final_art": 72,
     "production_asset/homeyard": 1,
     "production_asset/items": 30,
@@ -610,7 +610,7 @@
     }
   ],
   "references": {
-    "files_with_res_refs": 1619,
+    "files_with_res_refs": 148,
     "unresolved_res_refs": [
       "res://%s",
       "res://([^",
@@ -766,9 +766,57 @@
       }
     },
     "unreferenced_runtime_art_images": {
-      "count": 0,
+      "count": 47,
       "note": "Unreferenced does not mean invalid; it means not currently found in scanned text/data references.",
-      "paths": []
+      "paths": [
+        "assets/art/characters/npc/npc_aoi_idle_down_128.png",
+        "assets/art/characters/npc/npc_aoi_idle_left_128.png",
+        "assets/art/characters/npc/npc_aoi_idle_right_128.png",
+        "assets/art/characters/npc/npc_aoi_idle_up_128.png",
+        "assets/art/characters/npc/npc_aoi_walk_down_4x128.png",
+        "assets/art/characters/npc/npc_aoi_walk_left_4x128.png",
+        "assets/art/characters/npc/npc_aoi_walk_right_4x128.png",
+        "assets/art/characters/npc/npc_aoi_walk_up_4x128.png",
+        "assets/art/characters/npc/npc_gen_idle_down_128.png",
+        "assets/art/characters/npc/npc_gen_idle_left_128.png",
+        "assets/art/characters/npc/npc_gen_idle_right_128.png",
+        "assets/art/characters/npc/npc_gen_idle_up_128.png",
+        "assets/art/characters/npc/npc_gen_walk_down_4x128.png",
+        "assets/art/characters/npc/npc_gen_walk_left_4x128.png",
+        "assets/art/characters/npc/npc_gen_walk_right_4x128.png",
+        "assets/art/characters/npc/npc_gen_walk_up_4x128.png",
+        "assets/art/characters/npc/npc_hana_idle_down_128.png",
+        "assets/art/characters/npc/npc_hana_idle_left_128.png",
+        "assets/art/characters/npc/npc_hana_idle_right_128.png",
+        "assets/art/characters/npc/npc_hana_idle_up_128.png",
+        "assets/art/characters/npc/npc_hana_walk_down_4x128.png",
+        "assets/art/characters/npc/npc_hana_walk_left_4x128.png",
+        "assets/art/characters/npc/npc_hana_walk_right_4x128.png",
+        "assets/art/characters/npc/npc_hana_walk_up_4x128.png",
+        "assets/art/characters/npc/npc_mika_idle_down_128.png",
+        "assets/art/characters/npc/npc_mika_idle_left_128.png",
+        "assets/art/characters/npc/npc_mika_idle_right_128.png",
+        "assets/art/characters/npc/npc_mika_idle_up_128.png",
+        "assets/art/characters/npc/npc_mika_walk_down_4x128.png",
+        "assets/art/characters/npc/npc_mika_walk_left_4x128.png",
+        "assets/art/characters/npc/npc_mika_walk_right_4x128.png",
+        "assets/art/characters/npc/npc_mika_walk_up_4x128.png",
+        "assets/art/icons/weather_cloudy_64.png",
+        "assets/art/icons/weather_rainy_64.png",
+        "assets/art/icons/weather_sunny_64.png",
+        "assets/art/portraits/npc_aoi_portrait_happy_512.png",
+        "assets/art/portraits/npc_aoi_portrait_thinking_512.png",
+        "assets/art/portraits/npc_gen_portrait_happy_512.png",
+        "assets/art/portraits/npc_gen_portrait_thinking_512.png",
+        "assets/art/portraits/npc_hana_portrait_happy_512.png",
+        "assets/art/portraits/npc_hana_portrait_thinking_512.png",
+        "assets/art/portraits/npc_mika_portrait_happy_512.png",
+        "assets/art/portraits/npc_mika_portrait_thinking_512.png",
+        "assets/art/props/region_home_area_prop_bench_v002.png",
+        "assets/art/props/region_home_area_prop_cat_bed_v001.png",
+        "assets/art/ui/ui_button_wood_128x48.png",
+        "assets/art/ui/ui_panel_paper_256x128.png"
+      ]
     }
   },
   "data_backlogs": {

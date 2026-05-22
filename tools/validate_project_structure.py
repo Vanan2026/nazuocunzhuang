@@ -50,7 +50,6 @@ def main() -> None:
             "03_foreground_occlusion",
             "04_audit",
             "README.md",
-            "_archive",
         }
         actual = set(incoming["top_level"])
         unexpected = sorted(actual - expected)

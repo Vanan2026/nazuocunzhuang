@@ -12,7 +12,8 @@ OUTPUT = ROOT / "production/assets/art_asset_inventory_2026-05-20.json"
 PROJECT_MANIFEST = ROOT / "production/assets/project_art_production_manifest_2026-05-19.json"
 SCAN_ROOTS = ["assets", "production/assets", "game/data", "scenes", "tools"]
 IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp", ".svg"}
-TEXT_EXTENSIONS = {".tscn", ".gd", ".json", ".tres", ".md", ".py", ".cfg", ".import"}
+TEXT_EXTENSIONS = {".tscn", ".gd", ".json", ".tres", ".md", ".py", ".cfg"}
+IGNORED_SCAN_SUFFIXES = {".import"}
 ACTIVE_SCENES = [
     "scenes/world/world.tscn",
     "scenes/regions/region_home_area.tscn",
@@ -69,8 +70,20 @@ def collect_files() -> list[Path]:
     for root_name in SCAN_ROOTS:
         root = ROOT / root_name
         if root.exists():
-            files.extend(path for path in root.rglob("*") if path.is_file() and path.resolve() != OUTPUT.resolve())
+            files.extend(path for path in root.rglob("*") if should_scan_file(path))
     return sorted(files, key=rel)
+
+
+def should_scan_file(path: Path) -> bool:
+    if not path.is_file():
+        return False
+    if path.resolve() == OUTPUT.resolve():
+        return False
+    if path.suffix in IGNORED_SCAN_SUFFIXES:
+        return False
+    if path.suffix == ".translation" and path.is_relative_to(ROOT / "production"):
+        return False
+    return True
 
 
 def classify_image(path: Path) -> str:

@@ -26,7 +26,6 @@ ACTIVE_INCOMING_DIRS = [
     "02_scene_base",
     "03_foreground_occlusion",
     "04_audit",
-    "_archive",
 ]
 
 

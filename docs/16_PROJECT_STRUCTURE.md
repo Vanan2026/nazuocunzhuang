@@ -29,7 +29,7 @@ Do not delete or rename the older active runtime folders until the scaffold has 
 
 - `production/`: production asset packages, external handoffs, reports, renders, and source manifests.
 - `production/assets/external_gpt_handoff/greenfield_p0/v001/incoming/`: formal external asset intake and audit staging, not final runtime.
-- `production/assets/external_gpt_handoff/greenfield_p0/v001/incoming/_archive/`: superseded or legacy incoming drops kept as evidence.
+- Superseded external intake drops should be removed from active production folders after validation; use Git history for rollback evidence instead of keeping importable duplicate PNG trees.
 
 Accepted external assets should be validated in `production/` first, then copied or processed into `assets/` or Godot review scenes through a named import task.
 
