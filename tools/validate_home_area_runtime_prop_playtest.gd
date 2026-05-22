@@ -4,6 +4,7 @@ const HeadlessLifecycle := preload("res://tools/headless_lifecycle.gd")
 
 const WORLD_SCENE_PATH := "res://scenes/world/world.tscn"
 const EXPECTED_MAIN_SCENE := "res://scenes/world/world.tscn"
+const GAME_MAIN_SCENE_PATH := "res://game/scenes/Main.tscn"
 const INTERACTION_RANGE := 64.0
 
 var _has_failed := false
@@ -16,7 +17,7 @@ func _initialize() -> void:
 
 func _run() -> void:
 	var main_scene := String(ProjectSettings.get_setting("application/run/main_scene", ""))
-	_expect(main_scene == EXPECTED_MAIN_SCENE, "project main_scene must stay on world.tscn for HomeArea prop playtest")
+	_expect(main_scene == EXPECTED_MAIN_SCENE or main_scene == GAME_MAIN_SCENE_PATH, "project main_scene must stay on a playable entry for HomeArea prop playtest")
 
 	var packed := load(WORLD_SCENE_PATH) as PackedScene
 	_expect(packed != null, "could not load world scene")

@@ -11,6 +11,7 @@ const DATA_FILES: Dictionary = {
 	"dialogues": {"path": "res://game/data/dialogues.json", "id_key": "dialogue_id"},
 	"rumors": {"path": "res://game/data/rumors.json", "id_key": "rumor_id"},
 	"recipes": {"path": "res://game/data/recipes.json", "id_key": "recipe_id"},
+	"npc_schedules": {"path": "res://game/data/npc_schedules.json", "id_key": "schedule_id"},
 	"restoration_targets": {"path": "res://game/data/restoration_targets.json", "id_key": "restoration_id"},
 }
 
@@ -31,6 +32,7 @@ var npcs: Dictionary = {}
 var dialogues: Dictionary = {}
 var rumors: Dictionary = {}
 var recipes: Dictionary = {}
+var npc_schedules: Dictionary = {}
 var restoration_targets: Dictionary = {}
 var validation_errors: Array[String] = []
 var is_loaded: bool = false
@@ -64,16 +66,18 @@ func validate_all_data() -> bool:
 	_validate_dialogues()
 	_validate_rumors()
 	_validate_recipes()
+	_validate_npc_schedules()
 	_validate_restoration_targets()
 
 	if validation_errors.is_empty():
-		print("DataRegistry validation OK: %d items, %d crops, %d npcs, %d dialogues, %d rumors, %d recipes, %d restorations" % [
+		print("DataRegistry validation OK: %d items, %d crops, %d npcs, %d dialogues, %d rumors, %d recipes, %d schedules, %d restorations" % [
 			items.size(),
 			crops.size(),
 			npcs.size(),
 			dialogues.size(),
 			rumors.size(),
 			recipes.size(),
+			npc_schedules.size(),
 			restoration_targets.size(),
 		])
 		data_loaded.emit()
@@ -101,6 +105,10 @@ func get_recipe(recipe_id: String) -> Dictionary:
 	return recipes.get(recipe_id, {})
 
 
+func get_npc_schedule(schedule_id: String) -> Dictionary:
+	return npc_schedules.get(schedule_id, {})
+
+
 func get_dialogue(dialogue_id: String) -> Dictionary:
 	return dialogues.get(dialogue_id, {})
 
@@ -124,6 +132,7 @@ func _clear_data() -> void:
 	dialogues.clear()
 	rumors.clear()
 	recipes.clear()
+	npc_schedules.clear()
 	restoration_targets.clear()
 	validation_errors.clear()
 	is_loaded = false
@@ -179,6 +188,8 @@ func _set_collection(collection_name: String, indexed: Dictionary) -> void:
 			rumors = indexed
 		"recipes":
 			recipes = indexed
+		"npc_schedules":
+			npc_schedules = indexed
 		"restoration_targets":
 			restoration_targets = indexed
 
@@ -218,6 +229,9 @@ func _validate_npcs() -> void:
 		var day := int(birthday.get("day", 0))
 		if day < 1 or day > 28:
 			_add_error("npc %s has invalid birthday day %d" % [npc_id, day])
+		var schedule_id := String(npc.get("schedule_id", ""))
+		if not npc_schedules.has(schedule_id):
+			_add_error("npc %s references missing schedule %s" % [npc_id, schedule_id])
 
 
 func _validate_dialogues() -> void:
@@ -260,6 +274,24 @@ func _validate_recipes() -> void:
 		var result_item_id := String(recipe.get("result", {}).get("item_id", ""))
 		if not items.has(result_item_id):
 			_add_error("recipe %s references missing result item %s" % [recipe_id, result_item_id])
+
+
+func _validate_npc_schedules() -> void:
+	for schedule_id in npc_schedules.keys():
+		var schedule: Dictionary = npc_schedules[schedule_id]
+		_require_fields(schedule, ["schedule_id", "entries"], "npc schedule %s" % schedule_id)
+		_reject_forbidden_fields(schedule, "npc schedule %s" % schedule_id)
+		var entries: Array = schedule.get("entries", [])
+		if entries.is_empty():
+			_add_error("npc schedule %s has no entries" % schedule_id)
+		for entry in entries:
+			if not (entry is Dictionary):
+				_add_error("npc schedule %s has invalid entry" % schedule_id)
+				continue
+			_require_fields(entry, ["time_block", "scene_id", "position", "activity"], "npc schedule %s entry" % schedule_id)
+			var position: Variant = entry.get("position", [])
+			if not (position is Array) or position.size() != 2:
+				_add_error("npc schedule %s entry position must be [x, y]" % schedule_id)
 
 
 func _validate_restoration_targets() -> void:

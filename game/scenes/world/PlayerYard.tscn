@@ -20,10 +20,12 @@
 [ext_resource type="Script" uid="uid://bfyhl1048s4x6" path="res://game/autoload/EventBus.gd" id="18_event_bus"]
 [ext_resource type="Script" uid="uid://g5c05buevw07" path="res://game/autoload/SaveManager.gd" id="19_save_manager"]
 [ext_resource type="Script" uid="uid://dsaw5gga3t2je" path="res://game/systems/restoration/RestorationTarget.gd" id="20_restoration_target"]
-[ext_resource type="Script" uid="uid://c1bwdms4r23fb" path="res://scripts/world/scene_switch_area.gd" id="21_scene_switch_area"]
+[ext_resource type="Script" uid="uid://c1bwdms4r23fb" path="res://game/entities/interactable/SceneTravel.gd" id="21_scene_switch_area"]
 [ext_resource type="Script" path="res://game/autoload/RumorManager.gd" id="22_bgxpi"]
 [ext_resource type="Script" path="res://game/entities/interactable/ResourcePickup.gd" id="23_resource_pickup"]
 [ext_resource type="Script" path="res://game/entities/interactable/FlagInteractable.gd" id="24_flag_interactable"]
+[ext_resource type="Script" path="res://game/entities/interactable/RumorBoard.gd" id="25_rumor_board"]
+[ext_resource type="Script" path="res://game/systems/npc/NpcScheduleDirector.gd" id="26_schedule_director"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_interactable"]
 size = Vector2(32, 28)
@@ -133,6 +135,23 @@ scale = Vector2(0.18, 0.18)
 script = ExtResource("16_runtime_sprite")
 texture_path = "res://assets/art/props/region_home_area_prop_road_sign_v001.png"
 
+[node name="BulletinBoard" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(144, 84)
+script = ExtResource("25_rumor_board")
+interactable_id = "bulletin_board"
+display_name = "公告板"
+interaction_hint = "按 E 查看公告"
+interaction_text = "木板上钉着今天的村务纸条和几条手写留言。"
+rumor_source = "bulletin"
+speaker_name = "公告板"
+
+[node name="BulletinBoardShape" type="CollisionShape2D" parent="BulletinBoard"]
+shape = SubResource("RectangleShape2D_interactable")
+
+[node name="BulletinBoardMarker" type="Polygon2D" parent="BulletinBoard"]
+color = Color(0.5, 0.32, 0.18, 1)
+polygon = PackedVector2Array(-18, -14, 18, -14, 18, 14, -18, 14)
+
 [node name="VillagePath" type="Area2D" parent="." groups=["interactable"]]
 position = Vector2(232, 72)
 script = ExtResource("24_flag_interactable")
@@ -149,6 +168,23 @@ shape = SubResource("RectangleShape2D_interactable")
 color = Color(0.63, 0.52, 0.35, 1)
 polygon = PackedVector2Array(-24, -10, 24, -10, 24, 10, -24, 10)
 
+[node name="ForestTrailGate" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(248, 116)
+script = ExtResource("21_scene_switch_area")
+interactable_id = "forest_trail_gate"
+display_name = "森林边缘小路"
+interaction_hint = "按 E 前往森林边缘"
+interaction_text = "路牌后面有一条短短的小路，能走到森林边缘。"
+target_scene = "res://game/scenes/world/ForestEdge.tscn"
+arrival_flag_id = "entered_forest_edge_path"
+
+[node name="ForestTrailGateShape" type="CollisionShape2D" parent="ForestTrailGate"]
+shape = SubResource("RectangleShape2D_interactable")
+
+[node name="ForestTrailGateMarker" type="Polygon2D" parent="ForestTrailGate"]
+color = Color(0.34, 0.48, 0.32, 1)
+polygon = PackedVector2Array(-20, -12, 20, -12, 20, 12, -20, 12)
+
 [node name="WoodPile" type="Area2D" parent="." groups=["interactable"]]
 position = Vector2(-32, 128)
 script = ExtResource("23_resource_pickup")
@@ -157,7 +193,7 @@ display_name = "木柴堆"
 interaction_hint = "按 E 收起木柴"
 interaction_text = "整齐码好的木柴，可以用来修东西。"
 item_id = "wood"
-count = 20
+count = 32
 
 [node name="WoodPileShape" type="CollisionShape2D" parent="WoodPile"]
 shape = SubResource("RectangleShape2D_interactable")
@@ -174,7 +210,7 @@ display_name = "石块堆"
 interaction_hint = "按 E 收起石块"
 interaction_text = "几块平整的石头，适合加固井沿。"
 item_id = "stone"
-count = 10
+count = 12
 
 [node name="StonePileShape" type="CollisionShape2D" parent="StonePile"]
 shape = SubResource("RectangleShape2D_interactable")
@@ -217,6 +253,44 @@ scale = Vector2(0.2, 0.2)
 script = ExtResource("16_runtime_sprite")
 texture_path = "res://assets/art/props/region_home_area_prop_bench_v001.png"
 
+[node name="GardenBenchRepair" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(132, 200)
+script = ExtResource("20_restoration_target")
+interactable_id = "garden_bench"
+display_name = "院边长椅"
+interaction_hint = "按 E 修复长椅"
+interaction_text = "这张旧长椅少了几颗钉子，补好后能让院子更像有人常来。"
+restoration_id = "garden_bench"
+restoration_sprite_path = NodePath("GardenBenchArt")
+
+[node name="GardenBenchRepairShape" type="CollisionShape2D" parent="GardenBenchRepair"]
+shape = SubResource("RectangleShape2D_interactable")
+
+[node name="GardenBenchArt" type="Sprite2D" parent="GardenBenchRepair"]
+position = Vector2(0, -19)
+scale = Vector2(0.2, 0.2)
+script = ExtResource("16_runtime_sprite")
+texture_path = "res://assets/art/props/region_home_area_prop_bench_v001.png"
+
+[node name="VillageSignRepair" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(128, 124)
+script = ExtResource("20_restoration_target")
+interactable_id = "village_sign"
+display_name = "村口路牌"
+interaction_hint = "按 E 扶正路牌"
+interaction_text = "路牌歪向一边，重新固定后就能看清森林边缘的方向。"
+restoration_id = "village_sign"
+restoration_sprite_path = NodePath("VillageSignRepairArt")
+
+[node name="VillageSignRepairShape" type="CollisionShape2D" parent="VillageSignRepair"]
+shape = SubResource("RectangleShape2D_interactable")
+
+[node name="VillageSignRepairArt" type="Sprite2D" parent="VillageSignRepair"]
+position = Vector2(0, -22)
+scale = Vector2(0.18, 0.18)
+script = ExtResource("16_runtime_sprite")
+texture_path = "res://assets/art/props/region_home_area_prop_road_sign_v001.png"
+
 [node name="FarmPlots" type="Node2D" parent="." unique_id=279461410]
 position = Vector2(24, 152)
 
@@ -243,6 +317,10 @@ position = Vector2(84, 34)
 plot_index = 5
 
 [node name="NPCs" type="Node2D" parent="." unique_id=1442626814]
+
+[node name="ScheduleDirector" type="Node" parent="."]
+script = ExtResource("26_schedule_director")
+scene_id = "player_yard"
 
 [node name="Aoi" parent="NPCs" unique_id=1178499742 instance=ExtResource("15_npc")]
 position = Vector2(32, 96)

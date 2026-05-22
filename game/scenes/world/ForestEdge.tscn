@@ -1,0 +1,108 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://game/entities/player/Player.tscn" id="1_player"]
+[ext_resource type="Script" path="res://game/autoload/DataRegistry.gd" id="2_data_registry"]
+[ext_resource type="Script" path="res://game/autoload/InventoryManager.gd" id="3_inventory_manager"]
+[ext_resource type="Script" path="res://game/autoload/GameState.gd" id="4_game_state"]
+[ext_resource type="PackedScene" path="res://game/scenes/ui/DialogueBox.tscn" id="5_dialogue_box"]
+[ext_resource type="Script" path="res://game/entities/interactable/SceneTravel.gd" id="6_scene_travel"]
+[ext_resource type="Script" path="res://game/entities/interactable/ResourcePickup.gd" id="7_resource_pickup"]
+[ext_resource type="Script" path="res://game/entities/interactable/FlagInteractable.gd" id="8_flag_interactable"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_interactable"]
+size = Vector2(44, 28)
+
+[node name="ForestEdge" type="Node2D"]
+
+[node name="WorldCamera" type="Camera2D" parent="."]
+position = Vector2(96, 72)
+enabled = true
+
+[node name="DataRegistry" type="Node" parent="."]
+script = ExtResource("2_data_registry")
+
+[node name="InventoryManager" type="Node" parent="."]
+script = ExtResource("3_inventory_manager")
+
+[node name="GameState" type="Node" parent="."]
+script = ExtResource("4_game_state")
+
+[node name="DialogueBox" parent="." instance=ExtResource("5_dialogue_box")]
+
+[node name="Ground" type="Polygon2D" parent="."]
+color = Color(0.36, 0.5, 0.35, 1)
+polygon = PackedVector2Array(-96, -64, 256, -64, 256, 224, -96, 224)
+
+[node name="SoftPath" type="Polygon2D" parent="."]
+color = Color(0.58, 0.5, 0.34, 1)
+polygon = PackedVector2Array(-72, 120, 20, 96, 120, 96, 232, 126, 232, 164, 96, 144, -72, 160)
+
+[node name="BackToYard" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(-48, 144)
+script = ExtResource("6_scene_travel")
+interactable_id = "back_to_yard"
+display_name = "回院子的小路"
+interaction_hint = "按 E 回到院子"
+interaction_text = "沿着来时的小路回去。"
+target_scene = "res://game/scenes/world/PlayerYard.tscn"
+arrival_flag_id = "returned_from_forest_edge"
+
+[node name="BackToYardShape" type="CollisionShape2D" parent="BackToYard"]
+shape = SubResource("RectangleShape2D_interactable")
+
+[node name="BackToYardMarker" type="Polygon2D" parent="BackToYard"]
+color = Color(0.62, 0.52, 0.36, 1)
+polygon = PackedVector2Array(-22, -10, 22, -10, 22, 10, -22, 10)
+
+[node name="FallenBranchBundle" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(92, 116)
+script = ExtResource("7_resource_pickup")
+interactable_id = "fallen_branch_bundle"
+display_name = "落枝捆"
+interaction_hint = "按 E 收起落枝"
+interaction_text = "风吹落的枝条很干，适合带回去修东西。"
+item_id = "wood"
+count = 18
+
+[node name="FallenBranchBundleShape" type="CollisionShape2D" parent="FallenBranchBundle"]
+shape = SubResource("RectangleShape2D_interactable")
+
+[node name="FallenBranchBundleMarker" type="Polygon2D" parent="FallenBranchBundle"]
+color = Color(0.41, 0.25, 0.14, 1)
+polygon = PackedVector2Array(-22, -9, 22, -9, 22, 9, -22, 9)
+
+[node name="FlatStoneCache" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(150, 144)
+script = ExtResource("7_resource_pickup")
+interactable_id = "flat_stone_cache"
+display_name = "平石堆"
+interaction_hint = "按 E 收起平石"
+interaction_text = "几块被水冲平的石头，可以拿来垫路牌。"
+item_id = "stone"
+count = 8
+
+[node name="FlatStoneCacheShape" type="CollisionShape2D" parent="FlatStoneCache"]
+shape = SubResource("RectangleShape2D_interactable")
+
+[node name="FlatStoneCacheMarker" type="Polygon2D" parent="FlatStoneCache"]
+color = Color(0.46, 0.45, 0.39, 1)
+polygon = PackedVector2Array(-18, -10, 18, -10, 18, 10, -18, 10)
+
+[node name="QuietShrine" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(206, 82)
+script = ExtResource("8_flag_interactable")
+interactable_id = "quiet_shrine"
+display_name = "树根小龛"
+interaction_hint = "按 E 看看树根小龛"
+interaction_text = "小龛里没有供品，只有一枚被雨水洗亮的圆石。"
+flag_id = "visited_forest_edge"
+
+[node name="QuietShrineShape" type="CollisionShape2D" parent="QuietShrine"]
+shape = SubResource("RectangleShape2D_interactable")
+
+[node name="QuietShrineMarker" type="Polygon2D" parent="QuietShrine"]
+color = Color(0.5, 0.42, 0.36, 1)
+polygon = PackedVector2Array(-14, -14, 14, -14, 14, 14, -14, 14)
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(4, 132)

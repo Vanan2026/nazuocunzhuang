@@ -14,5 +14,36 @@
       "broken": "res://assets/art/props/prop_well_old_broken_256.png",
       "repaired": "res://assets/art/props/prop_well_old_repaired_256.png"
     }
+  },
+  {
+    "restoration_id": "garden_bench",
+    "name": "院边长椅",
+    "description": "靠近菜地的旧长椅，木板松动但还能修好。",
+    "required_items": [
+      {"item_id": "wood", "count": 8}
+    ],
+    "required_money": 0,
+    "required_flags": [],
+    "unlocks": ["bench_rest_spot"],
+    "visual_states": {
+      "broken": "res://assets/art/props/region_home_area_prop_bench_v001.png",
+      "repaired": "res://assets/art/props/region_home_area_prop_bench_v001.png"
+    }
+  },
+  {
+    "restoration_id": "village_sign",
+    "name": "村口路牌",
+    "description": "木牌已经歪了，重新钉好后能看清通向森林边缘的小路。",
+    "required_items": [
+      {"item_id": "wood", "count": 4},
+      {"item_id": "stone", "count": 2}
+    ],
+    "required_money": 0,
+    "required_flags": [],
+    "unlocks": ["forest_edge_hint", "village_path_marked"],
+    "visual_states": {
+      "broken": "res://assets/art/props/region_home_area_prop_road_sign_v001.png",
+      "repaired": "res://assets/art/props/region_home_area_prop_road_sign_v001.png"
+    }
   }
 ]

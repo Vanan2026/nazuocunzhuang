@@ -11,11 +11,11 @@
     "tools"
   ],
   "summary": {
-    "scanned_file_count": 1823,
+    "scanned_file_count": 1826,
     "image_file_count": 1450,
     "runtime_art_image_count": 551,
     "manifest_file_count": 30,
-    "res_reference_count": 739,
+    "res_reference_count": 744,
     "unresolved_res_reference_count": 65
   },
   "image_groups": {
@@ -610,7 +610,7 @@
     }
   ],
   "references": {
-    "files_with_res_refs": 148,
+    "files_with_res_refs": 150,
     "unresolved_res_refs": [
       "res://%s",
       "res://([^",

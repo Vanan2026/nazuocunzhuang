@@ -32,6 +32,14 @@
     "sets_flags": []
   },
   {
+    "rumor_id": "rumor_bulletin_forest_edge",
+    "source": "bulletin",
+    "priority": 20,
+    "conditions": {"season": "any", "weather": "any", "flag_set": "forest_edge_hint"},
+    "text": "公告板：村口路牌修好后，森林边缘的小路又能看清了。路短，适合傍晚前散步。",
+    "sets_flags": ["heard_forest_edge_notice"]
+  },
+  {
     "rumor_id": "rumor_npc_old_paths",
     "source": "npc",
     "priority": 7,

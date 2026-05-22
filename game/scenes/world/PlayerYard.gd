@@ -19,6 +19,8 @@ extends Node2D
 @onready var farm_plots: Node = $FarmPlots
 @onready var bed: Node = $Bed
 @onready var mailbox: Node = $Mailbox
+@onready var bulletin_board: Node = $BulletinBoard
+@onready var schedule_director: Node = $ScheduleDirector
 @onready var player: Node = $Player
 
 
@@ -90,6 +92,24 @@ func show_mailbox_rumors() -> void:
 		rumor_manager.mark_dialogue_rumors_seen(dialogue)
 
 
+func show_bulletin_rumors() -> Dictionary:
+	if bulletin_board != null and bulletin_board.has_method("show_rumors"):
+		return bulletin_board.show_rumors()
+	if rumor_manager == null or dialogue_box == null:
+		return {}
+	if not rumor_manager.has_method("build_rumor_dialogue"):
+		return {}
+	var dialogue: Dictionary = rumor_manager.build_rumor_dialogue("bulletin")
+	if dialogue_box.has_method("show_dialogue"):
+		dialogue_box.show_dialogue(dialogue, {
+			"npc_name": "公告板",
+			"portrait": "",
+		})
+	if rumor_manager.has_method("mark_dialogue_rumors_seen"):
+		rumor_manager.mark_dialogue_rumors_seen(dialogue)
+	return dialogue
+
+
 func _ensure_data_loaded() -> void:
 	if data_registry == null:
 		return
@@ -133,6 +153,8 @@ func _on_day_started(_date_info: Dictionary) -> void:
 		relationship_manager.reset_daily_social_state()
 	if rumor_manager != null and rumor_manager.has_method("refresh_daily_rumors"):
 		rumor_manager.refresh_daily_rumors()
+	if schedule_director != null and schedule_director.has_method("apply_schedule"):
+		schedule_director.apply_schedule()
 
 
 func _bind_social_managers() -> void:
