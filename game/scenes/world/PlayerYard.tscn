@@ -38,9 +38,9 @@ size = Vector2(56, 32)
 script = ExtResource("11_player_yard")
 
 [node name="WorldCamera" type="Camera2D" parent="." unique_id=1694958396]
-position = Vector2(88, 96)
+position = Vector2(144, 128)
 enabled = true
-zoom = Vector2(3, 3)
+zoom = Vector2(2.75, 2.75)
 
 [node name="TimeManager" type="Node" parent="." unique_id=765325581]
 script = ExtResource("3_time_manager")
@@ -77,14 +77,40 @@ script = ExtResource("13_relationship_manager")
 
 [node name="WorldBackdrop" type="Polygon2D" parent="."]
 color = Color(0.48, 0.6, 0.42, 1)
-polygon = PackedVector2Array(-256, -128, 448, -128, 448, 320, -256, 320)
+polygon = PackedVector2Array(-360, -220, 640, -220, 640, 460, -360, 460)
 
 [node name="Ground" type="Polygon2D" parent="." unique_id=725274824]
 color = Color(0.55, 0.66, 0.46, 1)
-polygon = PackedVector2Array(-192, -96, 384, -96, 384, 272, -192, 272)
+polygon = PackedVector2Array(-320, -160, 560, -160, 560, 400, -320, 400)
+
+[node name="YardStructure" type="Node2D" parent="."]
+
+[node name="HomeApproachZone" type="Polygon2D" parent="YardStructure"]
+color = Color(0.64, 0.58, 0.46, 1)
+polygon = PackedVector2Array(8, 36, 96, 24, 124, 104, 52, 130, 12, 96)
+
+[node name="SocialNoticeZone" type="Polygon2D" parent="YardStructure"]
+color = Color(0.61, 0.58, 0.42, 1)
+polygon = PackedVector2Array(96, 34, 196, 34, 210, 112, 108, 124)
+
+[node name="FarmGardenZone" type="Polygon2D" parent="YardStructure"]
+color = Color(0.42, 0.3, 0.22, 1)
+polygon = PackedVector2Array(20, 150, 158, 150, 158, 242, 20, 242)
+
+[node name="RepairYardZone" type="Polygon2D" parent="YardStructure"]
+color = Color(0.49, 0.58, 0.42, 1)
+polygon = PackedVector2Array(176, 106, 322, 106, 334, 246, 176, 246)
+
+[node name="ForestTrailZone" type="Polygon2D" parent="YardStructure"]
+color = Color(0.38, 0.5, 0.34, 1)
+polygon = PackedVector2Array(270, 78, 364, 88, 364, 148, 274, 142)
+
+[node name="ResourceStagingZone" type="Polygon2D" parent="YardStructure"]
+color = Color(0.5, 0.46, 0.36, 1)
+polygon = PackedVector2Array(-56, 152, 24, 152, 34, 238, -64, 238)
 
 [node name="Mailbox" type="Area2D" parent="." unique_id=1173090410 groups=["interactable"]]
-position = Vector2(64, 32)
+position = Vector2(48, 64)
 script = ExtResource("2_interactable")
 interactable_id = "mailbox"
 display_name = "邮箱"
@@ -106,7 +132,9 @@ script = ExtResource("16_runtime_sprite")
 texture_path = "res://assets/art/props/region_home_area_prop_mailbox_v001.png"
 
 [node name="Bed" type="Area2D" parent="." unique_id=1196621118 groups=["interactable"]]
-position = Vector2(176, 48)
+visible = false
+position = Vector2(72, 42)
+monitoring = false
 script = ExtResource("6_bed_interactable")
 interactable_id = "bed"
 display_name = "床"
@@ -121,7 +149,7 @@ color = Color(0.72, 0.58, 0.49, 1)
 polygon = PackedVector2Array(-28, -16, 28, -16, 28, 16, -28, 16)
 
 [node name="Signboard" type="Area2D" parent="." unique_id=671123941 groups=["interactable"]]
-position = Vector2(104, 128)
+position = Vector2(318, 84)
 script = ExtResource("2_interactable")
 interactable_id = "signboard"
 display_name = "路牌"
@@ -143,7 +171,7 @@ script = ExtResource("16_runtime_sprite")
 texture_path = "res://assets/art/props/region_home_area_prop_road_sign_v001.png"
 
 [node name="BulletinBoard" type="Area2D" parent="." groups=["interactable"]]
-position = Vector2(144, 84)
+position = Vector2(124, 64)
 script = ExtResource("25_rumor_board")
 interactable_id = "bulletin_board"
 display_name = "公告板"
@@ -160,7 +188,7 @@ color = Color(0.5, 0.32, 0.18, 1)
 polygon = PackedVector2Array(-18, -14, 18, -14, 18, 14, -18, 14)
 
 [node name="VillagePath" type="Area2D" parent="." groups=["interactable"]]
-position = Vector2(232, 72)
+position = Vector2(326, 96)
 script = ExtResource("24_flag_interactable")
 interactable_id = "village_path"
 display_name = "村口小路"
@@ -176,7 +204,7 @@ color = Color(0.63, 0.52, 0.35, 1)
 polygon = PackedVector2Array(-24, -10, 24, -10, 24, 10, -24, 10)
 
 [node name="ForestTrailGate" type="Area2D" parent="." groups=["interactable"]]
-position = Vector2(248, 116)
+position = Vector2(332, 132)
 script = ExtResource("21_scene_switch_area")
 interactable_id = "forest_trail_gate"
 display_name = "森林边缘小路"
@@ -195,7 +223,7 @@ color = Color(0.34, 0.48, 0.32, 1)
 polygon = PackedVector2Array(-20, -12, 20, -12, 20, 12, -20, 12)
 
 [node name="WoodPile" type="Area2D" parent="." groups=["interactable"]]
-position = Vector2(-32, 128)
+position = Vector2(-24, 176)
 script = ExtResource("23_resource_pickup")
 interactable_id = "wood_pile"
 display_name = "木柴堆"
@@ -212,7 +240,7 @@ color = Color(0.45, 0.28, 0.16, 1)
 polygon = PackedVector2Array(-18, -10, 18, -10, 18, 10, -18, 10)
 
 [node name="StonePile" type="Area2D" parent="." groups=["interactable"]]
-position = Vector2(-32, 168)
+position = Vector2(-24, 220)
 script = ExtResource("23_resource_pickup")
 interactable_id = "stone_pile"
 display_name = "石块堆"
@@ -229,7 +257,7 @@ color = Color(0.47, 0.45, 0.4, 1)
 polygon = PackedVector2Array(-16, -10, 16, -10, 16, 10, -16, 10)
 
 [node name="OldWell" type="Area2D" parent="." unique_id=1231866873 groups=["interactable"]]
-position = Vector2(216, 160)
+position = Vector2(252, 172)
 script = ExtResource("20_restoration_target")
 interactable_id = "old_well"
 display_name = "旧水井"
@@ -246,7 +274,7 @@ script = ExtResource("16_runtime_sprite")
 texture_path = "res://assets/art/props/prop_well_old_broken_256.png"
 
 [node name="Bench" type="Area2D" parent="." unique_id=486479488 groups=["interactable"]]
-position = Vector2(168, 184)
+position = Vector2(160, 92)
 script = ExtResource("2_interactable")
 interactable_id = "bench"
 display_name = "长椅"
@@ -263,7 +291,7 @@ script = ExtResource("16_runtime_sprite")
 texture_path = "res://assets/art/props/region_home_area_prop_bench_v001.png"
 
 [node name="GardenBenchRepair" type="Area2D" parent="." groups=["interactable"]]
-position = Vector2(132, 200)
+position = Vector2(214, 224)
 script = ExtResource("20_restoration_target")
 interactable_id = "garden_bench"
 display_name = "院边长椅"
@@ -282,7 +310,7 @@ script = ExtResource("16_runtime_sprite")
 texture_path = "res://assets/art/props/region_home_area_prop_bench_v001.png"
 
 [node name="VillageSignRepair" type="Area2D" parent="." groups=["interactable"]]
-position = Vector2(128, 124)
+position = Vector2(284, 112)
 script = ExtResource("20_restoration_target")
 interactable_id = "village_sign"
 display_name = "村口路牌"
@@ -301,7 +329,7 @@ script = ExtResource("16_runtime_sprite")
 texture_path = "res://assets/art/props/region_home_area_prop_road_sign_v001.png"
 
 [node name="FarmPlots" type="Node2D" parent="." unique_id=279461410]
-position = Vector2(24, 152)
+position = Vector2(44, 164)
 
 [node name="FarmPlot0" parent="FarmPlots" unique_id=568136548 instance=ExtResource("9_farm_plot")]
 
@@ -332,35 +360,46 @@ script = ExtResource("26_schedule_director")
 scene_id = "player_yard"
 
 [node name="Aoi" parent="NPCs" unique_id=1178499742 instance=ExtResource("15_npc")]
-position = Vector2(32, 96)
+visible = false
+position = Vector2(116, 86)
 npc_id = "aoi"
 sprite_texture_path = "res://assets/art/characters/npc/npc_aoi_idle_down_128.png"
 
 [node name="Gen" parent="NPCs" unique_id=576605185 instance=ExtResource("15_npc")]
-position = Vector2(88, 104)
+visible = false
+position = Vector2(210, 224)
 npc_id = "gen"
 sprite_texture_path = "res://assets/art/characters/npc/npc_gen_idle_down_128.png"
 
 [node name="Mika" parent="NPCs" unique_id=3553956 instance=ExtResource("15_npc")]
-position = Vector2(220, 72)
+visible = false
+position = Vector2(294, 92)
 npc_id = "mika"
 sprite_texture_path = "res://assets/art/characters/npc/npc_mika_idle_down_128.png"
 
+[node name="Hana" parent="NPCs" instance=ExtResource("15_npc")]
+visible = false
+position = Vector2(170, 224)
+npc_id = "hana"
+sprite_texture_path = "res://assets/art/characters/npc/npc_hana_idle_down_128.png"
+
 [node name="Player" parent="." unique_id=893517574 instance=ExtResource("1_player")]
-position = Vector2(96, 88)
+position = Vector2(80, 104)
 
 [node name="SpawnFromHouse" type="Marker2D" parent="."]
-position = Vector2(96, 88)
+position = Vector2(80, 104)
 script = ExtResource("27_spawn_point")
 spawn_id = "from_house"
 
 [node name="SpawnFromForestEdge" type="Marker2D" parent="."]
-position = Vector2(232, 120)
+position = Vector2(314, 136)
 script = ExtResource("27_spawn_point")
 spawn_id = "from_forest_edge"
 
 [node name="BackToOldWorld" type="Area2D" parent="." unique_id=1817665055 groups=["interactable"]]
+visible = false
 position = Vector2(80, 160)
+monitoring = false
 script = ExtResource("21_scene_switch_area")
 target_scene = "res://scenes/world/world.tscn"
 interaction_hint = "E 键返回旧世界场景"

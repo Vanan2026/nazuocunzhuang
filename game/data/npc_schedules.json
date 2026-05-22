@@ -3,25 +3,25 @@
     "schedule_id": "shopkeeper_basic",
     "entries": [
       {"time_block": "morning", "scene_id": "village_shop", "position": [48, 80], "activity": "整理店里新到的种子"},
-      {"time_block": "late_morning", "scene_id": "player_yard", "position": [64, 116], "activity": "查看公告板"},
-      {"time_block": "afternoon", "scene_id": "player_yard", "position": [116, 140], "activity": "在田边记下需要补货的种子"},
-      {"time_block": "evening", "scene_id": "player_yard", "position": [52, 70], "activity": "准备回店里的小路"}
+      {"time_block": "late_morning", "scene_id": "player_yard", "position": [116, 86], "activity": "查看公告板"},
+      {"time_block": "afternoon", "scene_id": "player_yard", "position": [64, 202], "activity": "在田边记下需要补货的种子"},
+      {"time_block": "evening", "scene_id": "player_yard", "position": [48, 96], "activity": "准备回店里的小路"}
     ]
   },
   {
     "schedule_id": "carpenter_basic",
     "entries": [
       {"time_block": "morning", "scene_id": "carpenter_yard", "position": [80, 96], "activity": "整理木工棚里的旧木料"},
-      {"time_block": "late_morning", "scene_id": "player_yard", "position": [146, 188], "activity": "量长椅的木板"},
+      {"time_block": "late_morning", "scene_id": "player_yard", "position": [210, 224], "activity": "量长椅的木板"},
       {"time_block": "afternoon", "scene_id": "carpenter_yard", "position": [120, 128], "activity": "打磨路牌备用木楔"},
-      {"time_block": "evening", "scene_id": "player_yard", "position": [98, 68], "activity": "收拾工具箱"}
+      {"time_block": "evening", "scene_id": "player_yard", "position": [212, 116], "activity": "收拾工具箱"}
     ]
   },
   {
     "schedule_id": "post_runner_basic",
     "entries": [
       {"time_block": "morning", "scene_id": "post_route", "position": [48, 64], "activity": "沿着邮路送信"},
-      {"time_block": "late_morning", "scene_id": "player_yard", "position": [188, 96], "activity": "在公告板前停留"},
+      {"time_block": "late_morning", "scene_id": "player_yard", "position": [294, 92], "activity": "在公告板前停留"},
       {"time_block": "afternoon", "scene_id": "forest_edge", "position": [136, 88], "activity": "在森林边缘确认路牌方向"},
       {"time_block": "evening", "scene_id": "post_route", "position": [112, 72], "activity": "整理还没送完的信"}
     ]
@@ -29,10 +29,10 @@
   {
     "schedule_id": "elder_basic",
     "entries": [
-      {"time_block": "morning", "scene_id": "player_yard", "position": [140, 196], "activity": "晒一会儿太阳"},
-      {"time_block": "late_morning", "scene_id": "player_yard", "position": [130, 176], "activity": "看看长椅修得怎样"},
-      {"time_block": "afternoon", "scene_id": "player_yard", "position": [96, 132], "activity": "慢慢走到院子中间"},
-      {"time_block": "evening", "scene_id": "player_yard", "position": [72, 78], "activity": "提醒大家早点休息"}
+      {"time_block": "morning", "scene_id": "player_yard", "position": [170, 224], "activity": "晒一会儿太阳"},
+      {"time_block": "late_morning", "scene_id": "player_yard", "position": [132, 224], "activity": "看看长椅修得怎样"},
+      {"time_block": "afternoon", "scene_id": "player_yard", "position": [142, 148], "activity": "慢慢走到院子中间"},
+      {"time_block": "evening", "scene_id": "player_yard", "position": [126, 118], "activity": "提醒大家早点休息"}
     ]
   }
 ]

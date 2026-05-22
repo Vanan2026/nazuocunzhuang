@@ -71,10 +71,20 @@ func load_game(path: String = SaveManager.DEFAULT_SAVE_PATH) -> bool:
 
 
 func _unhandled_input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("debug_save"):
+	if Input.is_action_just_pressed("open_inventory"):
+		toggle_inventory_panel()
+	elif Input.is_action_just_pressed("debug_save"):
 		save_game()
 	elif Input.is_action_just_pressed("debug_load"):
 		load_game()
+
+
+func toggle_inventory_panel() -> void:
+	if inventory_ui == null:
+		return
+	inventory_ui.visible = not bool(inventory_ui.visible)
+	if inventory_ui.visible and inventory_ui.has_method("refresh"):
+		inventory_ui.refresh()
 
 
 func show_mailbox_rumors() -> void:

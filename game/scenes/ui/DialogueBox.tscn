@@ -7,16 +7,16 @@ visible = false
 script = ExtResource("1_dialogue_box")
 
 [node name="Panel" type="PanelContainer" parent="."]
-offset_left = 48.0
-offset_top = 256.0
-offset_right = 592.0
-offset_bottom = 384.0
+offset_left = 320.0
+offset_top = 536.0
+offset_right = 960.0
+offset_bottom = 704.0
 
 [node name="Content" type="HBoxContainer" parent="Panel"]
 offset_left = 10.0
 offset_top = 10.0
-offset_right = 534.0
-offset_bottom = 118.0
+offset_right = 630.0
+offset_bottom = 158.0
 
 [node name="Portrait" type="TextureRect" parent="Panel/Content"]
 layout_mode = 2

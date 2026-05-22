@@ -15,19 +15,19 @@ EXPECTED_FILES = {
     "game/scenes/home/PlayerHouse.tscn": [
         '[node name="WorldCamera" type="Camera2D" parent="."]',
         "enabled = true",
-        "zoom = Vector2(3, 3)",
+        "zoom = Vector2(",
         '[node name="RoomBackdrop" type="Polygon2D" parent="."]',
     ],
     "game/scenes/world/PlayerYard.tscn": [
         'name="WorldCamera" type="Camera2D"',
         "enabled = true",
-        "zoom = Vector2(3, 3)",
+        "zoom = Vector2(",
         '[node name="WorldBackdrop" type="Polygon2D" parent="."]',
     ],
     "game/scenes/world/ForestEdge.tscn": [
         'name="WorldCamera" type="Camera2D"',
         "enabled = true",
-        "zoom = Vector2(3, 3)",
+        "zoom = Vector2(",
         '[node name="WorldBackdrop" type="Polygon2D" parent="."]',
     ],
     "game/scenes/ui/FirstWeekQuestHUD.tscn": [

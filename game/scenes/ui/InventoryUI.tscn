@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://game/scenes/ui/InventoryUI.gd" id="1_inventory_ui"]
 
 [node name="InventoryUI" type="CanvasLayer"]
+visible = false
 script = ExtResource("1_inventory_ui")
 
 [node name="Panel" type="PanelContainer" parent="."]

@@ -45,16 +45,13 @@ func get_current_assignment(npc_id: String) -> Dictionary:
 
 
 func _find_assignment(schedule: Dictionary, block: String) -> Dictionary:
-	var fallback: Dictionary = {}
 	for entry in schedule.get("entries", []):
 		if not (entry is Dictionary):
 			continue
 		var entry_scene := String(entry.get("scene_id", ""))
-		if entry_scene == scene_id and fallback.is_empty():
-			fallback = entry
 		if String(entry.get("time_block", "")) == block and entry_scene == scene_id:
 			return entry
-	return fallback
+	return {}
 
 
 func _apply_assignment(npc_node: Node, assignment: Dictionary) -> void:
