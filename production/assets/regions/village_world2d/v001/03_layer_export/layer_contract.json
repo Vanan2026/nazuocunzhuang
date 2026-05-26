@@ -28,7 +28,12 @@
     "v002_required_next_step": "Review v002 semantic layer export, then run Godot screenshot validation before runtime replacement.",
     "v002_human_visual_approval": false,
     "v002_layer_export_approved": false,
-    "v002_layer_manifest": "production/assets/regions/village_world2d/v001/03_layer_export/v002_inherited/layer_export_manifest_v002.json"
+    "v002_layer_manifest": "production/assets/regions/village_world2d/v001/03_layer_export/v002_inherited/layer_export_manifest_v002.json",
+    "v003_candidate": "production/assets/regions/village_world2d/v001/02_source_generation/v003_edge_continuity_repaint/village_painted_source_v003.png",
+    "v003_quality_review": "production/assets/regions/village_world2d/v001/02_source_generation/v003_edge_continuity_repaint/source_quality_review_v003.json",
+    "v003_acceptance_record": "production/assets/regions/village_world2d/v001/02_source_generation/v003_edge_continuity_repaint/source_acceptance_v003.json",
+    "v003_layer_export_status": "v003_semantic_layers_exported_pending_review",
+    "v003_layer_manifest": "production/assets/regions/village_world2d/v001/03_layer_export/v003_edge_continuity/layer_export_manifest_v003.json"
   },
   "global_rules": [
     "The preserved layout draft remains blocked from layer splitting.",
@@ -135,5 +140,7 @@
   "review_result": "semantic_rework_pending_review",
   "runtime_replacement": false,
   "active_v002_layer_manifest": "production/assets/regions/village_world2d/v001/03_layer_export/v002_inherited/layer_export_manifest_v002.json",
-  "v002_layer_export_status": "v002_semantic_layers_exported_pending_review"
+  "v002_layer_export_status": "v002_semantic_layers_exported_pending_review",
+  "active_v003_layer_manifest": "production/assets/regions/village_world2d/v001/03_layer_export/v003_edge_continuity/layer_export_manifest_v003.json",
+  "v003_layer_export_status": "v003_semantic_layers_exported_pending_review"
 }

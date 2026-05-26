@@ -120,6 +120,8 @@ def validate_active_region_packages(by_id: dict[str, dict[str, Any]]) -> None:
         "v002_inherited_crop_candidate_ready_for_visual_review",
         "v002_codex_visual_accepted_for_semantic_layer_export",
         "v002_semantic_layers_exported_pending_review",
+        "v003_edge_continuity_candidate_ready_for_visual_review",
+        "v003_semantic_layers_exported_pending_review",
     }
     require(
         village.get("phase") in {"village_plaza_art_prep_package_ready", *village_layer_manifest_phases},
@@ -149,6 +151,17 @@ def validate_active_region_packages(by_id: dict[str, dict[str, Any]]) -> None:
     if village.get("phase") == "v002_semantic_layers_exported_pending_review":
         require((ROOT / str(village.get("active_v002_layer_manifest", ""))).exists(), "Village v002 layer manifest missing")
         require("semantic layers" in str(village.get("next_art_step", "")), "Village next step must point to semantic layer review")
+    if village.get("phase") == "v003_edge_continuity_candidate_ready_for_visual_review":
+        require((ROOT / str(village.get("active_v003_source_candidate", ""))).exists(), "Village v003 source candidate missing")
+        require((ROOT / str(village.get("active_v003_quality_review", ""))).exists(), "Village v3 quality review missing")
+        require((ROOT / str(village.get("active_v003_review_contact_sheet", ""))).exists(), "Village v3 contact sheet missing")
+        require("v003 semantic layers" in str(village.get("next_art_step", "")), "Village next step must point to v003 semantic layers")
+    if village.get("phase") == "v003_semantic_layers_exported_pending_review":
+        require((ROOT / str(village.get("active_v003_source_candidate", ""))).exists(), "Village v003 source candidate missing")
+        require((ROOT / str(village.get("active_v003_quality_review", ""))).exists(), "Village v003 quality review missing")
+        require((ROOT / str(village.get("active_v003_review_contact_sheet", ""))).exists(), "Village v003 contact sheet missing")
+        require((ROOT / str(village.get("active_v003_layer_manifest", ""))).exists(), "Village v003 layer manifest missing")
+        require("Godot screenshot" in str(village.get("next_art_step", "")), "Village next step must point to Godot screenshot review")
 
     mountain_hut = by_id["Region_MountainHut"]
     mountain_hut_source_phases = {

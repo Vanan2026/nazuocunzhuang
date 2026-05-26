@@ -2,9 +2,9 @@
   "package_id": "village_world2d_v001",
   "region_id": "Region_Village",
   "node_id": "VillagePlaza",
-  "status": "v002_semantic_layers_exported_pending_review",
+  "status": "v003_semantic_layers_exported_pending_review",
   "created_at": "2026-05-23 22:38",
-  "current_phase": "03_layer_export_v002_semantic_review",
+  "current_phase": "03_layer_export_v003_semantic_review",
   "launch_quality_approved": false,
   "human_visual_approval_required": true,
   "runtime_replacement": false,
@@ -108,7 +108,10 @@
     "02_source_generation_v002_inherited": "v002_inherited_crop_candidate_ready_for_visual_review",
     "03_layer_export_v002": "v002_semantic_layers_exported_pending_review",
     "04_godot_integration_v002": "blocked_until_v002_semantic_layer_review_and_godot_screenshot",
-    "02_source_visual_review_v002": "accepted_for_semantic_layer_export_review"
+    "02_source_visual_review_v002": "accepted_for_semantic_layer_export_review",
+    "02_source_generation_v003_edge_continuity": "v003_edge_continuity_candidate_ready_for_visual_review",
+    "03_layer_export_v003": "v003_semantic_layers_exported_pending_review",
+    "04_godot_integration_v003": "blocked_until_v003_semantic_layer_review_and_godot_screenshot"
   },
   "validation": {
     "static_validator": "tools/validate_village_world2d_art_prep.py",
@@ -126,7 +129,9 @@
     "inherited_crop_repaint_handoff_validator": "tools/validate_village_inherited_crop_repaint_handoff.py",
     "v002_inherited_source_validator": "tools/validate_village_v002_inherited_source_candidate.py",
     "v002_visual_review_validator": "tools/validate_village_v002_visual_review.py",
-    "v002_layer_export_validator": "tools/validate_village_v002_layer_export.py"
+    "v002_layer_export_validator": "tools/validate_village_v002_layer_export.py",
+    "v003_edge_continuity_source_validator": "tools/validate_village_v003_edge_continuity_source.py",
+    "v003_layer_export_validator": "tools/validate_village_v003_layer_export.py"
   },
   "accepted_source": {
     "candidate_id": "village_true_painted_source_candidate_v001",
@@ -189,5 +194,25 @@
     "runtime_replacement": false,
     "human_layer_review": false,
     "review_result": "semantic_rework_pending_review"
+  },
+  "v003_edge_continuity_source_candidate": {
+    "candidate_id": "village_painted_source_v003",
+    "status": "v003_edge_continuity_candidate_ready_for_visual_review",
+    "image": "production/assets/regions/village_world2d/v001/02_source_generation/v003_edge_continuity_repaint/village_painted_source_v003.png",
+    "acceptance_record": "production/assets/regions/village_world2d/v001/02_source_generation/v003_edge_continuity_repaint/source_acceptance_v003.json",
+    "quality_review": "production/assets/regions/village_world2d/v001/02_source_generation/v003_edge_continuity_repaint/source_quality_review_v003.json",
+    "review_contact_sheet": "production/assets/regions/village_world2d/v001/02_source_generation/v003_edge_continuity_repaint/village_v003_edge_continuity_contact_sheet.png",
+    "repair_scope": "edge_continuity_only",
+    "human_visual_approval": false,
+    "layer_export_approved": false,
+    "runtime_replacement": false,
+    "launch_quality_approved": false
+  },
+  "v003_layer_export": {
+    "manifest": "production/assets/regions/village_world2d/v001/03_layer_export/v003_edge_continuity/layer_export_manifest_v003.json",
+    "layer_count": 5,
+    "status": "v003_semantic_layers_exported_pending_review",
+    "runtime_replacement": false,
+    "human_layer_review": false
   }
 }
