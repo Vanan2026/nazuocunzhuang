@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from PIL import Image
+
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTDOOR_GD = ROOT / "game" / "scenes" / "world" / "OutdoorWorld.gd"
@@ -30,6 +32,10 @@ def main() -> None:
     mountain_report_text = read(MOUNTAIN_REPORT)
     require(SOCKET_TEXTURE.exists(), f"missing socket bridge texture: {SOCKET_TEXTURE.relative_to(ROOT)}")
     require(SOCKET_TEXTURE.stat().st_size > 1_000, "socket bridge texture is unexpectedly small")
+    with Image.open(SOCKET_TEXTURE) as socket_image:
+        require(socket_image.width >= 72, "socket bridge texture should be wide enough to overlap both region edges")
+        require(socket_image.height >= 220, "socket bridge texture should cover the full Village/MountainHut seam height")
+    require("sprite.z_index = -29" in outdoor_text, "socket bridge sprite should render above BaseGround but below detail layers")
 
     required_outdoor_tokens = [
         "VILLAGE_MOUNTAIN_HUT_SOCKET_BRIDGE_NODE",

@@ -131,6 +131,7 @@ func _validate_village_mountain_hut_socket_contract(outdoor: Node) -> void:
 	_expect(horizontal_gap >= -8.0, "Village and MountainHut should not overlap enough to hide seam-registration problems")
 	_expect(abs(mountain_hut_bounds.position.y - village_bounds.position.y) <= 0.5, "Village and MountainHut socket rows should stay aligned")
 	_expect(_socket_bridge_covers_gap(outdoor, village_bounds.end.x, mountain_hut_bounds.position.x), "VillageMountainHutSocketBridge should visually cover the OutdoorWorld fill gap")
+	_expect(_socket_bridge_layers_above_base_ground(outdoor), "VillageMountainHutSocketBridge should blend over BaseGround and stay below detail layers")
 
 
 func _socket_bridge_covers_gap(outdoor: Node, gap_start_x: float, gap_end_x: float) -> bool:
@@ -145,6 +146,18 @@ func _socket_bridge_covers_gap(outdoor: Node, gap_start_x: float, gap_end_x: flo
 	var start_x := sprite.global_position.x
 	var end_x := start_x + float(sprite.texture.get_width()) * sprite.global_scale.x
 	return start_x <= gap_start_x and end_x >= gap_end_x
+
+
+func _socket_bridge_layers_above_base_ground(outdoor: Node) -> bool:
+	var bridge := outdoor.get_node_or_null(VILLAGE_MOUNTAIN_HUT_SOCKET_BRIDGE_NODE)
+	var village := outdoor.get_node_or_null("Village")
+	if bridge == null or village == null:
+		return false
+	var sprite := bridge.get_node_or_null(VILLAGE_MOUNTAIN_HUT_SOCKET_SPRITE_NODE) as Sprite2D
+	var base := village.get_node_or_null("BaseGround") as Sprite2D
+	if sprite == null or base == null:
+		return false
+	return sprite.z_index > base.z_index and sprite.z_index < -25
 
 
 func _validate_main_reuses_outdoor_instance() -> void:

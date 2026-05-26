@@ -20,7 +20,7 @@ const OUTDOOR_GROUND_FILL_COLOR: Color = Color(0.47, 0.59, 0.39, 1.0)
 const OUTDOOR_GROUND_FILL_MARGIN: Vector2 = Vector2(960.0, 720.0)
 const VILLAGE_MOUNTAIN_HUT_SOCKET_BRIDGE_NODE: String = "VillageMountainHutSocketBridge"
 const VILLAGE_MOUNTAIN_HUT_SOCKET_TEXTURE_PATH: String = "res://assets/art/greenfield_p0/world/socket_bridges/village_mountain_hut_socket_bridge.png"
-const VILLAGE_MOUNTAIN_HUT_SOCKET_TEXTURE_POSITION: Vector2 = Vector2(1018.0, 52.0)
+const VILLAGE_MOUNTAIN_HUT_SOCKET_TEXTURE_POSITION: Vector2 = Vector2(1018.0, -12.0)
 const VILLAGE_MOUNTAIN_HUT_SOCKET_POINTS: Array[Vector2] = [
 	Vector2(1036.0, 108.0),
 	Vector2(1064.0, 108.0),
@@ -307,7 +307,7 @@ func _add_village_mountain_hut_socket_bridge() -> Node2D:
 	sprite.texture = texture
 	sprite.centered = false
 	sprite.position = VILLAGE_MOUNTAIN_HUT_SOCKET_TEXTURE_POSITION
-	sprite.z_index = -31
+	sprite.z_index = -29
 	bridge.add_child(sprite)
 	return bridge
 
