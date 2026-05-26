@@ -66,6 +66,27 @@ func get_weather_info() -> Dictionary:
 	}
 
 
+func get_save_data() -> Dictionary:
+	var weather_info := get_weather_info()
+	weather_info["weather_seed"] = _weather_seed
+	return weather_info
+
+
+func apply_save_data(data: Dictionary) -> void:
+	if data.is_empty():
+		return
+	var saved_today := String(data.get("today", today_weather))
+	var saved_tomorrow := String(data.get("tomorrow", tomorrow_weather))
+	if saved_today in WEATHER_IDS:
+		today_weather = saved_today
+	if saved_tomorrow in WEATHER_IDS:
+		tomorrow_weather = saved_tomorrow
+	_weather_seed = int(data.get("weather_seed", _weather_seed))
+	_update_auto_water_flag()
+	weather_changed.emit(today_weather)
+	tomorrow_weather_changed.emit(tomorrow_weather)
+
+
 func _update_auto_water_flag() -> void:
 	var next_value := today_weather == "rainy"
 	if next_value != auto_water_today:

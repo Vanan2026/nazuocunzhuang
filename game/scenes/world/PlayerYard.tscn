@@ -1,26 +1,32 @@
-[gd_scene load_steps=23 format=3]
+[gd_scene format=3 uid="uid://budsqv6tryojn"]
 
 [ext_resource type="PackedScene" path="res://game/entities/player/Player.tscn" id="1_player"]
-[ext_resource type="Script" path="res://game/entities/interactable/Interactable.gd" id="2_interactable"]
-[ext_resource type="Script" path="res://game/autoload/TimeManager.gd" id="3_time_manager"]
-[ext_resource type="Script" path="res://game/autoload/WeatherManager.gd" id="4_weather_manager"]
+[ext_resource type="Script" uid="uid://chvxw8x4dr3kw" path="res://game/entities/interactable/Interactable.gd" id="2_interactable"]
+[ext_resource type="Script" uid="uid://dscvyctvxg0tj" path="res://game/autoload/TimeManager.gd" id="3_time_manager"]
+[ext_resource type="Script" uid="uid://dkmmp1geise6" path="res://game/autoload/WeatherManager.gd" id="4_weather_manager"]
 [ext_resource type="PackedScene" path="res://game/scenes/ui/TimeWeatherHUD.tscn" id="5_hud"]
-[ext_resource type="Script" path="res://game/entities/interactable/BedInteractable.gd" id="6_bed_interactable"]
-[ext_resource type="Script" path="res://game/autoload/DataRegistry.gd" id="7_data_registry"]
-[ext_resource type="Script" path="res://game/autoload/InventoryManager.gd" id="8_inventory_manager"]
+[ext_resource type="Script" uid="uid://y8bjkt3fsnsf" path="res://game/entities/interactable/BedInteractable.gd" id="6_bed_interactable"]
+[ext_resource type="Script" uid="uid://djio7gktfrcng" path="res://game/autoload/DataRegistry.gd" id="7_data_registry"]
+[ext_resource type="Script" uid="uid://dwlfag7g6jvkc" path="res://game/autoload/InventoryManager.gd" id="8_inventory_manager"]
 [ext_resource type="PackedScene" path="res://game/systems/farming/FarmPlot.tscn" id="9_farm_plot"]
 [ext_resource type="PackedScene" path="res://game/scenes/ui/InventoryUI.tscn" id="10_inventory_ui"]
-[ext_resource type="Script" path="res://game/scenes/world/PlayerYard.gd" id="11_player_yard"]
-[ext_resource type="Script" path="res://game/autoload/DialogueManager.gd" id="12_dialogue_manager"]
-[ext_resource type="Script" path="res://game/autoload/RelationshipManager.gd" id="13_relationship_manager"]
-[ext_resource type="Script" path="res://game/autoload/GameState.gd" id="17_game_state"]
-[ext_resource type="Script" path="res://game/autoload/EventBus.gd" id="18_event_bus"]
-[ext_resource type="Script" path="res://game/autoload/SaveManager.gd" id="19_save_manager"]
+[ext_resource type="Script" uid="uid://duda0sil1akbi" path="res://game/scenes/world/PlayerYard.gd" id="11_player_yard"]
+[ext_resource type="Script" uid="uid://dxniewe6w48gq" path="res://game/autoload/DialogueManager.gd" id="12_dialogue_manager"]
+[ext_resource type="Script" uid="uid://babx5h2l66ydf" path="res://game/autoload/RelationshipManager.gd" id="13_relationship_manager"]
 [ext_resource type="PackedScene" path="res://game/scenes/ui/DialogueBox.tscn" id="14_dialogue_box"]
 [ext_resource type="PackedScene" path="res://game/entities/npc/NPC.tscn" id="15_npc"]
-[ext_resource type="Script" path="res://game/entities/visual/RuntimeTextureSprite.gd" id="16_runtime_sprite"]
-[ext_resource type="Script" path="res://game/systems/restoration/RestorationTarget.gd" id="20_restoration_target"]
-[ext_resource type="Script" path="res://scripts/world/scene_switch_area.gd" id="21_scene_switch_area"]
+[ext_resource type="Script" uid="uid://5031fus607k5" path="res://game/entities/visual/RuntimeTextureSprite.gd" id="16_runtime_sprite"]
+[ext_resource type="Script" uid="uid://duscec0d1u8ng" path="res://game/autoload/GameState.gd" id="17_game_state"]
+[ext_resource type="Script" uid="uid://bfyhl1048s4x6" path="res://game/autoload/EventBus.gd" id="18_event_bus"]
+[ext_resource type="Script" uid="uid://g5c05buevw07" path="res://game/autoload/SaveManager.gd" id="19_save_manager"]
+[ext_resource type="Script" uid="uid://dsaw5gga3t2je" path="res://game/systems/restoration/RestorationTarget.gd" id="20_restoration_target"]
+[ext_resource type="Script" path="res://game/entities/interactable/SceneTravel.gd" id="21_scene_switch_area"]
+[ext_resource type="Script" path="res://game/autoload/RumorManager.gd" id="22_bgxpi"]
+[ext_resource type="Script" path="res://game/entities/interactable/ResourcePickup.gd" id="23_resource_pickup"]
+[ext_resource type="Script" path="res://game/entities/interactable/FlagInteractable.gd" id="24_flag_interactable"]
+[ext_resource type="Script" path="res://game/entities/interactable/RumorBoard.gd" id="25_rumor_board"]
+[ext_resource type="Script" path="res://game/systems/npc/NpcScheduleDirector.gd" id="26_schedule_director"]
+[ext_resource type="Script" path="res://game/systems/scene/SpawnPoint.gd" id="27_spawn_point"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_interactable"]
 size = Vector2(32, 28)
@@ -28,248 +34,448 @@ size = Vector2(32, 28)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bed"]
 size = Vector2(56, 32)
 
-[node name="PlayerYard" type="Node2D"]
+[node name="PlayerYard" type="Node2D" unique_id=833273704]
 script = ExtResource("11_player_yard")
 
-[node name="WorldCamera" type="Camera2D" parent="."]
-position = Vector2(88, 96)
+[node name="WorldCamera" type="Camera2D" parent="." unique_id=1694958396]
+position = Vector2(144, 128)
 enabled = true
+zoom = Vector2(2.75, 2.75)
 
-[node name="TimeManager" type="Node" parent="."]
+[node name="TimeManager" type="Node" parent="." unique_id=765325581]
 script = ExtResource("3_time_manager")
 
-[node name="WeatherManager" type="Node" parent="."]
+[node name="WeatherManager" type="Node" parent="." unique_id=1141621467]
 script = ExtResource("4_weather_manager")
 
-[node name="DataRegistry" type="Node" parent="."]
+[node name="DataRegistry" type="Node" parent="." unique_id=1098423460]
 script = ExtResource("7_data_registry")
 
-[node name="GameState" type="Node" parent="."]
+[node name="GameState" type="Node" parent="." unique_id=425314498]
 script = ExtResource("17_game_state")
 
-[node name="EventBus" type="Node" parent="."]
+[node name="EventBus" type="Node" parent="." unique_id=912729700]
 script = ExtResource("18_event_bus")
 
-[node name="SaveManager" type="Node" parent="."]
+[node name="SaveManager" type="Node" parent="." unique_id=1416256468]
 script = ExtResource("19_save_manager")
 
-[node name="InventoryManager" type="Node" parent="."]
+[node name="InventoryManager" type="Node" parent="." unique_id=1202737862]
 script = ExtResource("8_inventory_manager")
 
-[node name="DialogueManager" type="Node" parent="."]
+[node name="DialogueManager" type="Node" parent="." unique_id=828684569]
 script = ExtResource("12_dialogue_manager")
 
-[node name="RelationshipManager" type="Node" parent="."]
+[node name="RelationshipManager" type="Node" parent="." unique_id=753920324]
 script = ExtResource("13_relationship_manager")
 
-[node name="TimeWeatherHUD" parent="." node_paths=PackedStringArray("time_manager_path", "weather_manager_path") instance=ExtResource("5_hud")]
-time_manager_path = NodePath("../TimeManager")
-weather_manager_path = NodePath("../WeatherManager")
+[node name="TimeWeatherHUD" parent="." unique_id=44929657 instance=ExtResource("5_hud")]
 
-[node name="InventoryUI" parent="." node_paths=PackedStringArray("inventory_manager_path", "data_registry_path") instance=ExtResource("10_inventory_ui")]
-inventory_manager_path = NodePath("../InventoryManager")
-data_registry_path = NodePath("../DataRegistry")
+[node name="InventoryUI" parent="." unique_id=1492498219 instance=ExtResource("10_inventory_ui")]
 
-[node name="DialogueBox" parent="." instance=ExtResource("14_dialogue_box")]
+[node name="DialogueBox" parent="." unique_id=330547878 instance=ExtResource("14_dialogue_box")]
 
-[node name="Ground" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(-96, -64, 256, -64, 256, 224, -96, 224)
+[node name="WorldBackdrop" type="Polygon2D" parent="."]
+color = Color(0.48, 0.6, 0.42, 1)
+polygon = PackedVector2Array(-360, -220, 640, -220, 640, 460, -360, 460)
+
+[node name="Ground" type="Polygon2D" parent="." unique_id=725274824]
 color = Color(0.55, 0.66, 0.46, 1)
+polygon = PackedVector2Array(-320, -160, 560, -160, 560, 400, -320, 400)
 
-[node name="Mailbox" type="Area2D" parent="." groups=["interactable"]]
-position = Vector2(64, 32)
+[node name="YardStructure" type="Node2D" parent="."]
+
+[node name="RoughEnvironmentSilhouettes" type="Node2D" parent="YardStructure"]
+
+[node name="HomePorchApronShape" type="Polygon2D" parent="YardStructure/RoughEnvironmentSilhouettes"]
+color = Color(0.66, 0.57, 0.42, 0.45)
+polygon = PackedVector2Array(0, 34, 112, 24, 136, 94, 52, 132, 8, 104)
+
+[node name="MailboxFootpathShape" type="Polygon2D" parent="YardStructure/RoughEnvironmentSilhouettes"]
+color = Color(0.72, 0.61, 0.39, 0.42)
+polygon = PackedVector2Array(24, 52, 92, 58, 136, 84, 120, 102, 60, 84, 20, 72)
+
+[node name="GardenSoilPatchShape" type="Polygon2D" parent="YardStructure/RoughEnvironmentSilhouettes"]
+color = Color(0.39, 0.27, 0.19, 0.66)
+polygon = PackedVector2Array(12, 142, 166, 146, 170, 252, 10, 252)
+
+[node name="RepairCornerGrassShape" type="Polygon2D" parent="YardStructure/RoughEnvironmentSilhouettes"]
+color = Color(0.42, 0.55, 0.34, 0.38)
+polygon = PackedVector2Array(168, 96, 346, 106, 352, 252, 170, 252)
+
+[node name="ForestEdgeBrushShape" type="Polygon2D" parent="YardStructure/RoughEnvironmentSilhouettes"]
+color = Color(0.3, 0.45, 0.29, 0.44)
+polygon = PackedVector2Array(258, 70, 376, 82, 378, 158, 258, 150)
+
+[node name="RoutePathNetwork" type="Node2D" parent="YardStructure"]
+
+[node name="MailboxNoticeRepairPath" type="Polygon2D" parent="YardStructure/RoutePathNetwork"]
+color = Color(0.6, 0.52, 0.34, 1)
+polygon = PackedVector2Array(46, 86, 78, 72, 132, 70, 196, 88, 260, 124, 250, 148, 184, 112, 126, 94, 76, 94)
+
+[node name="RepairForestPath" type="Polygon2D" parent="YardStructure/RoutePathNetwork"]
+color = Color(0.58, 0.5, 0.33, 1)
+polygon = PackedVector2Array(246, 128, 298, 112, 346, 122, 344, 146, 296, 138, 254, 154)
+
+[node name="FarmBranchPath" type="Polygon2D" parent="YardStructure/RoutePathNetwork"]
+color = Color(0.53, 0.46, 0.32, 1)
+polygon = PackedVector2Array(84, 106, 116, 116, 110, 178, 92, 232, 68, 226, 86, 172)
+
+[node name="ResourceBranchPath" type="Polygon2D" parent="YardStructure/RoutePathNetwork"]
+color = Color(0.5, 0.44, 0.33, 1)
+polygon = PackedVector2Array(58, 156, 18, 172, -24, 190, -34, 170, 8, 150, 48, 138)
+
+[node name="FirstStepGuidance" type="Node2D" parent="YardStructure"]
+
+[node name="SpawnMailboxPath" type="Polygon2D" parent="YardStructure/FirstStepGuidance"]
+color = Color(0.7, 0.59, 0.38, 1)
+polygon = PackedVector2Array(72, 104, 56, 88, 42, 66, 56, 56, 78, 88, 88, 106)
+
+[node name="MailboxFocusMarker" type="Polygon2D" parent="YardStructure/FirstStepGuidance"]
+color = Color(0.78, 0.62, 0.38, 1)
+polygon = PackedVector2Array(26, 44, 68, 44, 76, 84, 22, 86)
+
+[node name="HomeApproachZone" type="Polygon2D" parent="YardStructure"]
+color = Color(0.64, 0.58, 0.46, 1)
+polygon = PackedVector2Array(8, 36, 96, 24, 124, 104, 52, 130, 12, 96)
+
+[node name="SocialNoticeZone" type="Polygon2D" parent="YardStructure"]
+color = Color(0.61, 0.58, 0.42, 1)
+polygon = PackedVector2Array(96, 34, 196, 34, 210, 112, 108, 124)
+
+[node name="FarmGardenZone" type="Polygon2D" parent="YardStructure"]
+color = Color(0.42, 0.3, 0.22, 1)
+polygon = PackedVector2Array(20, 150, 158, 150, 158, 242, 20, 242)
+
+[node name="RepairYardZone" type="Polygon2D" parent="YardStructure"]
+color = Color(0.49, 0.58, 0.42, 1)
+polygon = PackedVector2Array(176, 106, 322, 106, 334, 246, 176, 246)
+
+[node name="ForestTrailZone" type="Polygon2D" parent="YardStructure"]
+color = Color(0.38, 0.5, 0.34, 1)
+polygon = PackedVector2Array(270, 78, 364, 88, 364, 148, 274, 142)
+
+[node name="ResourceStagingZone" type="Polygon2D" parent="YardStructure"]
+color = Color(0.5, 0.46, 0.36, 1)
+polygon = PackedVector2Array(-56, 152, 24, 152, 34, 238, -64, 238)
+
+[node name="Mailbox" type="Area2D" parent="." unique_id=1173090410 groups=["interactable"]]
+position = Vector2(48, 64)
 script = ExtResource("2_interactable")
 interactable_id = "mailbox"
 display_name = "邮箱"
 interaction_hint = "按 E 查看邮箱"
 interaction_text = "邮箱里夹着今天的村务小纸条。"
 
-[node name="MailboxShape" type="CollisionShape2D" parent="Mailbox"]
+[node name="MailboxShape" type="CollisionShape2D" parent="Mailbox" unique_id=504725565]
 shape = SubResource("RectangleShape2D_interactable")
 
-[node name="MailboxMarker" type="Polygon2D" parent="Mailbox"]
+[node name="MailboxMarker" type="Polygon2D" parent="Mailbox" unique_id=222180790]
 visible = false
-polygon = PackedVector2Array(-12, -10, 12, -10, 12, 10, -12, 10)
 color = Color(0.62, 0.33, 0.24, 1)
+polygon = PackedVector2Array(-12, -10, 12, -10, 12, 10, -12, 10)
 
-[node name="MailboxArt" type="Sprite2D" parent="Mailbox"]
+[node name="MailboxArt" type="Sprite2D" parent="Mailbox" unique_id=855403803]
 position = Vector2(0, -23)
 scale = Vector2(0.18, 0.18)
 script = ExtResource("16_runtime_sprite")
 texture_path = "res://assets/art/props/region_home_area_prop_mailbox_v001.png"
 
-[node name="Bed" type="Area2D" parent="." node_paths=PackedStringArray("time_manager_path", "weather_manager_path", "hud_path") groups=["interactable"]]
-position = Vector2(176, 48)
+[node name="Bed" type="Area2D" parent="." unique_id=1196621118 groups=["interactable"]]
+visible = false
+position = Vector2(72, 42)
+monitoring = false
 script = ExtResource("6_bed_interactable")
 interactable_id = "bed"
 display_name = "床"
 interaction_hint = "按 E 休息"
 interaction_text = "被褥有阳光晒过的味道。"
-time_manager_path = NodePath("../TimeManager")
-weather_manager_path = NodePath("../WeatherManager")
-hud_path = NodePath("../TimeWeatherHUD")
 
-[node name="BedShape" type="CollisionShape2D" parent="Bed"]
+[node name="BedShape" type="CollisionShape2D" parent="Bed" unique_id=2125450814]
 shape = SubResource("RectangleShape2D_bed")
 
-[node name="BedMarker" type="Polygon2D" parent="Bed"]
-polygon = PackedVector2Array(-28, -16, 28, -16, 28, 16, -28, 16)
+[node name="BedMarker" type="Polygon2D" parent="Bed" unique_id=1358105473]
 color = Color(0.72, 0.58, 0.49, 1)
+polygon = PackedVector2Array(-28, -16, 28, -16, 28, 16, -28, 16)
 
-[node name="Signboard" type="Area2D" parent="." groups=["interactable"]]
-position = Vector2(104, 128)
+[node name="Signboard" type="Area2D" parent="." unique_id=671123941 groups=["interactable"]]
+position = Vector2(318, 84)
 script = ExtResource("2_interactable")
 interactable_id = "signboard"
 display_name = "路牌"
 interaction_hint = "按 E 查看路牌"
 interaction_text = "木牌指向村口、后院和小路。"
 
-[node name="SignboardShape" type="CollisionShape2D" parent="Signboard"]
+[node name="SignboardShape" type="CollisionShape2D" parent="Signboard" unique_id=2122078582]
 shape = SubResource("RectangleShape2D_interactable")
 
-[node name="SignboardMarker" type="Polygon2D" parent="Signboard"]
+[node name="SignboardMarker" type="Polygon2D" parent="Signboard" unique_id=1236081698]
 visible = false
-polygon = PackedVector2Array(-16, -8, 16, -8, 16, 8, -16, 8)
 color = Color(0.44, 0.29, 0.18, 1)
+polygon = PackedVector2Array(-16, -8, 16, -8, 16, 8, -16, 8)
 
-[node name="SignboardArt" type="Sprite2D" parent="Signboard"]
+[node name="SignboardArt" type="Sprite2D" parent="Signboard" unique_id=69612252]
 position = Vector2(0, -23)
 scale = Vector2(0.18, 0.18)
 script = ExtResource("16_runtime_sprite")
 texture_path = "res://assets/art/props/region_home_area_prop_road_sign_v001.png"
 
-[node name="OldWell" type="Area2D" parent="." node_paths=PackedStringArray("data_registry_path", "game_state_path", "inventory_manager_path", "event_bus_path", "save_manager_path", "dialogue_box_path", "restoration_sprite_path") groups=["interactable"]]
-position = Vector2(216, 160)
+[node name="BulletinBoard" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(124, 64)
+script = ExtResource("25_rumor_board")
+interactable_id = "bulletin_board"
+display_name = "公告板"
+interaction_hint = "按 E 查看公告"
+interaction_text = "木板上钉着今天的村务纸条和几条手写留言。"
+rumor_source = "bulletin"
+speaker_name = "公告板"
+
+[node name="BulletinBoardShape" type="CollisionShape2D" parent="BulletinBoard"]
+shape = SubResource("RectangleShape2D_interactable")
+
+[node name="BulletinBoardMarker" type="Polygon2D" parent="BulletinBoard"]
+color = Color(0.5, 0.32, 0.18, 1)
+polygon = PackedVector2Array(-18, -14, 18, -14, 18, 14, -18, 14)
+
+[node name="VillagePath" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(326, 96)
+script = ExtResource("24_flag_interactable")
+interactable_id = "village_path"
+display_name = "村口小路"
+interaction_hint = "按 E 走到村口小路"
+interaction_text = "小路通向村口，路边的草被风吹得很低。"
+flag_id = "visited_village_path"
+
+[node name="VillagePathShape" type="CollisionShape2D" parent="VillagePath"]
+shape = SubResource("RectangleShape2D_interactable")
+
+[node name="VillagePathMarker" type="Polygon2D" parent="VillagePath"]
+color = Color(0.63, 0.52, 0.35, 1)
+polygon = PackedVector2Array(-24, -10, 24, -10, 24, 10, -24, 10)
+
+[node name="ForestTrailGate" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(332, 132)
+script = ExtResource("21_scene_switch_area")
+interactable_id = "forest_trail_gate"
+display_name = "森林边缘小路"
+interaction_hint = "按 E 前往森林边缘"
+interaction_text = "路牌后面有一条短短的小路，能走到森林边缘。"
+target_scene = "res://game/scenes/world/ForestEdge.tscn"
+target_scene_id = "forest_edge"
+target_spawn_id = "from_yard"
+arrival_flag_id = "visited_forest_edge"
+
+[node name="ForestTrailGateShape" type="CollisionShape2D" parent="ForestTrailGate"]
+shape = SubResource("RectangleShape2D_interactable")
+
+[node name="ForestTrailGateMarker" type="Polygon2D" parent="ForestTrailGate"]
+color = Color(0.34, 0.48, 0.32, 1)
+polygon = PackedVector2Array(-20, -12, 20, -12, 20, 12, -20, 12)
+
+[node name="WoodPile" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(-24, 176)
+script = ExtResource("23_resource_pickup")
+interactable_id = "wood_pile"
+display_name = "木柴堆"
+interaction_hint = "按 E 收起木柴"
+interaction_text = "整齐码好的木柴，可以用来修东西。"
+item_id = "wood"
+count = 32
+pickup_id = "player_yard_wood_pile_day1"
+
+[node name="WoodPileShape" type="CollisionShape2D" parent="WoodPile"]
+shape = SubResource("RectangleShape2D_interactable")
+
+[node name="WoodPileMarker" type="Polygon2D" parent="WoodPile"]
+color = Color(0.45, 0.28, 0.16, 1)
+polygon = PackedVector2Array(-18, -10, 18, -10, 18, 10, -18, 10)
+
+[node name="StonePile" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(-24, 220)
+script = ExtResource("23_resource_pickup")
+interactable_id = "stone_pile"
+display_name = "石块堆"
+interaction_hint = "按 E 收起石块"
+interaction_text = "几块平整的石头，适合加固井沿。"
+item_id = "stone"
+count = 12
+pickup_id = "player_yard_stone_pile_day1"
+
+[node name="StonePileShape" type="CollisionShape2D" parent="StonePile"]
+shape = SubResource("RectangleShape2D_interactable")
+
+[node name="StonePileMarker" type="Polygon2D" parent="StonePile"]
+color = Color(0.47, 0.45, 0.4, 1)
+polygon = PackedVector2Array(-16, -10, 16, -10, 16, 10, -16, 10)
+
+[node name="OldWell" type="Area2D" parent="." unique_id=1231866873 groups=["interactable"]]
+position = Vector2(252, 172)
 script = ExtResource("20_restoration_target")
 interactable_id = "old_well"
-data_registry_path = NodePath("../DataRegistry")
-game_state_path = NodePath("../GameState")
-inventory_manager_path = NodePath("../InventoryManager")
-event_bus_path = NodePath("../EventBus")
-save_manager_path = NodePath("../SaveManager")
-dialogue_box_path = NodePath("../DialogueBox")
-restoration_sprite_path = NodePath("OldWellArt")
 display_name = "旧水井"
 interaction_hint = "按 E 查看旧水井"
 interaction_text = "井沿有修补过的痕迹，水声很轻。"
 
-[node name="OldWellShape" type="CollisionShape2D" parent="OldWell"]
+[node name="OldWellShape" type="CollisionShape2D" parent="OldWell" unique_id=1495985404]
 shape = SubResource("RectangleShape2D_interactable")
 
-[node name="OldWellArt" type="Sprite2D" parent="OldWell"]
+[node name="OldWellArt" type="Sprite2D" parent="OldWell" unique_id=1431810990]
 position = Vector2(0, -31)
 scale = Vector2(0.16, 0.16)
 script = ExtResource("16_runtime_sprite")
 texture_path = "res://assets/art/props/prop_well_old_broken_256.png"
 
-[node name="Bench" type="Area2D" parent="." groups=["interactable"]]
-position = Vector2(168, 184)
+[node name="Bench" type="Area2D" parent="." unique_id=486479488 groups=["interactable"]]
+position = Vector2(160, 92)
 script = ExtResource("2_interactable")
 interactable_id = "bench"
 display_name = "长椅"
 interaction_hint = "按 E 坐一会儿"
 interaction_text = "长椅晒得温温的，适合短暂休息。"
 
-[node name="BenchShape" type="CollisionShape2D" parent="Bench"]
+[node name="BenchShape" type="CollisionShape2D" parent="Bench" unique_id=1892447408]
 shape = SubResource("RectangleShape2D_interactable")
 
-[node name="BenchArt" type="Sprite2D" parent="Bench"]
+[node name="BenchArt" type="Sprite2D" parent="Bench" unique_id=473804628]
 position = Vector2(0, -19)
 scale = Vector2(0.2, 0.2)
 script = ExtResource("16_runtime_sprite")
 texture_path = "res://assets/art/props/region_home_area_prop_bench_v001.png"
 
-[node name="FarmPlots" type="Node2D" parent="."]
-position = Vector2(24, 152)
+[node name="GardenBenchRepair" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(214, 224)
+script = ExtResource("20_restoration_target")
+interactable_id = "garden_bench"
+display_name = "院边长椅"
+interaction_hint = "按 E 修复长椅"
+interaction_text = "这张旧长椅少了几颗钉子，补好后能让院子更像有人常来。"
+restoration_id = "garden_bench"
+restoration_sprite_path = NodePath("GardenBenchArt")
 
-[node name="FarmPlot0" parent="FarmPlots" node_paths=PackedStringArray("data_registry_path", "inventory_manager_path", "weather_manager_path") instance=ExtResource("9_farm_plot")]
-position = Vector2(0, 0)
-plot_index = 0
-data_registry_path = NodePath("../../DataRegistry")
-inventory_manager_path = NodePath("../../InventoryManager")
-weather_manager_path = NodePath("../../WeatherManager")
+[node name="GardenBenchRepairShape" type="CollisionShape2D" parent="GardenBenchRepair"]
+shape = SubResource("RectangleShape2D_interactable")
 
-[node name="FarmPlot1" parent="FarmPlots" node_paths=PackedStringArray("data_registry_path", "inventory_manager_path", "weather_manager_path") instance=ExtResource("9_farm_plot")]
+[node name="GardenBenchArt" type="Sprite2D" parent="GardenBenchRepair"]
+position = Vector2(0, -19)
+scale = Vector2(0.2, 0.2)
+script = ExtResource("16_runtime_sprite")
+texture_path = "res://assets/art/props/region_home_area_prop_bench_v001.png"
+
+[node name="VillageSignRepair" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(284, 112)
+script = ExtResource("20_restoration_target")
+interactable_id = "village_sign"
+display_name = "村口路牌"
+interaction_hint = "按 E 扶正路牌"
+interaction_text = "路牌歪向一边，重新固定后就能看清森林边缘的方向。"
+restoration_id = "village_sign"
+restoration_sprite_path = NodePath("VillageSignRepairArt")
+
+[node name="VillageSignRepairShape" type="CollisionShape2D" parent="VillageSignRepair"]
+shape = SubResource("RectangleShape2D_interactable")
+
+[node name="VillageSignRepairArt" type="Sprite2D" parent="VillageSignRepair"]
+position = Vector2(0, -22)
+scale = Vector2(0.18, 0.18)
+script = ExtResource("16_runtime_sprite")
+texture_path = "res://assets/art/props/region_home_area_prop_road_sign_v001.png"
+
+[node name="FarmPlots" type="Node2D" parent="." unique_id=279461410]
+position = Vector2(44, 164)
+
+[node name="FarmPlot0" parent="FarmPlots" unique_id=568136548 instance=ExtResource("9_farm_plot")]
+
+[node name="FarmPlot1" parent="FarmPlots" unique_id=452765376 instance=ExtResource("9_farm_plot")]
 position = Vector2(42, 0)
 plot_index = 1
-data_registry_path = NodePath("../../DataRegistry")
-inventory_manager_path = NodePath("../../InventoryManager")
-weather_manager_path = NodePath("../../WeatherManager")
 
-[node name="FarmPlot2" parent="FarmPlots" node_paths=PackedStringArray("data_registry_path", "inventory_manager_path", "weather_manager_path") instance=ExtResource("9_farm_plot")]
+[node name="FarmPlot2" parent="FarmPlots" unique_id=1058610289 instance=ExtResource("9_farm_plot")]
 position = Vector2(84, 0)
 plot_index = 2
-data_registry_path = NodePath("../../DataRegistry")
-inventory_manager_path = NodePath("../../InventoryManager")
-weather_manager_path = NodePath("../../WeatherManager")
 
-[node name="FarmPlot3" parent="FarmPlots" node_paths=PackedStringArray("data_registry_path", "inventory_manager_path", "weather_manager_path") instance=ExtResource("9_farm_plot")]
+[node name="FarmPlot3" parent="FarmPlots" unique_id=608292898 instance=ExtResource("9_farm_plot")]
 position = Vector2(0, 34)
 plot_index = 3
-data_registry_path = NodePath("../../DataRegistry")
-inventory_manager_path = NodePath("../../InventoryManager")
-weather_manager_path = NodePath("../../WeatherManager")
 
-[node name="FarmPlot4" parent="FarmPlots" node_paths=PackedStringArray("data_registry_path", "inventory_manager_path", "weather_manager_path") instance=ExtResource("9_farm_plot")]
+[node name="FarmPlot4" parent="FarmPlots" unique_id=892138096 instance=ExtResource("9_farm_plot")]
 position = Vector2(42, 34)
 plot_index = 4
-data_registry_path = NodePath("../../DataRegistry")
-inventory_manager_path = NodePath("../../InventoryManager")
-weather_manager_path = NodePath("../../WeatherManager")
 
-[node name="FarmPlot5" parent="FarmPlots" node_paths=PackedStringArray("data_registry_path", "inventory_manager_path", "weather_manager_path") instance=ExtResource("9_farm_plot")]
+[node name="FarmPlot5" parent="FarmPlots" unique_id=1034164880 instance=ExtResource("9_farm_plot")]
 position = Vector2(84, 34)
 plot_index = 5
-data_registry_path = NodePath("../../DataRegistry")
-inventory_manager_path = NodePath("../../InventoryManager")
-weather_manager_path = NodePath("../../WeatherManager")
 
-[node name="NPCs" type="Node2D" parent="."]
+[node name="NPCs" type="Node2D" parent="." unique_id=1442626814]
 
-[node name="Aoi" parent="NPCs" node_paths=PackedStringArray("data_registry_path", "inventory_manager_path", "dialogue_manager_path", "relationship_manager_path", "dialogue_box_path", "time_manager_path", "weather_manager_path") instance=ExtResource("15_npc")]
-position = Vector2(32, 96)
+[node name="ScheduleDirector" type="Node" parent="."]
+script = ExtResource("26_schedule_director")
+scene_id = "player_yard"
+
+[node name="Aoi" parent="NPCs" unique_id=1178499742 instance=ExtResource("15_npc")]
+visible = false
+position = Vector2(116, 86)
 npc_id = "aoi"
 sprite_texture_path = "res://assets/art/characters/npc/npc_aoi_idle_down_128.png"
-data_registry_path = NodePath("../../DataRegistry")
-inventory_manager_path = NodePath("../../InventoryManager")
-dialogue_manager_path = NodePath("../../DialogueManager")
-relationship_manager_path = NodePath("../../RelationshipManager")
-dialogue_box_path = NodePath("../../DialogueBox")
-time_manager_path = NodePath("../../TimeManager")
-weather_manager_path = NodePath("../../WeatherManager")
 
-[node name="Gen" parent="NPCs" node_paths=PackedStringArray("data_registry_path", "inventory_manager_path", "dialogue_manager_path", "relationship_manager_path", "dialogue_box_path", "time_manager_path", "weather_manager_path") instance=ExtResource("15_npc")]
-position = Vector2(88, 104)
+[node name="Gen" parent="NPCs" unique_id=576605185 instance=ExtResource("15_npc")]
+visible = false
+position = Vector2(210, 224)
 npc_id = "gen"
 sprite_texture_path = "res://assets/art/characters/npc/npc_gen_idle_down_128.png"
-data_registry_path = NodePath("../../DataRegistry")
-inventory_manager_path = NodePath("../../InventoryManager")
-dialogue_manager_path = NodePath("../../DialogueManager")
-relationship_manager_path = NodePath("../../RelationshipManager")
-dialogue_box_path = NodePath("../../DialogueBox")
-time_manager_path = NodePath("../../TimeManager")
-weather_manager_path = NodePath("../../WeatherManager")
 
-[node name="Mika" parent="NPCs" node_paths=PackedStringArray("data_registry_path", "inventory_manager_path", "dialogue_manager_path", "relationship_manager_path", "dialogue_box_path", "time_manager_path", "weather_manager_path") instance=ExtResource("15_npc")]
-position = Vector2(220, 72)
+[node name="Mika" parent="NPCs" unique_id=3553956 instance=ExtResource("15_npc")]
+visible = false
+position = Vector2(294, 92)
 npc_id = "mika"
 sprite_texture_path = "res://assets/art/characters/npc/npc_mika_idle_down_128.png"
-data_registry_path = NodePath("../../DataRegistry")
-inventory_manager_path = NodePath("../../InventoryManager")
-dialogue_manager_path = NodePath("../../DialogueManager")
-relationship_manager_path = NodePath("../../RelationshipManager")
-dialogue_box_path = NodePath("../../DialogueBox")
-time_manager_path = NodePath("../../TimeManager")
-weather_manager_path = NodePath("../../WeatherManager")
 
-[node name="Player" parent="." instance=ExtResource("1_player")]
-position = Vector2(96, 88)
+[node name="Hana" parent="NPCs" instance=ExtResource("15_npc")]
+visible = false
+position = Vector2(170, 224)
+npc_id = "hana"
+sprite_texture_path = "res://assets/art/characters/npc/npc_hana_idle_down_128.png"
 
-[node name="BackToOldWorld" type="Area2D" parent="." groups=["interactable"]]
-position = Vector2(80, 160)
+[node name="Player" parent="." unique_id=893517574 instance=ExtResource("1_player")]
+position = Vector2(80, 104)
+
+[node name="SpawnFromHouse" type="Marker2D" parent="."]
+position = Vector2(80, 104)
+script = ExtResource("27_spawn_point")
+spawn_id = "from_house"
+
+[node name="SpawnFromForestEdge" type="Marker2D" parent="."]
+position = Vector2(314, 136)
+script = ExtResource("27_spawn_point")
+spawn_id = "from_forest_edge"
+
+[node name="HouseDoor" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(72, 54)
 script = ExtResource("21_scene_switch_area")
-interaction_hint = "E 键返回旧世界场景"
-target_scene = "res://scenes/world/world.tscn"
+interactable_id = "yard_house_door"
+display_name = "回屋"
+interaction_text = "屋里很安静，可以回去休息。"
+target_scene = "res://game/scenes/home/PlayerHouse.tscn"
+target_scene_id = "player_house"
+target_spawn_id = "inside_default"
+interaction_hint = "按 E 回屋"
 
-[node name="BackToOldWorldShape" type="CollisionShape2D" parent="BackToOldWorld"]
+[node name="HouseDoorShape" type="CollisionShape2D" parent="HouseDoor"]
 shape = SubResource("RectangleShape2D_interactable")
+
+[node name="HouseDoorMarker" type="Polygon2D" parent="HouseDoor"]
+color = Color(0.48, 0.31, 0.2, 1)
+polygon = PackedVector2Array(-18, -14, 18, -14, 18, 14, -18, 14)
+
+[node name="BackToOldWorld" type="Area2D" parent="." unique_id=1817665055 groups=["interactable"]]
+visible = false
+position = Vector2(80, 160)
+monitoring = false
+script = ExtResource("21_scene_switch_area")
+target_scene = "res://scenes/world/world.tscn"
+interaction_hint = "E 键返回旧世界场景"
+
+[node name="BackToOldWorldShape" type="CollisionShape2D" parent="BackToOldWorld" unique_id=1571569473]
+shape = SubResource("RectangleShape2D_interactable")
+
+[node name="RumorManager" type="Node" parent="." unique_id=1949495102]
+script = ExtResource("22_bgxpi")

@@ -1,0 +1,35 @@
+{
+  "review_id": "mountain_hut_source_quality_review_v004",
+  "status": "v004_candidate_ready_for_visual_review",
+  "reviewed_at": "2026-05-25",
+  "source_candidate": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v004/mountain_hut_painted_source_v004.png",
+  "quality_reference_source": "production/assets/regions/village_world2d/v001/02_source_generation/village_painted_source.png",
+  "rejected_previous_source": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v003/mountain_hut_painted_source_v003.png",
+  "v003_visual_review": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_visual_review_v003.json",
+  "external_quality_reference": "production/assets/external_gpt_handoff/greenfield_p0/v001/incoming/01_scene_mothers/regions/mountain_hut/mountain_hut_scene_mother.png",
+  "review_contact_sheet": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/mountain_hut_v004_review_contact_sheet.png",
+  "source_candidate_review": ".codex/reports/mountain_hut_v004_source_candidate_review_2026-05-25.md",
+  "metrics": {
+    "village_detail_edge_mean": 6.3647,
+    "v004_detail_edge_mean": 6.6027,
+    "detail_ratio": 1.0374,
+    "village_gray_variance": 971.8164,
+    "v004_gray_variance": 1088.8455,
+    "variance_ratio": 1.1204,
+    "seam_edge_average_channel_delta": 18.9991,
+    "v003_mean_diff": 31.6874,
+    "v003_hard_vector_road_ratio": 0.025414,
+    "v004_hard_vector_road_ratio": 0.003438,
+    "minimum_detail_ratio_for_review_ready": 0.74,
+    "minimum_variance_ratio_for_review_ready": 0.62,
+    "maximum_preferred_seam_delta_for_precheck": 24.0,
+    "maximum_hard_vector_road_ratio": 0.012
+  },
+  "producer_verdict": "The v004 source candidate removes the v003 hard vector-road overlay and is ready for visual review only.",
+  "hard_approval_flags": {
+    "human_visual_approval": false,
+    "layer_export_approved": false,
+    "runtime_replacement": false,
+    "launch_quality_approved": false
+  }
+}

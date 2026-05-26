@@ -37,9 +37,15 @@ FORBIDDEN_ACTIVE_SCENE_TOKENS = [
 
 REQUIRED_VALIDATORS = [
     "tools/validate_project_art_production_landing.py",
+    "tools/validate_outdoor_world_seamless_art_master.py",
+    "tools/validate_mountain_hut_world2d_art_prep.py",
+    "tools/validate_mountain_hut_painted_source_candidate.py",
+    "tools/validate_mountain_hut_source_quality_gate.py",
+    "tools/validate_mountain_hut_v002_source_candidate.py",
     "tools/validate_home_area_world2d_v001.py",
     "tools/validate_region_back_farm_art_v002.py",
     "tools/validate_protagonist_runtime_manifest.py",
+    "tools/validate_complete_p0_asset_package.py",
 ]
 
 
@@ -106,8 +112,112 @@ def validate_active_region_packages(by_id: dict[str, dict[str, Any]]) -> None:
     require(back.get("human_visual_approval_required") is True, "BackFarm must require human review")
     require((ROOT / str(back["active_package"])).exists(), "BackFarm active package missing")
 
+    village = by_id["Region_Village"]
+    village_layer_manifest_phases = {
+        "village_layers_exported_pending_review",
+        "village_layers_rejected_semantic_rework_required",
+        "village_semantic_layers_exported_pending_review",
+        "v002_inherited_crop_candidate_ready_for_visual_review",
+        "v002_codex_visual_accepted_for_semantic_layer_export",
+        "v002_semantic_layers_exported_pending_review",
+    }
+    require(
+        village.get("phase") in {"village_plaza_art_prep_package_ready", *village_layer_manifest_phases},
+        "Village phase mismatch",
+    )
+    require(village.get("runtime_replacement") is False, "Village must keep runtime_replacement=false")
+    require(village.get("human_visual_approval_required") is True, "Village must require human review")
+    require((ROOT / str(village["active_package"])).exists(), "Village active package missing")
+    require((ROOT / str(village["required_package_dir"])).exists(), "Village required package dir missing")
+    if village.get("phase") in village_layer_manifest_phases:
+        require((ROOT / str(village.get("active_layer_manifest", ""))).exists(), "Village active layer manifest missing")
+    if village.get("phase") == "v002_inherited_crop_candidate_ready_for_visual_review":
+        require((ROOT / str(village.get("active_inherited_repaint_handoff", ""))).exists(), "Village inherited repaint handoff missing")
+        require((ROOT / str(village.get("active_v002_source_candidate", ""))).exists(), "Village v002 source candidate missing")
+        require((ROOT / str(village.get("active_v002_quality_review", ""))).exists(), "Village v002 quality review missing")
+        require((ROOT / str(village.get("active_v002_review_contact_sheet", ""))).exists(), "Village v002 contact sheet missing")
+        require("inherited repaint" in str(village.get("next_art_step", "")), "Village next step must mention inherited repaint")
+    if village.get("phase") in {
+        "v002_codex_visual_accepted_for_semantic_layer_export",
+        "v002_semantic_layers_exported_pending_review",
+    }:
+        require((ROOT / str(village.get("active_inherited_repaint_handoff", ""))).exists(), "Village inherited repaint handoff missing")
+        require((ROOT / str(village.get("active_v002_source_candidate", ""))).exists(), "Village v002 source candidate missing")
+        require((ROOT / str(village.get("active_v002_quality_review", ""))).exists(), "Village v002 quality review missing")
+        require((ROOT / str(village.get("active_v002_review_contact_sheet", ""))).exists(), "Village v002 contact sheet missing")
+        require((ROOT / str(village.get("active_v002_visual_review", ""))).exists(), "Village v002 visual review missing")
+    if village.get("phase") == "v002_semantic_layers_exported_pending_review":
+        require((ROOT / str(village.get("active_v002_layer_manifest", ""))).exists(), "Village v002 layer manifest missing")
+        require("semantic layers" in str(village.get("next_art_step", "")), "Village next step must point to semantic layer review")
+
+    mountain_hut = by_id["Region_MountainHut"]
+    mountain_hut_source_phases = {
+        "mountain_hut_source_candidate_pending_review",
+        "mountain_hut_source_candidate_needs_repaint",
+        "mountain_hut_v002_candidate_ready_for_human_art_review",
+        "mountain_hut_v002_visual_review_rejected_needs_v003_repaint",
+        "mountain_hut_v003_candidate_ready_for_visual_review",
+        "mountain_hut_v004_candidate_ready_for_visual_review",
+        "v004_semantic_layers_exported_pending_review",
+    }
+    require(
+        mountain_hut.get("phase") in {"mountain_hut_art_prep_package_ready", *mountain_hut_source_phases},
+        "MountainHut phase mismatch",
+    )
+    require(mountain_hut.get("runtime_replacement") is False, "MountainHut must keep runtime_replacement=false")
+    require(mountain_hut.get("human_visual_approval_required") is True, "MountainHut must require human review")
+    require(
+        mountain_hut.get("active_package") == "production/assets/regions/mountain_hut_world2d/v001/workflow_manifest.json",
+        "MountainHut active package mismatch",
+    )
+    require(
+        mountain_hut.get("active_seam_brief") == "production/assets/seams/village_to_mountain_hut/v001/seam_brief.md",
+        "MountainHut active seam brief mismatch",
+    )
+    require((ROOT / str(mountain_hut["active_package"])).exists(), "MountainHut active package missing")
+    require((ROOT / str(mountain_hut["required_package_dir"])).exists(), "MountainHut required package dir missing")
+    require((ROOT / str(mountain_hut["active_seam_brief"])).exists(), "MountainHut active seam brief missing")
+    if mountain_hut.get("phase") in mountain_hut_source_phases:
+        require((ROOT / str(mountain_hut.get("active_source_candidate", ""))).exists(), "MountainHut active source candidate missing")
+        require((ROOT / str(mountain_hut.get("active_source_review", ""))).exists(), "MountainHut active source review missing")
+    if mountain_hut.get("phase") == "mountain_hut_source_candidate_needs_repaint":
+        require((ROOT / str(mountain_hut.get("active_source_quality_review", ""))).exists(), "MountainHut source quality review missing")
+        require((ROOT / str(mountain_hut.get("active_repaint_reference_board", ""))).exists(), "MountainHut repaint reference board missing")
+        require((ROOT / str(mountain_hut.get("active_repaint_brief", ""))).exists(), "MountainHut repaint brief missing")
+        require("v002 repaint" in str(mountain_hut.get("next_art_step", "")), "MountainHut next step must point to v002 repaint")
+    if mountain_hut.get("phase") == "mountain_hut_v002_candidate_ready_for_human_art_review":
+        require((ROOT / str(mountain_hut.get("active_v002_source_candidate", ""))).exists(), "MountainHut v002 source candidate missing")
+        require((ROOT / str(mountain_hut.get("active_v002_quality_review", ""))).exists(), "MountainHut v002 quality review missing")
+        require((ROOT / str(mountain_hut.get("active_v002_review_contact_sheet", ""))).exists(), "MountainHut v002 contact sheet missing")
+        require("human/art review" in str(mountain_hut.get("next_art_step", "")), "MountainHut next step must point to v002 human/art review")
+    if mountain_hut.get("phase") == "mountain_hut_v002_visual_review_rejected_needs_v003_repaint":
+        require((ROOT / str(mountain_hut.get("active_v002_source_candidate", ""))).exists(), "MountainHut v002 source candidate missing")
+        require((ROOT / str(mountain_hut.get("active_v002_quality_review", ""))).exists(), "MountainHut v002 quality review missing")
+        require((ROOT / str(mountain_hut.get("active_v002_visual_review", ""))).exists(), "MountainHut v002 visual review missing")
+        require((ROOT / str(mountain_hut.get("active_v003_repaint_brief", ""))).exists(), "MountainHut v003 repaint brief missing")
+        require((ROOT / str(mountain_hut.get("active_v003_reference_sheet", ""))).exists(), "MountainHut v003 reference sheet missing")
+        require("v003" in str(mountain_hut.get("next_art_step", "")), "MountainHut next step must point to v003 repaint")
+    if mountain_hut.get("phase") == "mountain_hut_v003_candidate_ready_for_visual_review":
+        require((ROOT / str(mountain_hut.get("active_v002_source_candidate", ""))).exists(), "MountainHut v002 source candidate missing")
+        require((ROOT / str(mountain_hut.get("active_v002_quality_review", ""))).exists(), "MountainHut v002 quality review missing")
+        require((ROOT / str(mountain_hut.get("active_v003_source_candidate", ""))).exists(), "MountainHut v003 source candidate missing")
+        require((ROOT / str(mountain_hut.get("active_v003_quality_review", ""))).exists(), "MountainHut v003 quality review missing")
+        require((ROOT / str(mountain_hut.get("active_v003_review_contact_sheet", ""))).exists(), "MountainHut v003 contact sheet missing")
+        require("visual review" in str(mountain_hut.get("next_art_step", "")), "MountainHut next step must point to v003 visual review")
+    if mountain_hut.get("phase") == "mountain_hut_v004_candidate_ready_for_visual_review":
+        require((ROOT / str(mountain_hut.get("active_v003_visual_review", ""))).exists(), "MountainHut v003 visual review missing")
+        require((ROOT / str(mountain_hut.get("active_v004_source_candidate", ""))).exists(), "MountainHut v004 source candidate missing")
+        require((ROOT / str(mountain_hut.get("active_v004_quality_review", ""))).exists(), "MountainHut v004 quality review missing")
+        require((ROOT / str(mountain_hut.get("active_v004_review_contact_sheet", ""))).exists(), "MountainHut v004 contact sheet missing")
+        require("visual review" in str(mountain_hut.get("next_art_step", "")), "MountainHut next step must point to v004 visual review")
+    if mountain_hut.get("phase") == "v004_semantic_layers_exported_pending_review":
+        require((ROOT / str(mountain_hut.get("active_v004_source_candidate", ""))).exists(), "MountainHut v004 source candidate missing")
+        require((ROOT / str(mountain_hut.get("active_v004_visual_review", ""))).exists(), "MountainHut v004 visual review missing")
+        require((ROOT / str(mountain_hut.get("active_layer_manifest", ""))).exists(), "MountainHut active layer manifest missing")
+        require("semantic layers" in str(mountain_hut.get("next_art_step", "")), "MountainHut next step must point to semantic layer review")
+
     for region_id, record in by_id.items():
-        if region_id in {"Region_HomeArea", "Region_BackFarm"}:
+        if region_id in {"Region_HomeArea", "Region_BackFarm", "Region_Village", "Region_MountainHut"}:
             continue
         require(record.get("phase") == "graybox_scene_needs_source_package", f"{region_id} must remain an explicit art backlog row")
         require(str(record.get("required_package_dir", "")).startswith("production/assets/regions/"), f"{region_id} missing required package dir")
@@ -141,20 +251,29 @@ def validate_runtime_asset_groups(manifest: dict[str, Any]) -> None:
         icon = str(record.get("icon", ""))
         if icon and not res_path_exists(icon):
             missing_item_icons.append(icon)
-    require(missing_item_icons, "expected explicit item icon backlog, but all item icons currently resolve")
-    require(by_id["item_icons"].get("status") == "known_gap_partial_crop_icons_only", "item icon gap must remain explicit")
+    item_status = by_id["item_icons"].get("status")
+    if missing_item_icons:
+        require(item_status == "known_gap_partial_crop_icons_only", "item icon gap must remain explicit while icons are missing")
+    else:
+        require(item_status == "runtime_files_present_for_current_item_data", "item icon group must record resolved runtime files when all icons exist")
+        require((ROOT / "production/assets/items/p0_item_icons/v001/p0_item_icons_manifest.json").exists(), "resolved item icon package manifest missing")
 
     npcs = read_json(NPCS, "npc data")
     npc_ids = {str(as_dict(npc, "npc record").get("npc_id")) for npc in npcs}
     character_assets = as_dict(manifest.get("character_assets"), "character_assets")
     mvp_npcs = as_dict(character_assets.get("mvp_npcs"), "mvp_npcs")
-    covered = set(mvp_npcs.get("covered_npc_ids", []))
-    missing = set(mvp_npcs.get("missing_npc_ids", []))
-    require({"aoi", "gen", "mika"} <= covered, "Aoi/Gen/Mika coverage must be explicit")
-    require("hana" in missing and "hana" in npc_ids, "Hana art backlog must be explicit")
-    for npc_id in covered:
-        require((ROOT / f"assets/art/characters/npc/npc_{npc_id}_idle_down_128.png").exists(), f"missing NPC idle sprite: {npc_id}")
-        require((ROOT / f"assets/art/portraits/npc_{npc_id}_portrait_neutral_512.png").exists(), f"missing NPC portrait: {npc_id}")
+    required_ids = set(mvp_npcs.get("required_npc_ids", []))
+    npc_status = mvp_npcs.get("status")
+    require(npc_status in {"complete_runtime_package_backlog", "complete_runtime_package_usable"}, "P0 NPCs must use complete runtime package backlog or usable status")
+    if npc_status == "complete_runtime_package_usable":
+        require((ROOT / "production/assets/characters/p0_npc_complete_runtime/v001/p0_npc_complete_runtime_manifest.json").exists(), "resolved P0 NPC package manifest missing")
+        require(set(mvp_npcs.get("covered_npc_ids", [])) == {"aoi", "gen", "mika", "hana"}, "complete P0 NPC covered ids mismatch")
+        require(not mvp_npcs.get("missing_npc_ids", []), "complete P0 NPC package should not list missing NPC ids")
+    require({"aoi", "gen", "mika", "hana"} <= required_ids, "complete P0 NPC backlog must cover Aoi/Gen/Mika/Hana")
+    require(required_ids <= npc_ids, f"manifest references unknown NPC ids: {sorted(required_ids - npc_ids)}")
+    package = as_dict(mvp_npcs.get("required_runtime_package"), "required_runtime_package")
+    require(set(package.get("sprites", [])) == {"idle_down", "idle_up", "idle_left", "idle_right", "walk_down", "walk_up", "walk_left", "walk_right"}, "P0 NPC sprite package must include 4-direction idle and walk")
+    require(set(package.get("portraits", [])) == {"neutral", "happy", "thinking"}, "P0 NPC portrait package must include neutral/happy/thinking")
 
 
 def validate_manifest_structure(manifest: dict[str, Any]) -> None:
@@ -164,12 +283,18 @@ def validate_manifest_structure(manifest: dict[str, Any]) -> None:
     require(DOC.exists(), "missing docs/13_ART_PRODUCTION_LANDING.md")
     for validator in REQUIRED_VALIDATORS:
         require((ROOT / validator).exists(), f"missing validation entrypoint: {validator}")
+    seamless = as_dict(manifest.get("seamless_outdoor_world"), "seamless_outdoor_world")
+    require(seamless.get("active_runtime_scene") == "res://game/scenes/world/OutdoorWorld.tscn", "seamless OutdoorWorld scene mismatch")
+    require(seamless.get("active_package") == "production/assets/outdoor_world_world2d/v001/workflow_manifest.json", "seamless OutdoorWorld active package mismatch")
+    require((ROOT / str(seamless.get("active_package"))).exists(), "seamless OutdoorWorld package missing")
+    require(seamless.get("runtime_replacement") is False, "seamless OutdoorWorld must not replace runtime art")
+    require(seamless.get("human_visual_approval_required") is True, "seamless OutdoorWorld must require human review")
     character_assets = as_dict(manifest.get("character_assets"), "character_assets")
     protagonist = as_dict(character_assets.get("protagonist"), "protagonist")
     require((ROOT / str(protagonist.get("manifest"))).exists(), "protagonist runtime manifest missing")
     require((ROOT / str(protagonist.get("runtime_sprite_frames"))).exists(), "protagonist runtime SpriteFrames missing")
     known_gaps = {str(as_dict(gap, "known gap").get("id")) for gap in manifest.get("known_runtime_gaps", [])}
-    for required_gap in ["item_icon_backlog", "hana_npc_art_backlog", "remaining_region_world2d_packages"]:
+    for required_gap in ["item_icon_backlog", "p0_npc_complete_art_backlog", "remaining_region_world2d_packages"]:
         require(required_gap in known_gaps, f"missing known runtime gap: {required_gap}")
 
 
@@ -181,7 +306,7 @@ def main() -> None:
     validate_active_region_packages(by_id)
     validate_active_scenes_do_not_use_rejected_paths()
     validate_runtime_asset_groups(manifest)
-    print("OK: project art production landing manifest validates registered regions, active art packages, and explicit runtime gaps")
+    print("OK: project art production landing manifest validates registered regions, active art packages, and runtime art package state")
 
 
 if __name__ == "__main__":

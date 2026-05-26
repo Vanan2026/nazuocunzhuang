@@ -36,6 +36,9 @@ func _get_linked_node(path: NodePath, fallback_name: String) -> Node:
 	if linked != null:
 		return linked
 	var parent_node := get_parent()
-	if parent_node == null:
-		return null
-	return parent_node.get_node_or_null(fallback_name)
+	while parent_node != null:
+		var fallback := parent_node.get_node_or_null(fallback_name)
+		if fallback != null:
+			return fallback
+		parent_node = parent_node.get_parent()
+	return null

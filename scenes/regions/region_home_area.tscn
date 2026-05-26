@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" path="res://production/assets/regions/home_area_world2d/v001/03_layer_export/four_layer_package/home_area_03_foreground_occlusion_v4_no_bottom_leaf_wall.png" id="15_home_foreground"]
 [ext_resource type="Texture2D" path="res://production/assets/regions/home_area_world2d/v001/03_layer_export/four_layer_package/home_area_04_midground_behind_player.png" id="16_home_midground"]
 [ext_resource type="Script" path="res://scripts/world/scene_exit.gd" id="17_scene_exit"]
+[ext_resource type="Script" path="res://scripts/world/yard_interactable.gd" id="18_yard_interactable"]
+[ext_resource type="Script" path="res://scripts/world/veranda_rest_area.gd" id="19_veranda_rest"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
 size = Vector2(40, 20)
@@ -141,6 +143,85 @@ offset_right = 130.0
 offset_bottom = -118.0
 text = "按 E 前往后院菜地"
 horizontal_alignment = 1
+[node name="MailboxInteract" type="Area2D" parent="YSortWorld/Interactables" unique_id=2026052001]
+position = Vector2(396, 579)
+script = ExtResource("18_yard_interactable")
+object_id = "home_mailbox"
+display_name = "信箱"
+interaction_hint = "按 E 查看信箱"
+feedback_text = "信箱里暂时没有新信。"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Interactables/MailboxInteract" unique_id=2026052002]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="HintLabel" type="Label" parent="YSortWorld/Interactables/MailboxInteract" unique_id=2026052003]
+visible = false
+offset_left = -110.0
+offset_top = -130.0
+offset_right = 110.0
+offset_bottom = -98.0
+text = "按 E 查看信箱"
+horizontal_alignment = 1
+
+[node name="BenchRestInteract" type="Area2D" parent="YSortWorld/Interactables" unique_id=2026052004]
+position = Vector2(338, 672)
+script = ExtResource("19_veranda_rest")
+interaction_hint = "按 E 坐下休息"
+seat_anchor = Vector2(4338, 6672)
+rest_facing = Vector2(1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Interactables/BenchRestInteract" unique_id=2026052005]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="HintLabel" type="Label" parent="YSortWorld/Interactables/BenchRestInteract" unique_id=2026052006]
+visible = false
+offset_left = -110.0
+offset_top = -130.0
+offset_right = 110.0
+offset_bottom = -98.0
+text = "按 E 坐下休息"
+horizontal_alignment = 1
+
+[node name="WellInteract" type="Area2D" parent="YSortWorld/Interactables" unique_id=2026052007]
+position = Vector2(1120, 755)
+script = ExtResource("18_yard_interactable")
+object_id = "home_well"
+display_name = "水井"
+interaction_hint = "按 E 查看水井"
+feedback_text = "井口被修整过，水面映着树影。"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Interactables/WellInteract" unique_id=2026052008]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="HintLabel" type="Label" parent="YSortWorld/Interactables/WellInteract" unique_id=2026052009]
+visible = false
+offset_left = -110.0
+offset_top = -130.0
+offset_right = 110.0
+offset_bottom = -98.0
+text = "按 E 查看水井"
+horizontal_alignment = 1
+
+[node name="RoadSignInteract" type="Area2D" parent="YSortWorld/Interactables" unique_id=2026052010]
+position = Vector2(1232, 594)
+script = ExtResource("18_yard_interactable")
+object_id = "home_road_sign"
+display_name = "木路牌"
+interaction_hint = "按 E 查看路牌"
+feedback_text = "路牌指向村口和后院菜地。"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortWorld/Interactables/RoadSignInteract" unique_id=2026052011]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="HintLabel" type="Label" parent="YSortWorld/Interactables/RoadSignInteract" unique_id=2026052012]
+visible = false
+offset_left = -110.0
+offset_top = -130.0
+offset_right = 110.0
+offset_bottom = -98.0
+text = "按 E 查看路牌"
+horizontal_alignment = 1
+
 [node name="ForegroundOcclusion" type="Sprite2D" parent="." unique_id=106745598]
 z_index = 100
 texture = ExtResource("15_home_foreground")

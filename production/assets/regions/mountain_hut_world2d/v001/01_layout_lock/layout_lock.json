@@ -1,0 +1,265 @@
+{
+  "layout_id": "mountain_hut_layout_lock_v001",
+  "region_id": "Region_MountainHut",
+  "node_id": "MountainHut",
+  "status": "layout_locked_for_source_generation",
+  "parent_world_art_package": "production/assets/outdoor_world_world2d/v001/workflow_manifest.json",
+  "parent_connection_id": "village_to_mountain_hut",
+  "export_rule": "full_canvas_shared_origin",
+  "registration_rule": "registration-perfect layer alignment, not pixel-perfect brush tracing",
+  "coordinate_spaces": {
+    "source_canvas": {
+      "width": 1800,
+      "height": 1200,
+      "origin": "top_left",
+      "export_rule": "full_canvas_shared_origin"
+    },
+    "godot_runtime": {
+      "region_size": [
+        320,
+        240
+      ],
+      "texture_scale": 0.18,
+      "region_offset": [
+        1060,
+        -12
+      ],
+      "world_seam_point": [
+        1060,
+        108
+      ]
+    }
+  },
+  "seam_connectors": [
+    {
+      "edge": "west",
+      "connection_id": "village_to_mountain_hut",
+      "runtime_point": [
+        0,
+        120
+      ],
+      "source_point": [
+        0,
+        667
+      ],
+      "source_width": 76,
+      "continuity_note": "Connects to Village east path without a road-width jump."
+    },
+    {
+      "edge": "north",
+      "connection_id": "mountain_to_hut",
+      "runtime_point": [
+        160,
+        0
+      ],
+      "source_point": [
+        889,
+        0
+      ],
+      "source_width": 62,
+      "continuity_note": "Future soft return from mountain path area; keep secondary to the Village west entrance."
+    }
+  ],
+  "road_paths": [
+    {
+      "id": "village_connector_path",
+      "role": "village_to_hut_approach",
+      "source_width": 76,
+      "source_points": [
+        [
+          0,
+          667
+        ],
+        [
+          260,
+          654
+        ],
+        [
+          520,
+          620
+        ],
+        [
+          700,
+          560
+        ],
+        [
+          820,
+          500
+        ]
+      ]
+    },
+    {
+      "id": "hut_door_spur",
+      "role": "approach_to_hut_door",
+      "source_width": 54,
+      "source_points": [
+        [
+          820,
+          500
+        ],
+        [
+          920,
+          446
+        ],
+        [
+          990,
+          388
+        ]
+      ]
+    },
+    {
+      "id": "north_return_path",
+      "role": "future_mountain_return_hint",
+      "source_width": 48,
+      "source_points": [
+        [
+          890,
+          0
+        ],
+        [
+          880,
+          154
+        ],
+        [
+          840,
+          300
+        ],
+        [
+          820,
+          500
+        ]
+      ]
+    }
+  ],
+  "object_zones": [
+    {
+      "id": "MountainHutExterior",
+      "layer": "base_ground",
+      "source_rect": [
+        1010,
+        210,
+        470,
+        370
+      ],
+      "runtime_position": [
+        224,
+        71
+      ],
+      "source_position": [
+        1244,
+        394
+      ],
+      "relation": "Small hut mass sits above the approach path, not on top of the west seam road."
+    },
+    {
+      "id": "HutDoor",
+      "layer": "ysort_props_structures",
+      "source_rect": [
+        932,
+        338,
+        150,
+        170
+      ],
+      "runtime_position": [
+        182,
+        76
+      ],
+      "source_position": [
+        1011,
+        422
+      ],
+      "relation": "Primary inspection point; keep door readable and reachable from the spur path."
+    },
+    {
+      "id": "HutApproachPath",
+      "layer": "base_ground",
+      "source_rect": [
+        680,
+        430,
+        420,
+        220
+      ],
+      "runtime_position": [
+        162,
+        98
+      ],
+      "source_position": [
+        900,
+        544
+      ],
+      "relation": "Soft path area between Village connector and hut door."
+    },
+    {
+      "id": "VillageConnectorPath",
+      "layer": "base_ground",
+      "source_rect": [
+        0,
+        590,
+        620,
+        180
+      ],
+      "runtime_position": [
+        52,
+        122
+      ],
+      "source_position": [
+        289,
+        678
+      ],
+      "relation": "West-edge road segment that must match Village east seam width and ground material."
+    },
+    {
+      "id": "QuietWoodpile",
+      "layer": "ysort_props_structures",
+      "source_rect": [
+        1220,
+        610,
+        230,
+        140
+      ],
+      "runtime_position": [
+        241,
+        122
+      ],
+      "source_position": [
+        1339,
+        678
+      ],
+      "relation": "Small utility prop; must not block the road or imply combat resource collection."
+    },
+    {
+      "id": "ForegroundPineBough",
+      "layer": "foreground_occlusion",
+      "source_rect": [
+        1320,
+        0,
+        380,
+        230
+      ],
+      "runtime_position": [
+        272,
+        22
+      ],
+      "source_position": [
+        1511,
+        122
+      ],
+      "relation": "Optional upper-right depth occlusion only; keep away from seam prompt and hut door."
+    }
+  ],
+  "hidden_discovery_policy": {
+    "allowed": [
+      "soft wear on path",
+      "small herb shelf",
+      "gentle porch repair hints",
+      "quiet seasonal plants"
+    ],
+    "forbidden": [
+      "combat symbols",
+      "danger signs",
+      "weapon props",
+      "baked quest text",
+      "explicit failure instruction"
+    ]
+  }
+}

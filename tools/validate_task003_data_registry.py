@@ -73,6 +73,11 @@ DATA_SPECS: dict[str, dict[str, Any]] = {
         "minimum": 5,
         "required": ["recipe_id", "name", "ingredients", "result", "energy_restore", "tags", "unlock_condition"],
     },
+    "npc_schedules.json": {
+        "id_key": "schedule_id",
+        "minimum": 3,
+        "required": ["schedule_id", "entries"],
+    },
     "restoration_targets.json": {
         "id_key": "restoration_id",
         "minimum": 1,
@@ -181,6 +186,29 @@ def validate_npcs(npcs: dict[str, dict[str, Any]]) -> None:
             fail(f"npc {npc_id} birthday day must be 1-28")
 
 
+def validate_npc_schedules(
+    schedules: dict[str, dict[str, Any]],
+    npcs: dict[str, dict[str, Any]],
+) -> None:
+    for npc_id, npc in npcs.items():
+        schedule_id = npc["schedule_id"]
+        if schedule_id not in schedules:
+            fail(f"npc {npc_id} references missing schedule {schedule_id}")
+    for schedule_id, schedule in schedules.items():
+        entries = schedule["entries"]
+        if not isinstance(entries, list) or not entries:
+            fail(f"schedule {schedule_id} entries must be a non-empty array")
+        for index, entry in enumerate(entries):
+            if not isinstance(entry, dict):
+                fail(f"schedule {schedule_id} entries[{index}] must be an object")
+            for field in ["time_block", "scene_id", "position", "activity"]:
+                if field not in entry:
+                    fail(f"schedule {schedule_id} entries[{index}] missing {field}")
+            position = entry["position"]
+            if not isinstance(position, list) or len(position) != 2:
+                fail(f"schedule {schedule_id} entries[{index}] position must be [x, y]")
+
+
 def validate_dialogues(dialogues: dict[str, dict[str, Any]], npcs: dict[str, dict[str, Any]]) -> None:
     for dialogue_id, dialogue in dialogues.items():
         if dialogue["npc_id"] not in npcs:
@@ -219,6 +247,7 @@ def validate_registry_script() -> None:
         "func _ready(",
         "func load_all_data(",
         "func validate_all_data(",
+        "func get_npc_schedule(",
         "print(",
         "data_loaded.emit()",
         "data_validation_failed.emit(",
@@ -233,6 +262,7 @@ def main() -> None:
     validate_items(indexed["items.json"])
     validate_crops(indexed["crops.json"], indexed["items.json"])
     validate_npcs(indexed["npcs.json"])
+    validate_npc_schedules(indexed["npc_schedules.json"], indexed["npcs.json"])
     validate_dialogues(indexed["dialogues.json"], indexed["npcs.json"])
     validate_recipes(indexed["recipes.json"], indexed["items.json"])
     validate_restoration_targets(indexed["restoration_targets.json"], indexed["items.json"])

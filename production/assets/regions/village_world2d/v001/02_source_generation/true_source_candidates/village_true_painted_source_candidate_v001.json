@@ -1,0 +1,35 @@
+{
+  "candidate_id": "village_true_painted_source_candidate_v001",
+  "status": "accepted_for_layer_export",
+  "candidate_type": "true_storybook_painted_source_candidate",
+  "source_generator": "codex_builtin_image_gen",
+  "original_generated_source": "C:\\Users\\23732\\.codex\\generated_images\\019e5581-c8ba-7d70-baf4-464b7b914972\\ig_077c77f348ef79ac016a11e2a541848191aca413e824b88449.png",
+  "original_image": "production/assets/regions/village_world2d/v001/02_source_generation/true_source_candidates/village_true_painted_source_candidate_v001_original.png",
+  "normalized_image": "production/assets/regions/village_world2d/v001/02_source_generation/true_source_candidates/village_true_painted_source_candidate_v001.png",
+  "prompt_file": "production/assets/regions/village_world2d/v001/02_source_generation/true_source_candidates/village_true_painted_source_candidate_v001_prompt.md",
+  "original_size": [
+    1536,
+    1024
+  ],
+  "normalized_size": [
+    1800,
+    1200
+  ],
+  "alpha": "opaque",
+  "human_visual_approval": true,
+  "layer_export_approved": true,
+  "runtime_replacement": false,
+  "launch_quality_approved": false,
+  "references": {
+    "outdoor_world_master": "production/assets/outdoor_world_world2d/v001/workflow_manifest.json",
+    "village_layout_lock": "production/assets/regions/village_world2d/v001/01_layout_lock/layout_lock.json",
+    "layout_structure_draft": "production/assets/regions/village_world2d/v001/02_source_generation/village_painted_source.png"
+  },
+  "notes": [
+    "This candidate is saved for human visual review only.",
+    "Do not split runtime layers until the user explicitly accepts this source.",
+    "Do not replace runtime art from this candidate in the current task."
+  ],
+  "human_approval_note": "User accepted the candidate in-chat on 2026-05-24 and asked to proceed.",
+  "canonical_source_image": "production/assets/regions/village_world2d/v001/02_source_generation/village_painted_source.png"
+}

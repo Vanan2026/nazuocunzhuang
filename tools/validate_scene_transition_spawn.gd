@@ -2,6 +2,7 @@ extends SceneTree
 
 const HeadlessLifecycle := preload("res://tools/headless_lifecycle.gd")
 const EXPECTED_MAIN_SCENE := "res://scenes/world/world.tscn"
+const GAME_MAIN_SCENE_PATH := "res://game/scenes/Main.tscn"
 const WORLD_SCENE := "res://scenes/world/world.tscn"
 const BACK_FARM_SCENE := "res://scenes/regions/region_back_farm.tscn"
 const WATCHDOG_TIMEOUT_SECONDS := 20.0
@@ -24,8 +25,8 @@ func _initialize() -> void:
 func _run() -> void:
 	_mark_progress("validate project settings")
 	var main_scene: String = ProjectSettings.get_setting("application/run/main_scene", "")
-	if main_scene != EXPECTED_MAIN_SCENE:
-		_fail("project main_scene is %s, expected %s" % [main_scene, EXPECTED_MAIN_SCENE])
+	if main_scene != EXPECTED_MAIN_SCENE and main_scene != GAME_MAIN_SCENE_PATH:
+		_fail("project main_scene is %s, expected %s or %s" % [main_scene, EXPECTED_MAIN_SCENE, GAME_MAIN_SCENE_PATH])
 		return
 
 	var main_script := FileAccess.get_file_as_string("res://scripts/main.gd")

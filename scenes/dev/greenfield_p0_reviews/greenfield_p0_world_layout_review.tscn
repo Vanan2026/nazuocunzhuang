@@ -1,0 +1,402 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Texture2D" path="res://production/assets/base_asset_pack/v001/01_mother_images/regions/home_area/home_area_painted_source.png" id="tex_home_area"]
+[ext_resource type="Texture2D" path="res://production/assets/base_asset_pack/v001/01_mother_images/regions/village/village_painted_source.png" id="tex_village"]
+[ext_resource type="Texture2D" path="res://production/assets/base_asset_pack/v001/01_mother_images/regions/back_farm/back_farm_painted_source.png" id="tex_back_farm"]
+[ext_resource type="Texture2D" path="res://production/assets/base_asset_pack/v001/01_mother_images/regions/forest_edge/forest_edge_painted_source.png" id="tex_forest_edge"]
+[ext_resource type="Texture2D" path="res://production/assets/base_asset_pack/v001/01_mother_images/regions/orchard/orchard_painted_source.png" id="tex_orchard"]
+[ext_resource type="Texture2D" path="res://production/assets/base_asset_pack/v001/01_mother_images/regions/pond/pond_painted_source.png" id="tex_pond"]
+[ext_resource type="Texture2D" path="res://production/assets/base_asset_pack/v001/01_mother_images/regions/mountain_path/mountain_path_painted_source.png" id="tex_mountain_path"]
+[ext_resource type="Texture2D" path="res://production/assets/base_asset_pack/v001/01_mother_images/regions/mountain_hut/mountain_hut_painted_source.png" id="tex_mountain_hut"]
+[ext_resource type="Texture2D" path="res://production/assets/base_asset_pack/v001/01_mother_images/regions/mountain/mountain_painted_source.png" id="tex_mountain"]
+[ext_resource type="Texture2D" path="res://production/assets/base_asset_pack/v001/01_mother_images/regions/cliff_view/cliff_view_painted_source.png" id="tex_cliff_view"]
+
+[node name="GreenfieldP0WorldLayoutReview" type="Node2D"]
+metadata/package_id = "greenfield_p0_base_asset_pack_v001"
+metadata/status = "review_candidate"
+metadata/launch_quality_approved = false
+metadata/human_visual_approval_required = true
+metadata/source_rule = "edit_generator_not_scene_sprites"
+
+[node name="ReviewCamera" type="Camera2D" parent="."]
+position = Vector2(1080, 780)
+zoom = Vector2(0.42, 0.42)
+enabled = true
+
+[node name="Connections" type="Node2D" parent="."]
+
+[node name="Connection_VillageToMountainPath" type="Line2D" parent="Connections"]
+points = PackedVector2Array(820, 620, 820, 260)
+width = 8.0
+default_color = Color(0.55, 0.37, 0.20, 0.82)
+metadata/connection_id = "village_to_mountain_path"
+metadata/route_role = "village_to_trail"
+metadata/traversal = "walk"
+
+[node name="Connection_MountainPathToMountain" type="Line2D" parent="Connections"]
+points = PackedVector2Array(820, 260, 1340, 260)
+width = 8.0
+default_color = Color(0.55, 0.37, 0.20, 0.82)
+metadata/connection_id = "mountain_path_to_mountain"
+metadata/route_role = "trail_to_highland"
+metadata/traversal = "walk"
+
+[node name="Connection_MountainToCliffView" type="Line2D" parent="Connections"]
+points = PackedVector2Array(1340, 260, 1860, 260)
+width = 8.0
+default_color = Color(0.55, 0.37, 0.20, 0.82)
+metadata/connection_id = "mountain_to_cliff_view"
+metadata/route_role = "highland_to_view"
+metadata/traversal = "walk"
+
+[node name="Connection_ForestEdgeToVillage" type="Line2D" parent="Connections"]
+points = PackedVector2Array(300, 620, 820, 620)
+width = 8.0
+default_color = Color(0.55, 0.37, 0.20, 0.82)
+metadata/connection_id = "forest_edge_to_village"
+metadata/route_role = "forest_to_village_lane"
+metadata/traversal = "walk"
+
+[node name="Connection_ForestEdgeToOrchard" type="Line2D" parent="Connections"]
+points = PackedVector2Array(300, 620, 300, 980)
+width = 8.0
+default_color = Color(0.55, 0.37, 0.20, 0.82)
+metadata/connection_id = "forest_edge_to_orchard"
+metadata/route_role = "forest_orchard_link"
+metadata/traversal = "walk"
+
+[node name="Connection_OrchardToHomeArea" type="Line2D" parent="Connections"]
+points = PackedVector2Array(300, 980, 820, 980)
+width = 8.0
+default_color = Color(0.55, 0.37, 0.20, 0.82)
+metadata/connection_id = "orchard_to_home_area"
+metadata/route_role = "orchard_home_lane"
+metadata/traversal = "walk_cart"
+
+[node name="Connection_VillageToHomeArea" type="Line2D" parent="Connections"]
+points = PackedVector2Array(820, 620, 820, 980)
+width = 8.0
+default_color = Color(0.55, 0.37, 0.20, 0.82)
+metadata/connection_id = "village_to_home_area"
+metadata/route_role = "home_village_daily_lane"
+metadata/traversal = "walk"
+
+[node name="Connection_HomeAreaToBackFarm" type="Line2D" parent="Connections"]
+points = PackedVector2Array(820, 980, 820, 1340)
+width = 8.0
+default_color = Color(0.55, 0.37, 0.20, 0.82)
+metadata/connection_id = "home_area_to_back_farm"
+metadata/route_role = "home_farm_work_lane"
+metadata/traversal = "walk_cart"
+
+[node name="Connection_HomeAreaToPond" type="Line2D" parent="Connections"]
+points = PackedVector2Array(820, 980, 1340, 980)
+width = 8.0
+default_color = Color(0.55, 0.37, 0.20, 0.82)
+metadata/connection_id = "home_area_to_pond"
+metadata/route_role = "home_pond_rest_lane"
+metadata/traversal = "walk"
+
+[node name="Connection_VillageToMountainHut" type="Line2D" parent="Connections"]
+points = PackedVector2Array(820, 620, 1340, 620)
+width = 8.0
+default_color = Color(0.55, 0.37, 0.20, 0.82)
+metadata/connection_id = "village_to_mountain_hut"
+metadata/route_role = "village_hut_work_lane"
+metadata/traversal = "walk"
+
+[node name="Connection_MountainToMountainHut" type="Line2D" parent="Connections"]
+points = PackedVector2Array(1340, 260, 1340, 620)
+width = 8.0
+default_color = Color(0.55, 0.37, 0.20, 0.82)
+metadata/connection_id = "mountain_to_mountain_hut"
+metadata/route_role = "ridge_hut_link"
+metadata/traversal = "walk"
+
+[node name="Connection_MountainHutToPond" type="Line2D" parent="Connections"]
+points = PackedVector2Array(1340, 620, 1340, 980)
+width = 8.0
+default_color = Color(0.55, 0.37, 0.20, 0.82)
+metadata/connection_id = "mountain_hut_to_pond"
+metadata/route_role = "hut_pond_supply_path"
+metadata/traversal = "walk"
+
+[node name="RegionTiles" type="Node2D" parent="."]
+
+[node name="home_area" type="Node2D" parent="RegionTiles"]
+position = Vector2(820, 980)
+metadata/region_id = "home_area"
+metadata/world_role = "player_home_hub"
+
+[node name="PaintedSource" type="Sprite2D" parent="RegionTiles/home_area"]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("tex_home_area")
+
+[node name="Sockets" type="Node2D" parent="RegionTiles/home_area"]
+
+[node name="Socket_West_Orchard" type="Marker2D" parent="RegionTiles/home_area/Sockets"]
+position = Vector2(-186, 0)
+metadata/edge = "west"
+metadata/connection_id = "orchard_to_home_area"
+metadata/connects_to_region = "orchard"
+metadata/route_role = "orchard_home_lane"
+
+[node name="Socket_North_Village" type="Marker2D" parent="RegionTiles/home_area/Sockets"]
+position = Vector2(0, -132)
+metadata/edge = "north"
+metadata/connection_id = "village_to_home_area"
+metadata/connects_to_region = "village"
+metadata/route_role = "home_village_daily_lane"
+
+[node name="Socket_South_BackFarm" type="Marker2D" parent="RegionTiles/home_area/Sockets"]
+position = Vector2(0, 132)
+metadata/edge = "south"
+metadata/connection_id = "home_area_to_back_farm"
+metadata/connects_to_region = "back_farm"
+metadata/route_role = "home_farm_work_lane"
+
+[node name="Socket_East_Pond" type="Marker2D" parent="RegionTiles/home_area/Sockets"]
+position = Vector2(186, 0)
+metadata/edge = "east"
+metadata/connection_id = "home_area_to_pond"
+metadata/connects_to_region = "pond"
+metadata/route_role = "home_pond_rest_lane"
+
+[node name="village" type="Node2D" parent="RegionTiles"]
+position = Vector2(820, 620)
+metadata/region_id = "village"
+metadata/world_role = "social_service_hub"
+
+[node name="PaintedSource" type="Sprite2D" parent="RegionTiles/village"]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("tex_village")
+
+[node name="Sockets" type="Node2D" parent="RegionTiles/village"]
+
+[node name="Socket_North_MountainPath" type="Marker2D" parent="RegionTiles/village/Sockets"]
+position = Vector2(0, -132)
+metadata/edge = "north"
+metadata/connection_id = "village_to_mountain_path"
+metadata/connects_to_region = "mountain_path"
+metadata/route_role = "village_to_trail"
+
+[node name="Socket_West_ForestEdge" type="Marker2D" parent="RegionTiles/village/Sockets"]
+position = Vector2(-186, 0)
+metadata/edge = "west"
+metadata/connection_id = "forest_edge_to_village"
+metadata/connects_to_region = "forest_edge"
+metadata/route_role = "forest_to_village_lane"
+
+[node name="Socket_South_HomeArea" type="Marker2D" parent="RegionTiles/village/Sockets"]
+position = Vector2(0, 132)
+metadata/edge = "south"
+metadata/connection_id = "village_to_home_area"
+metadata/connects_to_region = "home_area"
+metadata/route_role = "home_village_daily_lane"
+
+[node name="Socket_East_MountainHut" type="Marker2D" parent="RegionTiles/village/Sockets"]
+position = Vector2(186, 0)
+metadata/edge = "east"
+metadata/connection_id = "village_to_mountain_hut"
+metadata/connects_to_region = "mountain_hut"
+metadata/route_role = "village_hut_work_lane"
+
+[node name="back_farm" type="Node2D" parent="RegionTiles"]
+position = Vector2(820, 1340)
+metadata/region_id = "back_farm"
+metadata/world_role = "daily_farm_work_area"
+
+[node name="PaintedSource" type="Sprite2D" parent="RegionTiles/back_farm"]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("tex_back_farm")
+
+[node name="Sockets" type="Node2D" parent="RegionTiles/back_farm"]
+
+[node name="Socket_North_HomeArea" type="Marker2D" parent="RegionTiles/back_farm/Sockets"]
+position = Vector2(0, -132)
+metadata/edge = "north"
+metadata/connection_id = "home_area_to_back_farm"
+metadata/connects_to_region = "home_area"
+metadata/route_role = "home_farm_work_lane"
+
+[node name="forest_edge" type="Node2D" parent="RegionTiles"]
+position = Vector2(300, 620)
+metadata/region_id = "forest_edge"
+metadata/world_role = "forage_and_secret_edge"
+
+[node name="PaintedSource" type="Sprite2D" parent="RegionTiles/forest_edge"]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("tex_forest_edge")
+
+[node name="Sockets" type="Node2D" parent="RegionTiles/forest_edge"]
+
+[node name="Socket_East_Village" type="Marker2D" parent="RegionTiles/forest_edge/Sockets"]
+position = Vector2(186, 0)
+metadata/edge = "east"
+metadata/connection_id = "forest_edge_to_village"
+metadata/connects_to_region = "village"
+metadata/route_role = "forest_to_village_lane"
+
+[node name="Socket_South_Orchard" type="Marker2D" parent="RegionTiles/forest_edge/Sockets"]
+position = Vector2(0, 132)
+metadata/edge = "south"
+metadata/connection_id = "forest_edge_to_orchard"
+metadata/connects_to_region = "orchard"
+metadata/route_role = "forest_orchard_link"
+
+[node name="orchard" type="Node2D" parent="RegionTiles"]
+position = Vector2(300, 980)
+metadata/region_id = "orchard"
+metadata/world_role = "seasonal_harvest_area"
+
+[node name="PaintedSource" type="Sprite2D" parent="RegionTiles/orchard"]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("tex_orchard")
+
+[node name="Sockets" type="Node2D" parent="RegionTiles/orchard"]
+
+[node name="Socket_North_ForestEdge" type="Marker2D" parent="RegionTiles/orchard/Sockets"]
+position = Vector2(0, -132)
+metadata/edge = "north"
+metadata/connection_id = "forest_edge_to_orchard"
+metadata/connects_to_region = "forest_edge"
+metadata/route_role = "forest_orchard_link"
+
+[node name="Socket_East_HomeArea" type="Marker2D" parent="RegionTiles/orchard/Sockets"]
+position = Vector2(186, 0)
+metadata/edge = "east"
+metadata/connection_id = "orchard_to_home_area"
+metadata/connects_to_region = "home_area"
+metadata/route_role = "orchard_home_lane"
+
+[node name="pond" type="Node2D" parent="RegionTiles"]
+position = Vector2(1340, 980)
+metadata/region_id = "pond"
+metadata/world_role = "water_rest_and_fishing"
+
+[node name="PaintedSource" type="Sprite2D" parent="RegionTiles/pond"]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("tex_pond")
+
+[node name="Sockets" type="Node2D" parent="RegionTiles/pond"]
+
+[node name="Socket_West_HomeArea" type="Marker2D" parent="RegionTiles/pond/Sockets"]
+position = Vector2(-186, 0)
+metadata/edge = "west"
+metadata/connection_id = "home_area_to_pond"
+metadata/connects_to_region = "home_area"
+metadata/route_role = "home_pond_rest_lane"
+
+[node name="Socket_North_MountainHut" type="Marker2D" parent="RegionTiles/pond/Sockets"]
+position = Vector2(0, -132)
+metadata/edge = "north"
+metadata/connection_id = "mountain_hut_to_pond"
+metadata/connects_to_region = "mountain_hut"
+metadata/route_role = "hut_pond_supply_path"
+
+[node name="mountain_path" type="Node2D" parent="RegionTiles"]
+position = Vector2(820, 260)
+metadata/region_id = "mountain_path"
+metadata/world_role = "north_trail_gate"
+
+[node name="PaintedSource" type="Sprite2D" parent="RegionTiles/mountain_path"]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("tex_mountain_path")
+
+[node name="Sockets" type="Node2D" parent="RegionTiles/mountain_path"]
+
+[node name="Socket_South_Village" type="Marker2D" parent="RegionTiles/mountain_path/Sockets"]
+position = Vector2(0, 132)
+metadata/edge = "south"
+metadata/connection_id = "village_to_mountain_path"
+metadata/connects_to_region = "village"
+metadata/route_role = "village_to_trail"
+
+[node name="Socket_East_Mountain" type="Marker2D" parent="RegionTiles/mountain_path/Sockets"]
+position = Vector2(186, 0)
+metadata/edge = "east"
+metadata/connection_id = "mountain_path_to_mountain"
+metadata/connects_to_region = "mountain"
+metadata/route_role = "trail_to_highland"
+
+[node name="mountain_hut" type="Node2D" parent="RegionTiles"]
+position = Vector2(1340, 620)
+metadata/region_id = "mountain_hut"
+metadata/world_role = "remote_work_hut"
+
+[node name="PaintedSource" type="Sprite2D" parent="RegionTiles/mountain_hut"]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("tex_mountain_hut")
+
+[node name="Sockets" type="Node2D" parent="RegionTiles/mountain_hut"]
+
+[node name="Socket_West_Village" type="Marker2D" parent="RegionTiles/mountain_hut/Sockets"]
+position = Vector2(-186, 0)
+metadata/edge = "west"
+metadata/connection_id = "village_to_mountain_hut"
+metadata/connects_to_region = "village"
+metadata/route_role = "village_hut_work_lane"
+
+[node name="Socket_North_Mountain" type="Marker2D" parent="RegionTiles/mountain_hut/Sockets"]
+position = Vector2(0, -132)
+metadata/edge = "north"
+metadata/connection_id = "mountain_to_mountain_hut"
+metadata/connects_to_region = "mountain"
+metadata/route_role = "ridge_hut_link"
+
+[node name="Socket_South_Pond" type="Marker2D" parent="RegionTiles/mountain_hut/Sockets"]
+position = Vector2(0, 132)
+metadata/edge = "south"
+metadata/connection_id = "mountain_hut_to_pond"
+metadata/connects_to_region = "pond"
+metadata/route_role = "hut_pond_supply_path"
+
+[node name="mountain" type="Node2D" parent="RegionTiles"]
+position = Vector2(1340, 260)
+metadata/region_id = "mountain"
+metadata/world_role = "highland_resource_area"
+
+[node name="PaintedSource" type="Sprite2D" parent="RegionTiles/mountain"]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("tex_mountain")
+
+[node name="Sockets" type="Node2D" parent="RegionTiles/mountain"]
+
+[node name="Socket_West_MountainPath" type="Marker2D" parent="RegionTiles/mountain/Sockets"]
+position = Vector2(-186, 0)
+metadata/edge = "west"
+metadata/connection_id = "mountain_path_to_mountain"
+metadata/connects_to_region = "mountain_path"
+metadata/route_role = "trail_to_highland"
+
+[node name="Socket_East_CliffView" type="Marker2D" parent="RegionTiles/mountain/Sockets"]
+position = Vector2(186, 0)
+metadata/edge = "east"
+metadata/connection_id = "mountain_to_cliff_view"
+metadata/connects_to_region = "cliff_view"
+metadata/route_role = "highland_to_view"
+
+[node name="Socket_South_MountainHut" type="Marker2D" parent="RegionTiles/mountain/Sockets"]
+position = Vector2(0, 132)
+metadata/edge = "south"
+metadata/connection_id = "mountain_to_mountain_hut"
+metadata/connects_to_region = "mountain_hut"
+metadata/route_role = "ridge_hut_link"
+
+[node name="cliff_view" type="Node2D" parent="RegionTiles"]
+position = Vector2(1860, 260)
+metadata/region_id = "cliff_view"
+metadata/world_role = "scenic_secret_edge"
+
+[node name="PaintedSource" type="Sprite2D" parent="RegionTiles/cliff_view"]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("tex_cliff_view")
+
+[node name="Sockets" type="Node2D" parent="RegionTiles/cliff_view"]
+
+[node name="Socket_West_Mountain" type="Marker2D" parent="RegionTiles/cliff_view/Sockets"]
+position = Vector2(-186, 0)
+metadata/edge = "west"
+metadata/connection_id = "mountain_to_cliff_view"
+metadata/connects_to_region = "mountain"
+metadata/route_role = "highland_to_view"

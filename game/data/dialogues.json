@@ -33,6 +33,17 @@
     "sets_flags": []
   },
   {
+    "dialogue_id": "aoi_daily_intent_tend_crops_01",
+    "npc_id": "aoi",
+    "type": "daily",
+    "priority": 35,
+    "conditions": {"season": "any", "weather": "any", "min_hearts": 0, "daily_intent": "tend_crops"},
+    "lines": [
+      {"speaker": "aoi", "text": "今天想照看菜地的话，先摸摸土。土不沾手再浇一点水，作物会慢慢认得你的节奏。"}
+    ],
+    "sets_flags": []
+  },
+  {
     "dialogue_id": "gen_relationship_01",
     "npc_id": "gen",
     "type": "relationship",
@@ -66,6 +77,17 @@
     "sets_flags": []
   },
   {
+    "dialogue_id": "gen_daily_intent_repair_material_01",
+    "npc_id": "gen",
+    "type": "daily",
+    "priority": 35,
+    "conditions": {"season": "any", "weather": "any", "min_hearts": 0, "daily_intent": "gather_repair_material"},
+    "lines": [
+      {"speaker": "gen", "text": "今天要整理修复材料，就先捡干燥的木柴和边角石。能用的东西不用急着多，先放在顺手的位置。"}
+    ],
+    "sets_flags": []
+  },
+  {
     "dialogue_id": "mika_mailbox_hint_01",
     "npc_id": "mika",
     "type": "daily",
@@ -75,6 +97,39 @@
       {"speaker": "mika", "text": "邮箱里有时候会放村里的小通知。路过时看看吧。"}
     ],
     "sets_flags": ["mika_hint_mailbox"]
+  },
+  {
+    "dialogue_id": "mika_daily_intent_village_notice_01",
+    "npc_id": "mika",
+    "type": "daily",
+    "priority": 35,
+    "conditions": {"season": "any", "weather": "any", "min_hearts": 0, "daily_intent": "check_village_notice"},
+    "lines": [
+      {"speaker": "mika", "text": "去村口的话，公告牌和旧枫树都顺路。读完别急着走，常有人把小消息贴在边角。"}
+    ],
+    "sets_flags": []
+  },
+  {
+    "dialogue_id": "mika_daily_intent_village_notice_village_01",
+    "npc_id": "mika",
+    "type": "daily",
+    "priority": 45,
+    "conditions": {"season": "any", "weather": "any", "min_hearts": 0, "daily_intent": "check_village_notice", "scene_id": "village"},
+    "lines": [
+      {"speaker": "mika", "text": "既然已经到村口了，就从公告牌读起，再绕到旧枫树旁。那边的小纸条常被风压在木桩后面。"}
+    ],
+    "sets_flags": []
+  },
+  {
+    "dialogue_id": "mika_old_well_echo_followup",
+    "npc_id": "mika",
+    "type": "event",
+    "priority": 80,
+    "conditions": {"season": "any", "weather": "any", "flag_set": "heard_old_well_echo_after_village_clue_day1", "flag_not_set": "heard_mika_old_well_echo_day1"},
+    "lines": [
+      {"speaker": "mika", "text": "美香把信包往肩上提了提：旧井会记住很轻的声音。如果它回应你，明天我可以帮你问问谁还记得那条旧路。"}
+    ],
+    "sets_flags": ["heard_mika_old_well_echo_day1"]
   },
   {
     "dialogue_id": "mika_seasonal_summer_01",
@@ -108,5 +163,27 @@
       {"speaker": "hana", "text": "雨天别急着关窗。有时候，远处的铃声会顺着水声过来。"}
     ],
     "sets_flags": ["heard_bell_rumor_01"]
+  },
+  {
+    "dialogue_id": "hana_daily_intent_visit_neighbor_01",
+    "npc_id": "hana",
+    "type": "daily",
+    "priority": 35,
+    "conditions": {"season": "any", "weather": "any", "min_hearts": 0, "daily_intent": "visit_neighbor"},
+    "lines": [
+      {"speaker": "hana", "text": "今天想找人说说话，就从一句问候开始。村里的人慢热，但都记得谁愿意停下来听。"}
+    ],
+    "sets_flags": []
+  },
+  {
+    "dialogue_id": "hana_daily_intent_visit_neighbor_close_01",
+    "npc_id": "hana",
+    "type": "relationship",
+    "priority": 45,
+    "conditions": {"season": "any", "weather": "any", "min_hearts": 2, "daily_intent": "visit_neighbor"},
+    "lines": [
+      {"speaker": "hana", "text": "今天想找人说话的话，可以先坐到廊下。我给你留了热茶，慢慢说就好。"}
+    ],
+    "sets_flags": []
   }
 ]

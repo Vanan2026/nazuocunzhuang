@@ -1,0 +1,302 @@
+{
+  "region_id": "mountain_path",
+  "display_name": "MountainPath",
+  "canvas_size": [
+    1700,
+    1200
+  ],
+  "status": "usable",
+  "launch_quality_approved": false,
+  "human_visual_approval_required": true,
+  "layout_mother": "production/assets/base_asset_pack/v001/01_mother_images/regions/mountain_path/mountain_path_layout_mother.png",
+  "painted_source": "production/assets/base_asset_pack/v001/01_mother_images/regions/mountain_path/mountain_path_painted_source.png",
+  "features": [
+    "stone_steps",
+    "pines",
+    "rail",
+    "sign"
+  ],
+  "layers": {
+    "base_ground": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/mountain_path/layers/mountain_path_base_ground.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/mountain_path/layers/mountain_path_base_ground.png",
+      "size": [
+        1700,
+        1200
+      ],
+      "mode": "RGBA"
+    },
+    "terrain_details": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/mountain_path/layers/mountain_path_terrain_details.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/mountain_path/layers/mountain_path_terrain_details.png",
+      "size": [
+        1700,
+        1200
+      ],
+      "mode": "RGBA"
+    },
+    "behind_player_structures": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/mountain_path/layers/mountain_path_behind_player_structures.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/mountain_path/layers/mountain_path_behind_player_structures.png",
+      "size": [
+        1700,
+        1200
+      ],
+      "mode": "RGBA"
+    },
+    "ysort_props_structures": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/mountain_path/layers/mountain_path_ysort_props_structures.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/mountain_path/layers/mountain_path_ysort_props_structures.png",
+      "size": [
+        1700,
+        1200
+      ],
+      "mode": "RGBA"
+    },
+    "foreground_occlusion": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/mountain_path/layers/mountain_path_foreground_occlusion.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/mountain_path/layers/mountain_path_foreground_occlusion.png",
+      "size": [
+        1700,
+        1200
+      ],
+      "mode": "RGBA"
+    },
+    "shadow_overlay": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/mountain_path/layers/mountain_path_shadow_overlay.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/mountain_path/layers/mountain_path_shadow_overlay.png",
+      "size": [
+        1700,
+        1200
+      ],
+      "mode": "RGBA"
+    },
+    "light_weather_overlays": [
+      {
+        "season": "spring",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/mountain_path/layers/mountain_path_light_weather_overlay_spring.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/mountain_path/layers/mountain_path_light_weather_overlay_spring.png",
+        "size": [
+          1700,
+          1200
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "summer",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/mountain_path/layers/mountain_path_light_weather_overlay_summer.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/mountain_path/layers/mountain_path_light_weather_overlay_summer.png",
+        "size": [
+          1700,
+          1200
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "autumn",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/mountain_path/layers/mountain_path_light_weather_overlay_autumn.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/mountain_path/layers/mountain_path_light_weather_overlay_autumn.png",
+        "size": [
+          1700,
+          1200
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "winter",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/mountain_path/layers/mountain_path_light_weather_overlay_winter.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/mountain_path/layers/mountain_path_light_weather_overlay_winter.png",
+        "size": [
+          1700,
+          1200
+        ],
+        "mode": "RGBA"
+      }
+    ]
+  },
+  "anchors": [
+    {
+      "id": "center",
+      "position": [
+        884,
+        660
+      ]
+    },
+    {
+      "id": "north",
+      "position": [
+        1156,
+        96
+      ]
+    },
+    {
+      "id": "south",
+      "position": [
+        527,
+        1104
+      ]
+    },
+    {
+      "id": "west",
+      "position": [
+        136,
+        864
+      ]
+    },
+    {
+      "id": "east",
+      "position": [
+        1564,
+        432
+      ]
+    },
+    {
+      "id": "nw",
+      "position": [
+        408,
+        276
+      ]
+    },
+    {
+      "id": "ne",
+      "position": [
+        1326,
+        252
+      ]
+    },
+    {
+      "id": "sw",
+      "position": [
+        408,
+        948
+      ]
+    },
+    {
+      "id": "se",
+      "position": [
+        1292,
+        864
+      ]
+    },
+    {
+      "id": "switch_a",
+      "position": [
+        561,
+        912
+      ]
+    },
+    {
+      "id": "switch_b",
+      "position": [
+        935,
+        792
+      ]
+    },
+    {
+      "id": "switch_c",
+      "position": [
+        714,
+        636
+      ]
+    },
+    {
+      "id": "switch_d",
+      "position": [
+        1122,
+        516
+      ]
+    },
+    {
+      "id": "sign",
+      "position": [
+        680,
+        683
+      ]
+    }
+  ],
+  "layout_profile": {
+    "road_signature": "mountain_switchback_southwest_northeast",
+    "road_motif": "stone_switchback",
+    "composition_focal_point": [
+      0.53,
+      0.5
+    ],
+    "road_paths": [
+      {
+        "id": "switchback_steps",
+        "role": "mountain_switchback",
+        "style": "stone",
+        "points": [
+          "south",
+          "switch_a",
+          "switch_b",
+          "switch_c",
+          "switch_d",
+          "east",
+          "north"
+        ],
+        "pixel_points": [
+          [
+            527,
+            1104
+          ],
+          [
+            561,
+            912
+          ],
+          [
+            935,
+            792
+          ],
+          [
+            714,
+            636
+          ],
+          [
+            1122,
+            516
+          ],
+          [
+            1564,
+            432
+          ],
+          [
+            1156,
+            96
+          ]
+        ],
+        "width_px": 44,
+        "width_factor": 0.026
+      }
+    ],
+    "object_zones": [],
+    "seam_connectors": {
+      "north": [
+        1156,
+        96
+      ],
+      "south": [
+        527,
+        1104
+      ],
+      "east": [
+        1564,
+        432
+      ],
+      "west": [
+        136,
+        864
+      ]
+    }
+  },
+  "season_variant_mapping": {
+    "spring": "mountain_path_light_weather_overlay_spring.png",
+    "summer": "mountain_path_light_weather_overlay_summer.png",
+    "autumn": "mountain_path_light_weather_overlay_autumn.png",
+    "winter": "mountain_path_light_weather_overlay_winter.png"
+  },
+  "review_artifacts": {
+    "runtime_composite_preview": "production/assets/base_asset_pack/v001/03_contact_sheets/regions/mountain_path_runtime_composite_preview.png",
+    "runtime_layer_contact_sheet": "production/assets/base_asset_pack/v001/03_contact_sheets/regions/mountain_path_runtime_layer_contact_sheet.png"
+  }
+}

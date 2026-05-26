@@ -1,0 +1,31 @@
+{
+  "candidate_id": "mountain_hut_painted_source_candidate_v001",
+  "status": "pending_human_visual_review",
+  "candidate_type": "true_storybook_painted_source_candidate",
+  "source_image": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/mountain_hut_painted_source.png",
+  "review_overlay": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/mountain_hut_painted_source_review_overlay_v001.png",
+  "human_visual_approval": false,
+  "layer_export_approved": false,
+  "runtime_replacement": false,
+  "launch_quality_approved": false,
+  "codex_visual_precheck": {
+    "status": "passed_structural_readability_precheck",
+    "quality_status": "improved_programmatic_storybook_candidate_not_final_art",
+    "not_human_visual_approval": true,
+    "notes": [
+      "West road enters from the Village seam and bends toward the hut door.",
+      "Hut, door, approach path, woodpile, herb shelf, and foreground bough are readable.",
+      "No combat, danger, weapon, hard survival, or failure-pressure content was intentionally added.",
+      "The image has improved storybook texture and material detail, but it is still a generated candidate pending visual review.",
+      "Layer export remains blocked until explicit source acceptance."
+    ]
+  },
+  "codex_source_quality_review": {
+    "status": "needs_repaint_before_layer_export",
+    "review_record": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_quality_review_v001.json",
+    "reference_board": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/mountain_hut_repaint_v002_reference_board.png",
+    "repaint_brief": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/mountain_hut_repaint_v002_brief.md",
+    "not_human_visual_approval": true,
+    "layer_export_blocked_reason": "Current source is below accepted Village painterly detail and needs v002 repaint or explicit human override."
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "package_id": "outdoor_world_world2d_v001",
+  "status": "master_blueprint_ready_not_runtime_replacement",
+  "created_at": "2026-05-24",
+  "active_runtime_scene": "res://game/scenes/world/OutdoorWorld.tscn",
+  "active_runtime_source": "game/scenes/world/OutdoorWorld.gd",
+  "runtime_replacement": false,
+  "launch_quality_approved": false,
+  "human_visual_approval_required": true,
+  "current_phase": "02_world_base_no_foreground",
+  "purpose": "Global seamless 2D art contract and rough whole-world no-foreground base before final per-region painted sources.",
+  "coordinate_policy": {
+    "world_space": "Godot runtime coordinates from OutdoorWorld REGION_OFFSETS and REGION_SIZES",
+    "generated_region_source_canvas": [
+      1800,
+      1200
+    ],
+    "generated_region_runtime_size": [
+      320,
+      240
+    ],
+    "runtime_texture_scale": 0.18,
+    "registration_target": "registration-perfect layer alignment, not pixel-perfect brush tracing",
+    "single_region_source_rule": "Each approved region painted_source is the single composition source for that region's layers.",
+    "seam_rule": "Adjacent region sources must preserve shared road width, ground color, lighting direction, perspective, and edge continuation."
+  },
+  "art_pipeline_decision": {
+    "previous_village_candidate_status": "layout_structure_draft_only",
+    "do_not_split_previous_village_candidate": true,
+    "next_village_step": "Generate a true storybook painted source only after this OutdoorWorld master blueprint is accepted.",
+    "pipeline": "world_blueprint_to_world_base_to_region_crops_to_foreground_layers",
+    "reason": "Isolated high-quality regions produced obvious seams; the base world must read as one map before region detail passes.",
+    "world_base_rule": "Produce the whole no-foreground map first, even if rough.",
+    "single_region_repaint_rule": "must inherit from world_base crop",
+    "foreground_rule": "foreground occlusion is authored per region only after base continuity is accepted"
+  },
+  "artifacts": {
+    "layout_lock": "production/assets/outdoor_world_world2d/v001/01_world_layout/outdoor_world_layout_lock.json",
+    "blueprint_svg": "production/assets/outdoor_world_world2d/v001/01_world_layout/outdoor_world_seamless_blueprint.svg",
+    "blueprint_png": "production/assets/outdoor_world_world2d/v001/01_world_layout/outdoor_world_seamless_blueprint.png",
+    "blueprint_md": "production/assets/outdoor_world_world2d/v001/01_world_layout/outdoor_world_seamless_blueprint.md",
+    "source_strategy": "production/assets/outdoor_world_world2d/v001/02_source_strategy/source_generation_strategy.md",
+    "chunk_contract": "production/assets/outdoor_world_world2d/v001/03_region_contracts/region_chunk_contract.json",
+    "review_gate": "production/assets/outdoor_world_world2d/v001/04_review_and_qa/review_gate.md",
+    "world_base_no_foreground": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/outdoor_world_base_no_foreground.png",
+    "world_base_review_preview": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/outdoor_world_base_no_foreground_review.png",
+    "world_base_manifest": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/world_base_manifest.json",
+    "region_base_crops_dir": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/region_base_crops"
+  },
+  "validation": {
+    "static_validator": "tools/validate_outdoor_world_seamless_art_master.py",
+    "runtime_context_validator": "tools/validate_outdoor_world_assembly.py",
+    "world_base_validator": "tools/validate_outdoor_world_base_map_pipeline.py"
+  }
+}

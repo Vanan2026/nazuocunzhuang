@@ -1,0 +1,200 @@
+{
+  "scene_id": "player_yard",
+  "source_scene": "res://game/scenes/world/PlayerYard.tscn",
+  "coordinate_space": "godot_scene_units",
+  "export_rule": "full_canvas_shared_origin",
+  "canvas_rect": {
+    "x": -72,
+    "y": 32,
+    "w": 488,
+    "h": 288
+  },
+  "layers": [
+    {
+      "id": "scene_mother",
+      "role": "full composition reference",
+      "export": "opaque full canvas"
+    },
+    {
+      "id": "base",
+      "role": "ground, paths, garden soil, staging ground",
+      "export": "transparent full canvas"
+    },
+    {
+      "id": "foreground_occlusion",
+      "role": "props that can visually sit in front of characters",
+      "export": "transparent full canvas"
+    },
+    {
+      "id": "interaction_hotspots",
+      "role": "walkable destination and interaction debug overlay",
+      "export": "transparent full canvas"
+    },
+    {
+      "id": "npc_standing_points",
+      "role": "schedule-driven NPC anchor overlay",
+      "export": "transparent full canvas"
+    }
+  ],
+  "object_zones": [
+    {
+      "id": "home_mailbox",
+      "x": 32,
+      "y": 42,
+      "w": 36,
+      "h": 36,
+      "layer": "foreground_occlusion",
+      "source_node": "Mailbox"
+    },
+    {
+      "id": "notice_board",
+      "x": 96,
+      "y": 42,
+      "w": 56,
+      "h": 34,
+      "layer": "foreground_occlusion",
+      "source_node": "BulletinBoard"
+    },
+    {
+      "id": "farm_garden",
+      "x": 20,
+      "y": 150,
+      "w": 138,
+      "h": 92,
+      "layer": "base",
+      "source_node": "FarmPlots"
+    },
+    {
+      "id": "repair_well",
+      "x": 226,
+      "y": 136,
+      "w": 58,
+      "h": 58,
+      "layer": "foreground_occlusion",
+      "source_node": "OldWell"
+    },
+    {
+      "id": "repair_bench",
+      "x": 198,
+      "y": 204,
+      "w": 58,
+      "h": 28,
+      "layer": "foreground_occlusion",
+      "source_node": "GardenBenchRepair"
+    },
+    {
+      "id": "village_sign",
+      "x": 270,
+      "y": 90,
+      "w": 34,
+      "h": 38,
+      "layer": "foreground_occlusion",
+      "source_node": "VillageSignRepair"
+    },
+    {
+      "id": "forest_gate",
+      "x": 312,
+      "y": 116,
+      "w": 44,
+      "h": 38,
+      "layer": "interaction_hotspots",
+      "source_node": "ForestTrailGate"
+    },
+    {
+      "id": "resource_staging",
+      "x": -64,
+      "y": 150,
+      "w": 98,
+      "h": 92,
+      "layer": "base",
+      "source_node": "WoodPile, StonePile"
+    }
+  ],
+  "npc_standing_points": [
+    {
+      "npc_id": "aoi",
+      "schedule_id": "shopkeeper_basic",
+      "time_block": "late_morning",
+      "x": 116,
+      "y": 86,
+      "activity_anchor": "notice_board_front_left"
+    },
+    {
+      "npc_id": "aoi",
+      "schedule_id": "shopkeeper_basic",
+      "time_block": "afternoon",
+      "x": 208,
+      "y": 196,
+      "activity_anchor": "farm_garden_north_east"
+    },
+    {
+      "npc_id": "aoi",
+      "schedule_id": "shopkeeper_basic",
+      "time_block": "evening",
+      "x": 48,
+      "y": 96,
+      "activity_anchor": "mailbox_path_exit"
+    },
+    {
+      "npc_id": "gen",
+      "schedule_id": "carpenter_basic",
+      "time_block": "late_morning",
+      "x": 174,
+      "y": 224,
+      "activity_anchor": "repair_bench_work_left"
+    },
+    {
+      "npc_id": "gen",
+      "schedule_id": "carpenter_basic",
+      "time_block": "evening",
+      "x": 212,
+      "y": 116,
+      "activity_anchor": "repair_yard_tool_path"
+    },
+    {
+      "npc_id": "mika",
+      "schedule_id": "post_runner_basic",
+      "time_block": "late_morning",
+      "x": 188,
+      "y": 84,
+      "activity_anchor": "notice_board_front_right"
+    },
+    {
+      "npc_id": "hana",
+      "schedule_id": "elder_basic",
+      "time_block": "morning",
+      "x": 170,
+      "y": 224,
+      "activity_anchor": "sunny_path_bench_left"
+    },
+    {
+      "npc_id": "hana",
+      "schedule_id": "elder_basic",
+      "time_block": "late_morning",
+      "x": 150,
+      "y": 146,
+      "activity_anchor": "yard_center_clear_north_edge"
+    },
+    {
+      "npc_id": "hana",
+      "schedule_id": "elder_basic",
+      "time_block": "afternoon",
+      "x": 150,
+      "y": 146,
+      "activity_anchor": "yard_center_clear_north_edge"
+    },
+    {
+      "npc_id": "hana",
+      "schedule_id": "elder_basic",
+      "time_block": "evening",
+      "x": 126,
+      "y": 118,
+      "activity_anchor": "notice_path_clear"
+    }
+  ],
+  "notes": [
+    "This is a production layout contract, not a pixel-perfect paint trace.",
+    "All runtime layer images must keep the full canvas, shared origin, scale, and perspective.",
+    "Transparent layers should be derived from the scene_mother composition instead of separately regenerated."
+  ]
+}

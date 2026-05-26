@@ -1,0 +1,516 @@
+{
+  "region_id": "home_area",
+  "display_name": "HomeArea",
+  "canvas_size": [
+    1470,
+    1070
+  ],
+  "status": "usable",
+  "launch_quality_approved": false,
+  "human_visual_approval_required": true,
+  "layout_mother": "production/assets/base_asset_pack/v001/01_mother_images/regions/home_area/home_area_layout_mother.png",
+  "painted_source": "production/assets/base_asset_pack/v001/01_mother_images/regions/home_area/home_area_painted_source.png",
+  "features": [
+    "house",
+    "mailbox",
+    "well",
+    "bench",
+    "road_sign",
+    "trees"
+  ],
+  "layers": {
+    "base_ground": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/home_area/layers/home_area_base_ground.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/home_area/layers/home_area_base_ground.png",
+      "size": [
+        1470,
+        1070
+      ],
+      "mode": "RGBA"
+    },
+    "terrain_details": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/home_area/layers/home_area_terrain_details.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/home_area/layers/home_area_terrain_details.png",
+      "size": [
+        1470,
+        1070
+      ],
+      "mode": "RGBA"
+    },
+    "behind_player_structures": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/home_area/layers/home_area_behind_player_structures.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/home_area/layers/home_area_behind_player_structures.png",
+      "size": [
+        1470,
+        1070
+      ],
+      "mode": "RGBA"
+    },
+    "ysort_props_structures": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/home_area/layers/home_area_ysort_props_structures.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/home_area/layers/home_area_ysort_props_structures.png",
+      "size": [
+        1470,
+        1070
+      ],
+      "mode": "RGBA"
+    },
+    "foreground_occlusion": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/home_area/layers/home_area_foreground_occlusion.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/home_area/layers/home_area_foreground_occlusion.png",
+      "size": [
+        1470,
+        1070
+      ],
+      "mode": "RGBA"
+    },
+    "shadow_overlay": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/home_area/layers/home_area_shadow_overlay.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/home_area/layers/home_area_shadow_overlay.png",
+      "size": [
+        1470,
+        1070
+      ],
+      "mode": "RGBA"
+    },
+    "light_weather_overlays": [
+      {
+        "season": "spring",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/home_area/layers/home_area_light_weather_overlay_spring.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/home_area/layers/home_area_light_weather_overlay_spring.png",
+        "size": [
+          1470,
+          1070
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "summer",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/home_area/layers/home_area_light_weather_overlay_summer.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/home_area/layers/home_area_light_weather_overlay_summer.png",
+        "size": [
+          1470,
+          1070
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "autumn",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/home_area/layers/home_area_light_weather_overlay_autumn.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/home_area/layers/home_area_light_weather_overlay_autumn.png",
+        "size": [
+          1470,
+          1070
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "winter",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/home_area/layers/home_area_light_weather_overlay_winter.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/home_area/layers/home_area_light_weather_overlay_winter.png",
+        "size": [
+          1470,
+          1070
+        ],
+        "mode": "RGBA"
+      }
+    ]
+  },
+  "anchors": [
+    {
+      "id": "center",
+      "position": [
+        632,
+        770
+      ]
+    },
+    {
+      "id": "north",
+      "position": [
+        852,
+        85
+      ]
+    },
+    {
+      "id": "south",
+      "position": [
+        632,
+        984
+      ]
+    },
+    {
+      "id": "west",
+      "position": [
+        117,
+        770
+      ]
+    },
+    {
+      "id": "east",
+      "position": [
+        1352,
+        791
+      ]
+    },
+    {
+      "id": "nw",
+      "position": [
+        264,
+        267
+      ]
+    },
+    {
+      "id": "ne",
+      "position": [
+        1205,
+        235
+      ]
+    },
+    {
+      "id": "sw",
+      "position": [
+        323,
+        834
+      ]
+    },
+    {
+      "id": "se",
+      "position": [
+        1117,
+        802
+      ]
+    },
+    {
+      "id": "porch",
+      "position": [
+        588,
+        535
+      ]
+    },
+    {
+      "id": "north_side_a",
+      "position": [
+        779,
+        502
+      ]
+    },
+    {
+      "id": "north_side_b",
+      "position": [
+        882,
+        267
+      ]
+    },
+    {
+      "id": "yard_bend",
+      "position": [
+        588,
+        684
+      ]
+    },
+    {
+      "id": "front_lane_e",
+      "position": [
+        940,
+        770
+      ]
+    },
+    {
+      "id": "east_bend",
+      "position": [
+        1146,
+        791
+      ]
+    },
+    {
+      "id": "mailbox",
+      "position": [
+        338,
+        684
+      ]
+    },
+    {
+      "id": "mailbox_stand",
+      "position": [
+        411,
+        770
+      ]
+    },
+    {
+      "id": "well",
+      "position": [
+        1058,
+        631
+      ]
+    },
+    {
+      "id": "well_stand",
+      "position": [
+        940,
+        706
+      ]
+    },
+    {
+      "id": "bench",
+      "position": [
+        323,
+        856
+      ]
+    },
+    {
+      "id": "bench_stand",
+      "position": [
+        455,
+        770
+      ]
+    },
+    {
+      "id": "house",
+      "position": [
+        588,
+        374
+      ]
+    },
+    {
+      "id": "road_sign",
+      "position": [
+        1234,
+        770
+      ]
+    }
+  ],
+  "layout_profile": {
+    "road_signature": "home_public_lane_private_yard_spurs",
+    "road_motif": "soft_home_lane",
+    "composition_focal_point": [
+      0.43,
+      0.45
+    ],
+    "road_paths": [
+      {
+        "id": "public_front_lane",
+        "role": "public_lane",
+        "style": "soft",
+        "points": [
+          "west",
+          "mailbox_stand",
+          "center",
+          "front_lane_e",
+          "east_bend",
+          "east"
+        ],
+        "pixel_points": [
+          [
+            117,
+            770
+          ],
+          [
+            411,
+            770
+          ],
+          [
+            632,
+            770
+          ],
+          [
+            940,
+            770
+          ],
+          [
+            1146,
+            791
+          ],
+          [
+            1352,
+            791
+          ]
+        ],
+        "width_px": 42,
+        "width_factor": 0.029
+      },
+      {
+        "id": "home_walk",
+        "role": "home_access",
+        "style": "soft",
+        "points": [
+          "south",
+          "center",
+          "yard_bend",
+          "porch"
+        ],
+        "pixel_points": [
+          [
+            632,
+            984
+          ],
+          [
+            632,
+            770
+          ],
+          [
+            588,
+            684
+          ],
+          [
+            588,
+            535
+          ]
+        ],
+        "width_px": 45,
+        "width_factor": 0.031
+      },
+      {
+        "id": "north_side_lane",
+        "role": "side_footpath",
+        "style": "soft",
+        "points": [
+          "porch",
+          "north_side_a",
+          "north_side_b",
+          "north"
+        ],
+        "pixel_points": [
+          [
+            588,
+            535
+          ],
+          [
+            779,
+            502
+          ],
+          [
+            882,
+            267
+          ],
+          [
+            852,
+            85
+          ]
+        ],
+        "width_px": 27,
+        "width_factor": 0.019
+      },
+      {
+        "id": "well_footpath",
+        "role": "utility_footpath",
+        "style": "soft",
+        "points": [
+          "yard_bend",
+          "well_stand",
+          "front_lane_e"
+        ],
+        "pixel_points": [
+          [
+            588,
+            684
+          ],
+          [
+            940,
+            706
+          ],
+          [
+            940,
+            770
+          ]
+        ],
+        "width_px": 24,
+        "width_factor": 0.017
+      },
+      {
+        "id": "bench_step",
+        "role": "rest_access",
+        "style": "soft",
+        "points": [
+          "mailbox_stand",
+          "bench_stand"
+        ],
+        "pixel_points": [
+          [
+            411,
+            770
+          ],
+          [
+            455,
+            770
+          ]
+        ],
+        "width_px": 20,
+        "width_factor": 0.014
+      }
+    ],
+    "object_zones": [
+      {
+        "id": "house",
+        "role": "home_structure",
+        "relation": "main lane stops at the porch apron, not under the house footprint",
+        "rect": [
+          418,
+          144,
+          757,
+          476
+        ]
+      },
+      {
+        "id": "mailbox",
+        "role": "roadside_prop",
+        "relation": "beside the public front lane, not on it",
+        "rect": [
+          264,
+          604,
+          404,
+          706
+        ]
+      },
+      {
+        "id": "well",
+        "role": "yard_utility",
+        "relation": "inside the private yard, reached from a narrow side footpath",
+        "rect": [
+          984,
+          518,
+          1153,
+          690
+        ]
+      },
+      {
+        "id": "bench",
+        "role": "rest_prop",
+        "relation": "rest spot near the fence, separated from the lane",
+        "rect": [
+          183,
+          807,
+          455,
+          952
+        ]
+      }
+    ],
+    "seam_connectors": {
+      "north": [
+        852,
+        85
+      ],
+      "south": [
+        632,
+        984
+      ],
+      "east": [
+        1352,
+        791
+      ],
+      "west": [
+        117,
+        770
+      ]
+    }
+  },
+  "season_variant_mapping": {
+    "spring": "home_area_light_weather_overlay_spring.png",
+    "summer": "home_area_light_weather_overlay_summer.png",
+    "autumn": "home_area_light_weather_overlay_autumn.png",
+    "winter": "home_area_light_weather_overlay_winter.png"
+  },
+  "review_artifacts": {
+    "runtime_composite_preview": "production/assets/base_asset_pack/v001/03_contact_sheets/regions/home_area_runtime_composite_preview.png",
+    "runtime_layer_contact_sheet": "production/assets/base_asset_pack/v001/03_contact_sheets/regions/home_area_runtime_layer_contact_sheet.png"
+  }
+}

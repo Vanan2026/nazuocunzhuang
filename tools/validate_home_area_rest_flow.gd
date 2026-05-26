@@ -3,7 +3,7 @@ extends SceneTree
 const HeadlessLifecycle := preload("res://tools/headless_lifecycle.gd")
 const WORLD_SCENE := "res://scenes/world/world.tscn"
 const REST_SCRIPT := "res://scripts/world/veranda_rest_area.gd"
-const EXPECTED_SEAT := Vector2(4940, 8020)
+const EXPECTED_SEAT := Vector2(4338, 6672)
 
 var _finishing := false
 

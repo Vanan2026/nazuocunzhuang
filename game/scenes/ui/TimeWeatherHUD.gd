@@ -1,13 +1,17 @@
 class_name TimeWeatherHUD
 extends CanvasLayer
+const GreenfieldUITheme := preload("res://game/scenes/ui/GreenfieldUITheme.gd")
 
 @export var time_manager_path: NodePath
 @export var weather_manager_path: NodePath
 
+@onready var panel: PanelContainer = get_node_or_null("Panel")
+@onready var content: VBoxContainer = get_node_or_null("Panel/Content")
 @onready var season_label: Label = get_node_or_null("Panel/Content/SeasonLabel")
 @onready var day_label: Label = get_node_or_null("Panel/Content/DayLabel")
 @onready var time_label: Label = get_node_or_null("Panel/Content/TimeLabel")
 @onready var weather_label: Label = get_node_or_null("Panel/Content/WeatherLabel")
+@onready var weather_row: HBoxContainer = get_node_or_null("Panel/Content/WeatherRow")
 @onready var weather_icon: TextureRect = get_node_or_null("Panel/Content/WeatherRow/WeatherIcon")
 @onready var tomorrow_weather_icon: TextureRect = get_node_or_null("Panel/Content/WeatherRow/TomorrowWeatherIcon")
 
@@ -20,6 +24,7 @@ func _ready() -> void:
 		time_manager = get_node_or_null(time_manager_path)
 	if not weather_manager_path.is_empty():
 		weather_manager = get_node_or_null(weather_manager_path)
+	_apply_visual_theme()
 	bind_managers(time_manager, weather_manager)
 	refresh()
 
@@ -82,6 +87,10 @@ func _on_weather_changed(_weather_id: String) -> void:
 
 
 func _ensure_labels() -> void:
+	if panel == null:
+		panel = get_node_or_null("Panel")
+	if content == null:
+		content = get_node_or_null("Panel/Content")
 	if season_label == null:
 		season_label = get_node_or_null("Panel/Content/SeasonLabel")
 	if day_label == null:
@@ -90,10 +99,25 @@ func _ensure_labels() -> void:
 		time_label = get_node_or_null("Panel/Content/TimeLabel")
 	if weather_label == null:
 		weather_label = get_node_or_null("Panel/Content/WeatherLabel")
+	if weather_row == null:
+		weather_row = get_node_or_null("Panel/Content/WeatherRow")
 	if weather_icon == null:
 		weather_icon = get_node_or_null("Panel/Content/WeatherRow/WeatherIcon")
 	if tomorrow_weather_icon == null:
 		tomorrow_weather_icon = get_node_or_null("Panel/Content/WeatherRow/TomorrowWeatherIcon")
+
+
+func _apply_visual_theme() -> void:
+	_ensure_labels()
+	GreenfieldUITheme.apply_hud_panel(panel)
+	GreenfieldUITheme.apply_body_label(season_label, 13)
+	GreenfieldUITheme.apply_body_label(day_label, 13)
+	GreenfieldUITheme.apply_body_label(time_label, 13)
+	GreenfieldUITheme.apply_hint_label(weather_label, 12)
+	if content != null:
+		content.add_theme_constant_override("separation", 2)
+	if weather_row != null:
+		weather_row.add_theme_constant_override("separation", 6)
 
 
 func _set_weather_icon(icon: TextureRect, weather_id: String) -> void:

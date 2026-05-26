@@ -1,0 +1,127 @@
+{
+  "package_id": "village_world2d_v002_inherited_layer_export",
+  "status": "v002_semantic_layers_exported_pending_review",
+  "source_image": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/village_painted_source_v002.png",
+  "source_sha256": "80f32919e99125f2cb63b941da201e2845aec6972c3b1fbdc9890c79dd3d4270",
+  "accepted_candidate_id": "village_painted_source_v002",
+  "canvas": {
+    "width": 1800,
+    "height": 1200,
+    "origin": "top_left"
+  },
+  "layer_count": 5,
+  "layers": [
+    {
+      "id": "base_ground",
+      "path": "production/assets/regions/village_world2d/v001/03_layer_export/v002_inherited/layers/village_v002_base_ground.png",
+      "runtime_path": "res://assets/art/greenfield_p0/regions/village/layers/village_base_ground.png",
+      "derived_from": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/village_painted_source_v002.png",
+      "canvas": [
+        1800,
+        1200
+      ],
+      "alpha": "opaque",
+      "z_index": -30,
+      "semantic_role": "baked_static_scene",
+      "nontransparent_pixels": 2160000,
+      "alpha_range": [
+        255,
+        255
+      ],
+      "sha256": "3fa138ea58f86ee04cee061347610b5286db65329ff411c4172e8b6cd6cb7f5a"
+    },
+    {
+      "id": "terrain_details",
+      "path": "production/assets/regions/village_world2d/v001/03_layer_export/v002_inherited/layers/village_v002_terrain_details.png",
+      "runtime_path": "res://assets/art/greenfield_p0/regions/village/layers/village_terrain_details.png",
+      "derived_from": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/village_painted_source_v002.png",
+      "canvas": [
+        1800,
+        1200
+      ],
+      "alpha": "transparent_full_canvas",
+      "z_index": -25,
+      "semantic_role": "baked_into_base_empty_runtime_layer",
+      "nontransparent_pixels": 0,
+      "alpha_range": [
+        0,
+        0
+      ],
+      "sha256": "86397ca21e0255841839343e60afd97bebab52f061260f0249723c0812cfe800"
+    },
+    {
+      "id": "behind_player_structures",
+      "path": "production/assets/regions/village_world2d/v001/03_layer_export/v002_inherited/layers/village_v002_behind_player_structures.png",
+      "runtime_path": "res://assets/art/greenfield_p0/regions/village/layers/village_behind_player_structures.png",
+      "derived_from": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/village_painted_source_v002.png",
+      "canvas": [
+        1800,
+        1200
+      ],
+      "alpha": "transparent_full_canvas",
+      "z_index": -10,
+      "semantic_role": "baked_into_base_empty_runtime_layer",
+      "nontransparent_pixels": 0,
+      "alpha_range": [
+        0,
+        0
+      ],
+      "sha256": "86397ca21e0255841839343e60afd97bebab52f061260f0249723c0812cfe800"
+    },
+    {
+      "id": "ysort_props_structures",
+      "path": "production/assets/regions/village_world2d/v001/03_layer_export/v002_inherited/layers/village_v002_ysort_props_structures.png",
+      "runtime_path": "res://assets/art/greenfield_p0/regions/village/layers/village_ysort_props_structures.png",
+      "derived_from": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/village_painted_source_v002.png",
+      "canvas": [
+        1800,
+        1200
+      ],
+      "alpha": "transparent_full_canvas",
+      "z_index": 8,
+      "semantic_role": "baked_into_base_empty_runtime_layer",
+      "nontransparent_pixels": 0,
+      "alpha_range": [
+        0,
+        0
+      ],
+      "sha256": "86397ca21e0255841839343e60afd97bebab52f061260f0249723c0812cfe800"
+    },
+    {
+      "id": "foreground_occlusion",
+      "path": "production/assets/regions/village_world2d/v001/03_layer_export/v002_inherited/layers/village_v002_foreground_occlusion.png",
+      "runtime_path": "res://assets/art/greenfield_p0/regions/village/layers/village_foreground_occlusion.png",
+      "derived_from": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/village_painted_source_v002.png",
+      "canvas": [
+        1800,
+        1200
+      ],
+      "alpha": "transparent_full_canvas",
+      "z_index": 40,
+      "semantic_role": "player_foreground_occlusion",
+      "nontransparent_pixels": 156518,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "242dbdb1e2fb3ea7f151857766abb941686600710bd0b2a9a5696ad782893420"
+    }
+  ],
+  "recomposite_preview": "production/assets/regions/village_world2d/v001/03_layer_export/v002_inherited/village_v002_layer_recomposite_preview.png",
+  "review_preview": "production/assets/regions/village_world2d/v001/05_review_and_qa/village_v002_layer_export_review_preview.png",
+  "recomposite_mean_rgb_diff": 0.0,
+  "runtime_replacement": false,
+  "launch_quality_approved": false,
+  "human_visual_approval": false,
+  "human_layer_review": false,
+  "semantic_layer_rework": true,
+  "review_result": "semantic_rework_pending_review",
+  "notes": [
+    "v002 is accepted only for Codex semantic layer export review, not final art approval.",
+    "Static scenery stays baked into the opaque base layer.",
+    "Transparent layers keep the full 1800x1200 canvas and shared origin.",
+    "Terrain, set-back structures, and Y-sort props are empty runtime placeholders in this pass.",
+    "Only the near-camera old maple/lower foreground occlusion is exported as a visible runtime layer.",
+    "Godot runtime replacement is intentionally blocked until semantic layer review and screenshot validation."
+  ]
+}

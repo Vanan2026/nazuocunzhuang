@@ -4,6 +4,8 @@ const HeadlessLifecycle := preload("res://tools/headless_lifecycle.gd")
 const WORLD := "res://scenes/world/world.tscn"
 const OUTPUT_DIR := "res://.codex"
 const WATCHDOG_TIMEOUT_SECONDS := 30.0
+const CLEAR_COLOR_MAX_RATIO := 0.03
+const CLEAR_COLOR_SAMPLE_STEP := 8
 
 var _check_only := false
 var _watchdog_timeout_seconds := WATCHDOG_TIMEOUT_SECONDS
@@ -218,6 +220,10 @@ func _capture(file_name: String) -> void:
 	var error := image.save_png(output_path)
 	if error != OK:
 		_fail("could not save screenshot %s: %s" % [output_path, error])
+		return
+	var clear_color_ratio := _clear_color_ratio(image)
+	if clear_color_ratio > CLEAR_COLOR_MAX_RATIO:
+		_fail("screenshot %s exposes clear-color background ratio %.3f; expected <= %.3f" % [file_name, clear_color_ratio, CLEAR_COLOR_MAX_RATIO])
 
 
 func _snap_camera_to_player() -> void:
@@ -229,9 +235,34 @@ func _snap_camera_to_player() -> void:
 		camera = current_scene.get_node_or_null("CameraRig") as Camera2D
 	if camera == null:
 		return
-	camera.global_position = player.global_position + _camera_look_ahead_offset()
+	if current_scene != null and current_scene.has_method("get_current_camera_zoom"):
+		var zoom: Variant = current_scene.call("get_current_camera_zoom")
+		if zoom is Vector2:
+			camera.zoom = zoom
+	if current_scene != null and current_scene.has_method("get_current_camera_target_position"):
+		var target_position: Variant = current_scene.call("get_current_camera_target_position")
+		if target_position is Vector2:
+			camera.global_position = target_position
+		else:
+			camera.global_position = player.global_position + _camera_look_ahead_offset()
+	else:
+		camera.global_position = player.global_position + _camera_look_ahead_offset()
 	camera.reset_smoothing()
 	camera.force_update_scroll()
+
+
+func _clear_color_ratio(image: Image) -> float:
+	var sample_count := 0
+	var clear_count := 0
+	for y in range(0, image.get_height(), CLEAR_COLOR_SAMPLE_STEP):
+		for x in range(0, image.get_width(), CLEAR_COLOR_SAMPLE_STEP):
+			var color := image.get_pixel(x, y)
+			sample_count += 1
+			if color.b > 0.55 and color.g > 0.3 and color.r < 0.65 and color.b - color.r > 0.1:
+				clear_count += 1
+	if sample_count == 0:
+		return 0.0
+	return float(clear_count) / float(sample_count)
 
 
 func _camera_look_ahead_offset() -> Vector2:

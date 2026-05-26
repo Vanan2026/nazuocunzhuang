@@ -1,0 +1,394 @@
+{
+  "layout_id": "outdoor_world_seamless_layout_lock_v001",
+  "status": "master_blueprint_ready_for_visual_review",
+  "active_runtime_scene": "res://game/scenes/world/OutdoorWorld.tscn",
+  "source_runtime_file": "game/scenes/world/OutdoorWorld.gd",
+  "world_bounds": {
+    "min_x": -40,
+    "min_y": -316,
+    "max_x": 1720,
+    "max_y": 564,
+    "width": 1760,
+    "height": 880
+  },
+  "runtime_scale_reference": 0.18,
+  "generated_region_source_canvas": [
+    1800,
+    1200
+  ],
+  "generated_region_runtime_size": [
+    320,
+    240
+  ],
+  "regions": [
+    {
+      "region_id": "player_yard",
+      "display_name": "PlayerYard",
+      "offset": [
+        0,
+        0
+      ],
+      "bounds": [
+        -40,
+        -96,
+        372,
+        408
+      ],
+      "status": "active_authored_blockout",
+      "source_status": "separate_home_area_chain",
+      "priority": "P0"
+    },
+    {
+      "region_id": "forest_edge",
+      "display_name": "ForestEdge",
+      "offset": [
+        380,
+        -12
+      ],
+      "bounds": [
+        332,
+        -108,
+        340,
+        320
+      ],
+      "status": "active_authored_blockout",
+      "source_status": "needs_future_world2d_source",
+      "priority": "P1"
+    },
+    {
+      "region_id": "village",
+      "display_name": "Village",
+      "offset": [
+        720,
+        -12
+      ],
+      "bounds": [
+        720,
+        -12,
+        320,
+        240
+      ],
+      "status": "active_authored_slice_plus_generated_layers",
+      "source_status": "layout_draft_only_not_final_painted_source",
+      "priority": "P0"
+    },
+    {
+      "region_id": "back_farm",
+      "display_name": "BackFarm",
+      "offset": [
+        0,
+        324
+      ],
+      "bounds": [
+        0,
+        324,
+        320,
+        240
+      ],
+      "status": "generated_shell_deferred",
+      "source_status": "defer_until_player_verb_lock",
+      "priority": "P2"
+    },
+    {
+      "region_id": "orchard",
+      "display_name": "Orchard",
+      "offset": [
+        380,
+        324
+      ],
+      "bounds": [
+        380,
+        324,
+        320,
+        240
+      ],
+      "status": "generated_shell_deferred",
+      "source_status": "defer_until_daily_loop",
+      "priority": "P2"
+    },
+    {
+      "region_id": "pond",
+      "display_name": "Pond",
+      "offset": [
+        720,
+        324
+      ],
+      "bounds": [
+        720,
+        324,
+        320,
+        240
+      ],
+      "status": "generated_shell_deferred",
+      "source_status": "defer_until_daily_activity_loop",
+      "priority": "P2"
+    },
+    {
+      "region_id": "mountain_path",
+      "display_name": "MountainPath",
+      "offset": [
+        720,
+        -316
+      ],
+      "bounds": [
+        720,
+        -316,
+        320,
+        240
+      ],
+      "status": "generated_shell_deferred",
+      "source_status": "defer_until_exploration_escalation_loop",
+      "priority": "P2"
+    },
+    {
+      "region_id": "mountain_hut",
+      "display_name": "MountainHut",
+      "offset": [
+        1060,
+        -12
+      ],
+      "bounds": [
+        1060,
+        -12,
+        320,
+        240
+      ],
+      "status": "generated_shell_deferred",
+      "source_status": "defer_until_mountain_route_lock",
+      "priority": "P3"
+    },
+    {
+      "region_id": "mountain",
+      "display_name": "Mountain",
+      "offset": [
+        1060,
+        -316
+      ],
+      "bounds": [
+        1060,
+        -316,
+        320,
+        240
+      ],
+      "status": "generated_shell_deferred",
+      "source_status": "defer_until_route_lock",
+      "priority": "P3"
+    },
+    {
+      "region_id": "cliff_view",
+      "display_name": "CliffView",
+      "offset": [
+        1400,
+        -316
+      ],
+      "bounds": [
+        1400,
+        -316,
+        320,
+        240
+      ],
+      "status": "generated_shell_deferred",
+      "source_status": "defer_until_discovery_location_lock",
+      "priority": "P3"
+    }
+  ],
+  "connections": [
+    {
+      "id": "yard_to_forest_edge",
+      "from": "player_yard",
+      "to": "forest_edge",
+      "points": [
+        [
+          300,
+          96
+        ],
+        [
+          332,
+          96
+        ],
+        [
+          380,
+          110
+        ]
+      ],
+      "role": "current_first_week_forest_route"
+    },
+    {
+      "id": "yard_to_village",
+      "from": "player_yard",
+      "to": "village",
+      "points": [
+        [
+          300,
+          132
+        ],
+        [
+          500,
+          132
+        ],
+        [
+          720,
+          120
+        ]
+      ],
+      "role": "current_village_entry_route"
+    },
+    {
+      "id": "yard_to_back_farm",
+      "from": "player_yard",
+      "to": "back_farm",
+      "points": [
+        [
+          150,
+          280
+        ],
+        [
+          150,
+          324
+        ]
+      ],
+      "role": "future_farm_work_route"
+    },
+    {
+      "id": "back_farm_to_orchard",
+      "from": "back_farm",
+      "to": "orchard",
+      "points": [
+        [
+          320,
+          444
+        ],
+        [
+          380,
+          444
+        ]
+      ],
+      "role": "future_workland_lane"
+    },
+    {
+      "id": "orchard_to_pond",
+      "from": "orchard",
+      "to": "pond",
+      "points": [
+        [
+          700,
+          444
+        ],
+        [
+          720,
+          444
+        ]
+      ],
+      "role": "future_daily_activity_lane"
+    },
+    {
+      "id": "village_to_pond",
+      "from": "village",
+      "to": "pond",
+      "points": [
+        [
+          880,
+          228
+        ],
+        [
+          880,
+          324
+        ]
+      ],
+      "role": "future_south_village_exit"
+    },
+    {
+      "id": "village_to_mountain_path",
+      "from": "village",
+      "to": "mountain_path",
+      "points": [
+        [
+          880,
+          -12
+        ],
+        [
+          880,
+          -76
+        ]
+      ],
+      "role": "future_north_village_exit"
+    },
+    {
+      "id": "village_to_mountain_hut",
+      "from": "village",
+      "to": "mountain_hut",
+      "points": [
+        [
+          1040,
+          108
+        ],
+        [
+          1060,
+          108
+        ]
+      ],
+      "role": "future_east_village_extension"
+    },
+    {
+      "id": "mountain_path_to_mountain",
+      "from": "mountain_path",
+      "to": "mountain",
+      "points": [
+        [
+          1040,
+          -196
+        ],
+        [
+          1060,
+          -196
+        ]
+      ],
+      "role": "future_exploration_lane"
+    },
+    {
+      "id": "mountain_to_cliff_view",
+      "from": "mountain",
+      "to": "cliff_view",
+      "points": [
+        [
+          1380,
+          -196
+        ],
+        [
+          1400,
+          -196
+        ]
+      ],
+      "role": "future_discovery_overlook_lane"
+    },
+    {
+      "id": "mountain_to_hut",
+      "from": "mountain",
+      "to": "mountain_hut",
+      "points": [
+        [
+          1220,
+          -76
+        ],
+        [
+          1220,
+          -12
+        ]
+      ],
+      "role": "future_hut_return_lane"
+    }
+  ],
+  "global_art_rules": [
+    "Produce a seamless world read first; do not approve isolated region art that breaks roads, ground color, lighting, or perspective at seams.",
+    "Use the master blueprint as a spatial guide, not a pixel-perfect brush trace.",
+    "Per-region layer PNGs must keep full region canvas and shared origin.",
+    "Runtime layers derive from one accepted painted_source per region.",
+    "Weather, season, and time-of-day overlays stay global Godot/system-level until base seam continuity is stable."
+  ],
+  "deferred_until_master_review": [
+    "Village final painted_source generation",
+    "Village layer export",
+    "Runtime art replacement",
+    "High-volume region batch generation"
+  ]
+}

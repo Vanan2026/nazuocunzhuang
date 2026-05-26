@@ -1,0 +1,37 @@
+{
+  "candidate_id": "village_layout_structure_draft_v001",
+  "status": "layout_structure_draft_pending_seamless_master_review",
+  "candidate_type": "layout_structure_draft",
+  "not_final_painted_source": true,
+  "do_not_split_layers_from_this_image": true,
+  "source_image": "production/assets/regions/village_world2d/v001/02_source_generation/layout_structure_drafts/village_layout_structure_draft_v001.png",
+  "review_overlay": "production/assets/regions/village_world2d/v001/05_review_and_qa/village_painted_source_review_overlay_v001.png",
+  "canvas": {
+    "width": 1800,
+    "height": 1200
+  },
+  "alpha": "opaque",
+  "runtime_replacement": false,
+  "launch_quality_approved": false,
+  "human_visual_approval": false,
+  "layer_export_approved": false,
+  "codex_visual_precheck": {
+    "status": "passed_readability_precheck",
+    "not_human_visual_approval": true,
+    "checks": [
+      "Village Plaza reads as one small social node.",
+      "West, north, east, and south road connections are visible in the source image.",
+      "VillageNotice, SeedStallProxy, OldMapleClue, Aoi standing pocket, and BenchRestProp remain identifiable.",
+      "Hidden discovery remains environmental and has no readable clue text."
+    ],
+    "blocking_note": "This is a layout draft only; generate a true storybook painted_source after OutdoorWorld seamless master review before layer export."
+  },
+  "generated_from": "production/assets/regions/village_world2d/v001/01_layout_lock/layout_lock.json",
+  "notes": [
+    "Local generated structure/layout draft only.",
+    "This image is not final storybook painted_source art.",
+    "No runtime art paths are changed.",
+    "Layer export remains blocked until a true painted_source is produced from the seamless OutdoorWorld master blueprint and approved."
+  ],
+  "preserved_from": "production/assets/regions/village_world2d/v001/02_source_generation/village_painted_source.png"
+}

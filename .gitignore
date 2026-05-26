@@ -1,12 +1,14 @@
 # Godot
 .godot/
 *.import
+production/**/*.translation
 
 # AI/Tool cache
 .codex/
 .claude/
 .trae/
 .visual-companion/
+.superpowers/
 .mcp.json
 addons/godot_ai/
 Claude-Code-Game-Studios-main/

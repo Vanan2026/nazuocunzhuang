@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1300" viewBox="-160 -436 2000 1120">
+  <title>OutdoorWorld seamless art master blueprint v001</title>
+  <rect x="-160" y="-436" width="2000" height="1120" fill="#d9e2c2"/>
+  <rect x="-40" y="-316" width="1760" height="880" fill="#a8bb7c" fill-opacity="0.28" stroke="#50613d" stroke-width="4"/>
+  <g id="connections">
+    <polyline points="300,96 332,96 380,110" fill="none" stroke="#9a7a46" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="300,96 332,96 380,110" fill="none" stroke="#d0b66f" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="300,132 500,132 720,120" fill="none" stroke="#9a7a46" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="300,132 500,132 720,120" fill="none" stroke="#d0b66f" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="150,280 150,324" fill="none" stroke="#9a7a46" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="150,280 150,324" fill="none" stroke="#d0b66f" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="320,444 380,444" fill="none" stroke="#9a7a46" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="320,444 380,444" fill="none" stroke="#d0b66f" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="700,444 720,444" fill="none" stroke="#9a7a46" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="700,444 720,444" fill="none" stroke="#d0b66f" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="880,228 880,324" fill="none" stroke="#9a7a46" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="880,228 880,324" fill="none" stroke="#d0b66f" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="880,-12 880,-76" fill="none" stroke="#9a7a46" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="880,-12 880,-76" fill="none" stroke="#d0b66f" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="1040,108 1060,108" fill="none" stroke="#9a7a46" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="1040,108 1060,108" fill="none" stroke="#d0b66f" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="1040,-196 1060,-196" fill="none" stroke="#9a7a46" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="1040,-196 1060,-196" fill="none" stroke="#d0b66f" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="1380,-196 1400,-196" fill="none" stroke="#9a7a46" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="1380,-196 1400,-196" fill="none" stroke="#d0b66f" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="1220,-76 1220,-12" fill="none" stroke="#9a7a46" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="1220,-76 1220,-12" fill="none" stroke="#d0b66f" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="regions">
+    <rect x="-40" y="-96" width="372" height="408" rx="8" fill="#d8bb75" fill-opacity="0.55" stroke="#694d30" stroke-width="5"/>
+    <text x="-28" y="-64" font-family="Arial" font-size="30" fill="#26331f">PlayerYard</text>
+    <text x="-28" y="-34" font-family="Arial" font-size="18" fill="#41513b">separate_home_area_chain</text>
+    <rect x="332" y="-108" width="340" height="320" rx="8" fill="#b7c985" fill-opacity="0.55" stroke="#41513b" stroke-width="5"/>
+    <text x="344" y="-76" font-family="Arial" font-size="30" fill="#26331f">ForestEdge</text>
+    <text x="344" y="-46" font-family="Arial" font-size="18" fill="#41513b">needs_future_world2d_source</text>
+    <rect x="720" y="-12" width="320" height="240" rx="8" fill="#d8bb75" fill-opacity="0.55" stroke="#694d30" stroke-width="5"/>
+    <text x="732" y="20" font-family="Arial" font-size="30" fill="#26331f">Village</text>
+    <text x="732" y="50" font-family="Arial" font-size="18" fill="#41513b">layout_draft_only_not_final_painted_source</text>
+    <rect x="0" y="324" width="320" height="240" rx="8" fill="#9fc3a0" fill-opacity="0.55" stroke="#41513b" stroke-width="5"/>
+    <text x="12" y="356" font-family="Arial" font-size="30" fill="#26331f">BackFarm</text>
+    <text x="12" y="386" font-family="Arial" font-size="18" fill="#41513b">defer_until_player_verb_lock</text>
+    <rect x="380" y="324" width="320" height="240" rx="8" fill="#9fc3a0" fill-opacity="0.55" stroke="#41513b" stroke-width="5"/>
+    <text x="392" y="356" font-family="Arial" font-size="30" fill="#26331f">Orchard</text>
+    <text x="392" y="386" font-family="Arial" font-size="18" fill="#41513b">defer_until_daily_loop</text>
+    <rect x="720" y="324" width="320" height="240" rx="8" fill="#9fc3a0" fill-opacity="0.55" stroke="#41513b" stroke-width="5"/>
+    <text x="732" y="356" font-family="Arial" font-size="30" fill="#26331f">Pond</text>
+    <text x="732" y="386" font-family="Arial" font-size="18" fill="#41513b">defer_until_daily_activity_loop</text>
+    <rect x="720" y="-316" width="320" height="240" rx="8" fill="#9fc3a0" fill-opacity="0.55" stroke="#41513b" stroke-width="5"/>
+    <text x="732" y="-284" font-family="Arial" font-size="30" fill="#26331f">MountainPath</text>
+    <text x="732" y="-254" font-family="Arial" font-size="18" fill="#41513b">defer_until_exploration_escalation_loop</text>
+    <rect x="1060" y="-12" width="320" height="240" rx="8" fill="#9eb4c3" fill-opacity="0.55" stroke="#41513b" stroke-width="5"/>
+    <text x="1072" y="20" font-family="Arial" font-size="30" fill="#26331f">MountainHut</text>
+    <text x="1072" y="50" font-family="Arial" font-size="18" fill="#41513b">defer_until_mountain_route_lock</text>
+    <rect x="1060" y="-316" width="320" height="240" rx="8" fill="#9eb4c3" fill-opacity="0.55" stroke="#41513b" stroke-width="5"/>
+    <text x="1072" y="-284" font-family="Arial" font-size="30" fill="#26331f">Mountain</text>
+    <text x="1072" y="-254" font-family="Arial" font-size="18" fill="#41513b">defer_until_route_lock</text>
+    <rect x="1400" y="-316" width="320" height="240" rx="8" fill="#9eb4c3" fill-opacity="0.55" stroke="#41513b" stroke-width="5"/>
+    <text x="1412" y="-284" font-family="Arial" font-size="30" fill="#26331f">CliffView</text>
+    <text x="1412" y="-254" font-family="Arial" font-size="18" fill="#41513b">defer_until_discovery_location_lock</text>
+  </g>
+  <g id="anchors">
+    <circle cx="146" cy="108" r="8" fill="#273b45"/>
+    <circle cx="502" cy="52" r="8" fill="#273b45"/>
+    <circle cx="880" cy="108" r="8" fill="#273b45"/>
+    <circle cx="160" cy="444" r="8" fill="#273b45"/>
+    <circle cx="540" cy="444" r="8" fill="#273b45"/>
+    <circle cx="880" cy="444" r="8" fill="#273b45"/>
+    <circle cx="880" cy="-196" r="8" fill="#273b45"/>
+    <circle cx="1220" cy="108" r="8" fill="#273b45"/>
+    <circle cx="1220" cy="-196" r="8" fill="#273b45"/>
+    <circle cx="1560" cy="-196" r="8" fill="#273b45"/>
+  </g>
+  <text x="-136" y="-384" font-family="Arial" font-size="30" fill="#26331f">OutdoorWorld seamless art master - structure guide, not final art</text>
+  <text x="-136" y="-348" font-family="Arial" font-size="22" fill="#26331f">Final region sources must preserve shared roads, color, lighting, perspective, and full-canvas layer alignment.</text>
+</svg>

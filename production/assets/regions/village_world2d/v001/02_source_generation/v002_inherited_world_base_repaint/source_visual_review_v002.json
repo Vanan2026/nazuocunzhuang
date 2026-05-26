@@ -1,0 +1,26 @@
+{
+  "review_id": "village_v002_visual_review",
+  "reviewed_at": "2026-05-26",
+  "status": "accepted_for_semantic_layer_export_review",
+  "source_image": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/village_painted_source_v002.png",
+  "quality_review": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/source_quality_review_v002.json",
+  "review_contact_sheet": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/village_v002_source_review_contact_sheet.png",
+  "v002_visual_accepted_for_layer_export_review": true,
+  "human_visual_approval": false,
+  "layer_export_approved": false,
+  "runtime_replacement": false,
+  "launch_quality_approved": false,
+  "acceptance_scope": "Codex visual acceptance for semantic layer export review only; this is not human/art approval.",
+  "review_notes": [
+    "Codex review accepts v002 for semantic layer export review because the center village detail reaches the old-source quality target while the outer edge bands remain inherited from the world-base crop.",
+    "The soft inherited edge is intentional continuity padding for the OutdoorWorld crop and must be checked again in Godot screenshot review before runtime promotion.",
+    "Semantic layer export should derive from this exact full-canvas source; do not regenerate independent layer compositions or crop transparent layers.",
+    "Godot screenshot review and human/art review remain required before any runtime replacement or launch approval."
+  ],
+  "metrics_snapshot": {
+    "edge_diff_from_base_crop": 0.0,
+    "detail_ratio_vs_old_source": 1.153,
+    "variance_ratio_vs_old_source": 1.1798
+  },
+  "next_required_step": "export_v002_semantic_layers_from_exact_source"
+}

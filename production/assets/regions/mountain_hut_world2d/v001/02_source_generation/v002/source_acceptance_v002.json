@@ -1,0 +1,31 @@
+{
+  "candidate_id": "mountain_hut_painted_source_candidate_v002",
+  "status": "mountain_hut_v002_visual_review_rejected_needs_v003_repaint",
+  "candidate_type": "v002_full_canvas_storybook_source_candidate",
+  "source_image": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v002/mountain_hut_painted_source_v002.png",
+  "review_overlay": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/mountain_hut_painted_source_review_overlay_v002.png",
+  "quality_review": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_quality_review_v002.json",
+  "review_contact_sheet": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/mountain_hut_v002_review_contact_sheet.png",
+  "human_visual_approval": false,
+  "layer_export_approved": false,
+  "runtime_replacement": false,
+  "launch_quality_approved": false,
+  "codex_visual_precheck": {
+    "status": "passed_v002_source_quality_precheck",
+    "not_human_visual_approval": true,
+    "notes": [
+      "registration-perfect layer alignment remains the target; the image is one full canvas with shared origin",
+      "single painted source rule is preserved before any future runtime layer split",
+      "full canvas source remains opaque 1800x1200",
+      "no runtime replacement or layer export is approved by this candidate",
+      "human/art review is still required before acceptance"
+    ]
+  },
+  "codex_visual_review": {
+    "status": "needs_v003_repaint_before_layer_export",
+    "review": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_visual_review_v002.json",
+    "not_human_visual_approval": true,
+    "v002_visual_accepted": false,
+    "next_required_step": "produce_v003_full_canvas_repaint"
+  }
+}

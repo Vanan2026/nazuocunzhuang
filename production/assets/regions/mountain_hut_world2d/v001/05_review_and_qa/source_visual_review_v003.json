@@ -1,0 +1,17 @@
+{
+  "review_id": "mountain_hut_v003_visual_review",
+  "status": "needs_v004_repaint_before_layer_export",
+  "reviewed_at": "2026-05-25",
+  "v003_visual_accepted": false,
+  "v003_source": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v003/mountain_hut_painted_source_v003.png",
+  "v004_source_candidate": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v004/mountain_hut_painted_source_v004.png",
+  "layer_export_approved": false,
+  "runtime_replacement": false,
+  "launch_quality_approved": false,
+  "rejection_reasons": [
+    "A hard-edged light vector-road overlay crosses the middle of the scene and reads like pasted tape rather than painted terrain.",
+    "The overlay covers natural ground, fence, lighting, and footpath detail from the stronger external quality reference.",
+    "The source could pass edge/variance metrics while still failing the storybook visual bar, so visual review must override metric-only readiness."
+  ],
+  "next_required_step": "produce_v004_full_canvas_candidate_without_vector_road_overlay"
+}

@@ -35,6 +35,26 @@ func get_dialogue(npc_id: String, context: Dictionary = {}) -> Dictionary:
 	return selected
 
 
+func get_daily_intent_dialogue(npc_id: String, context: Dictionary = {}) -> Dictionary:
+	var merged_context := _build_context(npc_id, context)
+	var required_daily_intent := String(merged_context.get("daily_intent", ""))
+	if required_daily_intent.is_empty():
+		return {}
+	var matches: Array[Dictionary] = []
+	for dialogue in _get_dialogue_candidates(npc_id):
+		var conditions: Dictionary = dialogue.get("conditions", {})
+		if String(conditions.get("daily_intent", "")) != required_daily_intent:
+			continue
+		if _matches_conditions(dialogue, merged_context):
+			matches.append(dialogue)
+	if matches.is_empty():
+		return {}
+	matches.sort_custom(_sort_dialogues)
+	var selected := matches[0].duplicate(true)
+	selected["context"] = merged_context
+	return selected
+
+
 func bind_registry(next_data_registry: Node) -> void:
 	data_registry = next_data_registry
 
@@ -102,6 +122,10 @@ func _matches_conditions(dialogue: Dictionary, context: Dictionary) -> bool:
 	if not _matches_text_condition(conditions, context, "weather"):
 		return false
 	if not _matches_text_condition(conditions, context, "time_block"):
+		return false
+	if not _matches_text_condition(conditions, context, "daily_intent"):
+		return false
+	if not _matches_text_condition(conditions, context, "scene_id"):
 		return false
 	var min_hearts := int(conditions.get("min_hearts", 0))
 	if int(context.get("hearts", 0)) < min_hearts:

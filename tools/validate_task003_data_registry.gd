@@ -27,6 +27,7 @@ func _initialize() -> void:
 	_expect(registry.get_npc("aoi").get("role", "") == "杂货店店主", "aoi npc did not load")
 	_expect(registry.get_recipe("persimmon_riceball").get("result", {}).get("item_id", "") == "food_persimmon_riceball", "persimmon_riceball recipe did not load")
 	_expect(registry.get_dialogue("aoi_daily_spring_01").get("npc_id", "") == "aoi", "aoi dialogue did not load")
+	_expect(registry.get_npc_schedule("shopkeeper_basic").get("schedule_id", "") == "shopkeeper_basic", "shopkeeper_basic schedule did not load")
 	_expect(registry.get_restoration("old_well").get("required_money", -1) == 500, "old_well restoration did not load")
 
 	print("OK: Godot loaded and validated Task 003 DataRegistry")

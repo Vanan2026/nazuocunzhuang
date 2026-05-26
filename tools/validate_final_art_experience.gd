@@ -3,6 +3,7 @@ extends SceneTree
 const HeadlessLifecycle := preload("res://tools/headless_lifecycle.gd")
 
 const WORLD_SCENE_PATH := "res://scenes/world/world.tscn"
+const GAME_MAIN_SCENE_PATH := "res://game/scenes/Main.tscn"
 const HOME_AREA_SCENE_PATH := "res://scenes/regions/region_home_area.tscn"
 const WORLD_CONTROLLER_PATH := "res://scripts/world/world_controller.gd"
 const PLAYER_CONTROLLER_PATH := "res://scripts/player_controller.gd"
@@ -29,10 +30,11 @@ func _initialize() -> void:
 
 func _run() -> void:
 	var main_scene := String(ProjectSettings.get_setting("application/run/main_scene", ""))
-	_expect(main_scene == WORLD_SCENE_PATH, "project main_scene must stay on the playable world entry")
+	_expect(main_scene == WORLD_SCENE_PATH or main_scene == GAME_MAIN_SCENE_PATH, "project main_scene must stay on a playable world entry")
 	_expect(_file_contains(WORLD_CONTROLLER_PATH, "camera_look_ahead_offset: Vector2 = Vector2(0, -280)"), "world camera must keep an upward HomeArea composition offset")
 	_expect(_file_contains(WORLD_CONTROLLER_PATH, "camera_review_zoom: Vector2 = Vector2(0.68, 0.68)"), "world camera must use the pulled-back review zoom")
-	_expect(_file_contains(WORLD_CONTROLLER_PATH, "camera.zoom = camera_review_zoom"), "world camera must apply review zoom")
+	_expect(_file_contains(WORLD_CONTROLLER_PATH, "camera.zoom = get_current_camera_zoom()"), "world camera must apply the current region zoom")
+	_expect(_file_contains(WORLD_CONTROLLER_PATH, "camera.zoom = camera.zoom.lerp(target_zoom"), "world camera must smoothly track region zoom changes")
 	_expect(_file_contains(PLAYER_CONTROLLER_PATH, "\"move_left\", \"ui_left\", \"move_right\", \"ui_right\""), "player controller must read move_* actions with ui_* fallback")
 	_expect(_file_contains(PLAYER_CONTROLLER_PATH, "func _update_nearest_interaction_hint()"), "player controller must continuously refresh nearest interaction hint")
 	_expect(_file_contains(INTERACTION_HINT_UI_PATH, "func _create_default_hint_label()"), "InteractionHintUI must create a visible autoload prompt label")

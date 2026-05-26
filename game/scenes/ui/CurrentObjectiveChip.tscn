@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://game/scenes/ui/CurrentObjectiveChip.gd" id="1_current_objective_chip"]
+
+[node name="CurrentObjectiveChip" type="CanvasLayer"]
+visible = true
+script = ExtResource("1_current_objective_chip")
+quest_manager_path = NodePath("../QuestManager")
+game_state_path = NodePath("../GameState")
+time_manager_path = NodePath("../TimeManager")
+
+[node name="Panel" type="PanelContainer" parent="."]
+offset_left = 900.0
+offset_top = 16.0
+offset_right = 1264.0
+offset_bottom = 124.0
+
+[node name="Content" type="VBoxContainer" parent="Panel"]
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 354.0
+offset_bottom = 100.0
+
+[node name="TitleLabel" type="Label" parent="Panel/Content"]
+layout_mode = 2
+text = "当前目标"
+
+[node name="ObjectiveLabel" type="Label" parent="Panel/Content"]
+layout_mode = 2
+text = "读邮箱"
+autowrap_mode = 3
+
+[node name="HintLabel" type="Label" parent="Panel/Content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "屋内 · 出门到院子邮箱旁，按 E 查看"
+autowrap_mode = 3
+
+[node name="ProgressLabel" type="Label" parent="Panel/Content"]
+layout_mode = 2
+text = "0 / 13"

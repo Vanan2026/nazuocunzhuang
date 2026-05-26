@@ -26,3 +26,18 @@ color = Color(0.47, 0.36, 0.25, 1)
 visible = false
 position = Vector2(0, -10)
 texture = SubResource("PlaceholderTexture2D_crop")
+
+[node name="CropStatusCue" type="Label" parent="."]
+visible = false
+offset_left = -40.0
+offset_top = 14.0
+offset_right = 40.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0.97, 0.92, 0.78, 1)
+theme_override_colors/font_shadow_color = Color(0.14, 0.09, 0.05, 0.88)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 9
+text = "crop"
+horizontal_alignment = 1
+vertical_alignment = 1

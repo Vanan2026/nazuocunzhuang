@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://game/entities/player/Player.gd" id="1_player"]
 [ext_resource type="Script" path="res://game/entities/interactable/InteractionArea.gd" id="2_interaction_area"]
+[ext_resource type="SpriteFrames" path="res://game/entities/player/PlayerRuntimeFrames.tres" id="3_player_frames"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
 size = Vector2(20, 28)
@@ -11,6 +12,12 @@ radius = 32.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_player")
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+scale = Vector2(0.38, 0.4)
+sprite_frames = ExtResource("3_player_frames")
+animation = &"player_idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)

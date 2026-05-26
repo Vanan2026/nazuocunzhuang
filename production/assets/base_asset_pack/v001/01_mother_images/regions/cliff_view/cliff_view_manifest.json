@@ -1,0 +1,323 @@
+{
+  "region_id": "cliff_view",
+  "display_name": "CliffView",
+  "canvas_size": [
+    1500,
+    1000
+  ],
+  "status": "usable",
+  "launch_quality_approved": false,
+  "human_visual_approval_required": true,
+  "layout_mother": "production/assets/base_asset_pack/v001/01_mother_images/regions/cliff_view/cliff_view_layout_mother.png",
+  "painted_source": "production/assets/base_asset_pack/v001/01_mother_images/regions/cliff_view/cliff_view_painted_source.png",
+  "features": [
+    "cliff",
+    "view",
+    "grass_edge",
+    "rest_spot"
+  ],
+  "layers": {
+    "base_ground": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/cliff_view/layers/cliff_view_base_ground.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/cliff_view/layers/cliff_view_base_ground.png",
+      "size": [
+        1500,
+        1000
+      ],
+      "mode": "RGBA"
+    },
+    "terrain_details": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/cliff_view/layers/cliff_view_terrain_details.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/cliff_view/layers/cliff_view_terrain_details.png",
+      "size": [
+        1500,
+        1000
+      ],
+      "mode": "RGBA"
+    },
+    "behind_player_structures": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/cliff_view/layers/cliff_view_behind_player_structures.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/cliff_view/layers/cliff_view_behind_player_structures.png",
+      "size": [
+        1500,
+        1000
+      ],
+      "mode": "RGBA"
+    },
+    "ysort_props_structures": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/cliff_view/layers/cliff_view_ysort_props_structures.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/cliff_view/layers/cliff_view_ysort_props_structures.png",
+      "size": [
+        1500,
+        1000
+      ],
+      "mode": "RGBA"
+    },
+    "foreground_occlusion": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/cliff_view/layers/cliff_view_foreground_occlusion.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/cliff_view/layers/cliff_view_foreground_occlusion.png",
+      "size": [
+        1500,
+        1000
+      ],
+      "mode": "RGBA"
+    },
+    "shadow_overlay": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/cliff_view/layers/cliff_view_shadow_overlay.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/cliff_view/layers/cliff_view_shadow_overlay.png",
+      "size": [
+        1500,
+        1000
+      ],
+      "mode": "RGBA"
+    },
+    "light_weather_overlays": [
+      {
+        "season": "spring",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/cliff_view/layers/cliff_view_light_weather_overlay_spring.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/cliff_view/layers/cliff_view_light_weather_overlay_spring.png",
+        "size": [
+          1500,
+          1000
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "summer",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/cliff_view/layers/cliff_view_light_weather_overlay_summer.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/cliff_view/layers/cliff_view_light_weather_overlay_summer.png",
+        "size": [
+          1500,
+          1000
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "autumn",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/cliff_view/layers/cliff_view_light_weather_overlay_autumn.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/cliff_view/layers/cliff_view_light_weather_overlay_autumn.png",
+        "size": [
+          1500,
+          1000
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "winter",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/cliff_view/layers/cliff_view_light_weather_overlay_winter.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/cliff_view/layers/cliff_view_light_weather_overlay_winter.png",
+        "size": [
+          1500,
+          1000
+        ],
+        "mode": "RGBA"
+      }
+    ]
+  },
+  "anchors": [
+    {
+      "id": "center",
+      "position": [
+        750,
+        620
+      ]
+    },
+    {
+      "id": "north",
+      "position": [
+        660,
+        80
+      ]
+    },
+    {
+      "id": "south",
+      "position": [
+        810,
+        920
+      ]
+    },
+    {
+      "id": "west",
+      "position": [
+        120,
+        540
+      ]
+    },
+    {
+      "id": "east",
+      "position": [
+        1380,
+        470
+      ]
+    },
+    {
+      "id": "nw",
+      "position": [
+        300,
+        270
+      ]
+    },
+    {
+      "id": "ne",
+      "position": [
+        1170,
+        230
+      ]
+    },
+    {
+      "id": "sw",
+      "position": [
+        330,
+        760
+      ]
+    },
+    {
+      "id": "se",
+      "position": [
+        1230,
+        730
+      ]
+    },
+    {
+      "id": "ledge_a",
+      "position": [
+        270,
+        530
+      ]
+    },
+    {
+      "id": "ledge_b",
+      "position": [
+        570,
+        570
+      ]
+    },
+    {
+      "id": "ledge_c",
+      "position": [
+        885,
+        550
+      ]
+    },
+    {
+      "id": "ledge_d",
+      "position": [
+        1200,
+        480
+      ]
+    },
+    {
+      "id": "rest",
+      "position": [
+        735,
+        610
+      ]
+    }
+  ],
+  "layout_profile": {
+    "road_signature": "cliff_contour_ledge_path",
+    "road_motif": "ledge_contour",
+    "composition_focal_point": [
+      0.5,
+      0.62
+    ],
+    "road_paths": [
+      {
+        "id": "contour_ledge",
+        "role": "cliff_ledge_path",
+        "style": "soft",
+        "points": [
+          "west",
+          "ledge_a",
+          "ledge_b",
+          "rest",
+          "ledge_c",
+          "ledge_d",
+          "east"
+        ],
+        "pixel_points": [
+          [
+            120,
+            540
+          ],
+          [
+            270,
+            530
+          ],
+          [
+            570,
+            570
+          ],
+          [
+            735,
+            610
+          ],
+          [
+            885,
+            550
+          ],
+          [
+            1200,
+            480
+          ],
+          [
+            1380,
+            470
+          ]
+        ],
+        "width_px": 43,
+        "width_factor": 0.029
+      },
+      {
+        "id": "south_view_spur",
+        "role": "view_rest_access",
+        "style": "soft",
+        "points": [
+          "south",
+          "rest"
+        ],
+        "pixel_points": [
+          [
+            810,
+            920
+          ],
+          [
+            735,
+            610
+          ]
+        ],
+        "width_px": 31,
+        "width_factor": 0.021
+      }
+    ],
+    "object_zones": [],
+    "seam_connectors": {
+      "north": [
+        660,
+        80
+      ],
+      "south": [
+        810,
+        920
+      ],
+      "east": [
+        1380,
+        470
+      ],
+      "west": [
+        120,
+        540
+      ]
+    }
+  },
+  "season_variant_mapping": {
+    "spring": "cliff_view_light_weather_overlay_spring.png",
+    "summer": "cliff_view_light_weather_overlay_summer.png",
+    "autumn": "cliff_view_light_weather_overlay_autumn.png",
+    "winter": "cliff_view_light_weather_overlay_winter.png"
+  },
+  "review_artifacts": {
+    "runtime_composite_preview": "production/assets/base_asset_pack/v001/03_contact_sheets/regions/cliff_view_runtime_composite_preview.png",
+    "runtime_layer_contact_sheet": "production/assets/base_asset_pack/v001/03_contact_sheets/regions/cliff_view_runtime_layer_contact_sheet.png"
+  }
+}

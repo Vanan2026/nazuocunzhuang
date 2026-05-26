@@ -1,0 +1,138 @@
+{
+  "contract_id": "mountain_hut_world2d_v001_layer_contract",
+  "region_id": "Region_MountainHut",
+  "node_id": "MountainHut",
+  "canvas": {
+    "width": 1800,
+    "height": 1200,
+    "origin": "top_left",
+    "export_rule": "full_canvas_shared_origin"
+  },
+  "source_image": {
+    "id": "mountain_hut_painted_source",
+    "path": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/mountain_hut_painted_source.png",
+    "alpha": "opaque",
+    "required_before_layer_export": true,
+    "current_file_status": "v004_codex_visual_accepted_for_semantic_layer_export",
+    "required_next_step": "Review v004 semantic layer export, then run Godot screenshot validation before runtime replacement.",
+    "human_visual_approval": false,
+    "layer_export_approved": false,
+    "quality_review_status": "needs_repaint_before_layer_export",
+    "quality_review_record": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_quality_review_v001.json",
+    "v002_repaint_brief": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/mountain_hut_repaint_v002_brief.md",
+    "v002_candidate": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v002/mountain_hut_painted_source_v002.png",
+    "v002_quality_review": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_quality_review_v002.json",
+    "v002_visual_review": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_visual_review_v002.json",
+    "v003_repaint_brief": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v003/mountain_hut_repaint_v003_brief.md",
+    "v003_reference_sheet": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/mountain_hut_v003_repaint_reference_sheet.png",
+    "v003_candidate": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v003/mountain_hut_painted_source_v003.png",
+    "v003_quality_review": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_quality_review_v003.json",
+    "v003_acceptance_record": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v003/source_acceptance_v003.json",
+    "v003_visual_review": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_visual_review_v003.json",
+    "v004_candidate": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v004/mountain_hut_painted_source_v004.png",
+    "v004_quality_review": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_quality_review_v004.json",
+    "v004_acceptance_record": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v004/source_acceptance_v004.json",
+    "v004_visual_review": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_visual_review_v004.json"
+  },
+  "global_rules": [
+    "All runtime layers derive from the accepted mountain_hut_painted_source.",
+    "Transparent layers keep the full 1800x1200 canvas.",
+    "No structural layer may be cropped, resized, rotated, or auto-trimmed.",
+    "Layer alignment target is registration-perfect, not pixel-perfect brush tracing.",
+    "Keep the Village west seam road compatible with the village_to_mountain_hut seam brief.",
+    "runtime replacement waits for source review, semantic layer review, and Godot screenshot validation."
+  ],
+  "layers": [
+    {
+      "id": "base_ground",
+      "file_name": "mountain_hut_base_ground.png",
+      "runtime_path": "res://assets/art/greenfield_p0/regions/mountain_hut/layers/mountain_hut_base_ground.png",
+      "production_path": "production/assets/regions/mountain_hut_world2d/v001/03_layer_export/layers/mountain_hut_base_ground.png",
+      "alpha": "opaque",
+      "z_index": -30,
+      "canvas": [
+        1800,
+        1200
+      ],
+      "content": "Complete v004 painted source used as the baked static scene base."
+    },
+    {
+      "id": "terrain_details",
+      "file_name": "mountain_hut_terrain_details.png",
+      "runtime_path": "res://assets/art/greenfield_p0/regions/mountain_hut/layers/mountain_hut_terrain_details.png",
+      "production_path": "production/assets/regions/mountain_hut_world2d/v001/03_layer_export/layers/mountain_hut_terrain_details.png",
+      "alpha": "transparent_full_canvas",
+      "z_index": -25,
+      "canvas": [
+        1800,
+        1200
+      ],
+      "content": "Empty runtime layer in this semantic pass; terrain detail remains baked into the base."
+    },
+    {
+      "id": "behind_player_structures",
+      "file_name": "mountain_hut_behind_player_structures.png",
+      "runtime_path": "res://assets/art/greenfield_p0/regions/mountain_hut/layers/mountain_hut_behind_player_structures.png",
+      "production_path": "production/assets/regions/mountain_hut_world2d/v001/03_layer_export/layers/mountain_hut_behind_player_structures.png",
+      "alpha": "transparent_full_canvas",
+      "z_index": -10,
+      "canvas": [
+        1800,
+        1200
+      ],
+      "content": "Empty runtime layer in this semantic pass; hut and distant vegetation remain baked into the base."
+    },
+    {
+      "id": "ysort_props_structures",
+      "file_name": "mountain_hut_ysort_props_structures.png",
+      "runtime_path": "res://assets/art/greenfield_p0/regions/mountain_hut/layers/mountain_hut_ysort_props_structures.png",
+      "production_path": "production/assets/regions/mountain_hut_world2d/v001/03_layer_export/layers/mountain_hut_ysort_props_structures.png",
+      "alpha": "transparent_full_canvas",
+      "z_index": 8,
+      "canvas": [
+        1800,
+        1200
+      ],
+      "content": "Empty runtime layer in this semantic pass; props remain baked until clean runtime Y-sort behavior is needed."
+    },
+    {
+      "id": "foreground_occlusion",
+      "file_name": "mountain_hut_foreground_occlusion.png",
+      "runtime_path": "res://assets/art/greenfield_p0/regions/mountain_hut/layers/mountain_hut_foreground_occlusion.png",
+      "production_path": "production/assets/regions/mountain_hut_world2d/v001/03_layer_export/layers/mountain_hut_foreground_occlusion.png",
+      "alpha": "transparent_full_canvas",
+      "z_index": 40,
+      "canvas": [
+        1800,
+        1200
+      ],
+      "content": "Only near-camera foliage/fence/log pixels that should visually cover the player."
+    }
+  ],
+  "deferred_layers": [
+    {
+      "id": "shadow_overlay",
+      "reason": "Use global/system-level lighting until seamless base continuity is stable."
+    },
+    {
+      "id": "light_weather_overlay_spring",
+      "reason": "Use global/system-level season/weather treatment until region seams are approved."
+    },
+    {
+      "id": "light_weather_overlay_summer",
+      "reason": "Use global/system-level season/weather treatment until region seams are approved."
+    },
+    {
+      "id": "light_weather_overlay_autumn",
+      "reason": "Use global/system-level season/weather treatment until region seams are approved."
+    },
+    {
+      "id": "light_weather_overlay_winter",
+      "reason": "Use global/system-level season/weather treatment until region seams are approved."
+    }
+  ],
+  "layer_export_status": "v004_semantic_layers_exported_pending_review",
+  "runtime_replacement": false,
+  "active_layer_manifest": "production/assets/regions/mountain_hut_world2d/v001/03_layer_export/layer_export_manifest.json",
+  "review_result": "semantic_rework_pending_review"
+}

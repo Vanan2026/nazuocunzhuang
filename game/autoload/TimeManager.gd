@@ -50,6 +50,30 @@ func get_date_info() -> Dictionary:
 	}
 
 
+func get_save_data() -> Dictionary:
+	return get_date_info()
+
+
+func apply_save_data(data: Dictionary) -> void:
+	if data.is_empty():
+		return
+	year = max(int(data.get("year", year)), 1)
+	var saved_season := String(data.get("season", ""))
+	if data.has("season_index"):
+		season_index = clamp(int(data.get("season_index", season_index)), 0, SEASONS.size() - 1)
+	elif saved_season in SEASONS:
+		season_index = SEASONS.find(saved_season)
+	day_of_season = clamp(int(data.get("day_of_season", data.get("day", day_of_season))), 1, DAYS_PER_SEASON)
+	day = day_of_season
+	total_day = max(int(data.get("total_day", total_day)), 1)
+	hour = clamp(int(data.get("hour", hour)), 0, 23)
+	minute = clamp(int(data.get("minute", minute)), 0, MINUTES_PER_HOUR - 1)
+	_update_time_block(false)
+	var info := get_date_info()
+	date_changed.emit(info)
+	time_changed.emit(info)
+
+
 func get_time_text() -> String:
 	return "%02d:%02d" % [hour, minute]
 

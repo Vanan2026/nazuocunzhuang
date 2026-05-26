@@ -1,0 +1,29 @@
+{
+  "candidate_id": "mountain_hut_painted_source_candidate_v003",
+  "status": "mountain_hut_v003_visual_review_rejected_needs_v004_repaint",
+  "candidate_type": "v003_full_canvas_storybook_source_candidate",
+  "source_image": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v003/mountain_hut_painted_source_v003.png",
+  "quality_review": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_quality_review_v003.json",
+  "review_contact_sheet": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/mountain_hut_v003_review_contact_sheet.png",
+  "human_visual_approval": false,
+  "layer_export_approved": false,
+  "runtime_replacement": false,
+  "launch_quality_approved": false,
+  "codex_visual_precheck": {
+    "status": "passed_v003_source_quality_precheck",
+    "not_human_visual_approval": true,
+    "notes": [
+      "single full-canvas painted source rule is preserved",
+      "registration-perfect layer alignment remains the target",
+      "source point [0, 667] west seam lock is preserved",
+      "runtime replacement and layer export remain blocked"
+    ]
+  },
+  "visual_review": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_visual_review_v003.json",
+  "codex_visual_review": {
+    "status": "needs_v004_repaint_before_layer_export",
+    "not_human_visual_approval": true,
+    "review_record": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_visual_review_v003.json",
+    "next_required_step": "produce_v004_full_canvas_candidate_without_vector_road_overlay"
+  }
+}

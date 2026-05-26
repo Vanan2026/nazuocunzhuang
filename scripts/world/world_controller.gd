@@ -14,6 +14,7 @@ const STARTING_REGION: String = "Region_HomeArea"
 @export var camera_look_ahead_offset: Vector2 = Vector2(0, -280)
 @export var back_farm_camera_offset: Vector2 = Vector2(0, 160)
 @export var camera_review_zoom: Vector2 = Vector2(0.68, 0.68)
+@export var home_area_camera_review_zoom: Vector2 = Vector2(0.9, 0.9)
 
 @export_group("Initial Regions")
 @export var initial_regions: Array[String] = ["Region_HomeArea"]
@@ -255,12 +256,12 @@ func _setup_camera() -> void:
 	camera.limit_smoothed = true
 	camera.position_smoothing_enabled = true
 	camera.position_smoothing_speed = 10.0
-	camera.zoom = camera_review_zoom
+	camera.zoom = get_current_camera_zoom()
 
 	if player != null:
-		camera.global_position = player.global_position + get_camera_target_offset()
+		camera.global_position = get_current_camera_target_position()
 	else:
-		camera.global_position = _get_spawn_position(STARTING_REGION, default_spawn_id) + get_camera_target_offset()
+		camera.global_position = get_camera_target_position_for_player(_get_spawn_position(STARTING_REGION, default_spawn_id))
 
 	add_child(camera)
 	camera.make_current()
@@ -275,12 +276,14 @@ func _setup_camera() -> void:
 
 func _process(delta: float) -> void:
 	if player != null and camera != null:
-		_update_camera()
+		_update_camera(delta)
 		_check_region_transition()
 
-func _update_camera() -> void:
-	var target_pos := player.global_position + get_camera_target_offset()
-	camera.global_position = camera.global_position.lerp(target_pos, 1.0 - exp(-6.0 * get_process_delta_time()))
+func _update_camera(delta: float) -> void:
+	var target_zoom := get_current_camera_zoom()
+	camera.zoom = camera.zoom.lerp(target_zoom, 1.0 - exp(-8.0 * delta))
+	var target_pos := get_current_camera_target_position()
+	camera.global_position = camera.global_position.lerp(target_pos, 1.0 - exp(-6.0 * delta))
 
 func get_camera_target_offset() -> Vector2:
 	return get_camera_target_offset_for_region(current_region_id)
@@ -289,6 +292,44 @@ func get_camera_target_offset_for_region(region_id: String) -> Vector2:
 	if region_id == "Region_BackFarm":
 		return back_farm_camera_offset
 	return camera_look_ahead_offset
+
+func get_current_camera_zoom() -> Vector2:
+	return get_camera_zoom_for_region(current_region_id)
+
+func get_camera_zoom_for_region(region_id: String) -> Vector2:
+	if region_id == "Region_HomeArea":
+		return home_area_camera_review_zoom
+	return camera_review_zoom
+
+func get_current_camera_target_position() -> Vector2:
+	if player == null:
+		return get_camera_target_position_for_player(_get_spawn_position(STARTING_REGION, default_spawn_id))
+	return get_camera_target_position_for_player(player.global_position)
+
+func get_camera_target_position_for_player(player_position: Vector2) -> Vector2:
+	var target_pos := player_position + get_camera_target_offset()
+	return _clamp_camera_position_to_region(target_pos, current_region_id)
+
+func _clamp_camera_position_to_region(target_pos: Vector2, region_id: String) -> Vector2:
+	if region_loader == null or region_id.is_empty() or not region_loader.regions.has(region_id):
+		return target_pos
+
+	var def: Dictionary = region_loader.regions[region_id]
+	var offset: Vector2 = def.get("world_offset", Vector2.ZERO)
+	var size: Vector2 = def.get("region_size", WORLD_SIZE)
+	var zoom := get_camera_zoom_for_region(region_id)
+	var viewport_size := get_viewport_rect().size
+	var visible_size := Vector2(viewport_size.x / max(zoom.x, 0.001), viewport_size.y / max(zoom.y, 0.001))
+	var half_size := visible_size * 0.5
+	var min_x := offset.x + half_size.x
+	var max_x := offset.x + size.x - half_size.x
+	var min_y := offset.y + half_size.y
+	var max_y := offset.y + size.y - half_size.y
+
+	var clamped := target_pos
+	clamped.x = offset.x + size.x * 0.5 if min_x > max_x else clampf(target_pos.x, min_x, max_x)
+	clamped.y = offset.y + size.y * 0.5 if min_y > max_y else clampf(target_pos.y, min_y, max_y)
+	return clamped
 
 func _check_region_transition() -> void:
 	if player == null:
@@ -301,6 +342,9 @@ func _check_region_transition() -> void:
 		var old_region = current_region_id
 		current_region_id = new_region_id
 		region_loader.set_current_region(new_region_id)
+		if camera != null:
+			camera.zoom = get_current_camera_zoom()
+			camera.global_position = get_current_camera_target_position()
 		emit_signal("region_changed", old_region, new_region_id)
 		print("[WorldController] region changed: ", old_region, " -> ", new_region_id)
 
@@ -351,7 +395,8 @@ func spawn_player_at(region_id: String, spawn_id: String = "") -> void:
 		player.global_position = pos
 
 	if camera != null:
-		camera.global_position = pos + get_camera_target_offset_for_region(region_id)
+		camera.zoom = get_camera_zoom_for_region(region_id)
+		camera.global_position = _clamp_camera_position_to_region(pos + get_camera_target_offset_for_region(region_id), region_id)
 
 	current_region_id = region_id
 	current_spawn_id = spawn_id

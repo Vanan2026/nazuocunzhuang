@@ -1,0 +1,214 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://game/entities/player/Player.tscn" id="1_player"]
+[ext_resource type="Script" path="res://game/autoload/DataRegistry.gd" id="2_data_registry"]
+[ext_resource type="Script" path="res://game/autoload/InventoryManager.gd" id="3_inventory_manager"]
+[ext_resource type="Script" path="res://game/autoload/GameState.gd" id="4_game_state"]
+[ext_resource type="PackedScene" path="res://game/scenes/ui/DialogueBox.tscn" id="5_dialogue_box"]
+[ext_resource type="Script" path="res://game/entities/interactable/SceneTravel.gd" id="6_scene_travel"]
+[ext_resource type="Script" path="res://game/entities/interactable/ResourcePickup.gd" id="7_resource_pickup"]
+[ext_resource type="Script" path="res://game/entities/interactable/FlagInteractable.gd" id="8_flag_interactable"]
+[ext_resource type="Script" path="res://game/autoload/TimeManager.gd" id="9_time_manager"]
+[ext_resource type="Script" path="res://game/autoload/WeatherManager.gd" id="10_weather_manager"]
+[ext_resource type="Script" path="res://game/autoload/RelationshipManager.gd" id="11_relationship_manager"]
+[ext_resource type="Script" path="res://game/autoload/DialogueManager.gd" id="12_dialogue_manager"]
+[ext_resource type="Script" path="res://game/autoload/RumorManager.gd" id="13_rumor_manager"]
+[ext_resource type="Script" path="res://game/systems/npc/NpcScheduleDirector.gd" id="14_schedule_director"]
+[ext_resource type="Script" path="res://game/systems/scene/SpawnPoint.gd" id="15_spawn_point"]
+[ext_resource type="PackedScene" path="res://game/entities/npc/NPC.tscn" id="16_npc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_interactable"]
+size = Vector2(44, 28)
+
+[node name="ForestEdge" type="Node2D"]
+
+[node name="WorldCamera" type="Camera2D" parent="."]
+position = Vector2(96, 72)
+enabled = true
+zoom = Vector2(3, 3)
+
+[node name="DataRegistry" type="Node" parent="."]
+script = ExtResource("2_data_registry")
+
+[node name="TimeManager" type="Node" parent="."]
+script = ExtResource("9_time_manager")
+
+[node name="WeatherManager" type="Node" parent="."]
+script = ExtResource("10_weather_manager")
+
+[node name="InventoryManager" type="Node" parent="."]
+script = ExtResource("3_inventory_manager")
+
+[node name="RelationshipManager" type="Node" parent="."]
+script = ExtResource("11_relationship_manager")
+
+[node name="DialogueManager" type="Node" parent="."]
+script = ExtResource("12_dialogue_manager")
+
+[node name="RumorManager" type="Node" parent="."]
+script = ExtResource("13_rumor_manager")
+
+[node name="GameState" type="Node" parent="."]
+script = ExtResource("4_game_state")
+
+[node name="DialogueBox" parent="." instance=ExtResource("5_dialogue_box")]
+
+[node name="WorldBackdrop" type="Polygon2D" parent="."]
+color = Color(0.3, 0.43, 0.31, 1)
+polygon = PackedVector2Array(-256, -128, 448, -128, 448, 320, -256, 320)
+
+[node name="Ground" type="Polygon2D" parent="."]
+color = Color(0.36, 0.5, 0.35, 1)
+polygon = PackedVector2Array(-192, -96, 384, -96, 384, 272, -192, 272)
+
+[node name="SoftPath" type="Polygon2D" parent="."]
+color = Color(0.58, 0.5, 0.34, 1)
+polygon = PackedVector2Array(-72, 120, 20, 96, 120, 96, 232, 126, 232, 164, 96, 144, -72, 160)
+
+[node name="ForestStructure" type="Node2D" parent="."]
+
+[node name="RoughEnvironmentSilhouettes" type="Node2D" parent="ForestStructure"]
+
+[node name="TreeLineBackShape" type="Polygon2D" parent="ForestStructure/RoughEnvironmentSilhouettes"]
+color = Color(0.18, 0.32, 0.22, 0.46)
+polygon = PackedVector2Array(-220, -112, 420, -112, 438, 26, 300, 12, 190, 30, 82, 14, -40, 28, -210, 8)
+
+[node name="LeafFloorPatchShape" type="Polygon2D" parent="ForestStructure/RoughEnvironmentSilhouettes"]
+color = Color(0.47, 0.42, 0.28, 0.4)
+polygon = PackedVector2Array(-120, 86, 250, 58, 300, 160, 116, 188, -116, 164)
+
+[node name="ShrineRootMassShape" type="Polygon2D" parent="ForestStructure/RoughEnvironmentSilhouettes"]
+color = Color(0.29, 0.22, 0.16, 0.58)
+polygon = PackedVector2Array(180, 54, 238, 56, 248, 118, 166, 128, 158, 88)
+
+[node name="ReturnTrailBrushShape" type="Polygon2D" parent="ForestStructure/RoughEnvironmentSilhouettes"]
+color = Color(0.26, 0.39, 0.25, 0.44)
+polygon = PackedVector2Array(-100, 112, 38, 106, 48, 178, -112, 188)
+
+[node name="ArrivalTrailZone" type="Polygon2D" parent="ForestStructure"]
+color = Color(0.47, 0.53, 0.36, 0.48)
+polygon = PackedVector2Array(-104, 102, 42, 96, 48, 176, -104, 184)
+
+[node name="QuietClearingZone" type="Polygon2D" parent="ForestStructure"]
+color = Color(0.42, 0.48, 0.34, 0.5)
+polygon = PackedVector2Array(166, 40, 246, 42, 254, 120, 164, 124)
+
+[node name="ResourceCacheZone" type="Polygon2D" parent="ForestStructure"]
+color = Color(0.45, 0.39, 0.29, 0.45)
+polygon = PackedVector2Array(58, 94, 180, 94, 186, 170, 58, 170)
+
+[node name="MikaMeetingZone" type="Polygon2D" parent="ForestStructure"]
+color = Color(0.38, 0.46, 0.38, 0.42)
+polygon = PackedVector2Array(104, 54, 176, 52, 184, 116, 104, 122)
+
+[node name="RoutePathNetwork" type="Node2D" parent="ForestStructure"]
+
+[node name="ArrivalReturnPath" type="Polygon2D" parent="ForestStructure/RoutePathNetwork"]
+color = Color(0.64, 0.55, 0.38, 0.72)
+polygon = PackedVector2Array(-74, 126, 10, 116, 26, 150, -60, 166)
+
+[node name="ShrineResourcePath" type="Polygon2D" parent="ForestStructure/RoutePathNetwork"]
+color = Color(0.62, 0.53, 0.36, 0.62)
+polygon = PackedVector2Array(-4, 110, 104, 96, 214, 70, 224, 104, 124, 132, 8, 152)
+
+[node name="MikaClearingPath" type="Polygon2D" parent="ForestStructure/RoutePathNetwork"]
+color = Color(0.58, 0.51, 0.37, 0.58)
+polygon = PackedVector2Array(96, 72, 212, 66, 220, 98, 110, 110)
+
+[node name="ShrineFocusMarker" type="Polygon2D" parent="ForestStructure"]
+color = Color(0.72, 0.61, 0.42, 0.82)
+polygon = PackedVector2Array(190, 66, 222, 66, 222, 98, 190, 98)
+
+[node name="ReturnFocusMarker" type="Polygon2D" parent="ForestStructure"]
+color = Color(0.72, 0.61, 0.42, 0.78)
+polygon = PackedVector2Array(-70, 130, -26, 130, -26, 158, -70, 158)
+
+[node name="BackToYard" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(-48, 144)
+script = ExtResource("6_scene_travel")
+interactable_id = "back_to_yard"
+display_name = "回院子的小路"
+interaction_hint = "按 E 回到院子"
+interaction_text = "沿着来时的小路回去。"
+target_scene = "res://game/scenes/world/PlayerYard.tscn"
+target_scene_id = "player_yard"
+target_spawn_id = "from_forest_edge"
+arrival_flag_id = "returned_from_forest_edge"
+
+[node name="BackToYardShape" type="CollisionShape2D" parent="BackToYard"]
+shape = SubResource("RectangleShape2D_interactable")
+
+[node name="BackToYardMarker" type="Polygon2D" parent="BackToYard"]
+color = Color(0.62, 0.52, 0.36, 1)
+polygon = PackedVector2Array(-22, -10, 22, -10, 22, 10, -22, 10)
+
+[node name="FallenBranchBundle" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(92, 116)
+script = ExtResource("7_resource_pickup")
+interactable_id = "fallen_branch_bundle"
+display_name = "落枝捆"
+interaction_hint = "按 E 收起落枝"
+interaction_text = "风吹落的枝条很干，适合带回去修东西。"
+item_id = "wood"
+count = 18
+pickup_id = "forest_edge_fallen_branch_bundle_day1"
+
+[node name="FallenBranchBundleShape" type="CollisionShape2D" parent="FallenBranchBundle"]
+shape = SubResource("RectangleShape2D_interactable")
+
+[node name="FallenBranchBundleMarker" type="Polygon2D" parent="FallenBranchBundle"]
+color = Color(0.41, 0.25, 0.14, 1)
+polygon = PackedVector2Array(-22, -9, 22, -9, 22, 9, -22, 9)
+
+[node name="FlatStoneCache" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(150, 144)
+script = ExtResource("7_resource_pickup")
+interactable_id = "flat_stone_cache"
+display_name = "平石堆"
+interaction_hint = "按 E 收起平石"
+interaction_text = "几块被水冲平的石头，可以拿来垫路牌。"
+item_id = "stone"
+count = 8
+pickup_id = "forest_edge_flat_stone_cache_day1"
+
+[node name="FlatStoneCacheShape" type="CollisionShape2D" parent="FlatStoneCache"]
+shape = SubResource("RectangleShape2D_interactable")
+
+[node name="FlatStoneCacheMarker" type="Polygon2D" parent="FlatStoneCache"]
+color = Color(0.46, 0.45, 0.39, 1)
+polygon = PackedVector2Array(-18, -10, 18, -10, 18, 10, -18, 10)
+
+[node name="QuietShrine" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(206, 82)
+script = ExtResource("8_flag_interactable")
+interactable_id = "quiet_shrine"
+display_name = "树根小龛"
+interaction_hint = "按 E 看看树根小龛"
+interaction_text = "小龛里没有供品，只有一枚被雨水洗亮的圆石。"
+flag_id = "visited_forest_edge"
+
+[node name="QuietShrineShape" type="CollisionShape2D" parent="QuietShrine"]
+shape = SubResource("RectangleShape2D_interactable")
+
+[node name="QuietShrineMarker" type="Polygon2D" parent="QuietShrine"]
+color = Color(0.5, 0.42, 0.36, 1)
+polygon = PackedVector2Array(-14, -14, 14, -14, 14, 14, -14, 14)
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(4, 132)
+
+[node name="SpawnFromYard" type="Marker2D" parent="."]
+position = Vector2(4, 132)
+script = ExtResource("15_spawn_point")
+spawn_id = "from_yard"
+
+[node name="NPCs" type="Node2D" parent="."]
+
+[node name="Mika" parent="NPCs" instance=ExtResource("16_npc")]
+position = Vector2(136, 88)
+npc_id = "mika"
+sprite_texture_path = "res://assets/art/characters/npc/npc_mika_idle_down_128.png"
+
+[node name="ScheduleDirector" type="Node" parent="."]
+script = ExtResource("14_schedule_director")
+scene_id = "forest_edge"

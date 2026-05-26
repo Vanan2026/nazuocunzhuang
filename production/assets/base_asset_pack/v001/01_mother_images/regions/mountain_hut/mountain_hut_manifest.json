@@ -1,0 +1,332 @@
+{
+  "region_id": "mountain_hut",
+  "display_name": "MountainHut",
+  "canvas_size": [
+    1500,
+    1050
+  ],
+  "status": "usable",
+  "launch_quality_approved": false,
+  "human_visual_approval_required": true,
+  "layout_mother": "production/assets/base_asset_pack/v001/01_mother_images/regions/mountain_hut/mountain_hut_layout_mother.png",
+  "painted_source": "production/assets/base_asset_pack/v001/01_mother_images/regions/mountain_hut/mountain_hut_painted_source.png",
+  "features": [
+    "hut",
+    "woodpile",
+    "herbs",
+    "pines"
+  ],
+  "layers": {
+    "base_ground": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/mountain_hut/layers/mountain_hut_base_ground.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/mountain_hut/layers/mountain_hut_base_ground.png",
+      "size": [
+        1500,
+        1050
+      ],
+      "mode": "RGBA"
+    },
+    "terrain_details": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/mountain_hut/layers/mountain_hut_terrain_details.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/mountain_hut/layers/mountain_hut_terrain_details.png",
+      "size": [
+        1500,
+        1050
+      ],
+      "mode": "RGBA"
+    },
+    "behind_player_structures": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/mountain_hut/layers/mountain_hut_behind_player_structures.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/mountain_hut/layers/mountain_hut_behind_player_structures.png",
+      "size": [
+        1500,
+        1050
+      ],
+      "mode": "RGBA"
+    },
+    "ysort_props_structures": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/mountain_hut/layers/mountain_hut_ysort_props_structures.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/mountain_hut/layers/mountain_hut_ysort_props_structures.png",
+      "size": [
+        1500,
+        1050
+      ],
+      "mode": "RGBA"
+    },
+    "foreground_occlusion": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/mountain_hut/layers/mountain_hut_foreground_occlusion.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/mountain_hut/layers/mountain_hut_foreground_occlusion.png",
+      "size": [
+        1500,
+        1050
+      ],
+      "mode": "RGBA"
+    },
+    "shadow_overlay": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/mountain_hut/layers/mountain_hut_shadow_overlay.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/mountain_hut/layers/mountain_hut_shadow_overlay.png",
+      "size": [
+        1500,
+        1050
+      ],
+      "mode": "RGBA"
+    },
+    "light_weather_overlays": [
+      {
+        "season": "spring",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/mountain_hut/layers/mountain_hut_light_weather_overlay_spring.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/mountain_hut/layers/mountain_hut_light_weather_overlay_spring.png",
+        "size": [
+          1500,
+          1050
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "summer",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/mountain_hut/layers/mountain_hut_light_weather_overlay_summer.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/mountain_hut/layers/mountain_hut_light_weather_overlay_summer.png",
+        "size": [
+          1500,
+          1050
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "autumn",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/mountain_hut/layers/mountain_hut_light_weather_overlay_autumn.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/mountain_hut/layers/mountain_hut_light_weather_overlay_autumn.png",
+        "size": [
+          1500,
+          1050
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "winter",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/mountain_hut/layers/mountain_hut_light_weather_overlay_winter.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/mountain_hut/layers/mountain_hut_light_weather_overlay_winter.png",
+        "size": [
+          1500,
+          1050
+        ],
+        "mode": "RGBA"
+      }
+    ]
+  },
+  "anchors": [
+    {
+      "id": "center",
+      "position": [
+        705,
+        598
+      ]
+    },
+    {
+      "id": "north",
+      "position": [
+        690,
+        84
+      ]
+    },
+    {
+      "id": "south",
+      "position": [
+        525,
+        966
+      ]
+    },
+    {
+      "id": "west",
+      "position": [
+        120,
+        598
+      ]
+    },
+    {
+      "id": "east",
+      "position": [
+        1380,
+        693
+      ]
+    },
+    {
+      "id": "nw",
+      "position": [
+        330,
+        283
+      ]
+    },
+    {
+      "id": "ne",
+      "position": [
+        1125,
+        262
+      ]
+    },
+    {
+      "id": "sw",
+      "position": [
+        375,
+        819
+      ]
+    },
+    {
+      "id": "se",
+      "position": [
+        1230,
+        798
+      ]
+    },
+    {
+      "id": "hut",
+      "position": [
+        690,
+        451
+      ]
+    },
+    {
+      "id": "porch",
+      "position": [
+        690,
+        609
+      ]
+    },
+    {
+      "id": "woodpile",
+      "position": [
+        990,
+        672
+      ]
+    },
+    {
+      "id": "herb_patch",
+      "position": [
+        510,
+        609
+      ]
+    }
+  ],
+  "layout_profile": {
+    "road_signature": "hut_curved_arrival_west_south",
+    "road_motif": "hut_arrival_path",
+    "composition_focal_point": [
+      0.46,
+      0.44
+    ],
+    "road_paths": [
+      {
+        "id": "hut_arrival_curve",
+        "role": "mountain_hut_access",
+        "style": "soft",
+        "points": [
+          "south",
+          "herb_patch",
+          "porch",
+          "hut"
+        ],
+        "pixel_points": [
+          [
+            525,
+            966
+          ],
+          [
+            510,
+            609
+          ],
+          [
+            690,
+            609
+          ],
+          [
+            690,
+            451
+          ]
+        ],
+        "width_px": 45,
+        "width_factor": 0.03
+      },
+      {
+        "id": "woodpile_side_path",
+        "role": "workyard_path",
+        "style": "soft",
+        "points": [
+          "west",
+          "porch",
+          "woodpile",
+          "east"
+        ],
+        "pixel_points": [
+          [
+            120,
+            598
+          ],
+          [
+            690,
+            609
+          ],
+          [
+            990,
+            672
+          ],
+          [
+            1380,
+            693
+          ]
+        ],
+        "width_px": 31,
+        "width_factor": 0.021
+      },
+      {
+        "id": "ridge_arrival_path",
+        "role": "ridge_link",
+        "style": "soft",
+        "points": [
+          "north",
+          "porch"
+        ],
+        "pixel_points": [
+          [
+            690,
+            84
+          ],
+          [
+            690,
+            609
+          ]
+        ],
+        "width_px": 26,
+        "width_factor": 0.018
+      }
+    ],
+    "object_zones": [],
+    "seam_connectors": {
+      "north": [
+        690,
+        84
+      ],
+      "south": [
+        525,
+        966
+      ],
+      "east": [
+        1380,
+        693
+      ],
+      "west": [
+        120,
+        598
+      ]
+    }
+  },
+  "season_variant_mapping": {
+    "spring": "mountain_hut_light_weather_overlay_spring.png",
+    "summer": "mountain_hut_light_weather_overlay_summer.png",
+    "autumn": "mountain_hut_light_weather_overlay_autumn.png",
+    "winter": "mountain_hut_light_weather_overlay_winter.png"
+  },
+  "review_artifacts": {
+    "runtime_composite_preview": "production/assets/base_asset_pack/v001/03_contact_sheets/regions/mountain_hut_runtime_composite_preview.png",
+    "runtime_layer_contact_sheet": "production/assets/base_asset_pack/v001/03_contact_sheets/regions/mountain_hut_runtime_layer_contact_sheet.png"
+  }
+}

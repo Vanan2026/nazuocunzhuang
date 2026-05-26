@@ -1,0 +1,31 @@
+{
+  "candidate_id": "village_painted_source_v002",
+  "status": "v002_accepted_for_semantic_layer_export_review",
+  "candidate_type": "inherited_world_base_storybook_source_candidate",
+  "source_image": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/village_painted_source_v002.png",
+  "inherits_from_world_base_crop": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/region_base_crops/village_base_no_foreground.png",
+  "old_source_policy": "quality_reference_only",
+  "quality_review": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/source_quality_review_v002.json",
+  "review_contact_sheet": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/village_v002_source_review_contact_sheet.png",
+  "handoff": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/village_inherited_repaint_handoff_v002.json",
+  "human_visual_approval": false,
+  "layer_export_approved": false,
+  "runtime_replacement": false,
+  "launch_quality_approved": false,
+  "visual_review": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/source_visual_review_v002.json",
+  "codex_visual_review": {
+    "status": "accepted_for_semantic_layer_export_review",
+    "review": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/source_visual_review_v002.json",
+    "not_human_visual_approval": true,
+    "v002_visual_accepted_for_layer_export_review": true,
+    "next_required_step": "export_v002_semantic_layers_from_exact_source"
+  },
+  "semantic_layer_export": {
+    "status": "v002_semantic_layers_exported_pending_review",
+    "manifest": "production/assets/regions/village_world2d/v001/03_layer_export/v002_inherited/layer_export_manifest_v002.json",
+    "review_preview": "production/assets/regions/village_world2d/v001/05_review_and_qa/village_v002_layer_export_review_preview.png",
+    "not_final_layer_approval": true,
+    "runtime_replacement": false,
+    "next_required_step": "review v002 semantic layers before Godot screenshot validation"
+  }
+}

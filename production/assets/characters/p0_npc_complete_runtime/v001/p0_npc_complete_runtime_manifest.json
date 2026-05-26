@@ -1,0 +1,1179 @@
+{
+  "package_id": "p0_npc_complete_runtime_v001",
+  "asset_type": "npc_complete_runtime_package",
+  "status": "usable",
+  "created_at": "2026-05-20 12:33:44",
+  "required_npc_ids": [
+    "aoi",
+    "gen",
+    "mika",
+    "hana"
+  ],
+  "required_idle_directions": [
+    "down",
+    "up",
+    "left",
+    "right"
+  ],
+  "required_walk_directions": [
+    "down",
+    "up",
+    "left",
+    "right"
+  ],
+  "required_portrait_expressions": [
+    "neutral",
+    "happy",
+    "thinking"
+  ],
+  "runtime_replacement": true,
+  "launch_quality_approved": false,
+  "human_visual_approval_required": true,
+  "runtime_dirs": [
+    "assets/art/characters/npc",
+    "assets/art/portraits"
+  ],
+  "runtime_exports": [
+    {
+      "npc_id": "aoi",
+      "kind": "idle",
+      "direction": "down",
+      "runtime_file": "assets/art/characters/npc/npc_aoi_idle_down_128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_aoi_idle_down_128.png",
+      "source": "existing_runtime_reused",
+      "size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 128,
+        "height": 128,
+        "transparent_pixels": 13001,
+        "opaque_pixels": 2460,
+        "alpha_bbox": [
+          44,
+          16,
+          83,
+          123
+        ]
+      }
+    },
+    {
+      "npc_id": "aoi",
+      "kind": "idle",
+      "direction": "up",
+      "runtime_file": "assets/art/characters/npc/npc_aoi_idle_up_128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_aoi_idle_up_128.png",
+      "source": "generated_directional_sprite",
+      "size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 128,
+        "height": 128,
+        "transparent_pixels": 11950,
+        "opaque_pixels": 3297,
+        "alpha_bbox": [
+          32,
+          20,
+          97,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "aoi",
+      "kind": "idle",
+      "direction": "left",
+      "runtime_file": "assets/art/characters/npc/npc_aoi_idle_left_128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_aoi_idle_left_128.png",
+      "source": "generated_directional_sprite",
+      "size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 128,
+        "height": 128,
+        "transparent_pixels": 11942,
+        "opaque_pixels": 3305,
+        "alpha_bbox": [
+          32,
+          20,
+          97,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "aoi",
+      "kind": "idle",
+      "direction": "right",
+      "runtime_file": "assets/art/characters/npc/npc_aoi_idle_right_128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_aoi_idle_right_128.png",
+      "source": "generated_directional_sprite",
+      "size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 128,
+        "height": 128,
+        "transparent_pixels": 11942,
+        "opaque_pixels": 3305,
+        "alpha_bbox": [
+          32,
+          20,
+          97,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "aoi",
+      "kind": "walk",
+      "direction": "down",
+      "runtime_file": "assets/art/characters/npc/npc_aoi_walk_down_4x128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_aoi_walk_down_4x128.png",
+      "source": "generated_4_frame_walk_sheet",
+      "size_px": [
+        512,
+        128
+      ],
+      "frame_count": 4,
+      "frame_size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 128,
+        "transparent_pixels": 47830,
+        "opaque_pixels": 13156,
+        "alpha_bbox": [
+          32,
+          20,
+          481,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "aoi",
+      "kind": "walk",
+      "direction": "up",
+      "runtime_file": "assets/art/characters/npc/npc_aoi_walk_up_4x128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_aoi_walk_up_4x128.png",
+      "source": "generated_4_frame_walk_sheet",
+      "size_px": [
+        512,
+        128
+      ],
+      "frame_count": 4,
+      "frame_size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 128,
+        "transparent_pixels": 47830,
+        "opaque_pixels": 13156,
+        "alpha_bbox": [
+          32,
+          20,
+          481,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "aoi",
+      "kind": "walk",
+      "direction": "left",
+      "runtime_file": "assets/art/characters/npc/npc_aoi_walk_left_4x128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_aoi_walk_left_4x128.png",
+      "source": "generated_4_frame_walk_sheet",
+      "size_px": [
+        512,
+        128
+      ],
+      "frame_count": 4,
+      "frame_size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 128,
+        "transparent_pixels": 47798,
+        "opaque_pixels": 13188,
+        "alpha_bbox": [
+          32,
+          20,
+          481,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "aoi",
+      "kind": "walk",
+      "direction": "right",
+      "runtime_file": "assets/art/characters/npc/npc_aoi_walk_right_4x128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_aoi_walk_right_4x128.png",
+      "source": "generated_4_frame_walk_sheet",
+      "size_px": [
+        512,
+        128
+      ],
+      "frame_count": 4,
+      "frame_size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 128,
+        "transparent_pixels": 47798,
+        "opaque_pixels": 13188,
+        "alpha_bbox": [
+          32,
+          20,
+          481,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "aoi",
+      "kind": "portrait",
+      "expression": "neutral",
+      "runtime_file": "assets/art/portraits/npc_aoi_portrait_neutral_512.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_aoi_portrait_neutral_512.png",
+      "source": "existing_runtime_reused",
+      "size_px": [
+        512,
+        512
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 512,
+        "transparent_pixels": 143601,
+        "opaque_pixels": 112887,
+        "alpha_bbox": [
+          88,
+          10,
+          423,
+          501
+        ]
+      }
+    },
+    {
+      "npc_id": "aoi",
+      "kind": "portrait",
+      "expression": "happy",
+      "runtime_file": "assets/art/portraits/npc_aoi_portrait_happy_512.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_aoi_portrait_happy_512.png",
+      "source": "copied_from_final_art_phase2",
+      "size_px": [
+        512,
+        512
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 512,
+        "transparent_pixels": 142504,
+        "opaque_pixels": 113783,
+        "alpha_bbox": [
+          86,
+          10,
+          425,
+          501
+        ]
+      }
+    },
+    {
+      "npc_id": "aoi",
+      "kind": "portrait",
+      "expression": "thinking",
+      "runtime_file": "assets/art/portraits/npc_aoi_portrait_thinking_512.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_aoi_portrait_thinking_512.png",
+      "source": "copied_from_final_art_phase2",
+      "size_px": [
+        512,
+        512
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 512,
+        "transparent_pixels": 136430,
+        "opaque_pixels": 119838,
+        "alpha_bbox": [
+          83,
+          10,
+          429,
+          501
+        ]
+      }
+    },
+    {
+      "npc_id": "gen",
+      "kind": "idle",
+      "direction": "down",
+      "runtime_file": "assets/art/characters/npc/npc_gen_idle_down_128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_gen_idle_down_128.png",
+      "source": "existing_runtime_reused",
+      "size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 128,
+        "height": 128,
+        "transparent_pixels": 12532,
+        "opaque_pixels": 2889,
+        "alpha_bbox": [
+          40,
+          16,
+          87,
+          123
+        ]
+      }
+    },
+    {
+      "npc_id": "gen",
+      "kind": "idle",
+      "direction": "up",
+      "runtime_file": "assets/art/characters/npc/npc_gen_idle_up_128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_gen_idle_up_128.png",
+      "source": "generated_directional_sprite",
+      "size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 128,
+        "height": 128,
+        "transparent_pixels": 12006,
+        "opaque_pixels": 3241,
+        "alpha_bbox": [
+          32,
+          20,
+          98,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "gen",
+      "kind": "idle",
+      "direction": "left",
+      "runtime_file": "assets/art/characters/npc/npc_gen_idle_left_128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_gen_idle_left_128.png",
+      "source": "generated_directional_sprite",
+      "size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 128,
+        "height": 128,
+        "transparent_pixels": 11998,
+        "opaque_pixels": 3249,
+        "alpha_bbox": [
+          32,
+          20,
+          98,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "gen",
+      "kind": "idle",
+      "direction": "right",
+      "runtime_file": "assets/art/characters/npc/npc_gen_idle_right_128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_gen_idle_right_128.png",
+      "source": "generated_directional_sprite",
+      "size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 128,
+        "height": 128,
+        "transparent_pixels": 11998,
+        "opaque_pixels": 3249,
+        "alpha_bbox": [
+          32,
+          20,
+          98,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "gen",
+      "kind": "walk",
+      "direction": "down",
+      "runtime_file": "assets/art/characters/npc/npc_gen_walk_down_4x128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_gen_walk_down_4x128.png",
+      "source": "generated_4_frame_walk_sheet",
+      "size_px": [
+        512,
+        128
+      ],
+      "frame_count": 4,
+      "frame_size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 128,
+        "transparent_pixels": 47970,
+        "opaque_pixels": 13016,
+        "alpha_bbox": [
+          32,
+          20,
+          482,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "gen",
+      "kind": "walk",
+      "direction": "up",
+      "runtime_file": "assets/art/characters/npc/npc_gen_walk_up_4x128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_gen_walk_up_4x128.png",
+      "source": "generated_4_frame_walk_sheet",
+      "size_px": [
+        512,
+        128
+      ],
+      "frame_count": 4,
+      "frame_size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 128,
+        "transparent_pixels": 47970,
+        "opaque_pixels": 13016,
+        "alpha_bbox": [
+          32,
+          20,
+          482,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "gen",
+      "kind": "walk",
+      "direction": "left",
+      "runtime_file": "assets/art/characters/npc/npc_gen_walk_left_4x128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_gen_walk_left_4x128.png",
+      "source": "generated_4_frame_walk_sheet",
+      "size_px": [
+        512,
+        128
+      ],
+      "frame_count": 4,
+      "frame_size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 128,
+        "transparent_pixels": 47938,
+        "opaque_pixels": 13048,
+        "alpha_bbox": [
+          32,
+          20,
+          482,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "gen",
+      "kind": "walk",
+      "direction": "right",
+      "runtime_file": "assets/art/characters/npc/npc_gen_walk_right_4x128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_gen_walk_right_4x128.png",
+      "source": "generated_4_frame_walk_sheet",
+      "size_px": [
+        512,
+        128
+      ],
+      "frame_count": 4,
+      "frame_size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 128,
+        "transparent_pixels": 47938,
+        "opaque_pixels": 13048,
+        "alpha_bbox": [
+          32,
+          20,
+          482,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "gen",
+      "kind": "portrait",
+      "expression": "neutral",
+      "runtime_file": "assets/art/portraits/npc_gen_portrait_neutral_512.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_gen_portrait_neutral_512.png",
+      "source": "existing_runtime_reused",
+      "size_px": [
+        512,
+        512
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 512,
+        "transparent_pixels": 130990,
+        "opaque_pixels": 127018,
+        "alpha_bbox": [
+          66,
+          10,
+          445,
+          501
+        ]
+      }
+    },
+    {
+      "npc_id": "gen",
+      "kind": "portrait",
+      "expression": "happy",
+      "runtime_file": "assets/art/portraits/npc_gen_portrait_happy_512.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_gen_portrait_happy_512.png",
+      "source": "copied_from_final_art_phase2",
+      "size_px": [
+        512,
+        512
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 512,
+        "transparent_pixels": 124434,
+        "opaque_pixels": 133219,
+        "alpha_bbox": [
+          49,
+          10,
+          462,
+          501
+        ]
+      }
+    },
+    {
+      "npc_id": "gen",
+      "kind": "portrait",
+      "expression": "thinking",
+      "runtime_file": "assets/art/portraits/npc_gen_portrait_thinking_512.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_gen_portrait_thinking_512.png",
+      "source": "copied_from_final_art_phase2",
+      "size_px": [
+        512,
+        512
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 512,
+        "transparent_pixels": 118339,
+        "opaque_pixels": 139242,
+        "alpha_bbox": [
+          39,
+          11,
+          473,
+          501
+        ]
+      }
+    },
+    {
+      "npc_id": "mika",
+      "kind": "idle",
+      "direction": "down",
+      "runtime_file": "assets/art/characters/npc/npc_mika_idle_down_128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_mika_idle_down_128.png",
+      "source": "existing_runtime_reused",
+      "size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 128,
+        "height": 128,
+        "transparent_pixels": 12181,
+        "opaque_pixels": 3159,
+        "alpha_bbox": [
+          37,
+          16,
+          91,
+          123
+        ]
+      }
+    },
+    {
+      "npc_id": "mika",
+      "kind": "idle",
+      "direction": "up",
+      "runtime_file": "assets/art/characters/npc/npc_mika_idle_up_128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_mika_idle_up_128.png",
+      "source": "generated_directional_sprite",
+      "size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 128,
+        "height": 128,
+        "transparent_pixels": 11866,
+        "opaque_pixels": 3381,
+        "alpha_bbox": [
+          32,
+          20,
+          97,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "mika",
+      "kind": "idle",
+      "direction": "left",
+      "runtime_file": "assets/art/characters/npc/npc_mika_idle_left_128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_mika_idle_left_128.png",
+      "source": "generated_directional_sprite",
+      "size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 128,
+        "height": 128,
+        "transparent_pixels": 11858,
+        "opaque_pixels": 3389,
+        "alpha_bbox": [
+          32,
+          20,
+          97,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "mika",
+      "kind": "idle",
+      "direction": "right",
+      "runtime_file": "assets/art/characters/npc/npc_mika_idle_right_128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_mika_idle_right_128.png",
+      "source": "generated_directional_sprite",
+      "size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 128,
+        "height": 128,
+        "transparent_pixels": 11858,
+        "opaque_pixels": 3389,
+        "alpha_bbox": [
+          32,
+          20,
+          97,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "mika",
+      "kind": "walk",
+      "direction": "down",
+      "runtime_file": "assets/art/characters/npc/npc_mika_walk_down_4x128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_mika_walk_down_4x128.png",
+      "source": "generated_4_frame_walk_sheet",
+      "size_px": [
+        512,
+        128
+      ],
+      "frame_count": 4,
+      "frame_size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 128,
+        "transparent_pixels": 47524,
+        "opaque_pixels": 13462,
+        "alpha_bbox": [
+          32,
+          20,
+          481,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "mika",
+      "kind": "walk",
+      "direction": "up",
+      "runtime_file": "assets/art/characters/npc/npc_mika_walk_up_4x128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_mika_walk_up_4x128.png",
+      "source": "generated_4_frame_walk_sheet",
+      "size_px": [
+        512,
+        128
+      ],
+      "frame_count": 4,
+      "frame_size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 128,
+        "transparent_pixels": 47524,
+        "opaque_pixels": 13462,
+        "alpha_bbox": [
+          32,
+          20,
+          481,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "mika",
+      "kind": "walk",
+      "direction": "left",
+      "runtime_file": "assets/art/characters/npc/npc_mika_walk_left_4x128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_mika_walk_left_4x128.png",
+      "source": "generated_4_frame_walk_sheet",
+      "size_px": [
+        512,
+        128
+      ],
+      "frame_count": 4,
+      "frame_size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 128,
+        "transparent_pixels": 47492,
+        "opaque_pixels": 13494,
+        "alpha_bbox": [
+          32,
+          20,
+          481,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "mika",
+      "kind": "walk",
+      "direction": "right",
+      "runtime_file": "assets/art/characters/npc/npc_mika_walk_right_4x128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_mika_walk_right_4x128.png",
+      "source": "generated_4_frame_walk_sheet",
+      "size_px": [
+        512,
+        128
+      ],
+      "frame_count": 4,
+      "frame_size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 128,
+        "transparent_pixels": 47492,
+        "opaque_pixels": 13494,
+        "alpha_bbox": [
+          32,
+          20,
+          481,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "mika",
+      "kind": "portrait",
+      "expression": "neutral",
+      "runtime_file": "assets/art/portraits/npc_mika_portrait_neutral_512.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_mika_portrait_neutral_512.png",
+      "source": "existing_runtime_reused",
+      "size_px": [
+        512,
+        512
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 512,
+        "transparent_pixels": 126036,
+        "opaque_pixels": 130831,
+        "alpha_bbox": [
+          71,
+          10,
+          441,
+          501
+        ]
+      }
+    },
+    {
+      "npc_id": "mika",
+      "kind": "portrait",
+      "expression": "happy",
+      "runtime_file": "assets/art/portraits/npc_mika_portrait_happy_512.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_mika_portrait_happy_512.png",
+      "source": "copied_from_final_art_phase2",
+      "size_px": [
+        512,
+        512
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 512,
+        "transparent_pixels": 121849,
+        "opaque_pixels": 134879,
+        "alpha_bbox": [
+          61,
+          10,
+          450,
+          501
+        ]
+      }
+    },
+    {
+      "npc_id": "mika",
+      "kind": "portrait",
+      "expression": "thinking",
+      "runtime_file": "assets/art/portraits/npc_mika_portrait_thinking_512.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_mika_portrait_thinking_512.png",
+      "source": "copied_from_final_art_phase2",
+      "size_px": [
+        512,
+        512
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 512,
+        "transparent_pixels": 120971,
+        "opaque_pixels": 136120,
+        "alpha_bbox": [
+          60,
+          10,
+          451,
+          501
+        ]
+      }
+    },
+    {
+      "npc_id": "hana",
+      "kind": "idle",
+      "direction": "down",
+      "runtime_file": "assets/art/characters/npc/npc_hana_idle_down_128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_hana_idle_down_128.png",
+      "source": "generated_directional_sprite",
+      "size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 128,
+        "height": 128,
+        "transparent_pixels": 11956,
+        "opaque_pixels": 3291,
+        "alpha_bbox": [
+          32,
+          13,
+          97,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "hana",
+      "kind": "idle",
+      "direction": "up",
+      "runtime_file": "assets/art/characters/npc/npc_hana_idle_up_128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_hana_idle_up_128.png",
+      "source": "generated_directional_sprite",
+      "size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 128,
+        "height": 128,
+        "transparent_pixels": 11956,
+        "opaque_pixels": 3291,
+        "alpha_bbox": [
+          32,
+          13,
+          97,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "hana",
+      "kind": "idle",
+      "direction": "left",
+      "runtime_file": "assets/art/characters/npc/npc_hana_idle_left_128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_hana_idle_left_128.png",
+      "source": "generated_directional_sprite",
+      "size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 128,
+        "height": 128,
+        "transparent_pixels": 11948,
+        "opaque_pixels": 3299,
+        "alpha_bbox": [
+          32,
+          13,
+          97,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "hana",
+      "kind": "idle",
+      "direction": "right",
+      "runtime_file": "assets/art/characters/npc/npc_hana_idle_right_128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_hana_idle_right_128.png",
+      "source": "generated_directional_sprite",
+      "size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 128,
+        "height": 128,
+        "transparent_pixels": 11953,
+        "opaque_pixels": 3294,
+        "alpha_bbox": [
+          32,
+          13,
+          97,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "hana",
+      "kind": "walk",
+      "direction": "down",
+      "runtime_file": "assets/art/characters/npc/npc_hana_walk_down_4x128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_hana_walk_down_4x128.png",
+      "source": "generated_4_frame_walk_sheet",
+      "size_px": [
+        512,
+        128
+      ],
+      "frame_count": 4,
+      "frame_size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 128,
+        "transparent_pixels": 47792,
+        "opaque_pixels": 13194,
+        "alpha_bbox": [
+          32,
+          13,
+          481,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "hana",
+      "kind": "walk",
+      "direction": "up",
+      "runtime_file": "assets/art/characters/npc/npc_hana_walk_up_4x128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_hana_walk_up_4x128.png",
+      "source": "generated_4_frame_walk_sheet",
+      "size_px": [
+        512,
+        128
+      ],
+      "frame_count": 4,
+      "frame_size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 128,
+        "transparent_pixels": 47792,
+        "opaque_pixels": 13194,
+        "alpha_bbox": [
+          32,
+          13,
+          481,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "hana",
+      "kind": "walk",
+      "direction": "left",
+      "runtime_file": "assets/art/characters/npc/npc_hana_walk_left_4x128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_hana_walk_left_4x128.png",
+      "source": "generated_4_frame_walk_sheet",
+      "size_px": [
+        512,
+        128
+      ],
+      "frame_count": 4,
+      "frame_size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 128,
+        "transparent_pixels": 47760,
+        "opaque_pixels": 13226,
+        "alpha_bbox": [
+          32,
+          13,
+          481,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "hana",
+      "kind": "walk",
+      "direction": "right",
+      "runtime_file": "assets/art/characters/npc/npc_hana_walk_right_4x128.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_hana_walk_right_4x128.png",
+      "source": "generated_4_frame_walk_sheet",
+      "size_px": [
+        512,
+        128
+      ],
+      "frame_count": 4,
+      "frame_size_px": [
+        128,
+        128
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 128,
+        "transparent_pixels": 47780,
+        "opaque_pixels": 13206,
+        "alpha_bbox": [
+          32,
+          13,
+          481,
+          128
+        ]
+      }
+    },
+    {
+      "npc_id": "hana",
+      "kind": "portrait",
+      "expression": "neutral",
+      "runtime_file": "assets/art/portraits/npc_hana_portrait_neutral_512.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_hana_portrait_neutral_512.png",
+      "source": "generated_portrait",
+      "size_px": [
+        512,
+        512
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 512,
+        "transparent_pixels": 140309,
+        "opaque_pixels": 65559,
+        "alpha_bbox": [
+          66,
+          56,
+          447,
+          465
+        ]
+      }
+    },
+    {
+      "npc_id": "hana",
+      "kind": "portrait",
+      "expression": "happy",
+      "runtime_file": "assets/art/portraits/npc_hana_portrait_happy_512.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_hana_portrait_happy_512.png",
+      "source": "generated_portrait",
+      "size_px": [
+        512,
+        512
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 512,
+        "transparent_pixels": 140309,
+        "opaque_pixels": 65559,
+        "alpha_bbox": [
+          66,
+          56,
+          447,
+          465
+        ]
+      }
+    },
+    {
+      "npc_id": "hana",
+      "kind": "portrait",
+      "expression": "thinking",
+      "runtime_file": "assets/art/portraits/npc_hana_portrait_thinking_512.png",
+      "package_file": "production/assets/characters/p0_npc_complete_runtime/v001/runtime_exports/npc_hana_portrait_thinking_512.png",
+      "source": "generated_portrait",
+      "size_px": [
+        512,
+        512
+      ],
+      "alpha_check": {
+        "width": 512,
+        "height": 512,
+        "transparent_pixels": 140309,
+        "opaque_pixels": 65559,
+        "alpha_bbox": [
+          66,
+          56,
+          447,
+          465
+        ]
+      }
+    }
+  ],
+  "validation": [
+    "tools/validate_complete_p0_asset_package.py",
+    "tools/audit_art_asset_inventory.py",
+    "tools/validate_art_asset_pipeline.py"
+  ]
+}

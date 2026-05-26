@@ -1,0 +1,266 @@
+[gd_scene format=3]
+
+[node name="PlayerYardLayerBlueprintReview" type="Node2D"]
+metadata/source_scene = "res://game/scenes/world/PlayerYard.tscn"
+metadata/blueprint_json_path = "res://production/layout_blueprints/player_yard_layer_blueprint.json"
+metadata/scene_id = "player_yard"
+metadata/coordinate_space = "godot_scene_units"
+metadata/export_rule = "full_canvas_shared_origin"
+metadata/canvas_rect = "-72,32,488,288"
+metadata/review_scene_role = "layout_blueprint_inspection"
+metadata/launch_quality_approved = false
+metadata/human_visual_approval_required = true
+
+[node name="ReviewCamera" type="Camera2D" parent="."]
+position = Vector2(201.28, 176)
+zoom = Vector2(1.55, 1.55)
+enabled = true
+
+[node name="CanvasContract" type="Polygon2D" parent="."]
+color = Color(0.10, 0.10, 0.10, 0.08)
+polygon = PackedVector2Array(-72, 32, 416, 32, 416, 320, -72, 320)
+metadata/export_rule = "full_canvas_shared_origin"
+metadata/source = "canvas_rect"
+
+[node name="LayerLegend" type="Node2D" parent="."]
+
+[node name="Layer_SceneMother" type="Polygon2D" parent="LayerLegend"]
+color = Color(0.18, 0.18, 0.18, 0.16)
+polygon = PackedVector2Array(436, 52, 450, 52, 450, 62, 436, 62)
+metadata/layer_id = "scene_mother"
+metadata/role = "full composition reference"
+metadata/export = "opaque full canvas"
+
+[node name="Layer_Base" type="Polygon2D" parent="LayerLegend"]
+color = Color(0.46, 0.64, 0.38, 0.46)
+polygon = PackedVector2Array(436, 70, 450, 70, 450, 80, 436, 80)
+metadata/layer_id = "base"
+metadata/role = "ground, paths, garden soil, staging ground"
+metadata/export = "transparent full canvas"
+
+[node name="Layer_ForegroundOcclusion" type="Polygon2D" parent="LayerLegend"]
+color = Color(0.84, 0.56, 0.27, 0.54)
+polygon = PackedVector2Array(436, 88, 450, 88, 450, 98, 436, 98)
+metadata/layer_id = "foreground_occlusion"
+metadata/role = "props that can visually sit in front of characters"
+metadata/export = "transparent full canvas"
+
+[node name="Layer_InteractionHotspots" type="Polygon2D" parent="LayerLegend"]
+color = Color(0.22, 0.54, 0.72, 0.42)
+polygon = PackedVector2Array(436, 106, 450, 106, 450, 116, 436, 116)
+metadata/layer_id = "interaction_hotspots"
+metadata/role = "walkable destination and interaction debug overlay"
+metadata/export = "transparent full canvas"
+
+[node name="Layer_NpcStandingPoints" type="Polygon2D" parent="LayerLegend"]
+color = Color(0.20, 0.24, 0.34, 0.92)
+polygon = PackedVector2Array(436, 124, 450, 124, 450, 134, 436, 134)
+metadata/layer_id = "npc_standing_points"
+metadata/role = "schedule-driven NPC anchor overlay"
+metadata/export = "transparent full canvas"
+
+[node name="ObjectZones" type="Node2D" parent="."]
+
+[node name="Zone_HomeMailbox" type="Polygon2D" parent="ObjectZones"]
+color = Color(0.84, 0.56, 0.27, 0.54)
+polygon = PackedVector2Array(32, 42, 68, 42, 68, 78, 32, 78)
+metadata/object_id = "home_mailbox"
+metadata/layer = "foreground_occlusion"
+metadata/source_node = "Mailbox"
+
+[node name="Zone_NoticeBoard" type="Polygon2D" parent="ObjectZones"]
+color = Color(0.84, 0.56, 0.27, 0.54)
+polygon = PackedVector2Array(96, 42, 152, 42, 152, 76, 96, 76)
+metadata/object_id = "notice_board"
+metadata/layer = "foreground_occlusion"
+metadata/source_node = "BulletinBoard"
+
+[node name="Zone_FarmGarden" type="Polygon2D" parent="ObjectZones"]
+color = Color(0.46, 0.64, 0.38, 0.46)
+polygon = PackedVector2Array(20, 150, 158, 150, 158, 242, 20, 242)
+metadata/object_id = "farm_garden"
+metadata/layer = "base"
+metadata/source_node = "FarmPlots"
+
+[node name="Zone_RepairWell" type="Polygon2D" parent="ObjectZones"]
+color = Color(0.84, 0.56, 0.27, 0.54)
+polygon = PackedVector2Array(226, 136, 284, 136, 284, 194, 226, 194)
+metadata/object_id = "repair_well"
+metadata/layer = "foreground_occlusion"
+metadata/source_node = "OldWell"
+
+[node name="Zone_RepairBench" type="Polygon2D" parent="ObjectZones"]
+color = Color(0.84, 0.56, 0.27, 0.54)
+polygon = PackedVector2Array(198, 204, 256, 204, 256, 232, 198, 232)
+metadata/object_id = "repair_bench"
+metadata/layer = "foreground_occlusion"
+metadata/source_node = "GardenBenchRepair"
+
+[node name="Zone_VillageSign" type="Polygon2D" parent="ObjectZones"]
+color = Color(0.84, 0.56, 0.27, 0.54)
+polygon = PackedVector2Array(270, 90, 304, 90, 304, 128, 270, 128)
+metadata/object_id = "village_sign"
+metadata/layer = "foreground_occlusion"
+metadata/source_node = "VillageSignRepair"
+
+[node name="Zone_ForestGate" type="Polygon2D" parent="ObjectZones"]
+color = Color(0.22, 0.54, 0.72, 0.42)
+polygon = PackedVector2Array(312, 116, 356, 116, 356, 154, 312, 154)
+metadata/object_id = "forest_gate"
+metadata/layer = "interaction_hotspots"
+metadata/source_node = "ForestTrailGate"
+
+[node name="Zone_ResourceStaging" type="Polygon2D" parent="ObjectZones"]
+color = Color(0.46, 0.64, 0.38, 0.46)
+polygon = PackedVector2Array(-64, 150, 34, 150, 34, 242, -64, 242)
+metadata/object_id = "resource_staging"
+metadata/layer = "base"
+metadata/source_node = "WoodPile, StonePile"
+
+[node name="NPCStandingPoints" type="Node2D" parent="."]
+
+[node name="Npc_AoiLateMorning00" type="Polygon2D" parent="NPCStandingPoints"]
+color = Color(0.20, 0.24, 0.34, 0.92)
+polygon = PackedVector2Array(116, 80, 122, 86, 116, 92, 110, 86)
+metadata/npc_id = "aoi"
+metadata/schedule_id = "shopkeeper_basic"
+metadata/time_block = "late_morning"
+metadata/activity_anchor = "notice_board_front_left"
+
+[node name="Anchor_AoiLateMorning00" type="Marker2D" parent="NPCStandingPoints"]
+position = Vector2(116, 86)
+metadata/npc_id = "aoi"
+metadata/time_block = "late_morning"
+metadata/anchor_type = "standing_point_center"
+
+[node name="Npc_AoiAfternoon01" type="Polygon2D" parent="NPCStandingPoints"]
+color = Color(0.20, 0.24, 0.34, 0.92)
+polygon = PackedVector2Array(208, 190, 214, 196, 208, 202, 202, 196)
+metadata/npc_id = "aoi"
+metadata/schedule_id = "shopkeeper_basic"
+metadata/time_block = "afternoon"
+metadata/activity_anchor = "farm_garden_north_east"
+
+[node name="Anchor_AoiAfternoon01" type="Marker2D" parent="NPCStandingPoints"]
+position = Vector2(208, 196)
+metadata/npc_id = "aoi"
+metadata/time_block = "afternoon"
+metadata/anchor_type = "standing_point_center"
+
+[node name="Npc_AoiEvening02" type="Polygon2D" parent="NPCStandingPoints"]
+color = Color(0.20, 0.24, 0.34, 0.92)
+polygon = PackedVector2Array(48, 90, 54, 96, 48, 102, 42, 96)
+metadata/npc_id = "aoi"
+metadata/schedule_id = "shopkeeper_basic"
+metadata/time_block = "evening"
+metadata/activity_anchor = "mailbox_path_exit"
+
+[node name="Anchor_AoiEvening02" type="Marker2D" parent="NPCStandingPoints"]
+position = Vector2(48, 96)
+metadata/npc_id = "aoi"
+metadata/time_block = "evening"
+metadata/anchor_type = "standing_point_center"
+
+[node name="Npc_GenLateMorning03" type="Polygon2D" parent="NPCStandingPoints"]
+color = Color(0.20, 0.24, 0.34, 0.92)
+polygon = PackedVector2Array(174, 218, 180, 224, 174, 230, 168, 224)
+metadata/npc_id = "gen"
+metadata/schedule_id = "carpenter_basic"
+metadata/time_block = "late_morning"
+metadata/activity_anchor = "repair_bench_work_left"
+
+[node name="Anchor_GenLateMorning03" type="Marker2D" parent="NPCStandingPoints"]
+position = Vector2(174, 224)
+metadata/npc_id = "gen"
+metadata/time_block = "late_morning"
+metadata/anchor_type = "standing_point_center"
+
+[node name="Npc_GenEvening04" type="Polygon2D" parent="NPCStandingPoints"]
+color = Color(0.20, 0.24, 0.34, 0.92)
+polygon = PackedVector2Array(212, 110, 218, 116, 212, 122, 206, 116)
+metadata/npc_id = "gen"
+metadata/schedule_id = "carpenter_basic"
+metadata/time_block = "evening"
+metadata/activity_anchor = "repair_yard_tool_path"
+
+[node name="Anchor_GenEvening04" type="Marker2D" parent="NPCStandingPoints"]
+position = Vector2(212, 116)
+metadata/npc_id = "gen"
+metadata/time_block = "evening"
+metadata/anchor_type = "standing_point_center"
+
+[node name="Npc_MikaLateMorning05" type="Polygon2D" parent="NPCStandingPoints"]
+color = Color(0.20, 0.24, 0.34, 0.92)
+polygon = PackedVector2Array(188, 78, 194, 84, 188, 90, 182, 84)
+metadata/npc_id = "mika"
+metadata/schedule_id = "post_runner_basic"
+metadata/time_block = "late_morning"
+metadata/activity_anchor = "notice_board_front_right"
+
+[node name="Anchor_MikaLateMorning05" type="Marker2D" parent="NPCStandingPoints"]
+position = Vector2(188, 84)
+metadata/npc_id = "mika"
+metadata/time_block = "late_morning"
+metadata/anchor_type = "standing_point_center"
+
+[node name="Npc_HanaMorning06" type="Polygon2D" parent="NPCStandingPoints"]
+color = Color(0.20, 0.24, 0.34, 0.92)
+polygon = PackedVector2Array(170, 218, 176, 224, 170, 230, 164, 224)
+metadata/npc_id = "hana"
+metadata/schedule_id = "elder_basic"
+metadata/time_block = "morning"
+metadata/activity_anchor = "sunny_path_bench_left"
+
+[node name="Anchor_HanaMorning06" type="Marker2D" parent="NPCStandingPoints"]
+position = Vector2(170, 224)
+metadata/npc_id = "hana"
+metadata/time_block = "morning"
+metadata/anchor_type = "standing_point_center"
+
+[node name="Npc_HanaLateMorning07" type="Polygon2D" parent="NPCStandingPoints"]
+color = Color(0.20, 0.24, 0.34, 0.92)
+polygon = PackedVector2Array(150, 140, 156, 146, 150, 152, 144, 146)
+metadata/npc_id = "hana"
+metadata/schedule_id = "elder_basic"
+metadata/time_block = "late_morning"
+metadata/activity_anchor = "yard_center_clear_north_edge"
+
+[node name="Anchor_HanaLateMorning07" type="Marker2D" parent="NPCStandingPoints"]
+position = Vector2(150, 146)
+metadata/npc_id = "hana"
+metadata/time_block = "late_morning"
+metadata/anchor_type = "standing_point_center"
+
+[node name="Npc_HanaAfternoon08" type="Polygon2D" parent="NPCStandingPoints"]
+color = Color(0.20, 0.24, 0.34, 0.92)
+polygon = PackedVector2Array(150, 140, 156, 146, 150, 152, 144, 146)
+metadata/npc_id = "hana"
+metadata/schedule_id = "elder_basic"
+metadata/time_block = "afternoon"
+metadata/activity_anchor = "yard_center_clear_north_edge"
+
+[node name="Anchor_HanaAfternoon08" type="Marker2D" parent="NPCStandingPoints"]
+position = Vector2(150, 146)
+metadata/npc_id = "hana"
+metadata/time_block = "afternoon"
+metadata/anchor_type = "standing_point_center"
+
+[node name="Npc_HanaEvening09" type="Polygon2D" parent="NPCStandingPoints"]
+color = Color(0.20, 0.24, 0.34, 0.92)
+polygon = PackedVector2Array(126, 112, 132, 118, 126, 124, 120, 118)
+metadata/npc_id = "hana"
+metadata/schedule_id = "elder_basic"
+metadata/time_block = "evening"
+metadata/activity_anchor = "notice_path_clear"
+
+[node name="Anchor_HanaEvening09" type="Marker2D" parent="NPCStandingPoints"]
+position = Vector2(126, 118)
+metadata/npc_id = "hana"
+metadata/time_block = "evening"
+metadata/anchor_type = "standing_point_center"
+
+[node name="ReviewNotes" type="Node" parent="."]
+metadata/source_rule = "generated_from_player_yard_layer_blueprint_json"
+metadata/layer_registration = "full_canvas_shared_origin"
+metadata/production_scope = "scene_mother_base_foreground_occlusion_blueprint_review"
+metadata/not_final_art = true

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://game/entities/npc/NPC.gd" id="1_npc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_npc"]
-size = Vector2(30, 44)
+size = Vector2(22, 32)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_npc"]
 size = Vector2(64, 96)
@@ -13,16 +13,18 @@ script = ExtResource("1_npc")
 interaction_hint = "按 E 交谈"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -24)
+position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_npc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -48)
+position = Vector2(0, -22)
+scale = Vector2(0.45, 0.45)
 texture = SubResource("PlaceholderTexture2D_npc")
 
 [node name="NameLabel" type="Label" parent="."]
+visible = false
 offset_left = -32.0
-offset_top = -108.0
+offset_top = -72.0
 offset_right = 32.0
-offset_bottom = -84.0
+offset_bottom = -52.0
 horizontal_alignment = 1

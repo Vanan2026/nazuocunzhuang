@@ -1,0 +1,356 @@
+{
+  "region_id": "pond",
+  "display_name": "Pond",
+  "canvas_size": [
+    1600,
+    1100
+  ],
+  "status": "usable",
+  "launch_quality_approved": false,
+  "human_visual_approval_required": true,
+  "layout_mother": "production/assets/base_asset_pack/v001/01_mother_images/regions/pond/pond_layout_mother.png",
+  "painted_source": "production/assets/base_asset_pack/v001/01_mother_images/regions/pond/pond_painted_source.png",
+  "features": [
+    "pond",
+    "dock",
+    "reeds",
+    "rest_spot"
+  ],
+  "layers": {
+    "base_ground": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/pond/layers/pond_base_ground.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/pond/layers/pond_base_ground.png",
+      "size": [
+        1600,
+        1100
+      ],
+      "mode": "RGBA"
+    },
+    "terrain_details": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/pond/layers/pond_terrain_details.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/pond/layers/pond_terrain_details.png",
+      "size": [
+        1600,
+        1100
+      ],
+      "mode": "RGBA"
+    },
+    "behind_player_structures": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/pond/layers/pond_behind_player_structures.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/pond/layers/pond_behind_player_structures.png",
+      "size": [
+        1600,
+        1100
+      ],
+      "mode": "RGBA"
+    },
+    "ysort_props_structures": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/pond/layers/pond_ysort_props_structures.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/pond/layers/pond_ysort_props_structures.png",
+      "size": [
+        1600,
+        1100
+      ],
+      "mode": "RGBA"
+    },
+    "foreground_occlusion": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/pond/layers/pond_foreground_occlusion.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/pond/layers/pond_foreground_occlusion.png",
+      "size": [
+        1600,
+        1100
+      ],
+      "mode": "RGBA"
+    },
+    "shadow_overlay": {
+      "runtime_path": "res://assets/art/greenfield_p0/regions/pond/layers/pond_shadow_overlay.png",
+      "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/pond/layers/pond_shadow_overlay.png",
+      "size": [
+        1600,
+        1100
+      ],
+      "mode": "RGBA"
+    },
+    "light_weather_overlays": [
+      {
+        "season": "spring",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/pond/layers/pond_light_weather_overlay_spring.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/pond/layers/pond_light_weather_overlay_spring.png",
+        "size": [
+          1600,
+          1100
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "summer",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/pond/layers/pond_light_weather_overlay_summer.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/pond/layers/pond_light_weather_overlay_summer.png",
+        "size": [
+          1600,
+          1100
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "autumn",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/pond/layers/pond_light_weather_overlay_autumn.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/pond/layers/pond_light_weather_overlay_autumn.png",
+        "size": [
+          1600,
+          1100
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "season": "winter",
+        "runtime_path": "res://assets/art/greenfield_p0/regions/pond/layers/pond_light_weather_overlay_winter.png",
+        "production_path": "production/assets/base_asset_pack/v001/02_runtime_exports/regions/pond/layers/pond_light_weather_overlay_winter.png",
+        "size": [
+          1600,
+          1100
+        ],
+        "mode": "RGBA"
+      }
+    ]
+  },
+  "anchors": [
+    {
+      "id": "center",
+      "position": [
+        800,
+        627
+      ]
+    },
+    {
+      "id": "north",
+      "position": [
+        816,
+        88
+      ]
+    },
+    {
+      "id": "south",
+      "position": [
+        576,
+        1012
+      ]
+    },
+    {
+      "id": "west",
+      "position": [
+        128,
+        715
+      ]
+    },
+    {
+      "id": "east",
+      "position": [
+        1472,
+        495
+      ]
+    },
+    {
+      "id": "nw",
+      "position": [
+        320,
+        308
+      ]
+    },
+    {
+      "id": "ne",
+      "position": [
+        1248,
+        264
+      ]
+    },
+    {
+      "id": "sw",
+      "position": [
+        352,
+        858
+      ]
+    },
+    {
+      "id": "se",
+      "position": [
+        1216,
+        792
+      ]
+    },
+    {
+      "id": "dock",
+      "position": [
+        927,
+        748
+      ]
+    },
+    {
+      "id": "bank_a",
+      "position": [
+        320,
+        770
+      ]
+    },
+    {
+      "id": "bank_b",
+      "position": [
+        512,
+        836
+      ]
+    },
+    {
+      "id": "bank_c",
+      "position": [
+        864,
+        825
+      ]
+    },
+    {
+      "id": "bank_d",
+      "position": [
+        1168,
+        671
+      ]
+    },
+    {
+      "id": "rest",
+      "position": [
+        400,
+        858
+      ]
+    }
+  ],
+  "layout_profile": {
+    "road_signature": "pond_crescent_bank_path",
+    "road_motif": "water_edge_crescent",
+    "composition_focal_point": [
+      0.45,
+      0.49
+    ],
+    "road_paths": [
+      {
+        "id": "lower_bank_crescent",
+        "role": "pond_bank_path",
+        "style": "soft",
+        "points": [
+          "west",
+          "bank_a",
+          "bank_b",
+          "bank_c",
+          "dock",
+          "bank_d",
+          "east"
+        ],
+        "pixel_points": [
+          [
+            128,
+            715
+          ],
+          [
+            320,
+            770
+          ],
+          [
+            512,
+            836
+          ],
+          [
+            864,
+            825
+          ],
+          [
+            927,
+            748
+          ],
+          [
+            1168,
+            671
+          ],
+          [
+            1472,
+            495
+          ]
+        ],
+        "width_px": 44,
+        "width_factor": 0.028
+      },
+      {
+        "id": "south_rest_spur",
+        "role": "rest_access",
+        "style": "soft",
+        "points": [
+          "south",
+          "rest",
+          "bank_b"
+        ],
+        "pixel_points": [
+          [
+            576,
+            1012
+          ],
+          [
+            400,
+            858
+          ],
+          [
+            512,
+            836
+          ]
+        ],
+        "width_px": 35,
+        "width_factor": 0.022
+      },
+      {
+        "id": "north_bank_arrival",
+        "role": "pond_arrival_path",
+        "style": "soft",
+        "points": [
+          "north",
+          "bank_d"
+        ],
+        "pixel_points": [
+          [
+            816,
+            88
+          ],
+          [
+            1168,
+            671
+          ]
+        ],
+        "width_px": 28,
+        "width_factor": 0.018
+      }
+    ],
+    "object_zones": [],
+    "seam_connectors": {
+      "north": [
+        816,
+        88
+      ],
+      "south": [
+        576,
+        1012
+      ],
+      "east": [
+        1472,
+        495
+      ],
+      "west": [
+        128,
+        715
+      ]
+    }
+  },
+  "season_variant_mapping": {
+    "spring": "pond_light_weather_overlay_spring.png",
+    "summer": "pond_light_weather_overlay_summer.png",
+    "autumn": "pond_light_weather_overlay_autumn.png",
+    "winter": "pond_light_weather_overlay_winter.png"
+  },
+  "review_artifacts": {
+    "runtime_composite_preview": "production/assets/base_asset_pack/v001/03_contact_sheets/regions/pond_runtime_composite_preview.png",
+    "runtime_layer_contact_sheet": "production/assets/base_asset_pack/v001/03_contact_sheets/regions/pond_runtime_layer_contact_sheet.png"
+  }
+}

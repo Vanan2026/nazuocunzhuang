@@ -1,0 +1,193 @@
+{
+  "package_id": "village_world2d_v001",
+  "region_id": "Region_Village",
+  "node_id": "VillagePlaza",
+  "status": "v002_semantic_layers_exported_pending_review",
+  "created_at": "2026-05-23 22:38",
+  "current_phase": "03_layer_export_v002_semantic_review",
+  "launch_quality_approved": false,
+  "human_visual_approval_required": true,
+  "runtime_replacement": false,
+  "active_runtime_scene": "res://game/scenes/world/OutdoorWorld.tscn",
+  "active_runtime_source": "game/scenes/world/OutdoorWorld.gd::_add_village_authored_slice",
+  "reference_request": "production/assets/external_gpt_handoff/greenfield_p0/v001/batch_02_scene_02_village_request.md",
+  "parent_world_art_package": "production/assets/outdoor_world_world2d/v001/workflow_manifest.json",
+  "canvas": {
+    "width": 1800,
+    "height": 1200,
+    "coordinate_origin": "top_left_canvas",
+    "godot_runtime_scale": 0.18,
+    "runtime_approx_size": [
+      324,
+      216
+    ],
+    "export_rule": "full_canvas_shared_origin"
+  },
+  "art_node": {
+    "reason": "Village has the current social-hub gameplay slice, route feedback, Aoi schedule proof, and normal-input validation.",
+    "core_elements": [
+      "VillageNotice",
+      "SeedStallProxy",
+      "OldMapleClue",
+      "VillageReturnPath",
+      "AoiVillageStandLateMorning",
+      "BenchRestProp",
+      "village road junction"
+    ],
+    "exploration_policy": "Show environmental hints only; do not bake hidden-objective explanations into the art."
+  },
+  "source_policy": {
+    "registration_target": "registration-perfect layer alignment, not pixel-perfect brush tracing",
+    "single_painted_source": true,
+    "runtime_layers_derive_from_painted_source": true,
+    "transparent_layers_full_canvas": true,
+    "no_cropped_structural_layers": true,
+    "one_scene_composition": true
+  },
+  "source_candidate": {
+    "candidate_id": "village_layout_structure_draft_v001",
+    "status": "layout_structure_draft_pending_seamless_master_review",
+    "candidate_type": "layout_structure_draft",
+    "not_final_painted_source": true,
+    "do_not_split_layers_from_this_image": true,
+    "source_image": "production/assets/regions/village_world2d/v001/02_source_generation/layout_structure_drafts/village_layout_structure_draft_v001.png",
+    "review_overlay": "production/assets/regions/village_world2d/v001/05_review_and_qa/village_painted_source_review_overlay_v001.png",
+    "acceptance_record": "production/assets/regions/village_world2d/v001/02_source_generation/layout_structure_drafts/village_layout_structure_draft_v001_acceptance.json",
+    "human_visual_approval": false,
+    "layer_export_approved": false,
+    "runtime_replacement": false
+  },
+  "true_painted_source_candidate": {
+    "candidate_id": "village_true_painted_source_candidate_v001",
+    "status": "accepted_for_layer_export",
+    "candidate_type": "true_storybook_painted_source_candidate",
+    "image": "production/assets/regions/village_world2d/v001/02_source_generation/true_source_candidates/village_true_painted_source_candidate_v001.png",
+    "original_image": "production/assets/regions/village_world2d/v001/02_source_generation/true_source_candidates/village_true_painted_source_candidate_v001_original.png",
+    "metadata": "production/assets/regions/village_world2d/v001/02_source_generation/true_source_candidates/village_true_painted_source_candidate_v001.json",
+    "prompt_file": "production/assets/regions/village_world2d/v001/02_source_generation/true_source_candidates/village_true_painted_source_candidate_v001_prompt.md",
+    "generated_from": [
+      "production/assets/outdoor_world_world2d/v001/workflow_manifest.json",
+      "production/assets/regions/village_world2d/v001/01_layout_lock/layout_lock.json",
+      "production/assets/regions/village_world2d/v001/02_source_generation/village_painted_source.png"
+    ],
+    "human_visual_approval": true,
+    "layer_export_approved": true,
+    "runtime_replacement": false,
+    "launch_quality_approved": false,
+    "review_policy": "Candidate is saved for human visual review only; do not split layers or replace runtime art until explicitly accepted.",
+    "canonical_source_image": "production/assets/regions/village_world2d/v001/02_source_generation/village_painted_source.png"
+  },
+  "deferred_nodes": [
+    {
+      "id": "PlayerYard_HomeArea",
+      "reason": "Already has a separate active art-production chain."
+    },
+    {
+      "id": "BackFarm",
+      "reason": "Needs stronger player verb and has prior visual-quality risk."
+    },
+    {
+      "id": "Pond",
+      "reason": "Needs a daily activity loop before formal scene art."
+    },
+    {
+      "id": "MountainPath",
+      "reason": "Needs an exploration escalation loop before formal scene art."
+    },
+    {
+      "id": "P0_NPC_single_assets",
+      "reason": "Runtime NPC package exists; next step is visual review, not a new node."
+    }
+  ],
+  "phase_status": {
+    "01_layout_lock": "ready_for_static_validation",
+    "02_source_generation": "accepted_for_layer_export",
+    "03_layer_export": "semantic_rework_exported_pending_review",
+    "04_godot_integration": "blocked_until_semantic_layer_review_and_godot_screenshot",
+    "05_review_and_qa": "review_gate_ready",
+    "02_source_generation_v002_inherited": "v002_inherited_crop_candidate_ready_for_visual_review",
+    "03_layer_export_v002": "v002_semantic_layers_exported_pending_review",
+    "04_godot_integration_v002": "blocked_until_v002_semantic_layer_review_and_godot_screenshot",
+    "02_source_visual_review_v002": "accepted_for_semantic_layer_export_review"
+  },
+  "validation": {
+    "static_validator": "tools/validate_village_world2d_art_prep.py",
+    "source_candidate_validator": "tools/validate_village_painted_source_candidate.py",
+    "true_source_candidate_validator": "tools/validate_village_true_painted_source_candidate.py",
+    "existing_static_gates": [
+      "tools/validate_village_authored_slice.py",
+      "tools/validate_village_normal_input_route_review.py"
+    ],
+    "existing_runtime_gates": [
+      "tools/validate_village_authored_slice.gd",
+      "tools/capture_village_normal_input_route.gd -- --check-only"
+    ],
+    "layer_export_validator": "tools/validate_village_layer_export.py",
+    "inherited_crop_repaint_handoff_validator": "tools/validate_village_inherited_crop_repaint_handoff.py",
+    "v002_inherited_source_validator": "tools/validate_village_v002_inherited_source_candidate.py",
+    "v002_visual_review_validator": "tools/validate_village_v002_visual_review.py",
+    "v002_layer_export_validator": "tools/validate_village_v002_layer_export.py"
+  },
+  "accepted_source": {
+    "candidate_id": "village_true_painted_source_candidate_v001",
+    "image": "production/assets/regions/village_world2d/v001/02_source_generation/village_painted_source.png",
+    "acceptance_record": "production/assets/regions/village_world2d/v001/02_source_generation/source_acceptance.json",
+    "human_visual_approval": true,
+    "layer_export_approved": true,
+    "runtime_replacement": false,
+    "launch_quality_approved": false
+  },
+  "active_layer_export": {
+    "manifest": "production/assets/regions/village_world2d/v001/03_layer_export/layer_export_manifest.json",
+    "layer_count": 5,
+    "status": "semantic_rework_exported_pending_review",
+    "runtime_replacement": false,
+    "human_layer_review": false,
+    "review_result": "semantic_rework_pending_review"
+  },
+  "inherited_world_base_repaint_handoff": {
+    "handoff_id": "village_inherited_world_base_repaint_v002",
+    "status": "handoff_ready_for_artist_repaint_not_source_accepted",
+    "manifest": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/village_inherited_repaint_handoff_v002.json",
+    "brief": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/village_inherited_repaint_brief_v002.md",
+    "reference_sheet": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/village_inherited_repaint_reference_sheet_v002.png",
+    "inherits_from_world_base_crop": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/region_base_crops/village_base_no_foreground.png",
+    "old_source_policy": "quality_reference_only",
+    "runtime_replacement": false,
+    "launch_quality_approved": false,
+    "human_visual_approval": false,
+    "layer_export_approved": false
+  },
+  "v002_inherited_source_candidate": {
+    "candidate_id": "village_painted_source_v002",
+    "status": "v002_inherited_crop_candidate_ready_for_visual_review",
+    "image": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/village_painted_source_v002.png",
+    "acceptance_record": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/source_acceptance_v002.json",
+    "quality_review": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/source_quality_review_v002.json",
+    "review_contact_sheet": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/village_v002_source_review_contact_sheet.png",
+    "inherits_from_world_base_crop": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/region_base_crops/village_base_no_foreground.png",
+    "old_source_policy": "quality_reference_only",
+    "human_visual_approval": false,
+    "layer_export_approved": false,
+    "runtime_replacement": false,
+    "launch_quality_approved": false
+  },
+  "next_art_step": "review v002 semantic layers before any runtime replacement.",
+  "v002_visual_review": {
+    "status": "accepted_for_semantic_layer_export_review",
+    "review": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/source_visual_review_v002.json",
+    "source_image": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/village_painted_source_v002.png",
+    "human_visual_approval": false,
+    "layer_export_approved": false,
+    "runtime_replacement": false,
+    "launch_quality_approved": false
+  },
+  "v002_layer_export": {
+    "manifest": "production/assets/regions/village_world2d/v001/03_layer_export/v002_inherited/layer_export_manifest_v002.json",
+    "layer_count": 5,
+    "status": "v002_semantic_layers_exported_pending_review",
+    "runtime_replacement": false,
+    "human_layer_review": false,
+    "review_result": "semantic_rework_pending_review"
+  }
+}

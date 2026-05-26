@@ -1,0 +1,105 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Texture2D" path="res://production/assets/base_asset_pack/v001/01_mother_images/regions/home_area/home_area_painted_source.png" id="tex_home_area"]
+[ext_resource type="Texture2D" path="res://production/assets/base_asset_pack/v001/01_mother_images/regions/village/village_painted_source.png" id="tex_village"]
+[ext_resource type="Texture2D" path="res://production/assets/base_asset_pack/v001/01_mother_images/regions/back_farm/back_farm_painted_source.png" id="tex_back_farm"]
+[ext_resource type="Texture2D" path="res://production/assets/base_asset_pack/v001/01_mother_images/regions/forest_edge/forest_edge_painted_source.png" id="tex_forest_edge"]
+[ext_resource type="Texture2D" path="res://production/assets/base_asset_pack/v001/01_mother_images/regions/orchard/orchard_painted_source.png" id="tex_orchard"]
+[ext_resource type="Texture2D" path="res://production/assets/base_asset_pack/v001/01_mother_images/regions/pond/pond_painted_source.png" id="tex_pond"]
+[ext_resource type="Texture2D" path="res://production/assets/base_asset_pack/v001/01_mother_images/regions/mountain_path/mountain_path_painted_source.png" id="tex_mountain_path"]
+[ext_resource type="Texture2D" path="res://production/assets/base_asset_pack/v001/01_mother_images/regions/mountain_hut/mountain_hut_painted_source.png" id="tex_mountain_hut"]
+[ext_resource type="Texture2D" path="res://production/assets/base_asset_pack/v001/01_mother_images/regions/mountain/mountain_painted_source.png" id="tex_mountain"]
+[ext_resource type="Texture2D" path="res://production/assets/base_asset_pack/v001/01_mother_images/regions/cliff_view/cliff_view_painted_source.png" id="tex_cliff_view"]
+
+[node name="GreenfieldP0RegionReviewAll" type="Node2D"]
+metadata/package_id = "greenfield_p0_base_asset_pack_v001"
+metadata/status = "usable"
+metadata/launch_quality_approved = false
+metadata/human_visual_approval_required = true
+
+[node name="ReviewCamera" type="Camera2D" parent="."]
+position = Vector2(1550, 460)
+zoom = Vector2(0.45, 0.45)
+enabled = true
+
+[node name="RegionPreviews" type="Node2D" parent="."]
+
+[node name="home_area" type="Node2D" parent="RegionPreviews"]
+position = Vector2(300, 320)
+metadata/region_id = "home_area"
+
+[node name="PaintedSource" type="Sprite2D" parent="RegionPreviews/home_area"]
+scale = Vector2(0.140, 0.140)
+texture = ExtResource("tex_home_area")
+
+[node name="village" type="Node2D" parent="RegionPreviews"]
+position = Vector2(820, 320)
+metadata/region_id = "village"
+
+[node name="PaintedSource" type="Sprite2D" parent="RegionPreviews/village"]
+scale = Vector2(0.140, 0.140)
+texture = ExtResource("tex_village")
+
+[node name="back_farm" type="Node2D" parent="RegionPreviews"]
+position = Vector2(1340, 320)
+metadata/region_id = "back_farm"
+
+[node name="PaintedSource" type="Sprite2D" parent="RegionPreviews/back_farm"]
+scale = Vector2(0.140, 0.140)
+texture = ExtResource("tex_back_farm")
+
+[node name="forest_edge" type="Node2D" parent="RegionPreviews"]
+position = Vector2(1860, 320)
+metadata/region_id = "forest_edge"
+
+[node name="PaintedSource" type="Sprite2D" parent="RegionPreviews/forest_edge"]
+scale = Vector2(0.140, 0.140)
+texture = ExtResource("tex_forest_edge")
+
+[node name="orchard" type="Node2D" parent="RegionPreviews"]
+position = Vector2(2380, 320)
+metadata/region_id = "orchard"
+
+[node name="PaintedSource" type="Sprite2D" parent="RegionPreviews/orchard"]
+scale = Vector2(0.140, 0.140)
+texture = ExtResource("tex_orchard")
+
+[node name="pond" type="Node2D" parent="RegionPreviews"]
+position = Vector2(300, 680)
+metadata/region_id = "pond"
+
+[node name="PaintedSource" type="Sprite2D" parent="RegionPreviews/pond"]
+scale = Vector2(0.140, 0.140)
+texture = ExtResource("tex_pond")
+
+[node name="mountain_path" type="Node2D" parent="RegionPreviews"]
+position = Vector2(820, 680)
+metadata/region_id = "mountain_path"
+
+[node name="PaintedSource" type="Sprite2D" parent="RegionPreviews/mountain_path"]
+scale = Vector2(0.140, 0.140)
+texture = ExtResource("tex_mountain_path")
+
+[node name="mountain_hut" type="Node2D" parent="RegionPreviews"]
+position = Vector2(1340, 680)
+metadata/region_id = "mountain_hut"
+
+[node name="PaintedSource" type="Sprite2D" parent="RegionPreviews/mountain_hut"]
+scale = Vector2(0.140, 0.140)
+texture = ExtResource("tex_mountain_hut")
+
+[node name="mountain" type="Node2D" parent="RegionPreviews"]
+position = Vector2(1860, 680)
+metadata/region_id = "mountain"
+
+[node name="PaintedSource" type="Sprite2D" parent="RegionPreviews/mountain"]
+scale = Vector2(0.140, 0.140)
+texture = ExtResource("tex_mountain")
+
+[node name="cliff_view" type="Node2D" parent="RegionPreviews"]
+position = Vector2(2380, 680)
+metadata/region_id = "cliff_view"
+
+[node name="PaintedSource" type="Sprite2D" parent="RegionPreviews/cliff_view"]
+scale = Vector2(0.140, 0.140)
+texture = ExtResource("tex_cliff_view")

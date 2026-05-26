@@ -24,6 +24,22 @@
     ],
     "promotion_rule": "A scene may be wired as a structural placeholder, but launch_quality_approved must remain false until human visual review passes."
   },
+  "seamless_outdoor_world": {
+    "status": "world_base_no_foreground_ready_for_region_crop_review",
+    "active_runtime_scene": "res://game/scenes/world/OutdoorWorld.tscn",
+    "active_runtime_source": "game/scenes/world/OutdoorWorld.gd",
+    "active_package": "production/assets/outdoor_world_world2d/v001/workflow_manifest.json",
+    "layout_lock": "production/assets/outdoor_world_world2d/v001/01_world_layout/outdoor_world_layout_lock.json",
+    "chunk_contract": "production/assets/outdoor_world_world2d/v001/03_region_contracts/region_chunk_contract.json",
+    "runtime_replacement": false,
+    "launch_quality_approved": false,
+    "human_visual_approval_required": true,
+    "next_art_step": "Review the whole-world no-foreground base and inherited region crops before any high-quality region repaint or runtime replacement.",
+    "phase": "02_world_base_no_foreground",
+    "world_base_no_foreground": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/outdoor_world_base_no_foreground.png",
+    "world_base_manifest": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/world_base_manifest.json",
+    "region_base_crops_dir": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/region_base_crops"
+  },
   "current_runtime_regions": [
     {
       "region_id": "Region_HomeArea",
@@ -52,10 +68,20 @@
       "region_id": "Region_Village",
       "scene": "scenes/regions/region_village.tscn",
       "priority": "P1",
-      "phase": "graybox_scene_needs_source_package",
+      "phase": "v002_semantic_layers_exported_pending_review",
       "required_package_dir": "production/assets/regions/village_world2d/v001",
+      "active_package": "production/assets/regions/village_world2d/v001/workflow_manifest.json",
       "launch_quality_approved": false,
-      "next_art_step": "Create layout lock, source prompt pack, and coordinate-stable base/foreground layers after HomeArea capture is stable."
+      "human_visual_approval_required": true,
+      "runtime_replacement": false,
+      "next_art_step": "Review Village v002 semantic layers, then run Village and OutdoorWorld Godot screenshot validation before runtime replacement.",
+      "active_layer_manifest": "production/assets/regions/village_world2d/v001/03_layer_export/layer_export_manifest.json",
+      "active_inherited_repaint_handoff": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/village_inherited_repaint_handoff_v002.json",
+      "active_v002_source_candidate": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/village_painted_source_v002.png",
+      "active_v002_quality_review": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/source_quality_review_v002.json",
+      "active_v002_review_contact_sheet": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/village_v002_source_review_contact_sheet.png",
+      "active_v002_visual_review": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/source_visual_review_v002.json",
+      "active_v002_layer_manifest": "production/assets/regions/village_world2d/v001/03_layer_export/v002_inherited/layer_export_manifest_v002.json"
     },
     {
       "region_id": "Region_MountainPath",
@@ -106,10 +132,34 @@
       "region_id": "Region_MountainHut",
       "scene": "scenes/regions/region_mountain_hut.tscn",
       "priority": "P3",
-      "phase": "graybox_scene_needs_source_package",
+      "phase": "v004_semantic_layers_exported_pending_review",
       "required_package_dir": "production/assets/regions/mountain_hut_world2d/v001",
+      "active_package": "production/assets/regions/mountain_hut_world2d/v001/workflow_manifest.json",
+      "active_seam_brief": "production/assets/seams/village_to_mountain_hut/v001/seam_brief.md",
+      "active_source_candidate": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/mountain_hut_painted_source.png",
+      "active_source_review": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_candidate_review.md",
+      "runtime_replacement": false,
       "launch_quality_approved": false,
-      "next_art_step": "Produce small hut scene with interior/exterior continuity after mountain route is stable."
+      "human_visual_approval_required": true,
+      "next_art_step": "Review MountainHut v004 semantic layers, then run Godot screenshot validation before runtime replacement.",
+      "active_source_quality_review": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_quality_review_v001.json",
+      "active_repaint_reference_board": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/mountain_hut_repaint_v002_reference_board.png",
+      "active_repaint_brief": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/mountain_hut_repaint_v002_brief.md",
+      "active_v002_source_candidate": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v002/mountain_hut_painted_source_v002.png",
+      "active_v002_quality_review": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_quality_review_v002.json",
+      "active_v002_review_contact_sheet": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/mountain_hut_v002_review_contact_sheet.png",
+      "active_v002_visual_review": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_visual_review_v002.json",
+      "active_v003_repaint_brief": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v003/mountain_hut_repaint_v003_brief.md",
+      "active_v003_reference_sheet": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/mountain_hut_v003_repaint_reference_sheet.png",
+      "active_v003_source_candidate": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v003/mountain_hut_painted_source_v003.png",
+      "active_v003_quality_review": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_quality_review_v003.json",
+      "active_v003_review_contact_sheet": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/mountain_hut_v003_review_contact_sheet.png",
+      "active_v003_visual_review": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_visual_review_v003.json",
+      "active_v004_source_candidate": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v004/mountain_hut_painted_source_v004.png",
+      "active_v004_quality_review": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_quality_review_v004.json",
+      "active_v004_review_contact_sheet": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/mountain_hut_v004_review_contact_sheet.png",
+      "active_layer_manifest": "production/assets/regions/mountain_hut_world2d/v001/03_layer_export/layer_export_manifest.json",
+      "active_v004_visual_review": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_visual_review_v004.json"
     },
     {
       "region_id": "Region_CliffView",
@@ -131,15 +181,46 @@
     },
     "mvp_npcs": {
       "priority": "P0",
-      "status": "partial_runtime_candidates",
-      "covered_npc_ids": ["aoi", "gen", "mika"],
-      "missing_npc_ids": ["hana"],
+      "status": "complete_runtime_package_usable",
+      "covered_npc_ids": [
+        "aoi",
+        "gen",
+        "mika",
+        "hana"
+      ],
+      "missing_npc_ids": [],
       "required_next_assets": [
-        "npc_hana_idle_down_128.png",
-        "npc_hana_portrait_neutral_512.png",
-        "happy/thinking portraits for all P0 NPCs",
-        "up/left/right idle directions before schedule-heavy scenes"
-      ]
+        "Complete P0 NPC runtime package for Aoi, Gen, Mika, and Hana",
+        "4-direction idle sprites: down/up/left/right at 128px runtime size",
+        "4-direction walk sheets: down/up/left/right with 4 frames per direction",
+        "Portrait expressions for every P0 NPC: neutral, happy, thinking",
+        "Runtime copies under assets/art/characters/npc and assets/art/portraits, with production provenance under production/assets"
+      ],
+      "required_npc_ids": [
+        "aoi",
+        "gen",
+        "mika",
+        "hana"
+      ],
+      "required_runtime_package": {
+        "sprites": [
+          "idle_down",
+          "idle_up",
+          "idle_left",
+          "idle_right",
+          "walk_down",
+          "walk_up",
+          "walk_left",
+          "walk_right"
+        ],
+        "portraits": [
+          "neutral",
+          "happy",
+          "thinking"
+        ]
+      },
+      "completed_package": "production/assets/characters/p0_npc_complete_runtime/v001/p0_npc_complete_runtime_manifest.json",
+      "next_art_step": "Run in-Godot visual review before any launch-quality approval; keep complete runtime package available for NPC-heavy content tests."
     }
   },
   "runtime_asset_groups": [
@@ -159,16 +240,17 @@
     {
       "id": "ui_base_pieces",
       "priority": "P0",
-      "status": "minimal_runtime_files_present",
+      "status": "runtime_files_present_for_current_hud_not_complete_ui_suite",
       "runtime_dir": "assets/art/ui"
     },
     {
       "id": "item_icons",
       "priority": "P0",
-      "status": "known_gap_partial_crop_icons_only",
+      "status": "runtime_files_present_for_current_item_data",
       "source_data": "game/data/items.json",
       "runtime_dir": "assets/art/items",
-      "next_art_step": "Generate/copy seed, material, forage, fish, food, and key item icons so every data icon path resolves."
+      "next_art_step": "Run visual review/contact-sheet review before final art approval; regenerate from game/data/items.json if item data changes.",
+      "completed_package": "production/assets/items/p0_item_icons/v001/p0_item_icons_manifest.json"
     },
     {
       "id": "home_area_props",
@@ -181,13 +263,13 @@
   "known_runtime_gaps": [
     {
       "id": "item_icon_backlog",
-      "status": "known_gap",
-      "validation_policy": "Validator reports count but does not fail while this manifest declares the backlog."
+      "status": "resolved_runtime_files_present",
+      "validation_policy": "Validator requires missing_count=0 and complete package manifests/files to remain present."
     },
     {
-      "id": "hana_npc_art_backlog",
-      "status": "known_gap",
-      "validation_policy": "Validator requires the gap to stay explicit until assets exist."
+      "id": "p0_npc_complete_art_backlog",
+      "status": "resolved_runtime_files_present",
+      "validation_policy": "Validator requires missing_count=0 and complete package manifests/files to remain present."
     },
     {
       "id": "remaining_region_world2d_packages",
@@ -197,16 +279,33 @@
   ],
   "validation_entrypoints": [
     "tools/validate_project_art_production_landing.py",
+    "tools/validate_mountain_hut_world2d_art_prep.py",
+    "tools/validate_mountain_hut_painted_source_candidate.py",
     "tools/validate_home_area_world2d_v001.py",
     "tools/validate_region_back_farm_art_v002.py",
     "tools/validate_protagonist_runtime_manifest.py",
-    "tools/validate_protagonist_animation_assets.py"
+    "tools/validate_protagonist_animation_assets.py",
+    "tools/validate_art_asset_pipeline.py",
+    "tools/validate_complete_p0_asset_package.py"
   ],
   "next_execution_order": [
-    "Run project art production landing validator on master.",
+    "Run complete P0 asset package validator.",
+    "Run project art asset inventory and pipeline validators.",
     "Run HomeArea World2D contract validator and Godot capture validator.",
-    "Run BackFarm structural placeholder validator.",
-    "Fill item icon backlog from game/data/items.json before expanding new gameplay item data.",
     "Create Village World2D v001 package only after HomeArea capture is stable."
-  ]
+  ],
+  "asset_inventory": {
+    "status": "active_audit_gate",
+    "current_inventory": "production/assets/art_asset_inventory_2026-05-20.json",
+    "audit_script": "tools/audit_art_asset_inventory.py",
+    "validator": "tools/validate_art_asset_pipeline.py",
+    "dirty_data_policy": "Hard-cleaned obsolete HomeArea route files stay absent; item icons and complete P0 NPC runtime package now validate as resolved when inventory missing_count is 0.",
+    "primary_outputs": [
+      "data_backlogs.item_icons",
+      "data_backlogs.npc_complete_runtime_art",
+      "dirty_data.importable_backup_scenes",
+      "prioritized_backlog",
+      "complete_p0_asset_package_manifests"
+    ]
+  }
 }

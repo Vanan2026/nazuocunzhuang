@@ -9,7 +9,9 @@ const DATA_FILES: Dictionary = {
 	"crops": {"path": "res://game/data/crops.json", "id_key": "crop_id"},
 	"npcs": {"path": "res://game/data/npcs.json", "id_key": "npc_id"},
 	"dialogues": {"path": "res://game/data/dialogues.json", "id_key": "dialogue_id"},
+	"rumors": {"path": "res://game/data/rumors.json", "id_key": "rumor_id"},
 	"recipes": {"path": "res://game/data/recipes.json", "id_key": "recipe_id"},
+	"npc_schedules": {"path": "res://game/data/npc_schedules.json", "id_key": "schedule_id"},
 	"restoration_targets": {"path": "res://game/data/restoration_targets.json", "id_key": "restoration_id"},
 }
 
@@ -28,7 +30,9 @@ var items: Dictionary = {}
 var crops: Dictionary = {}
 var npcs: Dictionary = {}
 var dialogues: Dictionary = {}
+var rumors: Dictionary = {}
 var recipes: Dictionary = {}
+var npc_schedules: Dictionary = {}
 var restoration_targets: Dictionary = {}
 var validation_errors: Array[String] = []
 var is_loaded: bool = false
@@ -60,16 +64,20 @@ func validate_all_data() -> bool:
 	_validate_crops()
 	_validate_npcs()
 	_validate_dialogues()
+	_validate_rumors()
 	_validate_recipes()
+	_validate_npc_schedules()
 	_validate_restoration_targets()
 
 	if validation_errors.is_empty():
-		print("DataRegistry validation OK: %d items, %d crops, %d npcs, %d dialogues, %d recipes, %d restorations" % [
+		print("DataRegistry validation OK: %d items, %d crops, %d npcs, %d dialogues, %d rumors, %d recipes, %d schedules, %d restorations" % [
 			items.size(),
 			crops.size(),
 			npcs.size(),
 			dialogues.size(),
+			rumors.size(),
 			recipes.size(),
+			npc_schedules.size(),
 			restoration_targets.size(),
 		])
 		data_loaded.emit()
@@ -97,8 +105,16 @@ func get_recipe(recipe_id: String) -> Dictionary:
 	return recipes.get(recipe_id, {})
 
 
+func get_npc_schedule(schedule_id: String) -> Dictionary:
+	return npc_schedules.get(schedule_id, {})
+
+
 func get_dialogue(dialogue_id: String) -> Dictionary:
 	return dialogues.get(dialogue_id, {})
+
+
+func get_rumor(rumor_id: String) -> Dictionary:
+	return rumors.get(rumor_id, {})
 
 
 func get_restoration(restoration_id: String) -> Dictionary:
@@ -114,7 +130,9 @@ func _clear_data() -> void:
 	crops.clear()
 	npcs.clear()
 	dialogues.clear()
+	rumors.clear()
 	recipes.clear()
+	npc_schedules.clear()
 	restoration_targets.clear()
 	validation_errors.clear()
 	is_loaded = false
@@ -166,8 +184,12 @@ func _set_collection(collection_name: String, indexed: Dictionary) -> void:
 			npcs = indexed
 		"dialogues":
 			dialogues = indexed
+		"rumors":
+			rumors = indexed
 		"recipes":
 			recipes = indexed
+		"npc_schedules":
+			npc_schedules = indexed
 		"restoration_targets":
 			restoration_targets = indexed
 
@@ -207,6 +229,9 @@ func _validate_npcs() -> void:
 		var day := int(birthday.get("day", 0))
 		if day < 1 or day > 28:
 			_add_error("npc %s has invalid birthday day %d" % [npc_id, day])
+		var schedule_id := String(npc.get("schedule_id", ""))
+		if not npc_schedules.has(schedule_id):
+			_add_error("npc %s references missing schedule %s" % [npc_id, schedule_id])
 
 
 func _validate_dialogues() -> void:
@@ -218,6 +243,22 @@ func _validate_dialogues() -> void:
 			_add_error("dialogue %s references missing npc %s" % [dialogue_id, dialogue.get("npc_id", "")])
 		if dialogue.get("lines", []).is_empty():
 			_add_error("dialogue %s has no lines" % dialogue_id)
+
+
+func _validate_rumors() -> void:
+	for rumor_id in rumors.keys():
+		var rumor: Dictionary = rumors[rumor_id]
+		_require_fields(rumor, ["rumor_id", "source", "priority", "conditions", "text", "sets_flags"], "rumor %s" % rumor_id)
+		_reject_forbidden_fields(rumor, "rumor %s" % rumor_id)
+		var source := String(rumor.get("source", ""))
+		if source not in ["mailbox", "bulletin", "npc"]:
+			_add_error("rumor %s has invalid source %s" % [rumor_id, source])
+		if String(rumor.get("text", "")).strip_edges().is_empty():
+			_add_error("rumor %s has empty text" % rumor_id)
+		if not (rumor.get("conditions", {}) is Dictionary):
+			_add_error("rumor %s conditions must be a dictionary" % rumor_id)
+		if not (rumor.get("sets_flags", []) is Array):
+			_add_error("rumor %s sets_flags must be an array" % rumor_id)
 
 
 func _validate_recipes() -> void:
@@ -235,6 +276,24 @@ func _validate_recipes() -> void:
 			_add_error("recipe %s references missing result item %s" % [recipe_id, result_item_id])
 
 
+func _validate_npc_schedules() -> void:
+	for schedule_id in npc_schedules.keys():
+		var schedule: Dictionary = npc_schedules[schedule_id]
+		_require_fields(schedule, ["schedule_id", "entries"], "npc schedule %s" % schedule_id)
+		_reject_forbidden_fields(schedule, "npc schedule %s" % schedule_id)
+		var entries: Array = schedule.get("entries", [])
+		if entries.is_empty():
+			_add_error("npc schedule %s has no entries" % schedule_id)
+		for entry in entries:
+			if not (entry is Dictionary):
+				_add_error("npc schedule %s has invalid entry" % schedule_id)
+				continue
+			_require_fields(entry, ["time_block", "scene_id", "position", "activity"], "npc schedule %s entry" % schedule_id)
+			var position: Variant = entry.get("position", [])
+			if not (position is Array) or position.size() != 2:
+				_add_error("npc schedule %s entry position must be [x, y]" % schedule_id)
+
+
 func _validate_restoration_targets() -> void:
 	for restoration_id in restoration_targets.keys():
 		var target: Dictionary = restoration_targets[restoration_id]
@@ -245,6 +304,13 @@ func _validate_restoration_targets() -> void:
 			var item_id := String(required_item.get("item_id", ""))
 			if not items.has(item_id):
 				_add_error("restoration %s references missing item %s" % [restoration_id, item_id])
+		for reward_item in target.get("reward_items", []):
+			var reward_item_id := String(reward_item.get("item_id", ""))
+			var reward_count := int(reward_item.get("count", 0))
+			if not items.has(reward_item_id):
+				_add_error("restoration %s references missing reward item %s" % [restoration_id, reward_item_id])
+			if reward_count <= 0:
+				_add_error("restoration %s reward item count must be positive" % restoration_id)
 
 
 func _require_fields(record: Dictionary, fields: Array[String], context: String) -> void:
