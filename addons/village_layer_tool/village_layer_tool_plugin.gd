@@ -9,12 +9,46 @@ const MODE_FRONT := "front"
 const MODE_INTERACTION := "interaction"
 const MODE_BLOCKER := "blocker"
 
+const PROJECT_REVIEW_SCENES := [
+	{
+		"label": "Main",
+		"path": "res://game/scenes/Main.tscn",
+	},
+	{
+		"label": "PlayerYard",
+		"path": "res://game/scenes/world/PlayerYard.tscn",
+	},
+	{
+		"label": "Yard Blueprint",
+		"path": "res://scenes/dev/player_yard_layer_blueprint_review.tscn",
+	},
+	{
+		"label": "ForestEdge",
+		"path": "res://game/scenes/world/ForestEdge.tscn",
+	},
+	{
+		"label": "Greenfield Review",
+		"path": "res://scenes/dev/greenfield_p0_reviews/greenfield_p0_region_review_all.tscn",
+	},
+]
+
+const VALIDATION_COMMANDS := [
+	"python tools\\validate_project_structure.py",
+	"python tools\\validate_play_start_experience.py",
+	"python tools\\validate_player_yard_layer_blueprint_review_scene.py",
+	"python tools\\validate_yard_blockout_readability.py",
+	"python tools\\validate_forest_edge_gameplay_layout.py",
+	"git diff --check",
+]
+
 var dock: VBoxContainer
+var review_dock: VBoxContainer
 var mode_selector: OptionButton
 var active_button: Button
 var name_edit: LineEdit
 var hint_edit: LineEdit
 var status_label: Label
+var review_status_label: Label
 
 var is_active := false
 var current_mode := MODE_BLOCKER
@@ -25,12 +59,18 @@ var mouse_screen := Vector2.ZERO
 func _enter_tree() -> void:
 	_create_dock()
 	add_control_to_dock(DOCK_SLOT_LEFT_UL, dock)
+	_create_review_dock()
+	add_control_to_dock(DOCK_SLOT_RIGHT_UL, review_dock)
 	add_tool_menu_item("Village Layer Tool", Callable(self, "_show_dock"))
 	set_input_event_forwarding_always_enabled()
 	set_force_draw_over_forwarding_enabled()
 
 func _exit_tree() -> void:
 	remove_tool_menu_item("Village Layer Tool")
+	if review_dock != null:
+		remove_control_from_docks(review_dock)
+		review_dock.queue_free()
+		review_dock = null
 	if dock != null:
 		remove_control_from_docks(dock)
 		dock.queue_free()
@@ -105,6 +145,71 @@ func _create_dock() -> void:
 	status_label.text = "插件已加载。"
 	status_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	dock.add_child(status_label)
+
+func _create_review_dock() -> void:
+	review_dock = VBoxContainer.new()
+	review_dock.name = "Village Review"
+
+	var title := Label.new()
+	title.text = "Village Review"
+	review_dock.add_child(title)
+
+	var help := Label.new()
+	help.text = "Open high-value review scenes and copy the current validation command set."
+	help.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	review_dock.add_child(help)
+
+	for scene_info in PROJECT_REVIEW_SCENES:
+		var button := Button.new()
+		button.text = "Open %s" % String(scene_info["label"])
+		button.pressed.connect(_open_review_scene.bind(String(scene_info["path"])))
+		review_dock.add_child(button)
+
+	var copy_button := Button.new()
+	copy_button.text = "Copy validation commands"
+	copy_button.pressed.connect(_copy_validation_commands)
+	review_dock.add_child(copy_button)
+
+	var refresh_button := Button.new()
+	refresh_button.text = "Refresh status summary"
+	refresh_button.pressed.connect(_refresh_review_status)
+	review_dock.add_child(refresh_button)
+
+	review_status_label = Label.new()
+	review_status_label.text = "Status not loaded."
+	review_status_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	review_dock.add_child(review_status_label)
+	_refresh_review_status()
+
+func _open_review_scene(scene_path: String) -> void:
+	if not ResourceLoader.exists(scene_path):
+		_update_review_status("Missing scene: %s" % scene_path)
+		return
+	get_editor_interface().open_scene_from_path(scene_path)
+	_update_review_status("Open scene requested: %s" % scene_path)
+
+func _copy_validation_commands() -> void:
+	var lines := PackedStringArray()
+	for command in VALIDATION_COMMANDS:
+		lines.append(String(command))
+	DisplayServer.clipboard_set("\n".join(lines))
+	_update_review_status("Copied %s validation commands." % lines.size())
+
+func _refresh_review_status() -> void:
+	var status_file := FileAccess.open("res://.codex/status.md", FileAccess.READ)
+	if status_file == null:
+		_update_review_status("Could not read res://.codex/status.md")
+		return
+	var lines := PackedStringArray()
+	while not status_file.eof_reached() and lines.size() < 14:
+		var line := status_file.get_line().strip_edges()
+		if not line.is_empty():
+			lines.append(line)
+	_update_review_status("\n".join(lines))
+
+func _update_review_status(text: String) -> void:
+	if review_status_label != null:
+		review_status_label.text = text
 
 func _add_mode_item(label: String, mode: String) -> void:
 	var index := mode_selector.item_count

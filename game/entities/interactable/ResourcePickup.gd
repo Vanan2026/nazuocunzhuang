@@ -31,6 +31,7 @@ func on_interact(interactor: Node) -> void:
 		push_warning("ResourcePickup has invalid item config.")
 		return
 	inventory_manager.add_item(item_id, count)
+	_show_gain_feedback(item_id, count)
 	picked = true
 	_set_claimed(true)
 	if consume_on_pickup:
@@ -58,6 +59,54 @@ func _get_inventory_manager() -> Node:
 	var parent_node := get_parent()
 	while parent_node != null:
 		var fallback := parent_node.get_node_or_null("InventoryManager")
+		if fallback != null:
+			return fallback
+		parent_node = parent_node.get_parent()
+	return null
+
+
+func _show_gain_feedback(gained_item_id: String, gained_count: int) -> void:
+	var dialogue_box := _get_dialogue_box()
+	if dialogue_box == null or not dialogue_box.has_method("show_dialogue"):
+		return
+	var item_name := _get_item_display_name(gained_item_id)
+	var dialogue := {
+		"dialogue_id": "item_gain_%s" % gained_item_id,
+		"npc_id": "system",
+		"lines": [
+			{
+				"speaker": "system",
+				"text": "获得：%s x%d，已经放进背包。" % [item_name, gained_count],
+			},
+		],
+	}
+	dialogue_box.show_dialogue(dialogue, {"npc_name": "背包", "portrait": ""})
+
+
+func _get_dialogue_box() -> Node:
+	var parent_node := get_parent()
+	while parent_node != null:
+		var fallback := parent_node.get_node_or_null("DialogueBox")
+		if fallback != null:
+			return fallback
+		parent_node = parent_node.get_parent()
+	return null
+
+
+func _get_item_display_name(display_item_id: String) -> String:
+	var registry := _get_data_registry()
+	if registry != null and registry.has_method("get_item"):
+		var item_data: Dictionary = registry.get_item(display_item_id)
+		var item_name := String(item_data.get("name", ""))
+		if not item_name.is_empty():
+			return item_name
+	return display_item_id
+
+
+func _get_data_registry() -> Node:
+	var parent_node := get_parent()
+	while parent_node != null:
+		var fallback := parent_node.get_node_or_null("DataRegistry")
 		if fallback != null:
 			return fallback
 		parent_node = parent_node.get_parent()

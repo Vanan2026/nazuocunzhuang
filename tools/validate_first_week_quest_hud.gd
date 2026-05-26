@@ -7,19 +7,31 @@ const REQUIRED_OBJECTIVE_TEXTS: Array[String] = [
 	"读邮箱",
 	"看公告板",
 	"修旧井",
+	"给第一块作物浇水",
+	"收获第一棵作物",
+	"把第一根萝卜送给葵",
+	"种下葵送的草莓",
 	"修长椅",
 	"扶正路牌",
+	"读森林边缘公告",
 	"去森林边缘",
 	"听 Mika 的传闻",
+	"去村口看公告",
 ]
 const REQUIRED_OBJECTIVE_IDS: Array[String] = [
 	"read_mailbox_day1",
 	"read_bulletin_day1",
 	"old_well_restored",
+	"watered_first_crop_day1",
+	"harvested_first_crop_day1",
+	"shared_first_turnip_day1",
+	"planted_aoi_strawberry_day1",
 	"garden_bench_restored",
 	"village_sign_restored",
+	"heard_forest_edge_notice",
 	"visited_forest_edge",
 	"heard_npc_forest_edge",
+	"read_village_notice_day1",
 ]
 
 var _has_failed := false
@@ -93,7 +105,7 @@ func _run() -> void:
 	var progress_label := hud.get_node_or_null("Panel/Content/ProgressLabel") as Label
 	_expect(progress_label != null, "HUD should include ProgressLabel")
 	_expect(progress_label.text.contains("/"), "HUD progress should show completed/total")
-	_expect(progress_label.text.contains("8"), "HUD progress should include all first-week objectives")
+	_expect(progress_label.text.contains("13"), "HUD progress should include all first-week objectives")
 	if _has_failed:
 		return
 
@@ -104,9 +116,14 @@ func _run() -> void:
 func _mark_first_week_progress(game_state: Node, scene_router: Node) -> void:
 	game_state.set_flag("read_mailbox_day1", true)
 	game_state.set_flag("read_bulletin_day1", true)
+	game_state.set_flag("watered_first_crop_day1", true)
+	game_state.set_flag("harvested_first_crop_day1", true)
+	game_state.set_flag("shared_first_turnip_day1", true)
+	game_state.set_flag("planted_aoi_strawberry_day1", true)
 	game_state.set_flag("heard_forest_edge_notice", true)
 	game_state.set_flag("visited_forest_edge", true)
 	game_state.set_flag("heard_npc_forest_edge", true)
+	game_state.set_flag("read_village_notice_day1", true)
 	game_state.set_restored("old_well", true)
 	game_state.set_restored("garden_bench", true)
 	game_state.set_restored("village_sign", true)

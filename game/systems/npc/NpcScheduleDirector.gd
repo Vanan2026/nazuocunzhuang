@@ -5,6 +5,7 @@ extends Node
 @export var data_registry_path: NodePath
 @export var time_manager_path: NodePath
 @export var npc_root_path: NodePath
+@export var position_offset: Vector2 = Vector2.ZERO
 
 var current_assignments: Dictionary = {}
 
@@ -62,7 +63,7 @@ func _apply_assignment(npc_node: Node, assignment: Dictionary) -> void:
 	npc_node.visible = true
 	var position_data: Variant = assignment.get("position", [])
 	if npc_node is Node2D and position_data is Array and position_data.size() == 2:
-		(npc_node as Node2D).position = Vector2(float(position_data[0]), float(position_data[1]))
+		(npc_node as Node2D).position = Vector2(float(position_data[0]), float(position_data[1])) + position_offset
 
 
 func _get_current_block() -> String:

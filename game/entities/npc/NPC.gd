@@ -1,6 +1,8 @@
 class_name NPC
 extends "res://game/entities/interactable/Interactable.gd"
 
+signal gift_given(npc_id: String, item_id: String, delta: int, already_gifted: bool)
+
 @export var npc_id: String = ""
 @export var sprite_texture_path: String = ""
 @export var portrait_texture_path: String = ""
@@ -12,6 +14,7 @@ extends "res://game/entities/interactable/Interactable.gd"
 @export var rumor_manager_path: NodePath
 @export var time_manager_path: NodePath
 @export var weather_manager_path: NodePath
+@export var game_state_path: NodePath
 @export var birthday_gift_multiplier: int = 2
 
 @onready var sprite: Sprite2D = get_node_or_null("Sprite2D")
@@ -54,6 +57,12 @@ func on_interact(interactor: Node) -> void:
 	if _try_gift_interaction(inventory_manager, relationship_manager, dialogue_manager):
 		return
 
+	if _try_priority_dialogue_interaction(dialogue_manager, relationship_manager):
+		return
+
+	if _try_daily_intent_dialogue_interaction(dialogue_manager, relationship_manager):
+		return
+
 	if _try_rumor_interaction():
 		_apply_first_talk_relationship(relationship_manager)
 		return
@@ -63,7 +72,43 @@ func on_interact(interactor: Node) -> void:
 
 	var context := _build_dialogue_context()
 	var dialogue: Dictionary = dialogue_manager.get_dialogue(npc_id, context)
+	_show_npc_dialogue(dialogue_manager, relationship_manager, dialogue)
+
+
+func _try_priority_dialogue_interaction(dialogue_manager: Node, relationship_manager: Node) -> bool:
+	if dialogue_manager == null or not dialogue_manager.has_method("get_dialogue"):
+		return false
+	var dialogue: Dictionary = dialogue_manager.get_dialogue(npc_id, _build_dialogue_context())
+	if String(dialogue.get("type", "")) != "event":
+		return false
+	_show_npc_dialogue(dialogue_manager, relationship_manager, dialogue)
+	return true
+
+
+func _try_daily_intent_dialogue_interaction(dialogue_manager: Node, relationship_manager: Node) -> bool:
+	if dialogue_manager == null or not dialogue_manager.has_method("get_dialogue"):
+		return false
+	var context := _build_dialogue_context()
+	var intent_id := String(context.get("daily_intent", ""))
+	if intent_id.is_empty():
+		return false
+	var dialogue: Dictionary = {}
+	if dialogue_manager.has_method("get_daily_intent_dialogue"):
+		dialogue = dialogue_manager.get_daily_intent_dialogue(npc_id, context)
+	else:
+		dialogue = dialogue_manager.get_dialogue(npc_id, context)
+	if dialogue.is_empty():
+		return false
+	var conditions: Dictionary = dialogue.get("conditions", {})
+	if String(conditions.get("daily_intent", "")) != intent_id:
+		return false
+	_show_npc_dialogue(dialogue_manager, relationship_manager, dialogue)
+	return true
+
+
+func _show_npc_dialogue(dialogue_manager: Node, relationship_manager: Node, dialogue: Dictionary) -> void:
 	dialogue_manager.start_dialogue(npc_id, dialogue)
+	_apply_dialogue_flags(dialogue, dialogue_manager)
 	_apply_first_talk_relationship(relationship_manager)
 	var dialogue_box := _get_dialogue_box()
 	if dialogue_box != null and dialogue_box.has_method("show_dialogue"):
@@ -71,6 +116,18 @@ func on_interact(interactor: Node) -> void:
 			"npc_name": display_name,
 			"portrait": portrait_texture_path,
 		})
+
+
+func _apply_dialogue_flags(dialogue: Dictionary, dialogue_manager: Node) -> void:
+	var game_state := _get_game_state()
+	for raw_flag_id in dialogue.get("sets_flags", []):
+		var flag_id := String(raw_flag_id)
+		if flag_id.is_empty():
+			continue
+		if game_state != null and game_state.has_method("set_flag"):
+			game_state.set_flag(flag_id, true)
+		if dialogue_manager != null and dialogue_manager.has_method("set_flag"):
+			dialogue_manager.set_flag(flag_id, true)
 
 
 func _try_rumor_interaction() -> bool:
@@ -103,6 +160,8 @@ func _build_dialogue_context() -> Dictionary:
 		"season": "spring",
 		"weather": "sunny",
 		"time_block": "morning",
+		"daily_intent": "",
+		"scene_id": "",
 	}
 	var time_manager := _get_time_manager()
 	if time_manager != null and time_manager.has_method("get_date_info"):
@@ -113,7 +172,60 @@ func _build_dialogue_context() -> Dictionary:
 	if weather_manager != null and weather_manager.has_method("get_weather_info"):
 		var weather_info: Dictionary = weather_manager.get_weather_info()
 		context["weather"] = String(weather_info.get("today", context["weather"]))
+	context["flags"] = _get_game_state_flags()
+	context["daily_intent"] = _get_selected_daily_intent_id()
+	context["scene_id"] = _get_scene_context_id()
 	return context
+
+
+func _get_selected_daily_intent_id() -> String:
+	var game_state := _get_game_state()
+	if game_state == null or not game_state.has_method("get_daily_intent"):
+		return ""
+	return String(game_state.get_daily_intent(_get_current_day_key()))
+
+
+func _get_current_day_key() -> String:
+	var time_manager := _get_time_manager()
+	if time_manager != null and time_manager.has_method("get_date_info"):
+		var date_info: Dictionary = time_manager.get_date_info()
+		return "day_%d" % int(date_info.get("total_day", 1))
+	return "day_1"
+
+
+func _get_game_state_flags() -> Dictionary:
+	var game_state := _get_game_state()
+	if game_state == null:
+		return {}
+	if game_state.has_method("get_save_data"):
+		var save_data: Dictionary = game_state.get_save_data()
+		var save_flags: Variant = save_data.get("flags", {})
+		if save_flags is Dictionary:
+			var save_flag_dictionary: Dictionary = save_flags
+			return save_flag_dictionary.duplicate(true)
+	var flags_value: Variant = game_state.get("flags")
+	if flags_value is Dictionary:
+		var flag_dictionary: Dictionary = flags_value
+		return flag_dictionary.duplicate(true)
+	return {}
+
+
+func _get_scene_context_id() -> String:
+	var node: Node = self
+	while node != null:
+		if node.has_method("get_active_region_id"):
+			return String(node.call("get_active_region_id"))
+		if node.has_meta("outdoor_region_id"):
+			var region_id := String(node.get_meta("outdoor_region_id"))
+			if not region_id.is_empty():
+				return region_id
+		var schedule_director := node.get_node_or_null("ScheduleDirector")
+		if schedule_director != null:
+			var scene_value := String(schedule_director.get("scene_id"))
+			if not scene_value.is_empty():
+				return scene_value
+		node = node.get_parent()
+	return ""
 
 
 func _try_gift_interaction(inventory_manager: Node, relationship_manager: Node, dialogue_manager: Node) -> bool:
@@ -144,6 +256,7 @@ func _try_gift_interaction(inventory_manager: Node, relationship_manager: Node, 
 			"npc_name": display_name,
 			"portrait": portrait_texture_path,
 		})
+	gift_given.emit(npc_id, selected_item_id, int(gift_context.get("delta", 0)), bool(gift_context.get("already_gifted", false)))
 	return true
 
 
@@ -335,6 +448,10 @@ func _get_time_manager() -> Node:
 
 func _get_weather_manager() -> Node:
 	return _get_linked_node(weather_manager_path, "WeatherManager")
+
+
+func _get_game_state() -> Node:
+	return _get_linked_node(game_state_path, "GameState")
 
 
 func _get_linked_node(path: NodePath, fallback_name: String) -> Node:

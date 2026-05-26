@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="976" height="576" viewBox="-72 32 488 288" data-rule="full_canvas_shared_origin">
+  <title>player_yard layer blueprint</title>
+  <desc>Engineering guide for scene_mother, base, foreground_occlusion, interaction_hotspots, and npc_standing_points.</desc>
+  <rect id="full_canvas_shared_origin" x="-72" y="32" width="488" height="288" fill="#f7f2df" stroke="#1b1b1b" stroke-width="2"/>
+  <g id="base" fill="#9fb87b" stroke="#4c613c" stroke-width="1.5" opacity="0.78">
+    <rect id="farm_garden" x="20" y="150" width="138" height="92"/>
+    <rect id="resource_staging" x="-64" y="150" width="98" height="92"/>
+    <path id="main_path" d="M 44 92 C 96 120, 124 120, 160 140 C 210 168, 248 172, 332 132" fill="none" stroke="#c7aa72" stroke-width="18" stroke-linecap="round"/>
+  </g>
+  <g id="foreground_occlusion" fill="#d6a35a" stroke="#69472f" stroke-width="1.5">
+    <rect id="home_mailbox" x="32" y="42" width="36" height="36"/>
+    <rect id="notice_board" x="96" y="42" width="56" height="34"/>
+    <rect id="repair_well" x="226" y="136" width="58" height="58"/>
+    <rect id="repair_bench" x="198" y="204" width="58" height="28"/>
+    <rect id="village_sign" x="270" y="90" width="34" height="38"/>
+  </g>
+  <g id="interaction_hotspots" fill="none" stroke="#4b83a5" stroke-width="2" stroke-dasharray="6 4">
+    <rect id="forest_gate" x="312" y="116" width="44" height="38"/>
+  </g>
+  <g id="npc_standing_points" fill="#2d3548" stroke="#ffffff" stroke-width="2">
+    <circle id="aoi_late_morning_notice_board_front_left" cx="116" cy="86" r="5"/>
+    <circle id="aoi_afternoon_farm_garden_north_east" cx="208" cy="196" r="5"/>
+    <circle id="aoi_evening_mailbox_path_exit" cx="48" cy="96" r="5"/>
+    <circle id="gen_late_morning_repair_bench_work_left" cx="174" cy="224" r="5"/>
+    <circle id="gen_evening_repair_yard_tool_path" cx="212" cy="116" r="5"/>
+    <circle id="mika_late_morning_notice_board_front_right" cx="188" cy="84" r="5"/>
+    <circle id="hana_morning_sunny_path_bench_left" cx="170" cy="224" r="5"/>
+    <circle id="hana_late_morning_yard_center_clear_north_edge" cx="150" cy="146" r="5"/>
+    <circle id="hana_afternoon_yard_center_clear_north_edge" cx="156" cy="146" r="5"/>
+    <circle id="hana_evening_notice_path_clear" cx="126" cy="118" r="5"/>
+  </g>
+</svg>

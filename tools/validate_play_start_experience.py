@@ -9,8 +9,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 EXPECTED_FILES = {
     "game/entities/player/Player.tscn": [
-        '[node name="PlayerSprite" type="Sprite2D" parent="."]',
-        "chr_player_base_idle_down_128.png",
+        '[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]',
+        "PlayerRuntimeFrames.tres",
     ],
     "game/scenes/home/PlayerHouse.tscn": [
         '[node name="WorldCamera" type="Camera2D" parent="."]',
@@ -34,9 +34,12 @@ EXPECTED_FILES = {
         '[node name="FirstWeekQuestHUD" type="CanvasLayer"]',
         "visible = false",
     ],
-    "game/scenes/ui/QuestJournalUI.tscn": [
-        '[node name="QuestJournalUI" type="CanvasLayer"]',
-        "visible = false",
+    "game/scenes/ui/CurrentObjectiveChip.tscn": [
+        '[node name="CurrentObjectiveChip" type="CanvasLayer"]',
+        "visible = true",
+    ],
+    "game/scenes/Main.tscn": [
+        '[node name="CurrentObjectiveChip" parent="." instance=',
     ],
     "tools/validate_play_start_experience.gd": [
         "Play start experience validation passed",

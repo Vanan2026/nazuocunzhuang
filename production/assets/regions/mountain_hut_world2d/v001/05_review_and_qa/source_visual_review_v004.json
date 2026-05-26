@@ -1,0 +1,16 @@
+{
+  "review_id": "mountain_hut_v004_visual_review",
+  "status": "accepted_for_semantic_layer_export_review",
+  "reviewed_at": "2026-05-26",
+  "v004_source": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v004/mountain_hut_painted_source_v004.png",
+  "v004_visual_accepted_for_layer_export_review": true,
+  "human_visual_approval": false,
+  "layer_export_approved": false,
+  "runtime_replacement": false,
+  "launch_quality_approved": false,
+  "acceptance_scope": "Codex visual acceptance for review-layer export only.",
+  "remaining_review_notes": [
+    "Human/art approval is still required before final art promotion.",
+    "Runtime replacement is still blocked until semantic layer review and Godot screenshot validation."
+  ]
+}

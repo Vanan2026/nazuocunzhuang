@@ -1,0 +1,56 @@
+{
+  "review_id": "mountain_hut_source_quality_review_v001",
+  "status": "needs_repaint_before_layer_export",
+  "reviewed_at": "2026-05-24",
+  "source_candidate": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/mountain_hut_painted_source.png",
+  "quality_reference_source": "production/assets/regions/village_world2d/v001/02_source_generation/village_painted_source.png",
+  "reference_board": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/mountain_hut_repaint_v002_reference_board.png",
+  "repaint_brief": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/mountain_hut_repaint_v002_brief.md",
+  "source_candidate_review": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_candidate_review.md",
+  "metrics": {
+    "village_detail_edge_mean": 15.1767,
+    "mountain_hut_detail_edge_mean": 8.0786,
+    "detail_ratio": 0.5323,
+    "minimum_detail_ratio_for_repaint_ready": 0.65,
+    "village_gray_variance": 971.8164,
+    "mountain_hut_gray_variance": 380.3723,
+    "variance_ratio": 0.3914,
+    "village_rgb_mean": [
+      126.144,
+      126.3291,
+      50.6473
+    ],
+    "mountain_hut_rgb_mean": [
+      126.1339,
+      133.6971,
+      74.5959
+    ],
+    "village_east_edge_rgb_mean": [
+      119.9906,
+      126.4731,
+      46.2356
+    ],
+    "mountain_hut_west_edge_rgb_mean": [
+      141.618,
+      143.7048,
+      78.4435
+    ],
+    "seam_edge_average_channel_delta": 23.689,
+    "maximum_preferred_seam_delta_for_precheck": 24.0,
+    "seam_color_precheck_passed": true
+  },
+  "producer_verdict": "The current MountainHut candidate is useful as a layout/seam reference, but it is not ready for layer export or runtime replacement.",
+  "blocking_findings": [
+    "Detail density is materially below the accepted Village source.",
+    "Foliage and flower detail still read as programmatic marks instead of finished storybook painting.",
+    "The road color seam is improved, but the road edge treatment and integrated stone/grass texture do not yet match the Village source.",
+    "Hut material, roof detail, and foreground tree treatment need a stronger painterly pass before semantic layers are worth exporting."
+  ],
+  "required_next_step": "Create a v002 full-canvas repaint using the reference board, then run human/art review before layer export.",
+  "hard_approval_flags": {
+    "human_visual_approval": false,
+    "layer_export_approved": false,
+    "runtime_replacement": false,
+    "launch_quality_approved": false
+  }
+}

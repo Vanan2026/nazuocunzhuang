@@ -57,11 +57,11 @@ func _initialize() -> void:
 	if _has_failed:
 		return
 
-	for _i in range(4):
+	for _i in range(2):
 		plot.advance_day(false)
 		if plot.get_state_name() != "ready":
 			plot.water()
-	_expect(plot.get_state_name() == "ready", "turnip should become ready after 4 watered days")
+	_expect(plot.get_state_name() == "ready", "turnip should become ready after 2 watered days")
 	if _has_failed:
 		return
 	_expect(plot.harvest(), "harvest should succeed when ready")

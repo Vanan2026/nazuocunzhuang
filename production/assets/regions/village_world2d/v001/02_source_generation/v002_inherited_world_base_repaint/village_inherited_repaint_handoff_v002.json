@@ -1,0 +1,36 @@
+{
+  "handoff_id": "village_inherited_world_base_repaint_v002",
+  "status": "handoff_ready_for_artist_repaint_not_source_accepted",
+  "region_id": "village",
+  "created_at": "2026-05-26",
+  "runtime_replacement": false,
+  "launch_quality_approved": false,
+  "human_visual_approval": false,
+  "layer_export_approved": false,
+  "references": {
+    "world_base_manifest": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/world_base_manifest.json",
+    "inherited_world_base_crop": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/region_base_crops/village_base_no_foreground.png",
+    "old_village_quality_reference_only": "production/assets/regions/village_world2d/v001/02_source_generation/village_painted_source.png",
+    "village_layout_lock": "production/assets/regions/village_world2d/v001/01_layout_lock/layout_lock.json",
+    "outdoor_world_workflow": "production/assets/outdoor_world_world2d/v001/workflow_manifest.json",
+    "brief": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/village_inherited_repaint_brief_v002.md",
+    "reference_sheet": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/village_inherited_repaint_reference_sheet_v002.png"
+  },
+  "output_contract": {
+    "target_source_id": "village_painted_source_v002",
+    "canvas": [
+      1800,
+      1200
+    ],
+    "must_inherit_composition_from_world_base_crop": true,
+    "old_source_is_quality_reference_only": true,
+    "full_canvas_layers_required_after_acceptance": true,
+    "foreground_occlusion_after_base_acceptance_only": true,
+    "registration_target": "registration-perfect layer alignment, not pixel-perfect brush tracing"
+  },
+  "forbidden_actions": [
+    "Do not use the old isolated Village source as runtime replacement.",
+    "Do not split foreground layers before the inherited base repaint is accepted.",
+    "Do not crop transparent runtime layers to object bounds."
+  ]
+}

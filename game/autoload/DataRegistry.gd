@@ -304,6 +304,13 @@ func _validate_restoration_targets() -> void:
 			var item_id := String(required_item.get("item_id", ""))
 			if not items.has(item_id):
 				_add_error("restoration %s references missing item %s" % [restoration_id, item_id])
+		for reward_item in target.get("reward_items", []):
+			var reward_item_id := String(reward_item.get("item_id", ""))
+			var reward_count := int(reward_item.get("count", 0))
+			if not items.has(reward_item_id):
+				_add_error("restoration %s references missing reward item %s" % [restoration_id, reward_item_id])
+			if reward_count <= 0:
+				_add_error("restoration %s reward item count must be positive" % restoration_id)
 
 
 func _require_fields(record: Dictionary, fields: Array[String], context: String) -> void:

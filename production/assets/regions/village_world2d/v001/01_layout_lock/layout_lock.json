@@ -1,0 +1,138 @@
+{
+  "layout_id": "village_plaza_layout_lock_v001",
+  "region_id": "Region_Village",
+  "node_id": "VillagePlaza",
+  "status": "layout_locked_for_art_prep",
+  "source_scene": "res://game/scenes/world/OutdoorWorld.tscn",
+  "runtime_source": "game/scenes/world/OutdoorWorld.gd::_add_village_authored_slice",
+  "coordinate_spaces": {
+    "source_canvas": {
+      "width": 1800,
+      "height": 1200,
+      "origin": "top_left"
+    },
+    "godot_runtime": {
+      "texture_scale": 0.18,
+      "region_size": [320, 240],
+      "generated_texture_runtime_size": [324, 216]
+    }
+  },
+  "export_rule": "full_canvas_shared_origin",
+  "registration_rule": "registration-perfect layer alignment, not pixel-perfect brush tracing",
+  "seam_connectors": [
+    {"id": "west_to_player_yard", "edge": "west", "source_position": [144, 720], "runtime_position": [26, 130], "role": "arrival_and_return_path"},
+    {"id": "north_lane", "edge": "north", "source_position": [792, 96], "runtime_position": [143, 17], "role": "future_mountain_path"},
+    {"id": "east_lane", "edge": "east", "source_position": [1656, 600], "runtime_position": [298, 108], "role": "future_village_extension"},
+    {"id": "south_lane", "edge": "south", "source_position": [1134, 1104], "runtime_position": [204, 199], "role": "future_orchard_or_pond_direction"}
+  ],
+  "road_paths": [
+    {
+      "id": "west_arrival_path",
+      "role": "player_yard_to_village_arrival",
+      "runtime_points": [[0, 126], [86, 104], [118, 132], [22, 156]],
+      "source_points": [[0, 700], [478, 578], [656, 733], [122, 867]]
+    },
+    {
+      "id": "notice_to_seed_stall_path",
+      "role": "main_social_plaza_walk",
+      "runtime_points": [[106, 96], [210, 92], [220, 124], [112, 128]],
+      "source_points": [[589, 533], [1167, 511], [1222, 689], [622, 711]]
+    },
+    {
+      "id": "seed_stall_to_old_maple_path",
+      "role": "optional_soft_clue_walk",
+      "runtime_points": [[202, 120], [258, 150], [250, 178], [190, 140]],
+      "source_points": [[1122, 667], [1433, 833], [1389, 989], [1056, 778]]
+    }
+  ],
+  "seam_connector_paths": [
+    {
+      "id": "west_east_connector_spine",
+      "role": "connects_player_yard_return_and_future_east_lane",
+      "source_points": [[144, 720], [622, 711], [1167, 578], [1656, 600]],
+      "source_width": 52
+    },
+    {
+      "id": "north_south_connector_spine",
+      "role": "connects_future_north_lane_and_south_lane_through_plaza",
+      "source_points": [[792, 96], [760, 500], [1167, 578], [1134, 1104]],
+      "source_width": 48
+    }
+  ],
+  "object_zones": [
+    {
+      "id": "VillagePlazaZone",
+      "role": "social_plaza",
+      "runtime_polygon": [[66, 54], [228, 48], [270, 112], [226, 176], [72, 170], [42, 104]],
+      "source_polygon": [[367, 300], [1267, 267], [1500, 622], [1256, 978], [400, 944], [233, 578]],
+      "layer": "base_ground"
+    },
+    {
+      "id": "VillageNotice",
+      "role": "formal_entry_hint",
+      "runtime_position": [112, 88],
+      "source_position": [622, 489],
+      "source_rect": [489, 406, 267, 167],
+      "layer": "ysort_props_structures",
+      "sets_flag": "read_village_notice_day1"
+    },
+    {
+      "id": "SeedStallProxy",
+      "role": "daily_advice_service_not_shop",
+      "runtime_position": [210, 104],
+      "source_position": [1167, 578],
+      "source_rect": [1033, 494, 267, 167],
+      "layer": "ysort_props_structures",
+      "sets_flag": "visited_village_seed_stall_day1"
+    },
+    {
+      "id": "OldMapleClue",
+      "role": "optional_environmental_clue",
+      "runtime_position": [256, 168],
+      "source_position": [1422, 933],
+      "source_rect": [1289, 850, 267, 167],
+      "layer": "foreground_occlusion",
+      "sets_flag": "found_village_soft_clue_day1"
+    },
+    {
+      "id": "VillageReturnPath",
+      "role": "return_to_player_yard",
+      "runtime_position": [22, 136],
+      "source_position": [122, 756],
+      "source_rect": [0, 672, 256, 167],
+      "layer": "base_ground",
+      "sets_flag": "returned_from_village_day1"
+    },
+    {
+      "id": "AoiVillageStandLateMorning",
+      "role": "npc_standing_point",
+      "npc_id": "aoi",
+      "schedule_id": "shopkeeper_basic",
+      "time_block": "late_morning",
+      "runtime_position": [196, 112],
+      "source_position": [1089, 622],
+      "layer": "npc_standing_points"
+    },
+    {
+      "id": "BenchRestProp",
+      "role": "rest_prop",
+      "source_position": [684, 924],
+      "source_rect": [567, 870, 243, 126],
+      "layer": "ysort_props_structures"
+    }
+  ],
+  "hidden_discovery_policy": {
+    "allowed": [
+      "subtle old tree shape",
+      "small unlabelled plaque silhouette",
+      "path curve back toward PlayerYard",
+      "soft light near plaza edge"
+    ],
+    "forbidden": [
+      "baked quest text",
+      "visible UI arrows",
+      "explicit old well instruction",
+      "readable clue labels"
+    ]
+  }
+}

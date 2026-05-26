@@ -26,7 +26,7 @@ text = "第一周主线"
 
 [node name="ProgressLabel" type="Label" parent="Panel/Content"]
 layout_mode = 2
-text = "进度 0 / 8"
+text = "进度 0 / 13"
 
 [node name="ObjectiveList" type="VBoxContainer" parent="Panel/Content"]
 layout_mode = 2
@@ -42,6 +42,22 @@ text = "[ ] 看公告板"
 [node name="OldWellLabel" type="Label" parent="Panel/Content/ObjectiveList"]
 layout_mode = 2
 text = "[ ] 修旧井"
+
+[node name="WaterCropLabel" type="Label" parent="Panel/Content/ObjectiveList"]
+layout_mode = 2
+text = "[ ] 给第一块作物浇水"
+
+[node name="HarvestCropLabel" type="Label" parent="Panel/Content/ObjectiveList"]
+layout_mode = 2
+text = "[ ] 收获第一棵作物"
+
+[node name="ShareTurnipLabel" type="Label" parent="Panel/Content/ObjectiveList"]
+layout_mode = 2
+text = "[ ] 把第一根萝卜送给葵"
+
+[node name="PlantStrawberryLabel" type="Label" parent="Panel/Content/ObjectiveList"]
+layout_mode = 2
+text = "[ ] 种下葵送的草莓"
 
 [node name="BenchLabel" type="Label" parent="Panel/Content/ObjectiveList"]
 layout_mode = 2

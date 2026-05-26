@@ -37,6 +37,11 @@ FORBIDDEN_ACTIVE_SCENE_TOKENS = [
 
 REQUIRED_VALIDATORS = [
     "tools/validate_project_art_production_landing.py",
+    "tools/validate_outdoor_world_seamless_art_master.py",
+    "tools/validate_mountain_hut_world2d_art_prep.py",
+    "tools/validate_mountain_hut_painted_source_candidate.py",
+    "tools/validate_mountain_hut_source_quality_gate.py",
+    "tools/validate_mountain_hut_v002_source_candidate.py",
     "tools/validate_home_area_world2d_v001.py",
     "tools/validate_region_back_farm_art_v002.py",
     "tools/validate_protagonist_runtime_manifest.py",
@@ -107,8 +112,112 @@ def validate_active_region_packages(by_id: dict[str, dict[str, Any]]) -> None:
     require(back.get("human_visual_approval_required") is True, "BackFarm must require human review")
     require((ROOT / str(back["active_package"])).exists(), "BackFarm active package missing")
 
+    village = by_id["Region_Village"]
+    village_layer_manifest_phases = {
+        "village_layers_exported_pending_review",
+        "village_layers_rejected_semantic_rework_required",
+        "village_semantic_layers_exported_pending_review",
+        "v002_inherited_crop_candidate_ready_for_visual_review",
+        "v002_codex_visual_accepted_for_semantic_layer_export",
+        "v002_semantic_layers_exported_pending_review",
+    }
+    require(
+        village.get("phase") in {"village_plaza_art_prep_package_ready", *village_layer_manifest_phases},
+        "Village phase mismatch",
+    )
+    require(village.get("runtime_replacement") is False, "Village must keep runtime_replacement=false")
+    require(village.get("human_visual_approval_required") is True, "Village must require human review")
+    require((ROOT / str(village["active_package"])).exists(), "Village active package missing")
+    require((ROOT / str(village["required_package_dir"])).exists(), "Village required package dir missing")
+    if village.get("phase") in village_layer_manifest_phases:
+        require((ROOT / str(village.get("active_layer_manifest", ""))).exists(), "Village active layer manifest missing")
+    if village.get("phase") == "v002_inherited_crop_candidate_ready_for_visual_review":
+        require((ROOT / str(village.get("active_inherited_repaint_handoff", ""))).exists(), "Village inherited repaint handoff missing")
+        require((ROOT / str(village.get("active_v002_source_candidate", ""))).exists(), "Village v002 source candidate missing")
+        require((ROOT / str(village.get("active_v002_quality_review", ""))).exists(), "Village v002 quality review missing")
+        require((ROOT / str(village.get("active_v002_review_contact_sheet", ""))).exists(), "Village v002 contact sheet missing")
+        require("inherited repaint" in str(village.get("next_art_step", "")), "Village next step must mention inherited repaint")
+    if village.get("phase") in {
+        "v002_codex_visual_accepted_for_semantic_layer_export",
+        "v002_semantic_layers_exported_pending_review",
+    }:
+        require((ROOT / str(village.get("active_inherited_repaint_handoff", ""))).exists(), "Village inherited repaint handoff missing")
+        require((ROOT / str(village.get("active_v002_source_candidate", ""))).exists(), "Village v002 source candidate missing")
+        require((ROOT / str(village.get("active_v002_quality_review", ""))).exists(), "Village v002 quality review missing")
+        require((ROOT / str(village.get("active_v002_review_contact_sheet", ""))).exists(), "Village v002 contact sheet missing")
+        require((ROOT / str(village.get("active_v002_visual_review", ""))).exists(), "Village v002 visual review missing")
+    if village.get("phase") == "v002_semantic_layers_exported_pending_review":
+        require((ROOT / str(village.get("active_v002_layer_manifest", ""))).exists(), "Village v002 layer manifest missing")
+        require("semantic layers" in str(village.get("next_art_step", "")), "Village next step must point to semantic layer review")
+
+    mountain_hut = by_id["Region_MountainHut"]
+    mountain_hut_source_phases = {
+        "mountain_hut_source_candidate_pending_review",
+        "mountain_hut_source_candidate_needs_repaint",
+        "mountain_hut_v002_candidate_ready_for_human_art_review",
+        "mountain_hut_v002_visual_review_rejected_needs_v003_repaint",
+        "mountain_hut_v003_candidate_ready_for_visual_review",
+        "mountain_hut_v004_candidate_ready_for_visual_review",
+        "v004_semantic_layers_exported_pending_review",
+    }
+    require(
+        mountain_hut.get("phase") in {"mountain_hut_art_prep_package_ready", *mountain_hut_source_phases},
+        "MountainHut phase mismatch",
+    )
+    require(mountain_hut.get("runtime_replacement") is False, "MountainHut must keep runtime_replacement=false")
+    require(mountain_hut.get("human_visual_approval_required") is True, "MountainHut must require human review")
+    require(
+        mountain_hut.get("active_package") == "production/assets/regions/mountain_hut_world2d/v001/workflow_manifest.json",
+        "MountainHut active package mismatch",
+    )
+    require(
+        mountain_hut.get("active_seam_brief") == "production/assets/seams/village_to_mountain_hut/v001/seam_brief.md",
+        "MountainHut active seam brief mismatch",
+    )
+    require((ROOT / str(mountain_hut["active_package"])).exists(), "MountainHut active package missing")
+    require((ROOT / str(mountain_hut["required_package_dir"])).exists(), "MountainHut required package dir missing")
+    require((ROOT / str(mountain_hut["active_seam_brief"])).exists(), "MountainHut active seam brief missing")
+    if mountain_hut.get("phase") in mountain_hut_source_phases:
+        require((ROOT / str(mountain_hut.get("active_source_candidate", ""))).exists(), "MountainHut active source candidate missing")
+        require((ROOT / str(mountain_hut.get("active_source_review", ""))).exists(), "MountainHut active source review missing")
+    if mountain_hut.get("phase") == "mountain_hut_source_candidate_needs_repaint":
+        require((ROOT / str(mountain_hut.get("active_source_quality_review", ""))).exists(), "MountainHut source quality review missing")
+        require((ROOT / str(mountain_hut.get("active_repaint_reference_board", ""))).exists(), "MountainHut repaint reference board missing")
+        require((ROOT / str(mountain_hut.get("active_repaint_brief", ""))).exists(), "MountainHut repaint brief missing")
+        require("v002 repaint" in str(mountain_hut.get("next_art_step", "")), "MountainHut next step must point to v002 repaint")
+    if mountain_hut.get("phase") == "mountain_hut_v002_candidate_ready_for_human_art_review":
+        require((ROOT / str(mountain_hut.get("active_v002_source_candidate", ""))).exists(), "MountainHut v002 source candidate missing")
+        require((ROOT / str(mountain_hut.get("active_v002_quality_review", ""))).exists(), "MountainHut v002 quality review missing")
+        require((ROOT / str(mountain_hut.get("active_v002_review_contact_sheet", ""))).exists(), "MountainHut v002 contact sheet missing")
+        require("human/art review" in str(mountain_hut.get("next_art_step", "")), "MountainHut next step must point to v002 human/art review")
+    if mountain_hut.get("phase") == "mountain_hut_v002_visual_review_rejected_needs_v003_repaint":
+        require((ROOT / str(mountain_hut.get("active_v002_source_candidate", ""))).exists(), "MountainHut v002 source candidate missing")
+        require((ROOT / str(mountain_hut.get("active_v002_quality_review", ""))).exists(), "MountainHut v002 quality review missing")
+        require((ROOT / str(mountain_hut.get("active_v002_visual_review", ""))).exists(), "MountainHut v002 visual review missing")
+        require((ROOT / str(mountain_hut.get("active_v003_repaint_brief", ""))).exists(), "MountainHut v003 repaint brief missing")
+        require((ROOT / str(mountain_hut.get("active_v003_reference_sheet", ""))).exists(), "MountainHut v003 reference sheet missing")
+        require("v003" in str(mountain_hut.get("next_art_step", "")), "MountainHut next step must point to v003 repaint")
+    if mountain_hut.get("phase") == "mountain_hut_v003_candidate_ready_for_visual_review":
+        require((ROOT / str(mountain_hut.get("active_v002_source_candidate", ""))).exists(), "MountainHut v002 source candidate missing")
+        require((ROOT / str(mountain_hut.get("active_v002_quality_review", ""))).exists(), "MountainHut v002 quality review missing")
+        require((ROOT / str(mountain_hut.get("active_v003_source_candidate", ""))).exists(), "MountainHut v003 source candidate missing")
+        require((ROOT / str(mountain_hut.get("active_v003_quality_review", ""))).exists(), "MountainHut v003 quality review missing")
+        require((ROOT / str(mountain_hut.get("active_v003_review_contact_sheet", ""))).exists(), "MountainHut v003 contact sheet missing")
+        require("visual review" in str(mountain_hut.get("next_art_step", "")), "MountainHut next step must point to v003 visual review")
+    if mountain_hut.get("phase") == "mountain_hut_v004_candidate_ready_for_visual_review":
+        require((ROOT / str(mountain_hut.get("active_v003_visual_review", ""))).exists(), "MountainHut v003 visual review missing")
+        require((ROOT / str(mountain_hut.get("active_v004_source_candidate", ""))).exists(), "MountainHut v004 source candidate missing")
+        require((ROOT / str(mountain_hut.get("active_v004_quality_review", ""))).exists(), "MountainHut v004 quality review missing")
+        require((ROOT / str(mountain_hut.get("active_v004_review_contact_sheet", ""))).exists(), "MountainHut v004 contact sheet missing")
+        require("visual review" in str(mountain_hut.get("next_art_step", "")), "MountainHut next step must point to v004 visual review")
+    if mountain_hut.get("phase") == "v004_semantic_layers_exported_pending_review":
+        require((ROOT / str(mountain_hut.get("active_v004_source_candidate", ""))).exists(), "MountainHut v004 source candidate missing")
+        require((ROOT / str(mountain_hut.get("active_v004_visual_review", ""))).exists(), "MountainHut v004 visual review missing")
+        require((ROOT / str(mountain_hut.get("active_layer_manifest", ""))).exists(), "MountainHut active layer manifest missing")
+        require("semantic layers" in str(mountain_hut.get("next_art_step", "")), "MountainHut next step must point to semantic layer review")
+
     for region_id, record in by_id.items():
-        if region_id in {"Region_HomeArea", "Region_BackFarm"}:
+        if region_id in {"Region_HomeArea", "Region_BackFarm", "Region_Village", "Region_MountainHut"}:
             continue
         require(record.get("phase") == "graybox_scene_needs_source_package", f"{region_id} must remain an explicit art backlog row")
         require(str(record.get("required_package_dir", "")).startswith("production/assets/regions/"), f"{region_id} missing required package dir")
@@ -174,6 +283,12 @@ def validate_manifest_structure(manifest: dict[str, Any]) -> None:
     require(DOC.exists(), "missing docs/13_ART_PRODUCTION_LANDING.md")
     for validator in REQUIRED_VALIDATORS:
         require((ROOT / validator).exists(), f"missing validation entrypoint: {validator}")
+    seamless = as_dict(manifest.get("seamless_outdoor_world"), "seamless_outdoor_world")
+    require(seamless.get("active_runtime_scene") == "res://game/scenes/world/OutdoorWorld.tscn", "seamless OutdoorWorld scene mismatch")
+    require(seamless.get("active_package") == "production/assets/outdoor_world_world2d/v001/workflow_manifest.json", "seamless OutdoorWorld active package mismatch")
+    require((ROOT / str(seamless.get("active_package"))).exists(), "seamless OutdoorWorld package missing")
+    require(seamless.get("runtime_replacement") is False, "seamless OutdoorWorld must not replace runtime art")
+    require(seamless.get("human_visual_approval_required") is True, "seamless OutdoorWorld must require human review")
     character_assets = as_dict(manifest.get("character_assets"), "character_assets")
     protagonist = as_dict(character_assets.get("protagonist"), "protagonist")
     require((ROOT / str(protagonist.get("manifest"))).exists(), "protagonist runtime manifest missing")

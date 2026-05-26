@@ -29,13 +29,16 @@ func _run() -> void:
 
 	var hud := main.get_node_or_null("FirstWeekQuestHUD")
 	var journal := main.get_node_or_null("QuestJournalUI")
+	var chip := main.get_node_or_null("CurrentObjectiveChip")
 	_expect(hud != null, "Main should include FirstWeekQuestHUD")
-	_expect(journal != null, "Main should include QuestJournalUI")
+	_expect(journal == null, "Main should not mount the retired QuestJournalUI")
+	_expect(chip != null, "Main should include CurrentObjectiveChip")
+	_expect(not InputMap.has_action("open_journal"), "open_journal input action should stay retired")
 	if _has_failed:
 		return
 
 	_expect(not bool(hud.get("visible")), "FirstWeekQuestHUD should start hidden for normal play")
-	_expect(not bool(journal.get("visible")), "QuestJournalUI should start hidden")
+	_expect(bool(chip.get("visible")), "CurrentObjectiveChip should stay visible for soft guidance")
 	_expect(String(main.get_current_gameplay_scene_id()) == "player_house", "Play should start in player_house")
 	if _has_failed:
 		return
@@ -90,12 +93,14 @@ func _validate_player_visible(scene: Node, scene_id: String) -> void:
 	if _has_failed:
 		return
 
-	var sprite := player.get_node_or_null("PlayerSprite") as Sprite2D
-	_expect(sprite != null, "%s Player should include a visible PlayerSprite" % scene_id)
+	var sprite := player.get_node_or_null("PlayerSprite") as AnimatedSprite2D
+	_expect(sprite != null, "%s Player should include AnimatedSprite2D PlayerSprite" % scene_id)
 	if _has_failed:
 		return
 	_expect(bool(sprite.visible), "%s PlayerSprite should be visible" % scene_id)
-	_expect(sprite.texture != null, "%s PlayerSprite should have a texture" % scene_id)
+	_expect(sprite.sprite_frames != null, "%s PlayerSprite should have SpriteFrames" % scene_id)
+	_expect(not StringName(sprite.animation).is_empty(), "%s PlayerSprite should have a default idle animation" % scene_id)
+	_expect(String(sprite.animation).begins_with("player_idle_"), "%s PlayerSprite should start on an idle animation" % scene_id)
 
 
 func _expect(condition: bool, message: String) -> void:

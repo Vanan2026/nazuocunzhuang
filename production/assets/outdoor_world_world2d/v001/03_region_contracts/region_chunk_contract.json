@@ -1,0 +1,61 @@
+{
+  "contract_id": "outdoor_world_region_chunk_contract_v001",
+  "status": "seamless_mvp_layer_scope_locked",
+  "active_runtime_scene": "res://game/scenes/world/OutdoorWorld.tscn",
+  "per_region_source_rule": {
+    "source_canvas": [
+      1800,
+      1200
+    ],
+    "runtime_size_reference": [
+      320,
+      240
+    ],
+    "runtime_texture_scale": 0.18,
+    "opaque_source_required": true,
+    "single_painted_source_per_region": true,
+    "layers_derive_from_source": true,
+    "transparent_layers_full_canvas": true,
+    "no_cropped_layers": true
+  },
+  "mvp_layers": [
+    {
+      "id": "base_ground",
+      "alpha": "opaque",
+      "z_index": -30
+    },
+    {
+      "id": "terrain_details",
+      "alpha": "transparent_full_canvas",
+      "z_index": -25
+    },
+    {
+      "id": "behind_player_structures",
+      "alpha": "transparent_full_canvas",
+      "z_index": -10
+    },
+    {
+      "id": "ysort_props_structures",
+      "alpha": "transparent_full_canvas",
+      "z_index": 8
+    },
+    {
+      "id": "foreground_occlusion",
+      "alpha": "transparent_full_canvas",
+      "z_index": 40
+    }
+  ],
+  "deferred_layers": [
+    "shadow_overlay",
+    "light_weather_overlay_spring",
+    "light_weather_overlay_summer",
+    "light_weather_overlay_autumn",
+    "light_weather_overlay_winter"
+  ],
+  "seam_acceptance": [
+    "Roads continue across connected regions without width jumps.",
+    "Ground color and texture density do not visibly reset at region boundaries.",
+    "Foreground occlusion does not hide seam travel prompts or NPC standing pockets.",
+    "No layer is independently recomposed from a new prompt."
+  ]
+}

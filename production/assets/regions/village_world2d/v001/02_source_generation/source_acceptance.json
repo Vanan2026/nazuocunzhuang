@@ -1,0 +1,22 @@
+{
+  "candidate_id": "village_true_painted_source_candidate_v001",
+  "status": "accepted_for_layer_export",
+  "candidate_type": "true_storybook_painted_source",
+  "source_image": "production/assets/regions/village_world2d/v001/02_source_generation/village_painted_source.png",
+  "accepted_candidate_image": "production/assets/regions/village_world2d/v001/02_source_generation/true_source_candidates/village_true_painted_source_candidate_v001.png",
+  "preserved_layout_structure_draft": "production/assets/regions/village_world2d/v001/02_source_generation/layout_structure_drafts/village_layout_structure_draft_v001.png",
+  "canvas": {
+    "width": 1800,
+    "height": 1200
+  },
+  "alpha": "opaque",
+  "human_visual_approval": true,
+  "human_approval_note": "User accepted the candidate in-chat on 2026-05-24 and asked to proceed.",
+  "layer_export_approved": true,
+  "runtime_replacement": false,
+  "launch_quality_approved": false,
+  "notes": [
+    "This is the accepted source for Village v001 layer export.",
+    "Runtime art replacement remains blocked until layer review and Godot screenshot validation."
+  ]
+}

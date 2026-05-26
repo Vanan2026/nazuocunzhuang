@@ -1,0 +1,275 @@
+{
+  "package_id": "outdoor_world_base_no_foreground_v001",
+  "status": "world_base_no_foreground_ready_for_region_crop_review",
+  "world_base_image": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/outdoor_world_base_no_foreground.png",
+  "review_preview": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/outdoor_world_base_no_foreground_review.png",
+  "world_canvas": [
+    9900,
+    4950
+  ],
+  "region_canvas": [
+    1800,
+    1200
+  ],
+  "runtime_replacement": false,
+  "launch_quality_approved": false,
+  "foreground_policy": "foreground_occlusion_is_per_region_separate_layer",
+  "high_quality_region_rule": "region repaint starts from inherited world_base crop",
+  "region_crops": [
+    {
+      "region_id": "player_yard",
+      "display_name": "PlayerYard",
+      "path": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/region_base_crops/player_yard_base_no_foreground.png",
+      "derived_from": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/outdoor_world_base_no_foreground.png",
+      "canvas": [
+        1800,
+        1200
+      ],
+      "world_base_crop_box": [
+        0,
+        1237,
+        2092,
+        3532
+      ],
+      "runtime_bounds": [
+        -40,
+        -96,
+        372,
+        408
+      ],
+      "foreground_removed": true,
+      "repaint_status": "base_crop_only_not_final_scene_art",
+      "next_step": "Use this inherited crop as the first layer/reference for high-quality region repaint."
+    },
+    {
+      "region_id": "forest_edge",
+      "display_name": "ForestEdge",
+      "path": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/region_base_crops/forest_edge_base_no_foreground.png",
+      "derived_from": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/outdoor_world_base_no_foreground.png",
+      "canvas": [
+        1800,
+        1200
+      ],
+      "world_base_crop_box": [
+        2092,
+        1170,
+        4005,
+        2969
+      ],
+      "runtime_bounds": [
+        332,
+        -108,
+        340,
+        320
+      ],
+      "foreground_removed": true,
+      "repaint_status": "base_crop_only_not_final_scene_art",
+      "next_step": "Use this inherited crop as the first layer/reference for high-quality region repaint."
+    },
+    {
+      "region_id": "village",
+      "display_name": "Village",
+      "path": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/region_base_crops/village_base_no_foreground.png",
+      "derived_from": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/outdoor_world_base_no_foreground.png",
+      "canvas": [
+        1800,
+        1200
+      ],
+      "world_base_crop_box": [
+        4275,
+        1710,
+        6074,
+        3059
+      ],
+      "runtime_bounds": [
+        720,
+        -12,
+        320,
+        240
+      ],
+      "foreground_removed": true,
+      "repaint_status": "base_crop_only_not_final_scene_art",
+      "next_step": "Use this inherited crop as the first layer/reference for high-quality region repaint."
+    },
+    {
+      "region_id": "back_farm",
+      "display_name": "BackFarm",
+      "path": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/region_base_crops/back_farm_base_no_foreground.png",
+      "derived_from": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/outdoor_world_base_no_foreground.png",
+      "canvas": [
+        1800,
+        1200
+      ],
+      "world_base_crop_box": [
+        225,
+        3599,
+        2025,
+        4949
+      ],
+      "runtime_bounds": [
+        0,
+        324,
+        320,
+        240
+      ],
+      "foreground_removed": true,
+      "repaint_status": "base_crop_only_not_final_scene_art",
+      "next_step": "Use this inherited crop as the first layer/reference for high-quality region repaint."
+    },
+    {
+      "region_id": "orchard",
+      "display_name": "Orchard",
+      "path": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/region_base_crops/orchard_base_no_foreground.png",
+      "derived_from": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/outdoor_world_base_no_foreground.png",
+      "canvas": [
+        1800,
+        1200
+      ],
+      "world_base_crop_box": [
+        2362,
+        3599,
+        4162,
+        4949
+      ],
+      "runtime_bounds": [
+        380,
+        324,
+        320,
+        240
+      ],
+      "foreground_removed": true,
+      "repaint_status": "base_crop_only_not_final_scene_art",
+      "next_step": "Use this inherited crop as the first layer/reference for high-quality region repaint."
+    },
+    {
+      "region_id": "pond",
+      "display_name": "Pond",
+      "path": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/region_base_crops/pond_base_no_foreground.png",
+      "derived_from": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/outdoor_world_base_no_foreground.png",
+      "canvas": [
+        1800,
+        1200
+      ],
+      "world_base_crop_box": [
+        4275,
+        3599,
+        6074,
+        4949
+      ],
+      "runtime_bounds": [
+        720,
+        324,
+        320,
+        240
+      ],
+      "foreground_removed": true,
+      "repaint_status": "base_crop_only_not_final_scene_art",
+      "next_step": "Use this inherited crop as the first layer/reference for high-quality region repaint."
+    },
+    {
+      "region_id": "mountain_path",
+      "display_name": "MountainPath",
+      "path": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/region_base_crops/mountain_path_base_no_foreground.png",
+      "derived_from": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/outdoor_world_base_no_foreground.png",
+      "canvas": [
+        1800,
+        1200
+      ],
+      "world_base_crop_box": [
+        4275,
+        0,
+        6074,
+        1350
+      ],
+      "runtime_bounds": [
+        720,
+        -316,
+        320,
+        240
+      ],
+      "foreground_removed": true,
+      "repaint_status": "base_crop_only_not_final_scene_art",
+      "next_step": "Use this inherited crop as the first layer/reference for high-quality region repaint."
+    },
+    {
+      "region_id": "mountain_hut",
+      "display_name": "MountainHut",
+      "path": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/region_base_crops/mountain_hut_base_no_foreground.png",
+      "derived_from": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/outdoor_world_base_no_foreground.png",
+      "canvas": [
+        1800,
+        1200
+      ],
+      "world_base_crop_box": [
+        6187,
+        1710,
+        7987,
+        3059
+      ],
+      "runtime_bounds": [
+        1060,
+        -12,
+        320,
+        240
+      ],
+      "foreground_removed": true,
+      "repaint_status": "base_crop_only_not_final_scene_art",
+      "next_step": "Use this inherited crop as the first layer/reference for high-quality region repaint."
+    },
+    {
+      "region_id": "mountain",
+      "display_name": "Mountain",
+      "path": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/region_base_crops/mountain_base_no_foreground.png",
+      "derived_from": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/outdoor_world_base_no_foreground.png",
+      "canvas": [
+        1800,
+        1200
+      ],
+      "world_base_crop_box": [
+        6187,
+        0,
+        7987,
+        1350
+      ],
+      "runtime_bounds": [
+        1060,
+        -316,
+        320,
+        240
+      ],
+      "foreground_removed": true,
+      "repaint_status": "base_crop_only_not_final_scene_art",
+      "next_step": "Use this inherited crop as the first layer/reference for high-quality region repaint."
+    },
+    {
+      "region_id": "cliff_view",
+      "display_name": "CliffView",
+      "path": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/region_base_crops/cliff_view_base_no_foreground.png",
+      "derived_from": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/outdoor_world_base_no_foreground.png",
+      "canvas": [
+        1800,
+        1200
+      ],
+      "world_base_crop_box": [
+        8099,
+        0,
+        9899,
+        1350
+      ],
+      "runtime_bounds": [
+        1400,
+        -316,
+        320,
+        240
+      ],
+      "foreground_removed": true,
+      "repaint_status": "base_crop_only_not_final_scene_art",
+      "next_step": "Use this inherited crop as the first layer/reference for high-quality region repaint."
+    }
+  ],
+  "notes": [
+    "This whole-world base is a no-foreground continuity scaffold, not final art.",
+    "Per-region high-quality scene work must inherit roads, terrain hue, lighting, and edge continuity from these crops.",
+    "Foreground occlusion remains a separate per-region layer produced after the base scene is accepted."
+  ]
+}

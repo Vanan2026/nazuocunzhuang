@@ -1,0 +1,38 @@
+{
+  "review_id": "mountain_hut_source_quality_review_v002",
+  "status": "v002_candidate_ready_for_human_art_review",
+  "reviewed_at": "2026-05-25",
+  "source_candidate": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v002/mountain_hut_painted_source_v002.png",
+  "quality_reference_source": "production/assets/regions/village_world2d/v001/02_source_generation/village_painted_source.png",
+  "previous_source_candidate": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/mountain_hut_painted_source.png",
+  "review_overlay": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/mountain_hut_painted_source_review_overlay_v002.png",
+  "review_contact_sheet": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/mountain_hut_v002_review_contact_sheet.png",
+  "source_candidate_review": ".codex/reports/mountain_hut_v002_source_candidate_review_2026-05-25.md",
+  "metrics": {
+    "village_detail_edge_mean": 15.1767,
+    "v001_detail_edge_mean": 8.0786,
+    "v002_detail_edge_mean": 14.2493,
+    "detail_ratio": 0.9389,
+    "detail_improvement_over_v001": 1.7638,
+    "minimum_detail_ratio_for_review_ready": 0.68,
+    "village_gray_variance": 971.8164,
+    "v002_gray_variance": 608.378,
+    "variance_ratio": 0.626,
+    "minimum_variance_ratio_for_review_ready": 0.62,
+    "seam_edge_average_channel_delta": 14.8027,
+    "maximum_preferred_seam_delta_for_precheck": 24.0,
+    "seam_color_precheck_passed": true
+  },
+  "producer_verdict": "The v002 source candidate is a stronger full-canvas repaint candidate and is ready for human/art review, while layer export and runtime replacement remain blocked.",
+  "remaining_review_notes": [
+    "Human/art review must still approve the full composition before layer export.",
+    "If accepted, runtime layers must derive from this single full-canvas painted source without independent recomposition.",
+    "Godot screenshot review is still required after any future layer export."
+  ],
+  "hard_approval_flags": {
+    "human_visual_approval": false,
+    "layer_export_approved": false,
+    "runtime_replacement": false,
+    "launch_quality_approved": false
+  }
+}

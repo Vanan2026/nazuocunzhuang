@@ -14,6 +14,7 @@ signal restoration_completed(restoration_id: String)
 
 var restoration_data: Dictionary = {}
 var local_restored: Dictionary = {}
+var pending_reward_feedback: Array[String] = []
 
 
 func _ready() -> void:
@@ -55,6 +56,7 @@ func on_interact(_interactor: Node) -> void:
 		_show_feedback("修复消耗失败，请稍后重试。")
 		return
 
+	pending_reward_feedback = _grant_completion_rewards()
 	_set_restored_state(true)
 	_apply_visual_state(true)
 	emit_restoration_completed()
@@ -150,6 +152,38 @@ func _consume_requirements() -> bool:
 	return true
 
 
+func _grant_completion_rewards() -> Array[String]:
+	var granted: Array[String] = []
+	var reward_items_variant: Variant = restoration_data.get("reward_items", [])
+	var reward_items: Array = reward_items_variant if reward_items_variant is Array else []
+	if reward_items.is_empty():
+		return granted
+	var inventory_manager := _get_inventory_manager()
+	if inventory_manager == null or not inventory_manager.has_method("add_item"):
+		return granted
+	for reward_item in reward_items:
+		if not (reward_item is Dictionary):
+			continue
+		var item_id := String(reward_item.get("item_id", ""))
+		var count := int(reward_item.get("count", 0))
+		if item_id.is_empty() or count <= 0:
+			continue
+		inventory_manager.add_item(item_id, count)
+		granted.append(_format_item_stack(item_id, count))
+	return granted
+
+
+func _format_item_stack(item_id: String, count: int) -> String:
+	var display_id := item_id
+	var data_registry := _get_data_registry()
+	if data_registry != null and data_registry.has_method("get_item"):
+		var item_data: Dictionary = data_registry.get_item(item_id)
+		var item_name := String(item_data.get("name", ""))
+		if not item_name.is_empty():
+			display_id = item_name
+	return "%s x%d" % [display_id, count]
+
+
 func _get_missing_requirements() -> Array[String]:
 	var missing: Array[String] = []
 	if restoration_data.is_empty():
@@ -226,6 +260,9 @@ func _apply_visual_state(is_repaired: bool) -> void:
 
 
 func _show_feedback(message: String) -> void:
+	if not pending_reward_feedback.is_empty():
+		message += "\n获得：" + "、".join(pending_reward_feedback)
+		pending_reward_feedback.clear()
 	var dialogue_box := _get_dialogue_box()
 	if dialogue_box == null or not dialogue_box.has_method("show_dialogue"):
 		push_warning(message)

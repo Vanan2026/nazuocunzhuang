@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://game/scenes/ui/DailyIntentPanel.gd" id="1_daily_intent_panel"]
+
+[node name="DailyIntentPanel" type="CanvasLayer"]
+visible = false
+layer = 18
+script = ExtResource("1_daily_intent_panel")
+
+[node name="Panel" type="PanelContainer" parent="."]
+offset_left = 420.0
+offset_top = 124.0
+offset_right = 860.0
+offset_bottom = 414.0
+
+[node name="Content" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Panel/Content"]
+layout_mode = 2
+text = "今天想先做什么"
+horizontal_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="Panel/Content"]
+layout_mode = 2
+text = "这是提醒，不是任务。选一个方向，今天慢慢来。"
+autowrap_mode = 3
+
+[node name="ChoiceButtons" type="VBoxContainer" parent="Panel/Content"]
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="Panel/Content"]
+layout_mode = 2
+text = "先不决定"

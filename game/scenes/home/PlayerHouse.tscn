@@ -1,11 +1,21 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=12 format=3]
 
 [ext_resource type="PackedScene" path="res://game/entities/player/Player.tscn" id="1_player"]
 [ext_resource type="Script" path="res://game/entities/interactable/SceneTravel.gd" id="2_scene_switch_area"]
 [ext_resource type="Script" path="res://game/systems/scene/SpawnPoint.gd" id="3_spawn_point"]
+[ext_resource type="Script" path="res://game/entities/interactable/BedInteractable.gd" id="4_bed_interactable"]
+[ext_resource type="PackedScene" path="res://game/scenes/ui/DialogueBox.tscn" id="5_dialogue_box"]
+[ext_resource type="Script" path="res://game/entities/interactable/DailyIntentPlanner.gd" id="6_daily_intent_planner"]
+[ext_resource type="PackedScene" path="res://game/scenes/ui/DailyIntentPanel.tscn" id="7_daily_intent_panel"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_door"]
 size = Vector2(48, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bed"]
+size = Vector2(68, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_intent_desk"]
+size = Vector2(72, 40)
 
 [node name="PlayerHouse" type="Node2D"]
 
@@ -22,10 +32,65 @@ polygon = PackedVector2Array(-320, -180, 384, -180, 384, 260, -320, 260)
 color = Color(0.74, 0.64, 0.5, 1)
 polygon = PackedVector2Array(-192, -96, 256, -96, 256, 176, -192, 176)
 
+[node name="RoughEnvironmentSilhouettes" type="Node2D" parent="."]
+
+[node name="WarmFloorWash" type="Polygon2D" parent="RoughEnvironmentSilhouettes"]
+color = Color(0.84, 0.69, 0.45, 0.34)
+polygon = PackedVector2Array(-156, -62, 214, -70, 230, 122, 124, 158, -126, 138, -174, 26)
+
+[node name="PorchDoorMatShape" type="Polygon2D" parent="RoughEnvironmentSilhouettes"]
+color = Color(0.46, 0.31, 0.22, 0.72)
+polygon = PackedVector2Array(34, -70, 104, -70, 116, -26, 22, -24)
+
+[node name="WindowLightPatch" type="Polygon2D" parent="RoughEnvironmentSilhouettes"]
+color = Color(0.96, 0.81, 0.5, 0.28)
+polygon = PackedVector2Array(-172, -72, -72, -92, 48, 118, -22, 140)
+
+[node name="HomeStartGuidance" type="Node2D" parent="."]
+
+[node name="DoorGuidePath" type="Polygon2D" parent="HomeStartGuidance"]
+color = Color(0.69, 0.56, 0.38, 1)
+polygon = PackedVector2Array(6, 40, 30, 22, 66, -36, 84, -28, 42, 34, 20, 56)
+
+[node name="DoorFocusMarker" type="Polygon2D" parent="HomeStartGuidance"]
+color = Color(0.78, 0.62, 0.42, 1)
+polygon = PackedVector2Array(48, -58, 96, -58, 104, -24, 42, -24)
+
 [node name="Rug" type="Polygon2D" parent="."]
 position = Vector2(16, 56)
 color = Color(0.55, 0.37, 0.32, 1)
 polygon = PackedVector2Array(-36, -16, 36, -16, 36, 16, -36, 16)
+
+[node name="IntentDesk" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(-56, 66)
+script = ExtResource("6_daily_intent_planner")
+interactable_id = "daily_intent_planner"
+display_name = "晨间小桌"
+interaction_text = "桌上放着一张便笺和一支铅笔，适合先想想今天往哪边走。"
+interaction_hint = "按 E 整理今天想做的事"
+daily_intent_panel_path = NodePath("../DailyIntentPanel")
+
+[node name="IntentDeskShape" type="CollisionShape2D" parent="IntentDesk"]
+shape = SubResource("RectangleShape2D_intent_desk")
+
+[node name="IntentDeskMarker" type="Polygon2D" parent="IntentDesk"]
+color = Color(0.5, 0.33, 0.23, 1)
+polygon = PackedVector2Array(-36, -20, 36, -20, 42, 18, -42, 18)
+
+[node name="Bed" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(-128, -42)
+script = ExtResource("4_bed_interactable")
+interactable_id = "house_bed"
+display_name = "小床"
+interaction_text = "窗边的小床已经铺好，休息一晚，院子里的作物也会慢慢长大。"
+interaction_hint = "按 E 休息到明天"
+
+[node name="BedShape" type="CollisionShape2D" parent="Bed"]
+shape = SubResource("RectangleShape2D_bed")
+
+[node name="BedMarker" type="Polygon2D" parent="Bed"]
+color = Color(0.58, 0.42, 0.34, 1)
+polygon = PackedVector2Array(-34, -20, 34, -20, 34, 20, -34, 20)
 
 [node name="Player" parent="." instance=ExtResource("1_player")]
 position = Vector2(16, 48)
@@ -38,6 +103,9 @@ spawn_id = "inside_default"
 [node name="DoorToYard" type="Area2D" parent="." groups=["interactable"]]
 position = Vector2(72, -40)
 script = ExtResource("2_scene_switch_area")
+interactable_id = "door_to_yard"
+display_name = "院门"
+interaction_text = "屋外有早晨的风和邮箱旁的小路。"
 target_scene = "res://game/scenes/world/PlayerYard.tscn"
 target_scene_id = "player_yard"
 target_spawn_id = "from_house"
@@ -49,3 +117,7 @@ shape = SubResource("RectangleShape2D_door")
 [node name="DoorMarker" type="Polygon2D" parent="DoorToYard"]
 color = Color(0.42, 0.26, 0.17, 1)
 polygon = PackedVector2Array(-20, -14, 20, -14, 20, 14, -20, 14)
+
+[node name="DialogueBox" parent="." instance=ExtResource("5_dialogue_box")]
+
+[node name="DailyIntentPanel" parent="." instance=ExtResource("7_daily_intent_panel")]

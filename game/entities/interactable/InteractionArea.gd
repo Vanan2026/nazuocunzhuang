@@ -64,9 +64,41 @@ func _refresh_nearest() -> void:
 			continue
 		if not candidate is Node2D:
 			continue
+		if not _is_candidate_in_active_region(candidate):
+			continue
 		var distance := global_position.distance_squared_to((candidate as Node2D).global_position)
 		if distance < nearest_distance:
 			nearest_distance = distance
 			nearest_interactable = candidate
 	if previous != nearest_interactable:
 		nearest_interactable_changed.emit(nearest_interactable)
+
+
+func _is_candidate_in_active_region(candidate: Node) -> bool:
+	var candidate_region_id := _get_candidate_region_id(candidate)
+	if candidate_region_id.is_empty():
+		return true
+	var region_host := _get_region_host(candidate)
+	if region_host == null or not region_host.has_method("get_active_region_id"):
+		return true
+	return candidate_region_id == String(region_host.call("get_active_region_id"))
+
+
+func _get_candidate_region_id(candidate: Node) -> String:
+	var node := candidate
+	while node != null:
+		if node.has_meta("outdoor_region_id"):
+			return String(node.get_meta("outdoor_region_id"))
+		if node.has_meta("region_id"):
+			return String(node.get_meta("region_id"))
+		node = node.get_parent()
+	return ""
+
+
+func _get_region_host(candidate: Node) -> Node:
+	var node := candidate
+	while node != null:
+		if node.has_method("get_active_region_id"):
+			return node
+		node = node.get_parent()
+	return null

@@ -1,0 +1,23 @@
+{
+  "review_id": "village_v002_inherited_source_quality_review",
+  "status": "v002_inherited_crop_candidate_ready_for_visual_review",
+  "source_candidate": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/village_painted_source_v002.png",
+  "inherits_from_world_base_crop": "production/assets/outdoor_world_world2d/v001/02_world_base_no_foreground/region_base_crops/village_base_no_foreground.png",
+  "old_source_quality_reference": "production/assets/regions/village_world2d/v001/02_source_generation/village_painted_source.png",
+  "metrics": {
+    "edge_diff_from_base_crop": 0.0,
+    "mean_diff_from_base_crop": 37.3432,
+    "mean_diff_from_old_source": 47.3724,
+    "detail_ratio_vs_old_source": 1.153,
+    "variance_ratio_vs_old_source": 1.1798,
+    "center_diff_from_base_crop": 56.1968,
+    "center_diff_from_old_source": 17.8415
+  },
+  "producer_verdict": "Ready for visual review only; not human/art approval and not runtime replacement.",
+  "hard_approval_flags": {
+    "human_visual_approval": false,
+    "layer_export_approved": false,
+    "runtime_replacement": false,
+    "launch_quality_approved": false
+  }
+}

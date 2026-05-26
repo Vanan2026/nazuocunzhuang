@@ -9,6 +9,7 @@ var flags: Dictionary = {}
 var unlocked_areas: Dictionary = {}
 var restoration_states: Dictionary = {}
 var discovered_items: Dictionary = {}
+var daily_intents: Dictionary = {}
 var player_money: int = 500
 var player_energy: int = 100
 
@@ -50,6 +51,21 @@ func set_restoration_states(next_states: Dictionary) -> void:
 			set_flag("restored_%s" % String(restoration_id), true)
 
 
+func set_daily_intent(day_key: String, intent_id: String) -> void:
+	if day_key.is_empty() or intent_id.is_empty():
+		return
+	daily_intents[day_key] = intent_id
+	set_flag("daily_intent_%s" % day_key, intent_id)
+
+
+func get_daily_intent(day_key: String) -> String:
+	return String(daily_intents.get(day_key, ""))
+
+
+func get_daily_intents() -> Dictionary:
+	return daily_intents.duplicate(true)
+
+
 func set_player_money(value: int) -> void:
 	player_money = max(value, 0)
 	money_changed.emit(player_money)
@@ -66,6 +82,7 @@ func get_save_data() -> Dictionary:
 		"unlocked_areas": unlocked_areas.duplicate(true),
 		"restoration_states": restoration_states.duplicate(true),
 		"discovered_items": discovered_items.duplicate(true),
+		"daily_intents": daily_intents.duplicate(true),
 		"player_money": player_money,
 		"player_energy": player_energy,
 	}
@@ -85,6 +102,8 @@ func apply_save_data(data: Dictionary) -> void:
 		set_restoration_states(_duplicate_dictionary(data.get("restoration_states", restoration_states)))
 	if data.has("discovered_items"):
 		discovered_items = _duplicate_dictionary(data.get("discovered_items", discovered_items))
+	if data.has("daily_intents"):
+		daily_intents = _duplicate_dictionary(data.get("daily_intents", daily_intents))
 	if data.has("player_money"):
 		set_player_money(int(data.get("player_money", player_money)))
 	if data.has("player_energy"):

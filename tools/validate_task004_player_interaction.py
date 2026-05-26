@@ -50,7 +50,6 @@ REQUIRED_ACTIONS = [
     "interact",
     "use_tool",
     "open_inventory",
-    "open_journal",
     "cancel",
 ]
 

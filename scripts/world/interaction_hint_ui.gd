@@ -40,6 +40,14 @@ func hide_hint() -> void:
     target_alpha = 0.0
     current_hint = ""
 
+func hide_hint_now() -> void:
+    hide_hint()
+    current_alpha = 0.0
+    if hint_label != null:
+        hint_label.text = ""
+        hint_label.modulate.a = 0.0
+        hint_label.visible = false
+
 func _on_nearest_interactable_changed(hint: String) -> void:
     if hint.is_empty():
         hide_hint()

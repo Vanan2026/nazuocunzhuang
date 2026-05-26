@@ -28,6 +28,7 @@ var is_watered: bool = false
 
 @onready var state_marker: Polygon2D = get_node_or_null("StateMarker")
 @onready var crop_sprite: Sprite2D = get_node_or_null("CropSprite")
+@onready var crop_status_cue: Label = get_node_or_null("CropStatusCue")
 
 
 func _ready() -> void:
@@ -231,6 +232,25 @@ func get_stage_sprite_path() -> String:
 	return String(stage_sprites[stage_index])
 
 
+func get_crop_display_name() -> String:
+	var crop_data := _get_current_crop_data()
+	var crop_name := String(crop_data.get("name", "")).strip_edges()
+	if not crop_name.is_empty():
+		return crop_name
+	if crop_id.is_empty():
+		return ""
+	return crop_id.replace("_spring", "").replace("_summer", "").replace("_autumn", "").replace("_winter", "").replace("_", " ").capitalize()
+
+
+func get_crop_status_text() -> String:
+	if crop_id.is_empty():
+		return ""
+	var display_name := get_crop_display_name()
+	if display_name.is_empty():
+		return ""
+	return "%s %s" % [display_name, _crop_status_label()]
+
+
 func _reset_to_empty() -> void:
 	state = PlotState.EMPTY
 	crop_id = ""
@@ -276,6 +296,7 @@ func _update_visual() -> void:
 		PlotState.READY:
 			state_marker.color = Color(0.68, 0.58, 0.30, 1.0)
 	_update_crop_sprite()
+	_update_crop_status_cue()
 
 
 func _update_crop_sprite() -> void:
@@ -289,6 +310,28 @@ func _update_crop_sprite() -> void:
 		crop_sprite.texture = null
 		return
 	crop_sprite.texture = _load_texture(sprite_path)
+
+
+func _update_crop_status_cue() -> void:
+	if crop_status_cue == null:
+		crop_status_cue = get_node_or_null("CropStatusCue")
+	if crop_status_cue == null:
+		return
+	var text := get_crop_status_text()
+	crop_status_cue.visible = not text.is_empty()
+	crop_status_cue.text = get_crop_status_text()
+
+
+func _crop_status_label() -> String:
+	match state:
+		PlotState.PLANTED:
+			return "seeded"
+		PlotState.WATERED:
+			return "watered"
+		PlotState.READY:
+			return "ready"
+		_:
+			return ""
 
 
 func _get_stage_index(stage_count: int) -> int:

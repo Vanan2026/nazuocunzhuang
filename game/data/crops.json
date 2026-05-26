@@ -5,7 +5,7 @@
     "harvest_item_id": "crop_turnip",
     "name": "春萝卜",
     "allowed_seasons": ["spring"],
-    "grow_days": 4,
+    "grow_days": 2,
     "regrow_days": 0,
     "water_required": true,
     "stages": 4,

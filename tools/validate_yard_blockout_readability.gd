@@ -97,6 +97,14 @@ func _validate_layout_relationships(yard: Node) -> void:
 		_expect(route_network.get_node_or_null(path_name) != null, "RoutePathNetwork missing path: %s" % path_name)
 		if _has_failed:
 			return
+	var first_step_guidance := structure.get_node_or_null("FirstStepGuidance")
+	_expect(first_step_guidance != null, "YardStructure should include first-step mailbox guidance")
+	if _has_failed:
+		return
+	_expect(first_step_guidance.get_node_or_null("SpawnMailboxPath") != null, "FirstStepGuidance missing SpawnMailboxPath")
+	_expect(first_step_guidance.get_node_or_null("MailboxFocusMarker") != null, "FirstStepGuidance missing MailboxFocusMarker")
+	if _has_failed:
+		return
 	for zone_name in [
 		"HomeApproachZone",
 		"SocialNoticeZone",

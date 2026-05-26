@@ -10,7 +10,6 @@ const REQUIRED_ACTIONS: Array[String] = [
 	"interact",
 	"use_tool",
 	"open_inventory",
-	"open_journal",
 	"cancel",
 ]
 

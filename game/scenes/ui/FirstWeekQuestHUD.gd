@@ -6,21 +6,31 @@ const OBJECTIVE_LABELS: Dictionary = {
 	"read_mailbox_day1": "读邮箱",
 	"read_bulletin_day1": "看公告板",
 	"old_well_restored": "修旧井",
+	"watered_first_crop_day1": "给第一块作物浇水",
+	"harvested_first_crop_day1": "收获第一棵作物",
+	"shared_first_turnip_day1": "把第一根萝卜送给葵",
+	"planted_aoi_strawberry_day1": "种下葵送的草莓",
 	"garden_bench_restored": "修长椅",
 	"village_sign_restored": "扶正路牌",
 	"heard_forest_edge_notice": "读森林边缘公告",
 	"visited_forest_edge": "去森林边缘",
 	"heard_npc_forest_edge": "听 Mika 的传闻",
+	"read_village_notice_day1": "去村口看公告",
 }
 const OBJECTIVE_ORDER: Array[String] = [
 	"read_mailbox_day1",
 	"read_bulletin_day1",
 	"old_well_restored",
+	"watered_first_crop_day1",
+	"harvested_first_crop_day1",
+	"shared_first_turnip_day1",
+	"planted_aoi_strawberry_day1",
 	"garden_bench_restored",
 	"village_sign_restored",
 	"heard_forest_edge_notice",
 	"visited_forest_edge",
 	"heard_npc_forest_edge",
+	"read_village_notice_day1",
 ]
 
 @export var quest_manager_path: NodePath

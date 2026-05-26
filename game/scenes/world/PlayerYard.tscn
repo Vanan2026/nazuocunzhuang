@@ -85,6 +85,28 @@ polygon = PackedVector2Array(-320, -160, 560, -160, 560, 400, -320, 400)
 
 [node name="YardStructure" type="Node2D" parent="."]
 
+[node name="RoughEnvironmentSilhouettes" type="Node2D" parent="YardStructure"]
+
+[node name="HomePorchApronShape" type="Polygon2D" parent="YardStructure/RoughEnvironmentSilhouettes"]
+color = Color(0.66, 0.57, 0.42, 0.45)
+polygon = PackedVector2Array(0, 34, 112, 24, 136, 94, 52, 132, 8, 104)
+
+[node name="MailboxFootpathShape" type="Polygon2D" parent="YardStructure/RoughEnvironmentSilhouettes"]
+color = Color(0.72, 0.61, 0.39, 0.42)
+polygon = PackedVector2Array(24, 52, 92, 58, 136, 84, 120, 102, 60, 84, 20, 72)
+
+[node name="GardenSoilPatchShape" type="Polygon2D" parent="YardStructure/RoughEnvironmentSilhouettes"]
+color = Color(0.39, 0.27, 0.19, 0.66)
+polygon = PackedVector2Array(12, 142, 166, 146, 170, 252, 10, 252)
+
+[node name="RepairCornerGrassShape" type="Polygon2D" parent="YardStructure/RoughEnvironmentSilhouettes"]
+color = Color(0.42, 0.55, 0.34, 0.38)
+polygon = PackedVector2Array(168, 96, 346, 106, 352, 252, 170, 252)
+
+[node name="ForestEdgeBrushShape" type="Polygon2D" parent="YardStructure/RoughEnvironmentSilhouettes"]
+color = Color(0.3, 0.45, 0.29, 0.44)
+polygon = PackedVector2Array(258, 70, 376, 82, 378, 158, 258, 150)
+
 [node name="RoutePathNetwork" type="Node2D" parent="YardStructure"]
 
 [node name="MailboxNoticeRepairPath" type="Polygon2D" parent="YardStructure/RoutePathNetwork"]
@@ -102,6 +124,16 @@ polygon = PackedVector2Array(84, 106, 116, 116, 110, 178, 92, 232, 68, 226, 86, 
 [node name="ResourceBranchPath" type="Polygon2D" parent="YardStructure/RoutePathNetwork"]
 color = Color(0.5, 0.44, 0.33, 1)
 polygon = PackedVector2Array(58, 156, 18, 172, -24, 190, -34, 170, 8, 150, 48, 138)
+
+[node name="FirstStepGuidance" type="Node2D" parent="YardStructure"]
+
+[node name="SpawnMailboxPath" type="Polygon2D" parent="YardStructure/FirstStepGuidance"]
+color = Color(0.7, 0.59, 0.38, 1)
+polygon = PackedVector2Array(72, 104, 56, 88, 42, 66, 56, 56, 78, 88, 88, 106)
+
+[node name="MailboxFocusMarker" type="Polygon2D" parent="YardStructure/FirstStepGuidance"]
+color = Color(0.78, 0.62, 0.38, 1)
+polygon = PackedVector2Array(26, 44, 68, 44, 76, 84, 22, 86)
 
 [node name="HomeApproachZone" type="Polygon2D" parent="YardStructure"]
 color = Color(0.64, 0.58, 0.46, 1)
@@ -231,7 +263,7 @@ interaction_text = "路牌后面有一条短短的小路，能走到森林边缘
 target_scene = "res://game/scenes/world/ForestEdge.tscn"
 target_scene_id = "forest_edge"
 target_spawn_id = "from_yard"
-arrival_flag_id = "entered_forest_edge_path"
+arrival_flag_id = "visited_forest_edge"
 
 [node name="ForestTrailGateShape" type="CollisionShape2D" parent="ForestTrailGate"]
 shape = SubResource("RectangleShape2D_interactable")
@@ -415,6 +447,24 @@ spawn_id = "from_house"
 position = Vector2(314, 136)
 script = ExtResource("27_spawn_point")
 spawn_id = "from_forest_edge"
+
+[node name="HouseDoor" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(72, 54)
+script = ExtResource("21_scene_switch_area")
+interactable_id = "yard_house_door"
+display_name = "回屋"
+interaction_text = "屋里很安静，可以回去休息。"
+target_scene = "res://game/scenes/home/PlayerHouse.tscn"
+target_scene_id = "player_house"
+target_spawn_id = "inside_default"
+interaction_hint = "按 E 回屋"
+
+[node name="HouseDoorShape" type="CollisionShape2D" parent="HouseDoor"]
+shape = SubResource("RectangleShape2D_interactable")
+
+[node name="HouseDoorMarker" type="Polygon2D" parent="HouseDoor"]
+color = Color(0.48, 0.31, 0.2, 1)
+polygon = PackedVector2Array(-18, -14, 18, -14, 18, 14, -18, 14)
 
 [node name="BackToOldWorld" type="Area2D" parent="." unique_id=1817665055 groups=["interactable"]]
 visible = false

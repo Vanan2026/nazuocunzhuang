@@ -80,6 +80,7 @@ func _run() -> void:
 	var garden_bench = yard.get_node_or_null("GardenBenchRepair")
 	var village_sign = yard.get_node_or_null("VillageSignRepair")
 	var forest_gate = yard.get_node_or_null("ForestTrailGate")
+	var aoi = yard.get_node_or_null("NPCs/Aoi")
 	var required_yard_nodes = {
 		"Player": player,
 		"Mailbox": mailbox,
@@ -90,6 +91,7 @@ func _run() -> void:
 		"GardenBenchRepair": garden_bench,
 		"VillageSignRepair": village_sign,
 		"ForestTrailGate": forest_gate,
+		"Aoi": aoi,
 	}
 	for pair in required_yard_nodes.keys():
 		var node: Node = required_yard_nodes[pair]
@@ -108,6 +110,48 @@ func _run() -> void:
 	await process_frame
 	old_well.on_interact(player)
 	await process_frame
+	var farm_plot: Node = yard.get_node_or_null("FarmPlots/FarmPlot0")
+	var yard_inventory_for_farm: Node = yard.get_node_or_null("InventoryManager")
+	_expect(farm_plot != null, "PlayerYard should include FarmPlot0 for first-week farming step")
+	_expect(yard_inventory_for_farm != null, "PlayerYard should include InventoryManager for first-week farming step")
+	if _has_failed:
+		return
+	if yard_inventory_for_farm.has_method("set_selected_item"):
+		yard_inventory_for_farm.set_selected_item("seed_turnip")
+	_expect(farm_plot.till(), "First-week FarmPlot0 should till after old well repair")
+	_expect(farm_plot.plant_seed("seed_turnip"), "First-week FarmPlot0 should plant after old well repair")
+	_expect(farm_plot.water(), "First-week FarmPlot0 should water after old well repair")
+	for _day in range(2):
+		farm_plot.advance_day(false)
+		if String(farm_plot.get_state_name()) != "ready":
+			_expect(farm_plot.water(), "First-week FarmPlot0 should stay waterable until harvest")
+	if _has_failed:
+		return
+	_expect(String(farm_plot.get_state_name()) == "ready", "First-week FarmPlot0 should mature before yard repairs continue")
+	_expect(farm_plot.harvest(), "First-week FarmPlot0 should harvest before yard repairs continue")
+	await process_frame
+	_expect(int(yard_inventory_for_farm.get_count("crop_turnip")) >= 1, "First harvest should add a turnip before Aoi share")
+	_expect(yard_inventory_for_farm.set_selected_item("crop_turnip"), "First harvested turnip should be selectable for Aoi share")
+	aoi.on_interact(player)
+	await process_frame
+	main.sync_current_scene_state()
+	_expect(bool(shared_game_state.get_flag("shared_first_turnip_day1", false)), "Aoi share should persist before yard repairs continue")
+	if _has_failed:
+		return
+	var strawberry_plot: Node = yard.get_node_or_null("FarmPlots/FarmPlot1")
+	_expect(strawberry_plot != null, "PlayerYard should include FarmPlot1 for Aoi strawberry follow-up")
+	if _has_failed:
+		return
+	_expect(int(yard_inventory_for_farm.get_count("seed_strawberry")) >= 1, "Aoi share should grant a strawberry seed before the second plot follow-up")
+	_expect(yard_inventory_for_farm.set_selected_item("seed_strawberry"), "Aoi strawberry seed should be selectable")
+	_expect(strawberry_plot.till(), "FarmPlot1 should till for Aoi strawberry follow-up")
+	_expect(strawberry_plot.plant_seed("seed_strawberry"), "FarmPlot1 should plant Aoi strawberry seed")
+	_expect(strawberry_plot.water(), "FarmPlot1 should water Aoi strawberry seed")
+	await process_frame
+	main.sync_current_scene_state()
+	_expect(bool(shared_game_state.get_flag("planted_aoi_strawberry_day1", false)), "Aoi strawberry planting should persist before yard repairs continue")
+	if _has_failed:
+		return
 	garden_bench.on_interact(player)
 	await process_frame
 	village_sign.on_interact(player)
@@ -165,7 +209,8 @@ func _run() -> void:
 	_expect(bool(shared_game_state.get_flag("visited_forest_edge", false)), "ForestEdge shrine should persist visited_forest_edge")
 	_expect(bool(shared_game_state.get_flag("heard_npc_forest_edge", false)), "Mika should persist NPC forest rumor flag")
 	_expect(int(shared_inventory.get_count("wood")) >= 18, "ForestEdge wood pickup should persist to shared inventory")
-	_expect(bool(shared_quests.is_first_week_complete()), "First-week quest should complete after ForestEdge discovery")
+	_expect(not bool(shared_quests.is_first_week_complete()), "First-week quest should wait for the Village notice bridge after ForestEdge discovery")
+	_expect(String(shared_quests.get_current_first_week_objective_id()) == "read_village_notice_day1", "Village notice should be the final light first-week bridge")
 	if _has_failed:
 		return
 
@@ -176,6 +221,41 @@ func _run() -> void:
 	_expect(_player_is_at_spawn(yard, "from_forest_edge"), "Player should land at yard spawn from_forest_edge")
 	var yard_inventory = yard.get_node_or_null("InventoryManager")
 	_expect(yard_inventory != null and int(yard_inventory.get_count("wood")) >= 18, "Returned yard should receive shared inventory")
+	if _has_failed:
+		return
+
+	main.change_scene("village", "village_default")
+	await _settle_route()
+	var outdoor_village: Node = main.get_current_gameplay_scene()
+	_expect(outdoor_village != null and outdoor_village.has_method("get_active_region_id"), "Village bridge should keep using OutdoorWorld")
+	_expect(String(main.get_current_gameplay_scene_id()) == "village", "Main should expose village scene id for the bridge")
+	_expect(String(outdoor_village.call("get_active_region_id")) == "village", "OutdoorWorld should activate village for the bridge")
+	if _has_failed:
+		return
+	var village_section: Node = outdoor_village.get_node_or_null("Village")
+	var village_notice: Node = null
+	var village_return: Node = null
+	if village_section != null:
+		village_notice = village_section.get_node_or_null("VillageNotice")
+		village_return = village_section.get_node_or_null("VillageReturnPath")
+	_expect(village_notice != null, "Village should include VillageNotice for first-week bridge")
+	_expect(village_return != null, "Village should include VillageReturnPath after the bridge")
+	if _has_failed:
+		return
+	village_notice.on_interact(outdoor_village.get_node_or_null("Player"))
+	await _settle_route()
+	main.sync_current_scene_state()
+	await process_frame
+	shared_quests.update_first_week_progress(shared_game_state, main.get_node_or_null("SceneRouter"))
+	_expect(bool(shared_game_state.get_flag("read_village_notice_day1", false)), "VillageNotice should persist the first-week bridge flag")
+	_expect(bool(shared_quests.is_first_week_complete()), "First-week quest should complete after reading the Village notice")
+	if _has_failed:
+		return
+	village_return.on_interact(outdoor_village.get_node_or_null("Player"))
+	await _settle_route()
+	_expect(String(main.get_current_gameplay_scene_id()) == "player_yard", "VillageReturnPath should route back to player_yard")
+	yard = main.get_current_gameplay_scene()
+	_expect(_player_is_at_spawn(yard, "from_house"), "Player should land at yard spawn from_house after returning from Village")
 
 	var save_data: Dictionary = main.build_main_flow_save_data()
 	_expect(save_data.has("scene"), "Main-flow save data should include scene")

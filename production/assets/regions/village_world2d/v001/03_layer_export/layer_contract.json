@@ -1,0 +1,139 @@
+{
+  "contract_id": "village_world2d_v001_layer_contract",
+  "region_id": "Region_Village",
+  "node_id": "VillagePlaza",
+  "canvas": {
+    "width": 1800,
+    "height": 1200,
+    "origin": "top_left",
+    "export_rule": "full_canvas_shared_origin"
+  },
+  "source_image": {
+    "id": "village_painted_source",
+    "path": "production/assets/regions/village_world2d/v001/02_source_generation/village_painted_source.png",
+    "alpha": "opaque",
+    "required_before_layer_export": true,
+    "current_file_status": "accepted_true_painted_source",
+    "do_not_split_current_file": false,
+    "required_next_step": "Review semantic layer export, then run Godot screenshot validation before runtime replacement.",
+    "human_visual_approval": true,
+    "accepted_candidate": "village_true_painted_source_candidate_v001",
+    "v002_candidate": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/village_painted_source_v002.png",
+    "v002_quality_review": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/source_quality_review_v002.json",
+    "v002_acceptance_record": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/source_acceptance_v002.json",
+    "old_source_policy_for_v002": "quality_reference_only",
+    "v002_layer_export_status": "accepted_source_pending_v002_layer_export",
+    "v002_current_file_status": "v002_semantic_layers_exported_pending_review",
+    "v002_visual_review": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/source_visual_review_v002.json",
+    "v002_required_next_step": "Review v002 semantic layer export, then run Godot screenshot validation before runtime replacement.",
+    "v002_human_visual_approval": false,
+    "v002_layer_export_approved": false,
+    "v002_layer_manifest": "production/assets/regions/village_world2d/v001/03_layer_export/v002_inherited/layer_export_manifest_v002.json"
+  },
+  "global_rules": [
+    "The preserved layout draft remains blocked from layer splitting.",
+    "All runtime layers derive from the accepted true storybook village_painted_source.",
+    "Transparent layers keep the full 1800x1200 canvas.",
+    "No structural layer may be cropped, resized, rotated, or auto-trimmed.",
+    "Layer alignment target is registration-perfect, not pixel-perfect brush tracing.",
+    "Static scenery stays baked into the base image unless a layer needs player occlusion, dynamic state, interaction, or clean Y-sort behavior.",
+    "Do not promote broad rectangular object patches; houses, vegetation, and nearby ground texture should not travel as one sticker-like runtime sprite.",
+    "Runtime replacement waits for semantic layer review and Godot screenshot validation.",
+    "Weather, season, and time-of-day overlays are deferred to global Godot/system-level treatment until seamless base continuity is stable."
+  ],
+  "layers": [
+    {
+      "id": "base_ground",
+      "file_name": "village_base_ground.png",
+      "runtime_path": "res://assets/art/greenfield_p0/regions/village/layers/village_base_ground.png",
+      "production_path": "production/assets/regions/village_world2d/v001/03_layer_export/layers/village_base_ground.png",
+      "alpha": "opaque",
+      "z_index": -30,
+      "canvas": [
+        1800,
+        1200
+      ],
+      "content": "Complete accepted painted source used as the baked static scene base."
+    },
+    {
+      "id": "terrain_details",
+      "file_name": "village_terrain_details.png",
+      "runtime_path": "res://assets/art/greenfield_p0/regions/village/layers/village_terrain_details.png",
+      "production_path": "production/assets/regions/village_world2d/v001/03_layer_export/layers/village_terrain_details.png",
+      "alpha": "transparent_full_canvas",
+      "z_index": -25,
+      "canvas": [
+        1800,
+        1200
+      ],
+      "content": "Empty runtime layer in this semantic pass; terrain detail remains baked into the base."
+    },
+    {
+      "id": "behind_player_structures",
+      "file_name": "village_behind_player_structures.png",
+      "runtime_path": "res://assets/art/greenfield_p0/regions/village/layers/village_behind_player_structures.png",
+      "production_path": "production/assets/regions/village_world2d/v001/03_layer_export/layers/village_behind_player_structures.png",
+      "alpha": "transparent_full_canvas",
+      "z_index": -10,
+      "canvas": [
+        1800,
+        1200
+      ],
+      "content": "Empty runtime layer in this semantic pass; static houses and distant vegetation remain baked into the base."
+    },
+    {
+      "id": "ysort_props_structures",
+      "file_name": "village_ysort_props_structures.png",
+      "runtime_path": "res://assets/art/greenfield_p0/regions/village/layers/village_ysort_props_structures.png",
+      "production_path": "production/assets/regions/village_world2d/v001/03_layer_export/layers/village_ysort_props_structures.png",
+      "alpha": "transparent_full_canvas",
+      "z_index": 8,
+      "canvas": [
+        1800,
+        1200
+      ],
+      "content": "Empty runtime layer in this semantic pass; current props remain baked into the base until a clean semantic Y-sort object is needed."
+    },
+    {
+      "id": "foreground_occlusion",
+      "file_name": "village_foreground_occlusion.png",
+      "runtime_path": "res://assets/art/greenfield_p0/regions/village/layers/village_foreground_occlusion.png",
+      "production_path": "production/assets/regions/village_world2d/v001/03_layer_export/layers/village_foreground_occlusion.png",
+      "alpha": "transparent_full_canvas",
+      "z_index": 40,
+      "canvas": [
+        1800,
+        1200
+      ],
+      "content": "Only old-maple foreground pixels that should visually cover the player."
+    }
+  ],
+  "deferred_layers": [
+    {
+      "id": "shadow_overlay",
+      "reason": "Use global/system-level lighting until seamless base continuity is stable."
+    },
+    {
+      "id": "light_weather_overlay_spring",
+      "reason": "Use global/system-level season/weather treatment until region seams are approved."
+    },
+    {
+      "id": "light_weather_overlay_summer",
+      "reason": "Use global/system-level season/weather treatment until region seams are approved."
+    },
+    {
+      "id": "light_weather_overlay_autumn",
+      "reason": "Use global/system-level season/weather treatment until region seams are approved."
+    },
+    {
+      "id": "light_weather_overlay_winter",
+      "reason": "Use global/system-level season/weather treatment until region seams are approved."
+    }
+  ],
+  "active_layer_manifest": "production/assets/regions/village_world2d/v001/03_layer_export/layer_export_manifest.json",
+  "layer_export_status": "semantic_rework_exported_pending_review",
+  "review_result": "semantic_rework_pending_review",
+  "runtime_replacement": false,
+  "active_v002_layer_manifest": "production/assets/regions/village_world2d/v001/03_layer_export/v002_inherited/layer_export_manifest_v002.json",
+  "v002_layer_export_status": "v002_semantic_layers_exported_pending_review"
+}

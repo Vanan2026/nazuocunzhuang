@@ -9,6 +9,10 @@
     ],
     "required_money": 500,
     "required_flags": [],
+    "reward_items": [
+      {"item_id": "seed_turnip", "count": 3},
+      {"item_id": "old_bell_fragment", "count": 1}
+    ],
     "unlocks": ["yard_water_source", "rumor_old_well_bell"],
     "visual_states": {
       "broken": "res://assets/art/props/prop_well_old_broken_256.png",
@@ -24,6 +28,9 @@
     ],
     "required_money": 0,
     "required_flags": [],
+    "reward_items": [
+      {"item_id": "wildflower_spring", "count": 1}
+    ],
     "unlocks": ["bench_rest_spot"],
     "visual_states": {
       "broken": "res://assets/art/props/region_home_area_prop_bench_v001.png",
@@ -40,6 +47,9 @@
     ],
     "required_money": 0,
     "required_flags": [],
+    "reward_items": [
+      {"item_id": "seed_strawberry", "count": 2}
+    ],
     "unlocks": ["forest_edge_hint", "village_path_marked"],
     "visual_states": {
       "broken": "res://assets/art/props/region_home_area_prop_road_sign_v001.png",

@@ -1,0 +1,28 @@
+{
+  "review_id": "mountain_hut_v002_visual_review",
+  "reviewed_at": "2026-05-25",
+  "status": "needs_v003_repaint_before_layer_export",
+  "v002_source": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v002/mountain_hut_painted_source_v002.png",
+  "accepted_village_reference": "production/assets/regions/village_world2d/v001/02_source_generation/village_painted_source.png",
+  "external_quality_reference": "production/assets/external_gpt_handoff/greenfield_p0/v001/incoming/01_scene_mothers/regions/mountain_hut/mountain_hut_scene_mother.png",
+  "v003_repaint_brief": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v003/mountain_hut_repaint_v003_brief.md",
+  "v003_reference_sheet": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/mountain_hut_v003_repaint_reference_sheet.png",
+  "v002_visual_accepted": false,
+  "layer_export_approved": false,
+  "runtime_replacement": false,
+  "launch_quality_approved": false,
+  "rejection_reasons": [
+    "v002 still reads as programmatic art: grass strokes, pebble marks, flower clusters, and roof strokes are visibly algorithmic at full-canvas review scale.",
+    "v002 is less cohesive than the accepted Village source; the accepted Village image has richer foliage grouping, softer road shoulders, and more integrated painterly detail.",
+    "The tree canopy clusters read as repeated flat stamps instead of natural layered foliage.",
+    "The roof line and roof-tile strokes are noisy and less believable than the accepted Village building roofs.",
+    "The external handoff MountainHut image has stronger painterly quality, but its dimension is 1572x1001 and its layout does not match the 1800x1200 MountainHut seam, door, and source-canvas locks."
+  ],
+  "next_required_step": "produce_v003_full_canvas_repaint",
+  "hard_approval_flags": {
+    "human_visual_approval": false,
+    "layer_export_approved": false,
+    "runtime_replacement": false,
+    "launch_quality_approved": false
+  }
+}

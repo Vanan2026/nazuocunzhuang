@@ -1,0 +1,195 @@
+{
+  "package_id": "mountain_hut_world2d_v001",
+  "region_id": "Region_MountainHut",
+  "node_id": "MountainHut",
+  "status": "v004_semantic_layers_exported_pending_review",
+  "created_at": "2026-05-24 20:28",
+  "current_phase": "03_layer_export_v004_semantic_review",
+  "launch_quality_approved": false,
+  "human_visual_approval_required": true,
+  "runtime_replacement": false,
+  "active_runtime_scene": "res://game/scenes/world/OutdoorWorld.tscn",
+  "active_runtime_source": "game/scenes/world/OutdoorWorld.gd::generated_region:mountain_hut",
+  "parent_world_art_package": "production/assets/outdoor_world_world2d/v001/workflow_manifest.json",
+  "active_seam_brief": "production/assets/seams/village_to_mountain_hut/v001/seam_brief.md",
+  "canvas": {
+    "width": 1800,
+    "height": 1200,
+    "coordinate_origin": "top_left_canvas",
+    "godot_runtime_scale": 0.18,
+    "runtime_approx_size": [
+      324,
+      216
+    ],
+    "export_rule": "full_canvas_shared_origin"
+  },
+  "art_node": {
+    "reason": "MountainHut is the adjacent east neighbor visible in the Village east-continuity review, so it must match road, grass, perspective, and detail density before world-level runtime replacement.",
+    "core_elements": [
+      "MountainHutExterior",
+      "HutDoor",
+      "HutApproachPath",
+      "VillageConnectorPath",
+      "quiet herb shelf",
+      "small woodpile",
+      "soft porch shadow"
+    ],
+    "player_verbs": [
+      "arrive from Village east path",
+      "inspect hut door",
+      "notice quiet repair/discovery hints",
+      "return to Village without pressure"
+    ],
+    "exploration_policy": "Environmental hints only; do not bake explicit quest text, danger symbols, combat cues, or hard objective instructions into the art."
+  },
+  "source_policy": {
+    "registration_target": "registration-perfect layer alignment, not pixel-perfect brush tracing",
+    "single_painted_source": true,
+    "runtime_layers_derive_from_painted_source": true,
+    "transparent_layers_full_canvas": true,
+    "no_cropped_structural_layers": true,
+    "one_scene_composition": true
+  },
+  "phase_status": {
+    "01_layout_lock": "ready_for_static_validation",
+    "02_source_generation": "candidate_generated_pending_human_visual_review",
+    "03_layer_export": "v004_semantic_layers_exported_pending_review",
+    "04_godot_integration": "blocked_until_v004_semantic_layer_review_and_godot_screenshot",
+    "05_review_and_qa": "review_gate_ready",
+    "02_source_quality_review": "needs_repaint_before_layer_export",
+    "02_source_generation_v002": "v002_candidate_ready_for_human_art_review",
+    "02_source_visual_review_v002": "needs_v003_repaint_before_layer_export",
+    "02_source_generation_v003": "v003_candidate_ready_for_visual_review",
+    "02_source_visual_review_v003": "needs_v004_repaint_before_layer_export",
+    "02_source_generation_v004": "v004_candidate_ready_for_visual_review",
+    "02_source_visual_review_v004": "accepted_for_semantic_layer_export_review"
+  },
+  "validation": {
+    "static_validator": "tools/validate_mountain_hut_world2d_art_prep.py",
+    "parent_world_validator": "tools/validate_outdoor_world_seamless_art_master.py",
+    "project_manifest_validator": "tools/validate_project_art_production_landing.py",
+    "source_candidate_validator": "tools/validate_mountain_hut_painted_source_candidate.py",
+    "source_quality_gate": "tools/validate_mountain_hut_source_quality_gate.py",
+    "v002_source_candidate_validator": "tools/validate_mountain_hut_v002_source_candidate.py",
+    "v004_layer_export_validator": "tools/validate_mountain_hut_v004_layer_export.py"
+  },
+  "source_candidate": {
+    "candidate_id": "mountain_hut_painted_source_candidate_v001",
+    "status": "pending_human_visual_review",
+    "candidate_type": "true_storybook_painted_source_candidate",
+    "image": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/mountain_hut_painted_source.png",
+    "review_overlay": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/mountain_hut_painted_source_review_overlay_v001.png",
+    "acceptance_record": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/source_acceptance.json",
+    "generated_from": [
+      "production/assets/outdoor_world_world2d/v001/workflow_manifest.json",
+      "production/assets/seams/village_to_mountain_hut/v001/seam_brief.md",
+      "production/assets/regions/mountain_hut_world2d/v001/01_layout_lock/layout_lock.json",
+      "production/assets/regions/village_world2d/v001/02_source_generation/village_painted_source.png"
+    ],
+    "human_visual_approval": false,
+    "layer_export_approved": false,
+    "runtime_replacement": false,
+    "launch_quality_approved": false,
+    "quality_review_status": "needs_repaint_before_layer_export",
+    "quality_review_record": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_quality_review_v001.json",
+    "repaint_reference_board": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/mountain_hut_repaint_v002_reference_board.png",
+    "v002_repaint_brief": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/mountain_hut_repaint_v002_brief.md"
+  },
+  "next_art_step": "review v004 semantic layers before any runtime replacement.",
+  "v002_source_candidate": {
+    "candidate_id": "mountain_hut_painted_source_candidate_v002",
+    "status": "v002_candidate_ready_for_human_art_review",
+    "candidate_type": "v002_full_canvas_storybook_source_candidate",
+    "image": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v002/mountain_hut_painted_source_v002.png",
+    "review_overlay": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/mountain_hut_painted_source_review_overlay_v002.png",
+    "review_contact_sheet": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/mountain_hut_v002_review_contact_sheet.png",
+    "acceptance_record": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v002/source_acceptance_v002.json",
+    "quality_review_record": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_quality_review_v002.json",
+    "generated_from": [
+      "production/assets/regions/mountain_hut_world2d/v001/01_layout_lock/layout_lock.json",
+      "production/assets/seams/village_to_mountain_hut/v001/seam_brief.md",
+      "production/assets/regions/village_world2d/v001/02_source_generation/village_painted_source.png",
+      "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/mountain_hut_painted_source.png"
+    ],
+    "human_visual_approval": false,
+    "layer_export_approved": false,
+    "runtime_replacement": false,
+    "launch_quality_approved": false
+  },
+  "v002_visual_review": {
+    "status": "needs_v003_repaint_before_layer_export",
+    "review": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_visual_review_v002.json",
+    "report": ".codex/reports/mountain_hut_v002_visual_review_2026-05-25.md",
+    "v002_visual_accepted": false,
+    "layer_export_approved": false,
+    "runtime_replacement": false,
+    "launch_quality_approved": false
+  },
+  "v003_repaint_handoff": {
+    "status": "handoff_ready_for_external_or_manual_repaint",
+    "brief": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v003/mountain_hut_repaint_v003_brief.md",
+    "reference_sheet": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/mountain_hut_v003_repaint_reference_sheet.png",
+    "expected_source": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v003/mountain_hut_painted_source_v003.png"
+  },
+  "v003_source_candidate": {
+    "candidate_id": "mountain_hut_painted_source_candidate_v003",
+    "status": "v003_candidate_ready_for_visual_review",
+    "candidate_type": "v003_full_canvas_storybook_source_candidate",
+    "image": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v003/mountain_hut_painted_source_v003.png",
+    "acceptance_record": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v003/source_acceptance_v003.json",
+    "quality_review_record": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_quality_review_v003.json",
+    "review_contact_sheet": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/mountain_hut_v003_review_contact_sheet.png",
+    "generated_from": [
+      "production/assets/regions/mountain_hut_world2d/v001/01_layout_lock/layout_lock.json",
+      "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v003/mountain_hut_repaint_v003_brief.md",
+      "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/mountain_hut_v003_repaint_reference_sheet.png",
+      "production/assets/regions/village_world2d/v001/02_source_generation/village_painted_source.png",
+      "production/assets/external_gpt_handoff/greenfield_p0/v001/incoming/01_scene_mothers/regions/mountain_hut/mountain_hut_scene_mother.png"
+    ],
+    "human_visual_approval": false,
+    "layer_export_approved": false,
+    "runtime_replacement": false,
+    "launch_quality_approved": false
+  },
+  "v003_visual_review": {
+    "status": "needs_v004_repaint_before_layer_export",
+    "review": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_visual_review_v003.json",
+    "report": ".codex/reports/mountain_hut_v003_visual_review_2026-05-25.md",
+    "layer_export_approved": false,
+    "runtime_replacement": false
+  },
+  "v004_source_candidate": {
+    "candidate_id": "mountain_hut_painted_source_candidate_v004",
+    "status": "v004_candidate_ready_for_visual_review",
+    "candidate_type": "v004_full_canvas_storybook_source_candidate",
+    "image": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v004/mountain_hut_painted_source_v004.png",
+    "acceptance_record": "production/assets/regions/mountain_hut_world2d/v001/02_source_generation/v004/source_acceptance_v004.json",
+    "quality_review_record": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_quality_review_v004.json",
+    "review_contact_sheet": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/mountain_hut_v004_review_contact_sheet.png",
+    "generated_from": [
+      "production/assets/external_gpt_handoff/greenfield_p0/v001/incoming/01_scene_mothers/regions/mountain_hut/mountain_hut_scene_mother.png",
+      "production/assets/regions/village_world2d/v001/02_source_generation/village_painted_source.png",
+      "production/assets/regions/mountain_hut_world2d/v001/01_layout_lock/layout_lock.json",
+      "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_visual_review_v003.json"
+    ],
+    "human_visual_approval": false,
+    "layer_export_approved": false,
+    "runtime_replacement": false,
+    "launch_quality_approved": false
+  },
+  "v004_visual_review": {
+    "status": "accepted_for_semantic_layer_export_review",
+    "review": "production/assets/regions/mountain_hut_world2d/v001/05_review_and_qa/source_visual_review_v004.json",
+    "human_visual_approval": false,
+    "layer_export_approved": false,
+    "runtime_replacement": false
+  },
+  "active_layer_export": {
+    "manifest": "production/assets/regions/mountain_hut_world2d/v001/03_layer_export/layer_export_manifest.json",
+    "layer_count": 5,
+    "status": "v004_semantic_layers_exported_pending_review",
+    "runtime_replacement": false,
+    "human_layer_review": false,
+    "review_result": "semantic_rework_pending_review"
+  }
+}

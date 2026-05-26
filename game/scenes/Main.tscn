@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://game/autoload/SaveManager.gd" id="12_save_manager"]
 [ext_resource type="Script" path="res://game/autoload/QuestManager.gd" id="13_quest_manager"]
 [ext_resource type="PackedScene" path="res://game/scenes/ui/FirstWeekQuestHUD.tscn" id="14_first_week_hud"]
-[ext_resource type="PackedScene" path="res://game/scenes/ui/QuestJournalUI.tscn" id="15_quest_journal"]
+[ext_resource type="PackedScene" path="res://game/scenes/ui/CurrentObjectiveChip.tscn" id="16_current_objective_chip"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_main")
@@ -54,7 +54,7 @@ script = ExtResource("13_quest_manager")
 
 [node name="FirstWeekQuestHUD" parent="." instance=ExtResource("14_first_week_hud")]
 
-[node name="QuestJournalUI" parent="." instance=ExtResource("15_quest_journal")]
+[node name="CurrentObjectiveChip" parent="." instance=ExtResource("16_current_objective_chip")]
 
 [node name="CurrentScene" type="Node" parent="."]
 

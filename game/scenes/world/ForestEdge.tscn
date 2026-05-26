@@ -65,6 +65,64 @@ polygon = PackedVector2Array(-192, -96, 384, -96, 384, 272, -192, 272)
 color = Color(0.58, 0.5, 0.34, 1)
 polygon = PackedVector2Array(-72, 120, 20, 96, 120, 96, 232, 126, 232, 164, 96, 144, -72, 160)
 
+[node name="ForestStructure" type="Node2D" parent="."]
+
+[node name="RoughEnvironmentSilhouettes" type="Node2D" parent="ForestStructure"]
+
+[node name="TreeLineBackShape" type="Polygon2D" parent="ForestStructure/RoughEnvironmentSilhouettes"]
+color = Color(0.18, 0.32, 0.22, 0.46)
+polygon = PackedVector2Array(-220, -112, 420, -112, 438, 26, 300, 12, 190, 30, 82, 14, -40, 28, -210, 8)
+
+[node name="LeafFloorPatchShape" type="Polygon2D" parent="ForestStructure/RoughEnvironmentSilhouettes"]
+color = Color(0.47, 0.42, 0.28, 0.4)
+polygon = PackedVector2Array(-120, 86, 250, 58, 300, 160, 116, 188, -116, 164)
+
+[node name="ShrineRootMassShape" type="Polygon2D" parent="ForestStructure/RoughEnvironmentSilhouettes"]
+color = Color(0.29, 0.22, 0.16, 0.58)
+polygon = PackedVector2Array(180, 54, 238, 56, 248, 118, 166, 128, 158, 88)
+
+[node name="ReturnTrailBrushShape" type="Polygon2D" parent="ForestStructure/RoughEnvironmentSilhouettes"]
+color = Color(0.26, 0.39, 0.25, 0.44)
+polygon = PackedVector2Array(-100, 112, 38, 106, 48, 178, -112, 188)
+
+[node name="ArrivalTrailZone" type="Polygon2D" parent="ForestStructure"]
+color = Color(0.47, 0.53, 0.36, 0.48)
+polygon = PackedVector2Array(-104, 102, 42, 96, 48, 176, -104, 184)
+
+[node name="QuietClearingZone" type="Polygon2D" parent="ForestStructure"]
+color = Color(0.42, 0.48, 0.34, 0.5)
+polygon = PackedVector2Array(166, 40, 246, 42, 254, 120, 164, 124)
+
+[node name="ResourceCacheZone" type="Polygon2D" parent="ForestStructure"]
+color = Color(0.45, 0.39, 0.29, 0.45)
+polygon = PackedVector2Array(58, 94, 180, 94, 186, 170, 58, 170)
+
+[node name="MikaMeetingZone" type="Polygon2D" parent="ForestStructure"]
+color = Color(0.38, 0.46, 0.38, 0.42)
+polygon = PackedVector2Array(104, 54, 176, 52, 184, 116, 104, 122)
+
+[node name="RoutePathNetwork" type="Node2D" parent="ForestStructure"]
+
+[node name="ArrivalReturnPath" type="Polygon2D" parent="ForestStructure/RoutePathNetwork"]
+color = Color(0.64, 0.55, 0.38, 0.72)
+polygon = PackedVector2Array(-74, 126, 10, 116, 26, 150, -60, 166)
+
+[node name="ShrineResourcePath" type="Polygon2D" parent="ForestStructure/RoutePathNetwork"]
+color = Color(0.62, 0.53, 0.36, 0.62)
+polygon = PackedVector2Array(-4, 110, 104, 96, 214, 70, 224, 104, 124, 132, 8, 152)
+
+[node name="MikaClearingPath" type="Polygon2D" parent="ForestStructure/RoutePathNetwork"]
+color = Color(0.58, 0.51, 0.37, 0.58)
+polygon = PackedVector2Array(96, 72, 212, 66, 220, 98, 110, 110)
+
+[node name="ShrineFocusMarker" type="Polygon2D" parent="ForestStructure"]
+color = Color(0.72, 0.61, 0.42, 0.82)
+polygon = PackedVector2Array(190, 66, 222, 66, 222, 98, 190, 98)
+
+[node name="ReturnFocusMarker" type="Polygon2D" parent="ForestStructure"]
+color = Color(0.72, 0.61, 0.42, 0.78)
+polygon = PackedVector2Array(-70, 130, -26, 130, -26, 158, -70, 158)
+
 [node name="BackToYard" type="Area2D" parent="." groups=["interactable"]]
 position = Vector2(-48, 144)
 script = ExtResource("6_scene_travel")
