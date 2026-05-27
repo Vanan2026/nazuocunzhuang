@@ -41,6 +41,7 @@ REQUIRED_DOCS = [
     "docs/ART_BIBLE.md",
     "docs/ASSET_MANIFEST.md",
     "docs/CODEX_TASKS.md",
+    "docs/GPT_ASSET_PIPELINE_INSTRUCTIONS.md",
     "docs/MISSING_ASSETS_REPORT.md",
     "docs/GREENFIELD_P0_GPT_ASSET_PRODUCTION_BRIEF.md",
 ]
@@ -144,6 +145,25 @@ def _validate_centralized_paths() -> None:
                 _fail(f"{path} should use GreenfieldAssetPaths instead of direct token {token}")
 
 
+def _validate_gpt_asset_pipeline_instructions() -> None:
+    text = _read("docs/GPT_ASSET_PIPELINE_INSTRUCTIONS.md")
+    for token in [
+        "docs/ART_BIBLE.md",
+        "docs/MISSING_ASSETS_REPORT.md",
+        "asset_request_manifest.json",
+        "prompt_briefs.md",
+        "production/assets/references/style_mother/greenfield_p0_style_mother_2026-05-27.jpg",
+        "batch_01_ui_kit_core",
+        "batch_03_home_area_full_canvas",
+        "1920x1080",
+        "registration-perfect layer alignment",
+        "Do not rename files",
+        "python tools\\validate_greenfield_p0_external_asset_intake.py",
+    ]:
+        if token not in text:
+            _fail(f"GPT asset pipeline instructions missing token: {token}")
+
+
 def _validate_data_driven_items() -> None:
     items = json.loads((ROOT / "game/data/items.json").read_text(encoding="utf-8"))
     if len(items) < 20:
@@ -177,6 +197,7 @@ def main() -> None:
     _validate_v002_paths()
     _validate_scene_contracts()
     _validate_centralized_paths()
+    _validate_gpt_asset_pipeline_instructions()
     _validate_data_driven_items()
     _validate_no_forbidden_gameplay_terms()
     print("OK: Greenfield replaceable asset pipeline validates")
