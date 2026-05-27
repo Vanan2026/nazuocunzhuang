@@ -1,0 +1,10 @@
+{
+  "package_id": "greenfield_p0_settings_screen_assets_v001",
+  "status": "review_ready_placeholder",
+  "launch_quality_approved": false,
+  "human_visual_approval_required": true,
+  "assets": {
+    "settings_paper_preview": "assets/ui/screens/ui_settings_paper_preview.png"
+  },
+  "replacement_rule": "Replace the PNG at the same runtime path after external visual approval; no code change is required."
+}

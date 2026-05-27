@@ -1,0 +1,23 @@
+{
+  "package": "greenfield_p0_home_area_v001",
+  "status": "review_ready_placeholder",
+  "launch_quality_approved": false,
+  "human_visual_approval_required": true,
+  "style_reference": "production/assets/references/style_mother/greenfield_p0_style_mother_2026-05-27.jpg",
+  "canvas_size": [
+    1920,
+    1080
+  ],
+  "shared_origin": [
+    0,
+    0
+  ],
+  "registration_contract": "mother/base/foreground_occlusion/collision_mask share full canvas and origin",
+  "assets": {
+    "mother": "assets/scenes/home_area/scene_home_area_mother.png",
+    "base": "assets/scenes/home_area/scene_home_area_base.png",
+    "foreground_occlusion": "assets/scenes/home_area/scene_home_area_foreground_occlusion.png",
+    "collision_mask": "assets/scenes/home_area/scene_home_area_collision_mask.png",
+    "interaction_points": "assets/scenes/home_area/scene_home_area_interaction_points.json"
+  }
+}

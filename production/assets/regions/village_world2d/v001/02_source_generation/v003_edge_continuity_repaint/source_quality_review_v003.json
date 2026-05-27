@@ -1,0 +1,21 @@
+{
+  "review_id": "village_v003_edge_continuity_source_quality_review",
+  "status": "v003_edge_continuity_candidate_ready_for_visual_review",
+  "source_candidate": "production/assets/regions/village_world2d/v001/02_source_generation/v003_edge_continuity_repaint/village_painted_source_v003.png",
+  "metrics": {
+    "edge_luminance_v003": 91.3934,
+    "edge_luminance_v002": 124.2762,
+    "edge_detail_v003": 5.4454,
+    "edge_detail_v002": 3.868,
+    "edge_diff_from_v002": 34.6029,
+    "center_diff_from_v002": 0.1673,
+    "center_diff_from_old_source": 17.4317
+  },
+  "producer_verdict": "Ready for visual review only; not runtime replacement.",
+  "hard_approval_flags": {
+    "human_visual_approval": false,
+    "layer_export_approved": false,
+    "runtime_replacement": false,
+    "launch_quality_approved": false
+  }
+}

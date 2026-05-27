@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://ui/components/GFPanel.gd" id="1_script"]
+[ext_resource type="Theme" path="res://ui/theme/greenfield_theme.tres" id="2_theme"]
+
+[node name="GFPanel" type="PanelContainer"]
+theme = ExtResource("2_theme")
+script = ExtResource("1_script")
+custom_minimum_size = Vector2(320, 180)

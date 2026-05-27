@@ -17,6 +17,50 @@ Greenfield P0 当前 handoff 目录：
 production/assets/external_gpt_handoff/greenfield_p0/v001/
 ```
 
+## Current Small-Batch Handoff - 2026-05-27
+
+Use this package for the next external GPT production pass:
+
+```text
+production/assets/external_gpt_handoff/greenfield_p0/v002/
+```
+
+Key files:
+
+```text
+README.md
+asset_request_manifest.json
+prompt_briefs.md
+incoming/
+```
+
+Why v002:
+
+- It replaces the old large-batch request shape with smaller copyable batches.
+- Every batch has 12 or fewer assets.
+- HomeArea remains one coordinated full-canvas batch so mother/base/foreground/mask stay registration-perfect.
+- Each asset records both `incoming_path` and `final_runtime_path`, so generated art can be validated before replacing runtime Godot assets.
+
+Copy prompts from:
+
+```text
+production/assets/external_gpt_handoff/greenfield_p0/v002/prompt_briefs.md
+```
+
+Validate the handoff contract:
+
+```powershell
+py -3.12 tools\validate_greenfield_p0_gpt_asset_handoff_v002.py
+```
+
+Validate generated incoming files:
+
+```powershell
+py -3.12 tools\validate_greenfield_p0_external_asset_intake.py --manifest production\assets\external_gpt_handoff\greenfield_p0\v002\asset_request_manifest.json --allow-partial
+```
+
+Do not ask GPT to generate every v002 batch at once. Start with `Batch 01 UI Kit Core`, review it, then continue batch by batch.
+
 关键文件：
 
 ```text

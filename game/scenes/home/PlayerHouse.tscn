@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=13 format=3]
 
 [ext_resource type="PackedScene" path="res://game/entities/player/Player.tscn" id="1_player"]
 [ext_resource type="Script" path="res://game/entities/interactable/SceneTravel.gd" id="2_scene_switch_area"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" path="res://game/scenes/ui/DialogueBox.tscn" id="5_dialogue_box"]
 [ext_resource type="Script" path="res://game/entities/interactable/DailyIntentPlanner.gd" id="6_daily_intent_planner"]
 [ext_resource type="PackedScene" path="res://game/scenes/ui/DailyIntentPanel.tscn" id="7_daily_intent_panel"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/playable_scene_polish/player_house_warm_room_v001.png" id="8_house_art"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_door"]
 size = Vector2(48, 28)
@@ -25,14 +26,25 @@ enabled = true
 zoom = Vector2(3, 3)
 
 [node name="RoomBackdrop" type="Polygon2D" parent="."]
+z_index = -40
 color = Color(0.64, 0.55, 0.44, 1)
 polygon = PackedVector2Array(-320, -180, 384, -180, 384, 260, -320, 260)
 
 [node name="Floor" type="Polygon2D" parent="."]
+visible = false
 color = Color(0.74, 0.64, 0.5, 1)
 polygon = PackedVector2Array(-192, -96, 256, -96, 256, 176, -192, 176)
 
+[node name="SceneArt" type="Node2D" parent="."]
+
+[node name="WarmRoomBackground" type="Sprite2D" parent="SceneArt"]
+z_index = -20
+position = Vector2(32, 40)
+scale = Vector2(0.68, 0.68)
+texture = ExtResource("8_house_art")
+
 [node name="RoughEnvironmentSilhouettes" type="Node2D" parent="."]
+visible = false
 
 [node name="WarmFloorWash" type="Polygon2D" parent="RoughEnvironmentSilhouettes"]
 color = Color(0.84, 0.69, 0.45, 0.34)
@@ -47,6 +59,7 @@ color = Color(0.96, 0.81, 0.5, 0.28)
 polygon = PackedVector2Array(-172, -72, -72, -92, 48, 118, -22, 140)
 
 [node name="HomeStartGuidance" type="Node2D" parent="."]
+visible = false
 
 [node name="DoorGuidePath" type="Polygon2D" parent="HomeStartGuidance"]
 color = Color(0.69, 0.56, 0.38, 1)
@@ -57,6 +70,7 @@ color = Color(0.78, 0.62, 0.42, 1)
 polygon = PackedVector2Array(48, -58, 96, -58, 104, -24, 42, -24)
 
 [node name="Rug" type="Polygon2D" parent="."]
+visible = false
 position = Vector2(16, 56)
 color = Color(0.55, 0.37, 0.32, 1)
 polygon = PackedVector2Array(-36, -16, 36, -16, 36, 16, -36, 16)
@@ -74,6 +88,7 @@ daily_intent_panel_path = NodePath("../DailyIntentPanel")
 shape = SubResource("RectangleShape2D_intent_desk")
 
 [node name="IntentDeskMarker" type="Polygon2D" parent="IntentDesk"]
+visible = false
 color = Color(0.5, 0.33, 0.23, 1)
 polygon = PackedVector2Array(-36, -20, 36, -20, 42, 18, -42, 18)
 
@@ -89,6 +104,7 @@ interaction_hint = "按 E 休息到明天"
 shape = SubResource("RectangleShape2D_bed")
 
 [node name="BedMarker" type="Polygon2D" parent="Bed"]
+visible = false
 color = Color(0.58, 0.42, 0.34, 1)
 polygon = PackedVector2Array(-34, -20, 34, -20, 34, 20, -34, 20)
 
@@ -115,6 +131,7 @@ interaction_hint = "按 E 出门到院子"
 shape = SubResource("RectangleShape2D_door")
 
 [node name="DoorMarker" type="Polygon2D" parent="DoorToYard"]
+visible = false
 color = Color(0.42, 0.26, 0.17, 1)
 polygon = PackedVector2Array(-20, -14, 20, -14, 20, 14, -20, 14)
 

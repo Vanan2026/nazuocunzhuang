@@ -1,0 +1,91 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://game/scenes/ui/MapScreen.gd" id="1_map_screen"]
+[ext_resource type="Theme" path="res://ui/theme/greenfield_theme.tres" id="2_greenfield_theme"]
+
+[node name="MapScreen" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_map_screen")
+
+[node name="Panel" type="PanelContainer" parent="."]
+offset_left = 160.0
+offset_top = 76.0
+offset_right = 1760.0
+offset_bottom = 980.0
+theme = ExtResource("2_greenfield_theme")
+
+[node name="Content" type="VBoxContainer" parent="Panel"]
+offset_left = 28.0
+offset_top = 24.0
+offset_right = 1572.0
+offset_bottom = 876.0
+
+[node name="Header" type="HBoxContainer" parent="Panel/Content"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Panel/Content/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Village Map"
+
+[node name="CloseButton" type="Button" parent="Panel/Content/Header"]
+layout_mode = 2
+text = "Close"
+
+[node name="MainRow" type="HBoxContainer" parent="Panel/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MapPanel" type="PanelContainer" parent="Panel/Content/MainRow"]
+custom_minimum_size = Vector2(800, 520)
+layout_mode = 2
+theme = ExtResource("2_greenfield_theme")
+
+[node name="MapTexture" type="TextureRect" parent="Panel/Content/MainRow/MapPanel"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 780.0
+offset_bottom = 500.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Pins" type="Control" parent="Panel/Content/MainRow/MapPanel"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 780.0
+offset_bottom = 500.0
+
+[node name="LocationList" type="VBoxContainer" parent="Panel/Content/MainRow"]
+custom_minimum_size = Vector2(330, 0)
+layout_mode = 2
+
+[node name="Details" type="VBoxContainer" parent="Panel/Content/MainRow"]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+
+[node name="SelectedNumberLabel" type="Label" parent="Panel/Content/MainRow/Details"]
+layout_mode = 2
+text = "Location --"
+
+[node name="SelectedNameLabel" type="Label" parent="Panel/Content/MainRow/Details"]
+layout_mode = 2
+text = "No location selected"
+
+[node name="SelectedStateLabel" type="Label" parent="Panel/Content/MainRow/Details"]
+layout_mode = 2
+text = "State: -"
+
+[node name="SelectedDescriptionLabel" type="Label" parent="Panel/Content/MainRow/Details"]
+layout_mode = 2
+text = "Select a numbered place on the paper map."
+autowrap_mode = 3
+
+[node name="SelectedHintLabel" type="Label" parent="Panel/Content/MainRow/Details"]
+layout_mode = 2
+text = "Travel hint appears here."
+autowrap_mode = 3
+
+[node name="SelectedNpcsLabel" type="Label" parent="Panel/Content/MainRow/Details"]
+layout_mode = 2
+text = "NPCs: -"
+autowrap_mode = 3

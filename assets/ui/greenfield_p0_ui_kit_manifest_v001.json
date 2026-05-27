@@ -1,0 +1,142 @@
+{
+  "package": "greenfield_p0_ui_kit_v001",
+  "status": "placeholder_allowed",
+  "launch_quality_approved": false,
+  "human_visual_approval_required": true,
+  "style_reference": "production/assets/references/style_mother/greenfield_p0_style_mother_2026-05-27.jpg",
+  "assets": [
+    {
+      "path": "assets/ui/panels/ui_panel_paper_01.png",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "assets/ui/panels/ui_panel_wood_01.png",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "assets/ui/buttons/ui_button_normal.png",
+      "size": [
+        256,
+        96
+      ]
+    },
+    {
+      "path": "assets/ui/buttons/ui_button_hover.png",
+      "size": [
+        256,
+        96
+      ]
+    },
+    {
+      "path": "assets/ui/buttons/ui_button_pressed.png",
+      "size": [
+        256,
+        96
+      ]
+    },
+    {
+      "path": "assets/ui/slots/ui_slot_item.png",
+      "size": [
+        96,
+        96
+      ]
+    },
+    {
+      "path": "assets/ui/slots/ui_slot_selected.png",
+      "size": [
+        96,
+        96
+      ]
+    },
+    {
+      "path": "assets/ui/tabs/ui_tab_normal.png",
+      "size": [
+        160,
+        72
+      ]
+    },
+    {
+      "path": "assets/ui/tabs/ui_tab_active.png",
+      "size": [
+        160,
+        72
+      ]
+    },
+    {
+      "path": "assets/ui/widgets/ui_scrollbar.png",
+      "size": [
+        64,
+        256
+      ]
+    },
+    {
+      "path": "assets/ui/widgets/ui_checkbox_on.png",
+      "size": [
+        64,
+        64
+      ]
+    },
+    {
+      "path": "assets/ui/widgets/ui_checkbox_off.png",
+      "size": [
+        64,
+        64
+      ]
+    },
+    {
+      "path": "assets/ui/icons/ui_icon_coin.png",
+      "size": [
+        64,
+        64
+      ]
+    },
+    {
+      "path": "assets/ui/icons/ui_icon_heart.png",
+      "size": [
+        64,
+        64
+      ]
+    },
+    {
+      "path": "assets/ui/icons/ui_icon_weather_sun.png",
+      "size": [
+        64,
+        64
+      ]
+    },
+    {
+      "path": "assets/ui/icons/ui_icon_weather_rain.png",
+      "size": [
+        64,
+        64
+      ]
+    },
+    {
+      "path": "assets/ui/icons/ui_icon_bag.png",
+      "size": [
+        64,
+        64
+      ]
+    },
+    {
+      "path": "assets/ui/icons/ui_icon_map.png",
+      "size": [
+        64,
+        64
+      ]
+    },
+    {
+      "path": "assets/ui/icons/ui_icon_settings.png",
+      "size": [
+        64,
+        64
+      ]
+    }
+  ]
+}

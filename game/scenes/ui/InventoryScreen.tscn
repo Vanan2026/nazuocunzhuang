@@ -1,0 +1,101 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://game/scenes/ui/InventoryUI.gd" id="1_inventory_ui"]
+[ext_resource type="Theme" path="res://ui/theme/greenfield_theme.tres" id="2_greenfield_theme"]
+
+[node name="InventoryScreen" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_inventory_ui")
+
+[node name="Panel" type="PanelContainer" parent="."]
+offset_left = 288.0
+offset_top = 112.0
+offset_right = 1632.0
+offset_bottom = 908.0
+theme = ExtResource("2_greenfield_theme")
+
+[node name="Content" type="VBoxContainer" parent="Panel"]
+offset_left = 24.0
+offset_top = 22.0
+offset_right = 1320.0
+offset_bottom = 774.0
+
+[node name="Header" type="HBoxContainer" parent="Panel/Content"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Panel/Content/Header"]
+layout_mode = 2
+text = "Bag"
+
+[node name="CapacityLabel" type="Label" parent="Panel/Content/Header"]
+layout_mode = 2
+text = "0 / 60"
+
+[node name="CategoryTabs" type="HBoxContainer" parent="Panel/Content"]
+layout_mode = 2
+
+[node name="MainRow" type="HBoxContainer" parent="Panel/Content"]
+layout_mode = 2
+
+[node name="InventoryColumn" type="VBoxContainer" parent="Panel/Content/MainRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ItemGrid" type="GridContainer" parent="Panel/Content/MainRow/InventoryColumn"]
+layout_mode = 2
+columns = 5
+
+[node name="Details" type="VBoxContainer" parent="Panel/Content/MainRow"]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+
+[node name="SelectedNameLabel" type="Label" parent="Panel/Content/MainRow/Details"]
+layout_mode = 2
+text = "No item selected"
+
+[node name="SelectedDescriptionLabel" type="Label" parent="Panel/Content/MainRow/Details"]
+layout_mode = 2
+text = "Select an item to apply to NPCs or a farm plot."
+autowrap_mode = 3
+
+[node name="SelectedMetaLabel" type="Label" parent="Panel/Content/MainRow/Details"]
+layout_mode = 2
+text = "Category: -   Value: -"
+
+[node name="AmountRow" type="HBoxContainer" parent="Panel/Content/MainRow/Details"]
+layout_mode = 2
+
+[node name="DecreaseButton" type="Button" parent="Panel/Content/MainRow/Details/AmountRow"]
+layout_mode = 2
+text = "-"
+
+[node name="AmountLabel" type="Label" parent="Panel/Content/MainRow/Details/AmountRow"]
+custom_minimum_size = Vector2(54, 0)
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
+
+[node name="IncreaseButton" type="Button" parent="Panel/Content/MainRow/Details/AmountRow"]
+layout_mode = 2
+text = "+"
+
+[node name="ActionRow" type="HBoxContainer" parent="Panel/Content/MainRow/Details"]
+layout_mode = 2
+
+[node name="ClearButton" type="Button" parent="Panel/Content/MainRow/Details/ActionRow"]
+layout_mode = 2
+text = "Clear Selection"
+
+[node name="Footer" type="HBoxContainer" parent="Panel/Content"]
+layout_mode = 2
+
+[node name="Summary" type="HBoxContainer" parent="Panel/Content/Footer"]
+layout_mode = 2
+
+[node name="SeedCountLabel" type="Label" parent="Panel/Content/Footer/Summary"]
+layout_mode = 2
+text = "Seed: 0"
+
+[node name="CropCountLabel" type="Label" parent="Panel/Content/Footer/Summary"]
+layout_mode = 2
+text = "Crop: 0"

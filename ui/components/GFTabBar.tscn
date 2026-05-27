@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://ui/components/GFTabBar.gd" id="1_script"]
+[ext_resource type="Theme" path="res://ui/theme/greenfield_theme.tres" id="2_theme"]
+
+[node name="GFTabBar" type="HBoxContainer"]
+theme = ExtResource("2_theme")
+script = ExtResource("1_script")

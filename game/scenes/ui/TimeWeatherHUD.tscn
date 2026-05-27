@@ -8,30 +8,30 @@ script = ExtResource("1_hud")
 [node name="Panel" type="PanelContainer" parent="."]
 offset_left = 16.0
 offset_top = 16.0
-offset_right = 220.0
-offset_bottom = 120.0
+offset_right = 258.0
+offset_bottom = 134.0
 
 [node name="Content" type="VBoxContainer" parent="Panel"]
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 196.0
-offset_bottom = 96.0
+offset_left = 18.0
+offset_top = 14.0
+offset_right = 224.0
+offset_bottom = 100.0
 
 [node name="SeasonLabel" type="Label" parent="Panel/Content"]
 layout_mode = 2
-text = "季节: 春"
+text = "Spring 1"
 
 [node name="DayLabel" type="Label" parent="Panel/Content"]
 layout_mode = 2
-text = "第 1 天"
+text = "Year 1  Morning"
 
 [node name="TimeLabel" type="Label" parent="Panel/Content"]
 layout_mode = 2
-text = "时间: 06:00"
+text = "06:00"
 
 [node name="WeatherLabel" type="Label" parent="Panel/Content"]
 layout_mode = 2
-text = "天气: 晴 / 明日 多云"
+text = "Sunny today / Cloudy tomorrow"
 
 [node name="WeatherRow" type="HBoxContainer" parent="Panel/Content"]
 layout_mode = 2
@@ -47,3 +47,65 @@ layout_mode = 2
 custom_minimum_size = Vector2(24, 24)
 expand_mode = 1
 stretch_mode = 5
+
+[node name="StatusPanel" type="PanelContainer" parent="."]
+offset_left = 1642.0
+offset_top = 16.0
+offset_right = 1904.0
+offset_bottom = 132.0
+
+[node name="Content" type="VBoxContainer" parent="StatusPanel"]
+offset_left = 18.0
+offset_top = 14.0
+offset_right = 244.0
+offset_bottom = 98.0
+
+[node name="CoinRow" type="HBoxContainer" parent="StatusPanel/Content"]
+layout_mode = 2
+
+[node name="CoinIcon" type="TextureRect" parent="StatusPanel/Content/CoinRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(24, 24)
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CoinLabel" type="Label" parent="StatusPanel/Content/CoinRow"]
+layout_mode = 2
+text = "0"
+
+[node name="EnergyRow" type="HBoxContainer" parent="StatusPanel/Content"]
+layout_mode = 2
+
+[node name="EnergyIcon" type="TextureRect" parent="StatusPanel/Content/EnergyRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(24, 24)
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EnergyLabel" type="Label" parent="StatusPanel/Content/EnergyRow"]
+layout_mode = 2
+text = "100 / 100"
+
+[node name="StatusLabel" type="Label" parent="StatusPanel/Content"]
+layout_mode = 2
+text = "Settling in"
+
+[node name="HotbarPanel" type="PanelContainer" parent="."]
+offset_left = 548.0
+offset_top = 972.0
+offset_right = 1372.0
+offset_bottom = 1064.0
+
+[node name="BagIcon" type="TextureRect" parent="HotbarPanel"]
+offset_left = 18.0
+offset_top = 24.0
+offset_right = 50.0
+offset_bottom = 56.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slots" type="HBoxContainer" parent="HotbarPanel"]
+offset_left = 64.0
+offset_top = 14.0
+offset_right = 804.0
+offset_bottom = 78.0

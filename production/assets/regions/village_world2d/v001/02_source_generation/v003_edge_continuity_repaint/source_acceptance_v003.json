@@ -1,0 +1,23 @@
+{
+  "candidate_id": "village_painted_source_v003",
+  "status": "v003_edge_continuity_candidate_ready_for_visual_review",
+  "repair_scope": "edge_continuity_only",
+  "source_image": "production/assets/regions/village_world2d/v001/02_source_generation/v003_edge_continuity_repaint/village_painted_source_v003.png",
+  "derived_from": "production/assets/regions/village_world2d/v001/02_source_generation/v002_inherited_world_base_repaint/village_painted_source_v002.png",
+  "edge_detail_reference": "production/assets/regions/village_world2d/v001/02_source_generation/village_painted_source.png",
+  "quality_review": "production/assets/regions/village_world2d/v001/02_source_generation/v003_edge_continuity_repaint/source_quality_review_v003.json",
+  "review_contact_sheet": "production/assets/regions/village_world2d/v001/02_source_generation/v003_edge_continuity_repaint/village_v003_edge_continuity_contact_sheet.png",
+  "human_visual_approval": false,
+  "layer_export_approved": false,
+  "runtime_replacement": false,
+  "launch_quality_approved": false,
+  "next_required_step": "visual review, then export v003 semantic layers before Godot screenshot validation",
+  "semantic_layer_export": {
+    "status": "v003_semantic_layers_exported_pending_review",
+    "manifest": "production/assets/regions/village_world2d/v001/03_layer_export/v003_edge_continuity/layer_export_manifest_v003.json",
+    "review_preview": "production/assets/regions/village_world2d/v001/05_review_and_qa/village_v003_layer_export_review_preview.png",
+    "not_final_layer_approval": true,
+    "runtime_replacement": false,
+    "next_required_step": "review v003 semantic layers before Godot screenshot validation"
+  }
+}

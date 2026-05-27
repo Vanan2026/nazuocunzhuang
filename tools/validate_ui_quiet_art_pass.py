@@ -10,14 +10,13 @@ ROOT = Path(__file__).resolve().parents[1]
 EXPECTED_SNIPPETS = {
     "game/scenes/ui/GreenfieldUITheme.gd": [
         "class_name GreenfieldUITheme",
-        'res://assets/art/greenfield_p0/ui/ui_panel_frame_512x320.png',
-        'res://assets/art/greenfield_p0/ui/ui_hud_panel_512x128.png',
-        'res://assets/art/greenfield_p0/ui/ui_dialogue_frame_1024x256.png',
-        'res://assets/art/greenfield_p0/ui/ui_button_256x96.png',
+        'preload("res://ui/theme/GreenfieldTheme.gd")',
         "func apply_surface_panel(",
         "func apply_hud_panel(",
         "func apply_dialogue_panel(",
         "func apply_button(",
+        "func apply_item_slot(",
+        "func apply_tab_button(",
         "func apply_title_label(",
         "func apply_body_label(",
         "func apply_hint_label(",
