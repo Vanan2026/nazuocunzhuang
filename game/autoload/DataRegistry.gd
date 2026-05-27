@@ -9,6 +9,8 @@ const DATA_FILES: Dictionary = {
 	"crops": {"path": "res://game/data/crops.json", "id_key": "crop_id"},
 	"npcs": {"path": "res://game/data/npcs.json", "id_key": "npc_id"},
 	"dialogues": {"path": "res://game/data/dialogues.json", "id_key": "dialogue_id"},
+	"gifts": {"path": "res://game/data/gifts.json", "id_key": "gift_id"},
+	"maps": {"path": "res://game/data/maps.json", "id_key": "map_id"},
 	"rumors": {"path": "res://game/data/rumors.json", "id_key": "rumor_id"},
 	"recipes": {"path": "res://game/data/recipes.json", "id_key": "recipe_id"},
 	"npc_schedules": {"path": "res://game/data/npc_schedules.json", "id_key": "schedule_id"},
@@ -30,6 +32,8 @@ var items: Dictionary = {}
 var crops: Dictionary = {}
 var npcs: Dictionary = {}
 var dialogues: Dictionary = {}
+var gifts: Dictionary = {}
+var maps: Dictionary = {}
 var rumors: Dictionary = {}
 var recipes: Dictionary = {}
 var npc_schedules: Dictionary = {}
@@ -64,17 +68,21 @@ func validate_all_data() -> bool:
 	_validate_crops()
 	_validate_npcs()
 	_validate_dialogues()
+	_validate_gifts()
+	_validate_maps()
 	_validate_rumors()
 	_validate_recipes()
 	_validate_npc_schedules()
 	_validate_restoration_targets()
 
 	if validation_errors.is_empty():
-		print("DataRegistry validation OK: %d items, %d crops, %d npcs, %d dialogues, %d rumors, %d recipes, %d schedules, %d restorations" % [
+		print("DataRegistry validation OK: %d items, %d crops, %d npcs, %d dialogues, %d gifts, %d maps, %d rumors, %d recipes, %d schedules, %d restorations" % [
 			items.size(),
 			crops.size(),
 			npcs.size(),
 			dialogues.size(),
+			gifts.size(),
+			maps.size(),
 			rumors.size(),
 			recipes.size(),
 			npc_schedules.size(),
@@ -113,6 +121,30 @@ func get_dialogue(dialogue_id: String) -> Dictionary:
 	return dialogues.get(dialogue_id, {})
 
 
+func get_gift_response(npc_id: String, item_id: String) -> Dictionary:
+	for gift_id in gifts.keys():
+		var gift: Dictionary = gifts[gift_id]
+		if String(gift.get("npc_id", "")) == npc_id and String(gift.get("item_id", "")) == item_id:
+			return gift
+	return {}
+
+
+func get_map_location(map_id: String) -> Dictionary:
+	return maps.get(map_id, {})
+
+
+func get_map_locations(include_locked: bool = true) -> Array[Dictionary]:
+	var result: Array[Dictionary] = []
+	for map_id in maps.keys():
+		var map_record: Dictionary = maps[map_id]
+		if include_locked or bool(map_record.get("unlocked", false)):
+			result.append(map_record)
+	result.sort_custom(func(left: Dictionary, right: Dictionary) -> bool:
+		return int(left.get("location_number", 0)) < int(right.get("location_number", 0))
+	)
+	return result
+
+
 func get_rumor(rumor_id: String) -> Dictionary:
 	return rumors.get(rumor_id, {})
 
@@ -130,6 +162,8 @@ func _clear_data() -> void:
 	crops.clear()
 	npcs.clear()
 	dialogues.clear()
+	gifts.clear()
+	maps.clear()
 	rumors.clear()
 	recipes.clear()
 	npc_schedules.clear()
@@ -184,6 +218,10 @@ func _set_collection(collection_name: String, indexed: Dictionary) -> void:
 			npcs = indexed
 		"dialogues":
 			dialogues = indexed
+		"gifts":
+			gifts = indexed
+		"maps":
+			maps = indexed
 		"rumors":
 			rumors = indexed
 		"recipes":
@@ -243,6 +281,58 @@ func _validate_dialogues() -> void:
 			_add_error("dialogue %s references missing npc %s" % [dialogue_id, dialogue.get("npc_id", "")])
 		if dialogue.get("lines", []).is_empty():
 			_add_error("dialogue %s has no lines" % dialogue_id)
+
+
+func _validate_gifts() -> void:
+	for gift_id in gifts.keys():
+		var gift: Dictionary = gifts[gift_id]
+		_require_fields(gift, ["gift_id", "npc_id", "item_id", "reaction", "relationship_delta", "feedback_text"], "gift %s" % gift_id)
+		_reject_forbidden_fields(gift, "gift %s" % gift_id)
+		var npc_id := String(gift.get("npc_id", ""))
+		if not npcs.has(npc_id):
+			_add_error("gift %s references missing npc %s" % [gift_id, npc_id])
+		var item_id := String(gift.get("item_id", ""))
+		if not items.has(item_id):
+			_add_error("gift %s references missing item %s" % [gift_id, item_id])
+		var reaction := String(gift.get("reaction", ""))
+		if reaction not in ["loved", "liked", "neutral", "disliked"]:
+			_add_error("gift %s has invalid reaction %s" % [gift_id, reaction])
+
+
+func _validate_maps() -> void:
+	var seen_numbers: Dictionary = {}
+	for map_id in maps.keys():
+		var map_record: Dictionary = maps[map_id]
+		_require_fields(map_record, ["map_id", "location_number", "name", "region_id", "scene_path", "position", "unlocked", "unlock_flag", "npc_ids", "description", "travel_hint"], "map %s" % map_id)
+		_require_non_empty_name(map_record, "map %s" % map_id)
+		_reject_forbidden_fields(map_record, "map %s" % map_id)
+		var location_number := int(map_record.get("location_number", 0))
+		if location_number <= 0:
+			_add_error("map %s has invalid location_number %d" % [map_id, location_number])
+		if seen_numbers.has(location_number):
+			_add_error("map %s duplicates location_number %d" % [map_id, location_number])
+		seen_numbers[location_number] = true
+		var position: Variant = map_record.get("position", [])
+		if not (position is Array) or position.size() != 2:
+			_add_error("map %s position must be [x, y]" % map_id)
+		else:
+			var position_array: Array = position
+			for value in position_array:
+				var coordinate := float(value)
+				if coordinate < 0.0 or coordinate > 1.0:
+					_add_error("map %s position coordinate out of range: %s" % [map_id, value])
+		var npc_ids: Variant = map_record.get("npc_ids", [])
+		if not (npc_ids is Array):
+			_add_error("map %s npc_ids must be an array" % map_id)
+		else:
+			for raw_npc_id in npc_ids:
+				var npc_id := String(raw_npc_id)
+				if not npcs.has(npc_id):
+					_add_error("map %s references missing npc %s" % [map_id, npc_id])
+		var unlocked := bool(map_record.get("unlocked", false))
+		var unlock_flag := String(map_record.get("unlock_flag", ""))
+		if not unlocked and unlock_flag.is_empty():
+			_add_error("locked map %s should define unlock_flag" % map_id)
 
 
 func _validate_rumors() -> void:

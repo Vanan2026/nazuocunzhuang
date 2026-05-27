@@ -1,0 +1,152 @@
+[gd_scene load_steps=17 format=3]
+
+[ext_resource type="Script" path="res://game/scenes/world/HomeArea.gd" id="1_home_area"]
+[ext_resource type="Texture2D" path="res://assets/scenes/home_area/scene_home_area_base.png" id="2_base"]
+[ext_resource type="Texture2D" path="res://assets/scenes/home_area/scene_home_area_foreground_occlusion.png" id="3_foreground"]
+[ext_resource type="Texture2D" path="res://assets/scenes/home_area/scene_home_area_mother.png" id="4_mother"]
+[ext_resource type="PackedScene" path="res://game/entities/player/Player.tscn" id="5_player"]
+[ext_resource type="Script" path="res://game/entities/interactable/Interactable.gd" id="6_interactable"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_house"]
+size = Vector2(580, 336)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_well"]
+size = Vector2(156, 126)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tree_large"]
+size = Vector2(170, 170)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tree_medium"]
+size = Vector2(138, 138)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fence_west"]
+size = Vector2(430, 74)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fence_east"]
+size = Vector2(430, 74)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_door_interact"]
+size = Vector2(88, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_well_interact"]
+size = Vector2(112, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mailbox_interact"]
+size = Vector2(96, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_farm_interact"]
+size = Vector2(500, 256)
+
+[node name="HomeArea" type="Node2D"]
+script = ExtResource("1_home_area")
+
+[node name="WorldCamera" type="Camera2D" parent="."]
+position = Vector2(960, 600)
+enabled = true
+zoom = Vector2(0.72, 0.72)
+
+[node name="MotherReference" type="Sprite2D" parent="."]
+visible = false
+z_index = -50
+texture = ExtResource("4_mother")
+centered = false
+
+[node name="BaseLayer" type="Node2D" parent="."]
+z_index = -30
+
+[node name="BaseSprite" type="Sprite2D" parent="BaseLayer"]
+z_index = -30
+texture = ExtResource("2_base")
+centered = false
+
+[node name="YSortObjects" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="YSortObjects" instance=ExtResource("5_player")]
+position = Vector2(715, 690)
+
+[node name="ForegroundOcclusion" type="Sprite2D" parent="."]
+z_index = 30
+texture = ExtResource("3_foreground")
+centered = false
+
+[node name="CollisionLayer" type="StaticBody2D" parent="."]
+
+[node name="HouseCollision" type="CollisionShape2D" parent="CollisionLayer"]
+position = Vector2(736, 452)
+shape = SubResource("RectangleShape2D_house")
+
+[node name="WellCollision" type="CollisionShape2D" parent="CollisionLayer"]
+position = Vector2(1192, 560)
+shape = SubResource("RectangleShape2D_well")
+
+[node name="WestTreeCollision" type="CollisionShape2D" parent="CollisionLayer"]
+position = Vector2(190, 394)
+shape = SubResource("RectangleShape2D_tree_large")
+
+[node name="CherryTreeCollision" type="CollisionShape2D" parent="CollisionLayer"]
+position = Vector2(1560, 386)
+shape = SubResource("RectangleShape2D_tree_large")
+
+[node name="PondTreeCollision" type="CollisionShape2D" parent="CollisionLayer"]
+position = Vector2(1710, 628)
+shape = SubResource("RectangleShape2D_tree_medium")
+
+[node name="WestFenceCollision" type="CollisionShape2D" parent="CollisionLayer"]
+position = Vector2(560, 708)
+shape = SubResource("RectangleShape2D_fence_west")
+
+[node name="EastFenceCollision" type="CollisionShape2D" parent="CollisionLayer"]
+position = Vector2(1245, 728)
+shape = SubResource("RectangleShape2D_fence_east")
+
+[node name="InteractionPoints" type="Node2D" parent="."]
+
+[node name="HomeDoor" type="Area2D" parent="InteractionPoints" groups=["interactable"]]
+position = Vector2(595, 603)
+script = ExtResource("6_interactable")
+interactable_id = "home_door"
+display_name = "Home Door"
+interaction_hint = "Press E to check the cottage door"
+interaction_text = "The cottage smells faintly of sun-warmed wood and clean paper."
+
+[node name="HomeDoorShape" type="CollisionShape2D" parent="InteractionPoints/HomeDoor"]
+shape = SubResource("RectangleShape2D_door_interact")
+
+[node name="OldWell" type="Area2D" parent="InteractionPoints" groups=["interactable"]]
+position = Vector2(1192, 628)
+script = ExtResource("6_interactable")
+interactable_id = "old_well"
+display_name = "Old Well"
+interaction_hint = "Press E to listen at the old well"
+interaction_text = "Cool air rises from the stones. The water sounds close today."
+
+[node name="OldWellShape" type="CollisionShape2D" parent="InteractionPoints/OldWell"]
+shape = SubResource("RectangleShape2D_well_interact")
+
+[node name="Mailbox" type="Area2D" parent="InteractionPoints" groups=["interactable"]]
+position = Vector2(328, 562)
+script = ExtResource("6_interactable")
+interactable_id = "mailbox"
+display_name = "Mailbox"
+interaction_hint = "Press E to check the mailbox"
+interaction_text = "A folded village note waits inside the red mailbox."
+
+[node name="MailboxShape" type="CollisionShape2D" parent="InteractionPoints/Mailbox"]
+shape = SubResource("RectangleShape2D_mailbox_interact")
+
+[node name="FarmPlotCluster" type="Area2D" parent="InteractionPoints" groups=["interactable"]]
+position = Vector2(592, 804)
+script = ExtResource("6_interactable")
+interactable_id = "farm_plot_cluster"
+display_name = "Spring Plot"
+interaction_hint = "Press E to inspect the spring plots"
+interaction_text = "The soil is soft enough for the first repaired garden rows."
+
+[node name="FarmPlotClusterShape" type="CollisionShape2D" parent="InteractionPoints/FarmPlotCluster"]
+shape = SubResource("RectangleShape2D_farm_interact")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+
+[node name="PlayerSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(715, 690)

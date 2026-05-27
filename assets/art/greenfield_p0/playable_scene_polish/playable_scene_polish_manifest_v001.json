@@ -1,0 +1,34 @@
+{
+  "package": "playable_scene_polish_v001",
+  "status": "runtime_review_ready",
+  "launch_quality_approved": false,
+  "human_visual_approval_required": true,
+  "style_reference": "production/assets/references/style_mother/greenfield_p0_style_mother_2026-05-27.jpg",
+  "style": "match the Greenfield P0 style mother: warm low-saturation storybook 3/4 top-down, dense garden detail, paper and wood UI language",
+  "assets": [
+    {
+      "path": "assets/art/greenfield_p0/playable_scene_polish/player_house_warm_room_v001.png",
+      "size": [
+        704,
+        440
+      ],
+      "role": "play_start_house_background"
+    },
+    {
+      "path": "assets/art/greenfield_p0/playable_scene_polish/player_yard_storybook_ground_v001.png",
+      "size": [
+        1000,
+        680
+      ],
+      "role": "play_start_yard_background"
+    },
+    {
+      "path": "assets/art/greenfield_p0/playable_scene_polish/player_yard_bulletin_board_v001.png",
+      "size": [
+        160,
+        160
+      ],
+      "role": "play_start_yard_bulletin_prop"
+    }
+  ]
+}

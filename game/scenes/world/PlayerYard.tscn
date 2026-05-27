@@ -27,6 +27,10 @@
 [ext_resource type="Script" path="res://game/entities/interactable/RumorBoard.gd" id="25_rumor_board"]
 [ext_resource type="Script" path="res://game/systems/npc/NpcScheduleDirector.gd" id="26_schedule_director"]
 [ext_resource type="Script" path="res://game/systems/scene/SpawnPoint.gd" id="27_spawn_point"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/playable_scene_polish/player_yard_storybook_ground_v001.png" id="28_yard_art"]
+[ext_resource type="Texture2D" path="res://assets/art/greenfield_p0/playable_scene_polish/player_yard_bulletin_board_v001.png" id="29_bulletin_art"]
+[ext_resource type="Texture2D" path="res://assets/art/items/wood_64.png" id="30_wood_art"]
+[ext_resource type="Texture2D" path="res://assets/art/items/stone_64.png" id="31_stone_art"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_interactable"]
 size = Vector2(32, 28)
@@ -76,14 +80,26 @@ script = ExtResource("13_relationship_manager")
 [node name="DialogueBox" parent="." unique_id=330547878 instance=ExtResource("14_dialogue_box")]
 
 [node name="WorldBackdrop" type="Polygon2D" parent="."]
+z_index = -40
 color = Color(0.48, 0.6, 0.42, 1)
 polygon = PackedVector2Array(-360, -220, 640, -220, 640, 460, -360, 460)
 
 [node name="Ground" type="Polygon2D" parent="." unique_id=725274824]
+visible = false
 color = Color(0.55, 0.66, 0.46, 1)
 polygon = PackedVector2Array(-320, -160, 560, -160, 560, 400, -320, 400)
 
+[node name="SceneArt" type="Node2D" parent="."]
+
+[node name="StorybookGround" type="Sprite2D" parent="SceneArt"]
+z_index = -20
+position = Vector2(140, 120)
+scale = Vector2(0.47, 0.47)
+texture = ExtResource("28_yard_art")
+
 [node name="YardStructure" type="Node2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.06)
 
 [node name="RoughEnvironmentSilhouettes" type="Node2D" parent="YardStructure"]
 
@@ -234,8 +250,14 @@ speaker_name = "公告板"
 shape = SubResource("RectangleShape2D_interactable")
 
 [node name="BulletinBoardMarker" type="Polygon2D" parent="BulletinBoard"]
+visible = false
 color = Color(0.5, 0.32, 0.18, 1)
 polygon = PackedVector2Array(-18, -14, 18, -14, 18, 14, -18, 14)
+
+[node name="BulletinBoardArt" type="Sprite2D" parent="BulletinBoard"]
+position = Vector2(0, -30)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("29_bulletin_art")
 
 [node name="VillagePath" type="Area2D" parent="." groups=["interactable"]]
 position = Vector2(326, 96)
@@ -250,6 +272,7 @@ flag_id = "visited_village_path"
 shape = SubResource("RectangleShape2D_interactable")
 
 [node name="VillagePathMarker" type="Polygon2D" parent="VillagePath"]
+visible = false
 color = Color(0.63, 0.52, 0.35, 1)
 polygon = PackedVector2Array(-24, -10, 24, -10, 24, 10, -24, 10)
 
@@ -269,6 +292,7 @@ arrival_flag_id = "visited_forest_edge"
 shape = SubResource("RectangleShape2D_interactable")
 
 [node name="ForestTrailGateMarker" type="Polygon2D" parent="ForestTrailGate"]
+visible = false
 color = Color(0.34, 0.48, 0.32, 1)
 polygon = PackedVector2Array(-20, -12, 20, -12, 20, 12, -20, 12)
 
@@ -287,8 +311,14 @@ pickup_id = "player_yard_wood_pile_day1"
 shape = SubResource("RectangleShape2D_interactable")
 
 [node name="WoodPileMarker" type="Polygon2D" parent="WoodPile"]
+visible = false
 color = Color(0.45, 0.28, 0.16, 1)
 polygon = PackedVector2Array(-18, -10, 18, -10, 18, 10, -18, 10)
+
+[node name="WoodPileArt" type="Sprite2D" parent="WoodPile"]
+position = Vector2(0, -16)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("30_wood_art")
 
 [node name="StonePile" type="Area2D" parent="." groups=["interactable"]]
 position = Vector2(-24, 220)
@@ -305,8 +335,14 @@ pickup_id = "player_yard_stone_pile_day1"
 shape = SubResource("RectangleShape2D_interactable")
 
 [node name="StonePileMarker" type="Polygon2D" parent="StonePile"]
+visible = false
 color = Color(0.47, 0.45, 0.4, 1)
 polygon = PackedVector2Array(-16, -10, 16, -10, 16, 10, -16, 10)
+
+[node name="StonePileArt" type="Sprite2D" parent="StonePile"]
+position = Vector2(0, -16)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("31_stone_art")
 
 [node name="OldWell" type="Area2D" parent="." unique_id=1231866873 groups=["interactable"]]
 position = Vector2(252, 172)
@@ -463,6 +499,7 @@ interaction_hint = "按 E 回屋"
 shape = SubResource("RectangleShape2D_interactable")
 
 [node name="HouseDoorMarker" type="Polygon2D" parent="HouseDoor"]
+visible = false
 color = Color(0.48, 0.31, 0.2, 1)
 polygon = PackedVector2Array(-18, -14, 18, -14, 18, 14, -18, 14)
 

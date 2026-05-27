@@ -1,9 +1,11 @@
-extends SceneTree
+﻿extends SceneTree
 
 const HeadlessLifecycle := preload("res://tools/headless_lifecycle.gd")
 const MAIN_PATH := "res://game/scenes/Main.tscn"
 const DEFAULT_OUTPUT_DIR := "res://.codex/village_v002_semantic_layer_godot_review"
+const V003_OUTPUT_DIR := "res://.codex/village_v003_semantic_layer_godot_review"
 const LAYER_MANIFEST_PATH := "res://production/assets/regions/village_world2d/v001/03_layer_export/v002_inherited/layer_export_manifest_v002.json"
+const V003_LAYER_MANIFEST_PATH := "res://production/assets/regions/village_world2d/v001/03_layer_export/v003_edge_continuity/layer_export_manifest_v003.json"
 const MOUNTAIN_HUT_LAYER_MANIFEST_PATH := "res://production/assets/regions/mountain_hut_world2d/v001/03_layer_export/layer_export_manifest.json"
 const WATCHDOG_TIMEOUT_SECONDS := 45.0
 const VIEWPORT_SIZE := Vector2i(1280, 720)
@@ -16,6 +18,15 @@ const OUTPUT_FILENAMES := {
 	"east_continuity_focus": "04_village_v002_east_continuity_focus.png",
 	"inherited_edge_focus": "05_village_v002_inherited_edge_focus.png",
 	"player_scale_focus": "06_village_v002_player_scale_focus.png",
+}
+
+const V003_OUTPUT_FILENAMES := {
+	"overview": "01_village_v003_semantic_overview.png",
+	"old_maple_occlusion_focus": "02_village_v003_old_maple_occlusion_focus.png",
+	"notice_stall_focus": "03_village_v003_notice_stall_focus.png",
+	"east_continuity_focus": "04_village_v003_east_continuity_focus.png",
+	"inherited_edge_focus": "05_village_v003_inherited_edge_focus.png",
+	"player_scale_focus": "06_village_v003_player_scale_focus.png",
 }
 
 const GENERATED_LAYER_NAMES: Array[String] = [
@@ -37,6 +48,7 @@ const REVIEW_HIDDEN_UI_NODE_NAMES: Array[String] = [
 ]
 
 var _output_dir := DEFAULT_OUTPUT_DIR
+var _use_v3 := false
 var _check_only := false
 var _watchdog_timer: Timer = null
 var _finished := false
@@ -53,9 +65,9 @@ func _initialize() -> void:
 
 
 func _run() -> void:
-	print("PROGRESS: Village v002 semantic layer Godot review initialize")
+	print("PROGRESS: %s semantic layer Godot review initialize" % _review_label())
 	if not _check_only and DisplayServer.get_name() == "headless":
-		_fail("Village v002 semantic layer Godot review capture requires a display server; rerun with --check-only for headless validation")
+		_fail("%s semantic layer Godot review capture requires a display server; rerun with --check-only for headless validation" % _review_label())
 		return
 	if not _check_only:
 		DisplayServer.window_set_size(VIEWPORT_SIZE)
@@ -91,7 +103,7 @@ func _run() -> void:
 	var mountain_hut_manifest := _load_mountain_hut_reference_manifest()
 	if mountain_hut_manifest.is_empty():
 		return
-	if not _install_semantic_layers(village_section, manifest, "VillageV002SemanticLayerReview"):
+	if not _install_semantic_layers(village_section, manifest, _review_root_name()):
 		return
 	if not _install_semantic_layers(mountain_hut_section, mountain_hut_manifest, "MountainHutSemanticLayerReference"):
 		return
@@ -112,23 +124,25 @@ func _run() -> void:
 		return
 
 	if _check_only:
-		print("OK: Village v002 semantic layer Godot review check-only validated")
+		print("OK: %s semantic layer Godot review check-only validated" % _review_label())
 	else:
-		print("OK: Village v002 semantic layer Godot review screenshots saved to %s" % ProjectSettings.globalize_path(_output_dir))
+		print("OK: %s semantic layer Godot review screenshots saved to %s" % [_review_label(), ProjectSettings.globalize_path(_output_dir)])
 	_finish_deferred(0)
 
 
 func _load_layer_manifest() -> Dictionary:
-	var text := FileAccess.get_file_as_string(LAYER_MANIFEST_PATH)
+	var manifest_path := _layer_manifest_path()
+	var text := FileAccess.get_file_as_string(manifest_path)
 	if text.is_empty():
-		_fail("missing Village v002 semantic layer manifest: %s" % LAYER_MANIFEST_PATH)
+		_fail("missing %s semantic layer manifest: %s" % [_review_label(), manifest_path])
 		return {}
 	var parsed: Variant = JSON.parse_string(text)
 	if not (parsed is Dictionary):
-		_fail("Village v002 semantic layer manifest is not a JSON object")
+		_fail("%s semantic layer manifest is not a JSON object" % _review_label())
 		return {}
 	var manifest: Dictionary = parsed
-	if not _expect(manifest.get("status") == "v002_semantic_layers_exported_pending_review", "manifest must be v002_semantic_layers_exported_pending_review"):
+	var expected_status := _expected_manifest_status()
+	if not _expect(manifest.get("status") == expected_status, "manifest must be %s" % expected_status):
 		return {}
 	if not _expect(manifest.get("runtime_replacement") is bool and manifest.get("runtime_replacement") == false, "manifest must keep runtime_replacement=false"):
 		return {}
@@ -216,7 +230,7 @@ func _load_png_texture(path: String) -> Texture2D:
 
 
 func _validate_review_runtime_state(outdoor: Node, village_section: Node2D) -> bool:
-	var review_root := village_section.get_node_or_null("VillageV002SemanticLayerReview")
+	var review_root := village_section.get_node_or_null(_review_root_name())
 	if not _expect(review_root != null, "Village v002 semantic review root should be installed"):
 		return false
 	var base := review_root.get_node_or_null("BaseGround") as Sprite2D
@@ -348,17 +362,17 @@ func _capture_review_frame(key: String) -> void:
 	await process_frame
 	await process_frame
 	if _check_only:
-		print("OK: checked Village v002 semantic layer frame: %s" % key)
+		print("OK: checked %s semantic layer frame: %s" % [_review_label(), key])
 		return
-	var output_path := "%s/%s" % [_output_dir, String(OUTPUT_FILENAMES.get(key, "%s.png" % key))]
+	var output_path := "%s/%s" % [_output_dir, String(_output_filenames().get(key, "%s.png" % key))]
 	var image := root.get_texture().get_image()
 	if not _validate_screenshot_image(image, key):
 		return
 	var error := image.save_png(output_path)
 	if error != OK:
-		_fail("could not save Village v002 semantic layer screenshot %s: %s" % [output_path, error])
+		_fail("could not save %s semantic layer screenshot %s: %s" % [_review_label(), output_path, error])
 		return
-	print("OK: captured Village v002 semantic layer frame: %s" % output_path)
+	print("OK: captured %s semantic layer frame: %s" % [_review_label(), output_path])
 
 
 func _validate_screenshot_image(image: Image, key: String) -> bool:
@@ -409,9 +423,32 @@ func _parse_args() -> void:
 	for arg in OS.get_cmdline_user_args():
 		if arg == "--check-only":
 			_check_only = true
+		elif arg == "--v3":
+			_use_v3 = true
+			_output_dir = V003_OUTPUT_DIR
 		elif arg.begins_with("--output-dir="):
 			_output_dir = arg.trim_prefix("--output-dir=")
 
+
+
+func _review_label() -> String:
+	return "Village v003" if _use_v3 else "Village v002"
+
+
+func _review_root_name() -> String:
+	return "VillageV003SemanticLayerReview" if _use_v3 else "VillageV002SemanticLayerReview"
+
+
+func _layer_manifest_path() -> String:
+	return V003_LAYER_MANIFEST_PATH if _use_v3 else LAYER_MANIFEST_PATH
+
+
+func _expected_manifest_status() -> String:
+	return "v003_semantic_layers_exported_pending_review" if _use_v3 else "v002_semantic_layers_exported_pending_review"
+
+
+func _output_filenames() -> Dictionary:
+	return V003_OUTPUT_FILENAMES if _use_v3 else OUTPUT_FILENAMES
 
 func _start_watchdog() -> void:
 	_watchdog_timer = Timer.new()

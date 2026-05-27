@@ -60,6 +60,10 @@ func refresh_runtime_ui() -> void:
 	if time_weather_hud != null and time_weather_hud.has_method("refresh"):
 		if time_weather_hud.has_method("bind_managers"):
 			time_weather_hud.bind_managers(time_manager, weather_manager)
+		if time_weather_hud.has_method("bind_status_manager"):
+			time_weather_hud.bind_status_manager(game_state)
+		if time_weather_hud.has_method("bind_inventory_manager"):
+			time_weather_hud.bind_inventory_manager(inventory_manager, data_registry)
 		time_weather_hud.refresh()
 
 

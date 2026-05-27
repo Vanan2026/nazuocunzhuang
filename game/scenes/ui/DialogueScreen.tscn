@@ -1,0 +1,104 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://game/scenes/ui/DialogueBox.gd" id="1_dialogue_box"]
+[ext_resource type="Theme" path="res://ui/theme/greenfield_theme.tres" id="2_greenfield_theme"]
+
+[node name="DialogueScreen" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_dialogue_box")
+
+[node name="Panel" type="PanelContainer" parent="."]
+offset_left = 120.0
+offset_top = 560.0
+offset_right = 1320.0
+offset_bottom = 840.0
+theme = ExtResource("2_greenfield_theme")
+
+[node name="Content" type="HBoxContainer" parent="Panel"]
+offset_left = 24.0
+offset_top = 20.0
+offset_right = 1176.0
+offset_bottom = 260.0
+
+[node name="Portrait" type="TextureRect" parent="Panel/Content"]
+custom_minimum_size = Vector2(220, 220)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextColumn" type="VBoxContainer" parent="Panel/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpeakerLabel" type="Label" parent="Panel/Content/TextColumn"]
+layout_mode = 2
+text = "Resident"
+
+[node name="LineLabel" type="Label" parent="Panel/Content/TextColumn"]
+layout_mode = 2
+text = "A quiet village conversation begins here."
+autowrap_mode = 3
+
+[node name="OptionRow" type="HBoxContainer" parent="Panel/Content/TextColumn"]
+layout_mode = 2
+
+[node name="TalkButton" type="Button" parent="Panel/Content/TextColumn/OptionRow"]
+layout_mode = 2
+text = "Talk"
+
+[node name="GiftButton" type="Button" parent="Panel/Content/TextColumn/OptionRow"]
+layout_mode = 2
+text = "Gift"
+
+[node name="CloseButton" type="Button" parent="Panel/Content/TextColumn/OptionRow"]
+layout_mode = 2
+text = "Close"
+
+[node name="GiftSelection" type="PanelContainer" parent="."]
+visible = false
+offset_left = 1350.0
+offset_top = 170.0
+offset_right = 1840.0
+offset_bottom = 530.0
+theme = ExtResource("2_greenfield_theme")
+
+[node name="Content" type="VBoxContainer" parent="GiftSelection"]
+offset_left = 20.0
+offset_top = 18.0
+offset_right = 470.0
+offset_bottom = 342.0
+
+[node name="TitleLabel" type="Label" parent="GiftSelection/Content"]
+layout_mode = 2
+text = "Gift Selection"
+
+[node name="GiftGrid" type="GridContainer" parent="GiftSelection/Content"]
+layout_mode = 2
+columns = 4
+
+[node name="RelationshipFeedback" type="PanelContainer" parent="."]
+visible = false
+offset_left = 1350.0
+offset_top = 560.0
+offset_right = 1840.0
+offset_bottom = 840.0
+theme = ExtResource("2_greenfield_theme")
+
+[node name="Content" type="VBoxContainer" parent="RelationshipFeedback"]
+offset_left = 20.0
+offset_top = 18.0
+offset_right = 470.0
+offset_bottom = 262.0
+
+[node name="FeedbackTitleLabel" type="Label" parent="RelationshipFeedback/Content"]
+layout_mode = 2
+text = "Relationship Feedback"
+
+[node name="FeedbackLineLabel" type="Label" parent="RelationshipFeedback/Content"]
+layout_mode = 2
+text = "The gift result appears here."
+autowrap_mode = 3
+
+[node name="FeedbackDeltaLabel" type="Label" parent="RelationshipFeedback/Content"]
+layout_mode = 2
+text = "+0 heart warmth"

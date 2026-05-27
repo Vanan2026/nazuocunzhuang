@@ -6,13 +6,13 @@ const CURRENT_OBJECTIVE_CHIP_PATH := "res://game/scenes/ui/CurrentObjectiveChip.
 const DAILY_INTENT_PANEL_PATH := "res://game/scenes/ui/DailyIntentPanel.tscn"
 const TIME_WEATHER_HUD_PATH := "res://game/scenes/ui/TimeWeatherHUD.tscn"
 
-const DIALOGUE_TEXTURE_PATH := "res://assets/art/greenfield_p0/ui/ui_dialogue_frame_1024x256.png"
-const SURFACE_TEXTURE_PATH := "res://assets/art/greenfield_p0/ui/ui_panel_frame_512x320.png"
-const HUD_TEXTURE_PATH := "res://assets/art/greenfield_p0/ui/ui_hud_panel_512x128.png"
-const BUTTON_TEXTURE_PATH := "res://assets/art/greenfield_p0/ui/ui_button_256x96.png"
+const DIALOGUE_TEXTURE_PATH := "res://assets/ui/panels/ui_panel_paper_01.png"
+const SURFACE_TEXTURE_PATH := "res://assets/ui/panels/ui_panel_paper_01.png"
+const HUD_TEXTURE_PATH := "res://assets/ui/panels/ui_panel_paper_01.png"
+const BUTTON_TEXTURE_PATH := "res://assets/ui/buttons/ui_button_normal.png"
 
-const PRIMARY_TEXT_COLOR := Color(0.33, 0.23, 0.14, 1.0)
-const SECONDARY_TEXT_COLOR := Color(0.44, 0.31, 0.19, 1.0)
+const PRIMARY_TEXT_COLOR := Color(0.31, 0.21, 0.13, 1.0)
+const SECONDARY_TEXT_COLOR := Color(0.45, 0.32, 0.2, 1.0)
 
 const WATCHDOG_TIMEOUT_SECONDS := 15.0
 

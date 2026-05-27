@@ -1,0 +1,101 @@
+{
+  "package": "greenfield_p0_home_area_v001",
+  "canvas_size": [
+    1920,
+    1080
+  ],
+  "style_reference": "production/assets/references/style_mother/greenfield_p0_style_mother_2026-05-27.jpg",
+  "coordinate_space": "shared_full_canvas_origin_top_left",
+  "points": [
+    {
+      "id": "home_door",
+      "type": "door",
+      "name": "Home Door",
+      "position": [
+        595,
+        603
+      ],
+      "shape": {
+        "type": "rectangle",
+        "size": [
+          88,
+          56
+        ]
+      },
+      "hint": "Press E to check the cottage door",
+      "text": "The cottage smells faintly of sun-warmed wood and clean paper."
+    },
+    {
+      "id": "old_well",
+      "type": "well",
+      "name": "Old Well",
+      "position": [
+        1192,
+        628
+      ],
+      "shape": {
+        "type": "rectangle",
+        "size": [
+          112,
+          72
+        ]
+      },
+      "hint": "Press E to listen at the old well",
+      "text": "Cool air rises from the stones. The water sounds close today."
+    },
+    {
+      "id": "mailbox",
+      "type": "mailbox",
+      "name": "Mailbox",
+      "position": [
+        328,
+        562
+      ],
+      "shape": {
+        "type": "rectangle",
+        "size": [
+          96,
+          64
+        ]
+      },
+      "hint": "Press E to check the mailbox",
+      "text": "A folded village note waits inside the red mailbox."
+    },
+    {
+      "id": "farm_plot_cluster",
+      "type": "farm",
+      "name": "Spring Plot",
+      "position": [
+        592,
+        804
+      ],
+      "shape": {
+        "type": "rectangle",
+        "size": [
+          500,
+          256
+        ]
+      },
+      "hint": "Press E to inspect the spring plots",
+      "text": "The soil is soft enough for the first repaired garden rows."
+    }
+  ],
+  "npc_points": [
+    {
+      "id": "aya_morning",
+      "npc_id": "aya",
+      "position": [
+        980,
+        680
+      ],
+      "facing": "down_left"
+    }
+  ],
+  "player_spawn": {
+    "id": "default",
+    "position": [
+      715,
+      690
+    ]
+  }
+}

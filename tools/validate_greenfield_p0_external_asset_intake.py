@@ -22,9 +22,29 @@ def require(condition: bool, message: str) -> None:
         fail(message)
 
 
-def load_request() -> dict:
-    require(REQUEST.exists(), f"missing request manifest: {REQUEST}")
-    return json.loads(REQUEST.read_text(encoding="utf-8"))
+def load_request(manifest_path: Path) -> dict:
+    require(manifest_path.exists(), f"missing request manifest: {manifest_path}")
+    return json.loads(manifest_path.read_text(encoding="utf-8"))
+
+
+def flatten_assets(request: dict) -> list[dict]:
+    assets = request.get("assets", [])
+    if assets:
+        return assets
+    result: list[dict] = []
+    for batch in request.get("batches", []):
+        result.extend(batch.get("assets", []))
+    return result
+
+
+def resolve_incoming_root(manifest_path: Path, request: dict) -> Path:
+    raw_root = str(request.get("incoming_root", "")).strip()
+    if raw_root:
+        incoming_root = Path(raw_root)
+        if not incoming_root.is_absolute():
+            incoming_root = ROOT / incoming_root
+        return incoming_root
+    return manifest_path.parent / "incoming"
 
 
 def validate_png(path: Path, asset: dict) -> list[str]:
@@ -57,17 +77,22 @@ def validate_png(path: Path, asset: dict) -> list[str]:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--allow-partial", action="store_true", help="allow missing assets and validate only files already dropped into incoming")
+    parser.add_argument("--manifest", default=str(REQUEST), help="request manifest to validate")
     args = parser.parse_args()
 
-    request = load_request()
-    assets = request.get("assets", [])
+    manifest_path = Path(args.manifest)
+    if not manifest_path.is_absolute():
+        manifest_path = ROOT / manifest_path
+    request = load_request(manifest_path)
+    assets = flatten_assets(request)
     require(assets, "request manifest has no assets")
+    incoming_root = resolve_incoming_root(manifest_path, request)
 
     present = 0
     missing = []
     invalid = []
     for asset in assets:
-        path = INCOMING / asset["incoming_path"]
+        path = incoming_root / asset["incoming_path"]
         if not path.exists():
             missing.append(asset["incoming_path"])
             continue

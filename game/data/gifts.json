@@ -1,0 +1,82 @@
+[
+  {
+    "gift_id": "aoi_food_persimmon_riceball",
+    "npc_id": "aoi",
+    "item_id": "food_persimmon_riceball",
+    "reaction": "loved",
+    "relationship_delta": 2,
+    "feedback_text": "The sweet riceball reminds Aoi of a quiet shop afternoon."
+  },
+  {
+    "gift_id": "aoi_food_warm_tea",
+    "npc_id": "aoi",
+    "item_id": "food_warm_tea",
+    "reaction": "liked",
+    "relationship_delta": 2,
+    "feedback_text": "Aoi cups the warm tea with both hands and smiles."
+  },
+  {
+    "gift_id": "aoi_wildflower_spring",
+    "npc_id": "aoi",
+    "item_id": "wildflower_spring",
+    "reaction": "liked",
+    "relationship_delta": 2,
+    "feedback_text": "Aoi sets the little flower beside the counter."
+  },
+  {
+    "gift_id": "gen_wood",
+    "npc_id": "gen",
+    "item_id": "wood",
+    "reaction": "liked",
+    "relationship_delta": 2,
+    "feedback_text": "Gen turns the wood in his hands, already imagining a repair."
+  },
+  {
+    "gift_id": "gen_small_carp",
+    "npc_id": "gen",
+    "item_id": "small_carp",
+    "reaction": "liked",
+    "relationship_delta": 2,
+    "feedback_text": "Gen nods, pleased by the simple stream fish."
+  },
+  {
+    "gift_id": "mika_wildflower_spring",
+    "npc_id": "mika",
+    "item_id": "wildflower_spring",
+    "reaction": "loved",
+    "relationship_delta": 3,
+    "feedback_text": "Mika tucks the spring flower into her mail satchel."
+  },
+  {
+    "gift_id": "mika_food_spring_soup",
+    "npc_id": "mika",
+    "item_id": "food_spring_soup",
+    "reaction": "liked",
+    "relationship_delta": 2,
+    "feedback_text": "The warm soup gives Mika a reason to slow down between deliveries."
+  },
+  {
+    "gift_id": "hana_food_warm_tea",
+    "npc_id": "hana",
+    "item_id": "food_warm_tea",
+    "reaction": "loved",
+    "relationship_delta": 3,
+    "feedback_text": "Hana takes a careful sip and remembers an old winter morning."
+  },
+  {
+    "gift_id": "hana_persimmon",
+    "npc_id": "hana",
+    "item_id": "persimmon",
+    "reaction": "liked",
+    "relationship_delta": 2,
+    "feedback_text": "Hana says the persimmon tree is doing its best this year."
+  },
+  {
+    "gift_id": "gen_stone",
+    "npc_id": "gen",
+    "item_id": "stone",
+    "reaction": "neutral",
+    "relationship_delta": 0,
+    "feedback_text": "Gen accepts the stone, but sets it aside for later sorting."
+  }
+]

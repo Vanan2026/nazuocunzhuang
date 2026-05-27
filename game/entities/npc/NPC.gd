@@ -282,9 +282,12 @@ func _evaluate_gift(item_id: String, item_data: Dictionary, inventory_manager: N
 	var item_tags := _as_string_array(item_data.get("tags", []))
 	var match_count := _count_matching_tags(item_tags, likes)
 	var disfavor_count := _count_matching_tags(item_tags, dislikes)
+	var gift_rule := _get_gift_rule(item_id)
 
 	var delta := 0
-	if match_count > 0:
+	if not gift_rule.is_empty():
+		delta = int(gift_rule.get("relationship_delta", 0))
+	elif match_count > 0:
 		delta += 1 + match_count
 	elif disfavor_count > 0:
 		delta -= 1 + disfavor_count
@@ -302,6 +305,8 @@ func _evaluate_gift(item_id: String, item_data: Dictionary, inventory_manager: N
 		"delta": delta,
 		"match_count": match_count,
 		"disfavor_count": disfavor_count,
+		"reaction": String(gift_rule.get("reaction", "")),
+		"feedback_text": String(gift_rule.get("feedback_text", "")),
 		"already_gifted": false,
 	}
 
@@ -322,6 +327,9 @@ func _build_gift_dialogue(item_data: Dictionary, gift_context: Dictionary) -> Di
 	else:
 		line = "%s thanks you for the %s." % [display_name, item_name]
 		line_text_suffix = "It is a kind little gift."
+	var feedback_text := String(gift_context.get("feedback_text", ""))
+	if not feedback_text.is_empty():
+		line_text_suffix = feedback_text
 	line += " " + line_text_suffix
 
 	return {
@@ -334,6 +342,13 @@ func _build_gift_dialogue(item_data: Dictionary, gift_context: Dictionary) -> Di
 		"sets_flags": [],
 		"context": {"gift_context": gift_context.duplicate(true)},
 	}
+
+
+func _get_gift_rule(item_id: String) -> Dictionary:
+	var data_registry := _get_data_registry()
+	if data_registry == null or not data_registry.has_method("get_gift_response"):
+		return {}
+	return data_registry.get_gift_response(npc_id, item_id)
 
 
 func _get_selected_item_id(inventory_manager: Node) -> String:

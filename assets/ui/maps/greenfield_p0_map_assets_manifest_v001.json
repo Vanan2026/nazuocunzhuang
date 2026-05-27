@@ -1,0 +1,16 @@
+{
+  "style_reference": "production/assets/references/style_mother/greenfield_p0_style_mother_2026-05-27.jpg",
+  "assets": [
+    {
+      "path": "assets/ui/maps/ui_map_village_paper_01.png",
+      "size": [
+        1024,
+        640
+      ],
+      "status": "review_ready_placeholder",
+      "purpose": "P0 paper village map background for MapScreen"
+    }
+  ],
+  "launch_quality_approved": false,
+  "human_visual_approval_required": true
+}
