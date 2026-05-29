@@ -2,7 +2,7 @@
 
 This document is the entry point for an external GPT or image-production agent that will create art assets for the Godot project.
 
-The goal is not to redesign the game. The goal is to replace existing placeholder PNG files with approved Greenfield-style production art while keeping every runtime path stable.
+The goal is not to redesign the game. The goal is to replace existing placeholder PNG files with approved Greenfield-style production art while keeping every runtime path stable unless an asset request manifest explicitly moves a group to a component-based workflow.
 
 ## Project Target
 
@@ -36,13 +36,13 @@ This image is an art bible and experience target. Do not copy it pixel-for-pixel
 
 Generate PNG files only.
 
-Each generated file must match the `final_runtime_path`, `expected_size`, and `transparent` fields in:
+Each generated file must match the `incoming_path`, `final_runtime_path`, `expected_size`, and `transparent` fields in:
 
 ```text
 production/assets/external_gpt_handoff/greenfield_p0/v002/asset_request_manifest.json
 ```
 
-Do not rename files. Do not create alternate names. Do not change paths. The game code expects these exact paths.
+Do not rename files. Do not create alternate names. Do not change paths.
 
 Use this workflow:
 
@@ -54,7 +54,8 @@ production/assets/external_gpt_handoff/greenfield_p0/v002/incoming/
 ```
 
 3. After review, approved files are copied over the exact `final_runtime_path`.
-4. No Godot code should be edited just to replace art.
+4. No Godot code should be edited just to replace UI, icon, portrait, or sprite art.
+5. HomeArea is now component-based; Godot placement metadata may be authored after visual approval.
 
 ## Batch Order
 
@@ -62,7 +63,7 @@ Produce assets in this order:
 
 1. `batch_01_ui_kit_core`
 2. `batch_02_ui_icons_map_settings`
-3. `batch_03_home_area_full_canvas`
+3. `batch_03_home_area_component_pack`
 4. `batch_04_p0_portraits`
 5. `batch_05_runtime_walk_sprites`
 6. `batch_06_item_icons_core`
@@ -78,18 +79,25 @@ For UI icons, item icons, portraits, and walk sprites:
 - Keep silhouettes readable at in-game scale.
 - Do not bake text into icons or buttons.
 
-For HomeArea scene assets:
+For HomeArea component assets:
 
-- `scene_home_area_mother.png`, `scene_home_area_base.png`, `scene_home_area_foreground_occlusion.png`, and `scene_home_area_collision_mask.png` must all be `1920x1080`.
-- Keep the same canvas, origin, perspective, scale, and composition across all HomeArea layers.
-- Do not crop transparent layers to object bounds.
-- Treat `scene_home_area_mother.png` as the single composition source.
-- Derive runtime layers from that same composition. Do not independently regenerate base and foreground as different scenes.
-- `scene_home_area_base.png` must contain the playable background without foreground occluders blocking the character.
-- `scene_home_area_foreground_occlusion.png` must contain only pixels that should visually pass in front of the player, with transparency elsewhere.
-- `scene_home_area_collision_mask.png` is a production aid and must align with the same full canvas.
+- Do not use the deprecated full-canvas base/foreground/collision layer workflow.
+- Generate isolated transparent components for Godot assembly.
+- Every component must match the exact `expected_size`.
+- Every component with `transparent=true` must be a true RGBA/alpha PNG.
+- Do not bake checkerboard, white, gray, preview, or studio backgrounds into transparent assets.
+- Use the same fixed 3/4 top-down game perspective across all components.
+- Keep visual scale consistent across the component pack.
+- Do not include ground, shadow plates, or unrelated surrounding scene pixels unless the component description explicitly asks for them.
+- House body and house roof must be separate components.
+- Components are assembled later through Godot placement metadata, such as `home_area_component_manifest.json` and `home_area_godot_placement.json`.
 
-The target is registration-perfect layer alignment, not pixel-perfect tracing of manifest coordinates. Natural brush variation is allowed in grass, flowers, stones, leaves, and texture details as long as the layers align.
+Deprecated HomeArea full-canvas targets must not be generated for v002:
+
+- `scene_home_area_base.png`
+- `scene_home_area_foreground_occlusion.png`
+- `scene_home_area_collision_mask.png`
+- `scene_home_area_review_contact.png`
 
 ## Visual Quality Rules
 
@@ -127,7 +135,6 @@ After approved files replace their `final_runtime_path`, run the relevant checks
 ```powershell
 python tools\validate_greenfield_replaceable_asset_pipeline.py
 python tools\validate_greenfield_p0_ui_kit.py
-python tools\validate_greenfield_p0_home_area_scene.py
 python tools\validate_greenfield_p0_settings_screen.py
 python tools\validate_greenfield_p0_map_screen.py
 ```
@@ -136,12 +143,13 @@ Godot runtime checks for the current P0 shell:
 
 ```powershell
 C:\Users\23732\AppData\Local\Programs\Godot\4.6.1\Godot_v4.6.1-stable_win64_console.exe --headless --path . --script tools\validate_greenfield_p0_settings_screen.gd
-C:\Users\23732\AppData\Local\Programs\Godot\4.6.1\Godot_v4.6.1-stable_win64_console.exe --headless --path . --script tools\validate_greenfield_p0_home_area_scene.gd
 ```
 
 ## Current Status
 
-All formal runtime paths currently have placeholder or current review files. This means the Godot project can load them. It does not mean final art is approved.
+Formal runtime paths currently have placeholder or review files. This means the Godot project can load them. It does not mean final art is approved.
+
+HomeArea full-canvas layer assets are legacy review placeholders until the component pack is generated and integrated.
 
 Use `docs/MISSING_ASSETS_REPORT.md` as the current list of art still requiring final generation and visual approval.
 
