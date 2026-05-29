@@ -21,24 +21,36 @@
 - 所有 UI 组件复用 GreenfieldTheme 或 `GF*` 组件。
 - 中心游玩区不被常驻 UI 遮挡。
 
-### Task P0-02: HomeArea Scene Package
+### Task P0-02: HomeArea Component Scene Package
+
+HomeArea 资产生产已切换为 **组件化生产 + Godot 拼装**。不要再按旧的 full-canvas `base/foreground_occlusion/collision_mask` 拆层方式生产新图。
 
 交付：
 
-- `assets/scenes/home_area/scene_home_area_mother.png`
-- `assets/scenes/home_area/scene_home_area_base.png`
-- `assets/scenes/home_area/scene_home_area_foreground_occlusion.png`
-- `assets/scenes/home_area/scene_home_area_collision_mask.png`
+- `assets/art/greenfield_p0/regions/home_area/components/home_house_body_01.png`
+- `assets/art/greenfield_p0/regions/home_area/components/home_house_roof_01.png`
+- `assets/art/greenfield_p0/regions/home_area/components/home_well_01.png`
+- `assets/art/greenfield_p0/regions/home_area/components/home_mailbox_01.png`
+- `assets/art/greenfield_p0/regions/home_area/components/home_fence_horizontal_01.png`
+- `assets/art/greenfield_p0/regions/home_area/components/home_fence_vertical_01.png`
+- `assets/art/greenfield_p0/regions/home_area/components/home_fence_corner_01.png`
+- `assets/art/greenfield_p0/regions/home_area/components/home_garden_plot_grown_01.png`
+- `assets/art/greenfield_p0/regions/home_area/components/home_tree_large_01.png`
+- `assets/art/greenfield_p0/regions/home_area/components/home_bush_flower_01.png`
+- `assets/art/greenfield_p0/regions/home_area/components/home_table_wood_01.png`
+- `assets/art/greenfield_p0/regions/home_area/components/home_bridge_wood_01.png`
 - `assets/scenes/home_area/scene_home_area_interaction_points.json`
-- `scenes/world/HomeArea.tscn` or compatible `game/scenes/world/HomeArea.tscn`
+- `assets/scenes/home_area/home_area_scene_manifest_v001.json`
+- `game/scenes/world/HomeArea.tscn` or compatible `game/scenes/world/HomeArea.tscn`
 
 验收：
 
 - 玩家可移动。
 - 门、水井、农田、信箱可交互。
 - 碰撞阻止穿过小屋、水井、树、栅栏。
-- 前景遮挡可以盖住角色。
-- 所有层共享画布和原点。
+- 房屋 body / roof 分离，便于遮挡和 YSort。
+- 组件均为独立透明 PNG，不带棋盘格、白底或灰底。
+- Godot 拼装位置、pivot、collision 和 z/y-sort 可由 `home_area_godot_placement.json` 或场景节点维护。
 
 ### Task P0-03: HUD
 
@@ -126,7 +138,7 @@
 - Village map integration.
 - NPC schedule display on map.
 - More NPC portraits and expressions.
-- Seasonal variants for HomeArea.
+- Seasonal variants for HomeArea components.
 - Weather-specific scene overlays.
 - Relationship journal.
 
@@ -134,59 +146,11 @@
 
 - Asset intake validator.
 - UI Kit screenshot regression.
-- HomeArea layer alignment validator.
+- HomeArea component manifest validator.
 - Map data validator.
 - Gift balance validator.
 - Batch request generator for external art production.
 
 ## 当前下一步
 
-优先执行 `Task P0-01: UI Kit Foundation`。原因：UI Kit 统一后，HUD、背包、地图、对话、送礼、设置都会立刻获得一致 Greenfield 视觉语言，也能减少后续每个界面单独修样式的返工。
-
-## Current Next Step - 2026-05-27
-
-`Task P0-01: UI Kit Foundation` and `Task P0-02: HomeArea Scene Package` now have executable assets, Godot scenes, and validators.
-
-Next implementation priority: `Task P0-03: HUD`, followed by `Task P0-04: Inventory Screen`.
-
-Reason: HomeArea now exists as a canonical scene package, so the next visible lift is a complete HUD/hotbar shell and then the full inventory screen using the canonical Greenfield UI Kit.
-
-## Current Next Step - 2026-05-27 HUD Update
-
-`Task P0-03: HUD` now has a complete Greenfield HUD shell, a canonical `game/scenes/ui/HUD.tscn`, and runtime validation.
-
-Next implementation priority: `Task P0-04: Inventory Screen`.
-
-Reason: the current route now has edge-mounted time/weather, money/energy/status, and hotbar surfaces. The next visible UI gap is the full inventory screen with category tabs, detail panel, data-driven item icons, and amount controls.
-
-## Current Next Step - 2026-05-27 Inventory Update
-
-`Task P0-04: Inventory Screen` now has a full Greenfield inventory shell, a canonical `game/scenes/ui/InventoryScreen.tscn`, and runtime validation.
-
-Next implementation priority: `Task P0-05: Dialogue + Gift`.
-
-Reason: the current route now has a data-driven item catalog, category tabs, item details, and quantity controls. The next visible experience gap is the style-mother dialogue/gift flow with NPC portrait, gift selection, and relationship feedback.
-
-## Current Next Step - 2026-05-27 Dialogue Gift Update
-
-`Task P0-05: Dialogue + Gift` now has a canonical `game/scenes/ui/DialogueScreen.tscn`, a data-driven `game/data/gifts.json`, and runtime validation.
-
-Next implementation priority: `Task P0-06: Map Screen`, followed by `Task P0-07: Settings Screen`.
-
-Reason: dialogue/gift now has NPC portrait space, gift selection, relationship feedback, and gifts data wiring. The next visible P0 gaps are map navigation/unlock presentation and the settings surface from the style mother.
-
-## Current Next Step - 2026-05-27 Map Screen Update
-
-`Task P0-06: Map Screen` now has a canonical `game/scenes/ui/MapScreen.tscn`, a paper village map asset, a data-driven `game/data/maps.json`, and runtime validation.
-
-Next implementation priority: `Task P0-07: Settings Screen`.
-
-Reason: MapScreen now displays numbered location pins, location list rows, locked/unlocked state, NPC names, descriptions, and travel hints from data. The remaining P0 UI surface from the style mother is Settings.
-
-## Current Next Step - 2026-05-27 Replaceable Asset Pipeline Update
-
-`Task P0-07: Settings Screen` now has a canonical `game/scenes/ui/SettingsScreen.tscn`, `game/scenes/ui/SettingsScreen.gd`, Greenfield checkbox/slider styling, and static/runtime validation.
-
-Next implementation priority: run external art production in v002 small batches and replace approved PNGs at their `final_runtime_path`.
-
-Reason: the P0 vertical-slice shell now covers HomeArea, HUD, Inventory, Dialogue/Gift, Map, and Settings with placeholder art at stable paths. The remaining work is final art production and visual approval, tracked in `docs/MISSING_ASSETS_REPORT.md`.
+继续执行 `batch_03_home_area_component_pack`，先产出 HomeArea 12 个核心组件，再由 Codex/Godot 做 placement、pivot、collision、YSort 拼装。
