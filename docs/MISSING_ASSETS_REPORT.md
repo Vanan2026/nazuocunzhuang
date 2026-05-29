@@ -1,26 +1,25 @@
 # Missing Assets Report
 
-?????2026-05-27
+Date: 2026-05-29
 
 ## Scope
 
-- ????? Greenfield P0 ??????????
-- ???????? placeholder ???????????????????????????????????? PNG?
-- `present` ?????????????????????????
+- Greenfield P0 external GPT handoff assets.
+- Runtime/formal-path files may already contain placeholders or review candidates.
+- `present` only means a file path exists; it does not mean the final art is approved.
 
 ## Summary
 
-- v002 handoff assets: 56
-- Runtime/formal-path files present: 56
+- v002 handoff assets: 63
 - Missing runtime placeholder files: 0
-- Final approved art missing: all v002 assets, because `human_visual_approval_required=true` and no external generated batch has been accepted yet.
+- Final approved art missing: all v002 assets remain review-ready until human visual approval.
 
 ## Replacement Rule
 
-- ????????? PNG ??? `production/assets/external_gpt_handoff/greenfield_p0/v002/incoming/`?
-- ?? intake validator ??????????? `final_runtime_path` ????? PNG?
-- ???? Godot ???UI??????????????
-- HomeArea ??????? 1920x1080 ???????????????????????
+- Generated PNGs must be delivered under `production/assets/external_gpt_handoff/greenfield_p0/v002/incoming/`.
+- The intake validator copies approved assets to each asset's `final_runtime_path`.
+- UI assets replace existing UI textures without changing Godot scripts.
+- HomeArea now uses a component-based Godot assembly workflow, not the deprecated full-canvas base/foreground/collision layer workflow.
 
 ## batch_01_ui_kit_core
 
@@ -53,15 +52,22 @@
 | `ui_map_village_paper_01` | `assets/ui/maps/ui_map_village_paper_01.png` | 1024x640 | placeholder_or_current_file_present | missing_final_approved_art |
 | `ui_settings_paper_preview` | `assets/ui/screens/ui_settings_paper_preview.png` | 1280x720 | placeholder_or_current_file_present | missing_final_approved_art |
 
-## batch_03_home_area_full_canvas
+## batch_03_home_area_component_pack
 
 | Asset | Formal runtime path | Expected size | File status | Final art status |
 |---|---|---:|---|---|
-| `scene_home_area_mother` | `assets/scenes/home_area/scene_home_area_mother.png` | 1920x1080 | placeholder_or_current_file_present | missing_final_approved_art |
-| `scene_home_area_base` | `assets/scenes/home_area/scene_home_area_base.png` | 1920x1080 | placeholder_or_current_file_present | missing_final_approved_art |
-| `scene_home_area_foreground_occlusion` | `assets/scenes/home_area/scene_home_area_foreground_occlusion.png` | 1920x1080 | placeholder_or_current_file_present | missing_final_approved_art |
-| `scene_home_area_collision_mask` | `assets/scenes/home_area/scene_home_area_collision_mask.png` | 1920x1080 | placeholder_or_current_file_present | missing_final_approved_art |
-| `scene_home_area_review_contact` | `production/assets/external_gpt_handoff/greenfield_p0/v002/review/home_area_contact.png` | 1920x1080 | placeholder_or_current_file_present | missing_final_approved_art |
+| `home_house_body_01` | `assets/art/greenfield_p0/regions/home_area/components/home_house_body_01.png` | 640x512 | pending_generation | missing_final_approved_art |
+| `home_house_roof_01` | `assets/art/greenfield_p0/regions/home_area/components/home_house_roof_01.png` | 640x512 | pending_generation | missing_final_approved_art |
+| `home_well_01` | `assets/art/greenfield_p0/regions/home_area/components/home_well_01.png` | 256x256 | pending_generation | missing_final_approved_art |
+| `home_mailbox_01` | `assets/art/greenfield_p0/regions/home_area/components/home_mailbox_01.png` | 128x128 | pending_generation | missing_final_approved_art |
+| `home_fence_horizontal_01` | `assets/art/greenfield_p0/regions/home_area/components/home_fence_horizontal_01.png` | 256x128 | pending_generation | missing_final_approved_art |
+| `home_fence_vertical_01` | `assets/art/greenfield_p0/regions/home_area/components/home_fence_vertical_01.png` | 128x256 | pending_generation | missing_final_approved_art |
+| `home_fence_corner_01` | `assets/art/greenfield_p0/regions/home_area/components/home_fence_corner_01.png` | 192x192 | pending_generation | missing_final_approved_art |
+| `home_garden_plot_grown_01` | `assets/art/greenfield_p0/regions/home_area/components/home_garden_plot_grown_01.png` | 512x384 | pending_generation | missing_final_approved_art |
+| `home_tree_large_01` | `assets/art/greenfield_p0/regions/home_area/components/home_tree_large_01.png` | 512x512 | pending_generation | missing_final_approved_art |
+| `home_bush_flower_01` | `assets/art/greenfield_p0/regions/home_area/components/home_bush_flower_01.png` | 192x160 | pending_generation | missing_final_approved_art |
+| `home_table_wood_01` | `assets/art/greenfield_p0/regions/home_area/components/home_table_wood_01.png` | 256x192 | pending_generation | missing_final_approved_art |
+| `home_bridge_wood_01` | `assets/art/greenfield_p0/regions/home_area/components/home_bridge_wood_01.png` | 384x256 | pending_generation | missing_final_approved_art |
 
 ## batch_04_p0_portraits
 
@@ -108,6 +114,17 @@
 | `food_warm_tea_64` | `assets/art/items/food_warm_tea_64.png` | 64x64 | placeholder_or_current_file_present | missing_final_approved_art |
 | `old_bell_fragment_64` | `assets/art/items/old_bell_fragment_64.png` | 64x64 | placeholder_or_current_file_present | missing_final_approved_art |
 
+## Deprecated / Removed From Active Demand
+
+The following old HomeArea full-canvas layer assets are no longer part of the external GPT asset request because they caused ambiguity and poor generation reliability:
+
+- `scene_home_area_base.png`
+- `scene_home_area_foreground_occlusion.png`
+- `scene_home_area_collision_mask.png`
+- `scene_home_area_review_contact.png`
+
+Use `batch_03_home_area_component_pack` instead.
+
 ## Current P0 Screen Coverage
 
 - `game/scenes/ui/HUD.tscn`: present
@@ -115,13 +132,12 @@
 - `game/scenes/ui/MapScreen.tscn`: present
 - `game/scenes/ui/DialogueScreen.tscn`: present
 - `game/scenes/ui/SettingsScreen.tscn`: present
-- `game/scenes/world/HomeArea.tscn`: present
+- `game/scenes/world/HomeArea.tscn`: present as legacy review scene until component placement is integrated.
 
 ## Next Asset Demand
 
 1. Batch 01 UI Kit Core: replace paper/wood panels, buttons, slots, tabs, scrollbar, checkboxes first.
 2. Batch 02 UI Icons/Map/Settings: replace HUD icons, paper map, and settings preview next.
-3. Batch 03 HomeArea: produce mother/base/foreground/collision/contact on the same 1920x1080 canvas.
+3. Batch 03 HomeArea Component Pack: produce standalone components for Godot assembly.
 4. Batch 04/05 Characters: replace player portraits and runtime walk strips, then NPC variants.
 5. Batch 06 Item Icons: replace core item icons after UI readability is stable.
-
