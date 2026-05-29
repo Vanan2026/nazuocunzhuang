@@ -78,26 +78,61 @@ Generate these 9 PNGs. Icons must be readable at 32 px. The map and settings scr
 9. ui/screens/ui_settings_paper_preview.png, 1280x720, opaque. Full settings screen mother image: paper panel, wooden side tabs, sliders, checkboxes, note paper preview. No real readable text.
 ```
 
-## Batch 03 HomeArea Full Canvas
+## Batch 03 HomeArea Component Pack
 
-Generate these 5 PNGs as one coordinated set. All five must use exact 1920x1080 canvas and the same composition origin. Do not crop transparent layers.
+This batch **replaces the old HomeArea Full Canvas layer workflow**. Do not generate `scene_home_area_base.png`, `scene_home_area_foreground_occlusion.png`, `scene_home_area_collision_mask.png`, or `scene_home_area_review_contact.png` for this batch.
+
+Generate these 12 standalone transparent PNG components for Godot assembly. Each component must be isolated, centered within its own canvas, and use real alpha transparency. Do not bake checkerboard, white, gray, or preview backgrounds into any transparent component.
+
+All components must share the same visual language: fixed 3/4 top-down cozy rural game perspective, warm low-saturation hand-painted storybook style, no UI, no text, no characters, no combat.
 
 ```text
-1. regions/home_area/scene_home_area_mother.png, 1920x1080, opaque.
-Paint the single HomeArea source composition: cozy cottage, garden plots, old well, mailbox, dirt paths, small bridge hint, trees, flowers. Full canvas, fixed 3/4 top-down, no UI, no text.
+1. regions/home_area/components/home_house_body_01.png, 640x512, transparent.
+Standalone cottage body component: plaster walls, wooden beams, green door, windows, shutters, stone foundation, front steps, and lower porch structure. No roof, no chimney, no ground, no background, no shadow plate.
 
-2. regions/home_area/scene_home_area_base.png, 1920x1080, opaque.
-From the same HomeArea composition, export the full-canvas base layer: ground, roads, water, cottage body, fields, non-occluding props. Same canvas and origin as mother.
+2. regions/home_area/components/home_house_roof_01.png, 640x512, transparent.
+Standalone cottage roof component matching the house body: warm terracotta tiles, chimney, roof ridge, roof eaves. No walls, no ground, no background.
 
-3. regions/home_area/scene_home_area_foreground_occlusion.png, 1920x1080, transparent.
-From the same HomeArea composition, export only full-canvas foreground occluders: tree crowns, roof eaves, tall flowers, fence tops. Transparent outside painted pixels. Same canvas and origin.
+3. regions/home_area/components/home_well_01.png, 256x256, transparent.
+Standalone old stone well component with small wooden roof and bucket rope. No ground, no background.
 
-4. regions/home_area/scene_home_area_collision_mask.png, 1920x1080, opaque.
-Create a simple collision mask for HomeArea on the same full canvas: black blocked areas, white walkable areas. Align exactly to the mother image.
+4. regions/home_area/components/home_mailbox_01.png, 128x128, transparent.
+Standalone rustic mailbox component on a wooden post. No readable text, no ground, no background.
 
-5. regions/home_area/scene_home_area_review_contact.png, 1920x1080, opaque.
-Create a review contact sheet showing HomeArea mother, base, foreground, and mask alignment in one image for visual QA.
+5. regions/home_area/components/home_fence_horizontal_01.png, 256x128, transparent.
+Standalone horizontal wooden fence segment. No ground, no background.
+
+6. regions/home_area/components/home_fence_vertical_01.png, 128x256, transparent.
+Standalone vertical wooden fence segment. No ground, no background.
+
+7. regions/home_area/components/home_fence_corner_01.png, 192x192, transparent.
+Standalone wooden fence corner component that connects horizontal and vertical fence pieces. No ground, no background.
+
+8. regions/home_area/components/home_garden_plot_grown_01.png, 512x384, transparent.
+Standalone mature garden plot component with tilled soil rows, leafy vegetables, and a small garden border. No surrounding ground, no background.
+
+9. regions/home_area/components/home_tree_large_01.png, 512x512, transparent.
+Standalone large leafy tree component with trunk and crown, suitable for YSort occlusion. No ground, no background.
+
+10. regions/home_area/components/home_bush_flower_01.png, 192x160, transparent.
+Standalone flowering bush component. No ground, no background.
+
+11. regions/home_area/components/home_table_wood_01.png, 256x192, transparent.
+Standalone small wooden yard table with simple rural details. No ground, no background.
+
+12. regions/home_area/components/home_bridge_wood_01.png, 384x256, transparent.
+Standalone small wooden bridge component for a stream crossing. No water, no ground, no background.
 ```
+
+Recommended Godot assembly outputs after generation:
+
+```text
+regions/home_area/home_area_component_manifest.json
+regions/home_area/home_area_godot_placement.json
+regions/home_area/home_area_preview_mockup.png
+```
+
+These helper files can be authored after visual approval. They are not image-generation targets for this batch.
 
 ## Batch 04 P0 Portraits
 
