@@ -10,13 +10,20 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 STYLE_REFERENCE = "production/assets/references/style_mother/greenfield_p0_style_mother_2026-05-27.jpg"
-CANVAS_SIZE = (1920, 1080)
 
-ASSETS = {
-    "mother": "assets/scenes/home_area/scene_home_area_mother.png",
-    "base": "assets/scenes/home_area/scene_home_area_base.png",
-    "foreground_occlusion": "assets/scenes/home_area/scene_home_area_foreground_occlusion.png",
-    "collision_mask": "assets/scenes/home_area/scene_home_area_collision_mask.png",
+REQUIRED_COMPONENTS = {
+    "home_house_body_01": ((640, 512), True),
+    "home_house_roof_01": ((640, 512), True),
+    "home_well_01": ((256, 256), True),
+    "home_mailbox_01": ((128, 128), True),
+    "home_fence_horizontal_01": ((256, 128), True),
+    "home_fence_vertical_01": ((128, 256), True),
+    "home_fence_corner_01": ((192, 192), True),
+    "home_garden_plot_grown_01": ((512, 384), True),
+    "home_tree_large_01": ((512, 512), True),
+    "home_bush_flower_01": ((192, 160), True),
+    "home_table_wood_01": ((256, 192), True),
+    "home_bridge_wood_01": ((384, 256), True),
 }
 
 REQUIRED_INTERACTIONS = {"home_door", "old_well", "mailbox", "farm_plot_cluster"}
@@ -47,88 +54,77 @@ def _read(relative_path: str) -> str:
     return path.read_text(encoding="utf-8")
 
 
-def _validate_image_assets() -> None:
+def _validate_component_manifest() -> None:
     manifest_path = ROOT / "assets/scenes/home_area/home_area_scene_manifest_v001.json"
     if not manifest_path.is_file():
         _fail("missing HomeArea scene manifest")
+
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+
     if manifest.get("style_reference") != STYLE_REFERENCE:
         _fail("HomeArea manifest must reference the current style mother")
     if manifest.get("launch_quality_approved") is not False:
         _fail("HomeArea package must not claim launch approval")
     if manifest.get("human_visual_approval_required") is not True:
         _fail("HomeArea package must require human visual approval")
-    if tuple(manifest.get("canvas_size", [])) != CANVAS_SIZE:
-        _fail("HomeArea manifest canvas size mismatch")
+    if manifest.get("workflow") != "component_based_godot_assembly":
+        _fail("HomeArea manifest must use component_based_godot_assembly workflow")
 
-    for key, relative_path in ASSETS.items():
-        if manifest.get("assets", {}).get(key) != relative_path:
-            _fail(f"manifest missing or mismatched asset for {key}")
-        path = ROOT / relative_path
-        if not path.is_file():
-            _fail(f"missing HomeArea asset: {relative_path}")
-        with Image.open(path) as image:
-            if image.size != CANVAS_SIZE:
-                _fail(f"{relative_path} must be full-canvas {CANVAS_SIZE}, got {image.size}")
-            if image.mode != "RGBA":
-                _fail(f"{relative_path} must be RGBA")
+    components = manifest.get("components", {})
+    for component_id, (expected_size, expected_transparent) in REQUIRED_COMPONENTS.items():
+        record = components.get(component_id)
+        if record is None:
+            _fail(f"manifest missing component: {component_id}")
+        if tuple(record.get("expected_size", [])) != expected_size:
+            _fail(f"{component_id} expected_size mismatch")
+        if bool(record.get("transparent")) != expected_transparent:
+            _fail(f"{component_id} transparency flag mismatch")
 
-    with Image.open(ROOT / ASSETS["foreground_occlusion"]) as foreground:
-        alpha = foreground.getchannel("A")
-        opaque_pixels = sum(1 for value in alpha.getdata() if value > 8)
-        if opaque_pixels < 10000:
-            _fail("foreground occlusion has too few alpha pixels")
-        if opaque_pixels > CANVAS_SIZE[0] * CANVAS_SIZE[1] * 0.35:
-            _fail("foreground occlusion is too broad for an occlusion layer")
+        runtime_path = record.get("runtime_path")
+        if not runtime_path:
+            _fail(f"{component_id} missing runtime_path")
 
-    with Image.open(ROOT / ASSETS["collision_mask"]) as mask:
-        alpha = mask.getchannel("A")
-        blocked_pixels = sum(1 for value in alpha.getdata() if value > 128)
-        if blocked_pixels < 30000:
-            _fail("collision mask has too few blocked pixels")
-        if blocked_pixels > CANVAS_SIZE[0] * CANVAS_SIZE[1] * 0.45:
-            _fail("collision mask is too broad")
+        path = ROOT / runtime_path
+        # Component files may be pending generation. If they already exist, validate hard image requirements.
+        if path.is_file():
+            with Image.open(path) as image:
+                if image.size != expected_size:
+                    _fail(f"{runtime_path} must be {expected_size}, got {image.size}")
+                if expected_transparent and image.mode != "RGBA":
+                    _fail(f"{runtime_path} must be RGBA")
 
 
 def _validate_interaction_points() -> None:
     path = ROOT / "assets/scenes/home_area/scene_home_area_interaction_points.json"
     if not path.is_file():
         _fail("missing HomeArea interaction points JSON")
+
     data = json.loads(path.read_text(encoding="utf-8"))
     if data.get("style_reference") != STYLE_REFERENCE:
         _fail("interaction points must reference style mother")
-    if tuple(data.get("canvas_size", [])) != CANVAS_SIZE:
-        _fail("interaction points must use the full HomeArea canvas")
-    if data.get("coordinate_space") != "shared_full_canvas_origin_top_left":
-        _fail("interaction points must declare shared canvas coordinate space")
+
     ids = {point.get("id") for point in data.get("points", [])}
     if not REQUIRED_INTERACTIONS.issubset(ids):
         _fail(f"interaction points missing ids: {sorted(REQUIRED_INTERACTIONS - ids)}")
+
     for point in data.get("points", []):
         position = point.get("position", [])
         if len(position) != 2:
             _fail(f"interaction point {point.get('id')} missing position")
-        x, y = float(position[0]), float(position[1])
-        if not (0.0 <= x <= CANVAS_SIZE[0] and 0.0 <= y <= CANVAS_SIZE[1]):
-            _fail(f"interaction point {point.get('id')} outside canvas")
         if not point.get("hint") or not point.get("text"):
             _fail(f"interaction point {point.get('id')} needs hint and text")
 
 
 def _validate_scene_files() -> None:
     scene_text = _read("game/scenes/world/HomeArea.tscn")
+    script_text = _read("game/scenes/world/HomeArea.gd")
+
     for token in [
-        "BaseSprite",
-        "BaseLayer",
         "YSortObjects",
-        "ForegroundOcclusion",
         "CollisionLayer",
         "InteractionPoints",
         "NavigationRegion2D",
         "PlayerSpawnPoint",
-        "scene_home_area_base.png",
-        "scene_home_area_foreground_occlusion.png",
-        "scene_home_area_mother.png",
         "home_door",
         "old_well",
         "mailbox",
@@ -138,7 +134,6 @@ def _validate_scene_files() -> None:
         if token not in scene_text:
             _fail(f"HomeArea scene missing token: {token}")
 
-    script_text = _read("game/scenes/world/HomeArea.gd")
     for token in [
         "class_name HomeArea",
         "interaction_points_path",
@@ -155,10 +150,10 @@ def _validate_scene_files() -> None:
 
 
 def main() -> None:
-    _validate_image_assets()
+    _validate_component_manifest()
     _validate_interaction_points()
     _validate_scene_files()
-    print("OK: Greenfield P0 HomeArea scene package validates")
+    print("OK: Greenfield P0 HomeArea component package validates")
 
 
 if __name__ == "__main__":
