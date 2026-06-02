@@ -12,8 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 STYLE_REFERENCE = "production/assets/references/style_mother/greenfield_p0_style_mother_2026-05-27.jpg"
 
 REQUIRED_COMPONENTS = {
-    "home_house_body_01": ((640, 512), True),
-    "home_house_roof_01": ((640, 512), True),
+    "home_house_01": ((768, 640), True),
     "home_well_01": ((256, 256), True),
     "home_mailbox_01": ((128, 128), True),
     "home_fence_horizontal_01": ((256, 128), True),
@@ -26,6 +25,7 @@ REQUIRED_COMPONENTS = {
     "home_bridge_wood_01": ((384, 256), True),
 }
 
+DEPRECATED_SPLIT_HOUSE_COMPONENTS = {"home_house_body_01", "home_house_roof_01"}
 REQUIRED_INTERACTIONS = {"home_door", "old_well", "mailbox", "farm_plot_cluster"}
 
 FORBIDDEN = [
@@ -70,7 +70,17 @@ def _validate_component_manifest() -> None:
     if manifest.get("workflow") != "component_based_godot_assembly":
         _fail("HomeArea manifest must use component_based_godot_assembly workflow")
 
+    rules = manifest.get("rules", {})
+    if rules.get("house_body_and_roof_separate") is not False:
+        _fail("HomeArea P0 manifest must use a single complete house component")
+    if rules.get("p0_house_mode") != "single_complete_house_component":
+        _fail("HomeArea P0 manifest must declare p0_house_mode single_complete_house_component")
+
     components = manifest.get("components", {})
+    for deprecated_id in DEPRECATED_SPLIT_HOUSE_COMPONENTS:
+        if deprecated_id in components:
+            _fail(f"manifest still contains deprecated split house component: {deprecated_id}")
+
     for component_id, (expected_size, expected_transparent) in REQUIRED_COMPONENTS.items():
         record = components.get(component_id)
         if record is None:
@@ -153,7 +163,7 @@ def main() -> None:
     _validate_component_manifest()
     _validate_interaction_points()
     _validate_scene_files()
-    print("OK: Greenfield P0 HomeArea component package validates")
+    print("OK: Greenfield P0 HomeArea complete-house component package validates")
 
 
 if __name__ == "__main__":
