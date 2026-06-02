@@ -1,5 +1,5 @@
 {
-  "package": "greenfield_p0_home_area_component_pack_v002",
+  "package": "greenfield_p0_home_area_component_pack_v003",
   "status": "component_pack_pending_generation",
   "launch_quality_approved": false,
   "human_visual_approval_required": true,
@@ -13,22 +13,81 @@
     "fixed_camera": "3/4 top-down",
     "no_baked_background": true,
     "assemble_in_godot": true,
-    "house_body_and_roof_separate": true
+    "house_body_and_roof_separate": false,
+    "p0_house_mode": "single_complete_house_component"
   },
   "components": {
-    "home_house_body_01": {"runtime_path":"assets/art/greenfield_p0/regions/home_area/components/home_house_body_01.png","incoming_path":"regions/home_area/components/home_house_body_01.png","expected_size":[640,512],"transparent":true},
-    "home_house_roof_01": {"runtime_path":"assets/art/greenfield_p0/regions/home_area/components/home_house_roof_01.png","incoming_path":"regions/home_area/components/home_house_roof_01.png","expected_size":[640,512],"transparent":true},
-    "home_well_01": {"runtime_path":"assets/art/greenfield_p0/regions/home_area/components/home_well_01.png","incoming_path":"regions/home_area/components/home_well_01.png","expected_size":[256,256],"transparent":true},
-    "home_mailbox_01": {"runtime_path":"assets/art/greenfield_p0/regions/home_area/components/home_mailbox_01.png","incoming_path":"regions/home_area/components/home_mailbox_01.png","expected_size":[128,128],"transparent":true},
-    "home_fence_horizontal_01": {"runtime_path":"assets/art/greenfield_p0/regions/home_area/components/home_fence_horizontal_01.png","incoming_path":"regions/home_area/components/home_fence_horizontal_01.png","expected_size":[256,128],"transparent":true},
-    "home_fence_vertical_01": {"runtime_path":"assets/art/greenfield_p0/regions/home_area/components/home_fence_vertical_01.png","incoming_path":"regions/home_area/components/home_fence_vertical_01.png","expected_size":[128,256],"transparent":true},
-    "home_fence_corner_01": {"runtime_path":"assets/art/greenfield_p0/regions/home_area/components/home_fence_corner_01.png","incoming_path":"regions/home_area/components/home_fence_corner_01.png","expected_size":[192,192],"transparent":true},
-    "home_garden_plot_grown_01": {"runtime_path":"assets/art/greenfield_p0/regions/home_area/components/home_garden_plot_grown_01.png","incoming_path":"regions/home_area/components/home_garden_plot_grown_01.png","expected_size":[512,384],"transparent":true},
-    "home_tree_large_01": {"runtime_path":"assets/art/greenfield_p0/regions/home_area/components/home_tree_large_01.png","incoming_path":"regions/home_area/components/home_tree_large_01.png","expected_size":[512,512],"transparent":true},
-    "home_bush_flower_01": {"runtime_path":"assets/art/greenfield_p0/regions/home_area/components/home_bush_flower_01.png","incoming_path":"regions/home_area/components/home_bush_flower_01.png","expected_size":[192,160],"transparent":true},
-    "home_table_wood_01": {"runtime_path":"assets/art/greenfield_p0/regions/home_area/components/home_table_wood_01.png","incoming_path":"regions/home_area/components/home_table_wood_01.png","expected_size":[256,192],"transparent":true},
-    "home_bridge_wood_01": {"runtime_path":"assets/art/greenfield_p0/regions/home_area/components/home_bridge_wood_01.png","incoming_path":"regions/home_area/components/home_bridge_wood_01.png","expected_size":[384,256],"transparent":true}
+    "home_house_01": {
+      "runtime_path": "assets/art/greenfield_p0/regions/home_area/components/home_house_01.png",
+      "incoming_path": "regions/home_area/components/home_house_01.png",
+      "expected_size": [768, 640],
+      "transparent": true
+    },
+    "home_well_01": {
+      "runtime_path": "assets/art/greenfield_p0/regions/home_area/components/home_well_01.png",
+      "incoming_path": "regions/home_area/components/home_well_01.png",
+      "expected_size": [256, 256],
+      "transparent": true
+    },
+    "home_mailbox_01": {
+      "runtime_path": "assets/art/greenfield_p0/regions/home_area/components/home_mailbox_01.png",
+      "incoming_path": "regions/home_area/components/home_mailbox_01.png",
+      "expected_size": [128, 128],
+      "transparent": true
+    },
+    "home_fence_horizontal_01": {
+      "runtime_path": "assets/art/greenfield_p0/regions/home_area/components/home_fence_horizontal_01.png",
+      "incoming_path": "regions/home_area/components/home_fence_horizontal_01.png",
+      "expected_size": [256, 128],
+      "transparent": true
+    },
+    "home_fence_vertical_01": {
+      "runtime_path": "assets/art/greenfield_p0/regions/home_area/components/home_fence_vertical_01.png",
+      "incoming_path": "regions/home_area/components/home_fence_vertical_01.png",
+      "expected_size": [128, 256],
+      "transparent": true
+    },
+    "home_fence_corner_01": {
+      "runtime_path": "assets/art/greenfield_p0/regions/home_area/components/home_fence_corner_01.png",
+      "incoming_path": "regions/home_area/components/home_fence_corner_01.png",
+      "expected_size": [192, 192],
+      "transparent": true
+    },
+    "home_garden_plot_grown_01": {
+      "runtime_path": "assets/art/greenfield_p0/regions/home_area/components/home_garden_plot_grown_01.png",
+      "incoming_path": "regions/home_area/components/home_garden_plot_grown_01.png",
+      "expected_size": [512, 384],
+      "transparent": true
+    },
+    "home_tree_large_01": {
+      "runtime_path": "assets/art/greenfield_p0/regions/home_area/components/home_tree_large_01.png",
+      "incoming_path": "regions/home_area/components/home_tree_large_01.png",
+      "expected_size": [512, 512],
+      "transparent": true
+    },
+    "home_bush_flower_01": {
+      "runtime_path": "assets/art/greenfield_p0/regions/home_area/components/home_bush_flower_01.png",
+      "incoming_path": "regions/home_area/components/home_bush_flower_01.png",
+      "expected_size": [192, 160],
+      "transparent": true
+    },
+    "home_table_wood_01": {
+      "runtime_path": "assets/art/greenfield_p0/regions/home_area/components/home_table_wood_01.png",
+      "incoming_path": "regions/home_area/components/home_table_wood_01.png",
+      "expected_size": [256, 192],
+      "transparent": true
+    },
+    "home_bridge_wood_01": {
+      "runtime_path": "assets/art/greenfield_p0/regions/home_area/components/home_bridge_wood_01.png",
+      "incoming_path": "regions/home_area/components/home_bridge_wood_01.png",
+      "expected_size": [384, 256],
+      "transparent": true
+    }
   },
+  "deprecated_components_not_in_active_request": [
+    "home_house_body_01",
+    "home_house_roof_01"
+  ],
   "optional_assembly_outputs_after_approval": {
     "component_manifest": "production/assets/external_gpt_handoff/greenfield_p0/v002/incoming/regions/home_area/home_area_component_manifest.json",
     "godot_placement": "production/assets/external_gpt_handoff/greenfield_p0/v002/incoming/regions/home_area/home_area_godot_placement.json",
@@ -37,6 +96,8 @@
   "deprecated_assets_not_in_active_request": [
     "assets/scenes/home_area/scene_home_area_base.png",
     "assets/scenes/home_area/scene_home_area_foreground_occlusion.png",
-    "assets/scenes/home_area/scene_home_area_collision_mask.png"
+    "assets/scenes/home_area/scene_home_area_collision_mask.png",
+    "assets/art/greenfield_p0/regions/home_area/components/home_house_body_01.png",
+    "assets/art/greenfield_p0/regions/home_area/components/home_house_roof_01.png"
   ]
 }
