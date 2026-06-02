@@ -82,45 +82,44 @@ Generate these 9 PNGs. Icons must be readable at 32 px. The map and settings scr
 
 This batch **replaces the old HomeArea Full Canvas layer workflow**. Do not generate `scene_home_area_base.png`, `scene_home_area_foreground_occlusion.png`, `scene_home_area_collision_mask.png`, or `scene_home_area_review_contact.png` for this batch.
 
-Generate these 12 standalone transparent PNG components for Godot assembly. Each component must be isolated, centered within its own canvas, and use real alpha transparency. Do not bake checkerboard, white, gray, or preview backgrounds into any transparent component.
+P0 now uses a **single complete house component** instead of split `home_house_body_01.png` and `home_house_roof_01.png`. Do not generate those two split house assets for this batch.
+
+Generate these 11 standalone transparent PNG components for Godot assembly. Each component must be isolated, centered within its own canvas, and use real alpha transparency. Do not bake checkerboard, white, gray, or preview backgrounds into any transparent component.
 
 All components must share the same visual language: fixed 3/4 top-down cozy rural game perspective, warm low-saturation hand-painted storybook style, no UI, no text, no characters, no combat.
 
 ```text
-1. regions/home_area/components/home_house_body_01.png, 640x512, transparent.
-Standalone cottage body component: plaster walls, wooden beams, green door, windows, shutters, stone foundation, front steps, and lower porch structure. No roof, no chimney, no ground, no background, no shadow plate.
+1. regions/home_area/components/home_house_01.png, 768x640, transparent.
+Standalone complete cottage component for P0: plaster walls, wooden beams, warm terracotta tile roof, chimney, green door, windows, shutters, stone foundation, front steps, and lower porch structure. The roof and body must be visually integrated as one complete house. No separate roof/body split, no ground, no background, no shadow plate.
 
-2. regions/home_area/components/home_house_roof_01.png, 640x512, transparent.
-Standalone cottage roof component matching the house body: warm terracotta tiles, chimney, roof ridge, roof eaves. No walls, no ground, no background.
-
-3. regions/home_area/components/home_well_01.png, 256x256, transparent.
+2. regions/home_area/components/home_well_01.png, 256x256, transparent.
 Standalone old stone well component with small wooden roof and bucket rope. No ground, no background.
 
-4. regions/home_area/components/home_mailbox_01.png, 128x128, transparent.
+3. regions/home_area/components/home_mailbox_01.png, 128x128, transparent.
 Standalone rustic mailbox component on a wooden post. No readable text, no ground, no background.
 
-5. regions/home_area/components/home_fence_horizontal_01.png, 256x128, transparent.
+4. regions/home_area/components/home_fence_horizontal_01.png, 256x128, transparent.
 Standalone horizontal wooden fence segment. No ground, no background.
 
-6. regions/home_area/components/home_fence_vertical_01.png, 128x256, transparent.
+5. regions/home_area/components/home_fence_vertical_01.png, 128x256, transparent.
 Standalone vertical wooden fence segment. No ground, no background.
 
-7. regions/home_area/components/home_fence_corner_01.png, 192x192, transparent.
+6. regions/home_area/components/home_fence_corner_01.png, 192x192, transparent.
 Standalone wooden fence corner component that connects horizontal and vertical fence pieces. No ground, no background.
 
-8. regions/home_area/components/home_garden_plot_grown_01.png, 512x384, transparent.
+7. regions/home_area/components/home_garden_plot_grown_01.png, 512x384, transparent.
 Standalone mature garden plot component with tilled soil rows, leafy vegetables, and a small garden border. No surrounding ground, no background.
 
-9. regions/home_area/components/home_tree_large_01.png, 512x512, transparent.
+8. regions/home_area/components/home_tree_large_01.png, 512x512, transparent.
 Standalone large leafy tree component with trunk and crown, suitable for YSort occlusion. No ground, no background.
 
-10. regions/home_area/components/home_bush_flower_01.png, 192x160, transparent.
+9. regions/home_area/components/home_bush_flower_01.png, 192x160, transparent.
 Standalone flowering bush component. No ground, no background.
 
-11. regions/home_area/components/home_table_wood_01.png, 256x192, transparent.
+10. regions/home_area/components/home_table_wood_01.png, 256x192, transparent.
 Standalone small wooden yard table with simple rural details. No ground, no background.
 
-12. regions/home_area/components/home_bridge_wood_01.png, 384x256, transparent.
+11. regions/home_area/components/home_bridge_wood_01.png, 384x256, transparent.
 Standalone small wooden bridge component for a stream crossing. No water, no ground, no background.
 ```
 
